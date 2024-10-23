@@ -1,0 +1,19 @@
+service: farmers-backend-app
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-2
+  stackName: farmers-backend-app
+  versionFunctions: false
+  deploymentBucket: ${env:DEPLOY_BUCKET}
+  environment:
+    OPENAI_KEY: ${env:OPENAI_KEY}
+    
+functions:
+  callchatgpt:
+    handler: handler.main
+    url: true
+    timeout: 120
