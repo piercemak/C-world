@@ -34,7 +34,7 @@ export async function main(event: APIGatewayEvent) {
     return {
         statusCode: 200,
         headers: {
-            ["Access-Control-Allow-Origin"]: "fanciful-biscotti-b7ec51.netlify.app"
+            ["Access-Control-Allow-Origin"]: "https://fanciful-biscotti-b7ec51.netlify.app"
         },
         body: result
     }
