@@ -107,6 +107,10 @@ html, body {
   cursor: pointer;
 }
 
+.cardDescription {
+  padding: 0.75rem;
+}
+
 .homePage-item:nth-of-type(2) .homePage-content {
   display: block;
   animation: homePage-show 0.75s ease-in-out 0.3s forwards;

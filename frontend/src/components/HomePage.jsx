@@ -3,7 +3,9 @@ import styles from './modules/Homepage.module.css'
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import ringNebula from '../assets/images/SouthernRingNebula.png' 
 import GoogleMapsHome from '../assets/images/GoogleMaps-home.svg' 
-import crudimage from '../assets/images/crudapp.png'
+import crudBackground from '../assets/images/crudBackground.svg'
+import mockupBackground from '../assets/images/mockupBackground.svg'
+import constructionBackground from '../assets/images/constructionBackground.svg'
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -67,10 +69,13 @@ const HomePage = () => {
         <ul ref={sliderRef} className={styles['homePage-globalReset']}>
           {/* List items with background images */}
 
-          <li className={styles['homePage-item']} style={{ backgroundImage: "url('https://i.redd.it/tc0aqpv92pn21.jpg')" }}>
+          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${constructionBackground})` }}>
             <div className={styles['homePage-content']}>
-              <h2 className={styles['homePage-title']}>PlaceHolder 1</h2>
-              <p className={styles['homePage-description']}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.</p>
+              <h2 className={styles['homePage-title']}>Project in Progress</h2>
+              <p className={styles['homePage-description']}>
+                Currently working on this new project
+                <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>To be determined</div></span>
+              </p>
               <button className={styles['homePage-button']}>Read More</button>
             </div>
           </li>
@@ -78,38 +83,52 @@ const HomePage = () => {
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${ringNebula})` }}>
             <div className={styles['homePage-content']}>
               <h2 className={styles['homePage-title']}>Astrolarity</h2>
-              <p className={styles['homePage-description']}>A comprehensive repository featuring detailed profiles of astronomical objects. Astrolarity encompasses a wide array of celestial entities, from the familiar planets of our Solar System to distant exoplanets, all documented with precision for educational enrichment and astrophysical research.</p>
+              <p className={styles['homePage-description']}>
+                A comprehensive database featuring detailed profiles of astronomical objects, interactive calculator, and more.
+                <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>July, 2023</div></span>
+              </p>
               <a href="https://www.astrolarity.com" target="_blank" rel="noopener noreferrer">
                 <button className={styles['homePage-button']}>Read More</button>
               </a>
             </div>
           </li>
 
-          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${crudimage})` }}>
+          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${crudBackground})` }}>
             <div className={styles['homePage-content']}>
               <h2 className={styles['homePage-title']}>CRUD Application</h2>
-              <p className={styles['homePage-description']}>A simple CRUD application designed to manage data, supporting the essential operations of Create, Read, Update, and Delete.</p>
+              <p className={styles['homePage-description']}>
+                A simple CRUD application designed to manage data, supporting the essential operations of Create, Read, Update, and Delete.
+                <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>January, 2024</div></span>
+              </p>
               <button className={styles['homePage-button']} onClick={CRUDhandleButtonClick}>
                 Read More
               </button>
+            </div>
+          </li>          
+
+          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${mockupBackground})` }}>
+            <div className={styles['homePage-content']}>
+              <h2 className={styles['homePage-title']}>Tailwind Mockups</h2>
+              <p className={styles['homePage-description']}>
+                Company website mockups built with Tailwind CSS and Next.js for modern, responsive design.
+                <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>August, 2024</div></span>
+              </p>
+              <a href="https://fanciful-biscotti-b7ec51.netlify.app" target="_blank" rel="noopener noreferrer">
+                <button className={styles['homePage-button']}>Read More</button>
+              </a>
             </div>
           </li>
 
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${GoogleMapsHome})` }}>
             <div className={styles['homePage-content']}>
               <h2 className={styles['homePage-title']}>Google Maps Application</h2>
-              <p className={styles['homePage-description']}>Utilized the Google Maps API to geocode observatory addresses into coordinates, calculate distances between locations, and plot markers on a map.</p>
+              <p className={styles['homePage-description']}>
+                Utilized the Google Maps API to geocode observatory addresses into coordinates, calculate distances between locations, and plot markers on a map.
+                <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>June, 2024</div></span>
+              </p>
               <button className={styles['homePage-button']} onClick={GMAPShandleButtonClick}> 
                 Read More
               </button>
-            </div>
-          </li>
-
-          <li className={styles['homePage-item']} style={{ backgroundImage: "url('https://da.se/app/uploads/2015/09/simon-december1994.jpg')" }}>
-            <div className={styles['homePage-content']}>
-              <h2 className={styles['homePage-title']}>Tailwind Application</h2>
-              <p className={styles['homePage-description']}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore fuga voluptatum, iure corporis inventore praesentium nisi. Id laboriosam ipsam enim.</p>
-              <button className={styles['homePage-button']}>Read More</button>
             </div>
           </li>
 

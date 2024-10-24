@@ -30,7 +30,7 @@ function App() {
       <div className="App">
         <Routes>
             {/* Route for the homepage without navbar */}
-            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
 
             {/* Google-specific routes with GoogleNavBar */}
             <Route path="/googlemap" element={<GoogleNavBar drawerWidth={myWidth2} content={<GoogleMaps />} />} />
@@ -45,7 +45,7 @@ function App() {
             <Route path="/scrollsection/:id" element={<ScrollableSection />} />
 
             {/* Other routes with the main NavBar */}
-            <Route path="/" element={<NavBar drawerWidth={myWidth} content={<Table />} />} />
+            <Route path="/table" element={<NavBar drawerWidth={myWidth} content={<Table />} />} />
             <Route path="/about" element={<NavBar drawerWidth={myWidth} content={<About />} />} />
             <Route path="/create" element={<NavBar drawerWidth={myWidth} content={<Create />} />} />
             <Route path="/edit/:id" element={<NavBar drawerWidth={myWidth} content={<Edit />} />} />

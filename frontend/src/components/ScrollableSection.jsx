@@ -18,10 +18,8 @@ const ScrollableSection = () => {
 // Homepage navigation
 const navigate = useNavigate()
 const homeNav = () => {
-  navigate(`/homepage`)
+  navigate(`/`)
 }
-
-
 
 
 // Pop-up scroll message

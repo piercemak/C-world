@@ -40,7 +40,7 @@ export default function Navbar(props) {
             <List>
 
                 <ListItem disablePadding>
-                    <ListItemButton component={Link} to="/homepage" selected={"/homepage" === path}>
+                    <ListItemButton component={Link} to="/" selected={"/" === path}>
                     <ListItemIcon>
                             <HomeIcon/>
                     </ListItemIcon>
@@ -49,7 +49,7 @@ export default function Navbar(props) {
                 </ListItem>             
 
                 <ListItem disablePadding>
-                    <ListItemButton component={Link} to="/" selected={"/" === path}>
+                    <ListItemButton component={Link} to="/table" selected={"/table" === path}>
                     <ListItemIcon>
                             <TableChartIcon/>
                     </ListItemIcon>
