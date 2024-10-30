@@ -15,9 +15,8 @@ SECRET_KEY = "django-insecure-wvp68k6#tne$=feywvzr5gqbddj)4mn5ui^c=gaxdh34=s*em7
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://portfolioproject-backendp.onrender.com",
-    "https://portfolioproject-websitemockups.onrender.com",
-    "https://portfolioproject-backend.onrender.com",
+    'portfolioproject-backend.onrender.com',
+    "portfolioproject-backendp.onrender.com",
 ]
 
 
