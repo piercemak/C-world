@@ -26,6 +26,8 @@ const Create = () => {
 
     const GetData = () => {
         AxiosInstance.get(`projectmanager/`)
+        console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL)
+
         
         .then((res) => {
             setProjectmanager(res.data)
