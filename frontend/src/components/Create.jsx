@@ -29,7 +29,6 @@ const Create = () => {
 
         
         .then((res) => {
-            console.log('Backend URL:', import.meta.env.VITE_BACKEND_URL)
             setProjectmanager(res.data)
             console.log(res.data)
             setLoading(false)
