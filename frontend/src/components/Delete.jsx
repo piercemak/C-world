@@ -45,11 +45,7 @@ const Delete = () => {
 
     return (
         <section className={`${styles['asection']}`}>
-            { loading ? <p>Loading data...</p> :
-                <Box className={`${styles['acontent']}`} sx={{display:'flex', width:'70%', padding:4, flexDirection:'column', fontSize: "18px"}}>
-                    Hello
-                </Box>
-            }
+        Hello
             
 
         </section>
