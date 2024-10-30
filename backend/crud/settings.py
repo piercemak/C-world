@@ -17,6 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'portfolioproject-backend.onrender.com',
     "portfolioproject-backendp.onrender.com",
+    "portfolioproject-frontend.onrender.com",
 ]
 
 
@@ -51,6 +52,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://portfolioproject-backendp.onrender.com",
     "https://portfolioproject-WebsiteMockups.onrender.com",
     "https://portfolioproject-backend.onrender.com",
+    "https://portfolioproject-frontend.onrender.com",
     
 ]
 
