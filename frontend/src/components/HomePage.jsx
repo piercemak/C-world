@@ -113,7 +113,7 @@ const HomePage = () => {
                 Company website mockups built with Tailwind CSS and Next.js for modern, responsive design.
                 <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>August, 2024</div></span>
               </p>
-              <a href="https://fanciful-biscotti-b7ec51.netlify.app" target="_blank" rel="noopener noreferrer">
+              <a href="https://portfolioproject-websitemockups-ejqs.onrender.com" target="_blank" rel="noopener noreferrer">
                 <button className={styles['homePage-button']}>Read More</button>
               </a>
             </div>
