@@ -27,7 +27,7 @@ const Create = () => {
     console.log('Backend URL:', baseURL);
     
     const GetData = () => {
-        AxiosInstance.get(`projectmanager/`)
+        AxiosInstance.get(`/projectmanager/`)
 
         
         .then((res) => {
