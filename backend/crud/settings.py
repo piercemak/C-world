@@ -49,7 +49,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://portfolioproject-backendp.onrender.com",
-    "https://portfolioproject-websitemockups.onrender.com",
+    "https://portfolioproject-WebsiteMockups.onrender.com",
     "https://portfolioproject-backend.onrender.com",
     
 ]
