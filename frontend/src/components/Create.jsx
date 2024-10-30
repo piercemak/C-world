@@ -23,7 +23,9 @@ const Create = () => {
         {id:"In Progress", name:'In Progress'},
         {id:"Completed", name:'Completed'},
     ]
-
+    const baseURL = import.meta.env.VITE_BACKEND_URL;
+    console.log('Backend URL:', baseURL);
+    
     const GetData = () => {
         AxiosInstance.get(`projectmanager/`)
 
