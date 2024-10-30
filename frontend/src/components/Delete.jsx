@@ -13,6 +13,7 @@ const Delete = () => {
     const [loading, setLoading] = useState(true)
 
     const GetData = () => {
+        console.log(`Fetching data for ID: ${MyID}`);
         AxiosInstance.get(`project/${MyID}`)
         
         .then((res) => {
