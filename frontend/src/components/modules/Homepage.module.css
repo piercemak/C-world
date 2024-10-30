@@ -152,11 +152,6 @@ html, body {
 }
 
 
-.background-crud-img{
-  position: relative;
-  background-image: url('../assets/images/crudapp.jpg');
-  background-size: cover;
-}
 
 .background-crud-img::after{
   content: '';
