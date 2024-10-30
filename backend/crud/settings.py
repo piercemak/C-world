@@ -44,7 +44,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://portfolioproject-backendp.onrender.com",
+    "https://portfolioproject-websitemockups.onrender.com",
+    
 ]
 
 ROOT_URLCONF = "crud.urls"
