@@ -80,7 +80,7 @@ const Edit = () => {
         })
 
         .then((res) => {
-            navigate(`/`)
+            navigate(`/table`)
         })
 
     }

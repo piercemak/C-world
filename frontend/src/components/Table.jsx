@@ -1,6 +1,7 @@
 import { React, useEffect, useMemo, useState } from 'react'
 import AxiosInstance from './Axios'
 import { MaterialReactTable } from 'material-react-table'
+import { Dialog } from '@mui/material'
 import Dayjs from 'dayjs'
 import { Box, IconButton } from '@mui/material'
 import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
@@ -251,11 +252,11 @@ const Table = () => {
                   renderRowActions={({row}) => (
                     <Box sx={{ display: 'flex', flexWrap: 'nowrap', gap: '8px'}}>
 
-                      <IconButton color="secondary" component={Link} to={`edit/${row.original.id}`}>
+                      <IconButton color="secondary" component={Link} to={`/edit/${row.original.id}`}>
                         <EditIcon />
                       </IconButton>
 
-                      <IconButton color="error" component={Link} to={`delete/${row.original.id}`}>
+                      <IconButton color="error" component={Link} to={`/delete/${row.original.id}`}>
                         <DeleteIcon />
                       </IconButton>
                       

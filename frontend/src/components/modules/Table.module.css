@@ -24,6 +24,8 @@ html, body {
   width: 84.5vw;
   overflow: hidden;
   padding-bottom: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .customTable{

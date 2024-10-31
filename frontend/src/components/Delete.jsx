@@ -18,6 +18,7 @@ const Delete = () => {
         .then((res) => {
             setMyData(res.data)
             console.log(res.data)
+
             setLoading(false)
         })
 
@@ -34,18 +35,14 @@ const Delete = () => {
         AxiosInstance.delete( `project/${MyID}/`)
 
         .then((res) => {
-            navigate(`/`)
+            navigate(`/table`)
         })
 
     }
 
     const homeNav = () => {
-        navigate(`/`)
+        navigate(`/table`)
     }
-
-    useEffect(() => {
-        console.log("Delete component loaded with ID:", id);
-      }, []);
       
     return (
         <section className={`${styles['asection']}`}>
