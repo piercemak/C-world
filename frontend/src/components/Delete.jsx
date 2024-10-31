@@ -43,6 +43,10 @@ const Delete = () => {
         navigate(`/`)
     }
 
+    useEffect(() => {
+        console.log("Delete component loaded with ID:", id);
+      }, []);
+      
     return (
         <section className={`${styles['asection']}`}>
             { loading ? <p>Loading data...</p> :
