@@ -255,7 +255,7 @@ const Table = () => {
                         <EditIcon />
                       </IconButton>
 
-                      <IconButton color="error" component={Link} to={`delete/${row.original.id}`}>
+                      <IconButton color="error" component={Link} to={`delete/${row.original.id}`} onClick={() => console.log(`Delete icon clicked for ID: ${row.original.id}`)}>
                         <DeleteIcon />
                       </IconButton>
                       
