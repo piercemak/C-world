@@ -4,7 +4,7 @@
 .mobile-background {
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-position: center;
     background-size: cover;
     overflow: hidden
@@ -57,12 +57,8 @@
     font-family: 'DM Sans', sans-serif;
 }
 
-
-@media (max-width: 480px) {
-    .mobile-textbody1 {
-        font-size: 35px; /* Adjust as needed */
-    }
-    .mobile-button {
-        width: 180px; /* Smaller button width */
+@media (max-height: 430px) {
+    .mobile-background {
+        height: 100vh; /* Revert to 100vh for smaller devices */
     }
 }
