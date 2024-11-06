@@ -65,11 +65,3 @@
 }
 
 
-@media (max-width: 480px) {
-    .mobile-textbody1 {
-        font-size: 35px; /* Adjust as needed */
-    }
-    .mobile-button {
-        width: 180px; /* Smaller button width */
-    }
-}
