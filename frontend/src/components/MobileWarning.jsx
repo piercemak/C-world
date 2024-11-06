@@ -5,7 +5,6 @@ import styles from './modules/MobileWarning.module.css'
 
 const MobileWarning = () => {
   return (
-    <div className={styles['mobile-container']}>
         <div className={styles['mobile-background']} style={{ backgroundImage: `url(${warningBackground})` }}>
             <div className={styles['mobile-textcontainer1']}>
                 <span className={styles['mobile-textbody1']}>Access Denied</span>
@@ -17,7 +16,6 @@ const MobileWarning = () => {
                 </div>
             </div>
         </div>
-    </div>
   )
 }
 
