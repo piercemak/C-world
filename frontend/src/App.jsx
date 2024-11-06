@@ -24,34 +24,10 @@ import MobileWarning from './components/MobileWarning'
 
 
 function App() {
-  const navigate = useNavigate();
+
   const myWidth = 220;
   const myWidth2 = 225;
 
-  useEffect(() => {
-    const mobileMediaQuery = window.matchMedia('(max-width: 430px)'); // Adjust this if needed
-    
-    const handleScreenChange = (e) => {
-      if (e.matches) {
-        navigate('/mobile'); // Navigate to mobile route if screen matches mobile size
-      } else {
-        navigate('/'); // Navigate back to the default route for larger screens
-      }
-    };
-
-    // Initial check
-    if (mobileMediaQuery.matches) {
-      navigate('/mobile');
-    } else {
-      navigate('/');
-    }
-
-    // Add event listener for screen size change
-    mobileMediaQuery.addEventListener('change', handleScreenChange);
-
-    // Cleanup listener on component unmount
-    return () => mobileMediaQuery.removeEventListener('change', handleScreenChange);
-  }, [navigate]);
 
   return (
 
