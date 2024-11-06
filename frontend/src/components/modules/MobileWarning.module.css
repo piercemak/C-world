@@ -3,8 +3,8 @@
 
 .mobile-background {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     background-position: center;
     background-size: cover;
     overflow: hidden
