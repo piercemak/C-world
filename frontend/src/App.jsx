@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { React, useEffect} from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import darkTheme from './components/theme'; 
 import Table from './components/Table';
@@ -10,6 +10,7 @@ import GoogleNavBar from './components/GoogleNavBar';
 import Edit from './components/Edit';
 import Delete from './components/Delete';
 import HomePage from './components/HomePage';
+import HomePageMobile from './components/HomePageMobile';
 import './App.css';
 import GoogleMaps from './components/GoogleMaps';
 import GeoCode from './components/Geocode';
@@ -19,10 +20,38 @@ import DistanceDelete from './components/DistanceDelete';
 import LocationDelete from './components/LocationDelete';
 import Map from './components/Map';
 import ScrollableSection from './components/ScrollableSection';
+import MobileWarning from './components/MobileWarning'
+
 
 function App() {
+  const navigate = useNavigate();
   const myWidth = 220;
   const myWidth2 = 225;
+
+  useEffect(() => {
+    const mobileMediaQuery = window.matchMedia('(max-width: 430px)'); // Adjust this if needed
+    
+    const handleScreenChange = (e) => {
+      if (e.matches) {
+        navigate('/mobile'); // Navigate to mobile route if screen matches mobile size
+      } else {
+        navigate('/'); // Navigate back to the default route for larger screens
+      }
+    };
+
+    // Initial check
+    if (mobileMediaQuery.matches) {
+      navigate('/mobile');
+    } else {
+      navigate('/');
+    }
+
+    // Add event listener for screen size change
+    mobileMediaQuery.addEventListener('change', handleScreenChange);
+
+    // Cleanup listener on component unmount
+    return () => mobileMediaQuery.removeEventListener('change', handleScreenChange);
+  }, [navigate]);
 
   return (
 
@@ -31,6 +60,8 @@ function App() {
         <Routes>
             {/* Route for the homepage without navbar */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/mobile" element={<HomePageMobile />} />
+            <Route path="/mobilewarning" element={<MobileWarning />} />
 
             {/* Google-specific routes with GoogleNavBar */}
             <Route path="/googlemap" element={<GoogleNavBar drawerWidth={myWidth2} content={<GoogleMaps />} />} />

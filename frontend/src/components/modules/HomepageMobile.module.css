@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+
+}
+
+html, body {
+  width: 100%;
+  
+}
+
+/* Override html and body styles locally */
+.homePageWrapper {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: #262626;
+}
+
+/* Reset overflow for the homepage */
+.homePageWrapper * {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+
+.homePage-body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.homePage-main {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.homePage-item {
+  width: 200px;
+  height: 300px;
+  list-style-type: none;
+  position: absolute;
+  z-index: 1;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
+  transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+}
+
+.homePage-item:first-child, .homePage-item:nth-child(2) {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  border-radius: 0;
+  box-shadow: none;
+  opacity: 1;
+}
+
+
+.homePage-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font: 400 1.25rem helvetica, sans-serif;
+  color: white;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.homePage-title {
+  font-family: "arial-black";
+  text-transform: uppercase;
+}
+
+.homePage-creation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homePage-description {
+  line-height: 1.7;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.homePage-button {
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  border: 2px solid white;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  display: flex;
+}
+
+.cardDescription {
+  padding: 0.75rem;
+  display: flex;
+}
+
+.homePage-item:nth-of-type(2) .homePage-content {
+ 
+  animation: homePage-show 0.75s ease-in-out 0.3s forwards;
+}
+
+@keyframes homePage-show {
+  from {
+    filter: blur(5px);
+    transform: translateY(calc(-50% + 75px));
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.homePage-nav {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  user-select: none;
+}
+
+.homePage-btn {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  margin: 0 0.25rem;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.homePage-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+
+.background-crud-img::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+
+/* Media queries */
+@media (min-width: 650px) and (max-width: 900px) {
+  .homePage-content .homePage-title { font-size: 1rem; }
+  .homePage-content .homePage-description { font-size: 0.7rem; }
+  .homePage-button { font-size: 0.7rem; }
+  .homePage-item { width: 160px; height: 270px; }
+  .homePage-item:nth-child(3) { top: 50%; }
+  .homePage-item:nth-child(4) { top: calc(50% + 20px); }
+  .homePage-item:nth-child(5) { top: calc(50% + 40px); }
+  .homePage-item:nth-child(6) { top: calc(50% + 60px); opacity: 0;}
+}
+
+@media (max-width: 650px) {
+  .homePage-content .homePage-title { font-size: 0.9rem; }
+  .homePage-content .homePage-description { font-size: 0.65rem; }
+  .homePage-button { font-size: 0.7rem; }
+  .homePage-item { width: 430px; height: 220px; }
+  .homePage-item:nth-child(3) { top: 70%; }
+  .homePage-item:nth-child(4) { top: calc(70% + 20px); }
+  .homePage-item:nth-child(5) { top: calc(70% + 40px); }
+  .homePage-item:nth-child(6) { top: calc(70% + 60px); opacity: 0;}
+}
+
+
+
+.customFieldset {
+  background-color: initial;
+  border: none;
+  border-radius: 0;
+  display: block;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}

@@ -20,6 +20,10 @@ const HomePage = () => {
     navigate('/scrollsection');
   };
 
+  const testnav = () => {
+    navigate('/mobile');
+  };
+
   const sliderRef = useRef(null);  
 
   useEffect(() => {
@@ -61,7 +65,9 @@ const HomePage = () => {
 
   }, []);
 
-  
+
+
+
   return (
 
     <div className={`${styles['homePageWrapper']}`}>
@@ -76,7 +82,7 @@ const HomePage = () => {
                 Currently working on this new project
                 <span><hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>To be determined</div></span>
               </p>
-              <button className={styles['homePage-button']}>Read More</button>
+              <button className={styles['homePage-button']} onClick={testnav}>Read More</button>
             </div>
           </li>
 
