@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 
-
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
 
 .mobile-background {
-    position: absolute;
     width: 100%;
     height: 100%;
     background-position: center;
