@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    -webkit-text-size-adjust: 100%; /* Prevents text from scaling on mobile */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
 .mobile-background {
     background-image: url('../../assets/images/WarningBackground.svg');
     background-size: cover;
