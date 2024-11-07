@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh; /* Only here */
+    overflow: hidden;
+    position: relative;
+}
 
 .mobile-background {
     background-image: url('../../assets/images/WarningBackground.svg');
