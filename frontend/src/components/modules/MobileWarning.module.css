@@ -4,7 +4,7 @@
 .mobile-background {
     position: absolute;
     width: 100vw;
-    height: 100dvh;
+  
     background-position: center;
     background-size: cover;
     overflow: hidden
