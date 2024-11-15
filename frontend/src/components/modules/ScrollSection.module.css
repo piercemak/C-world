@@ -30,12 +30,6 @@ html, body {
 
 /* We'll want to match these colors for the best melty effect */
 /* But play around with them (and add a color to section) to see happens */
-body,
-.content {
-  background: transparent;
-  
-  
-}
 
 main {
   view-timeline: --main;
