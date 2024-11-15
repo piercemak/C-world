@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 
-.mobile-container {
-    height: 100%;
-}
 
 .mobile-background {
     background-image: url('../../assets/images/WarningBackground.svg');
