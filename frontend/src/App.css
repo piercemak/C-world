@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
     #root, .App {
-        height: 100svh;
+        height: 100dvh;
     }
 }
