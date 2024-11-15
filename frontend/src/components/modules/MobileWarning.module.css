@@ -2,14 +2,13 @@
 
 .mobile-container {
     height: 100%;
-    background: #6b7280
 }
 
 .mobile-background {
     background-image: url('../../assets/images/WarningBackground.svg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 100%;
 }
 
 .mobile-textcontainer1 {
