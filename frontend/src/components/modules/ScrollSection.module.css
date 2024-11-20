@@ -1,0 +1,1388 @@
+@layer base, rhythm, layout, components, default, overwrites;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+
+html {
+  /* Create a snapping rule on the html element */
+  scroll-snap-type: y mandatory;
+
+  /* Create a timeline scope, so we can target any element on the page */
+  timeline-scope: --section, --main, --site-header;
+  height: 100%;
+
+}
+
+html, body {
+  scrollbar-width: none;
+}
+
+
+.scroll-section-container {
+  background: url('../../assets/images/blurryblue2.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  
+}
+
+
+
+/* We'll want to match these colors for the best melty effect */
+/* But play around with them (and add a color to section) to see happens */
+
+main {
+  view-timeline: --main;
+  
+}
+
+.section {
+  /* Creating a snapping rule on the section element */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  /* Attach the timeline to the section element*/
+  view-timeline: --section;
+
+  /* Set each section to the full dynamic height of the viewport */
+  height: 100dvh;
+}
+
+.map-section {
+  padding-top: 90px;
+  z-index: 2;
+}
+.googlemaps-section {
+  padding-top: 100px;
+  z-index: 2;
+}
+
+.distance-section {
+  padding-top: 45px;
+  padding-right: 55px;
+  z-index: 2;
+}
+
+.content {
+  /* Fix the content, so it doesn't scroll with the section */
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  will-change: transform, opacity;
+  
+
+  /* Animate the content based on the section scrolling */
+  --contrast: 4;
+  
+
+  animation: blink ease-in-out both;
+  animation-timeline: --section;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* 
+  This is a bit of a hack to get the indicator to work because I'm lazy.
+  We're translating the dot from the top to the bottom of its parent,
+  using the browser scroll position as the animation timeline.
+  It's not really matched up to the scrolling sections, only appears to be.
+*/
+.indicator::before {
+  animation: indicate linear both;
+  animation-timeline: --main;
+  animation-range: contain;
+}
+
+/* And we're manually setting the colors because see: lazy comment above */
+@keyframes indicate {
+    0% {
+      --color-indicator: #58aef5;
+      transform: translateY(0);
+    }
+  
+    33% {
+      --color-indicator: #FFBD59;
+    }
+
+    66% {
+      --color-indicator: #a8e093;
+    }
+
+    100% {
+      --color-indicator: #bc9ee6;
+      transform: translateY(
+        calc(var(--indicator-total-height) - var(--indicator-size))
+      );
+    }
+}
+
+/* Remove gradient indicator on scroll-to-end (visible on small screens */
+
+.site-header label:last-of-type {
+  view-timeline: --site-header inline;
+}
+
+.site-header::after {
+  animation: fade-scroll ease-in-out both;
+  animation-timeline: --site-header;
+  animation-range: entry-crossing;
+}
+
+@keyframes fade-scroll {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Change animation based on radio checked */
+body:has([value="horizontal-scroll"]:checked) .content {
+  /* 
+    The only reason we're repeat these two properties instead of simply 
+    setting `animation-name` is so the polyfill will pick them up 
+    They're flaky though and tend to get stuck. You might need to
+    refresh the page and select an option before scrolling
+  */
+  animation: horizontal-scroll ease-in-out both;
+  animation-timeline: --section;
+}
+
+body:has([value="backwards-scroll"]:checked) .content {
+  animation: backwards-scroll ease-in-out both;
+  animation-timeline: --section;
+}
+
+body:has([value="zoom-scroll"]:checked) .content {
+  animation: zoom-scroll ease-in-out both;
+  animation-timeline: --section;
+}
+
+/* Alternative animations */
+/* Very cool, try it */
+@keyframes horizontal-scroll {
+  0% {
+    transform: translate3d(100%, 0%, 0);
+  }
+
+  50% {
+    transform: none;
+  }
+
+  100% {
+    transform: translate3d(-100%, 0%, 0);
+  }
+}
+
+/* Befuddling, try it */
+@keyframes backwards-scroll {
+  0% {
+    transform: translate3d(0%, -100%, 0);
+  }
+
+  50% {
+    transform: none;
+  }
+
+  100% {
+    transform: translate3d(0%, 100%, 0);
+  }
+}
+
+/* WIP */
+@keyframes zoom-scroll {
+  0% {
+    
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    
+    transform: scale(1.5);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+@layer base {
+  :root {
+    /*
+    * Fonts and text
+    */
+    --font-family-default: 'Noto Sans Display', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    --font-family-heading: 'Fraunces', Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+    --font-family-monospace: 'Nimbus Mono PS', 'Courier New', monospace;
+
+    --max-content-width: 100rem;
+    --max-reading-measure: 50ch;
+    --min-tap-size: 48px;
+    --min-tap-space: 8px;
+  
+  
+    /*
+    * Colors
+    */
+    --color-background: #000;
+    --color-text: #fff0f4;
+    --color-primary: oklch(74% 0.15 32);
+    --color-secondary: oklch(65% 0.13 210);
+    --color-ui: oklch(65% 0.05 210);
+
+    --color-yellow: oklch(80% 0.16 85);
+    --color-green: oklch(60% 0.16 135);
+    --color-red: oklch(65% 0.18 15);
+    --color-green-2: oklch(54% 0.11 164);
+    --color-purple: oklch(62% 0.15 318);
+    --color-red-2: oklch(57% 0.2 15);
+
+    --color-link: var(--color-primary);
+    --color-link-hover: var(--color-secondary);
+  
+  }
+}
+
+
+.scroll-section {
+@layer rhythm {
+  body {
+    --font-size-min: 16;
+    --font-size-max: 20;
+
+    --line-height-min: 1.2;
+    --line-height-max: 1.6;
+
+    --font-size-default: var(--font-size);
+    --line-height-default: var(--line-height);
+
+    /*
+    * Spacing / rhythm
+    */
+    --spacing: var(--RHYTHM);
+
+    /* 
+      Useful heading scales
+      Golden Ratio: 1.618
+      Minor Sixth: 1.6
+      Perfect Fifth: 1.5
+      Augmented Fourth: 1.414
+      Perfect Fourth: 1.333
+      Major Third: 1.25
+      Minor Third: 1.2
+      Major Second: 1.125
+      Minor Second: 1.067
+
+      Once CSS pow() is supported, we can use the following formula to create a scale:
+      --min-font-size: pow(var(--base-font-size-min) * var(--min-heading-scale)), var(--heading-level));
+      --max-font-size: pow(var(--base-font-size-max) * var(--max-heading-scale)), var(--heading-level));
+    */
+
+    --pl: 1.125;
+    --pu: 1.6;
+
+    --s1-min: calc(var(--base-font-size-min) / var(--pl));
+    --s1-max: calc(var(--base-font-size-max) / var(--pu));
+
+    --h6-min: var(--base-font-size-min);
+    --h6-max: var(--base-font-size-max);
+
+    --h5-min: calc(var(--base-font-size-min) * var(--pl));
+    --h5-max: calc(var(--base-font-size-max) * var(--pu));
+
+    --h4-min: calc(var(--h5-min) * var(--pl));
+    --h4-max: calc(var(--h5-max) * var(--pu));
+
+    --h3-min: calc(var(--h4-min) * var(--pl));
+    --h3-max: calc(var(--h4-max) * var(--pu));
+
+    --h2-min: calc(var(--h3-min) * var(--pl));
+    --h2-max: calc(var(--h3-max) * var(--pu));
+
+    --h1-min: calc(var(--h2-min) * var(--pl));
+    --h1-max: calc(var(--h2-max) * var(--pu));
+  }
+
+  h1,
+  h2 {
+    --line-height-min: 1.25;
+    --line-height-max: 1;
+
+    font-size: var(--font-size);
+    font-weight: 200;
+    line-height: var(--line-height);
+    padding-block: calc(var(--grid-correction, 0) / 2);
+  }
+
+  h2 {
+    --font-size-min: var(--h2-min);
+    --font-size-max: var(--h2-max);
+  }
+}
+}
+
+
+
+@layer base {
+  :root {
+    -webkit-text-size-adjust: 100%;
+
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+  }
+
+  *,
+  ::before,
+  ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+  }
+
+  /* Prevent text-shadows making highlighted text unreadable */
+  ::selection {
+    background-color: highlight;
+    color: highlightText;
+    text-shadow: none !important;
+  }
+
+  
+
+  body {
+    background-color: var(--color-background, white);
+    color: var(--color-text, black);
+    font-family: var(--font-family-default, sans-serif);
+    font-size: var(--font-size-default, 1em);
+    font-size-adjust: from-font;
+    line-height: var(--line-height-default, 1.5);
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    min-height: 100%;
+  }
+
+  main {
+    outline: 0;
+  }
+
+  a {
+    color: var(--color-link, rgb(85, 85, 211));
+    transition: 0.25s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: var(--color-link-hover, var(--color-link, blue));
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-heading, var(--font-family-default, 1rem));
+    line-height: var(--line-height-heading, 1.25);
+    font-weight: 400;
+    margin-block-start: calc(var(--margin-heading-start, var(--spacing, 1.5rem) * 2));
+    margin-block-end: var(--margin-heading-end, var(--spacing, 1.5rem));
+  }
+
+  /* Limit width of objects with intrinsic size */
+  img,
+  picture,
+  object,
+  video,
+  embed,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+
+@layer rhythm {
+  /*
+    Responsive typography with vertical rhythm
+  */
+  * {
+    /* Step 1: Establish individual responsive font-size */
+  
+    /* 
+      Min and max font sizes to screen sizes 
+      That is, font size will be 16px at 320px screen width and 20px at 1440px screen width
+      These values can be customized on each element to automatically update the formula
+    */
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-size-min-viewport: 320;
+    --font-size-max-viewport: 1440;
+  
+    /* 
+      Converting from px to rem automatically for convenience and accessibility
+      If you want to set font-sizes in rem units from the start, you can set --font-size-units to 1rem
+      Default 1rem = 16px, so 1px = 0.0625rem 
+    */
+    --font-size-units: calc(0.0625rem);
+  
+    /* Math. Don't worry about it. And don't touch. */
+    --_font-size-step: calc( 
+      (var(--font-size-max) - var(--font-size-min)) / 
+      (var(--font-size-max-viewport) - var(--font-size-min-viewport))
+    );
+  
+    --_font-size-base-value: calc(
+      var(--font-size-min) - 
+      var(--font-size-min-viewport) * 
+      var(--_font-size-step)
+    );
+  
+    /* 
+      Create font-size custom prop on all elements
+       All elements can now use the --font-size prop
+  
+       What's more, we can tweak the values established above such as 
+       --font-size-min and --font-size-max, and the formula will update automatically
+       The same applies to the viewport units --font-size-min-viewport and --font-size-max-viewport
+       We can even set a custom --font-size prop on any element, and it will override the default 
+    */
+  
+    --font-size: clamp(
+      min(var(--font-size-min), var(--font-size-max)) * var(--font-size-units),
+      var(--_font-size-base-value) * var(--font-size-units) + var(--_font-size-step) * 100vw,
+      max(var(--font-size-max), var(--font-size-min)) * var(--font-size-units)
+    );
+  
+    /* Using ems to lock current line-height to current font-size */
+    --line-height-units: 1em;
+  
+    /* Min and max line-height */
+    --line-height-min: 1.2;
+    --line-height-max: 1.6;
+  
+    /* Same viewport boundaries as font-size, using font-size values to convert from pixels */
+    --line-height-min-viewport: calc(320 / var(--font-size-min));
+    --line-height-max-viewport: calc(1440 / var(--font-size-max));
+  
+    /* You know the drill. No touchy. */
+    --_line-height-step: calc(
+      (var(--line-height-max) - var(--line-height-min)) / 
+      (var(--line-height-max-viewport) - var(--line-height-min-viewport))
+    );
+  
+    --_line-height-base-value: calc(
+      var(--line-height-min) - 
+      var(--line-height-min-viewport) * 
+      var(--_line-height-step)
+    );
+  
+    /* 
+      Just like with --font-size, all elements will now have access to responsive line-height
+      And we can tweak the values established above such as --line-height-min and --line-height-max
+    */
+    --line-height: clamp(
+      min(var(--line-height-min), var(--line-height-max)) * var(--line-height-units),
+      var(--_line-height-base-value) * var(--line-height-units) + var(--_line-height-step) * 100vw,
+      max(var(--line-height-max), var(--line-height-min)) * var(--line-height-units)
+    );
+  }
+  
+  body {
+    /* We can now set font-size and line-height to their respective props */
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  
+    /* 
+      These are our new rem-units and can be used whenever needed to refer to responsive body-font
+      NOTE: Please treat this as a CONST and do not edit or overwrite 
+    */
+    --RHYTHM_UNITS: var(--font-size);
+  
+    /* 
+      Create rhythm by locking to body line-height
+      This unit can now be used anywhere to refer back to the original body line-height
+      and thus establish a vertical rhythm
+      NOTE: Please treat this as a CONST and do not edit or overwrite
+    */
+    --RHYTHM: clamp(
+      min(var(--line-height-min), var(--line-height-max)) * var(--RHYTHM_UNITS),
+      var(--_line-height-base-value) * var(--RHYTHM_UNITS) + var(--_line-height-step) * 100vw,
+      max(var(--line-height-max), var(--line-height-min)) * var(--RHYTHM_UNITS)
+    );
+  
+    /* Here, a safe prop you can overwrite and play with as needed */
+    --spacing: var(--RHYTHM);
+
+    /* Let's save these just in case we need them */
+    --base-font-size-min: var(--font-size-min);
+    --base-font-size-max: var(--font-size-max);
+    --base-line-height-min: var(--line-height-min);
+    --base-line-height-max: var(--line-height-max);
+  }
+}
+/*
+ * Custom properties used
+ * Be sure to set these to customize the reset otherwise the defaults will be used
+ *
+ * --section-spacing-multiplier: 1, 2, 3, 4 (media queries)
+ * --section-spacing: calc(var(--spacing, 1.5rem) * var(--section-spacing-multiplier));
+ * --max-content-width: 100rem
+ *
+ */
+
+/*----------  Page elements  ----------*/
+
+@layer layout {
+  header,
+  main,
+  section,
+  article,
+  aside,
+  nav,
+  form,
+  div,
+  footer {
+    /* Creates section spacing variable for section-like elements */
+    --section-spacing-multiplier: 1;
+    --section-spacing: calc(var(--spacing, 1.5rem) * var(--section-spacing-multiplier));
+
+    @media (min-width: 40em) {
+      --section-spacing-multiplier: 2;
+    }
+
+    @media (min-width: 60em) {
+      --section-spacing-multiplier: 3;
+    }
+
+    @media (min-width: 80em) {
+      --section-spacing-multiplier: 4;
+    }
+
+    @media (min-width: 100em) {
+      --section-spacing-multiplier: 5;
+    }
+  }
+
+  header,
+  section,
+  footer {
+    /* Limit width of an element while maintaining padding and centering */
+    padding-inline: max(var(--section-spacing), calc(50% - var(--max-content-width, 100rem) / 2));
+  }
+
+  section {
+    padding-block: var(--section-spacing);
+  }
+}
+
+
+.site-header {
+  overflow: hiddem;
+  padding-block: calc(var(--spacing) / 2);
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 27;
+  
+  
+  
+
+  @media (min-width: 64rem) {
+    display: flex;
+    inset-block-start: 0;
+    inset-block-end: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+
+@supports(animation-timeline: view()) {
+  .site-header::after {    
+    background-image: linear-gradient(to right, transparent, black);
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(var(--spacing) / 2);
+    right: 0;
+    width: 33%;
+    height: calc(var(--spacing) * 1.5 + 2px);
+    pointer-events: none;
+    
+  }
+}
+
+.fieldset-wrapper {
+  --height: calc(var(--spacing) * 2);
+
+  border-radius: calc(var(--height) / 2);
+  overflow: auto;
+
+  /* Prevent aliased border due to overflow clipping with border-radius */
+  padding-inline: 1px;
+  padding-right: 40px;
+}
+
+.customFieldset {
+  --font-size-min: 14;
+  --font-size-max: 16;
+
+  background-color: hsla(0deg, 0%, 0%, 0.5);
+  
+  border: 1px solid #dba5ff;
+  border-radius: inherit;
+  display: flex;
+  font-size: var(--font-size);
+  margin: 0 auto;
+  padding: 0;
+  width: max-content;
+
+  @media (min-width: 64rem) {
+    margin: 0;
+  }
+}
+
+label {
+  --transition: 0.01s;
+
+  border-radius: inherit;
+  overflow: hidden;
+  padding-inline: var(--spacing);
+  padding-block: calc(var(--spacing) / 4);
+  position: relative;
+  transition: var(--transition) linear;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    background-color: #4733dd;
+    border-radius: inherit;
+    display: block;
+    transform: translateX(100.5%);
+    transition: inherit;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+}
+
+:checked + label {
+  --transition: 0.25s;
+
+  color: #f1f1f7;
+  overflow: visible;
+
+  &::before {
+    transform: translateX(0);
+  }
+
+  & ~ label::before {
+    transform: translateX(-100.5%);
+  }
+}
+
+legend {
+  color: var(--color-secondary);
+}
+
+input {
+  accent-color: var(--color-primary);
+}
+
+
+/* Hides elements visually, leaves accessible to screenreaders */
+.sr-only {
+  border-width: 0;
+  clip: rect(0, 0, 0, 0);
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+}
+
+@media (min-width: 64rem) {
+  h1.sr-only {
+    --font-size-min: 14;
+    --font-size-max: 20;
+
+    all: unset;
+    color: #393bbf;
+    font-family: var(--font-family-default);
+    font-size: var(--font-size);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+}
+
+.scroll-section {
+nav {
+  --indicator-number: 4;
+  --indicator-top: 50dvb;
+  --indicator-right: var(--spacing);
+
+  --indicator-size: 1em;
+  --indicator-padding: calc((var(--min-tap-size) - var(--indicator-size)) / 2);
+  --indicator-clipped-margins: var(--indicator-padding) * 2;
+  --indicator-total-size: calc(var(--indicator-size) + var(--indicator-padding) * 2);
+
+  --indicator-gap: var(--min-tap-space);
+  --indicator-total-gap: calc(var(--indicator-gap) * (var(--indicator-number) - 1));
+
+  --indicator-total-height: calc(var(--indicator-total-size) * var(--indicator-number) + var(--indicator-total-gap) - var(--indicator-clipped-margins));
+
+  /* Make indicators smaller when mouse is being used */
+  @media (pointer: fine) {
+    --indicator-padding: 0.25em;
+  }
+
+  position: fixed;
+  inset-block-start: var(--indicator-top);
+  inset-inline-end: var(--indicator-right);
+  margin-block-start: calc(var(--indicator-total-height) / -2);
+  z-index: 100;
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--indicator-gap);
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    &::before {
+      --size: calc(var(--indicator-size));
+
+      border-radius: 50%;
+      content: '';
+      color: var(--color-indicator, var(--color-text));
+      background-color: currentColor;
+      box-shadow: inset 0 0 0 2px #e4e2e2c9;
+      position: absolute;
+      inset-inline: 0;
+      margin-inline: auto;
+      padding: 3px;
+      width: var(--size);
+      height: var(--size);
+      z-index: -1;
+    }
+  }
+
+  & li:first-of-type {
+    margin-block-start: calc(var(--indicator-padding) * -1);
+  }
+
+  & li:last-of-type {
+    margin-block-end: calc(var(--indicator-padding) * -1);
+  }
+
+  & li,
+  & a {
+    display: block;
+  }
+
+  & a {
+    --color-link: var(--color-text);
+
+    padding: var(--indicator-padding);
+
+    &::before {
+      content: '';
+      border: 1px solid;
+      border-radius: 50%;
+      display: block;
+      width: var(--indicator-size);
+      height: var(--indicator-size);
+    }
+  }
+}
+}
+@supports not (animation-timeline: scroll()) {
+  nav {
+    display: none;
+  }
+}
+
+footer {
+  --font-size-min: 14;
+  --font-size-max: 16;
+
+  color: var(--color-accent);
+  font-size: var(--font-size);
+  text-align: center;
+  position: relative;
+  z-index: 100;
+}
+
+.emoji {
+  
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: hue;
+    width: 20%;
+    height: 20%;
+  }
+}
+
+.content {
+
+  @media (min-width: 64rem) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  & strong,
+  & code {
+    color: var(--color-highlight);
+  }
+
+  & code {
+    font-family: var(--font-family-default);
+  }
+
+  & .selector {
+    --color-property: var(--color-highlight);
+
+    color: var(--color-selector);
+    font-weight: 700;
+  }
+
+  & .property {
+    --color-property: var(--color-highlight);
+
+    color: var(--color-property);
+    font-weight: 700;
+  }
+
+  & ul {
+    --font-size-min: 14;
+    --font-size-max: 16;
+
+    font-size: var(--font-size);
+    font-weight: 400;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+  }
+
+  & li {
+    margin-bottom: calc(var(--spacing) / 2);
+
+    &::marker {
+      content: '🌷 ';
+      color: var(--color-highlight);
+    }
+  }
+}
+
+h2,
+.text {
+  /* Making space for the scroll indicators */
+  padding-inline-end: calc(var(--min-tap-size) + var(--spacing));
+
+  @media (min-width: 64rem) {
+    padding-inline-end: 0;
+  }
+}
+
+@supports not (animation-timeline: scroll()) {
+  h2,
+  .text {
+    padding-inline-end: 0;
+  }
+}
+
+h2 {
+  line-height: 1;
+  margin-block: var(--spacing);
+  text-shadow: 1px 2px 0.1em hsla(0, 0%, 0%, 0.5);
+  width: 100%;
+
+  @media (min-width: 64rem) {
+    flex: 1;
+    margin-block-end: 0;
+  }
+}
+
+.text {
+  --intrinsic-width: 587;
+  --intrinsic-height: 930;
+  --height: 200px;
+  --offset: 200px;
+
+  & img {
+    display: block;
+    opacity: 0.2;
+    position: absolute;
+    inset: 0;
+    object-fit: contain;
+    object-position: top center;
+    z-index: -1;
+  }
+
+  @media (min-width: 64rem) {
+    --height: min(100dvb, 33vw * var(--intrinsic-height) / var(--intrinsic-width));
+    --offset: calc(var(--height) / 3);
+
+    flex: 1;
+    font-weight: 200;
+    padding-block-start: var(--spacing);
+    position: relative;
+    z-index: -1;
+
+    & img {
+      float: inline-start;
+      height: var(--height);
+      margin-left: calc((1 - var(--intrinsic-width) / var(--intrinsic-height)) * -100%);
+      opacity: 0.65;
+      position: relative;
+      inset: auto;
+      shape-outside: var(--image);
+      shape-margin: var(--spacing);
+
+      & + * {
+        margin-top: calc(var(--spacing) * 3);
+      }
+    }
+  }
+
+  @media (min-width: 64rem) and (min-height: 45rem) {
+    & img + * {
+      margin-top: calc(var(--spacing) * 4);
+    }
+  }
+
+  @media (min-width: 90rem) and (min-height: 35rem) {
+    & img + * {
+      margin-top: var(--offset);
+    }
+  }
+}
+
+
+
+
+.small-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.googleMapsContainer {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  overflow: auto;
+  max-height: calc(100vh - 150px);
+  filter: none;
+  background: rgba(205, 203, 203, 0.425);
+  border-radius: 15px;
+  padding: 20px;
+  
+  scrollbar-width: none;
+  scrollbar-color: #88888859 #f1f1f100; /* Firefox */
+}
+
+.googleMapsContainer-Map {
+  background: rgba(205, 203, 203, 0.425);
+  border-radius: 5px;
+  height: 20%;
+  width: 100%;
+}
+
+.SocialsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  z-index: 1;
+
+}
+
+
+/* Webkit-based browsers (Chrome, Safari, and Opera) */
+.googleMapsContainer::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height of the scrollbar */
+}
+
+.googleMapsContainer::-webkit-scrollbar-track {
+  background: #f1f1f100; /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.googleMapsContainer::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.googleMapsContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb when hovered */
+}
+
+
+.googleMapsContainer-Distance {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  overflow: auto;
+  max-height: calc(100vh - 150px);
+  filter: none;
+  background: rgba(205, 203, 203, 0.425);
+  border-radius: 15px;
+  padding: 20px;
+
+  scrollbar-width: none;
+  scrollbar-color: #88888859 #f1f1f100; /* Firefox */
+}
+
+
+.test1 {
+  max-height: 90%;
+}
+
+.noComfortaa {
+  font-family: 'Noto Sans Display', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif  !important;
+  font-weight: 600;
+  color: #9082fd;
+}
+
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 14%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+.atlasTable{
+  /* background: #29914f; */
+  backdrop-filter: #151515af;
+  border-radius: 20px;
+  
+  box-shadow: 0 0.5px 0 1px rgba(255, 255, 255, 0.23) inset,
+    0 1px 0 0 rgba(255, 255, 255, 0.66) inset, 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+}
+
+.outfit-rowhead {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.circle-background {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(187, 205, 255, 0.554);
+  color: #4733dd;
+  font-family: "Outfit", sans-serif;
+  font-weight: 650;
+}
+
+.link-backdrop {
+  background-color: rgba(187, 205, 255, 0.554);
+  border-radius: 20px;
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  
+}
+
+
+.flexside-container {
+  display: flex;
+  justify-content: space-between; 
+  gap: 10px; /* Adds space between the table and the form */
+  
+}
+
+
+.flexside-container > .DistanceForm {
+  flex: 0.4; /* Adjust this value to control form width */
+}
+
+.flexside-container > .Distance {
+  flex: 0.6; /* Adjust this value to control table width */
+}
+
+
+
+.wavy-line-bottom1 {
+  position: fixed;
+  bottom: -5px;
+  left: -150px;
+  width: 400px; 
+  height: auto;
+  z-index: 1;
+  
+}
+.wavy-line-bottom2 {
+  position: fixed;
+  bottom: -90px;
+  left: -150px;
+  width: 400px; 
+  height: auto;
+  z-index: 1;
+  
+}
+
+
+.socialsFooter {
+  position: fixed;
+  bottom: -405px;
+  right: -50px;
+  z-index: 1;
+  width: 900px; 
+  height: 900px;
+  opacity: 70%;
+}
+
+
+
+
+
+/* For maintaining content size on various screens */
+@media (min-width: 768px) {
+  .scroll-section {
+    padding: 40px;
+  }
+
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header-container {
+    max-width: 1400px;
+  }
+
+  .section {
+    margin-top: 40px;
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scroll-section {
+    padding: 60px;
+  }
+
+  .header-container {
+    max-width: 1600px;
+  }
+
+  .section {
+    margin-top: 60px;
+    padding: 60px;
+  }
+}
+
+
+.delete-Container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  flex-direction: column;
+  border-radius: 40px;
+  background: #1d1d1d;
+  
+}
+
+.delete-message {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  margin: 0 auto;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.delete-message-sub {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 200;
+  font-family: "Outfit", sans-serif;
+}
+
+.confirm-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.trash-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 20px;
+  color: #ff0000;
+  margin: .3em;
+  width: auto;
+  height: 70px;
+}
+
+
+
+.cancel-button {
+  display: block;
+  padding: 10px 40px;
+  margin: 10px auto;
+  font-size: 1.1rem;
+  font-weight: 400;
+  border-radius: 15px;
+  outline: none;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(164, 164, 164, 0.97);
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.cancel-button:hover,
+.cancel-button:focus,
+.cancel-button:active,
+.cancel-button:visited {
+  color: #d0d0d0;
+  background: rgba(94, 94, 94, 0.97);
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
+}
+
+
+.delete-button {
+  display: block;
+  padding: 10px 40px;
+  margin: 10px auto;
+  font-size: 1.1rem;
+  font-weight: 400;
+  border-radius: 15px;
+  outline: none;
+  text-decoration: none;
+  color: #ffffff;
+  background: rgba(46, 66, 241, 0.9);
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.delete-button:hover,
+.delete-button:focus,
+.delete-button:active,
+.delete-button:visited {
+  color: #d0d0d0;
+  background: rgba(31, 44, 165, 0.9);
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
+}
+
+
+/* Suggestion Box */
+.suggestion-box {
+  position: fixed;
+  top: 25px;
+  right: 430px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 10px;
+  font-family: "Outfit", sans-serif;
+  animation: fadeIn 1.5s ease-in-out, fadeOut 1.5s ease-in-out 4.5s;
+  animation-fill-mode: forwards;
+  
+
+}
+
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+.home-button {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.home-button:hover,
+.home-button:focus,
+.home-button:active,
+.home-button:visited {
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
+}
