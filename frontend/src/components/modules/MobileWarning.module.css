@@ -6,7 +6,7 @@
     background-size: cover;
     background-position: center;
     width: 100%;
-    min-height: 100vh; /* Ensures it covers the viewport height */
+    min-height: 100dvh; /* Ensures it covers the viewport height */
     position: absolute;
     top: 0;
     left: 0;
@@ -14,7 +14,7 @@
 
 .mobile-textcontainer1 {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
