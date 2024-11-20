@@ -1,28 +1,9 @@
-import { React, useEffect } from 'react'
+import React from 'react'
 import warningBackground from '../assets/images/WarningBackground.svg'
 import styles from './modules/MobileWarning.module.css' 
 
 
 const MobileWarning = () => {
-    useEffect(() => {
-        const enforceFullHeight = () => {
-            const height = window.innerHeight;
-            document.documentElement.style.setProperty('--vh', `${height * 0.01}px`);
-        };
-
-        window.addEventListener('resize', enforceFullHeight);
-        window.addEventListener('load', enforceFullHeight);
-
-        // Run once on mount
-        enforceFullHeight();
-
-        // Cleanup on unmount
-        return () => {
-            window.removeEventListener('resize', enforceFullHeight);
-            window.removeEventListener('load', enforceFullHeight);
-        };
-    }, []);
-
   return (
  
         <div className={styles['mobile-background']}>
