@@ -2,7 +2,7 @@
 
 .mobile-background {
     background-image: url('../../assets/images/WarningBackground.svg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     width: 100%;
     height: calc(var(--vh, 1vh) * 100); /* Ensures it covers the viewport height */
