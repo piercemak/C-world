@@ -73,12 +73,22 @@
     color: #6b7280;
 }
 
+.mobile-button:active {
+    transform: scale(0.95); 
+    background: linear-gradient(90deg, #0033ff, #ff5733, #ff914d); 
+}
+
+.mobile-button:active .mobile-buttontext {
+    color: white; 
+}
+
 .mobile-button {
     width: 220px;
     margin-top: 30px;
     padding: 15px;
     border-radius: 25px;
     background: linear-gradient(90deg, #4ddaff, #ff3131, #ff914d);
+    transition: transform 0.2s ease;
 }
 
 .mobile-buttontext {
@@ -88,4 +98,5 @@
     font-size: 18px;
     color: #050304;
     font-family: 'DM Sans', sans-serif;
+    transition: color 0.2s ease;
 }
