@@ -12,9 +12,7 @@ const MobileWarning = () => {
             <div className={styles["signature-logo"]}>
                 <img src={signature} alt="Signature" className={styles["signature-container"]}/>            
             </div>
-            <div className={styles["laptop-logo"]}>
-                <img src={laptop} alt="Signature" className={styles["laptop-container"]}/>            
-            </div>
+
 
             <div className={styles['mobile-textcontainer1']}>
                 <span className={styles['mobile-textbody1']}>Access Denied</span>

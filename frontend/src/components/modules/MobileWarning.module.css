@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 
 .mobile-background {
-    background-color: #040303;
+    background-color: #fff;
+    background: url('../../assets/images/WarningBackground.svg') no-repeat center center;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
