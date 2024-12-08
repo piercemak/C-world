@@ -31,8 +31,7 @@
 }
 
 .homePage-item {
-  width: 200px;
-  height: 300px;
+
   list-style-type: none;
   position: absolute;
   z-index: 1;
