@@ -59,7 +59,7 @@ const HomePageMobile = () => {
 
   return (
     <div className={`${styles['homePageWrapper']}`}>
-
+      <main>
         <ul ref={sliderRef} className={styles['homePage-globalReset']}>
           {/* List items with background images */}
 
@@ -144,7 +144,7 @@ const HomePageMobile = () => {
 
           
         </ul>
-
+      </main>
     </div>
   );
 };
