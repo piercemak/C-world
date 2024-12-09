@@ -2,8 +2,8 @@
 /* Override html and body styles locally */
 .homePageWrapper {
   width: 100%;
-  height: 100dvh;
-
+  height: 100vh;
+  overflow: hidden;
   position: relative;
   background: #262626;
 }
@@ -172,7 +172,7 @@
   .homePage-content .homePage-title { font-size: 0.9rem; }
   .homePage-content .homePage-description { font-size: 0.65rem; }
   .homePage-button { font-size: 0.7rem; }
-  .homePage-item { width: 430px; height: 220px; }
+  .homePage-item { width: 90%; max-width: 430px; height: auto; margin: 0 auto; }
   .homePage-item:nth-child(3) { top: 70%; }
   .homePage-item:nth-child(4) { top: calc(70% + 20px); }
   .homePage-item:nth-child(5) { top: calc(70% + 40px); }
