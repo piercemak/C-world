@@ -60,7 +60,7 @@ const HomePageMobile = () => {
   return (
     <div className={`${styles['homePageWrapper']}`}>
       <main>
-        <ul ref={sliderRef} className={styles['homePage-globalReset']}>
+        <ul ref={sliderRef} className={styles['homePage-ul']}>
           {/* List items with background images */}
 
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${constructionBackground})` }}>
