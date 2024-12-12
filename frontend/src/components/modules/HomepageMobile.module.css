@@ -75,6 +75,9 @@ homePage-ul {
   flex-direction: column;
 }
 
+
+
+
 .homePage-button:active {
   transform: scale(0.95); 
   background: #3635355e 
@@ -102,6 +105,9 @@ homePage-ul {
   font-family: "Montserrat", sans-serif;
   transition: transform 0.2s ease;
 }
+
+
+
 
 .cardDescription {
   padding: 0.75rem;

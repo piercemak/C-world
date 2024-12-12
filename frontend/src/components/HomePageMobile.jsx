@@ -76,7 +76,9 @@ const HomePageMobile = () => {
                     <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>To be determined</div>
                 </span>
               </p>
-              <button className={styles['homePage-button']} onClick={testnav}>Read More</button>
+              <div className={styles['homePage-button']}>
+                  <span className={styles['homePage-buttontext']} onClick={testnav}> Check it Out </span>
+              </div>
             </div>
           </li>
 
@@ -92,7 +94,7 @@ const HomePageMobile = () => {
               </p>
               <a href="https://www.astrolarity.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
                 <div className={styles['homePage-button']}>
-                  <span className={styles['homePage-buttontext']}> Check it out </span>
+                  <span className={styles['homePage-buttontext']}> Check it Out </span>
                 </div>
               </a>
             </div>
@@ -111,9 +113,9 @@ const HomePageMobile = () => {
                     <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>January, 2024</div>
                 </span>
               </p>
-              <button className={styles['homePage-button']} onClick={CRUDhandleButtonClick}>
-                Read More
-              </button>
+              <div className={styles['homePage-button']}>
+                  <span className={styles['homePage-buttontext']} onClick={CRUDhandleButtonClick}> Check it Out </span>
+              </div>
             </div>
           </li>          
 
@@ -130,9 +132,9 @@ const HomePageMobile = () => {
                     <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>June, 2024</div>
                 </span>
               </p>
-              <button className={styles['homePage-button']} onClick={GMAPShandleButtonClick}> 
-                Read More
-              </button>
+              <div className={styles['homePage-button']}>
+                  <span className={styles['homePage-buttontext']} onClick={GMAPShandleButtonClick}> Check it Out </span>
+              </div>
             </div>
           </li>
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${mockupBackground})` }}>
@@ -149,7 +151,9 @@ const HomePageMobile = () => {
                 </span>
               </p>
               <a href="https://portfolioproject-websitemockups-ejqs.onrender.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
-                <button className={styles['homePage-button']}>Read More</button>
+              <div className={styles['homePage-button']}>
+                  <span className={styles['homePage-buttontext']}> Check it Out </span>
+              </div>
               </a>
             </div>
           </li>
