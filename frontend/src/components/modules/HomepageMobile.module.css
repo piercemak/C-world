@@ -36,7 +36,10 @@ homePage-ul {
   border-radius: 0;
   box-shadow: none;
   opacity: 1;
-  scrollbar-width: none;
+}
+
+.homePage-item::-webkit-scrollbar {
+  display: none; /* Scrollbar width for Chrome, Safari, Edge */
 }
 
 
