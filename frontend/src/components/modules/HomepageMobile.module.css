@@ -53,6 +53,7 @@ homePage-ul {
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
 .homePage-title {

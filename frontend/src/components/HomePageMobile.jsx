@@ -92,11 +92,9 @@ const HomePageMobile = () => {
                     <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>July, 2023</div>
                 </span>
               </p>
-              <a href="https://www.astrolarity.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
-                <div className={styles['homePage-button']}>
+                <a className={styles['homePage-button']} href="https://www.astrolarity.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none'}}>
                   <span className={styles['homePage-buttontext']}> Check it Out </span>
-                </div>
-              </a>
+                </a>
             </div>
           </li>
 
@@ -150,11 +148,9 @@ const HomePageMobile = () => {
                     <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>August, 2024</div>
                 </span>
               </p>
-              <a href="https://portfolioproject-websitemockups-ejqs.onrender.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
-              <div className={styles['homePage-button']}>
-                  <span className={styles['homePage-buttontext']}> Check it Out </span>
-              </div>
-              </a>
+                <a className={styles['homePage-button']} href="https://portfolioproject-websitemockups-ejqs.onrender.com" target="_blank" rel="noopener noreferrer" style={{ textDecoration:'none' }}>
+                    <span className={styles['homePage-buttontext']}> Check it Out </span>
+                </a>
             </div>
           </li>
 
