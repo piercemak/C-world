@@ -18,7 +18,6 @@ homePage-ul {
 
 .homePage-item {
   overflow: hidden;
-  scrollbar-width: none;
   list-style-type: none;
   position: fixed;
   z-index: 1;
@@ -37,6 +36,7 @@ homePage-ul {
   border-radius: 0;
   box-shadow: none;
   opacity: 1;
+  scrollbar-width: none;
 }
 
 
@@ -53,7 +53,6 @@ homePage-ul {
   justify-content: center;
   align-items: center;
   text-align: center;
-  scrollbar-width: none;
 }
 
 .homePage-title {

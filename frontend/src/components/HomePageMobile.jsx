@@ -22,47 +22,33 @@ const HomePageMobile = () => {
       const testnav = () => {
         navigate('/mobile');
       };
-    const sliderRef = useRef(null);  
 
+    /* Slider swiping and clicking functionality */
+    const sliderRef = useRef(null);  
     useEffect(() => {
         const slider = sliderRef.current;
         let startY = 0;
         let endY = 0;
 
-        const activate = (e) => {
-            const items = slider.querySelectorAll(`.${styles['homePage-item']}`);
-
-            // Append the first item to the end if 'next' is clicked
-            if (e.target.matches(`.${styles['homePage-btn']}`)) {
-                slider.append(items[0]);
-            } else {
-                // Prepend the last item to the start if 'prev' is clicked
-                slider.prepend(items[items.length - 1]);
-            }
-        };
-
         const handleTouchStart = (e) => {
-          startY = e.touches[0].clientY; // Capture the starting touch position
-      };
+          startY = e.touches[0].clientY; 
+        };
         const handleTouchEnd = (e) => {
-          endY = e.changedTouches[0].clientY; // Capture the ending touch position
+          endY = e.changedTouches[0].clientY;
           const items = slider.querySelectorAll(`.${styles['homePage-item']}`);
           if (startY - endY > 50) {
-              // Swipe up detected
+              //Swipe up 
               slider.append(items[0]);
+
           } else if (endY - startY > 50) {
-              // Swipe down detected
+              //Swipe down 
               slider.prepend(items[items.length - 1]);
           }
-      };
-
-        slider.addEventListener('click', activate, false);
+        };
         slider.addEventListener('touchstart', handleTouchStart, false);
         slider.addEventListener('touchend', handleTouchEnd, false)
         
-
         return () => {
-            slider.removeEventListener('click', activate, false);
             slider.removeEventListener('touchstart', handleTouchStart, false);
             slider.removeEventListener('touchend', handleTouchEnd, false);
         };
