@@ -75,7 +75,7 @@
 
 .mobile-button:active {
     transform: scale(0.95); 
-    background: linear-gradient(90deg, #0033ff, #ff5733, #ff914d); 
+    background: #ffa268; 
 }
 
 .mobile-button:active .mobile-buttontext {

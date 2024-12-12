@@ -8,7 +8,6 @@
   overflow: hidden;
   position: relative;
   background: #262626;
-  scrollbar-width: none;
 }
 
 homePage-ul {
@@ -19,6 +18,7 @@ homePage-ul {
 
 .homePage-item {
   overflow: hidden;
+  scrollbar-width: none;
   list-style-type: none;
   position: fixed;
   z-index: 1;
@@ -53,6 +53,7 @@ homePage-ul {
   justify-content: center;
   align-items: center;
   text-align: center;
+  scrollbar-width: none;
 }
 
 .homePage-title {
