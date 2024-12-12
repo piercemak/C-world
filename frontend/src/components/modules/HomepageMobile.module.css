@@ -17,7 +17,7 @@ homePage-ul {
 }
 
 .homePage-item {
-
+  overflow: hidden;
   list-style-type: none;
   position: absolute;
   z-index: 1;
@@ -75,15 +75,32 @@ homePage-ul {
   flex-direction: column;
 }
 
+.homePage-button:active {
+  transform: scale(0.95); 
+  background: #3635355e 
+}
+
+.homePage-button:active .homePage-buttontext {
+  color: #c4c4c4; 
+}
+
 .homePage-button {
   width: fit-content;
-  background-color: rgba(0, 0, 0, 0.1);
-  color: white;
-  border: 2px solid white;
-  border-radius: 0.25rem;
-  padding: 0.75rem;
-  cursor: pointer;
+  padding: 12px;
+  border-radius: 25px;
+  background: #0e0e0e66;
+}
+
+.homePage-buttontext {
   display: flex;
+  margin-left: 14px;
+  margin-right: 14px;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  transition: transform 0.2s ease;
 }
 
 .cardDescription {
