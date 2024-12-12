@@ -17,9 +17,11 @@ homePage-ul {
 }
 
 .homePage-item {
+
   list-style-type: none;
   position: absolute;
   z-index: 1;
+  background-position: center;
   border-radius: 20px;
   box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
   transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
@@ -29,7 +31,7 @@ homePage-ul {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   transform: none;
   border-radius: 0;
   box-shadow: none;
@@ -38,7 +40,6 @@ homePage-ul {
 
 
 .homePage-content {
-  top: 10%;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -68,7 +69,7 @@ homePage-ul {
 .homePage-description {
   line-height: 1.7;
   margin: 1rem 0 1.5rem;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-family: "Raleway", sans-serif;
   display: flex;
   flex-direction: column;
@@ -173,14 +174,17 @@ homePage-ul {
 }
 
 
+.GoogleElement_container {
+  position: absolute;
+  width: 100%;
+  height: 30%;
+}
 
-.customFieldset {
-  background-color: initial;
-  border: none;
-  border-radius: 0;
-  display: block;
-  font-size: inherit;
-  margin: 0;
-  padding: 0;
-  width: auto;
+.GoogleElement {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

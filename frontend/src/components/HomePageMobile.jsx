@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './modules/HomepageMobile.module.css' 
 import ringNebula from '../assets/images/SouthernRingNebula.svg' 
-import GoogleMapsHome from '../assets/images/GoogleMapMobile.svg' 
+import GoogleElement from '../assets/images/GoogleElement.svg' 
 import crudBackground from '../assets/images/BlueMockupMobile.svg'
 import mockupBackground from '../assets/images/OrangeMockupMobile.svg'
 import constructionBackground from '../assets/images/ConstructionMobile.svg'
@@ -108,7 +108,11 @@ const HomePageMobile = () => {
             </div>
           </li>          
 
-          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${GoogleMapsHome})` }}>
+          <li className={styles['homePage-item']} style={{ background: '#000' }}>
+            <div className={styles['GoogleElement_container']}>
+              <img src={GoogleElement} alt="Google Element" className={styles['GoogleElement']}/>
+            </div>
+            
             <div className={styles['homePage-content']}>
               <span className={styles['homePage-title']}>Google Maps Application</span>
               <p className={styles['homePage-description']}>
