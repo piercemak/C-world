@@ -174,7 +174,7 @@ homePage-ul {
 }
 
 
-.GoogleElement_container {
+.Element_container {
   position: absolute;
   width: 100%;
   height: 30%;
@@ -187,4 +187,17 @@ homePage-ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.ConstructionElement {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.PMElement {
+  top: -20%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }

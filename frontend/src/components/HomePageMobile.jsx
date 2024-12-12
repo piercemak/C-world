@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './modules/HomepageMobile.module.css' 
 import ringNebula from '../assets/images/SouthernRingNebula.svg' 
-import GoogleElement from '../assets/images/GoogleElement.svg' 
+import googleElement from '../assets/images/GoogleElement.svg' 
+import pmElement from '../assets/images/PMELement.svg'
 import crudBackground from '../assets/images/BlueMockupMobile.svg'
 import mockupBackground from '../assets/images/OrangeMockupMobile.svg'
-import constructionBackground from '../assets/images/ConstructionMobile.svg'
+import constructionElement from '../assets/images/ConstructionElement.svg'
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -60,9 +61,12 @@ const HomePageMobile = () => {
     <div className={`${styles['homePageWrapper']}`}>
       <main>
         <ul ref={sliderRef} className={styles['homePage-ul']}>
-          {/* List items with background images */}
 
-          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${constructionBackground})` }}>
+          {/* List items with background images */}
+          <li className={styles['homePage-item']} style={{ background: "#fdba32" }}>
+            <div className={styles['Element_container']}>
+              <img src={constructionElement} alt="Construction Element" className={styles['ConstructionElement']} />
+            </div>
             <div className={styles['homePage-content']}>
               <span className={styles['homePage-title']}>Project in Progress</span>
               <p className={styles['homePage-description']}>
@@ -93,6 +97,9 @@ const HomePageMobile = () => {
           </li>
 
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${crudBackground})` }}>
+            <div className={styles['Element_container']}>
+              <img src={pmElement} alt="PM Element" className={styles['PMElement']}/>
+            </div>
             <div className={styles['homePage-content']}>
               <span className={styles['homePage-title']}>CRUD Application</span>
               <p className={styles['homePage-description']}>
@@ -109,10 +116,9 @@ const HomePageMobile = () => {
           </li>          
 
           <li className={styles['homePage-item']} style={{ background: '#000' }}>
-            <div className={styles['GoogleElement_container']}>
-              <img src={GoogleElement} alt="Google Element" className={styles['GoogleElement']}/>
+            <div className={styles['Element_container']}>
+              <img src={googleElement} alt="Google Element" className={styles['GoogleElement']}/>
             </div>
-            
             <div className={styles['homePage-content']}>
               <span className={styles['homePage-title']}>Google Maps Application</span>
               <p className={styles['homePage-description']}>
@@ -128,6 +134,9 @@ const HomePageMobile = () => {
             </div>
           </li>
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${mockupBackground})` }}>
+            <div className={styles['Element_container']}>
+              <img src={pmElement} alt="PM Element" className={styles['PMElement']}/>
+            </div>
             <div className={styles['homePage-content']}>
               <span className={styles['homePage-title']}>Tailwind Mockups</span>
               <p className={styles['homePage-description']}>
