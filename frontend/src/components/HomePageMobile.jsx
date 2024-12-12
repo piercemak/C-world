@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import styles from './modules/HomepageMobile.module.css' 
 import ringNebula from '../assets/images/SouthernRingNebula.svg' 
 import googleElement from '../assets/images/GoogleElement.svg' 
-import pmElement from '../assets/images/PMELement.svg'
 import crudBackground from '../assets/images/BlueMockupMobile.svg'
 import mockupBackground from '../assets/images/OrangeMockupMobile.svg'
+import pmElement from '../assets/images/PMELement.svg'
 import constructionElement from '../assets/images/ConstructionElement.svg'
 import { Link, useNavigate } from 'react-router-dom';
 
