@@ -10,6 +10,10 @@
   background: #262626;
 }
 
+.homePageWrapper::-webkit-scrollbar {
+  display: none; // Safari and Chrome
+}
+
 homePage-ul {
   position: relative;
   width: 100%;
@@ -37,11 +41,6 @@ homePage-ul {
   box-shadow: none;
   opacity: 1;
 }
-
-.homePage-item::-webkit-scrollbar {
-  display: none; /* Scrollbar width for Chrome, Safari, Edge */
-}
-
 
 .homePage-content {
   width: 100%;
