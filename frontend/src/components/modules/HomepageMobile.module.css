@@ -8,6 +8,7 @@
   overflow: hidden;
   position: relative;
   background: #262626;
+  scrollbar-width: none;
 }
 
 homePage-ul {
