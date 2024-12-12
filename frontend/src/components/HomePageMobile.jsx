@@ -26,6 +26,8 @@ const HomePageMobile = () => {
 
     useEffect(() => {
         const slider = sliderRef.current;
+        let startY = 0;
+        let endY = 0;
 
         const activate = (e) => {
             const items = slider.querySelectorAll(`.${styles['homePage-item']}`);
@@ -39,24 +41,35 @@ const HomePageMobile = () => {
             }
         };
 
-        const handleArrowKeys = (e) => {
-            const items = slider.querySelectorAll(`.${styles['homePage-item']}`);
-            if (e.key === 'ArrowUp') {
-                slider.append(items[0]);
-            } else if (e.key === 'ArrowDown') {
-                slider.prepend(items[items.length - 1]);
-            }
-        };
+        const handleTouchStart = (e) => {
+          startY = e.touches[0].clientY; // Capture the starting touch position
+      };
+        const handleTouchEnd = (e) => {
+          endY = e.changedTouches[0].clientY; // Capture the ending touch position
+          const items = slider.querySelectorAll(`.${styles['homePage-item']}`);
+          if (startY - endY > 50) {
+              // Swipe up detected
+              slider.append(items[0]);
+          } else if (endY - startY > 50) {
+              // Swipe down detected
+              slider.prepend(items[items.length - 1]);
+          }
+      };
 
         slider.addEventListener('click', activate, false);
-        window.addEventListener('keydown', handleArrowKeys);
+        slider.addEventListener('touchstart', handleTouchStart, false);
+        slider.addEventListener('touchend', handleTouchEnd, false)
+        
 
         return () => {
             slider.removeEventListener('click', activate, false);
-            window.removeEventListener('keydown', handleArrowKeys);
+            slider.removeEventListener('touchstart', handleTouchStart, false);
+            slider.removeEventListener('touchend', handleTouchEnd, false);
         };
     }, []);
 
+
+    
   return (
     <div className={`${styles['homePageWrapper']}`}>
       <main>
