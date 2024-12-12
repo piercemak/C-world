@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './modules/HomepageMobile.module.css' 
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
-import ringNebula from '../assets/images/SouthernRingNebula.png' 
+import ringNebula from '../assets/images/SouthernRingNebula.svg' 
 import GoogleMapsHome from '../assets/images/GoogleMapMobile.svg' 
 import crudBackground from '../assets/images/BlueMockupMobile.svg'
 import mockupBackground from '../assets/images/OrangeMockupMobile.svg'
