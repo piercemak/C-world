@@ -54,9 +54,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://portfolioproject-backend.onrender.com",
     "https://portfolioproject-frontend.onrender.com",
     "https://piercemakombe.com",
-    "https://www.piercemakombe.com"
-
-    
+    "https://www.piercemakombe.com",
 ]
 
 ROOT_URLCONF = "crud.urls"
