@@ -53,6 +53,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://portfolioproject-WebsiteMockups.onrender.com",
     "https://portfolioproject-backend.onrender.com",
     "https://portfolioproject-frontend.onrender.com",
+    "https://piercemakombe.com",
+    "https://www.piercemakombe.com"
+
     
 ]
 
@@ -69,8 +72,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "https://piercemakombe.com",
-                "https://www.piercemakombe.com",
             ],
         },
     },
