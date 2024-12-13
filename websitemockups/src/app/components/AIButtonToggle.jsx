@@ -44,7 +44,7 @@ const AIButtonToggle = ({ showChat, toggleChat }) => {
       <AnimatePresence>
         {showChat && (
           <motion.div
-            className="fixed right-0 bottom-0 h-full rounded-md"
+            className="fixed right-0 bottom-0 h-full max-w-[800px] rounded-md"
             
             key="chatbox"
             variants={chatVariants}
@@ -52,7 +52,7 @@ const AIButtonToggle = ({ showChat, toggleChat }) => {
             animate="visible"
             exit="exit"
           >
-            <div className="absolute left-[-35px] flex items-center h-full ">
+            <div className="absolute left-[-35px] flex items-center h-full">
               <motion.span 
                 className='size-10 bg-black text-white rounded-full flex justify-center items-center cursor-pointer' 
                 onClick={toggleChat}
