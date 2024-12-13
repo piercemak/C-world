@@ -2,6 +2,7 @@
   "dependencies": {
     "aws-lambda": "^1.0.7",
     "openai": "^4.62.1",
+    "react-device-detect": "^2.2.3",
     "vite": "^5.1.5"
   },
   "devDependencies": {
@@ -17,5 +18,4 @@
     "start": "next start",
     "export": "next build && next export"
   }
-
 }

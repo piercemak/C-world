@@ -1,5 +1,5 @@
 import { React, useEffect} from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import darkTheme from './components/theme'; 
 import Table from './components/Table';
@@ -21,6 +21,7 @@ import LocationDelete from './components/LocationDelete';
 import Map from './components/Map';
 import ScrollableSection from './components/ScrollableSection';
 import MobileWarning from './components/MobileWarning'
+import { isMobile } from 'react-device-detect';
 
 
 function App() {
@@ -35,7 +36,10 @@ function App() {
       <div className="App">
         <Routes>
             {/* Route for the homepage without navbar */}
-            <Route path="/" element={<HomePage />} />
+            <Route 
+              path="/" 
+              element={isMobile ? <Navigate to="/mobile" replace /> : <HomePage />}
+            />
             <Route path="/mobile" element={<HomePageMobile />} />
             <Route path="/mobilewarning" element={<MobileWarning />} />
 
