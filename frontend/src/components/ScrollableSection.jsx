@@ -86,13 +86,6 @@ const homeNav = () => {
             <fieldset className={`${styles["customFieldset"]}`}>
               <legend className={styles["sr-only"]}>Effects</legend>
     
-            {showSuggestion && (
-              <div className={`${styles["suggestion-box"]} ${showSuggestion ? "show" : ""}`}>
-                Try me out!
-                <FontAwesomeIcon icon={faArrowRight}/>
-              </div>
-            )}           
-
               <input type="radio" id="horizontal-scroll-effect" name="effect" value="horizontal-scroll" checked className={styles["sr-only"]} />
               <label htmlFor="horizontal-scroll-effect" className={styles["noComfortaa"]}>Horizontal scroll</label>
 
