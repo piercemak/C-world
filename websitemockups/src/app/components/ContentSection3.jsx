@@ -1,7 +1,7 @@
 'use client'
 import { React, useState, useEffect, useRef } from 'react'
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import Iphone from '../../public/farmersImages/Iphone.svg';
+
 
 const ContentSection3 = ({ toggleChat }) => {
     const rigthArrow = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6"><path fillRule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" /></svg>
@@ -177,9 +177,7 @@ const ContentSection3 = ({ toggleChat }) => {
             <div className='overflow-hidden pt-4 px-4 rounded-3xl mb-5 flex w-full justify-end mx-20 bg-cover bg-repeat bg-center' style={{ backgroundImage: `url('/farmersImages/blackBackground.jpg')` }}>
                 <div className='flex flex-col flex-wrap justify-start w-full mt-16 mb-4'>
                     <div className='flex items-end'>
-                        <span className="ml-5">
-                            {Iphone}
-                        </span>
+                        <img src="/farmersImages/Iphone.png" alt="Iphone" className="ml-5" />
                     </div>
                     <span className='bg-gray-400 w-full h-1 rounded-full mb-8 flex justify-center' />
 
