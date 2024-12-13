@@ -19,7 +19,7 @@ const HomePageMobile = () => {
         navigate('/mobilewarning');
       };
     
-      const testnav = () => {
+      const MobileHomeNav = () => {
         navigate('/mobile');
       };
 
@@ -76,7 +76,7 @@ const HomePageMobile = () => {
                 </span>
               </p>
               <div className={styles['homePage-button']}>
-                  <span className={styles['homePage-buttontext']} onClick={testnav}> Check it Out </span>
+                  <span className={styles['homePage-buttontext']} onClick={MobileHomeNav}> Check it Out </span>
               </div>
             </div>
           </li>
