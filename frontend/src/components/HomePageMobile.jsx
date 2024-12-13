@@ -120,7 +120,7 @@ const HomePageMobile = () => {
             <div className={styles['Element_container']}>
               <img src={googleElement} alt="Google Element" className={styles['GoogleElement']}/>
             </div>
-            <div className={styles['homePage-content']}>
+            <div className={styles['homePage-content']} style={{ marginTop: '20px' }}>
               <span className={styles['homePage-title']}>Google Maps Application</span>
               <p className={styles['homePage-description']}>
                 Utilized the Google Maps API to geocode observatory addresses into coordinates, calculate distances between locations, and plot markers on a map.
