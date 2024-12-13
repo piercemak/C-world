@@ -177,7 +177,7 @@ const ContentSection3 = ({ toggleChat }) => {
             <div className='overflow-hidden pt-4 px-4 rounded-3xl mb-5 flex w-full justify-end mx-20 bg-cover bg-repeat bg-center' style={{ backgroundImage: `url('/farmersImages/blackBackground.jpg')` }}>
                 <div className='flex flex-col flex-wrap justify-start w-full mt-16 mb-4'>
                     <div className='flex items-end'>
-                        <img src="/farmersImages/Iphone.png" alt="Iphone" className="ml-5" />
+                        <img src="/farmersImages/Iphone.svg" alt="Iphone" className="ml-5" />
                     </div>
                     <span className='bg-gray-400 w-full h-1 rounded-full mb-8 flex justify-center' />
 

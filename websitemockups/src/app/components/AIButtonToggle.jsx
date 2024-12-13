@@ -30,7 +30,7 @@ const AIButtonToggle = ({ showChat, toggleChat }) => {
     <div className="fixed flex right-0 bottom-0 z-49">
 
       {/* Button */}
-      <div className='hidden lg:flex cursor-pointer' style={{ transform: 'scale(0.25)', transformOrigin: 'bottom right' }}>
+      <div className='hidden lg:flex cursor-pointer' style={{ transform: 'scale(0.25)', transformOrigin: 'bottom right', willChange: 'transform' }}>
         <figure className={styles.snip1566}>
           <img src="/farmersImages/AIFarmLogo.svg" alt="Farm Logo" className=""/>
           <figcaption>
@@ -52,7 +52,7 @@ const AIButtonToggle = ({ showChat, toggleChat }) => {
             animate="visible"
             exit="exit"
           >
-            <div className="absolute left-[-35px] flex items-center h-full">
+            <div className="absolute left-[-35px] flex items-center h-[75vh]">
               <motion.span 
                 className='size-10 bg-black text-white rounded-full flex justify-center items-center cursor-pointer' 
                 onClick={toggleChat}

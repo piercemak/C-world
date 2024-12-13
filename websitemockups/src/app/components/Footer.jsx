@@ -62,6 +62,11 @@ const Footer = () => {
       };
     }, []);
 
+    const [phoneNumber, setPhoneNumber] = useState('');
+    useEffect(() => {
+        setPhoneNumber('908-782-4120'); 
+      }, []);
+
 
   return (
     <motion.div className='w-full'  ref={sectionRef}>
@@ -88,7 +93,7 @@ const Footer = () => {
                 </motion.span>
                 <motion.span className='flex flex-row text-md mt-4 items-center font-medium ' variants={slideUpVariants}> 
                     <span className='mr-2 text-blue-800'>{phoneIcon}</span>
-                    908-782-4120
+                    {phoneNumber}
                 </motion.span>
 
                 <motion.div className='mt-6 flex flex-row justify-between w-32' variants={slideUpVariants}>
@@ -140,7 +145,7 @@ const Footer = () => {
                 </motion.span>
                 <motion.span className='flex flex-row text-xs mt-4 items-center font-medium ' variants={slideUpVariants}> 
                     <span className='mr-2 text-blue-800'>{phoneIcon}</span>
-                    908-782-4120
+                    {phoneNumber}
                 </motion.span>
 
                 <motion.div className='mt-6 flex flex-row justify-between w-32' variants={slideUpVariants}>

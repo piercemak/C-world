@@ -179,8 +179,8 @@ const ContentSection4 = () => {
 
         {/* Review containers for Mobile */}
         <div className='md:hidden'>
-          <div class="container flex justify-center items-center py-12 px-4">
-            <div class="w-full">
+          <div className="container flex justify-center items-center py-12 px-4">
+            <div className="w-full">
               <Swiper
                 spaceBetween={1}
                 slidesPerView={1}

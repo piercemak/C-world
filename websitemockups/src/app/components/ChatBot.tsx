@@ -255,7 +255,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen }) => {
 
 
   return (
-    <div className='bg-gray-100 shadow-2xl shadow-blue-600 rounded-xl h-full mx-3'>
+    <div className='bg-gray-100 shadow-2xl shadow-blue-600 rounded-xl h-[75vh] mx-3'>
         <div className='flex bg-slate-200 p-6 rounded-t-xl w-full justify-between items-center'>
           <h1 className='text-3xl flex justify-start font-semibold tracking-wider'>Farmer AI</h1>
           <div className='flex flex-row items-center'>
