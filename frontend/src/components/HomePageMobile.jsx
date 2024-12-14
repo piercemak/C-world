@@ -97,7 +97,7 @@ const HomePageMobile = () => {
             </div>
           </li>
 
-          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${mockupBackground})` }}>
+          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${crudBackground})` }}>
             <div className={styles['Element_container']}>
               <img src={pmElement} alt="PM Element" className={styles['PMElement']}/>
             </div>
@@ -117,7 +117,7 @@ const HomePageMobile = () => {
           </li>
 
 
-          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${crudBackground})` }}>
+          <li className={styles['homePage-item']} style={{ backgroundImage: `url(${mockupBackground})` }}>
             <div className={styles['Element_container']}>
               <img src={pmElement} alt="PM Element" className={styles['PMElement']}/>
             </div>
