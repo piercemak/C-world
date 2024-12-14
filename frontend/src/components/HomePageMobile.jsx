@@ -62,24 +62,24 @@ const HomePageMobile = () => {
         <ul ref={sliderRef} className={styles['homePage-ul']}>
 
           {/* List items with background images */}
-          <li className={styles['homePage-item']} style={{ background: '#000' }}>
+          <li className={styles['homePage-item']} style={{ background: "#fdba32" }}>
             <div className={styles['Element_container']}>
-              <img src={googleElement} alt="Google Element" className={styles['GoogleElement']}/>
+              <img src={constructionElement} alt="Construction Element" className={styles['ConstructionElement']} />
             </div>
-            <div className={styles['homePage-content']} style={{ marginTop: '20px' }}>
-              <span className={styles['homePage-title']}>Google Maps Application</span>
+            <div className={styles['homePage-content']}>
+              <span className={styles['homePage-title']}>Project in Progress</span>
               <p className={styles['homePage-description']}>
-                Utilized the Google Maps API to geocode observatory addresses into coordinates, calculate distances between locations, and plot markers on a map.
+                Currently working on this new project
                 <span className={styles['homePage-creation']}>
                     <hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> 
-                    <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>June, 2024</div>
+                    <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>To be determined</div>
                 </span>
               </p>
               <div className={styles['homePage-button']}>
-                  <span className={styles['homePage-buttontext']} onClick={GMAPShandleButtonClick}> Check it Out </span>
+                  <span className={styles['homePage-buttontext']} onClick={MobileHomeNav}> Check it Out </span>
               </div>
             </div>
-          </li>
+          </li> 
 
           <li className={styles['homePage-item']} style={{ backgroundImage: `url(${ringNebula})` }}>
             <div className={styles['homePage-content']}>
@@ -135,25 +135,26 @@ const HomePageMobile = () => {
               </div>
             </div>
           </li>   
-          
-          <li className={styles['homePage-item']} style={{ background: "#fdba32" }}>
+
+          <li className={styles['homePage-item']} style={{ background: '#000' }}>
             <div className={styles['Element_container']}>
-              <img src={constructionElement} alt="Construction Element" className={styles['ConstructionElement']} />
+              <img src={googleElement} alt="Google Element" className={styles['GoogleElement']}/>
             </div>
-            <div className={styles['homePage-content']}>
-              <span className={styles['homePage-title']}>Project in Progress</span>
+            <div className={styles['homePage-content']} style={{ marginTop: '20px' }}>
+              <span className={styles['homePage-title']}>Google Maps Application</span>
               <p className={styles['homePage-description']}>
-                Currently working on this new project
+                Utilized the Google Maps API to geocode observatory addresses into coordinates, calculate distances between locations, and plot markers on a map.
                 <span className={styles['homePage-creation']}>
                     <hr style={{ width: '220px', marginTop: '10px', opacity: 0.5 }}/> 
-                    <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>To be determined</div>
+                    <div style={{ marginTop: '8px', fontSize: 12, opacity: 0.5 }}>June, 2024</div>
                 </span>
               </p>
               <div className={styles['homePage-button']}>
-                  <span className={styles['homePage-buttontext']} onClick={MobileHomeNav}> Check it Out </span>
+                  <span className={styles['homePage-buttontext']} onClick={GMAPShandleButtonClick}> Check it Out </span>
               </div>
             </div>
-          </li>       
+          </li>
+                
           
         </ul>
       </main>
