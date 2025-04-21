@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+.me {
+  display: flex;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.me-outer {
+  display: flex;
+  margin: 2em auto;
+  margin-bottom: 3em;
+  width: 275px;
+  height: 275px;
+  border-radius: 50%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(205, 203, 203, 0.425);
+}
+
+.hidden {
+  display: none;
+}
+
+.social {
+  text-align: center;
+  font-size: 2.5em;
+  overflow: hidden;
+}
+.social .linkedin-icon {
+  color: #fff; /* Initial color */
+  width: 80px;
+  height: 80px;
+  margin: 0.3em;
+  cursor: pointer;
+  transition: color 300ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateZ(0);
+}
+.social .linkedin-icon:hover {
+  color: #0177B5; /* Color on hover */
+  transform: translateY(-15px);
+}
+.social .github-icon {
+  width: 80px;
+  height: 80px;
+  color: #fff; /* Initial color */
+  margin: 0.3em;
+  cursor: pointer;
+  transition: color 300ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateZ(0);
+}
+.social .github-icon:hover {
+  color: #000000; /* Color on hover */
+  transform: translateY(-15px);
+}
+.social .envelope-icon {
+  color: #fff; /* Initial color */
+  width: 80px;
+  height: 80px;
+  margin: 0.3em;
+  cursor: pointer;
+  transition: color 300ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateZ(0);
+}
+.social .envelope-icon:hover {
+  color: #f1cb41; /* Color on hover */
+  transform: translateY(-15px);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.copied-message {
+  color: green;
+  font-family: "Outfit", sans-serif;
+  font-size: 10px;
+  margin-top: 10px;
+  display: block;
+  animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out;
+  animation-delay: 0s, 1.5s;
+}
+
+.message-shell {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+  animation: fadeIn 0.5s ease-in-out, fadeOut 0.5s ease-in-out;
+  animation-delay: 0s, 1.5s;
+}
+
+.checkmark {
+  padding-right: 5px;
+}/*# sourceMappingURL=Socials.module.css.map */
