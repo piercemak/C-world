@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/InterVariable.ttf') format('truetype');
+    font-weight: 100 900; /* supports all weights */
+    font-style: normal;
+    font-display: swap;
+  }
+
+
+
+  .scrollbar-hidden {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+
+
+.fade-text {
+  mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+}
+
+.mask-gradient {
+    mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+}
+
+
+.card-design {
+  border: 0.155rem solid transparent;
+  mask-composite: exclude;
+  box-shadow: 0.063em 0.75em 1.563em rgb(0 0 0 / 78%);
+  background: radial-gradient(
+  ellipse at right top,
+  #107667ed 0%,
+  #151419 47%,
+  #151419 100%
+  );
+}
+
+.profile-picture {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+
+.movie-subtitle {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+
+
+
+.poppinsfont {
+  font-family: 'Poppins', sans-serif;
+}
