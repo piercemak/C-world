@@ -73,38 +73,6 @@ const Home = () => {
     initial: {}
   };
 
-
-  {/* Video start-time randomizer */}
-  const videoSources = [
-    "/videos/homevideos/GhibliLoop.mp4",
-    "/videos//homevideos/cartoonMashup1.mp4"
-  ];
-  const [selectedVideo, setSelectedVideo] = useState(videoSources[0]);
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * videoSources.length);
-    setSelectedVideo(videoSources[randomIndex]);
-  }, []);  
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-  
-    const handleCanPlay = () => {
-      const randomTime = Math.random() * video.duration;
-      video.currentTime = randomTime;
-      video.play(); 
-    };
-  
-    video.addEventListener('canplay', handleCanPlay, { once: true });
-  
-    return () => {
-      video.removeEventListener('canplay', handleCanPlay);
-    };
-  }, [selectedVideo]);
-  
-
   {/* Color Storage */}
   useEffect(() => {
     const savedGradient = localStorage.getItem('userGradient');
@@ -113,6 +81,35 @@ const Home = () => {
     }
   }, []);
 
+  {/* AWS Signed Urls */}
+  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  const fetchSignedUrl = async (s3Key) => {
+  const bucketName = "all-shows";
+    try {
+      const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
+      const data = await res.json();
+      return data.url;
+    } catch (err) {
+      console.error("❌ Failed to fetch signed URL:", err);
+      return ""; 
+    }
+  };  
+  const [videoUrl, setVideoUrl] = useState("");
+  useEffect(() => {
+    const getSignedUrl = async () => {
+      const cloudKeys = [
+        "misc/cartoonMashup1.mp4",
+      ];
+      const randomIndex = Math.floor(Math.random() * cloudKeys.length);
+      const selectedKey = cloudKeys[randomIndex];
+      const signed = await fetchSignedUrl(selectedKey);
+      setVideoUrl(signed);
+    };
+    getSignedUrl();
+  }, []);
+
+
+  
   return (
     <div className={styles['body']}> 
       <fieldset className=''>
@@ -121,19 +118,16 @@ const Home = () => {
         </label>
 
         <label className='relative overflow-hidden'>
-          <video
-            key={selectedVideo}
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover z-[2]"
-          >
-            <source src={selectedVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-
+          {videoUrl && (
+            <video
+              className="absolute top-0 left-0 w-full h-dvh object-cover z-[2]"
+              src={videoUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          )}          
           <input className='absolute' type="radio" name="images" value="Pink Princess" onChange={handleChange}/>
           {selectedImage === "Pink Princess" && (
             <motion.div 

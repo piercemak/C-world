@@ -9,17 +9,10 @@ import SkipBack from '../assets/icons/SkipBack.svg'
 
 const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, episodeTitles, getSignedUrl = {} }) => {
 
-  console.log("🔍 Show component loaded with props:", {
-    src,
-    showId,
-    season,
-    episode,
-  });
 
   const containerRef = useRef(null)
   const videoRef = useRef(null);
-  console.log("🎥 src prop:", src);
-
+  const spinner = <svg xmlns="http://www.w3.org/2000/svg" className="size-14" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FCFAFF"></stop><stop offset=".3" stop-color="#FCFAFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FCFAFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FCFAFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FCFAFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FCFAFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
   
   const fullscreenIcon = <svg xmlns="http://www.w3.org/2000/svg"  height="16" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/></svg>
   const fullscreenexitIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z"/></svg>
@@ -131,6 +124,16 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     },
     adventuretime: {
       1: 26,
+      2: 26,
+      3: 26,
+      4: 26,
+      5: 52,
+      6: 43,
+      7: 25,
+      8: 27,
+      9: 14,
+      10: 13,
+
     }
   };
 const showSeasonData = seasonLength[showKey];
@@ -162,7 +165,14 @@ if (showSeasonData && nextEpisode > showSeasonData[actualSeason]) {
         intro: { start: 0, end: 25 },
         outro: { start: 675, skipTo: "next" }, //Outro starts around 11:10
       },
-    }
+    },
+
+    "overthegardenwall": {
+      default: {
+        intro: { start: 0, end: 12 },
+        outro: { start: 657, skipTo: "next" }, //Outro starts around 10:50
+      },
+    }    
 
 
   };
@@ -187,14 +197,25 @@ if (showSeasonData && nextEpisode > showSeasonData[actualSeason]) {
     console.log("🎬 Video src:", src);
     if (!vid) return;
     setAutoSkipDone(false); 
+
+    const key = `${showId}-S${season}-E${episode}`;
+    const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
+
     const startPlayback = async () => {
       try {
         await vid.load();
         vid.volume = volume;
+
         console.log("▶️ Attempting to play video...");
+        const shouldStartFromBeginning = savedProgress >= (outro?.start || Infinity);
+        const startTime = skipIntro
+          ? intro.end
+          : (shouldStartFromBeginning ? 0 : savedProgress);
+        vid.currentTime = startTime;
+
         await vid.play();
-  console.log("🚩 skipIntro flag:", skipIntro);
-console.log("🎯 intro skip time:", intro?.end);
+        console.log("🚩 skipIntro flag:", skipIntro);
+        console.log("🎯 intro skip time:", intro?.end);
         if (skipIntro) {
           console.log("⏩ Skipping intro to", intro.end);
           vid.currentTime = intro.end;
@@ -218,19 +239,29 @@ console.log("🎯 intro skip time:", intro?.end);
     const handleTimeUpdate = () => {
       const time = vid.currentTime;
       setCurrentTime(time);
+
+      const key = `${showId}-S${season}-E${episode}`;
+
       setIntroVisible(time >= intro.start && time <= intro.end);
+
       if (time >= outro?.start) {
         setOutroVisible(true);
-        if (countdown === null) setCountdown(10); 
+        if (countdown === null) setCountdown(10);
+
+        // 🧼 Clear saved progress once we pass the outro start time
+        localStorage.removeItem(`watchProgress-${key}`);
       } else {
         setOutroVisible(false);
-        setCountdown(null); 
+        setCountdown(null);
+
+        // 📝 Only save if before outro
+        localStorage.setItem(`watchProgress-${key}`, time.toString());
       }
     };
 
     vid.addEventListener("timeupdate", handleTimeUpdate);
     return () => vid.removeEventListener("timeupdate", handleTimeUpdate);
-  }, [intro, outro]);
+  }, [intro, outro, countdown, showId, season, episode]);
 
   {/* Skipping */}
   const handleSkipIntro = () => {
@@ -244,7 +275,7 @@ const handleSkipOutro = async () => {
       const seasonStr = `S${String(nextSeason).padStart(2, "0")}`;
       const episodeStr = `E${String(nextEpisode).padStart(2, "0")}`;
       const titleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1] || "";
-      const s3Key = `season${nextSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
+      const s3Key = `${cleanId}/season${nextSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
       const signedUrl = await getSignedUrl(s3Key);
 
       onSkipToNext?.(nextSeason, nextEpisode, signedUrl);
@@ -260,23 +291,32 @@ const handleSkipOutro = async () => {
 };
 
   {/* Placeholder Images */}
+  const isMovie = season === null && episode === null;
   const cleanShowId = showId?.replace(/-/g, "");
-  const placeholderPath = `/images/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`;
+  const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
+  const placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`
   //Episode Title
-  const nextS = actualEpisode + 1 > (episodeTitles[actualSeason]?.length || 0)
-  ? actualSeason + 1
-  : actualSeason;
+  let nextS = null;
+  let nextE = null;
+  let nextTitleRaw = "";
+  let nextTitleFormatted = "";
 
-  const nextE = actualEpisode + 1 > (episodeTitles[actualSeason]?.length || 0)
-    ? 1
-    : actualEpisode + 1;
+  if (season !== null && episode !== null && episodeTitles) {
+    nextS = actualEpisode + 1 > (episodeTitles[actualSeason]?.length || 0)
+      ? actualSeason + 1
+      : actualSeason;
 
-  const nextTitleRaw = episodeTitles?.[nextS]?.[nextE - 1] || `Episode ${nextE}`;
-  const nextTitleFormatted = nextTitleRaw
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, c => c.toUpperCase());
+    nextE = actualEpisode + 1 > (episodeTitles[actualSeason]?.length || 0)
+      ? 1
+      : actualEpisode + 1;
 
-
+    nextTitleRaw = episodeTitles?.[nextS]?.[nextE - 1] || `Episode ${nextE}`;
+    nextTitleFormatted = nextTitleRaw
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, c => c.toUpperCase());
+  } else {
+    nextTitleFormatted = showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  }
 
   {/* Auto-skip Countdown */}
   useEffect(() => {
@@ -478,7 +518,11 @@ const handleSkipOutro = async () => {
     };
   }, [src]);
 
-
+  {/* Loading Pulse State */}
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(true); 
+  }, [src]);
 
 
 
@@ -490,10 +534,11 @@ const handleSkipOutro = async () => {
     <video
       key={src}
       ref={videoRef}
-      className="w-full h-full object-cover rounded-2xl z-[5]"
+      className={`w-full h-full object-cover rounded-2xl z-[5] ${isLoading ? "animate-pulse bg-black/60" : ""}`}
       preload="auto"
       onClick={handleSingleClick}
       onDoubleClick={handleDoubleClick}
+      onCanPlay={() => setIsLoading(false)}
     >
       <source src={src} type="video/mp4" />
 
@@ -516,6 +561,12 @@ const handleSkipOutro = async () => {
       )}
       Your browser does not support the video tag.
     </video>
+
+    {isLoading && (
+      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none">
+        {spinner}
+      </div>
+    )}    
 
     {subtitleText && (
       <div className="absolute bottom-24 w-full text-center">

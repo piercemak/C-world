@@ -9,7 +9,7 @@ const MobileShows = () => {
   const hdIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M10.53 5.968h-.843v4.06h.843c1.117 0 1.622-.667 1.622-2.02 0-1.354-.51-2.04-1.622-2.04"/><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm5.396 3.001V11H6.209V8.43H3.687V11H2.5V5.001h1.187v2.44h2.522V5h1.187zM8.5 11V5.001h2.188c1.824 0 2.685 1.09 2.685 2.984C13.373 9.893 12.5 11 10.69 11z"/></svg>
   const starIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
   const layersIcon = <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-layers-fill" viewBox="0 0 16 16"><path d="M7.765 1.559a.5.5 0 0 1 .47 0l7.5 4a.5.5 0 0 1 0 .882l-7.5 4a.5.5 0 0 1-.47 0l-7.5-4a.5.5 0 0 1 0-.882z"/><path d="m2.125 8.567-1.86.992a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882l-1.86-.992-5.17 2.756a1.5 1.5 0 0 1-1.41 0z"/></svg>
-  const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" /><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" /></svg>
+  const libraryIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
 
 
   const { showId } = useParams();
@@ -18,7 +18,7 @@ const MobileShows = () => {
 
   const navigate = useNavigate();
     const handleNavigate = () => {
-     navigate("/");
+     navigate("/video-library");
   };
 
 
@@ -573,19 +573,39 @@ const MobileShows = () => {
     };
 
     {/* Show/Season Handling */}
-    const generateSeasonVideos = (titlesBySeason, rawId) => {
+    const awsHostedShows = import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",") || [];
+    const generateSeasonVideos = (titlesBySeason, rawId, type = "show") => {
       const cleanId = cleanShowId(rawId);
+      const isAwsHosted = awsHostedShows.includes(rawId);
       const videos = {};
+
+      if (type === "movie") {
+        const s3Key = `${cleanId}/${cleanId}.mp4`;
+        return [
+          {
+            path: isAwsHosted
+              ? `https://all-shows.s3.us-east-2.amazonaws.com/${s3Key}`
+              : `/videos/${cleanId}/${cleanId}.mp4`,
+            title: cleanId,
+            season: null,
+            episode: null
+          }
+        ];
+      }
+
       Object.entries(titlesBySeason).forEach(([seasonNumStr, titles]) => {
         const seasonNum = parseInt(seasonNumStr, 10);
         const seasonKey = `season${seasonNum}`;
+        
         videos[seasonKey] = titles.map((title, index) => {
           const seasonStr = `S${String(seasonNum).padStart(2, "0")}`;
           const episodeStr = `E${String(index + 1).padStart(2, "0")}`;
+
+          const s3Key = `${cleanId}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`;
           return {
-            path: rawId === "adventure-time"
-            ? `https://adventuretime-media.s3.us-east-2.amazonaws.com/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`
-            : `/videos/${cleanId}/season${seasonNum}/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`,
+            path: isAwsHosted
+              ? `https://all-shows.s3.us-east-2.amazonaws.com/${s3Key}`
+              : `/videos/${cleanId}/season${seasonNum}/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`,
             title,
             season: seasonStr,
             episode: episodeStr,
@@ -664,7 +684,7 @@ const MobileShows = () => {
           description: "A young Japanese singer is encouraged by her agent to quit singing and pursue an acting career, beginning with a role in a murder mystery TV show.",
           background: "/images/perfectblue/covers/perfectblueCover.jpg",
           mobilebackground: "/images/perfectblue/covers/perfectblueBackground.jpg",
-          videos: [{ path: "/videos/perfectblue/perfectblue.mp4" }],
+          videos: generateSeasonVideos({}, "perfect-blue", "movie"),
         },
 
         "paprika": {
@@ -679,7 +699,7 @@ const MobileShows = () => {
           description: "Dr. Atsuko Chiba works as a scientist by day and, under the code name 'Paprika', is a dream detective at night. Atsuko and her colleagues are working on a device called the DC Mini, which is intended to help psychiatric patients, but in the wrong hands it could destroy people's minds. When a prototype is stolen, Atsuko/Paprika springs into action to recover it before damage is done.",
           background: "/images/paprika/covers/paprikaCover.webp",
           mobilebackground: "/images/paprika/covers/paprikaBackground.jpg",
-          videos: [{ path: "/videos/paprika/paprika.mp4" }],
+          videos: generateSeasonVideos({}, "paprika", "movie"),
         },
 
         "princess-mononoke": {
@@ -694,7 +714,7 @@ const MobileShows = () => {
           description: "In the 14th century, the harmony that humans, animals and gods have enjoyed begins to crumble. The protagonist, young Ashitaka - infected by an animal attack, seeks a cure from the deer-like god Shishigami. In his travels, he sees humans ravaging the earth, bringing down the wrath of wolf god Moro and his human companion Princess Mononoke. Hiskattempts to broker peace between her and the humans brings only conflict.",
           background: "/images/princessmononoke/covers/princessmononokeCover.jpg",
           mobilebackground: "/images/princessmononoke/covers/princessmononokeBackground.avif",
-          videos: [{ path: "/videos/princessmononoke/princessmononoke.mp4" }],
+          videos: generateSeasonVideos({}, "princess-mononoke", "movie"),
         },
       };
       const show = shows[showId];
@@ -709,11 +729,45 @@ const MobileShows = () => {
         }, [selectedSeason]);      
 
       {/* AWS Signed Urls */}
+      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
       const fetchSignedUrl = async (s3Key) => {
-        const res = await fetch(`http://localhost:8000/api/signed-url/?key=${encodeURIComponent(s3Key)}`);
-        const data = await res.json();
-        return data.url;
-      };
+      const bucketName = "all-shows";
+        try {
+          const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
+          const data = await res.json();
+          return data.url;
+        } catch (err) {
+          console.error("❌ Failed to fetch signed URL:", err);
+          return ""; 
+        }
+      };  
+
+
+    {/* Subtitle States */}
+    const [subtitleText, setSubtitleText] = useState("");
+    useEffect(() => {
+    const vid = document.querySelector("video");
+    if (!vid) return;
+
+    const track = vid.textTracks[0];
+    if (!track) return;
+
+    track.mode = "hidden";
+
+    const handleCueChange = () => {
+        const activeCues = track.activeCues;
+        if (activeCues.length > 0) {
+        setSubtitleText(activeCues[0].text);
+        } else {
+        setSubtitleText("");
+        }
+    };
+
+    track.addEventListener("cuechange", handleCueChange);
+    return () => track.removeEventListener("cuechange", handleCueChange);
+    }, [selectedVideo]);
+
+
 
   return (
     <div className='flex w-full h-dvh relative flex-col bg-black'>
@@ -735,7 +789,7 @@ const MobileShows = () => {
             onClick={handleNavigate}
             className="size-10 z-90 fixed m-2 text-white bg-slate-700 flex items-center justify-center rounded-full shadow-md"
         >
-            {homeIcon}
+            {libraryIcon}
         </motion.div>
 
         {videoPlayerVisible && selectedVideo && (
@@ -745,7 +799,34 @@ const MobileShows = () => {
                     controls 
                     autoPlay 
                     className="w-[90%] h-[80%] rounded-lg shadow-lg"
+                >
+
+                {showId === "perfect-blue" && (
+                <track
+                    src={`/videos/perfectblue/perfectblue.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
                 />
+                )}
+
+                {showId === "paprika" && (
+                <track
+                    src={`/videos/paprika/paprikaSub.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                />
+                )}
+                {subtitleText && (
+                <div className="absolute bottom-24 w-full text-center">
+                    <div className="text-white text-[20px] font-semibold drop-shadow-md">
+                    {subtitleText}
+                    </div>
+                </div>
+                )}                
+
+                </video>
                 <button 
                     onClick={() => setVideoPlayerVisible(false)} 
                     className="absolute top-8 right-8 text-white text-3xl font-bold"
@@ -756,7 +837,7 @@ const MobileShows = () => {
         )}
 
         {show?.type === "movie" && (
-        <div className="absolute w-full justify-center bottom-4 flex z-50 text-white/60 font-medium text-[10px] text-wrap whitespace-normal break-words text-center px-4 fade-text">
+        <div className="absolute w-full justify-center bottom-4 flex z-50 text-white/60 font-medium text-[13px] text-wrap whitespace-normal break-words text-center px-4 fade-text">
             <span>{show?.description}</span>
         </div>
         )} 
@@ -876,8 +957,9 @@ const MobileShows = () => {
 
                             episodeName = `${episodeNumber}: ${episodeTitle}`;
                             cleanedEpisodeName = `${episodeNumber}. ${episodeTitle}`;
+                            const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
 
-                            placeholderPath = `/images/${cleanShowId}/placeholders/season${seasonNumber}/${cleanedSeason}E${episodeNumber}_${cleanShowId}_placeholder.png`
+                            placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${seasonNumber}/${cleanedSeason}E${episodeNumber}_${cleanShowId}_placeholder.png`
                         } else {
                             cleanedEpisodeName = displayName;
                             placeholderPath = `/images/${cleanShowId}/placeholders/${cleanShowId}_placeholder.png`;
@@ -892,15 +974,17 @@ const MobileShows = () => {
                                     show?.type !== "movie" ? "gap-4" : ""
                                 }`}
                                 onClick={ async () => {
-                                    let videoPath = videoUrl.path;
-                                    
-                                    if (showId === "adventure-time") {
-                                        const urlParts = videoUrl.path.split(".com/");
-                                        const s3Key = urlParts.length > 1 ? urlParts[1] : "";
-                                        videoPath = await fetchSignedUrl(s3Key);
-                                    }
-                                        setSelectedVideo({ path: videoPath });
-                                        setVideoPlayerVisible(true);
+                                let videoPath = videoUrl.path;
+                            
+                                if (awsHostedShows.includes(showId)) {
+                                    const urlParts = videoUrl.path.split(".com/");
+                                    const s3Key = urlParts.length > 1 ? urlParts[1] : "";
+                                    videoPath = await fetchSignedUrl(s3Key);
+                                    console.log("✅ Signed Video URL:", videoPath);
+                                }
+                                
+                                setSelectedVideo({ path: videoPath });
+                                setVideoPlayerVisible(true);
                                 }}
                             >
                                 <motion.div
@@ -922,9 +1006,13 @@ const MobileShows = () => {
                                     }`}
                                 ></motion.div>
 
+                            {show?.type === "movie" ? (
+                                <div className=""> </div>
+                            ) : (
                                 <div className="text-white flex font-semibold text-md max-w-[100px] text-wrap whitespace-normal break-words overflow-hidden text-ellipsis">
                                     {cleanedEpisodeName}
-                                </div>                           
+                                </div>
+                            )}
                             </motion.div>
                         );
                     })}

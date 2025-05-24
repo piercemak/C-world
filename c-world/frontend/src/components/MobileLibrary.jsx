@@ -72,7 +72,7 @@ const MobileLibrary = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % filteredShows.length);
-        }, 10000);
+        }, 4000);
         return () => clearInterval(interval);
     }, [filteredShows.length]);   
     const currentShow = filteredShows.length > 0 ? filteredShows[currentIndex % filteredShows.length] : null;

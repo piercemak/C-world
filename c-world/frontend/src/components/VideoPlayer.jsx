@@ -62,7 +62,7 @@ const VideoPlayer = () => {
         { title: "Perfect Blue", cardId: "card-4" },
         { title: "Paprika", cardId: "card-5" },
         { title: "Princess Mononoke", cardId: "card-6" },
-        { title: "Princess Test", cardId: "card-7" },
+        { title: "To be Determined", cardId: "card-7" },
     ];
     const cardIdToSlug = {
         "card-2": "steven-universe",

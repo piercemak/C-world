@@ -51,16 +51,40 @@ useEffect(() => {
 }, [showDropdown]);
 
 
+{/* AWS Signed Urls */}
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const fetchSignedUrl = async (s3Key) => {
+const bucketName = "all-shows";
+  try {
+    const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
+    const data = await res.json();
+    return data.url;
+  } catch (err) {
+    console.error("❌ Failed to fetch signed URL:", err);
+    return ""; 
+  }
+};  
+const [videoUrl, setVideoUrl] = useState("");
+useEffect(() => {
+  const getSignedUrl = async () => {
+    const signed = await fetchSignedUrl("misc/cartoonMashup1.mp4");
+    setVideoUrl(signed);
+  };
+  getSignedUrl();
+}, [])
+
   return (
     <div className="relative w-full h-dvh overflow-hidden">
-        <video
+        {videoUrl && (
+          <video
             className="absolute top-0 left-0 w-full h-dvh object-cover"
-            src="/videos/homevideos/cartoonMashup1.mp4"
+            src={videoUrl}
             autoPlay
             loop
             muted
             playsInline
-        />
+          />
+        )}
         <AnimatePresence>
             {showDropdown && (
                 <motion.div

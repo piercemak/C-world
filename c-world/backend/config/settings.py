@@ -7,6 +7,18 @@ AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_REGION_NAME = os.getenv("AWS_REGION_NAME")
 
+CLOUDFRONT_KEY_PAIR_ID = os.getenv("CLOUDFRONT_KEY_PAIR_ID")
+CLOUDFRONT_PRIVATE_KEY_PATH = os.getenv("CLOUDFRONT_PRIVATE_KEY_PATH")
+CLOUDFRONT_DOMAIN = os.getenv("CLOUDFRONT_DOMAIN")
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+
 """
 Django settings for config project.
 
@@ -34,16 +46,7 @@ SECRET_KEY = "django-insecure-$(!$papw_v3_drqlruu_qk*9*nn8x&r(&q7dc&!z(v@g_$3fo_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-# Request Email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
-EMAIL_HOST = 'smtp.office365.com'                              
-EMAIL_PORT = 587                                              
-EMAIL_USE_TLS = True                                          
-EMAIL_HOST_USER = 'cearaworldrequests@outlook.com'                     
-EMAIL_HOST_PASSWORD = 'Gukurahundi1!'                      
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER                           
+ALLOWED_HOSTS = []                     
 
 # Application definition
 

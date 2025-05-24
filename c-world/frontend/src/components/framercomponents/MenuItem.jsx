@@ -54,7 +54,7 @@ export const MenuItem = () => {
           initial={{ x: 0 }}
           whileHover={{ scale: 1.1, x: 50, color: "#fff" }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/home')}
         >
           <div className="w-[40px]"> {homeIcon} </div>
           <div className="w-[200px] font-bold tracking-widest text-lg" > Home </div>

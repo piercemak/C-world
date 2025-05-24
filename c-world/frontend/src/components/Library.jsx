@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import Show from './Show.jsx'
 import Chevron from './Chevron.jsx'
 import Menu from './framercomponents/Menu.jsx'
+import WatchProgressBar from "./WatchProgressBar.jsx";
+
 
 
 
@@ -25,7 +27,6 @@ const Library = () => {
     const layersIcon = <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-layers-fill" viewBox="0 0 16 16"><path d="M7.765 1.559a.5.5 0 0 1 .47 0l7.5 4a.5.5 0 0 1 0 .882l-7.5 4a.5.5 0 0 1-.47 0l-7.5-4a.5.5 0 0 1 0-.882z"/><path d="m2.125 8.567-1.86.992a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882l-1.86-.992-5.17 2.756a1.5 1.5 0 0 1-1.41 0z"/></svg>
     const downChevron = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/></svg>
     const closeIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></svg>
-
 
     {/* Variants */}
     const dropdownVariants = {
@@ -624,26 +625,44 @@ const Library = () => {
       "adventure-time": episodeTitles_adventuretime,
     };
     
+const extractS3KeyFromPath = (path) => {
+  const match = path.match(/https:\/\/[^/]+\.amazonaws\.com\/(.+)/);
+  return match ? match[1] : "";
+};
 
     {/* Show/Season Handling */}
     const awsHostedShows = import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",") || [];
-    const generateSeasonVideos = (titlesBySeason, rawId) => {
+    const generateSeasonVideos = (titlesBySeason, rawId, type = "show") => {
       const cleanId = cleanShowId(rawId);
+      const isAwsHosted = awsHostedShows.includes(rawId);
       const videos = {};
+
+      if (type === "movie") {
+        const s3Key = `${cleanId}/${cleanId}.mp4`;
+        return [
+          {
+            path: isAwsHosted
+              ? `https://all-shows.s3.us-east-2.amazonaws.com/${s3Key}`
+              : `/videos/${cleanId}/${cleanId}.mp4`,
+            title: cleanId,
+            season: null,
+            episode: null
+          }
+        ];
+      }
+
       Object.entries(titlesBySeason).forEach(([seasonNumStr, titles]) => {
         const seasonNum = parseInt(seasonNumStr, 10);
         const seasonKey = `season${seasonNum}`;
-        const isAwsHosted = awsHostedShows.includes(rawId);
         
         videos[seasonKey] = titles.map((title, index) => {
           const seasonStr = `S${String(seasonNum).padStart(2, "0")}`;
           const episodeStr = `E${String(index + 1).padStart(2, "0")}`;
 
-          const s3Key = `season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`;
-
+          const s3Key = `${cleanId}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`;
           return {
             path: isAwsHosted
-              ? `https://${cleanId}-media.s3.us-east-2.amazonaws.com/${s3Key}`
+              ? `https://all-shows.s3.us-east-2.amazonaws.com/${s3Key}`
               : `/videos/${cleanId}/season${seasonNum}/${seasonStr}${episodeStr}_${cleanId}_${title}.mp4`,
             title,
             season: seasonStr,
@@ -708,7 +727,7 @@ const Library = () => {
           duration: "1h 21m",
           description: "A young Japanese singer is encouraged by her agent to quit singing and pursue an acting career, beginning with a role in a murder mystery TV show.",
           background: "/images/perfectblue/covers/perfectblueCover.jpg",
-          videos: ["/videos/perfectblue/perfectblue.mp4"],
+          videos: generateSeasonVideos({}, "perfect-blue", "movie"),
         },
 
         "paprika": {
@@ -719,7 +738,7 @@ const Library = () => {
           duration: "1h 30m",
           description: "Dr. Atsuko Chiba works as a scientist by day and, under the code name 'Paprika', is a dream detective at night. Atsuko and her colleagues are working on a device called the DC Mini, which is intended to help psychiatric patients, but in the wrong hands it could destroy people's minds. When a prototype is stolen, Atsuko/Paprika springs into action to recover it before damage is done.",
           background: "/images/paprika/covers/paprikaCover.webp",
-          videos: ["/videos/paprika/paprika.mp4"],
+          videos: generateSeasonVideos({}, "paprika", "movie"),
         },
 
         "princess-mononoke": {
@@ -730,7 +749,7 @@ const Library = () => {
           duration: "2h 13m",
           description: "In the 14th century, the harmony that humans, animals and gods have enjoyed begins to crumble. The protagonist, young Ashitaka - infected by an animal attack, seeks a cure from the deer-like god Shishigami. In his travels, he sees humans ravaging the earth, bringing down the wrath of wolf god Moro and his human companion Princess Mononoke. Hiskattempts to broker peace between her and the humans brings only conflict.",
           background: "/images/princessmononoke/covers/princessmononokeCover.jpg",
-          videos: ["/videos/princessmononoke/princessmononoke.mp4"],
+          videos: generateSeasonVideos({}, "princess-mononoke", "movie"),
         },
       };
       const show = shows[showId];
@@ -738,7 +757,7 @@ const Library = () => {
       {/* AWS Signed Urls */}
       const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
       const fetchSignedUrl = async (s3Key) => {
-        const bucketName = `${cleanShowId(showId)}-media`;
+      const bucketName = "all-shows";
         try {
           const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
           const data = await res.json();
@@ -757,6 +776,17 @@ const Library = () => {
           document.documentElement.style.setProperty('--gradient-9', savedGradient);
         }
       }, []);
+
+
+      {/* Placeholder load state */}
+      const [loadedPlaceholders, setLoadedPlaceholders] = useState({});
+      const handleImageLoad = (key) => {
+        setLoadedPlaceholders(prev => ({ ...prev, [key]: true }));
+      };
+
+
+      {/* Progress Map States */}
+      const [watchProgressMap, setWatchProgressMap] = useState({});
 
 
   return (
@@ -826,6 +856,9 @@ const Library = () => {
                   onClick={() => {
                     setExpanded(false);
                     setSelectedVideo(null); 
+                    const key = `${selectedVideo.showId}-S${selectedVideo.season}-E${selectedVideo.episode}`;
+                    const lastTime = parseFloat(localStorage.getItem(`watchProgress-${key}`)) || 0;
+                    setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));                    
                   }}
                   whileHover={{
                     backgroundColor:"color-mix(in oklab, var(--color-black) 50%, transparent)",
@@ -922,13 +955,27 @@ const Library = () => {
                 transition: { duration: 0.3, ease: "easeInOut" }
               }}
               onClick={async () => {
-                let videoPath = show?.videos[0];
+              let videoPath = show?.videos[0];
+              let rawPath = typeof videoPath === "string" ? videoPath : videoPath?.path;
 
-                if (awsHostedShows.includes(showId)) {
-                  const urlParts = videoPath.split(".com/");
-                  const s3Key = urlParts.length > 1 ? urlParts[1] : "";
-                  videoPath = await fetchSignedUrl(s3Key);
+              if (awsHostedShows.includes(showId)) {
+                const isCloudfrontUrl = rawPath?.includes("cloudfront.net");
+                const s3Key = isCloudfrontUrl
+                  ? rawPath.split("cloudfront.net/")[1]
+                  : extractS3KeyFromPath(rawPath);
+
+                if (!s3Key) {
+                  console.error("❌ Could not extract s3Key from movie video path:", rawPath);
+                  return;
                 }
+
+                const signedUrl = await fetchSignedUrl(s3Key);
+                videoPath = signedUrl;
+              } else {
+                videoPath = rawPath;
+              }
+
+
 
                 setSelectedVideo({
                   path: videoPath,
@@ -982,9 +1029,13 @@ const Library = () => {
               
               console.log("🎬 Clean Show ID:", cleanShowId, "| Raw Show ID:", showId);
 
+            const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
+
             const placeholderPath = show?.type === "show"
-            ? `/images/${cleanShowId}/placeholders/season${seasonNumber}/${cleanedSeason}E${episodeNumber}_${cleanShowId}_placeholder.png`
+            ? `${cloudFrontDomain}/${cleanShowId}/placeholders/season${seasonNumber}/${cleanedSeason}E${episodeNumber}_${cleanShowId}_placeholder.png`
             : `/images/${cleanShowId}/placeholders/${cleanShowId}_placeholder.png`;
+            
+            const placeholderKey = `${showId}-${seasonNumber}-${episodeNumber}`;
 
                 return (
                   //Shows
@@ -995,15 +1046,32 @@ const Library = () => {
                       boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
                       transition: { duration: 0.3, ease: "easeInOut" }
                     }}
+                    whileTap={{
+                        scale: 0.95,
+                        transition: {
+                        type: 'spring',
+                        stiffness: 200,
+                        damping: 10,
+                        },
+                    }}                    
                     onClick={async () => {
                       let videoPath = videoUrl.path;
-                
+
                       if (awsHostedShows.includes(showId)) {
-                        const urlParts = videoUrl.path.split(".com/");
-                        const s3Key = urlParts.length > 1 ? urlParts[1] : "";
+                        const isCloudfrontUrl = videoUrl.path.includes("cloudfront.net");
+                        const s3Key = isCloudfrontUrl
+                          ? videoUrl.path.split("cloudfront.net/")[1]
+                          : extractS3KeyFromPath(videoUrl.path);
+
+                        if (!s3Key) {
+                          console.error("❌ Could not extract s3Key:", videoUrl.path);
+                          return;
+                        }
+
                         videoPath = await fetchSignedUrl(s3Key);
+                        console.log("✅ Signed CloudFront URL:", videoPath);
                       }
-                    
+
                       setSelectedVideo({
                         path: videoPath,
                         showId,
@@ -1019,8 +1087,15 @@ const Library = () => {
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat'
                     }}
-                    className="relative w-56 h-28 rounded-2xl cursor-pointer group flex-shrink-0 snap-center"
-                  >
+                    className={`relative w-56 h-28 rounded-2xl cursor-pointer group flex-shrink-0 snap-center 
+                      ${!loadedPlaceholders[placeholderKey] ? "animate-pulse bg-gray-800/60" : ""}`}
+                    >
+                    <img 
+                      src={placeholderPath} 
+                      alt="" 
+                      className="hidden" 
+                      onLoad={() => handleImageLoad(placeholderKey)} 
+                    />
                     {/* TEXT OVERLAY */}
                     <div 
                       className="absolute bottom-0 w-full text-white font-bold tracking-wide text-sm p-1 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -1032,6 +1107,11 @@ const Library = () => {
                     >
                       {cleanedEpisodeName}
                     </div>
+
+                    <WatchProgressBar
+                      storageKey={`${showId}-S${seasonNumber}-E${episodeNumber}`}
+                      progressOverride={watchProgressMap[`${showId}-S${seasonNumber}-E${episodeNumber}`]}
+                    />
                   </motion.div>   
                 );
           })}
