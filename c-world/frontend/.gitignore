@@ -9,6 +9,7 @@ lerna-debug.log*
 
 # Dependency directories
 node_modules/
++__pycache__/
 
 # Build output
 dist/
@@ -19,13 +20,27 @@ build/
 *.local
 .env
 
+# Python
++*.py[cod]
+
 # Editor directories and files
 .vscode/
 !.vscode/extensions.json
 .idea/
 .DS_Store
-*.suo
+.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# macOS system files
++.DS_Store
++.AppleDouble
++.LSOverride
+
+# Thumbnails
++._*
+
+# VS Code workspace history
++.vscode/*.code-workspace
