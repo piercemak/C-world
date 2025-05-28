@@ -19,7 +19,7 @@ import os
 CLOUDFRONT_DOMAIN = settings.CLOUDFRONT_DOMAIN
 
 def rsa_signer(message: str):
-    pem_path = os.getenv("CLOUDFRONT_PRIVATE_KEY_PATH")
+    pem_path = os.getenv("CLOUDFRONT_PRIVATE_KEY")
     if not pem_path:
         raise ValueError("Missing CLOUDFRONT_PRIVATE_KEY_PATH environment variable")
 
