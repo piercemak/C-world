@@ -48,12 +48,12 @@ const MobileUser = () => {
   };
 
   return (
-    <div className='w-full h-dvh flex flex-col bg-black p-2'>
+    <div className='w-full h-dvh flex flex-col bg-black'>
       <div className='w-full flex flex-row justify-center items-center gap-1 text-white relative poppinsfont'>
         <span className='font-bold text-4xl'> C </span>
         <span>{globeIcon}</span>
       </div>
-      <div className='flex flex-col leading-none mt-24'>
+      <div className='flex flex-col leading-none mt-18'>
         <span className='text-white flex justify-center text-[50px] font-bold tracking-wide'> Who's </span>
         <span className='text-white flex justify-center text-[50px] font-bold tracking-wide'> Watching? </span>
       </div>
