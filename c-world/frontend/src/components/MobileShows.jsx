@@ -837,7 +837,7 @@ const MobileShows = () => {
         )}
 
         {show?.type === "movie" && (
-        <div className="absolute w-full justify-center bottom-4 flex z-50 text-white/60 font-medium text-[13px] text-wrap whitespace-normal break-words text-center px-4 fade-text">
+        <div className="absolute w-full justify-center bottom-4 flex z-50 text-white/60 font-medium text-[13px] text-wrap whitespace-normal break-words text-center px-4 fade-text pointer-events-none">
             <span>{show?.description}</span>
         </div>
         )} 
