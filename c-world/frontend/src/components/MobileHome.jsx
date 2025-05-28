@@ -85,67 +85,6 @@ useEffect(() => {
             playsInline
           />
         )}
-        <AnimatePresence>
-            {showDropdown && (
-                <motion.div
-                ref={dropdownRef}
-                initial={{ y: "-100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                exit={{ y: "-100%", opacity: 0 }}
-                transition={{ 
-                    duration: 0.4, 
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 40,
-                    
-
-                }}
-                className="absolute top-0 left-0 w-full h-[300px] bg-black/60 backdrop-blur-lg z-50 text-white shadow-lg rounded-b-2xl"
-                >
-                <div className='flex flex-row p-4 mt-4'>
-                    <img src="/images/stevenuniverse/covers/stevenuniverseIcon.jpg" className='w-44 rounded-2xl'/>
-                    <div className='flex flex-col ml-2 gap-4'>
-                        <span className='text-lg font-bold -tracking-wide'>Steven Universe</span>
-                        <div className='flex flex-row items-center gap-2'>
-                            <span className='text-sm font-semibold'>Season 1</span>
-                            •
-                            <span className='flex items-center justify-center p-1 border rounded-lg text-xs'>14+</span>
-                            •
-                            <span className='text-sm font-semibold'>2014</span>
-                        </div>
-                        <div className='flex flex-row gap-3 items-center'>
-                            <span className='text-sm font-semibold'>Cartoon</span>
-                            •
-                            {hdIcon}
-                            •
-                            <span className='text-xs text-green-500 font-medium'>100% match</span>
-                        </div>
-
-                        <motion.button 
-                            className='top-42 right-7 absolute w-48 h-12 p-2 bg-sky-500 rounded-full shadow-lg z-20'
-                            whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 600,
-                                damping: 20    
-                            }}
-                        >
-                            Continue watching
-                        </motion.button>
-
-                        <div className="relative flex h-full items-end">
-                            <span className='mb-7 text-sm font-bold'>2 min left</span>
-                            <span className="absolute bottom-4 left-0 w-full h-2 bg-gray-500/60 rounded-full" />
-                            <span className="absolute bottom-4 left-0 w-[30%] h-2 bg-sky-500 rounded-full" />
-                        </div>                        
-                    </div>
-                    
-
-                </div>
-
-                </motion.div>
-            )}
-        </AnimatePresence>
 
         <span
         onClick={() => setShowDropdown(prev => !prev)}
