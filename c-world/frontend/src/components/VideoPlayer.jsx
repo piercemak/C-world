@@ -21,7 +21,7 @@ const VideoPlayer = () => {
     {/* Profile Manipulation */}
     const [profileName, setProfileName] = useState(() => localStorage.getItem('profileName') || "User");
     const [profileEmail, setProfileEmail] = useState(() => localStorage.getItem('profileEmail') || "User Bio");
-    const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?...");
+    const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
     const [editField, setEditField] = useState(null);
     const [hoverField, setHoverField] = useState(null);
     const handleImageChange = (e) => {
@@ -407,8 +407,7 @@ const VideoPlayer = () => {
                     className="flex flex-col"
                     >
                     {pages[currentPage]?.map(({ title, cardId }) => (
-                        <a
-                        href="#"
+                        <a  
                         key={cardId}
                         className={`${styles['sidebar-menu__link']} ${
                             clickedCard === cardId ? styles.active : ""
@@ -587,7 +586,6 @@ const VideoPlayer = () => {
               {pages.map((_, pageIndex) => (
                 <a
                   key={pageIndex}
-                  href="#"
                   className={`${styles['nav-item']} ${currentPage === pageIndex ? styles.active : ''}`}
                   onClick={(e) => {
                     e.preventDefault();
