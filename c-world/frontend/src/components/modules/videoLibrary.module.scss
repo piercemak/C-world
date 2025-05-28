@@ -71,6 +71,15 @@
       &.active {
        color: var(--theme-color);
       }
+      // 👇 Add this to target laptop-sized screens
+      @media (max-width: 1280px) {
+        font-size: 12px;
+        
+        & + & {
+          margin-top: 4px;
+        }
+      }
+
      }
     }
    }
@@ -259,7 +268,6 @@
    
    .main-content {
     scrollbar-width: none;
-
     gap: 24px;
    
     @media (max-width: 480px) {
@@ -281,6 +289,7 @@
     @media (max-width: 480px) {
      aspect-ratio: 1/1.4;
     }
+    
    
     &.clicked {
      position: absolute;
@@ -323,6 +332,8 @@
        }
    }
    
+
+
    .card-img {
     object-fit: cover;
     background-size: cover;
