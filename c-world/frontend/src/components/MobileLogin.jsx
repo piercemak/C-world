@@ -29,7 +29,7 @@ const MobileLogin = () => {
       <div className='text-white flex flex-col items-center justify-center gap-4 h-full bg-white/20 backdrop-blur border border-white/40 shadow-lg rounded-3xl'>
         <div className='flex flex-col items-center absolute h-full py-4'>
           <span className='flex flex-row text-3xl items-center gap-1 font-bold'> C {globeIcon}</span>
-          <h2 className="text-3xl font-bold flex items-start h-full mt-40">Log In</h2>
+          <h2 className="text-3xl font-bold flex items-start h-dvh mt-8">Log In</h2>
         </div>
         
 
