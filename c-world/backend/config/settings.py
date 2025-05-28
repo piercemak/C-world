@@ -63,11 +63,12 @@ INSTALLED_APPS = [
     "corsheaders",
     "storages",
     "uploadtest",
+    "config",
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -78,6 +79,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://c-world-frontend.onrender.com",
+    "https://c-world.onrender.com",
 ]
 
 ROOT_URLCONF = "config.urls"
