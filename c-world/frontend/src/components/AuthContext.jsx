@@ -9,15 +9,18 @@ export const AuthProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  const login = (username, password) => {
-    if (username === 'admin' && password === '1234') {
-      const newUser = { name: username };
-      setUser(newUser);
-      localStorage.setItem('user', JSON.stringify(newUser));
-      return true;
-    }
-    return false;
-  };
+const login = (username, password) => {
+  const adminUsername = import.meta.env.VITE_ADMIN_USERNAME;
+  const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+
+  if (username === adminUsername && password === adminPassword) {
+    const newUser = { name: username };
+    setUser(newUser);
+    localStorage.setItem('user', JSON.stringify(newUser));
+    return true;
+  }
+  return false;
+};
 
   const logout = () => {
     setUser(null);
