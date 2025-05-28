@@ -46,7 +46,7 @@ SECRET_KEY = "django-insecure-$(!$papw_v3_drqlruu_qk*9*nn8x&r(&q7dc&!z(v@g_$3fo_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []                     
+ALLOWED_HOSTS = ["c-world-backend.onrender.com"]                   
 
 # Application definition
 
@@ -64,16 +64,18 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://c-world-frontend.onrender.com",
+]
 
 ROOT_URLCONF = "config.urls"
 
