@@ -67,7 +67,7 @@ const MobileUser = () => {
               damping: 10,
             },
           }}
-          className='w-[300px] h-[400px] bg-cover bg-center rounded-4xl flex justify-center p-6 mt-10 shadow-lg shadow-white/5 border border-white/20'
+          className='w-80 h-80 bg-cover bg-center rounded-4xl flex justify-center p-6 mt-10 shadow-lg shadow-white/5 border border-white/20'
           onClick={handleProfileClick}
           style={{
               backgroundImage: `url(${profileImage})`,
