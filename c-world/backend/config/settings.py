@@ -46,7 +46,10 @@ SECRET_KEY = "django-insecure-$(!$papw_v3_drqlruu_qk*9*nn8x&r(&q7dc&!z(v@g_$3fo_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["c-world-backend.onrender.com"]                   
+ALLOWED_HOSTS = [
+    "c-world.onrender.com",             
+    "c-world-frontend.onrender.com",     
+]             
 
 # Application definition
 
