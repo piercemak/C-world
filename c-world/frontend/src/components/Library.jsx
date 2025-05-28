@@ -755,7 +755,7 @@ const extractS3KeyFromPath = (path) => {
       const show = shows[showId];
       
       {/* AWS Signed Urls */}
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const API_BASE = import.meta.env.VITE_API_URL;
       const fetchSignedUrl = async (s3Key) => {
       const bucketName = "all-shows";
         try {
