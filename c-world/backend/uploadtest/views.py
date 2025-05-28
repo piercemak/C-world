@@ -12,24 +12,31 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.backends import default_backend
 from urllib.parse import quote_plus
+import os
+
 
 
 CLOUDFRONT_DOMAIN = settings.CLOUDFRONT_DOMAIN
 
 def rsa_signer(message: str):
-    with open(settings.CLOUDFRONT_PRIVATE_KEY_PATH, 'rb') as f:
-        private_key = serialization.load_pem_private_key(
-            f.read(),
-            password=None,
-            backend=default_backend()
-        )
-    
-    signature = private_key.sign(
+    pem_path = os.getenv("CLOUDFRONT_PRIVATE_KEY_PATH")
+    if not pem_path:
+        raise ValueError("Missing CLOUDFRONT_PRIVATE_KEY_PATH environment variable")
+
+    with open(pem_path, "rb") as f:
+        key_data = f.read()
+
+    private_key = serialization.load_pem_private_key(
+        key_data,
+        password=None,
+        backend=default_backend()
+    )
+
+    return private_key.sign(
         message.encode('utf-8'),
         padding.PKCS1v15(),
         hashes.SHA1()
     )
-    return signature
 
 @api_view(['GET'])
 def get_signed_url(request):
