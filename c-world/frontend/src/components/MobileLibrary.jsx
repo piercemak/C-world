@@ -382,7 +382,7 @@ const MobileLibrary = () => {
 
             {/* Bottom Nav Bar */}
             <div className='nunito-font w-full h-24 flex flex-row items-center justify-center gap-20 p-6 absolute bottom-0'>
-                <div className='absolute w-full bottom-20 flex h-[1.1px] bg-white/10 z-50'> </div>
+                
                 <motion.button
                     style={{ background: `${darkenedColor} `}}
                     onClick={handleNavigate}
