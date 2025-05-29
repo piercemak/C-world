@@ -945,7 +945,7 @@ const extractS3KeyFromPath = (path) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}      
-            className="flex flex-row h-full pb-20 px-4 items-end gap-6 snap-x overflow-x-auto scrollbar-hidden z-[8]"
+            className="flex flex-row h-full pb-2 xl:pb-20 px-4 items-end gap-6 snap-x overflow-x-auto scrollbar-hidden z-[8]"
           >
           {show?.type === "movie" && (
             <motion.div 
