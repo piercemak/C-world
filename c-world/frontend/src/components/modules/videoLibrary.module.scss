@@ -309,7 +309,7 @@
     @media (max-width: 1280px) {
         width: 80vw;
         height: auto;
-        aspect-ratio: 5 / 6; /* or 3 / 4 for a slight rectangle */
+        aspect-ratio: 5 / 6; 
     }
 
     @media (max-width: 768px) {
@@ -372,10 +372,12 @@
     grid-row-end: 6;
     z-index: 999;
     aspect-ratio: 1/1;
+    width: auto;
    
-    @media (max-width: 480px) {
-     grid-column-end: 4;
-     aspect-ratio: 2/1;
+    @media (max-width: 1280px) {
+        width: 420px;
+        height: auto;
+        aspect-ratio: 5 / 6;
     }
    }
    
