@@ -896,7 +896,7 @@ const extractS3KeyFromPath = (path) => {
       <div className="fixed w-full h-full">      
             <Menu />
           {/* Season Content (below stack) */}
-          <div ref={dropdownRef} className="absolute bottom-50 left-0 2xl:left-64 w-fit flex flex-col mb-4 text-white z-[10]">
+          <div ref={dropdownRef} className="absolute bottom-30 2xl:bottom-50 left-10 2xl:left-64 w-fit flex flex-col mb-4 text-white z-[10]">
             <button 
               className="flex items-center gap-2 text-xl font-semibold cursor-pointer"
               onClick={() => setSeasonDropdownOpen(!seasonDropdownOpen)}
@@ -914,7 +914,7 @@ const extractS3KeyFromPath = (path) => {
                   animate="visible"
                   exit="exit"
                   variants={dropdownVariants}
-                  className="absolute bottom-[-200px] text-nowrap left-full ml-4 mt-1 text-[#5c5c5c] bg-black/80 rounded-md shadow-md backdrop-blur px-4 py-2"
+                  className="absolute bottom-0 2xl:bottom-[-200] text-nowrap left-full ml-4 mt-1 text-[#5c5c5c] bg-black/80 rounded-md shadow-md backdrop-blur px-4 py-2"
                 >
                   {Array.from({ length: show?.season_digit }, (_, i) => i + 1).map(season => (
                     <motion.button
@@ -945,7 +945,7 @@ const extractS3KeyFromPath = (path) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}      
-            className="flex flex-row h-full pb-2 xl:pb-20 px-4 items-end gap-6 snap-x overflow-x-auto scrollbar-hidden z-[8]"
+            className="flex flex-row h-full pb-2 2xl:pb-20 px-4 items-end gap-6 snap-x overflow-x-auto scrollbar-hidden z-[8]"
           >
           {show?.type === "movie" && (
             <motion.div 
