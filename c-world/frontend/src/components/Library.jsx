@@ -896,7 +896,7 @@ const extractS3KeyFromPath = (path) => {
       <div className="fixed w-full h-full">      
             <Menu />
           {/* Season Content (below stack) */}
-          <div ref={dropdownRef} className="absolute bottom-50 left-0 md:left-10 lg:left-64 xl:left-0 w-fit flex flex-col mb-4 text-white z-[10]">
+          <div ref={dropdownRef} className="absolute bottom-50 left-0 2xl:left-64 w-fit flex flex-col mb-4 text-white z-[10]">
             <button 
               className="flex items-center gap-2 text-xl font-semibold cursor-pointer"
               onClick={() => setSeasonDropdownOpen(!seasonDropdownOpen)}
