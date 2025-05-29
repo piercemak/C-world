@@ -15,6 +15,7 @@ import Menu from './framercomponents/Menu.jsx'
 const VideoPlayer = () => {
     const navigate = useNavigate();
 
+    const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/><path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/></svg>
     const paintIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paint-bucket" viewBox="0 0 16 16"><path d="M6.192 2.78c-.458-.677-.927-1.248-1.35-1.643a3 3 0 0 0-.71-.515c-.217-.104-.56-.205-.882-.02-.367.213-.427.63-.43.896-.003.304.064.664.173 1.044.196.687.556 1.528 1.035 2.402L.752 8.22c-.277.277-.269.656-.218.918.055.283.187.593.36.903.348.627.92 1.361 1.626 2.068.707.707 1.441 1.278 2.068 1.626.31.173.62.305.903.36.262.05.64.059.918-.218l5.615-5.615c.118.257.092.512.05.939-.03.292-.068.665-.073 1.176v.123h.003a1 1 0 0 0 1.993 0H14v-.057a1 1 0 0 0-.004-.117c-.055-1.25-.7-2.738-1.86-3.494a4 4 0 0 0-.211-.434c-.349-.626-.92-1.36-1.627-2.067S8.857 3.052 8.23 2.704c-.31-.172-.62-.304-.903-.36-.262-.05-.64-.058-.918.219zM4.16 1.867c.381.356.844.922 1.311 1.632l-.704.705c-.382-.727-.66-1.402-.813-1.938a3.3 3.3 0 0 1-.131-.673q.137.09.337.274m.394 3.965c.54.852 1.107 1.567 1.607 2.033a.5.5 0 1 0 .682-.732c-.453-.422-1.017-1.136-1.564-2.027l1.088-1.088q.081.181.183.365c.349.627.92 1.361 1.627 2.068.706.707 1.44 1.278 2.068 1.626q.183.103.365.183l-4.861 4.862-.068-.01c-.137-.027-.342-.104-.608-.252-.524-.292-1.186-.8-1.846-1.46s-1.168-1.32-1.46-1.846c-.147-.265-.225-.47-.251-.607l-.01-.068zm2.87-1.935a2.4 2.4 0 0 1-.241-.561c.135.033.324.11.562.241.524.292 1.186.8 1.846 1.46.45.45.83.901 1.118 1.31a3.5 3.5 0 0 0-1.066.091 11 11 0 0 1-.76-.694c-.66-.66-1.167-1.322-1.458-1.847z"/></svg>
     const editIcon = <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16"><path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/></svg>
 
@@ -46,7 +47,10 @@ const VideoPlayer = () => {
         localStorage.setItem('profileImage', profileImage);
       }, [profileImage]);
 
-
+    {/* Navigation */}
+    const handleNavigate = () => {
+      navigate("/home");
+    };    
 
     {/* Input Editing State */}
     const [isEditing, setIsEditing] = useState(false);
@@ -189,11 +193,13 @@ const VideoPlayer = () => {
 
   return (
    <div className={styles['body']}>
+    {/*
       <motion.div 
         className={isMenuOpen ? 'z-80' : 'z-20'}
       >
       <Menu closeMenu={() => setIsMenuOpen(false)} />
       </motion.div>
+    */}
         <div className={styles['app']}>
             <div className={styles['sidebar']}>
                 
@@ -423,10 +429,10 @@ const VideoPlayer = () => {
                     </motion.div>
                 </AnimatePresence>
             </div>
-            <label className={styles['toggle']}>
-            <input type="checkbox" />
-            <span className={styles['slider']}></span>
-            </label>
+              <label className={styles['toggle']}>
+                <input type="checkbox" />
+                  <span className={styles['slider']}></span>
+              </label>
             </div>
             
             <div className={styles['main']}>
@@ -461,6 +467,28 @@ const VideoPlayer = () => {
                               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                           </svg>                        
                       </motion.button>
+                      <motion.div 
+                        className="ml-2 text-white/70 cursor-pointer"
+                        whileTap={{
+                        scale: 0.9,
+                        transition: {
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 10,
+                        },
+                        }}
+                        whileHover={{
+                            scale: 1.05,
+                            transition: {
+                            type: 'spring',
+                            stiffness: 300,
+                            damping: 10,
+                            },
+                        }}
+                        onClick={handleNavigate}                         
+                      > 
+                          {homeIcon} 
+                      </motion.div>
                   </div>
                 </div>
 
