@@ -80,6 +80,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "https://c-world-frontend.onrender.com",
     "https://c-world.onrender.com",
+    "https://cearaworld.com",
+    "https://www.cearaworld.com"    
 ]
 
 ROOT_URLCONF = "config.urls"
