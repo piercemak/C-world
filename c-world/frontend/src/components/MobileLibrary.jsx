@@ -405,7 +405,7 @@ const MobileLibrary = () => {
                         stiffness: 600,
                         damping: 20    
                     }}
-                    className='text-white/50'> {profileIcon} 
+                    className='text-white/90'> {profileIcon} 
                 </motion.button>
             </div>
         </div>
