@@ -343,7 +343,33 @@ const MobileLibrary = () => {
                         </motion.button>
                     </div>
 
-                    <span className='absolute flex text-white top-30 font-bold tracking-wider'> {activeTab} </span>
+          
+                    <span className='absolute flex text-white top-28 font-bold tracking-wider gap-4 items-center'> {activeTab} 
+                    <motion.button
+                        style={{ background: `${darkenedColor} `}}
+                        onClick={handleNavigate}
+                        whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
+                        transition={{
+                            type: "spring",
+                            stiffness: 600,
+                            damping: 20    
+                        }}
+                        className='size-8 flex items-center justify-center rounded-full'
+                    >
+                        <span className='relative bottom-[1px]'> {homeIcon} </span>
+                    </motion.button>
+                    <motion.button 
+                        onClick={userNavigate}
+                        whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
+                        transition={{
+                            type: "spring",
+                            stiffness: 600,
+                            damping: 20    
+                        }}
+                        className='text-white/90'> {profileIcon} 
+                    </motion.button>
+                    </span>
+                          
                     {/* Horizontal Scroll Row (Cards) */}
                     <div className="absolute -bottom-75 w-full mt-4 left-0 px-2">
                         <AnimatePresence mode="wait">
@@ -378,35 +404,6 @@ const MobileLibrary = () => {
                         </AnimatePresence>
                     </div>       
                 </div>
-            </div>
-
-            {/* Bottom Nav Bar */}
-            <div className='nunito-font w-full h-24 flex flex-row items-center justify-center gap-20 p-6 absolute bottom-0'>
-                
-                <motion.button
-                    style={{ background: `${darkenedColor} `}}
-                    onClick={handleNavigate}
-                    whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
-                    transition={{
-                        type: "spring",
-                        stiffness: 600,
-                        damping: 20    
-                    }}
-                    className='w-32 h-12 p-2 shadow-lg shadow-black/20 text-white rounded-full flex items-center justify-center gap-2'
-                >
-                    <span className='relative bottom-[1px]'> {homeIcon} </span>
-                    <span> Home </span>
-                </motion.button>
-                <motion.button 
-                    onClick={userNavigate}
-                    whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
-                    transition={{
-                        type: "spring",
-                        stiffness: 600,
-                        damping: 20    
-                    }}
-                    className='text-white/90'> {profileIcon} 
-                </motion.button>
             </div>
         </div>
 
