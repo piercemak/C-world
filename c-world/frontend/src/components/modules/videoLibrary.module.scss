@@ -309,15 +309,6 @@
     width: 500px;
     height: 600px;
     z-index: 2;
-
-    @media (max-width: 1280px) {
-        position: relative;          /* <-- Let it flow with layout */
-        width: 100%;                 /* Full width of parent */
-        max-height: 80vh;            /* Prevent overflow */
-        height: auto;                /* Auto height */
-        aspect-ratio: 5 / 6;         /* Keep proportional */
-        margin: 0 auto;              /* Center if needed */
-    }
     }
    
     &.card-1 {
@@ -353,6 +344,12 @@
         background-image: url("/images/misc/TBD.jpg");
        }
    }
+    @media (max-width: 1280px) {
+    .card {
+        width: 200px;
+    }
+    }
+
    
 
 
