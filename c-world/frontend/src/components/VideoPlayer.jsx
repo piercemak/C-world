@@ -402,7 +402,7 @@ const VideoPlayer = () => {
 
             </div>
 
-            <div className={`${styles['sidebar-menu']} text-nowrap`}>
+            <div className={`${styles['sidebar-menu']} text-nowrap cursor-pointer`}>
                 <AnimatePresence mode="wait">
                     <motion.div
                     key={currentPage} 
