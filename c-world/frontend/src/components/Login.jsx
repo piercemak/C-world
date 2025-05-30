@@ -44,7 +44,7 @@ const Login = () => {
         <div className="absolute top-0 left-[-40px] h-full w-[80px] bg-white rounded-tl-[50px] rounded-bl-[50px] z-0" />
         <div className="h-full flex flex-col justify-center items-center relative z-10 px-10">
           <div className="w-full max-w-md">
-            <div className='flex w-full justify-center items-center relative -top-40 font-semibold text-black/90 gap-2 poppinsfont'> 
+            <div className='flex w-full justify-center items-center relative 2xl:-top-40 -top-20 font-semibold text-black/90 gap-2 poppinsfont'> 
                 <span>{globeIcon}</span>
                 <span className='text-lg'> CearaWorld </span>
             </div>
