@@ -281,7 +281,7 @@ const MobileLibrary = () => {
                 }
             }}
         >
-            <div className="nunito-font top-15 absolute w-full h-dvh flex flex-col items-center">
+            <div className="nunito-font top-8 absolute w-full h-dvh flex flex-col items-center">
                 <div className="relative w-full flex flex-row items-end justify-between px-6">
                     <motion.img
                         whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
