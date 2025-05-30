@@ -884,7 +884,7 @@ const MobileShows = () => {
                                     animate="visible"
                                     exit="exit"
                                     variants={dropdownVariants}
-                                    className="absolute left-44 bottom-[250px] text-nowrap text-[#5c5c5c] bg-black rounded-md px-4 py-2 inset-shadow-sm inset-shadow-white/20"
+                                    className="absolute left-44 bottom-[150px] text-nowrap text-[#5c5c5c] bg-black rounded-md px-4 py-2 inset-shadow-sm inset-shadow-white/20"
                                 >
                                     {Array.from({ length: show?.season_digit }, (_, i) => i + 1).map(season => (
                                         <motion.button
