@@ -375,6 +375,11 @@
     aspect-ratio: 1/1;
     width: auto;
    }
+    @media (max-width: 1280px) {
+    .card.active {
+        width: 400px;
+    }
+    }   
    
    .main-content.expanded .card:not(.active) {
     opacity: 0.4;
