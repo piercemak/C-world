@@ -1010,12 +1010,14 @@ const extractS3KeyFromPath = (path) => {
                   (() => {
                     const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
                     const cleanedId = cleanShowId(showId);
-                    const sNum = String(resumeEpisode.season).padStart(2, "0");
-                    const eNum = String(resumeEpisode.episode).padStart(2, "0");
+                    const sNum = String(resumeEpisode.season);
+                    const eNum = String(resumeEpisode.episode);
 
                     const placeholderPath = show?.type === "show"
                       ? `${cloudFrontDomain}/${cleanedId}/placeholders/season${resumeEpisode.season}/S${sNum}E${eNum}_${cleanedId}_placeholder.png`
                       : `/images/${cleanedId}/placeholders/${cleanedId}_placeholder.png`;
+
+                    console.log("🖼️ Resume placeholder path:", placeholderPath);
 
                     return (
                       <motion.div
@@ -1026,10 +1028,14 @@ const extractS3KeyFromPath = (path) => {
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         className="absolute bottom-[120%] left-0 w-64 bg-black text-white p-2 rounded-md shadow-lg z-50 pointer-events-none"
                       >
-                        <div
-                          className="w-full h-32 rounded mb-2 bg-cover bg-center"
-                          style={{ backgroundImage: `url(${placeholderPath})` }}
-                        />
+                        <img src={placeholderPath} alt="" className="hidden" />
+                        <div className="relative w-full h-32 rounded mb-2 bg-cover bg-center" style={{ backgroundImage: `url(${placeholderPath})` }}>                        
+                          <img src={placeholderPath} alt="" className="hidden" />                 
+                          <WatchProgressBar
+                            storageKey={`${showId}-S${resumeEpisode.season}-E${resumeEpisode.episode}`}
+                            progressOverride={watchProgressMap[`${showId}-S${resumeEpisode.season}-E${resumeEpisode.episode}`]}
+                          />
+                        </div>
                         <div className="text-sm font-semibold tracking-wide">
                           S{resumeEpisode.season}E{resumeEpisode.episode} —{" "}
                           {resumeEpisode.title.replace(/_/g, " ")}
