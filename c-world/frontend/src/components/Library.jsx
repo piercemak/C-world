@@ -790,7 +790,7 @@ const extractS3KeyFromPath = (path) => {
 
 
       {/* Continue Watching Button */}
-      const handleResume = () => {
+      const handleResume = async () => {
         const keys = Object.keys(localStorage).filter(k =>
           k.startsWith(`watchProgress-${showId}`)
         );
@@ -803,13 +803,29 @@ const extractS3KeyFromPath = (path) => {
         )[0];
         const match = mostRecentKey.match(/watchProgress-(.+)-S(\d+)-E(\d+)/);
         if (!match) return;
-
         const [, matchedShowId, seasonNumStr, episodeNumStr] = match;
         const seasonNum = parseInt(seasonNumStr);
         const episodeNum = parseInt(episodeNumStr);
         const episodeList = show?.videos?.[`season${seasonNum}`];
         if (!episodeList || !episodeList[episodeNum - 1]) return;
-        const videoPath = episodeList[episodeNum - 1].path;
+
+        let videoPath = episodeList[episodeNum - 1].path;
+        if (awsHostedShows.includes(showId)) {
+          const isCloudfrontUrl = videoPath.includes("cloudfront.net");
+          const s3Key = isCloudfrontUrl
+            ? videoPath.split("cloudfront.net/")[1]
+            : extractS3KeyFromPath(videoPath);
+
+          if (!s3Key) {
+            console.error("❌ Could not extract s3Key from resume video path:", videoPath);
+            return;
+          }
+          videoPath = await fetchSignedUrl(s3Key);
+          if (!videoPath) {
+            console.error("❌ Signed URL fetch failed.");
+            return;
+          }
+        }
         setSelectedVideo({
           path: videoPath,
           showId: matchedShowId,
@@ -818,6 +834,7 @@ const extractS3KeyFromPath = (path) => {
         });
         setExpanded(true);
       };
+
 
       {/* Continue Wacthing Modal */}
       const [resumeHovered, setResumeHovered] = useState(false);
