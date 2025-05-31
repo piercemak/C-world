@@ -843,7 +843,7 @@ const MobileShows = () => {
         )} 
 
         <div className='absolute bottom-0 flex w-full h-[60%] rounded-t-4xl z-10'>
-            <div className='absolute bottom-0 flex flex-col w-full h-full px-6 pt-10 rounded-t-4xl bg-slate-700 inset-shadow-sm inset-shadow-white/20 z-20'>
+            <div className='absolute bottom-0 flex flex-col w-full h-full px-6 pt-6 rounded-t-4xl bg-slate-700 inset-shadow-sm inset-shadow-white/20 z-20'>
                 <span className='text-white font-bold text-2xl'> {show?.title} </span> 
                 <span className='text-sm mt-2 text-white/60'> {show?.creator} </span>
 
