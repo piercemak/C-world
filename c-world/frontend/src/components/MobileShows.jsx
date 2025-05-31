@@ -770,7 +770,7 @@ const MobileShows = () => {
 
 
   return (
-    <div className='flex w-full h-dvh relative flex-col bg-black'>
+    <div className='flex w-full h-dvh relative flex-col bg-black overflow-y-hidden'>
         <div className='h-[50%] w-full flex z-0 overflow-hidden'>
             <img
                 src={show?.mobilebackground}
