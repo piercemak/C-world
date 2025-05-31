@@ -977,12 +977,12 @@ const extractS3KeyFromPath = (path) => {
               {show?.type !== "movie" && show?.season_digit > 1 && <Chevron isOpen={seasonDropdownOpen} />}         
             </button>
 
-            <div className="relative flex items-center justify-end gap-4">
+            <div className="relative flex items-center justify-end gap-4 ml-2">
               <button
                 onClick={handleResume}
                 onMouseEnter={handleMouseEnterResume}
                 onMouseLeave={handleMouseLeaveResume}
-                className="text-white bg-white/10 hover:bg-white/20 px-3 py-1 text-sm rounded-md transition cursor-pointer"
+                className="text-white font-medium bg-white/10 hover:bg-white/20 px-3 py-1 text-sm rounded-md transition cursor-pointer"
               >
                 Continue watching 
               </button>
