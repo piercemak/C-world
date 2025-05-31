@@ -963,7 +963,7 @@ const extractS3KeyFromPath = (path) => {
       <div className="fixed w-full h-full">      
           <Menu />
           {/* Season Content (below stack) */}
-          <div ref={dropdownRef} className="absolute bottom-34 2xl:bottom-50 left-10 2xl:left-64 w-fit flex flex-col mb-4 text-white z-[10]">
+          <div ref={dropdownRef} className="absolute bottom-34 2xl:bottom-50 left-10 2xl:left-64 w-fit flex flex-row mb-4 text-white z-[10]">
             <button 
               className="flex items-center gap-2 text-xl font-semibold cursor-pointer"
               onClick={() => {
@@ -974,54 +974,55 @@ const extractS3KeyFromPath = (path) => {
             >
               {layersIcon}
               <span>{show?.type === "movie" ? "Movie" : `Season ${selectedSeason}`}</span>
-              {show?.type !== "movie" && show?.season_digit > 1 && <Chevron isOpen={seasonDropdownOpen} />}
-              <div className="relative flex items-center gap-4">
-                <button
-                  onClick={handleResume}
-                  onMouseEnter={handleMouseEnterResume}
-                  onMouseLeave={handleMouseLeaveResume}
-                  className="text-white bg-white/10 hover:bg-white/20 px-3 py-1 text-sm rounded-md transition cursor-pointer"
-                >
-                 Continue watching 
-                </button>
-
-                {/* Tooltip Modal */}
-                <AnimatePresence>
-                  {resumeHovered && resumeEpisode && (
-                    (() => {
-                      const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
-                      const cleanedId = cleanShowId(showId);
-                      const sNum = String(resumeEpisode.season).padStart(2, "0");
-                      const eNum = String(resumeEpisode.episode).padStart(2, "0");
-
-                      const placeholderPath = show?.type === "show"
-                        ? `${cloudFrontDomain}/${cleanedId}/placeholders/season${resumeEpisode.season}/S${sNum}E${eNum}_${cleanedId}_placeholder.png`
-                        : `/images/${cleanedId}/placeholders/${cleanedId}_placeholder.png`;
-
-                      return (
-                        <motion.div
-                          key="resume-tooltip"
-                          initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="absolute bottom-[120%] left-0 w-64 bg-black text-white p-2 rounded-md shadow-lg z-50 pointer-events-none"
-                        >
-                          <div
-                            className="w-full h-32 rounded mb-2 bg-cover bg-center"
-                            style={{ backgroundImage: `url(${placeholderPath})` }}
-                          />
-                          <div className="text-sm font-semibold tracking-wide">
-                            S{resumeEpisode.season}E{resumeEpisode.episode} —{" "}
-                            {resumeEpisode.title.replace(/_/g, " ")}
-                          </div>
-                        </motion.div>
-                      );
-                    })()
-                  )}
-                </AnimatePresence>
-              </div>            
+              {show?.type !== "movie" && show?.season_digit > 1 && <Chevron isOpen={seasonDropdownOpen} />}         
             </button>
+
+            <div className="relative flex items-center justify-end gap-4">
+              <button
+                onClick={handleResume}
+                onMouseEnter={handleMouseEnterResume}
+                onMouseLeave={handleMouseLeaveResume}
+                className="text-white bg-white/10 hover:bg-white/20 px-3 py-1 text-sm rounded-md transition cursor-pointer"
+              >
+                Continue watching 
+              </button>
+
+              {/* Tooltip Modal */}
+              <AnimatePresence>
+                {resumeHovered && resumeEpisode && (
+                  (() => {
+                    const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
+                    const cleanedId = cleanShowId(showId);
+                    const sNum = String(resumeEpisode.season).padStart(2, "0");
+                    const eNum = String(resumeEpisode.episode).padStart(2, "0");
+
+                    const placeholderPath = show?.type === "show"
+                      ? `${cloudFrontDomain}/${cleanedId}/placeholders/season${resumeEpisode.season}/S${sNum}E${eNum}_${cleanedId}_placeholder.png`
+                      : `/images/${cleanedId}/placeholders/${cleanedId}_placeholder.png`;
+
+                    return (
+                      <motion.div
+                        key="resume-tooltip"
+                        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="absolute bottom-[120%] left-0 w-64 bg-black text-white p-2 rounded-md shadow-lg z-50 pointer-events-none"
+                      >
+                        <div
+                          className="w-full h-32 rounded mb-2 bg-cover bg-center"
+                          style={{ backgroundImage: `url(${placeholderPath})` }}
+                        />
+                        <div className="text-sm font-semibold tracking-wide">
+                          S{resumeEpisode.season}E{resumeEpisode.episode} —{" "}
+                          {resumeEpisode.title.replace(/_/g, " ")}
+                        </div>
+                      </motion.div>
+                    );
+                  })()
+                )}
+              </AnimatePresence>
+            </div>               
 
             {/* Season Dropdown */}
             <AnimatePresence>
