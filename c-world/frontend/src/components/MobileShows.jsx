@@ -919,7 +919,7 @@ const MobileShows = () => {
                 className={`${
                     show?.type === "movie"
                     ? "flex w-full justify-center mt-10 "  
-                    : "flex w-full overflow-scroll mt-8 -ml-4 overflow-x-hidden scrollbar-hidden mb-2"   
+                    : "flex w-full overflow-scroll mt-8 -ml-4 overflow-x-hidden scrollbar-hidden"   
                 }`}                
             >
                 <AnimatePresence mode="wait">
