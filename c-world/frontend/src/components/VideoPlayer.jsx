@@ -586,6 +586,7 @@ const VideoPlayer = () => {
                   onClick={() => setIsModalOpen(true)}
                 >
                   {paintIcon}
+                  Testing
                 </motion.button>
 
                 <AnimatePresence>
