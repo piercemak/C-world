@@ -789,6 +789,73 @@ const extractS3KeyFromPath = (path) => {
       const [watchProgressMap, setWatchProgressMap] = useState({});
 
 
+      {/* Continue Watching Button */}
+      const handleResume = () => {
+        const keys = Object.keys(localStorage).filter(k =>
+          k.startsWith(`watchProgress-${showId}`)
+        );
+        if (keys.length === 0) {
+          console.log("▶️ No saved progress for this show.");
+          return;
+        }
+        const mostRecentKey = keys.sort((a, b) =>
+          (localStorage.getItem(b) || 0) - (localStorage.getItem(a) || 0)
+        )[0];
+        const match = mostRecentKey.match(/watchProgress-(.+)-S(\d+)-E(\d+)/);
+        if (!match) return;
+
+        const [, matchedShowId, seasonNumStr, episodeNumStr] = match;
+        const seasonNum = parseInt(seasonNumStr);
+        const episodeNum = parseInt(episodeNumStr);
+        const episodeList = show?.videos?.[`season${seasonNum}`];
+        if (!episodeList || !episodeList[episodeNum - 1]) return;
+        const videoPath = episodeList[episodeNum - 1].path;
+        setSelectedVideo({
+          path: videoPath,
+          showId: matchedShowId,
+          season: seasonNum,
+          episode: episodeNum,
+        });
+        setExpanded(true);
+      };
+
+      {/* Continue Wacthing Modal */}
+      const [resumeHovered, setResumeHovered] = useState(false);
+      const [resumeEpisode, setResumeEpisode] = useState(null);
+      const handleMouseEnterResume = () => {
+        const keys = Object.keys(localStorage).filter(k =>
+          k.startsWith(`watchProgress-${showId}`)
+        );
+        if (keys.length === 0) return;
+        const mostRecentKey = keys.sort((a, b) =>
+          (localStorage.getItem(b) || 0) - (localStorage.getItem(a) || 0)
+        )[0];
+        const match = mostRecentKey.match(/watchProgress-(.+)-S(\d+)-E(\d+)/);
+        if (!match) return;
+
+        const [, matchedShowId, seasonNumStr, episodeNumStr] = match;
+        const seasonNum = parseInt(seasonNumStr);
+        const episodeNum = parseInt(episodeNumStr);
+        const episodeList = show?.videos?.[`season${seasonNum}`];
+        if (!episodeList || !episodeList[episodeNum - 1]) return;
+        const video = episodeList[episodeNum - 1];
+
+        setResumeEpisode({
+          season: seasonNum,
+          episode: episodeNum,
+          title: video.title,
+          path: video.path,
+        });
+        setResumeHovered(true);
+      };
+      const handleMouseLeaveResume = () => {
+        setResumeHovered(false);
+      };
+
+
+
+
+
   return (
     <div className='w-full h-dvh flex p-6 gap-4 justify-center items-center'>
         <div className='w-full max-w-[1400px] h-[92vh] px-14 pt-4 bg-black/20 backdrop-blur-md rounded-[20px] border border-white/10 shadow-[inset_0_0_0.5px_0.5px_rgba(255,255,255,0.2)] relative overflow-hidden'>
@@ -899,11 +966,61 @@ const extractS3KeyFromPath = (path) => {
           <div ref={dropdownRef} className="absolute bottom-34 2xl:bottom-50 left-10 2xl:left-64 w-fit flex flex-col mb-4 text-white z-[10]">
             <button 
               className="flex items-center gap-2 text-xl font-semibold cursor-pointer"
-              onClick={() => setSeasonDropdownOpen(!seasonDropdownOpen)}
+              onClick={() => {
+                if (show?.season_digit > 1) {
+                  setSeasonDropdownOpen(!seasonDropdownOpen);
+                }
+              }}
             >
               {layersIcon}
               <span>{show?.type === "movie" ? "Movie" : `Season ${selectedSeason}`}</span>
-              {show?.type !== "movie" && <Chevron isOpen={seasonDropdownOpen} />}
+              {show?.type !== "movie" && show?.season_digit > 1 && <Chevron isOpen={seasonDropdownOpen} />}
+              <div className="relative flex items-center gap-4">
+                <button
+                  onClick={handleResume}
+                  onMouseEnter={handleMouseEnterResume}
+                  onMouseLeave={handleMouseLeaveResume}
+                  className="text-white bg-white/10 hover:bg-white/20 px-3 py-1 text-sm rounded-md transition cursor-pointer"
+                >
+                 Continue watching 
+                </button>
+
+                {/* Tooltip Modal */}
+                <AnimatePresence>
+                  {resumeHovered && resumeEpisode && (
+                    (() => {
+                      const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
+                      const cleanedId = cleanShowId(showId);
+                      const sNum = String(resumeEpisode.season).padStart(2, "0");
+                      const eNum = String(resumeEpisode.episode).padStart(2, "0");
+
+                      const placeholderPath = show?.type === "show"
+                        ? `${cloudFrontDomain}/${cleanedId}/placeholders/season${resumeEpisode.season}/S${sNum}E${eNum}_${cleanedId}_placeholder.png`
+                        : `/images/${cleanedId}/placeholders/${cleanedId}_placeholder.png`;
+
+                      return (
+                        <motion.div
+                          key="resume-tooltip"
+                          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute bottom-[120%] left-0 w-64 bg-black text-white p-2 rounded-md shadow-lg z-50 pointer-events-none"
+                        >
+                          <div
+                            className="w-full h-32 rounded mb-2 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${placeholderPath})` }}
+                          />
+                          <div className="text-sm font-semibold tracking-wide">
+                            S{resumeEpisode.season}E{resumeEpisode.episode} —{" "}
+                            {resumeEpisode.title.replace(/_/g, " ")}
+                          </div>
+                        </motion.div>
+                      );
+                    })()
+                  )}
+                </AnimatePresence>
+              </div>            
             </button>
 
             {/* Season Dropdown */}

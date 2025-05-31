@@ -869,7 +869,11 @@ const MobileShows = () => {
                     <>
                         <button 
                             className="flex absolute items-center gap-2 text-xl font-semibold cursor-pointer"
-                            onClick={() => setSeasonDropdownOpen(!seasonDropdownOpen)}
+                            onClick={() => {
+                                if (show?.season_digit > 1) {
+                                setSeasonDropdownOpen(!seasonDropdownOpen);
+                                }
+                            }}                            
                         >
                             {layersIcon}
                             <span>Season {selectedSeason}</span>
