@@ -798,18 +798,37 @@ const extractS3KeyFromPath = (path) => {
           console.log("▶️ No saved progress for this show.");
           return;
         }
-        const mostRecentKey = keys.sort((a, b) =>
-          (localStorage.getItem(b) || 0) - (localStorage.getItem(a) || 0)
-        )[0];
-        const match = mostRecentKey.match(/watchProgress-(.+)-S(\d+)-E(\d+)/);
-        if (!match) return;
-        const [, matchedShowId, seasonNumStr, episodeNumStr] = match;
-        const seasonNum = parseInt(seasonNumStr);
-        const episodeNum = parseInt(episodeNumStr);
-        const episodeList = show?.videos?.[`season${seasonNum}`];
-        if (!episodeList || !episodeList[episodeNum - 1]) return;
 
-        let videoPath = episodeList[episodeNum - 1].path;
+        const mostRecentKey = keys.sort((a, b) =>
+          (parseFloat(localStorage.getItem(b)) || 0) - (parseFloat(localStorage.getItem(a)) || 0)
+        )[0];
+
+        const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
+        if (!match) return;
+
+        const [, matchedShowId, , seasonNumStr, episodeNumStr] = match;
+        const isMovie = !seasonNumStr && !episodeNumStr;
+
+        let videoPath = null;
+        let season = null;
+        let episode = null;
+
+        if (isMovie) {
+          videoPath = show?.videos?.[0]?.path || null;
+        } else {
+          season = parseInt(seasonNumStr);
+          episode = parseInt(episodeNumStr);
+          const episodeList = show?.videos?.[`season${season}`];
+          if (!episodeList || !episodeList[episode - 1]) return;
+
+          videoPath = episodeList[episode - 1].path;
+        }
+
+        if (!videoPath) {
+          console.error("❌ No video path found for resume.");
+          return;
+        }
+
         if (awsHostedShows.includes(showId)) {
           const isCloudfrontUrl = videoPath.includes("cloudfront.net");
           const s3Key = isCloudfrontUrl
@@ -820,20 +839,26 @@ const extractS3KeyFromPath = (path) => {
             console.error("❌ Could not extract s3Key from resume video path:", videoPath);
             return;
           }
-          videoPath = await fetchSignedUrl(s3Key);
-          if (!videoPath) {
+
+          const signedUrl = await fetchSignedUrl(s3Key);
+          if (!signedUrl) {
             console.error("❌ Signed URL fetch failed.");
             return;
           }
+
+          videoPath = signedUrl;
         }
+
         setSelectedVideo({
           path: videoPath,
           showId: matchedShowId,
-          season: seasonNum,
-          episode: episodeNum,
+          season: season,
+          episode: episode,
         });
+
         setExpanded(true);
       };
+
 
 
       {/* Continue Wacthing Modal */}
