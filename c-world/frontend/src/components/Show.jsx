@@ -357,15 +357,35 @@ const handleSkipOutro = async () => {
   };
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "ArrowRight") {
-        handleSkipPreview('forward');
-      } else if (e.key === "ArrowLeft") {
-        handleSkipPreview('backward');
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      switch (e.key) {
+        case "ArrowRight":
+          handleSkipPreview('forward');
+          break;
+        case "ArrowLeft":
+          handleSkipPreview('backward');
+          break;
+        case "Enter":
+          if (isPreviewing) {
+            videoRef.current.play();
+            setIsPreviewing(false);
+            setPreviewImage(null);
+          }
+          break;
+        case " ":
+        case "Spacebar": 
+          e.preventDefault();
+          togglePlay();
+          break;
+        default:
+          break;
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [isPreviewing]);
 
 
   {/* Frame Preview Handling */}
