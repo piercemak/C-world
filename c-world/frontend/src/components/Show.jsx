@@ -472,8 +472,10 @@ const handleSkipOutro = async () => {
         clearTimeout(inactivityTimer.current);
       }
       inactivityTimer.current = setTimeout(() => {
-        setControlsVisible(false);
-        setCursorVisible(false); 
+        if (isPlaying && !isPreviewing) {
+          setControlsVisible(false);
+          setCursorVisible(false); 
+        }
       }, 3000);
     };
   
@@ -483,7 +485,7 @@ const handleSkipOutro = async () => {
       window.removeEventListener("mousemove", resetInactivity);
       clearTimeout(inactivityTimer.current);
     };
-  }, []);
+  }, [isPlaying, isPreviewing]);
 
 
   const [subtitleText, setSubtitleText] = useState("");
