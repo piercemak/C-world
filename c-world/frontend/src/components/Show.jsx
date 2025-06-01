@@ -355,9 +355,7 @@ const handleSkipOutro = async () => {
       );
     }
   };
-
-
-
+  
   {/* Frame Preview Handling */}
   const [isPreviewing, setIsPreviewing] = useState(false);
   const generateFramePreview = async (time) => {
@@ -407,35 +405,21 @@ const handleSkipOutro = async () => {
       setIsPreviewing(false);
     }
   }, [isPlaying, isPreviewing]);
-  
+  //Enter Key
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-
-    switch (e.key) {
-      case "ArrowRight":
-        skipForward();
-        break;
-      case "ArrowLeft":
-        skipBackward();
-        break;
-        case " ":
-        case "Spacebar":
-          e.preventDefault(); 
-          togglePlay();
-          break;
-        case "Enter":
-          if (isPreviewing) {
-            videoRef.current.play();
-            setIsPreviewing(false);
-            setPreviewImage(null);
-          }
-          break;
-        default:
-          break;
+      if (e.key === "ArrowRight") {
+        handleSkipPreview('forward');
+      } else if (e.key === "ArrowLeft") {
+        handleSkipPreview('backward');
+      } else if (e.key === "Enter" && isPreviewing) {
+        // resume playback from previewed time
+        videoRef.current.play();
+        setIsPreviewing(false); // hide preview
+        setPreviewImage(null);
       }
     };
-
+  
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPreviewing]);
