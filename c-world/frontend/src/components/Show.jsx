@@ -407,21 +407,21 @@ const handleSkipOutro = async () => {
       setIsPreviewing(false);
     }
   }, [isPlaying, isPreviewing]);
-  //Enter Key
+  
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
 
-      switch (e.key) {
-        case "ArrowRight":
-          handleSkipPreview("forward");
-          break;
-        case "ArrowLeft":
-          handleSkipPreview("backward");
-          break;
+    switch (e.key) {
+      case "ArrowRight":
+        skipForward();
+        break;
+      case "ArrowLeft":
+        skipBackward();
+        break;
         case " ":
         case "Spacebar":
-          e.preventDefault(); // prevent scroll
+          e.preventDefault(); 
           togglePlay();
           break;
         case "Enter":
