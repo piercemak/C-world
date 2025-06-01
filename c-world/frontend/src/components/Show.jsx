@@ -360,6 +360,7 @@ const handleSkipOutro = async () => {
   const [isPreviewing, setIsPreviewing] = useState(false);
   const generateFramePreview = async (time) => {
     const tempVideo = document.createElement('video');
+    tempVideo.crossOrigin = 'anonymous'; 
     tempVideo.src = new URL(src).toString();
     tempVideo.preload = 'auto';
     tempVideo.muted = true;
