@@ -355,17 +355,7 @@ const handleSkipOutro = async () => {
       );
     }
   };
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "ArrowRight") {
-        handleSkipPreview('forward');
-      } else if (e.key === "ArrowLeft") {
-        handleSkipPreview('backward');
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+
 
 
   {/* Frame Preview Handling */}
@@ -420,18 +410,32 @@ const handleSkipOutro = async () => {
   //Enter Key
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "ArrowRight") {
-        handleSkipPreview('forward');
-      } else if (e.key === "ArrowLeft") {
-        handleSkipPreview('backward');
-      } else if (e.key === "Enter" && isPreviewing) {
-        // resume playback from previewed time
-        videoRef.current.play();
-        setIsPreviewing(false); // hide preview
-        setPreviewImage(null);
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+      switch (e.key) {
+        case "ArrowRight":
+          handleSkipPreview("forward");
+          break;
+        case "ArrowLeft":
+          handleSkipPreview("backward");
+          break;
+        case " ":
+        case "Spacebar":
+          e.preventDefault(); // prevent scroll
+          togglePlay();
+          break;
+        case "Enter":
+          if (isPreviewing) {
+            videoRef.current.play();
+            setIsPreviewing(false);
+            setPreviewImage(null);
+          }
+          break;
+        default:
+          break;
       }
     };
-  
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPreviewing]);
