@@ -1140,9 +1140,6 @@ const extractS3KeyFromPath = (path) => {
               } else {
                 videoPath = rawPath;
               }
-
-
-
                 setSelectedVideo({
                   path: videoPath,
                   showId,
@@ -1168,12 +1165,15 @@ const extractS3KeyFromPath = (path) => {
                 }}
               >
                 {show?.title}
-              </div>
-           
-              <WatchProgressBar
-                storageKey={`${showId}`} 
-                progressOverride={watchProgressMap[`${showId}`]}  
-              />
+              </div>  
+
+              <div className="absolute bottom-1 left-0 w-full z-20 px-2">
+                <WatchProgressBar
+                  storageKey={`${showId}`} 
+                  progressOverride={watchProgressMap[`${showId}`]}  
+                />
+              </div>              
+
             </motion.div>
           )}
 
