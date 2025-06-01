@@ -360,27 +360,31 @@ const handleSkipOutro = async () => {
   const [isPreviewing, setIsPreviewing] = useState(false);
   const generateFramePreview = async (time) => {
     const tempVideo = document.createElement('video');
-    tempVideo.src = src;
-    tempVideo.crossOrigin = "anonymous";
+    tempVideo.src = new URL(src).toString();
     tempVideo.preload = 'auto';
-    tempVideo.currentTime = time;
-  
-    return new Promise((resolve) => {
-      tempVideo.addEventListener('seeked', () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = 854; // set preview dimensions
-        canvas.height = 480;
-  
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-        const dataUrl = canvas.toDataURL('image/jpeg');
-        resolve(dataUrl);
-      }, { once: true });
-  
-      // Wait until metadata is loaded before setting time
+    tempVideo.muted = true;
+    return new Promise((resolve, reject) => {
       tempVideo.addEventListener('loadedmetadata', () => {
         tempVideo.currentTime = Math.min(time, tempVideo.duration);
       }, { once: true });
+      tempVideo.addEventListener('seeked', () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = 854;
+          canvas.height = 480;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
+          const dataUrl = canvas.toDataURL('image/jpeg');
+          resolve(dataUrl);
+        } catch (err) {
+          console.warn("❌ Canvas draw failed (CORS issue?)", err);
+          reject(err);
+        }
+      }, { once: true });
+      tempVideo.addEventListener('error', (e) => {
+        console.error("❌ Preview video load error", e);
+        reject(e);
+      });
     });
   };
   const [previewImage, setPreviewImage] = useState(null);
