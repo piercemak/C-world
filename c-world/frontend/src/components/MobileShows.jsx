@@ -845,9 +845,9 @@ const MobileShows = () => {
         <div className='absolute bottom-0 flex w-full h-[60%] rounded-t-4xl z-10'>
             <div className='absolute bottom-0 flex flex-col w-full h-full px-6 pt-6 rounded-t-4xl bg-slate-700 inset-shadow-sm inset-shadow-white/20 z-20'>
                 <span className='text-white font-bold text-2xl'> {show?.title} </span> 
-                <span className='text-sm mt-2 text-white/60'> {show?.creator} </span>
+                <span className='text-sm mt-1 text-white/60'> {show?.creator} </span>
 
-                <div className='flex flex-row w-full mt-4 items-center gap-4'>
+                <div className='flex flex-row w-full mt-3 items-center gap-4'>
                     <span className='flex justify-center items-center border w-10 p-1 rounded-lg text-xs text-white'>
                         {show?.agerating}+
                     </span>
@@ -860,7 +860,7 @@ const MobileShows = () => {
                 </div>
 
             {/* Season List */}
-            <div ref={dropdownRef} className="flex w-full mt-4 left-2 text-white z-[50]">
+            <div ref={dropdownRef} className="flex w-full mt-2 mb-1 left-2 text-white z-[50]">
                 {show?.type === "movie" ? (
                     <div className="flex absolute items-center gap-2 text-xl font-semibold">
                         {layersIcon} <span>Movie</span>
@@ -1006,7 +1006,7 @@ const MobileShows = () => {
                                     className={`flex ${
                                         show?.type === "movie"
                                         ? "w-90 h-48 rounded-3xl shadow-2xl relative z-40"  
-                                        : "w-56 h-28 rounded-2xl shadow-lg"   
+                                        : "w-56 h-28 rounded-2xl shadow-lg mb-2"   
                                     }`}
                                 ></motion.div>
 
