@@ -355,7 +355,7 @@ const handleSkipOutro = async () => {
       );
     }
   };
-  
+
   {/* Frame Preview Handling */}
   const [isPreviewing, setIsPreviewing] = useState(false);
   const generateFramePreview = async (time) => {
@@ -409,21 +409,22 @@ const handleSkipOutro = async () => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowRight") {
+        e.preventDefault();
         handleSkipPreview('forward');
       } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
         handleSkipPreview('backward');
       } else if (e.key === "Enter" && isPreviewing) {
-        // resume playback from previewed time
+        e.preventDefault();
         videoRef.current.play();
-        setIsPreviewing(false); // hide preview
+        setIsPreviewing(false);
         setPreviewImage(null);
       }
     };
-  
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isPreviewing]);
 
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isPreviewing]);
 
 
   {/* Next ... */}
