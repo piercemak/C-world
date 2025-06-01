@@ -791,77 +791,73 @@ const extractS3KeyFromPath = (path) => {
 
       {/* Continue Watching Button */}
       const handleResume = async () => {
-        const showKeyPrefix = `watchProgress-${showId}`;
         const keys = Object.keys(localStorage).filter(k =>
-          k.startsWith(showKeyPrefix)
+          k.startsWith(`watchProgress-${showId}`)
         );
-
         if (keys.length === 0) {
           console.log("▶️ No saved progress for this show.");
           return;
         }
 
-        // Sort by progress value to find the furthest watched
         const mostRecentKey = keys.sort((a, b) =>
-          (parseFloat(localStorage.getItem(b)) || 0) -
-          (parseFloat(localStorage.getItem(a)) || 0)
+          (parseFloat(localStorage.getItem(b)) || 0) - (parseFloat(localStorage.getItem(a)) || 0)
         )[0];
 
-        // 🎯 CASE 1: Match episodic keys like watchProgress-showid-S1-E3
-        const match = mostRecentKey.match(/watchProgress-(.+)-S(\d+)-E(\d+)/);
-        if (match) {
-          const [, matchedShowId, seasonNumStr, episodeNumStr] = match;
-          const seasonNum = parseInt(seasonNumStr);
-          const episodeNum = parseInt(episodeNumStr);
-          const episodeList = show?.videos?.[`season${seasonNum}`];
-          if (!episodeList || !episodeList[episodeNum - 1]) return;
+        const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
+        if (!match) return;
 
-          let videoPath = episodeList[episodeNum - 1].path;
+        const [, matchedShowId, , seasonNumStr, episodeNumStr] = match;
+        const isMovie = !seasonNumStr && !episodeNumStr;
 
-          if (awsHostedShows.includes(showId)) {
-            const s3Key = videoPath.includes("cloudfront.net")
-              ? videoPath.split("cloudfront.net/")[1]
-              : extractS3KeyFromPath(videoPath);
+        let videoPath = null;
+        let season = null;
+        let episode = null;
 
-            if (!s3Key) return;
-            videoPath = await fetchSignedUrl(s3Key);
-          }
-
-          setSelectedVideo({
-            path: videoPath,
-            showId: matchedShowId,
-            season: seasonNum,
-            episode: episodeNum,
-          });
+        if (isMovie) {
+          videoPath = show?.videos?.[0]?.path || null;
         } else {
-          // 🎯 CASE 2: Movie key like watchProgress-perfect-blue
-          const savedTime = parseFloat(localStorage.getItem(mostRecentKey));
-          const videoPath = show?.moviePath;
+          season = parseInt(seasonNumStr);
+          episode = parseInt(episodeNumStr);
+          const episodeList = show?.videos?.[`season${season}`];
+          if (!episodeList || !episodeList[episode - 1]) return;
 
-          if (!videoPath) {
-            console.warn("❌ No moviePath found for this movie.");
+          videoPath = episodeList[episode - 1].path;
+        }
+
+        if (!videoPath) {
+          console.error("❌ No video path found for resume.");
+          return;
+        }
+
+        if (awsHostedShows.includes(showId)) {
+          const isCloudfrontUrl = videoPath.includes("cloudfront.net");
+          const s3Key = isCloudfrontUrl
+            ? videoPath.split("cloudfront.net/")[1]
+            : extractS3KeyFromPath(videoPath);
+
+          if (!s3Key) {
+            console.error("❌ Could not extract s3Key from resume video path:", videoPath);
             return;
           }
 
-          let resolvedPath = videoPath;
-          if (awsHostedShows.includes(showId)) {
-            const s3Key = extractS3KeyFromPath(videoPath);
-            if (!s3Key) return;
-            resolvedPath = await fetchSignedUrl(s3Key);
+          const signedUrl = await fetchSignedUrl(s3Key);
+          if (!signedUrl) {
+            console.error("❌ Signed URL fetch failed.");
+            return;
           }
 
-          setSelectedVideo({
-            path: resolvedPath,
-            showId,
-            season: null,
-            episode: null,
-            resumeTime: savedTime,
-          });
+          videoPath = signedUrl;
         }
+
+        setSelectedVideo({
+          path: videoPath,
+          showId: matchedShowId,
+          season: season,
+          episode: episode,
+        });
 
         setExpanded(true);
       };
-
 
 
 
@@ -1173,6 +1169,11 @@ const extractS3KeyFromPath = (path) => {
               >
                 {show?.title}
               </div>
+           
+              <WatchProgressBar
+                storageKey={`${showId}`} 
+                progressOverride={watchProgressMap[`${showId}`]}  
+              />
             </motion.div>
           )}
 
