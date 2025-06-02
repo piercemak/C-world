@@ -1075,8 +1075,9 @@ const extractS3KeyFromPath = (path) => {
                           />
                         </div>
                         <div className="text-sm font-semibold tracking-wide">
-                          S{resumeEpisode.season}E{resumeEpisode.episode} —{" "}
-                          {resumeEpisode.title.replace(/_/g, " ")}
+                          {resumeEpisode.season !== null && resumeEpisode.episode !== null
+                            ? `S${resumeEpisode.season}E${resumeEpisode.episode} — ${resumeEpisode.title.replace(/_/g, " ")}`
+                            : resumeEpisode.title.replace(/_/g, " ")}
                         </div>
                       </motion.div>
                     );
