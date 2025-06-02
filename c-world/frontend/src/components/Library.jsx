@@ -1166,13 +1166,10 @@ const extractS3KeyFromPath = (path) => {
               >
                 {show?.title}
               </div>  
-
-              <div className="absolute bottom-1 left-0 w-full z-20 px-2">
-                <WatchProgressBar
-                  storageKey={`${showId}`} 
-                  progressOverride={watchProgressMap[`${showId}`]}  
-                />
-              </div>              
+              <WatchProgressBar
+                storageKey={`watchProgress-${showId}`} 
+                progressOverride={watchProgressMap[`watchProgress-${showId}`]}  
+              />             
 
             </motion.div>
           )}
