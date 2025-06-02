@@ -4,6 +4,16 @@ const WatchProgressBar = ({ storageKey, duration = 690, progressOverride = null 
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+
+    console.log("📺 WatchProgressBar Debug:", {
+      storageKey,
+      progressOverride,
+      localStorageValue: localStorage.getItem(`watchProgress-${storageKey}`),
+      computedProgress: progressOverride !== null
+        ? Math.min(progressOverride / duration, 1)
+        : Math.min((parseFloat(localStorage.getItem(`watchProgress-${storageKey}`)) || 0) / duration, 1)
+    });
+
     if (progressOverride !== null) {
       setProgress(Math.min(progressOverride / duration, 1));
       return;
