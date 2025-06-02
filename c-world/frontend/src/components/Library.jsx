@@ -1113,6 +1113,8 @@ const extractS3KeyFromPath = (path) => {
             transition={{ duration: 0.3 }}      
             className="flex flex-row h-full pb-6 2xl:pb-20 px-4 items-end gap-6 snap-x overflow-x-auto scrollbar-hidden z-[8]"
           >
+            
+          {/* Movies */}  
           {show?.type === "movie" && (
             <motion.div 
               whileHover={{
@@ -1154,7 +1156,7 @@ const extractS3KeyFromPath = (path) => {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
               }}
-              className="relative md:left-8 lg:left-60 w-56 h-28 rounded-2xl cursor-pointer flex-shrink-0 snap-center"
+              className="relative md:left-8 lg:left-60 w-56 h-28 group rounded-2xl cursor-pointer flex-shrink-0 snap-center"
             >
               <div 
                 className="absolute bottom-0 w-full text-white font-bold tracking-wide text-sm p-1 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -1165,11 +1167,12 @@ const extractS3KeyFromPath = (path) => {
                 }}
               >
                 {show?.title}
-              </div>  
+              </div>
+
               <WatchProgressBar
                 storageKey={`watchProgress-${showId}`} 
-                progressOverride={watchProgressMap[`watchProgress-${showId}`]}  
-              />             
+                progressOverride={watchProgressMap[`watchProgress-${showId}`]}
+              />           
 
             </motion.div>
           )}
