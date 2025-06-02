@@ -872,16 +872,28 @@ const extractS3KeyFromPath = (path) => {
         const mostRecentKey = keys.sort((a, b) =>
           (localStorage.getItem(b) || 0) - (localStorage.getItem(a) || 0)
         )[0];
-        const match = mostRecentKey.match(/watchProgress-(.+)-S(\d+)-E(\d+)/);
+        const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
         if (!match) return;
+        const [, matchedShowId, , seasonNumStr, episodeNumStr] = match;
+        const isMovie = !seasonNumStr && !episodeNumStr;
 
-        const [, matchedShowId, seasonNumStr, episodeNumStr] = match;
+        if (isMovie) {
+          const video = show?.videos?.[0];
+          if (!video) return;
+          setResumeEpisode({
+            season: null,
+            episode: null,
+            title: show?.title || matchedShowId,
+            path: video.path,
+          });
+          setResumeHovered(true);
+          return;
+        }
         const seasonNum = parseInt(seasonNumStr);
         const episodeNum = parseInt(episodeNumStr);
         const episodeList = show?.videos?.[`season${seasonNum}`];
         if (!episodeList || !episodeList[episodeNum - 1]) return;
         const video = episodeList[episodeNum - 1];
-
         setResumeEpisode({
           season: seasonNum,
           episode: episodeNum,
@@ -890,6 +902,7 @@ const extractS3KeyFromPath = (path) => {
         });
         setResumeHovered(true);
       };
+
       const handleMouseLeaveResume = () => {
         setResumeHovered(false);
       };
