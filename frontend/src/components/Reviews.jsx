@@ -475,7 +475,7 @@ return (
 
         {/* Foreground Content */}
         <div className="relative z-10 flex justify-center items-center h-full px-12">
-            <div className="flex flex-row review-border bg-transparent w-full h-[750px]">              
+            <div className="flex flex-row review-border backdrop-blur-sm bg-transparent w-full h-[750px]">              
                 {/* Review Content */}
                 <div className='w-[45%] h-full rounded-l-[15px] justify-center flex items-center'>
                     <div className="absolute top-0 right-0 flex justify-end p-8 z-50">
