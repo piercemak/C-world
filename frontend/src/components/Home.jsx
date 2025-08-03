@@ -99,17 +99,20 @@ const Home = () => {
     }
   };  
   const [videoUrl, setVideoUrl] = useState("");
+  const [waterfallUrl, setWaterfallUrl] = useState("");
   useEffect(() => {
-    const getSignedUrl = async () => {
-      const cloudKeys = [
-        "misc/cartoonMashup1.mp4",
-      ];
+    const fetchVideos = async () => {
+      const cloudKeys = ["misc/cartoonMashup1.mp4"];
       const randomIndex = Math.floor(Math.random() * cloudKeys.length);
       const selectedKey = cloudKeys[randomIndex];
-      const signed = await fetchSignedUrl(selectedKey);
-      setVideoUrl(signed);
+      const signedRandom = await fetchSignedUrl(selectedKey);
+      setVideoUrl(signedRandom);
+
+      const signedWaterfall = await fetchSignedUrl("misc/waterfallLoop.mp4");
+      setWaterfallUrl(signedWaterfall);
     };
-    getSignedUrl();
+
+    fetchVideos();
   }, []);
 
 
@@ -173,6 +176,16 @@ const Home = () => {
         </label>
 
         <label className='relative overflow-hidden' style={{ "--_img": "url(https://assets.codepen.io/2585/pothos.jpeg)" }}>
+          {videoUrl && (
+            <video
+              className="absolute top-0 left-0 w-full h-dvh object-cover z-[2]"
+              src={waterfallUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          )}           
           <input className='absolute' type="radio" name="images" value="Pothos" onChange={handleChange}/>
           {selectedImage === "Pothos" && (
             <motion.div 
