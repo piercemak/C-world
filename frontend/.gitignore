@@ -1,0 +1,46 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
++__pycache__/
+
+# Build output
+dist/
+dist-ssr/
+build/
+
+# Environment variables
+*.local
+.env
+
+# Python
++*.py[cod]
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# macOS system files
++.DS_Store
++.AppleDouble
++.LSOverride
+
+# Thumbnails
++._*
+
+# VS Code workspace history
++.vscode/*.code-workspace
