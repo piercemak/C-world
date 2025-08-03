@@ -419,6 +419,8 @@ const handleLogoClick = (id) => {
     });
   }, 300);
 };
+const [loadingLogo, setLoadingLogo] = useState(true);
+
 
 {/* Genre Tags */}
 const [selectedGenres, setSelectedGenres] = useState([]);
@@ -1104,7 +1106,8 @@ return (
 
                                     <motion.img
                                     src={show.logo}
-                                    className="size-28 object-cover rounded-lg cursor-pointer hover:opacity-70"
+                                    onLoad={() => setLoadingLogo(false)}
+                                    className={`size-28 object-cover rounded-lg cursor-pointer hover:opacity-70 ${loadingLogo ? "animate-pulse" : ""}`}
                                     alt={show.title}
                                     onClick={() => handleLogoClick(id)}
                                     whileTap={{
