@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import PlusSign from './plusSign'
+import PlusSign from './PlusSign';
 import {
   DndContext,
   closestCenter,
