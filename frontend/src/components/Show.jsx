@@ -650,7 +650,7 @@ const handleSkipOutro = async () => {
     )}    
 
     {subtitleText && (
-      <div className="absolute bottom-24 w-full text-center">
+      <div className="absolute bottom-20 2xl:bottom-24 w-full text-center">
         <div
           className={`
             movie-subtitle 
