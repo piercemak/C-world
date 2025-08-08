@@ -216,6 +216,12 @@ if (prevEpisode < 1 && showSeasonData) {
         intro: { start: 0, end: 118 },
         outro: { start: 1345, skipTo: "next" }, //Outro starts around 22:25
       },
+      rules: [
+        {
+          condition: (s, e) => (s === 2 && e >= 1) || s > 2,
+          intro: { start: 0, end: 90 },
+        }
+      ]
     }    
 
 
@@ -359,6 +365,12 @@ const handleSkipToPrevious = async () => {
   }
 };
 
+const isFirstEpisode =
+  actualEpisode === 1 && actualSeason === 1;
+const isLastEpisode =
+  actualEpisode === (episodeTitles?.[actualSeason]?.length || 0) &&
+  actualSeason === Object.keys(episodeTitles || {}).length;
+
 
   {/* Placeholder Images */}
   const isMovie = season === null && episode === null;
@@ -387,6 +399,21 @@ const handleSkipToPrevious = async () => {
   } else {
     nextTitleFormatted = showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
   }
+
+const formattedShowTitle = showId
+  ?.replace(/-/g, " ")
+  .replace(/\b\w/g, (c) => c.toUpperCase());
+
+const currentTitleRaw =
+  season && episodeTitles?.[actualSeason]?.[actualEpisode - 1];
+
+const currentTitleFormatted = currentTitleRaw
+  ? currentTitleRaw.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+  : `Episode ${actualEpisode}`;
+
+const displayTitle = `${formattedShowTitle}`
+const displayEpisodeNumber = `E${actualEpisode}`
+const displayEpisodeTitle = `${currentTitleFormatted}`;
 
   {/* Auto-skip Countdown */}
   useEffect(() => {
@@ -727,16 +754,30 @@ const handleSkipToPrevious = async () => {
           </div>
 
           <div className="flex w-full items-center gap-4 text-white relative ">
+
+          <div className="flex flex-wrap text-white absolute items-center max-w-[40%] leading-none">
+            <span className="font-bold italic poppinsfont text-[14px]">{displayTitle}</span>
+            {!isMovie && (
+              <>
+                <span className="ml-[6px] text-[14px] font-extralight">{displayEpisodeNumber}</span>
+                <span className="mx-2">-</span>
+                <span className="text-[14px] font-extralight tracking-wide">{displayEpisodeTitle}</span>
+              </>
+            )}
+          </div>
+
             {/* Play/Pause */}
               <div className="w-full justify-center gap-4 flex items-center relative left-8">
 
+              {!isMovie && !isFirstEpisode && (
                 <motion.div
                   whileTap={{ scale: 0.9 }}
                   whileHover={{ scale: 1.05 }}
-                  onClick={handleSkipToPrevious}                
+                  onClick={handleSkipToPrevious}
                 >
                   <span>{prevepIcon}</span>
                 </motion.div>
+              )}
 
                 <motion.div onClick={skipBackward} 
                   className="cursor-pointer focus-visible:outline-none"
@@ -758,13 +799,15 @@ const handleSkipToPrevious = async () => {
                   <img src={SkipForward} alt="Skip forward" className="size-7" />
                 </motion.div>
 
-                <motion.div
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={handleSkipOutro}                 
-                >
-                  <span>{nextepIcon}</span>
-                </motion.div>
+                {!isMovie && !isLastEpisode && (
+                  <motion.div
+                    whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={handleSkipOutro}
+                  >
+                    <span>{nextepIcon}</span>
+                  </motion.div>
+                )}
 
               </div>
 
