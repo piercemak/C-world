@@ -18,6 +18,9 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   const fullscreenexitIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z"/></svg>
   const volumeIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8"/></svg>
   const mutedIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/></svg>
+  const nextepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z"/></svg>
+  const prevepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0z"/></svg>
+
 
   {/* Volume Control */}
   const [volumeHovered, setvolumeHovered] = useState(false);
@@ -160,6 +163,18 @@ if (showSeasonData && nextEpisode > showSeasonData[actualSeason]) {
   nextEpisode = 1;
 }
 
+let prevSeason = actualSeason;
+let prevEpisode = actualEpisode - 1;
+
+if (prevEpisode < 1 && showSeasonData) {
+  prevSeason = actualSeason - 1;
+  if (showSeasonData[prevSeason]) {
+    prevEpisode = showSeasonData[prevSeason]; 
+  } else {
+    prevEpisode = null; 
+  }
+}
+
   const skipTimes = {
     "stevenuniverse": {
       default: {
@@ -194,7 +209,14 @@ if (showSeasonData && nextEpisode > showSeasonData[actualSeason]) {
         intro: { start: 0, end: 90 },
         outro: { start: 1325, skipTo: "next" }, //Outro starts around 22:05
       },
-    }      
+    },
+    
+    "fmab": {
+      default: {
+        intro: { start: 0, end: 118 },
+        outro: { start: 1345, skipTo: "next" }, //Outro starts around 22:25
+      },
+    }    
 
 
   };
@@ -320,6 +342,23 @@ const handleSkipOutro = async () => {
     }
   }
 };
+
+const handleSkipToPrevious = async () => {
+  if (!prevEpisode || prevSeason < 1) return; 
+
+  if (getSignedUrl && typeof getSignedUrl === "function") {
+    const cleanId = showId.replace(/-/g, "");
+    const seasonStr = `S${String(prevSeason).padStart(2, "0")}`;
+    const episodeStr = `E${String(prevEpisode).padStart(2, "0")}`;
+    const titleRaw = episodeTitles?.[prevSeason]?.[prevEpisode - 1] || "";
+    const s3Key = `${cleanId}/season${prevSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
+    const signedUrl = await getSignedUrl(s3Key);
+    onSkipToNext?.(prevSeason, prevEpisode, signedUrl);
+  } else {
+    onSkipToNext?.(prevSeason, prevEpisode);
+  }
+};
+
 
   {/* Placeholder Images */}
   const isMovie = season === null && episode === null;
@@ -690,6 +729,15 @@ const handleSkipOutro = async () => {
           <div className="flex w-full items-center gap-4 text-white relative ">
             {/* Play/Pause */}
               <div className="w-full justify-center gap-4 flex items-center relative left-8">
+
+                <motion.div
+                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={handleSkipToPrevious}                
+                >
+                  <span>{prevepIcon}</span>
+                </motion.div>
+
                 <motion.div onClick={skipBackward} 
                   className="cursor-pointer focus-visible:outline-none"
                   whileTap={{ scale: 0.9 }}
@@ -709,6 +757,15 @@ const handleSkipOutro = async () => {
                 >
                   <img src={SkipForward} alt="Skip forward" className="size-7" />
                 </motion.div>
+
+                <motion.div
+                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={handleSkipOutro}                 
+                >
+                  <span>{nextepIcon}</span>
+                </motion.div>
+
               </div>
 
 
