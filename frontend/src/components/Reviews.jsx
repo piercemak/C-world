@@ -419,8 +419,6 @@ const handleLogoClick = (id) => {
     });
   }, 300);
 };
-const [loadingLogo, setLoadingLogo] = useState(true);
-
 
 {/* Genre Tags */}
 const [selectedGenres, setSelectedGenres] = useState([]);
@@ -477,12 +475,11 @@ return (
 
         {/* Foreground Content */}
         <div className="relative z-10 flex justify-center items-center h-full px-12">
-            <div className="flex flex-row review-border backdrop-blur-sm bg-transparent w-full h-[750px]">              
+            <div className="flex flex-row review-border backdrop-blur-sm bg-transparent w-full h-[98%] 2xl:h-[750px]">              
                 {/* Review Content */}
-                <div className='w-[45%] h-full rounded-l-[15px] justify-center flex items-center'>
-                    <div className="absolute top-0 right-0 flex justify-end p-8 z-50">
-                        <motion.div
-                        >
+                <div className='w-[60%] 2xl:w-[45%] h-full rounded-l-[15px] justify-center flex items-center'>
+                    <div className="absolute top-0 right-0 justify-end p-8 z-50 2xl:block hidden">
+                        <motion.div>
                             <PlusSign 
                                 pageOptions={pageIcons}
                                 pageIndex={pageIndex}
@@ -512,7 +509,79 @@ return (
                             </motion.ul>
                             )}
                         </AnimatePresence>
-                    </div>                      
+                    </div>
+                    <div className="absolute top-58 -right-[46px] justify-end flex flex-col gap-6 p-2 z-50 2xl:hidden bg-transparent backdrop-blur-3xl border border-white/80 rounded-full">
+                        <motion.span 
+                            whileTap={{
+                            scale: 0.9,
+                            transition: {
+                            type: 'spring',
+                            stiffness: 500,
+                            damping: 10,
+                            },
+                            }}
+                            whileHover={{
+                                scale: 1.05,
+                                transition: {
+                                type: 'spring',
+                                stiffness: 300,
+                                damping: 10,
+                                },
+                            }} 
+                            onClick={handleNavigate}     
+                            className='text-white size-6 cursor-pointer'
+                        >
+                            {homeIcon}
+                        </motion.span>
+                        <motion.span 
+                            whileTap={{
+                            scale: 0.9,
+                            transition: {
+                            type: 'spring',
+                            stiffness: 500,
+                            damping: 10,
+                            },
+                            }}
+                            whileHover={{
+                                scale: 1.05,
+                                transition: {
+                                type: 'spring',
+                                stiffness: 300,
+                                damping: 10,
+                                },
+                            }} 
+                            onClick={() => setPageIndex(1)} 
+                            className={`size-6 cursor-pointer ${
+                                pageIndex === 1 ? 'text-green-300/70' : 'text-white'
+                            }`}
+                        >
+                            {starIcon}
+                        </motion.span>
+                        <motion.span 
+                            whileTap={{
+                            scale: 0.9,
+                            transition: {
+                            type: 'spring',
+                            stiffness: 500,
+                            damping: 10,
+                            },
+                            }}
+                            whileHover={{
+                                scale: 1.05,
+                                transition: {
+                                type: 'spring',
+                                stiffness: 300,
+                                damping: 10,
+                                },
+                            }} 
+                            onClick={() => setPageIndex(2)} 
+                            className={`size-6 cursor-pointer ${
+                                pageIndex === 2 ? 'text-green-300/70' : 'text-white'
+                            }`}
+                        >
+                            {checkIcon}
+                        </motion.span>
+                    </div>                                           
                 <AnimatePresence mode="wait">
                     {pageIndex === 1 && (
                         <motion.div
@@ -631,7 +700,6 @@ return (
                                     </motion.div>
                                </div>
                                 {reviews[currentShowId]?.text && !isEditing ? (
-                                // 🟢 SHOW SAVED REVIEW
                                 <div className='w-full h-[80%] flex flex-col justify-between bg-white/20 p-4 rounded-xl text-white'>
                                     <div className='text-sm whitespace-pre-line flex flex-col justify-center items-center h-full text-center text-white/90 font-bold italic'>
                                         {reviews[currentShowId].text}
@@ -642,7 +710,7 @@ return (
                                         </div>                                                                    
                                     </div>
 
-                                    <div className="flex flex-row justify-center gap-2 mb-2">
+                                    <div className="flex flex-row justify-center gap-2 mb-2 ">
                                         {reviews[currentShowId]?.genres?.map((g) => (
                                         <motion.span 
                                             key={g} 
@@ -666,7 +734,6 @@ return (
                                     </div>
                                 </div>
                                 ) : (
-                                // ✏️ SHOW INPUTS TO WRITE NEW REVIEW
                                 <div className='w-full h-[80%] flex flex-col bg-white/20 p-2 rounded-xl'>                                                                                                   
                                     <textarea
                                     className="w-full h-full resize-none p-2 rounded text-white/70 outline-none focus:outline-none scrollbar-hidden"
@@ -971,7 +1038,7 @@ return (
                 )}
 
 
-                {/* Modal for selecting from entire library */}
+                {/* Library Modal */}
                 <AnimatePresence>
                     {showLibraryModal && (
                     <motion.div
@@ -985,7 +1052,7 @@ return (
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
-                        className="bg-black/90 rounded-xl p-6 max-h-[80vh] w-[600px] overflow-y-auto text-white"
+                        className="bg-black/90 rounded-xl p-6 max-h-[80vh] w-[600px] overflow-y-auto text-white review-scrollbar"
                         onClick={(e) => e.stopPropagation()}
                         >
                         <h2 className="text-xl mb-4 font-bold text-center">Add from Library</h2>
@@ -1070,7 +1137,7 @@ return (
             </AnimatePresence>
                 </div>
 
-                <div className='flex flex-col items-center pt-10 pr-16 w-[55%] h-full rounded-r-[15px] overflow-y-auto review-scrollbar'>
+                <div className='flex flex-col items-center pt-10 pr-16 w-[40%] 2xl:w-[55%] h-full rounded-r-[15px] overflow-y-auto review-scrollbar'>
                 {/* DYNAMIC REVIEWS LIST: Clones of the above */}
                 <DndContext collisionDetection={closestCenter} sensors={sensors} onDragEnd={handleDragEnd}>
                     <SortableContext items={reviewList.map(([id]) => id)} strategy={verticalListSortingStrategy}>
@@ -1106,8 +1173,7 @@ return (
 
                                     <motion.img
                                     src={show.logo}
-                                    onLoad={() => setLoadingLogo(false)}
-                                    className={`size-28 object-cover rounded-lg cursor-pointer hover:opacity-70 ${loadingLogo ? "animate-pulse" : ""}`}
+                                    className="size-28 object-cover rounded-lg cursor-pointer hover:opacity-70"
                                     alt={show.title}
                                     onClick={() => handleLogoClick(id)}
                                     whileTap={{
@@ -1119,12 +1185,13 @@ return (
                                     <div className='flex flex-col ml-8'>
                                     <span className='text-white font-bold'>{show.title}</span>
                                     <span className='text-white/40 font-light'>{show.genre}</span>
+                                    <div className='pointer-events-none top-4 -left-1 2xl:top-0 2xl:left-0 relative 2xl:hidden'><StarReview showId={id} /></div>
                                     </div>
                                 </div>
 
-                                <div className='flex flex-row items-center'>
-                                    <div className='mr-4 pointer-events-none'><StarReview showId={id} /></div>
-                                    <div className='mr-4'>
+                                <div className='flex flex-row items-center relative left-18 2xl:left-0'>
+                                   <div className='mr-4 pointer-events-none relative md:hidden 2xl:block'><StarReview showId={id} /></div>
+                                    <div className='mr-0 2xl:mr-4'>
                                         <WatchlistToggleButton id={id} />
                                     </div>
                                     <span className='text-white/40 cursor-pointer'>{dragIcon}</span>
