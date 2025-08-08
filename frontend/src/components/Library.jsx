@@ -762,7 +762,7 @@ const Library = () => {
         "The_Immortal_Legion",
         "Combined_Strength"
       ],
-      
+
       5: [
         "Flame_of_Vengeance",
         "Beyond_the_Inferno",
