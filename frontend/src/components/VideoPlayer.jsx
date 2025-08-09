@@ -79,7 +79,8 @@ const VideoPlayer = () => {
         { title: "Little Miss Sunshine", cardId: "card-12" },
         { title: "Ghost in The Shell", cardId: "card-13" },
         { title: "Mob Psycho 100", cardId: "card-14" },
-        { title: "Fullmetal Alchemist", cardId: "card-15" },                  
+        { title: "Fullmetal Alchemist", cardId: "card-15" },
+        { title: "Jujutsu Kaisen", cardId: "card-16" },                  
     ];
     const cardIdToSlug = {
         "card-2": "steven-universe",
@@ -96,7 +97,8 @@ const VideoPlayer = () => {
         "card-12": "little-miss-sunshine",
         "card-13": "ghost-in-the-shell",
         "card-14": "mob-psycho",
-        "card-15": "fmab",                      
+        "card-15": "fmab",
+        "card-16": "jjk",                      
       };
     const handleCardClick = (cardId) => {
         const card = document.querySelector(`.${styles[cardId]}`);

@@ -686,7 +686,16 @@ const displayEpisodeTitle = `${currentTitleFormatted}`;
           srcLang="en"
           label="English"
         />
-      )}              
+      )} 
+
+      {showId === "jjk" && season && episode && (
+        <track
+          src={`/subtitles/jjk/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}                    
 
       {showId === "the-vanishing" && (
         <track

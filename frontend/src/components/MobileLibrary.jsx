@@ -51,7 +51,9 @@ const MobileLibrary = () => {
     
     { id: "mob-psycho", title: "Watch Mob Psycho 100", creator: "ONE", background: "/images/mobpsycho/covers/mobpsycho_backdrop.avif", ratings: "8.5", type: "TV", keyart: "/images/mobpsycho/covers/mobpsycho_mobilelogo.jpg" }, 
 
-    { id: "fmab", title: "Watch Fullmetal Alchemist", creator: "Bones", background: "/images/fmab/covers/fmab_backdrop.jpg", ratings: "9.1", type: "TV", keyart: "/images/fmab/covers/fmab_mobilelogo.jpg" },    
+    { id: "fmab", title: "Watch Fullmetal Alchemist", creator: "Bones", background: "/images/fmab/covers/fmab_backdrop.jpg", ratings: "9.1", type: "TV", keyart: "/images/fmab/covers/fmab_mobilelogo.jpg" },
+    
+    { id: "jjk", title: "Watch Jujutsu Kaisen", creator: "Gege Akutami", background: "/images/jjk/covers/jjk_backdrop.jpg", ratings: "8.5", type: "TV", keyart: "/images/jjk/covers/jjk_mobileLogo.jpg" },      
 
     { id: "ghost-in-the-shell", title: "Watch Ghost in The Shell", creator: "Kôkaku Kidôtai", background: "/images/ghostintheshell/covers/ghostintheshell_backdrop.jpg", ratings: "7.9", type: "Movies", keyart: "/images/ghostintheshell/covers/ghostintheshell_mobilelogo.webp" },         
     

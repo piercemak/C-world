@@ -726,6 +726,58 @@ const MobileShows = () => {
       ]         
     }    
     
+    const episodeTitles_jjk = {
+      1: [
+        "Ryomen_Sukuna",
+        "For_Myself",
+        "Girl_of_Steel",
+        "Curse_Womb_Must_Die_I",
+        "Curse_Womb_Must_Die_II",
+        "After_Rain",
+        "Assault",
+        "Boredom",
+        "Small_Fry_and_Reverse_Retribution",
+        "Idle_Transfiguration",
+        "Narrow-minded",
+        "To_You_Someday",
+        "Tomorrow",
+        "Kyoto_Sister_School_Exchange_Event_Group_Battle_0",
+        "Kyoto_Sister_School_Exchange_Event_Group_Battle_1",
+        "Kyoto_Sister_School_Exchange_Event_Group_Battle_2",
+        "Kyoto_Sister_School_Exchange_Event_Group_Battle_3",
+        "Sage",
+        "Black_Flash",
+        "Nonstandard",
+        "Jujutsu_Koshien",
+        "The_Origin_of_Blind_Obedience",
+        "The_Origin_of_Blind_Obedience_2",
+        "Accomplices"
+      ],
+      2: [
+        "Hidden_Inventory",
+        "Hidden_Inventory_Part_2",
+        "Hidden_Inventory_Part_3",
+        "Hidden_Inventory_Part_4",
+        "Premature_Death",
+        "Its_Like_That",
+        "Evening_Festival",
+        "The_Shibuya_Incident",
+        "The_Shibuya_Incident_Gate_Open",
+        "Pandemonium",
+        "Summon",
+        "Dull_Knife",
+        "Red_Scale",
+        "Fluctuations",
+        "Fluctuations_Part_2",
+        "Thunderclap",
+        "Thunderclap_Part_2",
+        "Right_and_Wrong",
+        "Right_and_Wrong_Part_3",
+        "Transformation",
+        "Transformation_Part_2",
+        "The_Shibuya_Incident_Gate_Closed"        
+      ]
+    }     
 
 
 
@@ -736,6 +788,7 @@ const MobileShows = () => {
     "neon-genesis": episodeTitles_neongenesis,
     "mob-psycho": episodeTitles_mobpsycho,
     "fmab": episodeTitles_fmab,
+    "jjk": episodeTitles_jjk,
     };
 
     {/* Show/Season Handling */}
@@ -881,7 +934,22 @@ const MobileShows = () => {
           description: "Brothers Edward and Alphonse Elric search for the Philsopher's Stone, hoping to restore their bodies, which were lost when they attempted to use their alchemy skills to resurrect their deceased mother. Edward, who lost only limbs, joins the State Military, which gives him the freedom to continue the search as he tries to restore his brother, whose soul is tethered to earth by a suit of armor. However, Edward and Alphonse are not the only ones seeking the powerful stone. And as they search, they learn of a plot to transmute the entire country for reasons they cannot comprehend.",
           mobilebackground: "/images/fmab/covers/fmab_background.jpg",
           videos: videoDataByShow["fmab"],
-        },          
+        },
+        
+        "jjk": {
+          type: "show",  
+          title: "Jujutsu Kaisen",
+          ratings: "8.5",
+          agerating: "16",
+          creator: "Gege Akutami",          
+          release_year: "2020",
+          genre: "Manga series",
+          season_total_number: "2 seasons",
+          season_digit: 2,
+          description: "Yuji Itadori eats a cursed finger to save a classmate, and now Ryomen Sukuna, a powerfully evil sorcerer known as the King of Curses, lives in Itadori’s soul. Curses are supernatural terrors created from negative human emotions. This cursed energy can be used as a power source by jujutsu sorcerers and cursed spirits alike.",
+          mobilebackground: "/images/jjk/covers/jjk_background.png",
+          videos: videoDataByShow["jjk"],
+        },        
 
         "perfect-blue": {
           type: "movie",  
@@ -1147,7 +1215,16 @@ const MobileShows = () => {
                     srcLang="en"
                     label="English"
                 />
-                )}                                 
+                )}
+
+                {showId === "jjk" && selectedVideo?.season && selectedVideo?.episode && (
+                <track
+                    src={`/subtitles/jjk/season${selectedVideo.season}/S${selectedVideo.season}E${String(selectedVideo.episode).padStart(2, "0")}_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                />
+                )}                                                   
 
                 {showId === "the-vanishing" && (
                     <track

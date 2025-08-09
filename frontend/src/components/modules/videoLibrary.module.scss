@@ -384,7 +384,12 @@
         background-color: #f8d7cd;
         view-transition-name: c15;
         background-image: url("/images/cardimages/fmabLogo.svg");
-       }                   
+       }
+    &.card-16 {
+        background-color: #f8d7cd;
+        view-transition-name: c15;
+        background-image: url("/images/cardimages/jjkLogo.svg");
+       }                            
 
    }
     @media (max-width: 1280px) {
