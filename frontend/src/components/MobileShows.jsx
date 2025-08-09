@@ -661,6 +661,69 @@ const MobileShows = () => {
         "One_is_All_All_is_One",
         "Beasts_of_Dublith"
       ],
+
+      2: [
+        "Those_Who_Lurk_Underground",
+        "Envoy_From_the_East",
+        "Footsteps_of_a_Comrade_in_Arms",
+        "Cold_Flame",
+        "The_Arrogant_Palm_of_a_Small_Human",
+        "Death_of_the_Undying",
+        "Father_Before_the_Grave",
+        "Advance_of_the_Fool",
+        "Backs_in_the_Distance",
+        "Girl_on_the_Battlefield",
+        "Inside_the_Belly",
+        "Doorway_of_Darkness",
+        "Reunion"
+      ],
+      
+      3: [
+        "Interlude_Party",
+        "Father",
+        "Struggle_of_the_Fool",
+        "The_Ishvalan_War_of_Extermination",
+        "The_520_Cens_Promise",
+        "The_Fuhrers_Son",
+        "The_Northern_Wall_of_Briggs",
+        "Ice_Queen",
+        "The_Shape_of_This_Country",
+        "Family_Portrait",
+        "The_First_Homunculus",
+        "Conflict_at_Baschool",
+        "Daydream"
+      ],
+
+      4: [
+        "Homunculus",
+        "The_Abyss",
+        "Signs_of_a_Counteroffensive",
+        "Bite_of_the_Ant",
+        "Revving_at_Full_Throttle",
+        "The_Promised_Day",
+        "Looming_Shadows",
+        "Emissary_of_Darkness",
+        "The_Oath_in_the_Tunnel",
+        "Filial_Affection",
+        "Upheaval_in_Central",
+        "The_Immortal_Legion",
+        "Combined_Strength"
+      ],
+
+      5: [
+        "Flame_of_Vengeance",
+        "Beyond_the_Inferno",
+        "The_Adults_Way_of_Life",
+        "The_Return_of_the_Fuhrer",
+        "Eternal_Leave",
+        "Sacrifices",
+        "Lost_Light",
+        "Eye_of_Heaven_Gateway_of_Earth",
+        "He_Who_Would_Swallow_God",
+        "A_Fierce_Counterattack",
+        "The_Other_Side_of_the_Gateway",
+        "Journeys_End"
+      ]         
     }    
     
 
