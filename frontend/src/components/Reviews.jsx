@@ -446,7 +446,13 @@ const pageIcons = [
 
 
 {/* Film grid */}
-const [filmGrid, setFilmGrid] = useState([]);
+const [filmGrid, setFilmGrid] = useState(() => {
+  const saved = localStorage.getItem('filmGrid');
+  return saved ? JSON.parse(saved) : [];
+});
+useEffect(() => {
+  localStorage.setItem('filmGrid', JSON.stringify(filmGrid));
+}, [filmGrid]);
 const [showLibraryModal, setShowLibraryModal] = useState(false);
 
 const location = useLocation();
