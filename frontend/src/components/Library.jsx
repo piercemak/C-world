@@ -807,6 +807,7 @@ const Library = () => {
         "The_Origin_of_Blind_Obedience_2",
         "Accomplices"
       ],
+
       2: [
         "Hidden_Inventory",
         "Hidden_Inventory_Part_2",
@@ -826,11 +827,12 @@ const Library = () => {
         "Thunderclap",
         "Thunderclap_Part_2",
         "Right_and_Wrong",
+        "Right_and_Wrong_Part_2",
         "Right_and_Wrong_Part_3",
         "Transformation",
         "Transformation_Part_2",
         "The_Shibuya_Incident_Gate_Closed"        
-      ]
+      ],
     }    
 
 
