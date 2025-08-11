@@ -399,42 +399,41 @@ const isLastEpisode =
   const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
   const placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`
   //Episode Title
-  let nextS = null;
-  let nextE = null;
-  let nextTitleRaw = "";
-  let nextTitleFormatted = "";
 
-  if (season !== null && episode !== null && episodeTitles) {
-    nextS = actualEpisode + 1 > (episodeTitles[actualSeason]?.length || 0)
-      ? actualSeason + 1
-      : actualSeason;
+// already parsed from src:
+const currentSeason  = actualSeason;
+const currentEpisode = actualEpisode;
 
-    nextE = actualEpisode + 1 > (episodeTitles[actualSeason]?.length || 0)
-      ? 1
-      : actualEpisode + 1;
+// NEXT card (preview)
+let nextS = currentEpisode + 1 > (episodeTitles[currentSeason]?.length || 0)
+  ? currentSeason + 1
+  : currentSeason;
 
-    nextTitleRaw = episodeTitles?.[nextS]?.[nextE - 1] || `Episode ${nextE}`;
-    nextTitleFormatted = nextTitleRaw
-      .replace(/_/g, " ")
-      .replace(/\b\w/g, c => c.toUpperCase());
-  } else {
-    nextTitleFormatted = showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
-  }
+let nextE = currentEpisode + 1 > (episodeTitles[currentSeason]?.length || 0)
+  ? 1
+  : currentEpisode + 1;
 
+const nextTitleRaw =
+  episodeTitles?.[nextS]?.[nextE - 1] || `Episode ${nextE}`;
+
+const nextTitleFormatted = nextTitleRaw
+  .replace(/_/g, ' ')
+  .replace(/\b\w/g, c => c.toUpperCase());
+
+// CURRENT labels
 const formattedShowTitle = showId
-  ?.replace(/-/g, " ")
-  .replace(/\b\w/g, (c) => c.toUpperCase());
+  ?.replace(/-/g, ' ')
+  .replace(/\b\w/g, c => c.toUpperCase());
 
-const currentTitleRaw =
-  season && episodeTitles?.[actualSeason]?.[actualEpisode - 1];
-
+const currentTitleRaw = episodeTitles?.[currentSeason]?.[currentEpisode - 1];
 const currentTitleFormatted = currentTitleRaw
-  ? currentTitleRaw.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
-  : `Episode ${actualEpisode}`;
+  ? currentTitleRaw.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+  : `Episode ${currentEpisode}`;
 
-const displayTitle = `${formattedShowTitle}`
-const displayEpisodeNumber = `E${actualEpisode}`
-const displayEpisodeTitle = `${currentTitleFormatted}`;
+const displayTitle          = `${formattedShowTitle}`;
+const displayEpisodeNumber  = `E${currentEpisode}`;   // <-- fixed
+const displayEpisodeTitle   = `${currentTitleFormatted}`;
+
 
   {/* Auto-skip Countdown */}
   useEffect(() => {
@@ -702,6 +701,7 @@ const displayEpisodeTitle = `${currentTitleFormatted}`;
 
       {showId === "fmab" && season && episode && (
         <track
+          key={`jjk-${currentSeason}-${currentEpisode}`}
           src={`/subtitles/fmab/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
           kind="subtitles"
           srcLang="en"
