@@ -772,6 +772,7 @@ const MobileShows = () => {
         "Thunderclap",
         "Thunderclap_Part_2",
         "Right_and_Wrong",
+        "Right_and_Wrong_Part_2",
         "Right_and_Wrong_Part_3",
         "Transformation",
         "Transformation_Part_2",

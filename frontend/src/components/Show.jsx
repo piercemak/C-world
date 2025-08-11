@@ -152,7 +152,11 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       3:13,
       4:13,
       5:12,
-    }    
+    },
+    jjk: {
+      1:24,
+      2:23,
+    },        
   };
 const showSeasonData = seasonLength[showKey];
 let nextSeason = actualSeason;
@@ -222,7 +226,7 @@ if (prevEpisode < 1 && showSeasonData) {
           intro: { start: 0, end: 90 },
         }
       ]
-    }    
+    },    
 
 
   };
@@ -348,6 +352,23 @@ const handleSkipOutro = async () => {
     }
   }
 };
+
+const handleNextEpisode = async () => {
+  if (isMovie || isLastEpisode) return;
+
+  if (typeof getSignedUrl === "function") {
+    const cleanId = showId.replace(/-/g, "");
+    const seasonStr = `S${String(nextSeason).padStart(2, "0")}`;
+    const episodeStr = `E${String(nextEpisode).padStart(2, "0")}`;
+    const titleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1] || "";
+    const s3Key = `${cleanId}/season${nextSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
+    const signedUrl = await getSignedUrl(s3Key);
+    onSkipToNext?.(nextSeason, nextEpisode, signedUrl);
+  } else {
+    onSkipToNext?.(nextSeason, nextEpisode);
+  }
+};
+
 
 const handleSkipToPrevious = async () => {
   if (!prevEpisode || prevSeason < 1) return; 
@@ -812,7 +833,7 @@ const displayEpisodeTitle = `${currentTitleFormatted}`;
                   <motion.div
                     whileTap={{ scale: 0.9 }}
                     whileHover={{ scale: 1.05 }}
-                    onClick={handleSkipOutro}
+                    onClick={handleNextEpisode}
                   >
                     <span>{nextepIcon}</span>
                   </motion.div>
