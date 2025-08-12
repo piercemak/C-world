@@ -293,18 +293,24 @@ if (prevEpisode < 1) {
 
   };
 
-  const getActiveSkipTime = () => {
-    const rules = skipTimes[showKey]?.rules || [];
-    const defaultTimes = skipTimes[showKey]?.default;
-  
-    if (!defaultTimes) return { intro: { start: 0, end: 0 }, outro: null };
-  
-    const matched = rules.find(rule => rule.condition(actualSeason, actualEpisode));
-    return {
-      intro: matched?.intro || defaultTimes.intro,
-      outro: matched?.outro || defaultTimes.outro,
-    };
+const getActiveSkipTime = () => {
+  // 1) Try per-episode first (works even if there’s no show default)
+  const perEp = skipTimes[showKey]?.seasons?.[actualSeason]?.[actualEpisode];
+
+  // 2) Treat that per-episode block as our "default" when present
+  const defaultTimes = perEp || skipTimes[showKey]?.default;
+
+  if (!defaultTimes) return { intro: { start: 0, end: 0 }, outro: null };
+
+  // 3) Only apply rules if we DIDN'T have a per-episode override
+  const rules = perEp ? [] : (skipTimes[showKey]?.rules || []);
+  const matched = rules.find(rule => rule.condition(actualSeason, actualEpisode));
+
+  return {
+    intro: matched?.intro || defaultTimes.intro,
+    outro: matched?.outro || defaultTimes.outro,
   };
+};
   const { intro, outro } = getActiveSkipTime();
 
   useEffect(() => {
