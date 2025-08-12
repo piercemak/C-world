@@ -52,55 +52,27 @@ const Library = () => {
     };
 
     {/* Skip Handler */}
-    const handleSkipToNext = async (currentSeason, currentEpisode, signedUrl = null) => {
-      const isAwsHosted = awsHostedShows.includes(showId);
-      const episodes = show?.videos?.[`season${currentSeason}`] || [];
-      const nextIndex = currentEpisode; // assuming currentEpisode is 1-based
-
-      console.log("🔁 Attempting skip:", { currentSeason, currentEpisode, nextIndex });
-
-      // Grab the actual video object
-      const nextEpisodeData = episodes[nextIndex];
-      if (nextEpisodeData) {
-        const videoPath = signedUrl || nextEpisodeData.path;
-
-        setSelectedVideo({
-          path: videoPath,
-          showId,
-          season: currentSeason,
-          episode: currentEpisode + 1,
-          skipIntro: true,
+    const handleSkipToNext = async (targetSeason, targetEpisode, signedUrl = null) => {
+      const episodes = show?.videos?.[`season${targetSeason}`] || [];
+      const idx = Math.max(0, (targetEpisode ?? 1) - 1);
+      const ep = episodes[idx];
+      const videoPath = signedUrl || ep?.path;
+      if (!videoPath) {
+        console.warn("🛑 No path for target episode; not changing selection.", {
+          targetSeason,
+          targetEpisode,
+          hasEpisodes: episodes.length,
         });
         return;
       }
-
-      // End of season case
-      const nextSeason = currentSeason + 1;
-      const nextSeasonEpisodes = show?.videos?.[`season${nextSeason}`] || [];
-      const firstEpisode = nextSeasonEpisodes[0];
-
-      if (firstEpisode) {
-        const videoPath = signedUrl || firstEpisode.path;
-
-        setSelectedVideo({
-          path: videoPath,
-          showId,
-          season: nextSeason,
-          episode: 1,
-          skipIntro: true,
-        });
-      } else {
-        console.log("🛑 End of show or missing next season");
-        setExpanded(false);
-        setSelectedVideo(null);
-      }
+      setSelectedVideo({
+        path: videoPath,
+        showId,
+        season: targetSeason,
+        episode: targetEpisode,
+        skipIntro: true,
+      });
     };
-
-
-
-    
-    
-
 
     {/* Season Dropdown Handling */}
     const dropdownRef = useRef(null);

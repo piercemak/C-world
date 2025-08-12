@@ -111,8 +111,25 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   const showKey = showId?.replace(/-/g, "").toLowerCase();
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
-  const actualSeason = season || parseInt(match?.[1] || "1", 10);
-  const actualEpisode = episode || parseInt(match?.[2] || "1", 10);
+  // Safely get just the filename (no query string)
+  let base;
+  try {
+    const u = new URL(src);
+    base = u.pathname.split("/").pop() || "";
+  } catch {
+    // Fallback if src isn't a full URL
+    base = src.split("/").pop() || "";
+  }
+
+  // Match SxxEyy at the very start of the filename
+  const m = base.match(/^S(\d{1,3})E(\d{1,3})/i);
+
+  const parsedSeason = m ? parseInt(m[1], 10) : null;
+  const parsedEpisode = m ? parseInt(m[2], 10) : null;
+
+  // Only fall back to props if they are numbers
+  const actualSeason = parsedSeason ?? (Number.isFinite(season) ? season : null);
+  const actualEpisode = parsedEpisode ?? (Number.isFinite(episode) ? episode : null);
 
   const seasonLength = {
     stevenuniverse: {
@@ -158,26 +175,36 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:23,
     },        
   };
-const showSeasonData = seasonLength[showKey];
-let nextSeason = actualSeason;
-let nextEpisode = actualEpisode + 1;
+const displaySeason =
+  m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
+const displayEpisode =
+  m ? parseInt(m[2], 10) : (Number.isFinite(episode) ? episode : null);
 
-if (showSeasonData && nextEpisode > showSeasonData[actualSeason]) {
-  nextSeason = actualSeason + 1;
+// Derive next/prev from DISPLAY (single source of truth)
+const showSeasonData = seasonLength[showKey] || {};
+
+const currS = Number.isFinite(displaySeason) ? displaySeason : 1;
+const currE = Number.isFinite(displayEpisode) ? displayEpisode : 1;
+
+let nextSeason = currS;
+let nextEpisode = currE + 1;
+if (showSeasonData[currS] && nextEpisode > showSeasonData[currS]) {
+  nextSeason = currS + 1;
   nextEpisode = 1;
 }
 
-let prevSeason = actualSeason;
-let prevEpisode = actualEpisode - 1;
-
-if (prevEpisode < 1 && showSeasonData) {
-  prevSeason = actualSeason - 1;
-  if (showSeasonData[prevSeason]) {
-    prevEpisode = showSeasonData[prevSeason]; 
+let prevSeason = currS;
+let prevEpisode = currE - 1;
+if (prevEpisode < 1) {
+  const prevSeasonLen = showSeasonData[currS - 1];
+  if (prevSeasonLen) {
+    prevSeason = currS - 1;
+    prevEpisode = prevSeasonLen;
   } else {
-    prevEpisode = null; 
+    prevEpisode = null; // nothing before S1E1
   }
 }
+
 
   const skipTimes = {
     "stevenuniverse": {
@@ -353,21 +380,50 @@ const handleSkipOutro = async () => {
   }
 };
 
+const skippingRef = useRef(false);
+
 const handleNextEpisode = async () => {
+  // Debug log for every click attempt
+  console.log(
+    `[${new Date().toISOString()}] handleNextEpisode CLICKED → skippingRef: ${skippingRef.current}, nextSeason: ${nextSeason}, nextEpisode: ${nextEpisode}`
+  );
+
   if (isMovie || isLastEpisode) return;
 
-  if (typeof getSignedUrl === "function") {
-    const cleanId = showId.replace(/-/g, "");
-    const seasonStr = `S${String(nextSeason).padStart(2, "0")}`;
-    const episodeStr = `E${String(nextEpisode).padStart(2, "0")}`;
-    const titleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1] || "";
-    const s3Key = `${cleanId}/season${nextSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
-    const signedUrl = await getSignedUrl(s3Key);
-    onSkipToNext?.(nextSeason, nextEpisode, signedUrl);
-  } else {
-    onSkipToNext?.(nextSeason, nextEpisode);
+  if (skippingRef.current) {
+    console.log("⛔ Skip blocked (already in progress)");
+    return;
+  }
+
+  skippingRef.current = true;
+  setCountdown(null);
+  setOutroVisible(false);
+
+  const targetS = nextSeason;
+  const targetE = nextEpisode;
+
+  console.log(`🚀 Initiating skip to → S${targetS}E${targetE}`);
+
+  try {
+    if (typeof getSignedUrl === "function") {
+      const cleanId = showId.replace(/-/g, "");
+      const seasonStr = `S${String(targetS).padStart(2, "0")}`;
+      const episodeStr = `E${String(targetE).padStart(2, "0")}`;
+      const safeTitle = (episodeTitles?.[targetS]?.[targetE - 1] || "").replace(/\s+/g, "_");
+      const s3Key = `${cleanId}/season${targetS}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${safeTitle}.mp4`;
+      const signedUrl = await getSignedUrl(s3Key);
+      onSkipToNext?.(targetS, targetE, signedUrl);
+    } else {
+      onSkipToNext?.(targetS, targetE);
+    }
+  } finally {
+    setTimeout(() => {
+      skippingRef.current = false;
+      console.log("✅ Skip lock released");
+    }, 400);
   }
 };
+
 
 
 const handleSkipToPrevious = async () => {
@@ -386,11 +442,10 @@ const handleSkipToPrevious = async () => {
   }
 };
 
-const isFirstEpisode =
-  actualEpisode === 1 && actualSeason === 1;
+const isFirstEpisode = currS === 1 && currE === 1;
 const isLastEpisode =
-  actualEpisode === (episodeTitles?.[actualSeason]?.length || 0) &&
-  actualSeason === Object.keys(episodeTitles || {}).length;
+  currE === (episodeTitles?.[currS]?.length || 0) &&
+  currS === Object.keys(episodeTitles || {}).length;
 
 
   {/* Placeholder Images */}
@@ -400,40 +455,51 @@ const isLastEpisode =
   const placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`
   //Episode Title
 
-// already parsed from src:
-const currentSeason  = actualSeason;
-const currentEpisode = actualEpisode;
+  let nextTitleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1];
+  let nextTitleFormatted = nextTitleRaw
+    ? nextTitleRaw.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
+    : (isMovie ? showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
+              : `Episode ${nextEpisode}`);
 
-// NEXT card (preview)
-let nextS = currentEpisode + 1 > (episodeTitles[currentSeason]?.length || 0)
-  ? currentSeason + 1
-  : currentSeason;
 
-let nextE = currentEpisode + 1 > (episodeTitles[currentSeason]?.length || 0)
-  ? 1
-  : currentEpisode + 1;
+  // 2) Titles from those display indices (not from "next" vars)
+  const formattedShowTitle = showId
+    ?.replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 
-const nextTitleRaw =
-  episodeTitles?.[nextS]?.[nextE - 1] || `Episode ${nextE}`;
+    const [dispS, setDispS] = useState(null);
+    const [dispE, setDispE] = useState(null);
 
-const nextTitleFormatted = nextTitleRaw
-  .replace(/_/g, ' ')
-  .replace(/\b\w/g, c => c.toUpperCase());
+    useEffect(() => {
+      const parseSE = (url) => {
+        try {
+          const u = new URL(url);
+          const base = u.pathname.split("/").pop() || "";
+          const m = base.match(/^S(\d{1,3})E(\d{1,3})/i);
+          return m ? [parseInt(m[1], 10), parseInt(m[2], 10)] : [null, null];
+        } catch {
+          const base = (url || "").split("/").pop() || "";
+          const m = base.match(/^S(\d{1,3})E(\d{1,3})/i);
+          return m ? [parseInt(m[1], 10), parseInt(m[2], 10)] : [null, null];
+        }
+      };
 
-// CURRENT labels
-const formattedShowTitle = showId
-  ?.replace(/-/g, ' ')
-  .replace(/\b\w/g, c => c.toUpperCase());
+      const [s, e] = parseSE(src);
+      setDispS(Number.isFinite(s) ? s : (Number.isFinite(season) ? season : null));
+      setDispE(Number.isFinite(e) ? e : (Number.isFinite(episode) ? episode : null));
+    }, [src, season, episode]);
 
-const currentTitleRaw = episodeTitles?.[currentSeason]?.[currentEpisode - 1];
-const currentTitleFormatted = currentTitleRaw
-  ? currentTitleRaw.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
-  : `Episode ${currentEpisode}`;
+    const currentTitleRaw = dispS && dispE && episodeTitles?.[dispS]?.[dispE - 1];
+    const currentTitleFormatted = currentTitleRaw
+      ? currentTitleRaw.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
+      : (dispE != null ? `Episode ${dispE}` : "");
 
-const displayTitle          = `${formattedShowTitle}`;
-const displayEpisodeNumber  = `E${currentEpisode}`;   // <-- fixed
-const displayEpisodeTitle   = `${currentTitleFormatted}`;
+    const displayEpisodeNumber = dispE != null ? `E${dispE}` : "";
+    const displayTitle = formattedShowTitle;
+    const displayEpisodeTitle = currentTitleFormatted;
 
+  console.log("🎬 Display check:", { dispS, dispE, displayEpisodeNumber, displayEpisodeTitle });
+ 
 
   {/* Auto-skip Countdown */}
   useEffect(() => {
@@ -701,7 +767,6 @@ const displayEpisodeTitle   = `${currentTitleFormatted}`;
 
       {showId === "fmab" && season && episode && (
         <track
-          key={`jjk-${currentSeason}-${currentEpisode}`}
           src={`/subtitles/fmab/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
           kind="subtitles"
           srcLang="en"
