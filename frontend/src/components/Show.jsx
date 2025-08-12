@@ -256,10 +256,6 @@ if (prevEpisode < 1) {
     },
 
     "jjk": {
-      default: {
-        intro: { start: 0, end: 25 },
-        outro: { start: 670, skipTo: "next" },
-      },
       seasons: {
         1: {
           1: { intro: { start: 56.0, end: 145.0 }, outro: { start: 1425, skipTo: "next" } },
