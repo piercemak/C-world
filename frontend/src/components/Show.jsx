@@ -328,56 +328,45 @@ const getActiveSkipTime = () => {
 };
 const { intro, outro } = getActiveSkipTime();
 
-useEffect(() => {
-  const vid = videoRef.current;
-  console.log("🎥 Video ref:", vid);
-  console.log("🎬 Video src:", src);
-  if (!vid) return;
-  setAutoSkipDone(false); 
+  useEffect(() => {
+    const vid = videoRef.current;
+    console.log("🎥 Video ref:", vid);
+    console.log("🎬 Video src:", src);
+    if (!vid) return;
+    setAutoSkipDone(false); 
 
-  const key = season === null || episode === null
-    ? showId
-    : `${showId}-S${season}-E${episode}`;
-  const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
+    const key = season === null || episode === null
+      ? showId
+      : `${showId}-S${season}-E${episode}`;
+    const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
 
-useEffect(() => {
-  const vid = videoRef.current;
-  if (!vid) return;
+    const startPlayback = async () => {
+      try {
+        await vid.load();
+        vid.volume = volume;
 
-  const hasIntro = !!(intro && Number.isFinite(intro.end));
+        console.log("▶️ Attempting to play video...");
+        const shouldStartFromBeginning = savedProgress >= (outro?.start || Infinity);
+        const startTime = (skipIntro && intro)
+          ? intro.end
+          : (shouldStartFromBeginning ? 0 : savedProgress);
+        vid.currentTime = startTime;
 
-  const startPlayback = async () => {
-    try {
-      vid.load();            // load() isn't async; no need to await
-      vid.volume = volume;
-
-      console.log("▶️ Attempting to play video...");
-      const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
-
-      const startTime = (skipIntro && hasIntro)
-        ? intro.end
-        : (shouldStartFromBeginning ? 0 : (savedProgress || 0));
-
-      vid.currentTime = startTime;
-
-      await vid.play();
-
-      console.log("🚩 skipIntro flag:", skipIntro);
-      console.log("🎯 intro skip time:", intro?.end);
-
-      if (skipIntro && hasIntro) {
-        // we already set currentTime above; no need to seek again
-        setAutoSkipDone(true);
+        await vid.play();
+        console.log("🚩 skipIntro flag:", skipIntro);
+        console.log("🎯 intro skip time:", intro?.end);
+        if (skipIntro && intro) {
+          console.log("⏩ Skipping intro to", intro.end);
+          vid.currentTime = intro.end;
+          setAutoSkipDone(true);
+        }
+      } catch (err) {
+        console.warn("Autoplay blocked:", err);
       }
-    } catch (err) {
-      console.warn("Autoplay blocked:", err);
-    }
-  };
-
-  startPlayback();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [src, skipIntro, intro?.end]);  // ✅ null-safe dep
-
+    };
+    startPlayback();
+  }, [src, skipIntro, intro.end]);
+  const [countdown, setCountdown] = useState(null);
 
   {/* Time */}
   useEffect(() => {
