@@ -401,6 +401,7 @@ const getActiveSkipTime = () => {
 
 const handleSkipOutro = async () => {
   if (outro?.skipTo === "next") {
+    const opts = { source: "outro" };
     if (getSignedUrl && typeof getSignedUrl === "function") {
       const cleanId = showId.replace(/-/g, "");
       const seasonStr = `S${String(nextSeason).padStart(2, "0")}`;
@@ -409,12 +410,11 @@ const handleSkipOutro = async () => {
       const s3Key = `${cleanId}/season${nextSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
       const signedUrl = await getSignedUrl(s3Key);
 
-      onSkipToNext?.(nextSeason, nextEpisode, signedUrl);
+      onSkipToNext?.(nextSeason, nextEpisode, signedUrl, opts);
     } else {
-      onSkipToNext?.(nextSeason, nextEpisode);
+      onSkipToNext?.(nextSeason, nextEpisode, undefined, opts);
     }
   } else {
-    // Standard time-based outro skip
     if (videoRef.current) {
       videoRef.current.currentTime = outro?.skipTo;
     }

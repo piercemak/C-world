@@ -52,7 +52,8 @@ const Library = () => {
     };
 
     {/* Skip Handler */}
-    const handleSkipToNext = async (targetSeason, targetEpisode, signedUrl = null) => {
+    const handleSkipToNext = async (targetSeason, targetEpisode, signedUrl = null, opts = {}) => {
+      const isJJKOutro = opts.source === "outro" && showId === "jjk";
       const episodes = show?.videos?.[`season${targetSeason}`] || [];
       const idx = Math.max(0, (targetEpisode ?? 1) - 1);
       const ep = episodes[idx];
@@ -71,6 +72,7 @@ const Library = () => {
         season: targetSeason,
         episode: targetEpisode,
         skipIntro: true,
+        skipIntro: !isJJKOutro,
       });
     };
 
