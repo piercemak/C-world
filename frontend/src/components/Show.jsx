@@ -253,7 +253,46 @@ if (prevEpisode < 1) {
           intro: { start: 0, end: 90 },
         }
       ]
-    },    
+    },
+
+    "jjk": {
+      default: {
+        intro: { start: 0, end: 25 },
+        outro: { start: 670, skipTo: "next" },
+      },
+      seasons: {
+        1: {
+          1: { intro: { start: 56.0, end: 145.0 }, outro: { start: 1425, skipTo: "next" } },
+          2: { intro: { start: 346.0, end: 435.0 }, outro: { start: 1336, skipTo: "next" } },
+          3: { intro: { start: 193.0, end: 282.0 }, outro: { start: 1275, skipTo: "next" } },
+          4: { intro: { start: 176.0, end: 266.0 }, outro: { start: 1275, skipTo: "next" } },
+          5: { intro: { start: 144.0, end: 233.0 }, outro: { start: 1275, skipTo: "next" } },
+          6: { intro: { start: 35.0, end: 124.0 }, outro: { start: 1305, skipTo: "next" } },
+          7: { intro: { start: 131.0, end: 220.0 }, outro: { start: 1275, skipTo: "next" } },
+          8: { intro: { start: 200.0, end: 289.0 }, outro: { start: 1220, skipTo: "next" } },
+          9: { intro: { start: 277.0, end: 366.0 }, outro: { start: 1306, skipTo: "next" } },
+          10: { intro: { start: 171.0, end: 260.0 }, outro: { start: 1276, skipTo: "next" } },
+          11: { intro: { start: 137.0, end: 226.0 }, outro: { start: 1320, skipTo: "next" } },
+          12: { intro: { start: 118.0, end: 207.0 }, outro: { start: 1276, skipTo: "next" } },
+          13: { intro: { start: 290.0, end: 379.0 }, outro: { start: 1245, skipTo: "next" } },
+          14: { intro: { start: 205.0, end: 294.0 }, outro: { start: 1247, skipTo: "next" } },
+          15: { intro: { start: 149.0, end: 238.0 }, outro: { start: 1246, skipTo: "next" } },
+          16: { intro: { start: 234.0, end: 323.0 }, outro: { start: 1246, skipTo: "next" } },
+          17: { intro: { start: 0.0, end: 89.0 }, outro: { start: 1246, skipTo: "next" } },
+          18: { intro: { start: 159.0, end: 248.0 }, outro: { start: 1246, skipTo: "next" } },
+          19: { intro: { start: 485.0, end: 574.0 }, outro: { start: 1246, skipTo: "next" } },
+          20: { intro: { start: 67.0, end: 156.0 }, outro: { start: 1286, skipTo: "next" } },
+          21: { intro: { start: 314.0, end: 403.0 }, outro: { start: 1286, skipTo: "next" } },
+          22: { intro: { start: 31.0, end: 120.0 }, outro: { start: 1246, skipTo: "next" } },
+          23: { intro: { start: 348.0, end: 437.0 }, outro: { start: 1246, skipTo: "next" } },
+          24: { intro: { start: 133.0, end: 222.0 }, outro: { start: 1414, skipTo: "next" } },
+        },
+        2: {
+          1: { intro: { start: 0.0, end: 20.3 }, outro: { start: 645, skipTo: "next" } },
+          // …
+        }
+      }
+  }      
 
 
   };
