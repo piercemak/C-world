@@ -340,33 +340,43 @@ useEffect(() => {
     : `${showId}-S${season}-E${episode}`;
   const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
 
-  useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    const hasIntro = !!(intro && Number.isFinite(intro.end));
-    const startPlayback = async () => {
-      try {
-        vid.load();           
-        vid.volume = volume;
-        console.log("▶️ Attempting to play video...");
-        const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
-        const startTime = (skipIntro && hasIntro)
-          ? intro.end
-          : (shouldStartFromBeginning ? 0 : (savedProgress || 0));
+useEffect(() => {
+  const vid = videoRef.current;
+  if (!vid) return;
 
-        vid.currentTime = startTime;
-        await vid.play();
-        console.log("🚩 skipIntro flag:", skipIntro);
-        console.log("🎯 intro skip time:", intro?.end);
-        if (skipIntro && hasIntro) {
-          setAutoSkipDone(true);
-        }
-      } catch (err) {
-        console.warn("Autoplay blocked:", err);
+  const hasIntro = !!(intro && Number.isFinite(intro.end));
+
+  const startPlayback = async () => {
+    try {
+      vid.load();            // load() isn't async; no need to await
+      vid.volume = volume;
+
+      console.log("▶️ Attempting to play video...");
+      const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
+
+      const startTime = (skipIntro && hasIntro)
+        ? intro.end
+        : (shouldStartFromBeginning ? 0 : (savedProgress || 0));
+
+      vid.currentTime = startTime;
+
+      await vid.play();
+
+      console.log("🚩 skipIntro flag:", skipIntro);
+      console.log("🎯 intro skip time:", intro?.end);
+
+      if (skipIntro && hasIntro) {
+        // we already set currentTime above; no need to seek again
+        setAutoSkipDone(true);
       }
-    };
-    startPlayback();
-  }, [src, skipIntro, intro?.end]);  
+    } catch (err) {
+      console.warn("Autoplay blocked:", err);
+    }
+  };
+
+  startPlayback();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [src, skipIntro, intro?.end]);  // ✅ null-safe dep
 
 
   {/* Time */}
