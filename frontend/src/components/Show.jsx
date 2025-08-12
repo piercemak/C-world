@@ -284,8 +284,29 @@ if (prevEpisode < 1) {
           24: { intro: { start: 133.0, end: 222.0 }, outro: { start: 1414, skipTo: "next" } },
         },
         2: {
-          1: { intro: { start: 0.0, end: 20.3 }, outro: { start: 645, skipTo: "next" } },
-          // …
+          1: { intro: { start: 649.0, end: 738.0 }, outro: { start: 1330, skipTo: "next" } },
+          2: { intro: { start: 192.0, end: 281.0 }, outro: { start: 1330, skipTo: "next" } },
+          3: { intro: { start: 174.0, end: 263.0 }, outro: { start: 1330, skipTo: "next" } },
+          4: { intro: { start: 76.0, end: 165.0 }, outro: { start: 1509, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 89.0 }, outro: { start: 1330, skipTo: "next" } },
+          6: { intro: { start: 299.0, end: 388.0 }, outro: { start: 1330, skipTo: "next" } },
+          7: { intro: { start: 125.0, end: 214.0 }, outro: { start: 1330, skipTo: "next" } },
+          8: { intro: { start: 161.0, end: 250.0 }, outro: { start: 1330, skipTo: "next" } },
+          9: { intro: { start: 56.0, end: 145.0 }, outro: { start: 1330, skipTo: "next" } },
+          10: { intro: { start: 183.0, end: 272.0 }, outro: { start: 1300, skipTo: "next" } },
+          11: { intro: { start: 285.0, end: 374.0 }, outro: { start: 1330, skipTo: "next" } },
+          12: { intro: { start: 47.0, end: 136.0 }, outro: { start: 1330, skipTo: "next" } },
+          13: { intro: { start: 66.0, end: 155.0 }, outro: { start: 1304, skipTo: "next" } },
+          14: { intro: { start: 324.0, end: 413.0 }, outro: { start: 1330, skipTo: "next" } },
+          15: { intro: { start: 271.0, end: 360.0 }, outro: { start: 1330, skipTo: "next" } },
+          16: { intro: { start: 13.0, end: 102.0 }, outro: { start: 1330, skipTo: "next" } },
+          17: { outro: { start: 1430, skipTo: "next" } },
+          18: { intro: { start: 102.0, end: 191.0 }, outro: { start: 1315, skipTo: "next" } },
+          19: { intro: { start: 59.0, end: 148.0 }, outro: { start: 1315, skipTo: "next" } },
+          20: { intro: { start: 306.0, end: 395.0 }, outro: { start: 1405, skipTo: "next" } },
+          21: { intro: { start: 219.0, end: 308.0 }, outro: { start: 1315, skipTo: "next" } },
+          22: { intro: { start: 406.0, end: 495.0 }, outro: { start: 1315, skipTo: "next" } },
+          23: { intro: { start: 0.0, end: 89.0 }, outro: { start: 1327, skipTo: "next" } },
         }
       }
   }      
@@ -294,66 +315,58 @@ if (prevEpisode < 1) {
   };
 
 const getActiveSkipTime = () => {
-  // 1) Try per-episode first (works even if there’s no show default)
   const perEp = skipTimes[showKey]?.seasons?.[actualSeason]?.[actualEpisode];
-
-  // 2) Treat that per-episode block as our "default" when present
   const defaultTimes = perEp || skipTimes[showKey]?.default;
 
   if (!defaultTimes) return { intro: { start: 0, end: 0 }, outro: null };
-
-  // 3) Only apply rules if we DIDN'T have a per-episode override
   const rules = perEp ? [] : (skipTimes[showKey]?.rules || []);
   const matched = rules.find(rule => rule.condition(actualSeason, actualEpisode));
-
   return {
-    intro: matched?.intro || defaultTimes.intro,
-    outro: matched?.outro || defaultTimes.outro,
+    intro: (matched?.intro ?? defaultTimes?.intro) || null,
+    outro: (matched?.outro ?? defaultTimes?.outro) || null,
   };
 };
-  const { intro, outro } = getActiveSkipTime();
+const { intro, outro } = getActiveSkipTime();
 
-  useEffect(() => {
-    const vid = videoRef.current;
-    console.log("🎥 Video ref:", vid);
-    console.log("🎬 Video src:", src);
-    if (!vid) return;
-    setAutoSkipDone(false); 
+useEffect(() => {
+  const vid = videoRef.current;
+  console.log("🎥 Video ref:", vid);
+  console.log("🎬 Video src:", src);
+  if (!vid) return;
+  setAutoSkipDone(false); 
 
-    const key = season === null || episode === null
-      ? showId
-      : `${showId}-S${season}-E${episode}`;
-    const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
+  const key = season === null || episode === null
+    ? showId
+    : `${showId}-S${season}-E${episode}`;
+  const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
 
-    const startPlayback = async () => {
-      try {
-        await vid.load();
-        vid.volume = volume;
+  const startPlayback = async () => {
+    try {
+      await vid.load();
+      vid.volume = volume;
 
-        console.log("▶️ Attempting to play video...");
-        const shouldStartFromBeginning = savedProgress >= (outro?.start || Infinity);
-        const startTime = skipIntro
-          ? intro.end
-          : (shouldStartFromBeginning ? 0 : savedProgress);
-        vid.currentTime = startTime;
+      console.log("▶️ Attempting to play video...");
+      const shouldStartFromBeginning = savedProgress >= (outro?.start || Infinity);
+      const startTime = (skipIntro && intro)
+        ? intro.end
+        : (shouldStartFromBeginning ? 0 : savedProgress);
+      vid.currentTime = startTime;
 
-        await vid.play();
-        console.log("🚩 skipIntro flag:", skipIntro);
-        console.log("🎯 intro skip time:", intro?.end);
-        if (skipIntro) {
-          console.log("⏩ Skipping intro to", intro.end);
-          vid.currentTime = intro.end;
-          setAutoSkipDone(true);
-        }
-      } catch (err) {
-        console.warn("Autoplay blocked:", err);
+      await vid.play();
+      console.log("🚩 skipIntro flag:", skipIntro);
+      console.log("🎯 intro skip time:", intro?.end);
+      if (skipIntro && intro) {
+        console.log("⏩ Skipping intro to", intro.end);
+        vid.currentTime = intro.end;
+        setAutoSkipDone(true);
       }
-    };
-    startPlayback();
-  }, [src, skipIntro, intro.end]);
-
-  // Monitor time updates
-  const [countdown, setCountdown] = useState(null);
+    } catch (err) {
+      console.warn("Autoplay blocked:", err);
+    }
+  };
+  startPlayback();
+}, [src, skipIntro, intro.end]);
+const [countdown, setCountdown] = useState(null);
 
   {/* Time */}
   useEffect(() => {
@@ -369,7 +382,7 @@ const getActiveSkipTime = () => {
         : `${showId}-S${season}-E${episode}`; // show 
    
 
-      setIntroVisible(time >= intro.start && time <= intro.end);
+      setIntroVisible(intro ? (time >= intro.start && time <= intro.end) : false);
 
       const duration = vid.duration || 0;
 
@@ -381,12 +394,11 @@ const getActiveSkipTime = () => {
         setOutroVisible(false);
         setCountdown(null);
 
-        // ✅ Only save progress if not near the end
-        if (duration && time < duration - 10) {
-          localStorage.setItem(`watchProgress-${key}`, time.toString());
-        } else {
-          localStorage.removeItem(`watchProgress-${key}`);
-        }
+      if (duration && time < duration - 10) {
+        localStorage.setItem(`watchProgress-${key}`, time.toString());
+      } else {
+        localStorage.removeItem(`watchProgress-${key}`);
+      }
       }
     };
 
@@ -396,7 +408,7 @@ const getActiveSkipTime = () => {
 
   {/* Skipping */}
   const handleSkipIntro = () => {
-    videoRef.current.currentTime = intro.end;
+    if (intro && videoRef.current) videoRef.current.currentTime = intro.end;
   };
 
 const handleSkipOutro = async () => {
@@ -424,7 +436,6 @@ const handleSkipOutro = async () => {
 const skippingRef = useRef(false);
 
 const handleNextEpisode = async () => {
-  // Debug log for every click attempt
   console.log(
     `[${new Date().toISOString()}] handleNextEpisode CLICKED → skippingRef: ${skippingRef.current}, nextSeason: ${nextSeason}, nextEpisode: ${nextEpisode}`
   );
@@ -494,16 +505,14 @@ const isLastEpisode =
   const cleanShowId = showId?.replace(/-/g, "");
   const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
   const placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`
-  //Episode Title
 
+  { /* Episode Title */}
   let nextTitleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1];
   let nextTitleFormatted = nextTitleRaw
     ? nextTitleRaw.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
     : (isMovie ? showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
               : `Episode ${nextEpisode}`);
 
-
-  // 2) Titles from those display indices (not from "next" vars)
   const formattedShowTitle = showId
     ?.replace(/-/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase());
@@ -538,25 +547,20 @@ const isLastEpisode =
     const displayEpisodeNumber = dispE != null ? `E${dispE}` : "";
     const displayTitle = formattedShowTitle;
     const displayEpisodeTitle = currentTitleFormatted;
-
-  console.log("🎬 Display check:", { dispS, dispE, displayEpisodeNumber, displayEpisodeTitle });
  
 
   {/* Auto-skip Countdown */}
   useEffect(() => {
     if (countdown === null) return;
-  
     if (countdown === 0) {
       handleSkipOutro(); // Trigger the skip
       return;
     }
   
     if (!isPlaying) return;
-  
     const timer = setTimeout(() => {
       setCountdown((c) => c - 1);
     }, 1000);
-  
     return () => clearTimeout(timer);
   }, [countdown, isPlaying]);
 
@@ -623,10 +627,10 @@ const isLastEpisode =
   
     const preview = await generateFramePreview(newTime);
     setPreviewImage(preview);
-    setIsPreviewing(true); // keep track that we are showing preview
+    setIsPreviewing(true); 
   
     videoRef.current.currentTime = newTime;
-    videoRef.current.pause(); // pause on skip
+    videoRef.current.pause(); 
   };
   useEffect(() => {
     if (isPlaying && isPreviewing) {
@@ -634,7 +638,6 @@ const isLastEpisode =
       setIsPreviewing(false);
     }
   }, [isPlaying, isPreviewing]);
-  //Enter Key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowRight") {
