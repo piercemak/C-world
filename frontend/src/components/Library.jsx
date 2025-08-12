@@ -71,7 +71,6 @@ const Library = () => {
         showId,
         season: targetSeason,
         episode: targetEpisode,
-        skipIntro: true,
         skipIntro: !isJJKOutro,
       });
     };
