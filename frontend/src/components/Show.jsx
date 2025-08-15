@@ -340,43 +340,36 @@ const { intro, outro } = getActiveSkipTime();
       : `${showId}-S${season}-E${episode}`;
     const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
 
-    useEffect(() => {
-      const vid = videoRef.current;
-      if (!vid) return;
+    const startPlayback = async () => {
+      try {
+        vid.load();            // load() isn't async; no need to await
+        vid.volume = volume;
 
-      const hasIntro = !!(intro && Number.isFinite(intro.end));
+        console.log("▶️ Attempting to play video...");
+        const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
-      const startPlayback = async () => {
-        try {
-          vid.load();            // load() isn't async; no need to await
-          vid.volume = volume;
+        const startTime = (skipIntro && hasIntro)
+          ? intro.end
+          : (shouldStartFromBeginning ? 0 : (savedProgress || 0));
 
-          console.log("▶️ Attempting to play video...");
-          const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
+        vid.currentTime = startTime;
 
-          const startTime = (skipIntro && hasIntro)
-            ? intro.end
-            : (shouldStartFromBeginning ? 0 : (savedProgress || 0));
+        await vid.play();
 
-          vid.currentTime = startTime;
+        console.log("🚩 skipIntro flag:", skipIntro);
+        console.log("🎯 intro skip time:", intro?.end);
 
-          await vid.play();
-
-          console.log("🚩 skipIntro flag:", skipIntro);
-          console.log("🎯 intro skip time:", intro?.end);
-
-          if (skipIntro && hasIntro) {
-            // we already set currentTime above; no need to seek again
-            setAutoSkipDone(true);
-          }
-        } catch (err) {
-          console.warn("Autoplay blocked:", err);
+        if (skipIntro && hasIntro) {
+          // we already set currentTime above; no need to seek again
+          setAutoSkipDone(true);
         }
-      };
-
-      startPlayback();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [src, skipIntro, intro?.end]);  // ✅ null-safe dep
+      } catch (err) {
+        console.warn("Autoplay blocked:", err);
+      }
+    };
+    startPlayback();
+  }, [src, skipIntro, intro?.end]);
+  const [countdown, setCountdown] = useState(null);
 
   {/* Time */}
   useEffect(() => {
