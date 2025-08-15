@@ -327,6 +327,7 @@ const getActiveSkipTime = () => {
   };
 };
 const { intro, outro } = getActiveSkipTime();
+const hasIntro = !!(intro && Number.isFinite(intro.end));
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -338,19 +339,22 @@ const { intro, outro } = getActiveSkipTime();
     const key = season === null || episode === null
       ? showId
       : `${showId}-S${season}-E${episode}`;
-    const savedProgress = parseFloat(localStorage.getItem(`watchProgress-${key}`) || "0");
+      const savedProgressRaw = localStorage.getItem(`watchProgress-${key}`);
+      const savedProgress = Number.isFinite(parseFloat(savedProgressRaw))
+        ? parseFloat(savedProgressRaw)
+        : 0;
 
     const startPlayback = async () => {
       try {
-        vid.load();            // load() isn't async; no need to await
+        vid.load();           
         vid.volume = volume;
 
         console.log("▶️ Attempting to play video...");
         const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
         const startTime = (skipIntro && hasIntro)
-          ? intro.end
-          : (shouldStartFromBeginning ? 0 : (savedProgress || 0));
+          ? Number(intro.end) || 0
+          : (shouldStartFromBeginning ? 0 : savedProgress);
 
         vid.currentTime = startTime;
 
@@ -360,7 +364,6 @@ const { intro, outro } = getActiveSkipTime();
         console.log("🎯 intro skip time:", intro?.end);
 
         if (skipIntro && hasIntro) {
-          // we already set currentTime above; no need to seek again
           setAutoSkipDone(true);
         }
       } catch (err) {
