@@ -1053,7 +1053,17 @@ const extractS3KeyFromPath = (path) => {
           description: "Yuji Itadori eats a cursed finger to save a classmate, and now Ryomen Sukuna, a powerfully evil sorcerer known as the King of Curses, lives in Itadori’s soul. Curses are supernatural terrors created from negative human emotions. This cursed energy can be used as a power source by jujutsu sorcerers and cursed spirits alike.",
           background: "/images/jjk/covers/jjkCover.jpg",
           videos: videoDataByShow["jjk"],
-        },                     
+        }, 
+        "weapons": {
+          type: "movie",  
+          title: "Weapons",
+          release_year: "2025",
+          genre: "Horror",
+          duration: "2h 8m",          
+          description: "When all but one child from the same classroom mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
+          background: "/images/weapons/covers/weaponsCover.jpg",
+          videos: videoDataByShow["weapons"],
+        },                               
         
         
       };

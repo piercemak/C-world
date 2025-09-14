@@ -80,7 +80,8 @@ const VideoPlayer = () => {
         { title: "Ghost in The Shell", cardId: "card-13" },
         { title: "Mob Psycho 100", cardId: "card-14" },
         { title: "Fullmetal Alchemist", cardId: "card-15" },
-        { title: "Jujutsu Kaisen", cardId: "card-16" },                  
+        { title: "Jujutsu Kaisen", cardId: "card-16" },          
+        { title: "Weapons", cardId: "card-17" },           
     ];
     const cardIdToSlug = {
         "card-2": "steven-universe",
@@ -98,7 +99,8 @@ const VideoPlayer = () => {
         "card-13": "ghost-in-the-shell",
         "card-14": "mob-psycho",
         "card-15": "fmab",
-        "card-16": "jjk",                      
+        "card-16": "jjk", 
+        "card-17": "weapons",                     
       };
     const handleCardClick = (cardId) => {
         const card = document.querySelector(`.${styles[cardId]}`);
