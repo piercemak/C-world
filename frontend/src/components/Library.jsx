@@ -1062,7 +1062,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "2h 8m",          
           description: "When all but one child from the same classroom mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
           background: "/images/weapons/covers/weaponsCover.jpg",
-          videos: videoDataByShow["weapons"],
+          videos: generateSeasonVideos({}, "weapons", "movie"),
         },                               
         
         
