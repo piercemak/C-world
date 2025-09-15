@@ -65,8 +65,11 @@ const MobileLibrary = () => {
     
     { id: "a-ghost-story", title: "Watch A Ghost Story", creator: "David Lowery", background: "/images/aghoststory/covers/aghoststory_backdrop.png", ratings: "6.8", type: "Movies", keyart: "/images/aghoststory/covers/aghoststory_mobilelogo.jpg" },
     
-    { id: "little-miss-sunshine", title: "Watch Little Miss Sunshine", creator: "Jonathan Dayton", background: "/images/littlemisssunshine/covers/littlemisssunshine_backdrop.jpg", ratings: "7.8", type: "Movies", keyart: "/images/littlemisssunshine/covers/littlemisssunshine_mobilelogo.jpg" },               
-    ];
+    { id: "little-miss-sunshine", title: "Watch Little Miss Sunshine", creator: "Jonathan Dayton", background: "/images/littlemisssunshine/covers/littlemisssunshine_backdrop.jpg", ratings: "7.8", type: "Movies", keyart: "/images/littlemisssunshine/covers/littlemisssunshine_mobilelogo.jpg" }, 
+
+    { id: "weapons", title: "Watch Weapons", creator: "Zach Cregger", background: "/images/weapons/covers/weapons_backdrop.jpg", ratings: "7.6", type: "Movies", keyart: "/images/weapons/covers/weapons_mobileLogo.jpg" },       
+];
+    
 
 
     {/* Search Functionality */}

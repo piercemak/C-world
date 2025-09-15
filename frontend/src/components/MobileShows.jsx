@@ -1085,7 +1085,20 @@ const MobileShows = () => {
           background: "/images/thevanishing/covers/aniaraBackground.jpg",
           mobilebackground: "/images/ghostintheshell/covers/ghostintheshell_background.jpg",
           videos: generateSeasonVideos({}, "ghost-in-the-shell", "movie"),
-        },           
+        },        
+        "weapons": {
+          type: "movie",  
+          title: "Weapons",
+          ratings: "7.6",
+          agerating: "18",  
+          creator: "Zach Cregger",        
+          release_year: "2025",
+          genre: "Horror",
+          duration: "2h 8m",          
+          description: "When all but one child from the same classroom mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
+          mobilebackground: "/images/weapons/covers/weapons_background.jpg",
+          videos: generateSeasonVideos({}, "weapons", "movie"),
+        },             
         
 
       };

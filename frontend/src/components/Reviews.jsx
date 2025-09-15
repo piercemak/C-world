@@ -190,6 +190,16 @@ const shows = {
     description: "Brothers Edward and Alphonse Elric search for the Philsopher's Stone, hoping to restore their bodies, which were lost when they attempted to use their alchemy skills to resurrect their deceased mother. Edward, who lost only limbs, joins the State Military, which gives him the freedom to continue the search as he tries to restore his brother, whose soul is tethered to earth by a suit of armor. However, Edward and Alphonse are not the only ones seeking the powerful stone. And as they search, they learn of a plot to transmute the entire country for reasons they cannot comprehend.",
     background: "/images/fmab/covers/fmabCover.jpg",
     logo: "/images/cardimages/fmabLogo.svg"
+},
+"weapons": {
+    type: "movie",  
+    title: "Weapons",
+    release_year: "2025",
+    genre: "Horror",
+    duration: "2h 8m",          
+    description: "When all but one child from the same classroom mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
+    background: "/images/weapons/covers/weaponsCover.jpg",
+    logo: "images/cardimages/weaponsLogo.svg"
 },         
 };
 
