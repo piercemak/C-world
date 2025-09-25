@@ -65,44 +65,43 @@ const VideoPlayer = () => {
     {/* Sidebar Nav State */}
     const [clickedCard, setClickedCard] = useState(null);
     const sidebarItems = [
-        { title: "Steven Universe", cardId: "card-2" },
-        { title: "Adventure Time", cardId: "card-3" },
-        { title: "Over the Garden Wall", cardId: "card-1" },
-        { title: "Perfect Blue", cardId: "card-4" },
-        { title: "Paprika", cardId: "card-5" },
-        { title: "Princess Mononoke", cardId: "card-6" },
+      { title: "Steven Universe",           cardId: "card-2"  },
+      { title: "Adventure Time",            cardId: "card-3"  },
+      { title: "Over the Garden Wall",      cardId: "card-1"  },
+      { title: "Perfect Blue",              cardId: "card-4"  },
+      { title: "Paprika",                   cardId: "card-5"  },
+      { title: "Princess Mononoke",         cardId: "card-6"  },
 
-        { title: "Neon Genesis Evangelion", cardId: "card-7" },
-        { title: "Aniara", cardId: "card-8" },
-        { title: "The Vanishing", cardId: "card-9" },
-        { title: "The Lighthouse", cardId: "card-10" },
-        { title: "A Ghost Story", cardId: "card-11" },
-        { title: "Little Miss Sunshine", cardId: "card-12" },
+      { title: "Aniara",                   cardId: "card-8" },
+      { title: "Weapons",                    cardId: "card-17"  },
+      { title: "The Vanishing",             cardId: "card-9"  },
+      { title: "The Lighthouse",            cardId: "card-10" },
+      { title: "A Ghost Story",             cardId: "card-11" },
+      { title: "Little Miss Sunshine",      cardId: "card-12" },
 
-        { title: "Ghost in The Shell", cardId: "card-13" },
-        { title: "Mob Psycho 100", cardId: "card-14" },
-        { title: "Fullmetal Alchemist", cardId: "card-15" },
-        { title: "Jujutsu Kaisen", cardId: "card-16" },          
-        { title: "Weapons", cardId: "card-17" },   
-        { title: "Tokyo Godfathers", cardId: "card-18" },
+      { title: "Ghost in the Shell",        cardId: "card-13" },
+      { title: "Mob Psycho 100",            cardId: "card-14" },
+      { title: "Fullmetal Alchemist",       cardId: "card-15" },
+      { title: "Jujutsu Kaisen",            cardId: "card-16" },
+      { title: "Neon Genesis Evangelion",   cardId: "card-7"  },
+      { title: "Cyberpunk: Edgerunners",    cardId: "card-21" },
 
-        { title: "Solaris", cardId: "card-19" },   
-        { title: "Event Horizon", cardId: "card-20" },
-        { title: "Cyberpunk: Edgerunners", cardId: "card-21" },
-
-
+      { title: "Solaris",                   cardId: "card-19" },
+      { title: "Event Horizon",             cardId: "card-20" },
+      { title: "Tokyo Godfathers",          cardId: "card-18" },
     ];
-    const cardIdToSlug = {
-        "card-2": "steven-universe",
-        "card-3": "adventure-time",
-        "card-1": "over-the-garden-wall",
-        "card-4": "perfect-blue",
-        "card-5": "paprika",
-        "card-6": "princess-mononoke",
 
-        "card-7": "neon-genesis",
+    const cardIdToSlug = {
+        "card-2":  "steven-universe",
+        "card-3":  "adventure-time",
+        "card-1":  "over-the-garden",
+        "card-4":  "perfect-blue",
+        "card-5":  "paprika",
+        "card-6":  "princess-mononoke",
+
         "card-8": "aniara",
-        "card-9": "the-vanishing",
+        "card-17":  "weapons",
+        "card-9":  "the-vanishing",
         "card-10": "the-lighthouse",
         "card-11": "a-ghost-story",
         "card-12": "little-miss-sunshine",
@@ -110,13 +109,13 @@ const VideoPlayer = () => {
         "card-13": "ghost-in-the-shell",
         "card-14": "mob-psycho",
         "card-15": "fmab",
-        "card-16": "jjk", 
-        "card-17": "weapons",   
-        "card-18":"tokyo-godfathers",
-        
-        "card-19":"solaris",
-        "card-20":"event-horizon",
-        "card-21":"cyberpunk",
+        "card-16": "jjk",
+        "card-7":  "neon-genesis",
+        "card-21": "cyberpunk",
+
+        "card-19": "solaris",
+        "card-20": "event-horizon",
+        "card-18": "tokyo-godfathers",
       };
     const handleCardClick = (cardId) => {
         const card = document.querySelector(`.${styles[cardId]}`);
