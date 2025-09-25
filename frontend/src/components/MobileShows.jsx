@@ -780,7 +780,20 @@ const MobileShows = () => {
       ]
     }     
 
-
+    const episodeTitles_cyberpunk = {
+      1: [
+        "Let_You_Down",
+        "Like_A_Boy",
+        "Smooth_Criminal",
+        "Lucky_You",
+        "All_Eyez_On_Me",
+        "Girl_on_Fire",
+        "Stronger",
+        "Stay",
+        "Humanity",
+        "My_Moon_My_Man"
+      ]
+    }    
 
     const allEpisodeTitles = {
     "steven-universe": episodeTitles_stevenuniverse,
@@ -790,6 +803,7 @@ const MobileShows = () => {
     "mob-psycho": episodeTitles_mobpsycho,
     "fmab": episodeTitles_fmab,
     "jjk": episodeTitles_jjk,
+    "cyberpunk": episodeTitles_cyberpunk,
     };
 
     {/* Show/Season Handling */}
@@ -1111,8 +1125,50 @@ const MobileShows = () => {
           description: "A trio of homeless people surviving as a makeshift family on the streets of Tokyo. While rummaging in the trash for food on Christmas Eve, they stumble upon an abandoned newborn baby in a trash bin. With only a handful of clues to the baby's identity, the three misfits search the streets of Tokyo for help in returning the baby to its parents.",
           mobilebackground: "/images/tokyogodfathers/covers/tokyogodfathers_background.jpg",
           videos: generateSeasonVideos({}, "tokyo-godfathers", "movie"),
-        },               
+        },  
+        "cyberpunk": {
+          type: "show",  
+          title: "Cyberpunk: Edgerunners",
+          ratings: "8.3",
+          agerating: "16",
+          creator: "Rafal Jaki",             
+          release_year: "2022",
+          genre: "Action",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "A Street Kid trying to survive in a technology and body modification-obsessed city of the future. Having everything to lose, he chooses to stay alive by becoming an Edgerunner, a Mercenary outlaw also known as a Cyberpunk.",
+          mobilebackground: "/images/cyberpunk/covers/cyberpunk_background.jpg",
+          videos: videoDataByShow["cyberpunk"],
+        }, 
+        "solaris": {
+          type: "movie",  
+          title: "Solaris",
+          ratings: "7.9",
+          agerating: "18",
+          creator: "Andrei Tarkovsky",            
+          release_year: "1972",
+          genre: "Sci-fi/Mystery",
+          duration: "2h 47m",          
+          description: "A psychologist is sent to a station orbiting a distant planet in order to discover what has caused the crew to go insane.",
+          mobilebackground: "/images/solaris/covers/solaris_background.jpg",
+          videos: generateSeasonVideos({}, "solaris", "movie"),
+        }, 
+        "event-horizon": {
+          type: "movie",  
+          title: "Event Horizon",
+          ratings: "6.6",
+          agerating: "18",
+          creator: "Paul W.S. Anderson",            
+          release_year: "1997",
+          genre: "Horror/Sci-fi",
+          duration: "1h 36m",          
+          description: "After disappearing for seven years, revolutionary spaceship Event Horizon is rediscovered. The team of scientists sent to investigate find that the entire crew is dead, and a terrifying, malevolent presence is lurking on board.",
+          mobilebackground: "/images/eventhorizon/covers/eventhorizon_background.jpg",
+          videos: generateSeasonVideos({}, "event-horizon", "movie"),
+        }, 
         
+        
+
 
       };
       const show = shows[showId];
@@ -1278,7 +1334,28 @@ const MobileShows = () => {
                     srcLang="en"
                     label="English"
                   />
-                )}                                   
+                )} 
+
+                {showId === "cyberpunk" && season && episode && (
+                  <track
+                    src={`/subtitles/cyberpunk/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )} 
+
+                {showId === "solaris" && (
+                  <track
+                    src={`/videos/solaris/solaris_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )}   
+
+
+
 
                 {subtitleText && (
                 <div className="absolute bottom-24 w-full text-center">

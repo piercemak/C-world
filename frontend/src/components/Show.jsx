@@ -173,7 +173,10 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     jjk: {
       1:24,
       2:23,
-    },        
+    }, 
+      cyberpunk: {
+      1:10,
+    },         
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -854,6 +857,24 @@ const isLastEpisode =
       {showId === "tokyo-godfathers" && (
         <track
           src={`/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}  
+
+      {showId === "cyberpunk" && season && episode && (
+        <track
+          src={`/subtitles/cyberpunk/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )} 
+
+      {showId === "solaris" && (
+        <track
+          src={`/videos/solaris/solaris_subtitles.vtt`}
           kind="subtitles"
           srcLang="en"
           label="English"

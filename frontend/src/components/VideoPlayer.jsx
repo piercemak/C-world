@@ -84,7 +84,12 @@ const VideoPlayer = () => {
         { title: "Fullmetal Alchemist", cardId: "card-15" },
         { title: "Jujutsu Kaisen", cardId: "card-16" },          
         { title: "Weapons", cardId: "card-17" },   
-        { title: "Tokyo Godfathers", cardId: "card-18" },   
+        { title: "Tokyo Godfathers", cardId: "card-18" },
+
+        { title: "Solaris", cardId: "card-19" },   
+        { title: "Event Horizon", cardId: "card-20" },
+        { title: "Cyberpunk: Edgerunners", cardId: "card-21" },
+
 
     ];
     const cardIdToSlug = {
@@ -107,7 +112,11 @@ const VideoPlayer = () => {
         "card-15": "fmab",
         "card-16": "jjk", 
         "card-17": "weapons",   
-        "card-18":"tokyo-godfathers",                 
+        "card-18":"tokyo-godfathers",
+        
+        "card-19":"solaris",
+        "card-20":"event-horizon",
+        "card-21":"cyberpunk",
       };
     const handleCardClick = (cardId) => {
         const card = document.querySelector(`.${styles[cardId]}`);

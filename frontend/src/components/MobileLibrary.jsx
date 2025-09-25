@@ -69,7 +69,13 @@ const MobileLibrary = () => {
 
     { id: "weapons", title: "Watch Weapons", creator: "Zach Cregger", background: "/images/weapons/covers/weapons_backdrop.jpg", ratings: "7.6", type: "Movies", keyart: "/images/weapons/covers/weapons_mobileLogo.jpg" },       
 
-    { id: "tokyo-godfathers", title: "Watch Tokyo Godfathers", creator: "Satoshi Kon", background: "/images/weapons/covers/tokyogodfathers_backdrop.jpg", ratings: "7.8", type: "Movies", keyart: "/images/tokyogodfathers/covers/tokyogodfathers_mobileLogo.jpg" },     
+    { id: "tokyo-godfathers", title: "Watch Tokyo Godfathers", creator: "Satoshi Kon", background: "/images/tokyogodfathers/covers/tokyogodfathers_backdrop.jpg", ratings: "7.8", type: "Movies", keyart: "/images/tokyogodfathers/covers/tokyogodfathers_mobileLogo.jpg" },     
+
+    { id: "cyberpunk", title: "Watch Cyberpunk: Edgerunners", creator: "Rafal Jaki", background: "/images/cyberpunk/covers/cyberpunk_backdrop.jpg", ratings: "8.3", type: "TV", keyart: "/images/cyberpunk/covers/cyberpunk_mobileLogo.jpg" },      
+
+    { id: "solaris", title: "Watch Solaris", creator: "Andrei Tarkovsky", background: "/images/solaris/covers/solaris_backdrop.jpg", ratings: "7.6", type: "Movies", keyart: "/images/solaris/covers/solaris_mobileLogo.jpg" },       
+
+    { id: "event-horizon", title: "Watch Event Horizon", creator: "Paul W.S. Anderson", background: "/images/eventhorizon/covers/eventhorizon_backdrop.jpg", ratings: "6.6", type: "Movies", keyart: "/images/eventhorizon/covers/eventhorizon_mobileLogo.png" },       
 ];
     
 

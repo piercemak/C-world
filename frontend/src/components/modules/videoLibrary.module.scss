@@ -399,9 +399,32 @@
         background-color: #f8d7cd;
         view-transition-name: c18;
         background-image: url("/images/cardimages/tokyogodfathersLogo.svg");
-       }                                 
+       }  
+    &.card-19 {
+        background-color: #f8d7cd;
+        view-transition-name: c18;
+        background-image: url("/images/cardimages/solarisLogo.svg");
+       }     
+    &.card-20 {
+        background-color: #f8d7cd;
+        view-transition-name: c18;
+        background-image: url("/images/cardimages/eventhorizonLogo.svg");
+       } 
+    &.card-21 {
+        background-color: #f8d7cd;
+        view-transition-name: c18;
+        background-image: url("/images/cardimages/cyberpunkLogo.svg");
+       }            
+       
+
+
+       
 
    }
+
+
+
+   
     @media (max-width: 1280px) {
     .card {
         width: 200px;
