@@ -849,7 +849,16 @@ const isLastEpisode =
           srcLang="en"
           label="English"
         />
-      )}      
+      )}
+
+      {showId === "tokyo-godfathers" && (
+        <track
+          src={`/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}          
 
       Your browser does not support the video tag.
     </video>

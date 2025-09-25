@@ -68,6 +68,8 @@ const MobileLibrary = () => {
     { id: "little-miss-sunshine", title: "Watch Little Miss Sunshine", creator: "Jonathan Dayton", background: "/images/littlemisssunshine/covers/littlemisssunshine_backdrop.jpg", ratings: "7.8", type: "Movies", keyart: "/images/littlemisssunshine/covers/littlemisssunshine_mobilelogo.jpg" }, 
 
     { id: "weapons", title: "Watch Weapons", creator: "Zach Cregger", background: "/images/weapons/covers/weapons_backdrop.jpg", ratings: "7.6", type: "Movies", keyart: "/images/weapons/covers/weapons_mobileLogo.jpg" },       
+
+    { id: "tokyo-godfathers", title: "Watch Tokyo Godfathers", creator: "Satoshi Kon", background: "/images/weapons/covers/tokyogodfathers_backdrop.jpg", ratings: "7.8", type: "Movies", keyart: "/images/tokyogodfathers/covers/tokyogodfathers_mobileLogo.jpg" },     
 ];
     
 

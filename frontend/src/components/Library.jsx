@@ -1063,7 +1063,17 @@ const extractS3KeyFromPath = (path) => {
           description: "When all but one child from the same classroom mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
           background: "/images/weapons/covers/weaponsCover.jpg",
           videos: generateSeasonVideos({}, "weapons", "movie"),
-        },                               
+        },     
+        "tokyo-godfathers": {
+          type: "movie",  
+          title: "Tokyo Godfathers",
+          release_year: "2003",
+          genre: "Adventure/Comedy",
+          duration: "1h 32m",          
+          description: "Middle-aged alcoholic Gin (Darren Pleavin), teenage runaway Miyuki (Candice Moore) and former drag queen Hana (Myrta Dangelo) are a trio of homeless people surviving as a makeshift family on the streets of Tokyo. While rummaging in the trash for food on Christmas Eve, they stumble upon an abandoned newborn baby in a trash bin. With only a handful of clues to the baby's identity, the three misfits search the streets of Tokyo for help in returning the baby to its parents.",
+          background: "/images/tokyogodfathers/covers/tokyogodfathersCover.jpg",
+          videos: generateSeasonVideos({}, "tokyo-godfathers", "movie"),
+        },                                   
         
         
       };
