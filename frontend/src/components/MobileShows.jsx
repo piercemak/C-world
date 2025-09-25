@@ -1336,14 +1336,14 @@ const MobileShows = () => {
                   />
                 )} 
 
-                {showId === "cyberpunk" && season && episode && (
-                  <track
-                    src={`/subtitles/cyberpunk/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
+                {showId === "cyberpunk" && selectedVideo?.season && selectedVideo?.episode && (
+                <track
+                    src={`/subtitles/cyberpunk/season${selectedVideo.season}/S${selectedVideo.season}E${String(selectedVideo.episode).padStart(2, "0")}_subtitles.vtt`}
                     kind="subtitles"
                     srcLang="en"
                     label="English"
-                  />
-                )} 
+                />
+                )}    
 
                 {showId === "solaris" && (
                   <track
