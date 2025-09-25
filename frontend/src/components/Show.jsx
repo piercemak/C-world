@@ -257,7 +257,6 @@ if (prevEpisode < 1) {
         }
       ]
     },
-
     "jjk": {
       seasons: {
         1: {
@@ -312,7 +311,23 @@ if (prevEpisode < 1) {
           23: { intro: { start: 0.0, end: 89.0 }, outro: { start: 1327, skipTo: "next" } },
         }
       }
-  }      
+    },
+    "cyberpunk": {
+      seasons: {
+        1: {
+          1: { outro: { start: 1345, skipTo: "next" } },
+          2: { intro: { start: 75.0, end: 165.0 }, outro: { start: 1350, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 100.0 }, outro: { start: 1353, skipTo: "next" } },
+          4: { intro: { start: 30.0, end: 120.0 }, outro: { start: 1350, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 100.0 }, outro: { start: 1305, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 100.0 }, outro: { start: 1444, skipTo: "next" } },
+          7: { intro: { start: 86.0, end: 176.0 }, outro: { start: 1350, skipTo: "next" } },
+          8: { intro: { start: 90.0, end: 180.0 }, outro: { start: 1350, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 100.0 }, outro: { start: 1414, skipTo: "next" } },
+          10: { intro: { start: 0.0, end: 100.0 }, outro: { start: 1525, skipTo: "next" } },
+        }
+      }
+  }   
 
 
   };
