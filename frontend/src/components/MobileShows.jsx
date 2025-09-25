@@ -1269,7 +1269,16 @@ const MobileShows = () => {
                     srcLang="en"
                     label="English"
                 />
-                )}                                  
+                )} 
+
+                {showId === "tokyo-godfathers" && (
+                  <track
+                    src={`/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )}                                   
 
                 {subtitleText && (
                 <div className="absolute bottom-24 w-full text-center">
