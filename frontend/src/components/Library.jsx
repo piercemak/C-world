@@ -1187,7 +1187,17 @@ const extractS3KeyFromPath = (path) => {
           description: "This collection of animated short stories spans several genres, including science fiction, fantasy, horror and comedy. World-class animation creators bring captivating stories to life in the form of a unique and visceral viewing experience. The animated anthology series includes tales that explore alternate histories, life for robots in a post-apocalyptic city and a plot for world domination by super-intelligent yogurt. Among the show's executive producers is Oscar-nominated director David Fincher.",
           background: "/images/lovedeathandrobots/covers/lovedeathandrobotsCover.jpg",
           videos: videoDataByShow["lovedeathandrobots"],
-        },     
+        }, 
+        "demons": {
+          type: "movie",  
+          title: "Demons",
+          release_year: "1971",
+          genre: "Horror/Action",
+          duration: "2h 15m",          
+          description: "A ronin warrior seeks bloody revenge after he is bobbed by a geisha.",
+          background: "/images/demons/covers/demonsCover.jpg",
+          videos: generateSeasonVideos({}, "demons", "movie"),
+        },      
         
       };
       const show = shows[showId];

@@ -900,7 +900,16 @@ const isLastEpisode =
           srcLang="en"
           label="English"
         />
-      )}          
+      )}
+
+      {showId === "demons" && (
+        <track
+          src={`/videos/demons/demons_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}            
 
       Your browser does not support the video tag.
     </video>

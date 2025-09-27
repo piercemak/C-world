@@ -90,6 +90,7 @@ const VideoPlayer = () => {
       { title: "Event Horizon",             cardId: "card-20" },
       { title: "Tokyo Godfathers",          cardId: "card-18" },
       { title: "Love Death + Robots",       cardId: "card-22" },
+      { title: "Demons",                    cardId: "card-23" },
     ];
 
     const cardIdToSlug = {
@@ -118,6 +119,7 @@ const VideoPlayer = () => {
         "card-20": "event-horizon",
         "card-18": "tokyo-godfathers",
         "card-22": "lovedeathandrobots",
+        "card-23": "demons",
       };
     const handleCardClick = (cardId) => {
         const card = document.querySelector(`.${styles[cardId]}`);

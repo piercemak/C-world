@@ -1243,7 +1243,19 @@ const MobileShows = () => {
           mobilebackground: "/images/lovedeathandrobots/covers/lovedeathandrobots_background.jpg",
           videos: videoDataByShow["lovedeathandrobots"],
         },          
-        
+        "demons": {
+          type: "movie",  
+          title: "Demons",
+          ratings: "7.9",
+          agerating: "18",
+          creator: "Toshio Matsumoto", 
+          release_year: "1971",
+          genre: "Horror/Action",
+          duration: "2h 15m",          
+          description: "A ronin warrior seeks bloody revenge after he is bobbed by a geisha.",
+          mobilebackground: "/images/demons/covers/demons_background.jpg",
+          videos: generateSeasonVideos({}, "demons", "movie"),
+        },         
         
 
 
@@ -1474,7 +1486,14 @@ const MobileShows = () => {
                   />
                 )}   
 
-
+                {showId === "demons" && (
+                  <track
+                    src={`/videos/demons/demons_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )} 
 
 
                 {subtitleText && (
