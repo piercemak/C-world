@@ -75,7 +75,9 @@ const MobileLibrary = () => {
 
     { id: "solaris", title: "Watch Solaris", creator: "Andrei Tarkovsky", background: "/images/solaris/covers/solaris_backdrop.jpg", ratings: "7.6", type: "Movies", keyart: "/images/solaris/covers/solaris_mobileLogo.jpg" },       
 
-    { id: "event-horizon", title: "Watch Event Horizon", creator: "Paul W.S. Anderson", background: "/images/eventhorizon/covers/eventhorizon_backdrop.jpg", ratings: "6.6", type: "Movies", keyart: "/images/eventhorizon/covers/eventhorizon_mobileLogo.png" },       
+    { id: "event-horizon", title: "Watch Event Horizon", creator: "Paul W.S. Anderson", background: "/images/eventhorizon/covers/eventhorizon_backdrop.jpg", ratings: "6.6", type: "Movies", keyart: "/images/eventhorizon/covers/eventhorizon_mobileLogo.png" },    
+    
+    { id: "lovedeathandrobots", title: "Watch Love Death + Robots", creator: "David Fincher", background: "/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.jpg", ratings: "8.4", type: "TV", keyart: "/images/lovedeathandrobots/covers/lovedeathandrobots_mobileLogo.png" },      
 ];
     
 

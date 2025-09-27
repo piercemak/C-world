@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
+import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
 
 const MobileShows = () => {
@@ -20,6 +21,11 @@ const MobileShows = () => {
     const handleNavigate = () => {
      navigate("/video-library");
   };
+
+  const bgImgRef = useRef(null);
+  const [bgGradient, setBgGradient] = useState(
+    'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0) 100%)'
+  );
 
 
   {/* Variants */}
@@ -795,6 +801,29 @@ const MobileShows = () => {
       ]
     }    
 
+      const episodeTitles_lovedeathandrobots = {
+      1: [
+        "Sonnies_Edge",
+        "Three_Robots",
+        "The_Witness",
+        "Suits",
+        "Sucker_of_Souls",
+        "When_The_Yogurt_Took_Over", 
+        "Beyond_the_Aquila_Rift",
+        "Good_Hunting",
+        "The_Dump",
+        "Shapeshifters",
+        "Helping_Hand",
+        "Fish_Night",
+        "Lucky_13",
+        "Zima_Blue",
+        "Blindspot",
+        "Ice_Age",
+        "Alternate_Histories",
+        "Secret_War",
+      ]
+    }  
+
     const allEpisodeTitles = {
     "steven-universe": episodeTitles_stevenuniverse,
     "over-the-garden-wall": episodeTitles_overthegardenwall,
@@ -804,6 +833,7 @@ const MobileShows = () => {
     "fmab": episodeTitles_fmab,
     "jjk": episodeTitles_jjk,
     "cyberpunk": episodeTitles_cyberpunk,
+    "lovedeathandrobots": episodeTitles_lovedeathandrobots,
     };
 
     {/* Show/Season Handling */}
@@ -1166,6 +1196,20 @@ const MobileShows = () => {
           mobilebackground: "/images/eventhorizon/covers/eventhorizon_background.jpg",
           videos: generateSeasonVideos({}, "event-horizon", "movie"),
         }, 
+        "lovedeathandrobots": {
+          type: "show",  
+          title: "Love Death + Robots",
+          ratings: "8.4",
+          agerating: "18",
+          creator: "David Fincher",            
+          release_year: "2019",
+          genre: "Fantasy",
+          season_total_number: "4 seasons",
+          season_digit: 4,
+          description: "This collection of animated short stories spans several genres, including science fiction, fantasy, horror and comedy. World-class animation creators bring captivating stories to life in the form of a unique and visceral viewing experience. The animated anthology series includes tales that explore alternate histories, life for robots in a post-apocalyptic city and a plot for world domination by super-intelligent yogurt. Among the show's executive producers is Oscar-nominated director David Fincher.",
+          mobilebackground: "/images/lovedeathandrobots/covers/lovedeathandrobots_background.jpg",
+          videos: videoDataByShow["lovedeathandrobots"],
+        },          
         
         
 
@@ -1222,11 +1266,54 @@ const MobileShows = () => {
     }, [selectedVideo]);
 
 
+  {/* Color Gradient */}
+  const rgba = (arr, a=1) => `rgba(${arr[0]}, ${arr[1]}, ${arr[2]}, ${a})`;
+
+  function buildGradientFromPalette(palette) {
+    // palette[0] = dominant, [1],[2] = supporting
+    const a = palette[0] ?? [0,0,0];
+    const b = palette[1] ?? a;
+    const c = palette[2] ?? a;
+
+    // Bottom-heavy overlay that fades upward
+    return `linear-gradient(
+      to top,
+      ${rgba(a, 1.0)} 0%,
+      ${rgba(b, 1.00)} 35%,
+      ${rgba(c, 1.00)} 65%,
+      ${rgba(c, 1.00)} 100%
+    )`;
+  }
+  useEffect(() => {
+  const img = bgImgRef.current;
+  if (!img) return;
+
+  const extract = () => {
+    try {
+      const ct = new ColorThief();
+      // getPalette wants a loaded HTMLImageElement (same-origin or CORS-enabled)
+      const palette = ct.getPalette(img, 5); // 5 colors is plenty
+      setBgGradient(buildGradientFromPalette(palette));
+    } catch (e) {
+      console.warn('ColorThief failed, keeping fallback gradient', e);
+    }
+  };
+
+  if (img.complete) {
+    extract();
+  } else {
+    img.addEventListener('load', extract, { once: true });
+  }
+}, [showId]);
+
+
+
 
   return (
     <div className='flex w-full h-dvh relative flex-col bg-black overflow-y-hidden'>
         <div className='h-[50%] w-full flex z-0 overflow-hidden'>
             <img
+                ref={bgImgRef}
                 src={show?.mobilebackground}
                 className="w-full h-full object-cover"
                 alt="Background"
@@ -1382,7 +1469,13 @@ const MobileShows = () => {
         )} 
 
         <div className='absolute bottom-0 flex w-full h-[60%] rounded-t-4xl z-10'>
-            <div className='absolute bottom-0 flex flex-col w-full h-full px-6 pt-6 rounded-t-4xl bg-slate-700 inset-shadow-sm inset-shadow-white/20 z-20'>
+            {/* BACKGROUNG GRADIENT */}
+            <div
+              className="absolute w-full h-full bottom-0 px-6 pt-6 rounded-t-4xl flex z-10 pointer-events-none"
+              style={{ background: bgGradient }}
+            />
+            <div className='absolute bottom-0 flex flex-col w-full h-full px-6 pt-6 rounded-t-4xl border border-white/30 bg-white/20 shadow-[inset_0_0_48px_12px_rgba(255,255,255,0.18)] inset-shadow-white/20 z-20'>
+                
                 <span className='text-white font-bold text-2xl'> {show?.title} </span> 
                 <span className='text-sm mt-1 text-white/60'> {show?.creator} </span>
 

@@ -821,6 +821,29 @@ const Library = () => {
         "Humanity",
         "My_Moon_My_Man"
       ]
+    } 
+    
+      const episodeTitles_lovedeathandrobots = {
+      1: [
+        "Sonnies_Edge",
+        "Three_Robots",
+        "The_Witness",
+        "Suits",
+        "Sucker_of_Souls",
+        "When_The_Yogurt_Took_Over", 
+        "Beyond_the_Aquila_Rift",
+        "Good_Hunting",
+        "The_Dump",
+        "Shapeshifters",
+        "Helping_Hand",
+        "Fish_Night",
+        "Lucky_13",
+        "Zima_Blue",
+        "Blindspot",
+        "Ice_Age",
+        "Alternate_Histories",
+        "Secret_War",
+      ]
     }    
 
 
@@ -834,6 +857,7 @@ const Library = () => {
       "fmab": episodeTitles_fmab,
       "jjk": episodeTitles_jjk,
       "cyberpunk": episodeTitles_cyberpunk,
+      "lovedeathandrobots": episodeTitles_lovedeathandrobots,
     };
     
 const extractS3KeyFromPath = (path) => {
@@ -1119,7 +1143,18 @@ const extractS3KeyFromPath = (path) => {
           description: "After disappearing for seven years, revolutionary spaceship Event Horizon is rediscovered. The team of scientists sent to investigate find that the entire crew is dead, and a terrifying, malevolent presence is lurking on board.",
           background: "/images/eventhorizon/covers/eventhorizonCover.jpg",
           videos: generateSeasonVideos({}, "event-horizon", "movie"),
-        },         
+        },    
+        "lovedeathandrobots": {
+          type: "show",  
+          title: "Love Death + Robots",
+          release_year: "2019",
+          genre: "Fantasy",
+          season_total_number: "4 seasons",
+          season_digit: 4,
+          description: "This collection of animated short stories spans several genres, including science fiction, fantasy, horror and comedy. World-class animation creators bring captivating stories to life in the form of a unique and visceral viewing experience. The animated anthology series includes tales that explore alternate histories, life for robots in a post-apocalyptic city and a plot for world domination by super-intelligent yogurt. Among the show's executive producers is Oscar-nominated director David Fincher.",
+          background: "/images/lovedeathandrobots/covers/lovedeathandrobotsCover.jpg",
+          videos: videoDataByShow["lovedeathandrobots"],
+        },     
         
       };
       const show = shows[showId];

@@ -72,8 +72,8 @@ const VideoPlayer = () => {
       { title: "Paprika",                   cardId: "card-5"  },
       { title: "Princess Mononoke",         cardId: "card-6"  },
 
-      { title: "Aniara",                   cardId: "card-8" },
-      { title: "Weapons",                    cardId: "card-17"  },
+      { title: "Aniara",                    cardId: "card-8" },
+      { title: "Weapons",                   cardId: "card-17"  },
       { title: "The Vanishing",             cardId: "card-9"  },
       { title: "The Lighthouse",            cardId: "card-10" },
       { title: "A Ghost Story",             cardId: "card-11" },
@@ -89,6 +89,7 @@ const VideoPlayer = () => {
       { title: "Solaris",                   cardId: "card-19" },
       { title: "Event Horizon",             cardId: "card-20" },
       { title: "Tokyo Godfathers",          cardId: "card-18" },
+      { title: "Love Death + Robots",       cardId: "card-22" },
     ];
 
     const cardIdToSlug = {
@@ -116,6 +117,7 @@ const VideoPlayer = () => {
         "card-19": "solaris",
         "card-20": "event-horizon",
         "card-18": "tokyo-godfathers",
+        "card-22": "lovedeathandrobots",
       };
     const handleCardClick = (cardId) => {
         const card = document.querySelector(`.${styles[cardId]}`);

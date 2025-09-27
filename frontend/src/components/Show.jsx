@@ -176,7 +176,13 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     }, 
       cyberpunk: {
       1:10,
-    },         
+    },    
+      lovedeathandrobots: {
+      1:18,
+      2:8,
+      3:9,
+      4:10,
+    },      
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
