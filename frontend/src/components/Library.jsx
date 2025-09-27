@@ -874,7 +874,7 @@ const Library = () => {
         "The_Screaming_of_the_Tyrannosaur",
         "Golgotha",
         "For_He_Can_Creep",
-        "Smart_Applicances_Stupid_Owners",
+        "Smart_Appliances_Stupid_Owners",
         "Cant_Stop"
       ]
     }    
