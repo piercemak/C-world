@@ -843,6 +843,39 @@ const Library = () => {
         "Ice_Age",
         "Alternate_Histories",
         "Secret_War",
+      ],
+      2: [
+        "Automated_Customer_Service",
+        "Ice",
+        "Pop_Squad",
+        "Snow_in_the_Desert",
+        "The_Tall_Grass",
+        "All_Through_the_House",
+        "Life_Hutch",
+        "The_Drowned_Giant",
+      ],
+      3: [
+        "Three_Robots_Exit_Strategies",
+        "Bad_Travelling",
+        "The_Very_Pulse_of_the_Machine",
+        "Night_of_the_Mini_Dead",
+        "Kill_Team_Kill",
+        "Swarm",
+        "Masons_Rats",
+        "In_Vaulted_Halls_Entombed",
+        "Jibaro",
+      ],
+      4: [
+        "Close_Encounters_of_the_Mini_Kind",
+        "Spider_Rose",
+        "How_Zeke_Got_Religion",
+        "The_Other_Large_Thing",
+        "400_Boys",
+        "The_Screaming_of_the_Tyrannosaur",
+        "Golgotha",
+        "For_He_Can_Creep",
+        "Smart_Applicances_Stupid_Owners",
+        "Cant_Stop"
       ]
     }    
 
