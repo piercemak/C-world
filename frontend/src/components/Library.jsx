@@ -889,7 +889,7 @@ const Library = () => {
         "Be_Right_Back",
         "White_Bear",
         "The_Waldo_Moment",
-        "White Christmas",
+        "White_Christmas",
       ],
       3: [
         "Nosedive",
@@ -910,7 +910,7 @@ const Library = () => {
       5: [
         "Striking_Vipers",
         "Smithereens",
-        "Rachel, Jack and Ashley Too"
+        "Rachel_Jack_and_Ashley_Too"
       ],
       6: [
         "Joan_Is_Awful",
@@ -921,7 +921,7 @@ const Library = () => {
       ],
       7: [
         "Common_People",
-        "Bête Noire",
+        "Bête_Noire",
         "Hotel_Reverie",
         "Plaything",
         "Eulogy",
