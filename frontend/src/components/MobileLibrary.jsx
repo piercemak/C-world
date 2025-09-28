@@ -80,6 +80,9 @@ const MobileLibrary = () => {
     { id: "lovedeathandrobots", title: "Watch Love Death + Robots", creator: "David Fincher", background: "/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.jpg", ratings: "8.4", type: "TV", keyart: "/images/lovedeathandrobots/covers/lovedeathandrobots_mobileLogo.png" },      
 
     { id: "demons", title: "Watch Demons", creator: "Toshio Matsumoto", background: "/images/demons/covers/demons_backdrop.jpg", ratings: "7.9", type: "Movies", keyart: "/images/demons/covers/demons_mobileLogo.jpg" },    
+
+    { id: "blackmirror", title: "Watch Black Mirror", creator: "Charlie Brooker", background: "/images/blackmirror/covers/blackmirror_backdrop.jpg", ratings: "8.7", type: "TV", keyart: "/images/blackmirror/covers/blackmirror_mobileLogo.png" },      
+
 ];
     
 

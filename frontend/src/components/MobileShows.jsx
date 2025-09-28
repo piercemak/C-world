@@ -857,6 +857,56 @@ const MobileShows = () => {
       ]
     }  
 
+     const episodeTitles_blackmirror = {
+      1: [
+        "The_National_Anthem",
+        "Fifteen_Million_Merits",
+        "The_Entire_History_of_You",
+      ],
+      2: [
+        "Be_Right_Back",
+        "White_Bear",
+        "The_Waldo_Moment",
+        "White Christmas",
+      ],
+      3: [
+        "Nosedive",
+        "Playtest",
+        "Shut_Up_and_Dance",
+        "San_Junipero",
+        "Men_Against_Fire",
+        "Hated_in_the_Nation",
+      ],
+      4: [
+        "USS_Callister",
+        "Arkangel",
+        "Crocodile",
+        "Hang_the_DJ",
+        "Metalhead",
+        "Black_Museum"
+      ],
+      5: [
+        "Striking_Vipers",
+        "Smithereens",
+        "Rachel, Jack and Ashley Too"
+      ],
+      6: [
+        "Joan_Is_Awful",
+        "Loch_Henry",
+        "Beyond_the_Sea",
+        "Mazey_Day",
+        "Demon_79",
+      ],
+      7: [
+        "Common_People",
+        "Bête Noire",
+        "Hotel_Reverie",
+        "Plaything",
+        "Eulogy",
+        "USS_Callister_Into_Infinity",
+      ]
+    } 
+
     const allEpisodeTitles = {
     "steven-universe": episodeTitles_stevenuniverse,
     "over-the-garden-wall": episodeTitles_overthegardenwall,
@@ -867,6 +917,7 @@ const MobileShows = () => {
     "jjk": episodeTitles_jjk,
     "cyberpunk": episodeTitles_cyberpunk,
     "lovedeathandrobots": episodeTitles_lovedeathandrobots,
+    "blackmirror": episodeTitles_blackmirror,
     };
 
     {/* Show/Season Handling */}
@@ -1255,6 +1306,20 @@ const MobileShows = () => {
           description: "A ronin warrior seeks bloody revenge after he is bobbed by a geisha.",
           mobilebackground: "/images/demons/covers/demons_background.jpg",
           videos: generateSeasonVideos({}, "demons", "movie"),
+        }, 
+        "blackmirror": {
+          type: "show",  
+          title: "Black Mirror",
+          ratings: "8.7",
+          agerating: "18",
+          creator: "Charlie Brooker", 
+          release_year: "2011",
+          genre: "Fantasy",
+          season_total_number: "7 seasons",
+          season_digit: 7,
+          description: "A series of stand-alone dramas -- sharp, suspenseful, satirical tales that explore techno-paranoia -- Black Mirror is a contemporary reworking of The Twilight Zone with stories that tap into the collective unease about the modern world, particularly regarding both intended and unintended consequences of new technologies and the effect they have on society and individuals.",
+          mobilebackground: "/images/blackmirror/covers/blackmirror_background.jpg",
+          videos: videoDataByShow["blackmirror"],
         },         
         
 
