@@ -867,7 +867,7 @@ const MobileShows = () => {
         "Be_Right_Back",
         "White_Bear",
         "The_Waldo_Moment",
-        "White Christmas",
+        "White_Christmas",
       ],
       3: [
         "Nosedive",
