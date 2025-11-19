@@ -7,7 +7,7 @@ import SkipForward from '../assets/icons/SkipForward.svg'
 import SkipBack from '../assets/icons/SkipBack.svg'
 
 
-const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, episodeTitles, getSignedUrl = {} }) => {
+const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, hasSubtitles = false, episodeTitles, getSignedUrl = {} }) => {
 
 
   const containerRef = useRef(null)
@@ -747,14 +747,26 @@ const isLastEpisode =
     };
   }, [isPlaying, isPreviewing]);
 
-
+  const [subtitlesEnabled, setSubtitlesEnabled] = useState(hasSubtitles);
   const [subtitleText, setSubtitleText] = useState("");
+
+  useEffect(() => {
+  setSubtitlesEnabled(hasSubtitles);
+  setSubtitleText("");
+  }, [hasSubtitles, src]);
+
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
 
     const track = vid.textTracks[0];
     if (!track) return;
+
+    if (!subtitlesEnabled) {
+      track.mode = "disabled";
+      setSubtitleText("");
+      return;
+    }
 
     track.mode = "hidden"; 
 
@@ -920,7 +932,7 @@ const isLastEpisode =
       </div>
     )}    
 
-    {subtitleText && (
+    {subtitleText && subtitlesEnabled && (
       <div className="absolute bottom-20 2xl:bottom-24 w-full text-center">
         <div
           className={`
@@ -1079,6 +1091,24 @@ const isLastEpisode =
                 )}
 
               </div>
+
+              {hasSubtitles && (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSubtitlesEnabled((v) => !v)}
+                  className={`
+                    px-3 py-1 rounded-full text-xs font-semibold tracking-wide
+                    border
+                    ${subtitlesEnabled
+                      ? "bg-white/90 text-black border-white"
+                      : "bg-black/40 text-white/80 border-white/40"
+                    }
+                  `}
+                >
+                  {subtitlesEnabled ? "Subtitles: On" : "Subtitles: Off"}
+                </motion.button>
+              )}
             
 
               {/* Fullscreen */}

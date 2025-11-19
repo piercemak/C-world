@@ -83,6 +83,8 @@ const MobileLibrary = () => {
 
     { id: "blackmirror", title: "Watch Black Mirror", creator: "Charlie Brooker", background: "/images/blackmirror/covers/blackmirror_backdrop.jpg", ratings: "8.7", type: "TV", keyart: "/images/blackmirror/covers/blackmirror_mobileLogo.png" },      
 
+    { id: "severance", title: "Watch Severance", creator: "Dan Erickson", background: "/images/severance/covers/severance_backdrop.jpg", ratings: "8.7", type: "TV", keyart: "/images/severance/covers/severance_mobileLogo.png" },      
+    
 ];
     
 

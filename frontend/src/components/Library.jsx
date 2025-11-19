@@ -929,6 +929,32 @@ const Library = () => {
       ]
     } 
 
+    const episodeTitles_severance = {
+      1: [
+        "Good_News_About_Hell",
+        "Half_Loop",
+        "In_Perpetuity",
+        "The_You_You_Are",
+        "The_Grim_Barbarity_of_Optics_and_Design",
+        "Hide_and_Seek",
+        "Defiant_Jazz",
+        "Whats_for_Dinner?",
+        "The_We_We_Are"
+      ],
+      2: [
+        "Hello,_Ms._Cobel",
+        "Goodbye,_Mrs._Selvig",
+        "Who_is_Alive?",
+        "Woes_Hollow",
+        "Trojans_Horse",
+        "Attila",
+        "Chikhai_Bardo",
+        "Sweet_Vitriol",
+        "The_After_Hours",
+        "Cold_Harbor"
+      ],
+    } 
+
 
 
     const allEpisodeTitles = {
@@ -942,6 +968,7 @@ const Library = () => {
       "cyberpunk": episodeTitles_cyberpunk,
       "lovedeathandrobots": episodeTitles_lovedeathandrobots,
       "blackmirror": episodeTitles_blackmirror,
+      "severance": episodeTitles_severance,
     };
     
 const extractS3KeyFromPath = (path) => {
@@ -1259,10 +1286,19 @@ const extractS3KeyFromPath = (path) => {
           description: "A series of stand-alone dramas -- sharp, suspenseful, satirical tales that explore techno-paranoia -- Black Mirror is a contemporary reworking of The Twilight Zone with stories that tap into the collective unease about the modern world, particularly regarding both intended and unintended consequences of new technologies and the effect they have on society and individuals.",
           background: "/images/blackmirror/covers/blackmirrorCover.jpg",
           videos: videoDataByShow["blackmirror"],
-        },         
-
-
-
+        },      
+        "severance": {
+          type: "show",  
+          title: "Severance",
+          release_year: "2022",
+          genre: "Thriller",
+          season_total_number: "2 seasons",
+          season_digit: 2,
+          description: "Mark leads a team of office workers whose memories have been surgically divided between their work and personal lives; when a mysterious colleague appears outside of work, it begins a journey to discover the truth about their jobs.",
+          background: "/images/severance/covers/severanceCover.jpg",
+          subtitles: "yes",
+          videos: videoDataByShow["severance"],
+        },      
         
       };
       const show = shows[showId];
@@ -1533,6 +1569,8 @@ const extractS3KeyFromPath = (path) => {
                     episodeTitles={allEpisodeTitles[showId] || allEpisodeTitles[cleanShowId(showId)]}
                     onSkipToNext={handleSkipToNext}
                     getSignedUrl={fetchSignedUrl}
+                    hasSubtitles={shows[metaShowId]?.subtitles === "yes"}
+                    
                     />
                   )}
                 </div>
