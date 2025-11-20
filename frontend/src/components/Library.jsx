@@ -1469,7 +1469,8 @@ const extractS3KeyFromPath = (path) => {
       };
 
 
-    {/* */}
+    {/* Subtitles */}
+    const metaShowId = selectedVideo?.showId || showId;
 
 
   return (
