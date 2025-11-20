@@ -920,8 +920,8 @@ const MobileShows = () => {
         "The_We_We_Are"
       ],
       2: [
-        "Hello,_Ms._Cobel",
-        "Goodbye,_Mrs._Selvig",
+        "Hello_Ms_Cobel",
+        "Goodbye_Mrs_Selvig",
         "Who_is_Alive?",
         "Woes_Hollow",
         "Trojans_Horse",
