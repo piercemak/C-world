@@ -342,7 +342,7 @@ const getActiveSkipTime = () => {
   const perEp = skipTimes[showKey]?.seasons?.[actualSeason]?.[actualEpisode];
   const defaultTimes = perEp || skipTimes[showKey]?.default;
 
-  if (!defaultTimes) return { intro: { start: 0, end: 0 }, outro: null };
+  if (!defaultTimes) return { intro: null, outro: null };
   const rules = perEp ? [] : (skipTimes[showKey]?.rules || []);
   const matched = rules.find(rule => rule.condition(actualSeason, actualEpisode));
   return {
