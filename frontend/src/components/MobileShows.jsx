@@ -1601,6 +1601,15 @@ const MobileShows = () => {
                   />
                 )} 
 
+                {showId === "severance" && selectedVideo?.season && selectedVideo?.episode && (
+                <track
+                    src={`/subtitles/severance/season${selectedVideo.season}/S${selectedVideo.season}E${String(selectedVideo.episode).padStart(2, "0")}_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                />
+                )}  
+
 
                 {subtitleText && (
                 <div className="absolute bottom-24 w-full text-center">

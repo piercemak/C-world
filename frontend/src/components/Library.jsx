@@ -942,8 +942,8 @@ const Library = () => {
         "The_We_We_Are"
       ],
       2: [
-        "Hello,_Ms._Cobel",
-        "Goodbye,_Mrs._Selvig",
+        "Hello_Ms_Cobel",
+        "Goodbye_Mrs_Selvig",
         "Who_is_Alive?",
         "Woes_Hollow",
         "Trojans_Horse",
@@ -1074,6 +1074,7 @@ const extractS3KeyFromPath = (path) => {
           season_digit: 1,
           description: "Fourteen-year-old Shinji reluctantly pilots a giant sentient machine in battle to protect Earth.",
           background: "/images/neongenesis/covers/neongenesisCover.png",
+          subtitles: "yes",
           videos: videoDataByShow["neon-genesis"],
         },        
 
@@ -1085,6 +1086,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "1h 21m",
           description: "A young Japanese singer is encouraged by her agent to quit singing and pursue an acting career, beginning with a role in a murder mystery TV show.",
           background: "/images/perfectblue/covers/perfectblueCover.jpg",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "perfect-blue", "movie"),
         },
 
@@ -1096,6 +1098,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "1h 30m",
           description: "Dr. Atsuko Chiba works as a scientist by day and, under the code name 'Paprika', is a dream detective at night. Atsuko and her colleagues are working on a device called the DC Mini, which is intended to help psychiatric patients, but in the wrong hands it could destroy people's minds. When a prototype is stolen, Atsuko/Paprika springs into action to recover it before damage is done.",
           background: "/images/paprika/covers/paprikaCover.webp",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "paprika", "movie"),
         },
 
@@ -1127,6 +1130,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "1h 47m",
           description: "Rex and Saskia, a young couple in love, are on vacation. They stop at a busy service station and Saskia is abducted. After three years and no sign of Saskia, Rex begins receiving letters from the abductor.",
           background: "/images/thevanishing/covers/thevanishingCover.png",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "the-vanishing", "movie"),
         },
         "the-lighthouse": {
@@ -1169,6 +1173,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "1h 23m",
           description: "A cyborg policewoman and her partner hunt a mysterious and powerful hacker called the Puppet Master.",
           background: "/images/ghostintheshell/covers/ghostintheshellCover.jpg",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "ghost-in-the-shell", "movie"),
         },
         "mob-psycho": {
@@ -1180,6 +1185,7 @@ const extractS3KeyFromPath = (path) => {
           season_digit: 3,
           description: "A psychic middle school boy tries to live a normal life and keep his growing powers under control, even though he constantly gets into trouble.",
           background: "/images/mobpsycho/covers/mobpsychoCover.jpeg",
+          subtitles: "yes",
           videos: videoDataByShow["mob-psycho"],
         }, 
         "fmab": {
@@ -1191,6 +1197,7 @@ const extractS3KeyFromPath = (path) => {
           season_digit: 5,
           description: "Brothers Edward and Alphonse Elric search for the Philsopher's Stone, hoping to restore their bodies, which were lost when they attempted to use their alchemy skills to resurrect their deceased mother. Edward, who lost only limbs, joins the State Military, which gives him the freedom to continue the search as he tries to restore his brother, whose soul is tethered to earth by a suit of armor. However, Edward and Alphonse are not the only ones seeking the powerful stone. And as they search, they learn of a plot to transmute the entire country for reasons they cannot comprehend.",
           background: "/images/fmab/covers/fmabCover.jpg",
+          subtitles: "yes",
           videos: videoDataByShow["fmab"],
         },
         "jjk": {
@@ -1202,6 +1209,7 @@ const extractS3KeyFromPath = (path) => {
           season_digit: 2,
           description: "Yuji Itadori eats a cursed finger to save a classmate, and now Ryomen Sukuna, a powerfully evil sorcerer known as the King of Curses, lives in Itadori’s soul. Curses are supernatural terrors created from negative human emotions. This cursed energy can be used as a power source by jujutsu sorcerers and cursed spirits alike.",
           background: "/images/jjk/covers/jjkCover.jpg",
+          subtitles: "yes",
           videos: videoDataByShow["jjk"],
         }, 
         "weapons": {
@@ -1222,6 +1230,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "1h 32m",          
           description: "Middle-aged alcoholic Gin (Darren Pleavin), teenage runaway Miyuki (Candice Moore) and former drag queen Hana (Myrta Dangelo) are a trio of homeless people surviving as a makeshift family on the streets of Tokyo. While rummaging in the trash for food on Christmas Eve, they stumble upon an abandoned newborn baby in a trash bin. With only a handful of clues to the baby's identity, the three misfits search the streets of Tokyo for help in returning the baby to its parents.",
           background: "/images/tokyogodfathers/covers/tokyogodfathersCover.jpg",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "tokyo-godfathers", "movie"),
         }, 
         "cyberpunk": {
@@ -1233,6 +1242,7 @@ const extractS3KeyFromPath = (path) => {
           season_digit: 1,
           description: "A Street Kid trying to survive in a technology and body modification-obsessed city of the future. Having everything to lose, he chooses to stay alive by becoming an Edgerunner, a Mercenary outlaw also known as a Cyberpunk.",
           background: "/images/cyberpunk/covers/cyberpunkCover.jpg",
+          subtitles: "yes",
           videos: videoDataByShow["cyberpunk"],
         },
         "solaris": {
@@ -1243,6 +1253,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "2h 47m",          
           description: "A psychologist is sent to a station orbiting a distant planet in order to discover what has caused the crew to go insane.",
           background: "/images/solaris/covers/solarisCover.jpg",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "solaris", "movie"),
         },                                    
         "event-horizon": {
@@ -1274,6 +1285,7 @@ const extractS3KeyFromPath = (path) => {
           duration: "2h 15m",          
           description: "A ronin warrior seeks bloody revenge after he is bobbed by a geisha.",
           background: "/images/demons/covers/demonsCover.jpg",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "demons", "movie"),
         },   
         "blackmirror": {

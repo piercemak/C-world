@@ -9,7 +9,7 @@ import SearchXIcon from "../assets/icons/SearchXIcon.svg?react"
 
 const MobileLibrary = () => {
 
-  const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>    
+  const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
   const playIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-10" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/></svg>
   const cIcon = <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" className='size-14' zoomAndPan="magnify" viewBox="0 0 375 374.999991" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><filter x="0%" y="0%" width="100%" height="100%" id="15a386c5ae"><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" color-interpolation-filters="sRGB"/></filter><clipPath id="b715399da9"><path d="M 40 17.886719 L 335.4375 17.886719 L 335.4375 356.886719 L 40 356.886719 Z M 40 17.886719 " clip-rule="nonzero"/></clipPath><clipPath id="95c5133695"><path d="M 251.253906 17.886719 L 335.253906 17.886719 L 335.253906 356.886719 L 251.253906 356.886719 Z M 251.253906 17.886719 " clip-rule="nonzero"/></clipPath><mask id="2d586d7997"><g filter="url(#15a386c5ae)"><rect x="-37.5" width="450" fill="#000000" y="-37.499999" height="449.999989" fill-opacity="0.33"/></g></mask><clipPath id="fc84dc259c"><path d="M 197.859375 0.886719 L 212.109375 0.886719 L 212.109375 339.886719 L 197.859375 339.886719 Z M 197.859375 0.886719 " clip-rule="nonzero"/></clipPath><clipPath id="52c9cf93e3"><rect x="0" width="304" y="0" height="341"/></clipPath><clipPath id="53d7659d19"><path d="M 40 17.886719 L 79.6875 17.886719 L 79.6875 356.886719 L 40 356.886719 Z M 40 17.886719 " clip-rule="nonzero"/></clipPath><mask id="7d70e9606d"><g filter="url(#15a386c5ae)"><rect x="-37.5" width="450" fill="#000000" y="-37.499999" height="449.999989" fill-opacity="0.33"/></g></mask><clipPath id="77a46daffe"><path d="M 39.5 0.886719 L 56 0.886719 L 56 339.886719 L 39.5 339.886719 Z M 39.5 0.886719 " clip-rule="nonzero"/></clipPath><clipPath id="95082b3c83"><rect x="0" width="304" y="0" height="341"/></clipPath></defs><g clip-path="url(#b715399da9)"><path fill="#85d0f0" d="M 276.53125 246.496094 C 273.277344 246.496094 270.535156 248.664062 269.480469 251.738281 C 259.171875 281.613281 230.339844 298.117188 193.214844 298.117188 C 139.109375 298.117188 106.382812 257.21875 106.382812 187.386719 C 106.382812 117.78125 139.109375 76.882812 192.992188 76.882812 C 230.980469 76.882812 260.441406 96.640625 270.128906 130.304688 C 271.066406 133.546875 273.890625 135.878906 277.261719 135.878906 C 277.261719 135.878906 318.078125 135.902344 331.300781 135.878906 C 333.519531 135.871094 335.253906 133.910156 334.964844 131.710938 C 326.324219 65.609375 266.972656 17.886719 192.992188 17.886719 C 98.632812 17.886719 40.011719 82.921875 40.011719 187.609375 C 40.011719 292.15625 98.71875 357.109375 193.214844 357.109375 C 267.460938 357.109375 324.296875 314.449219 334.953125 250.816406 C 335.328125 248.574219 333.570312 246.5 331.292969 246.496094 Z M 276.53125 246.496094 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#95c5133695)"><path fill="#0652c6" d="M 276.53125 246.496094 C 273.277344 246.496094 270.535156 248.664062 269.480469 251.738281 C 259.171875 281.613281 230.339844 298.117188 193.214844 298.117188 C 139.109375 298.117188 106.382812 257.21875 106.382812 187.386719 C 106.382812 117.78125 139.109375 76.882812 192.992188 76.882812 C 230.980469 76.882812 260.441406 96.640625 270.128906 130.304688 C 271.066406 133.546875 273.890625 135.878906 277.261719 135.878906 C 277.261719 135.878906 318.078125 135.902344 331.300781 135.878906 C 333.519531 135.871094 335.253906 133.910156 334.964844 131.710938 C 326.324219 65.609375 266.972656 17.886719 192.992188 17.886719 C 98.632812 17.886719 40.011719 82.921875 40.011719 187.609375 C 40.011719 292.15625 98.71875 357.109375 193.214844 357.109375 C 267.460938 357.109375 324.296875 314.449219 334.953125 250.816406 C 335.328125 248.574219 333.570312 246.5 331.292969 246.496094 Z M 276.53125 246.496094 " fill-opacity="1" fill-rule="nonzero"/></g><g mask="url(#2d586d7997)"><g transform="matrix(1, 0, 0, 1, 39, 17)"><g clip-path="url(#52c9cf93e3)"><g clip-path="url(#fc84dc259c)"><path fill="#128ade" d="M 237.53125 229.496094 C 234.277344 229.496094 231.535156 231.664062 230.480469 234.738281 C 220.171875 264.613281 191.339844 281.117188 154.214844 281.117188 C 100.109375 281.117188 67.382812 240.21875 67.382812 170.386719 C 67.382812 100.78125 100.109375 59.882812 153.992188 59.882812 C 191.980469 59.882812 221.441406 79.640625 231.128906 113.304688 C 232.066406 116.546875 234.890625 118.878906 238.261719 118.878906 C 238.261719 118.878906 279.078125 118.902344 292.300781 118.878906 C 294.519531 118.871094 296.253906 116.910156 295.964844 114.710938 C 287.324219 48.609375 227.972656 0.886719 153.992188 0.886719 C 59.632812 0.886719 1.011719 65.921875 1.011719 170.609375 C 1.011719 275.15625 59.71875 340.109375 154.214844 340.109375 C 228.460938 340.109375 285.296875 297.449219 295.953125 233.816406 C 296.328125 231.574219 294.570312 229.5 292.292969 229.496094 Z M 237.53125 229.496094 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g><g clip-path="url(#53d7659d19)"><path fill="#0652c6" d="M 276.53125 246.496094 C 273.277344 246.496094 270.535156 248.664062 269.480469 251.738281 C 259.171875 281.613281 230.339844 298.117188 193.214844 298.117188 C 139.109375 298.117188 106.382812 257.21875 106.382812 187.386719 C 106.382812 117.78125 139.109375 76.882812 192.992188 76.882812 C 230.980469 76.882812 260.441406 96.640625 270.128906 130.304688 C 271.066406 133.546875 273.890625 135.878906 277.261719 135.878906 C 277.261719 135.878906 318.078125 135.902344 331.300781 135.878906 C 333.519531 135.871094 335.253906 133.910156 334.964844 131.710938 C 326.324219 65.609375 266.972656 17.886719 192.992188 17.886719 C 98.632812 17.886719 40.011719 82.921875 40.011719 187.609375 C 40.011719 292.15625 98.71875 357.109375 193.214844 357.109375 C 267.460938 357.109375 324.296875 314.449219 334.953125 250.816406 C 335.328125 248.574219 333.570312 246.5 331.292969 246.496094 Z M 276.53125 246.496094 " fill-opacity="1" fill-rule="nonzero"/></g><g mask="url(#7d70e9606d)"><g transform="matrix(1, 0, 0, 1, 39, 17)"><g clip-path="url(#95082b3c83)"><g clip-path="url(#77a46daffe)"><path fill="#128ade" d="M 237.53125 229.496094 C 234.277344 229.496094 231.535156 231.664062 230.480469 234.738281 C 220.171875 264.613281 191.339844 281.117188 154.214844 281.117188 C 100.109375 281.117188 67.382812 240.21875 67.382812 170.386719 C 67.382812 100.78125 100.109375 59.882812 153.992188 59.882812 C 191.980469 59.882812 221.441406 79.640625 231.128906 113.304688 C 232.066406 116.546875 234.890625 118.878906 238.261719 118.878906 C 238.261719 118.878906 279.078125 118.902344 292.300781 118.878906 C 294.519531 118.871094 296.253906 116.910156 295.964844 114.710938 C 287.324219 48.609375 227.972656 0.886719 153.992188 0.886719 C 59.632812 0.886719 1.011719 65.921875 1.011719 170.609375 C 1.011719 275.15625 59.71875 340.109375 154.214844 340.109375 C 228.460938 340.109375 285.296875 297.449219 295.953125 233.816406 C 296.328125 231.574219 294.570312 229.5 292.292969 229.496094 Z M 237.53125 229.496094 " fill-opacity="1" fill-rule="nonzero"/></g></g></g></g></svg>
   const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" /><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" /></svg>
@@ -243,7 +243,6 @@ const MobileLibrary = () => {
                 ))}
             </div>
         </div>
-
         <AnimatePresence>
             {isSearchOpen && (
                 <motion.div
@@ -265,7 +264,6 @@ const MobileLibrary = () => {
                 </motion.div>
             )}
         </AnimatePresence>
-
         {filteredShows.length === 0 && (
             <div className="absolute flex w-full h-dvh z-80 bg-white/20 backdrop-blur-lg text-white/60 text-sm">
                <div className='flex flex-col w-full items-center justify-center'>
@@ -315,7 +313,7 @@ const MobileLibrary = () => {
                 #151419 100%
                 )`
             }}        
-            className='absolute bottom-0 h-[60%] w-full flex bg-black rounded-t-[2.2rem]'
+            className='absolute bottom-0 h-[60%] w-full flex rounded-t-[2.2rem] border-t border-t-white/40 inset-shadow-2xs inset-shadow-white/20'
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             onDragEnd={(event, info) => {
@@ -326,8 +324,9 @@ const MobileLibrary = () => {
                 }
             }}
         >
-            <div className="nunito-font top-8 absolute w-full h-dvh flex flex-col items-center">
-                <div className="relative w-full flex flex-row items-end justify-between px-6">
+            <div className="nunito-font w-full flex flex-col gap-2 items-center">
+                {/* Top Row Content */}
+                <div className="relative w-full flex flex-row items-center gap-2 justify-between py-4 px-2">
                     <motion.img
                         whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
                         transition={{
@@ -337,10 +336,9 @@ const MobileLibrary = () => {
                         }}
                         src={profileImage} 
                         alt="user photo" 
-                        className="profile-picture -left-2 relative bottom-4" 
+                        className="profile-picture shadow-2xl border border-white/20" 
                         onClick={() => fileInputRef.current?.click()}
                     />
-                    {/* Hidden Input */}
                     <input
                         type="file"
                         accept="image/*"
@@ -351,7 +349,7 @@ const MobileLibrary = () => {
                         }}
                         className="hidden"
                     />
-                    <div className="flex flex-col bottom-4 relative">
+                    <div className="flex flex-col justify-start relative">
                         <span className="text-white/60 font-medium">Available Now</span>
                         {currentShow && (
                             <>
@@ -360,36 +358,31 @@ const MobileLibrary = () => {
                             </span>
                             </>
                         )}
-                    </div>
-                    {currentShow && (
-                        <>
-                        <span className="text-white/70 text-sm whitespace-nowrap left-4 relative      bottom-4">
+                       <span className="text-white/70 text-sm whitespace-nowrap ">
                         {currentShow.creator}
                         </span>
-                        </>
-                    )}
-
-                    <div className="absolute -bottom-12 -left-1 w-full flex items-center justify-center">
-                        <div className='flex'>
-                            <span className='w-full bg-white/10 h-[1.1px] absolute left-0 bottom-10'/>
-                        </div>
-                        <motion.button
-                            style={{ background: `${darkenedColor} `}}
-                            whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
-                            transition={{
-                                type: "spring",
-                                stiffness: 600,
-                                damping: 20    
-                            }}
-                            onClick={() => navigate(`/mobile-shows/${currentShow?.id}`)}
-                            className='right-4 absolute size-18 rounded-full flex items-center justify-center text-white shadow-lg shadow-black/20'
-                        >
-                                {playIcon}
-                        </motion.button>
                     </div>
 
-          
-                    <span className='absolute flex text-white top-28 font-bold tracking-wider gap-4 items-center'> {activeTab} 
+                    <motion.button
+                        style={{ background: `${darkenedColor} `}}
+                        whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
+                        transition={{
+                            type: "spring",
+                            stiffness: 600,
+                            damping: 20    
+                        }}
+                        onClick={() => navigate(`/mobile-shows/${currentShow?.id}`)}
+                        className='size-18 rounded-full flex items-center justify-center text-white shadow-lg shadow-black/20'
+                    >
+                            {playIcon}
+                    </motion.button>
+                </div>
+
+                {/* Line Divider */}
+                <span className='w-full bg-white/10 h-[1.1px]'/>
+
+                {/* Icon row */}
+                <span className='flex text-white font-bold tracking-wider gap-4 items-center'> {activeTab} 
                     <motion.button
                         style={{ background: `${darkenedColor} `}}
                         onClick={handleNavigate}
@@ -413,42 +406,41 @@ const MobileLibrary = () => {
                         }}
                         className='text-white/90'> {profileIcon} 
                     </motion.button>
-                    </span>
-                          
-                    {/* Horizontal Scroll Row (Cards) */}
-                    <div className="absolute -bottom-75 w-full mt-4 left-0 px-2">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeTab} 
-                                initial={{ opacity: 0, y: 50 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -50 }}
-                                transition={{ duration: 0.3, ease: "easeInOut" }}
-                                className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 w-ful scrollbar-hidden"
-                            >
-                                {filteredShows.map((item, i) => (
-                                    <motion.div 
-                                        key={item.id} 
-                                        className="relative snap-center flex-shrink-0 min-w-[8rem]"
-                                        whileTap={{ scale: 0.9 }}
-                                        transition={{ type: "spring", stiffness: 600, damping: 20 }}
-                                        onClick={() => navigate(`/mobile-shows/${item.id}`)} 
-                                    >
-                                        <img
-                                            src={item.keyart} 
-                                            className="rounded-3xl w-32 h-48 object-cover cursor-pointer"
-                                            alt={item.title}
-                                        />
-                                        <div className="absolute inset-0 h-6 w-14 flex items-center gap-1 bg-black/40 backdrop-blur-md rounded-br-xl rounded-tl-xl">
-                                            <span className="text-yellow-500">{starIcon}</span>
-                                            <span className="text-xs text-white font-semibold">{item.ratings}</span>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>       
-                </div>
+                </span>
+                        
+                {/* Horizontal Scroll Row (Cards) */}
+                <div className=" w-full px-2">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeTab} 
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -50 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 w-ful scrollbar-hidden"
+                        >
+                            {filteredShows.map((item, i) => (
+                                <motion.div 
+                                    key={item.id} 
+                                    className="relative snap-center flex-shrink-0 min-w-[8rem]"
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={{ type: "spring", stiffness: 600, damping: 20 }}
+                                    onClick={() => navigate(`/mobile-shows/${item.id}`)} 
+                                >
+                                    <img
+                                        src={item.keyart} 
+                                        className="rounded-3xl w-32 h-48 object-cover cursor-pointer"
+                                        alt={item.title}
+                                    />
+                                    <div className="absolute inset-0 h-6 w-14 flex items-center gap-1 bg-black/40 backdrop-blur-md rounded-br-xl rounded-tl-xl">
+                                        <span className="text-yellow-500">{starIcon}</span>
+                                        <span className="text-xs text-white font-semibold">{item.ratings}</span>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>       
             </div>
         </div>
 
