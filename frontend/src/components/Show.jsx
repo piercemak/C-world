@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PlayPauseButton from "./framercomponents/PlayPauseButton";
 import ProgressBar from "./ProgressBar.jsx";
@@ -921,7 +921,16 @@ const isLastEpisode =
           srcLang="en"
           label="English"
         />
-      )}            
+      )}     
+
+      {showId === "severance" && season && episode && (
+        <track
+          src={`/subtitles/severance/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}        
 
       Your browser does not support the video tag.
     </video>
@@ -1092,21 +1101,20 @@ const isLastEpisode =
 
               </div>
 
+              {/* Subtitles */}
               {hasSubtitles && (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSubtitlesEnabled((v) => !v)}
-                  className={`
-                    px-3 py-1 rounded-full text-xs font-semibold tracking-wide
-                    border
+                  className={` text-white cursor-pointer transition-colors mr-2 text-lg font-bold elms-font
                     ${subtitlesEnabled
-                      ? "bg-white/90 text-black border-white"
-                      : "bg-black/40 text-white/80 border-white/40"
+                      ? "text-white/90 border-white hover:text-white/80"
+                      : "text-white/40 border-white/40 hover:text-white/50"
                     }
                   `}
                 >
-                  {subtitlesEnabled ? "Subtitles: On" : "Subtitles: Off"}
+                  CC
                 </motion.button>
               )}
             
@@ -1129,7 +1137,7 @@ const isLastEpisode =
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="bg-white bg-opacity-90 px-3 py-2 rounded-full text-sm font-semibold cursor-pointer tracking-wide"
+                  className="bg-black/20 backdrop-blur-sm border text-white/90 hover:text-white/70 transition-colors border-white/10 inset-shadow-2xs inset-shadow-white/20 bg-opacity-90 px-5 py-3 rounded-lg text-sm font-semibold cursor-pointer tracking-wide"
                   onClick={handleSkipIntro}
                 >
                   Skip Intro
