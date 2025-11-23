@@ -44,6 +44,16 @@ const MobileLibrary = () => {
     navigate("/archive");
   }
 
+  {/* Loading */}
+  const [imageLoaded, setImageLoaded] = useState({});
+  const [cardLoaded, setCardLoaded] = useState(false);
+
+  const handleImageLoad = (id) => {
+    setImageLoaded((prev) => ({
+        ...prev,
+        [id]: true,
+    }));
+  };
 
   {/* Movie/Show Tabs */}
     const TAB_CONFIG = [
@@ -186,14 +196,14 @@ const MobileLibrary = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-20 w-full px-6 z-100"
+                className="absolute w-full flex items-center px-6 z-100 min-h-[10%] bg-black/20 backdrop-blur-2xl rounded-b-2xl"
                 >
                 <input
                     type="text"
                     placeholder="Search..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full p-2 rounded-xl bg-white/10 text-white backdrop-blur-md focus:outline-none"
+                    className="w-full p-2 relative rounded-xl bg-white/10 text-white backdrop-blur-md focus:outline-none"
                 />
                 </motion.div>
             )}
@@ -388,11 +398,21 @@ const MobileLibrary = () => {
                                 }
                                 }}
                             >
-                                <img
-                                src={show.card}
-                                alt={show.title}
-                                className="w-[180px] h-[180px] object-cover rounded-3xl"
-                                />
+                                <div className="relative w-[180px] h-[180px]">
+                                    {/* Pulsing skeleton while loading */}
+                                    {!imageLoaded[show.id] && (
+                                    <div className="absolute inset-0 rounded-3xl bg-black/60 animate-pulse" />
+                                    )}
+
+                                    <img
+                                    src={show.card}
+                                    alt={show.title}
+                                    onLoad={() => handleImageLoad(show.id)}
+                                    className={`w-full h-full object-cover rounded-3xl transition-opacity duration-300 ${
+                                        imageLoaded[show.id] ? "opacity-100" : "opacity-0"
+                                    }`}
+                                    />
+                                </div>
                             </motion.div>
                         );
                         })}
@@ -427,11 +447,21 @@ const MobileLibrary = () => {
                                 onClick={() => navigate(`/mobile-shows/${show.id}`)}
                                 className="relative rounded-2xl w-full flex justify-center"
                                 >
-                                    <img
-                                        src={show.keyart}
-                                        alt={show.title}
-                                        className="w-[80%] h-[80%] object-cover rounded-2xl border border-white/40"
-                                    />
+                                    <div className="relative w-[80%] aspect-[2/3]"> 
+                                        {!imageLoaded[show.id] && (
+                                            <div className="absolute inset-0 rounded-2xl border border-white/30 bg-black/60 animate-pulse" />
+                                        )}
+
+                                        {/* Actual image */}
+                                        <img
+                                            src={show.keyart}
+                                            alt={show.title}
+                                            onLoad={() => handleImageLoad(show.id)}
+                                            className={`w-full h-full object-cover rounded-2xl border border-white/40 transition-opacity duration-300 ${
+                                            imageLoaded[show.id] ? "opacity-100" : "opacity-0"
+                                            }`}
+                                        />
+                                    </div>
 
                                         
                                 </motion.button>
