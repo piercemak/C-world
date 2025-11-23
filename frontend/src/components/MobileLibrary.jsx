@@ -305,9 +305,9 @@ const MobileLibrary = () => {
                     </motion.span>
                 </div>
                 {/* Card Row Content*/}
-                <div className="relative w-full flex flex-col gap-4 justify-center items-center py-6 px-4 text-white">
+                <div className="relative w-full flex flex-col gap-4 justify-center items-center mt-4 px-4 text-white">
                     <div
-                        className="relative flex items-center justify-center w-full max-w-sm h-[360px] overflow-visible"
+                        className="relative flex items-center justify-center w-full max-w-sm h-[260px] overflow-visible"
                         drag="x"
                         dragConstraints={{ left: 0, right: 0 }}
                         onDragEnd={(event, info) => {
@@ -391,7 +391,7 @@ const MobileLibrary = () => {
                                 <img
                                 src={show.card}
                                 alt={show.title}
-                                className="w-[230px] h-[230px] object-cover rounded-3xl"
+                                className="w-[180px] h-[180px] object-cover rounded-3xl"
                                 />
                             </motion.div>
                         );
