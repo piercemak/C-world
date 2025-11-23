@@ -430,7 +430,7 @@ const MobileLibrary = () => {
                                     <img
                                         src={show.keyart}
                                         alt={show.title}
-                                        className="w-[90%] h-[90%] object-cover rounded-2xl border border-white/40"
+                                        className="w-[80%] h-[80%] object-cover rounded-2xl border border-white/40"
                                     />
 
                                         
