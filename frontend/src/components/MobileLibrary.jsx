@@ -141,10 +141,6 @@ const MobileLibrary = () => {
     }, [profileImage]);
 
 
-
-    {/* Media Switcher */}
-
-
     {/* Grid 2x1 */}
     const pages = chunkArray(filteredShows, 2);
     const sliderRef = useRef(null);

@@ -5,13 +5,12 @@ import { SHOWS } from './mobileshowsData';
 
 const Archive = () => {
 
-const rightChevron = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
 const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
 const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" /><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" /></svg>
 const filterIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/></svg>
 const starIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
 const resetIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></svg>
-
+const folderIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="m.5 3 .04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2m5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98z"/><path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5"/></svg>
 
 {/* Variants */}
 const listVariants = {
@@ -141,6 +140,7 @@ useEffect(() => {
 
 {/* Filtering */}
 const [filterOpen, setFilterOpen] = useState(false);
+const filterRef = useRef(null);
 const [sortMode, setSortMode] = useState("newest"); 
 const [typeFilter, setTypeFilter] = useState("all"); 
 const filteredVideos = useMemo(() => {
@@ -180,6 +180,41 @@ useEffect(() => {
   setTypeFilter("all");
   setFilterOpen(false);
 }, []);
+useEffect(() => {
+  if (!filterOpen) return;
+  const handleClick = (e) => {
+    if (filterRef.current && !filterRef.current.contains(e.target)) {
+      setFilterOpen(false);
+    }
+  };
+  document.addEventListener("mousedown", handleClick);
+  return () => document.removeEventListener("mousedown", handleClick);
+}, [filterOpen]);
+
+
+
+{/* Profile Picture */}
+const fileInputRef = useRef(null);
+const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
+const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        setProfileImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+    }
+};    
+useEffect(() => {
+localStorage.setItem('profileImage', profileImage);
+}, [profileImage]);
+
+
+
+
+
+
 
 
 
@@ -187,18 +222,39 @@ useEffect(() => {
   return (
     <div className="relative w-full min-h-dvh alexandria-font">
         {/* Home Nav */}
-        <motion.div
-            whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
-            transition={{
-                type: "spring",
-                stiffness: 600,
-                damping: 20    
-            }}     
-            onClick={handleNavigate}
-            className="size-10 z-90 fixed m-2 text-white bg-white/20 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md"
-        >
-            {homeIcon}
-        </motion.div>
+        <div className="flex flex-row z-90 fixed items-center">
+            <motion.div
+                whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
+                transition={{
+                    type: "spring",
+                    stiffness: 600,
+                    damping: 20    
+                }}     
+                onClick={handleNavigate}
+                className="size-10 z-90 m-2 text-white bg-white/20 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md"
+            >
+                {homeIcon}
+            </motion.div>
+            <div className="flex flex-row items-center bg-white/20 gap-2 px-2 py-1 rounded-full">
+                <img
+                    src={profileImage}
+                    alt="Profile"
+                    className="size-8 rounded-full object-cover border border-white/20 shadow-md"
+                    onClick={() => fileInputRef.current.click()} 
+                />      
+                <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleImageChange}
+                />   
+                <div className="size-2 rounded-full bg-green-400/40 ml-1">
+                    <div className="size-2 rounded-full bg-green-400 animate-ping"></div>
+                </div>      
+            </div>
+         
+        </div>
         {/* Search Icon */}
         <div className="flex justify-end">
             <div className='size-10 z-90 fixed m-2 text-white flex items-center justify-center'>
@@ -228,7 +284,7 @@ useEffect(() => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute w-full flex items-center p-6 z-100  bg-black/20 backdrop-blur-2xl rounded-b-2xl"
+                className="fixed w-full flex items-center p-6 z-100  bg-black/20 backdrop-blur-2xl rounded-b-2xl"
                 >
                 <input
                     type="text"
@@ -289,151 +345,208 @@ useEffect(() => {
         {/* Centered overlay card */}
        <div className="relative z-10 flex items-start justify-center w-full min-h-dvh">
              <div className="w-full min-h-dvh bg-black/20 backdrop-blur-sm">
-                <div className="flex flex-col p-6 mt-8">
+               <motion.div
+                className="flex flex-col p-6 mt-8 gap-8"
+                layout
+                transition={{
+                    layout: { duration: 0.45, ease: "easeInOut" },
+                }}
+                >
+                    
                     {/* New Media */}
-                    <div className="flex flex-row justify-between items-center">
-                        <span className="text-white text-2xl">New Media</span>
-                        <div className="flex flex-row text-white/80 text-lg items-center">More {rightChevron}</div>
-                    </div>
-                    <div className="flex flex-row items-center justify-center gap-2 mt-8">
-                        {latestThree[0] && (
-                            <motion.div
-                            variants={newest1Variants}
-                            initial="hidden"
-                            animate="visible"
-                            onClick={() => navigate(`/mobile-shows/${latestThree[0].id}`)}
-                            className="size-60 rounded-2xl shadow-xl bg-cover bg-center"
-                            style={{ backgroundImage: `url(${latestThree[0].card || latestThree[0].keyart || latestThree[0].mobilebackground})`,}}
-                            >
-                                <div className=" size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">{latestThree[0].ratings}</div>
-                            </motion.div>
-                        )}
-                        <div className="flex flex-col gap-2">
-                            {latestThree[1] && (
-                            <motion.div
-                            variants={newest2Variants}
-                            initial="hidden"
-                            animate="visible"
-                            onClick={() => navigate(`/mobile-shows/${latestThree[1].id}`)}
-                            className="size-30 rounded-2xl shadow-lg bg-cover bg-center"
-                            style={{ backgroundImage: `url(${latestThree[1].card || latestThree[1].keyart || latestThree[1].mobilebackground})`,}}
-                            >
-                                <div className=" size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">{latestThree[1].ratings}</div>
-                            </motion.div>
-                            )}
-                            {latestThree[2] && (
-                            <motion.div
-                            variants={newest3Variants}
-                            initial="hidden"
-                            animate="visible"
-                            onClick={() => navigate(`/mobile-shows/${latestThree[2].id}`)}
-                            className="size-30 rounded-2xl shadow-lg bg-cover bg-center"
-                            style={{ backgroundImage: `url(${latestThree[2].card || latestThree[2].keyart || latestThree[2].mobilebackground})`,}}
-                            >
-                                <div className=" size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">{latestThree[2].ratings}</div>
-                            </motion.div>
-                            )}
+                    <AnimatePresence mode="wait">
+                    {searchTerm.trim() === "" && (
+                        <motion.div
+                        key="new-media"
+                        layout
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="mt-0"
+                        >
+                        <div className="flex flex-row justify-between items-center">
+                            <span className="text-white text-2xl">New Media</span>
+                            <div className="flex flex-row gap-2 text-white/80 text-md items-center">
+                                Recently added {folderIcon}
+                            </div>
                         </div>
-                    </div>
 
-
-                    {/* All Media */}
-                    <div className="flex flex-row justify-between items-center mt-8 relative">
-                        <span className="text-white text-2xl">All Media</span>
-
-                        <div className="flex flex-row text-white/80 text-lg items-center relative">
-                            <motion.button
-                            type="button"
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => setFilterOpen((v) => !v)}
-                            className="p-2 rounded-full bg-black/30 backdrop-blur-sm border border-white/20"
+                        <div className="flex flex-row items-center justify-center gap-2 mt-8">
+                            {latestThree[0] && (
+                            <motion.div
+                                variants={newest1Variants}
+                                initial="hidden"
+                                animate="visible"
+                                onClick={() => navigate(`/mobile-shows/${latestThree[0].id}`)}
+                                className="size-60 rounded-2xl shadow-xl bg-cover bg-center"
+                                style={{
+                                backgroundImage: `url(${
+                                    latestThree[0].card ||
+                                    latestThree[0].keyart ||
+                                    latestThree[0].mobilebackground
+                                })`,
+                                }}
                             >
-                            {filterIcon}
-                            </motion.button>
+                                <div className="size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">
+                                {latestThree[0].ratings}
+                                </div>
+                            </motion.div>
+                            )}
 
-                            <AnimatePresence>
-                            {filterOpen && (
+                            <div className="flex flex-col gap-2">
+                            {latestThree[1] && (
                                 <motion.div
-                                initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                transition={{ duration: 0.18 }}
-                                className="absolute right-0 top-10 z-50 w-56 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/20 p-3 text-sm text-white space-y-2"
+                                variants={newest2Variants}
+                                initial="hidden"
+                                animate="visible"
+                                onClick={() => navigate(`/mobile-shows/${latestThree[1].id}`)}
+                                className="size-30 rounded-2xl shadow-lg bg-cover bg-center"
+                                style={{
+                                    backgroundImage: `url(${
+                                    latestThree[1].card ||
+                                    latestThree[1].keyart ||
+                                    latestThree[1].mobilebackground
+                                    })`,
+                                }}
                                 >
-                                <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
-                                    Sort by
-                                </div>
-                                {[
-                                    { id: "newest", label: "Newest → Oldest" },
-                                    { id: "oldest", label: "Oldest → Newest" },
-                                    { id: "ratingHigh", label: "Highest Rated" },
-                                    { id: "ratingLow", label: "Lowest Rated" },
-                                    { id: "alpha", label: "Alphabetical (A–Z)" },
-                                ].map((opt) => (
-                                    <button
-                                    key={opt.id}
-                                    type="button"
-                                    onClick={() => {
-                                        setSortMode(opt.id);
-                                        setFilterOpen(false);
-                                    }}
-                                    className={`w-full text-left px-2 py-1.5 rounded-xl transition ${
-                                        sortMode === opt.id
-                                        ? "bg-white/15 text-white"
-                                        : "text-white/70 hover:bg-white/10"
-                                    }`}
-                                    >
-                                    {opt.label}
-                                    </button>
-                                ))}
-
-                                <div className="mt-2 text-xs uppercase tracking-wide text-white/60">
-                                    Type
-                                </div>
-                                <div className="flex gap-2 mt-1">
-                                    <button
-                                    type="button"
-                                    onClick={() => setTypeFilter("all")}
-                                    className={`flex-1 px-2 py-1.5 rounded-xl text-xs transition ${
-                                        typeFilter === "all"
-                                        ? "bg-white/20 text-white"
-                                        : "bg-white/5 text-white/70 hover:bg-white/10"
-                                    }`}
-                                    >
-                                    All
-                                    </button>
-                                    <button
-                                    type="button"
-                                    onClick={() => setTypeFilter("TV")}
-                                    className={`flex-1 px-2 py-1.5 rounded-xl text-xs transition ${
-                                        typeFilter === "tv"
-                                        ? "bg-white/20 text-white"
-                                        : "bg-white/5 text-white/70 hover:bg-white/10"
-                                    }`}
-                                    >
-                                    TV
-                                    </button>
-                                    <button
-                                    type="button"
-                                    onClick={() => setTypeFilter("Movies")}
-                                    className={`flex-1 px-2 py-1.5 rounded-xl text-xs transition ${
-                                        typeFilter === "movie"
-                                        ? "bg-white/20 text-white"
-                                        : "bg-white/5 text-white/70 hover:bg-white/10"
-                                    }`}
-                                    >
-                                    Movies
-                                    </button>
+                                <div className="size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">
+                                    {latestThree[1].ratings}
                                 </div>
                                 </motion.div>
                             )}
-                            </AnimatePresence>
+
+                            {latestThree[2] && (
+                                <motion.div
+                                variants={newest3Variants}
+                                initial="hidden"
+                                animate="visible"
+                                onClick={() => navigate(`/mobile-shows/${latestThree[2].id}`)}
+                                className="size-30 rounded-2xl shadow-lg bg-cover bg-center"
+                                style={{
+                                    backgroundImage: `url(${
+                                    latestThree[2].card ||
+                                    latestThree[2].keyart ||
+                                    latestThree[2].mobilebackground
+                                    })`,
+                                }}
+                                >
+                                <div className="size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">
+                                    {latestThree[2].ratings}
+                                </div>
+                                </motion.div>
+                            )}
+                            </div>
                         </div>
-                    </div>
+                        </motion.div>
+                    )}
+                    </AnimatePresence>
+
+
+
+                    {/* All Media */}
+                    <motion.div layout>
+                        <div className="flex flex-row justify-between items-center mt-4 relative">
+                            <span className="text-white text-2xl">All Media</span>
+
+                            <div className="flex flex-row text-white/80 text-lg items-center relative">
+                                <motion.button
+                                type="button"
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setFilterOpen((v) => !v)}
+                                className=""
+                                >
+                                {filterIcon}
+                                </motion.button>
+
+                                <AnimatePresence>
+                                {filterOpen && (
+                                    <motion.div
+                                    ref={filterRef}
+                                    initial={{ opacity: 0, x: 10, }}
+                                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                                    exit={{ opacity: 0, x: 10 }}
+                                    transition={{ duration: 0.28 }}
+                                    className="absolute right-10 z-900 w-56 rounded-2xl bg-black/90 backdrop-blur-xl border border-white/20 p-3 text-sm text-white space-y-2"
+                                    >
+                                    <div className="text-xs uppercase tracking-wide text-white/60 mb-1">
+                                        Sort by
+                                    </div>
+                                    {[
+                                        { id: "newest", label: "Newest" },
+                                        { id: "oldest", label: "Oldest" },
+                                        { id: "ratingHigh", label: "Highest Rated" },
+                                        { id: "ratingLow", label: "Lowest Rated" },
+                                        { id: "alpha", label: "Alphabetical (A–Z)" },
+                                    ].map((opt) => (
+                                        <button
+                                        key={opt.id}
+                                        type="button"
+                                        onClick={() => {
+                                            setSortMode(opt.id);
+                                            setFilterOpen(false);
+                                        }}
+                                        className={`w-full text-left px-2 py-1.5 rounded-xl transition ${
+                                            sortMode === opt.id
+                                            ? "bg-white/15 text-white"
+                                            : "text-white/70 hover:bg-white/10"
+                                        }`}
+                                        >
+                                        {opt.label}
+                                        </button>
+                                    ))}
+
+                                    <div className="mt-2 text-xs uppercase tracking-wide text-white/60">
+                                        Type
+                                    </div>
+
+                                    <div className="flex gap-2 mt-1">
+                                        <button
+                                        type="button"
+                                        onClick={() => setTypeFilter("all")}
+                                        className={`flex-1 px-2 py-1.5 rounded-xl text-xs transition ${
+                                            typeFilter === "all"
+                                            ? "bg-white/20 text-white"
+                                            : "bg-white/5 text-white/70 hover:bg-white/10"
+                                        }`}
+                                        >
+                                        All
+                                        </button>
+
+                                        <button
+                                        type="button"
+                                        onClick={() => setTypeFilter("TV")}
+                                        className={`flex-1 px-2 py-1.5 rounded-xl text-xs transition ${
+                                            typeFilter === "TV" // 👈 match the actual value
+                                            ? "bg-white/20 text-white"
+                                            : "bg-white/5 text-white/70 hover:bg-white/10"
+                                        }`}
+                                        >
+                                        TV
+                                        </button>
+
+                                        <button
+                                        type="button"
+                                        onClick={() => setTypeFilter("Movies")}
+                                        className={`flex-1 px-2 py-1.5 rounded-xl text-xs transition ${
+                                            typeFilter === "Movies" // 👈 match the actual value
+                                            ? "bg-white/20 text-white"
+                                            : "bg-white/5 text-white/70 hover:bg-white/10"
+                                        }`}
+                                        >
+                                        Movies
+                                        </button>
+                                    </div>
+                                    </motion.div>
+                                )}
+                                </AnimatePresence>
+                            </div>
+                        </div>
+                    </motion.div>
 
                     <motion.div
                         key={`${sortMode}-${typeFilter}`} 
-                        className="flex flex-col gap-2 mt-4"
+                        className="flex flex-col gap-2"
                         variants={listVariants}
                         initial="hidden"
                         animate="visible"
@@ -466,7 +579,7 @@ useEffect(() => {
                             </motion.div>
                         ))}
                     </motion.div>
-                </div>
+                </motion.div>
             </div>
         </div>
     </div>
