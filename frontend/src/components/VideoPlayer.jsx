@@ -98,7 +98,7 @@ const VideoPlayer = () => {
     const cardIdToSlug = {
         "card-2":  "steven-universe",
         "card-3":  "adventure-time",
-        "card-1":  "over-the-garden",
+        "card-1":  "over-the-garden-wall",
         "card-4":  "perfect-blue",
         "card-5":  "paprika",
         "card-6":  "princess-mononoke",

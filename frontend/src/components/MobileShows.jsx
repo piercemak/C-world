@@ -1,16 +1,18 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
+import { SHOWS } from "./mobileshowsData.js";
 
 const MobileShows = () => {
 
-  const hdIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M10.53 5.968h-.843v4.06h.843c1.117 0 1.622-.667 1.622-2.02 0-1.354-.51-2.04-1.622-2.04"/><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm5.396 3.001V11H6.209V8.43H3.687V11H2.5V5.001h1.187v2.44h2.522V5h1.187zM8.5 11V5.001h2.188c1.824 0 2.685 1.09 2.685 2.984C13.373 9.893 12.5 11 10.69 11z"/></svg>
-  const starIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
+  const hdIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M10.53 5.968h-.843v4.06h.843c1.117 0 1.622-.667 1.622-2.02 0-1.354-.51-2.04-1.622-2.04"/><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm5.396 3.001V11H6.209V8.43H3.687V11H2.5V5.001h1.187v2.44h2.522V5h1.187zM8.5 11V5.001h2.188c1.824 0 2.685 1.09 2.685 2.984C13.373 9.893 12.5 11 10.69 11z"/></svg>
+  const starIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" class="size-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
   const layersIcon = <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-layers-fill" viewBox="0 0 16 16"><path d="M7.765 1.559a.5.5 0 0 1 .47 0l7.5 4a.5.5 0 0 1 0 .882l-7.5 4a.5.5 0 0 1-.47 0l-7.5-4a.5.5 0 0 1 0-.882z"/><path d="m2.125 8.567-1.86.992a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882l-1.86-.992-5.17 2.756a1.5 1.5 0 0 1-1.41 0z"/></svg>
   const libraryIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
+  const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" /><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" /></svg>
 
 
   const { showId } = useParams();
@@ -18,9 +20,11 @@ const MobileShows = () => {
   const [videoPlayerVisible, setVideoPlayerVisible] = useState(false);
 
   const navigate = useNavigate();
-    const handleNavigate = () => {
+  const handleNavigate = () => {
      navigate("/video-library");
   };
+
+
 
   const bgImgRef = useRef(null);
   const [bgGradient, setBgGradient] = useState(
@@ -29,22 +33,41 @@ const MobileShows = () => {
 
 
   {/* Variants */}
-    const dropdownVariants = {
-    hidden: { opacity: 0, scale: 0.95, x: -10 },
+  const dropdownVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.95,
+      y: -20,
+      height: 0,            // 👈 IMPORTANT
+      overflow: "hidden"
+    },
     visible: {
-        opacity: 1,
-        scale: 1,
-        x: 0,
-        transition: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      height: "auto",       // 👈 IMPORTANT
+      overflow: "hidden",
+      transition: {
         type: "spring",
         stiffness: 150,
         damping: 20,
         staggerChildren: 0.05,
-        delayChildren: 0.1,
-        },
+        delayChildren: 0.12,
+      },
     },
-    exit: { opacity: 0, scale: 0.95, x: -10 },
-    };
+    exit: { 
+      opacity: 0,
+      scale: 0.95,
+      y: -20,
+      height: 0,            // 👈 collapse smoothly
+      overflow: "hidden",
+      transition: {
+        duration: 0.25,
+        ease: "easeInOut",
+      }
+    },
+  };
+
     const itemVariants = {
     hidden: { opacity: 0, x: -10 },
     visible: { opacity: 1, x: 0 },
@@ -1429,10 +1452,10 @@ const MobileShows = () => {
     // Bottom-heavy overlay that fades upward
     return `linear-gradient(
       to top,
-      ${rgba(a, 1.0)} 0%,
-      ${rgba(b, 1.00)} 35%,
-      ${rgba(c, 1.00)} 65%,
-      ${rgba(c, 1.00)} 100%
+      ${rgba(a, 1.0)}100%,
+      ${rgba(b, 1.00)} 65%,
+      ${rgba(c, 1.00)} 35%,
+      ${rgba(c, 1.00)} 0%
     )`;
   }
   useEffect(() => {
@@ -1460,15 +1483,32 @@ const MobileShows = () => {
 
 
 
+{/* Current show */}
+const videos = SHOWS;
+const carouselShows = videos; 
+
+
+const [currentIndex, setCurrentIndex] = useState(0);
+
+const currentShow = videos.find(media => media.id === showId) || null;
+
+
+
+
+
+
   return (
     <div className='flex w-full h-dvh relative flex-col bg-black overflow-y-hidden'>
-        <div className='h-[50%] w-full flex z-0 overflow-hidden'>
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {currentShow && (
             <img
-                ref={bgImgRef}
-                src={show?.mobilebackground}
-                className="w-full h-full object-cover"
-                alt="Background"
+              ref={bgImgRef} 
+              src={currentShow.background}
+              alt={currentShow.title}
+              className="w-full h-full object-cover"
+              style={{ aspectRatio: "16/9" }}
             />
+          )}
         </div>
 
         <motion.div
@@ -1479,9 +1519,9 @@ const MobileShows = () => {
                 damping: 20    
             }}     
             onClick={handleNavigate}
-            className="size-10 z-90 fixed m-2 text-white bg-slate-700 flex items-center justify-center rounded-full shadow-md"
+            className="size-10 z-90 fixed m-2 text-white bg-white/20 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md"
         >
-            {libraryIcon}
+            {homeIcon}
         </motion.div>
 
         {videoPlayerVisible && selectedVideo && (
@@ -1629,45 +1669,35 @@ const MobileShows = () => {
             </div>
         )}
 
-        {show?.type === "movie" && (
-        <div className="absolute w-full justify-center bottom-4 flex z-50 text-white/60 font-medium text-[13px] text-wrap whitespace-normal break-words text-center px-4 fade-text pointer-events-none">
-            <span>{show?.description}</span>
-        </div>
-        )} 
+        <div className='flex w-full h-full z-10 px-3 py-4'>
 
-        <div className='absolute bottom-0 flex w-full h-[60%] rounded-t-4xl z-10'>
-            {/* BACKGROUNG GRADIENT */}
-            <div
-              className="absolute w-full h-full bottom-0 px-6 pt-6 rounded-t-4xl flex z-10 pointer-events-none"
-              style={{ background: bgGradient }}
-            />
-            <div className='absolute bottom-0 flex flex-col w-full h-full px-6 pt-6 rounded-t-4xl border border-white/30 bg-white/20 shadow-[inset_0_0_48px_12px_rgba(255,255,255,0.18)] inset-shadow-white/20 z-20'>
+            <div className='flex flex-col alexandria-font w-full h-full px-6 pt-6 bg-black/20 overflow-scroll no-scrollbar backdrop-blur-sm border border-white/10 inset-shadow-2xs inset-shadow-white/20 rounded-2xl z-20'>
                 
-                <span className='text-white font-bold text-2xl'> {show?.title} </span> 
-                <span className='text-sm mt-1 text-white/60'> {show?.creator} </span>
+                <span className='text-white text-center font-bold text-4xl'> {show?.title} </span> 
+                <span className='text-lg mt-1 text-center text-white/60'> {show?.creator} </span>
 
-                <div className='flex flex-row w-full mt-3 items-center gap-4'>
-                    <span className='flex justify-center items-center border w-10 p-1 rounded-lg text-xs text-white'>
+                <div className='flex flex-row w-full mt-3 items-center justify-center gap-4'>
+                    <span className='flex justify-center items-center border w-10 p-1 rounded-lg text-sm text-white'>
                         {show?.agerating}+
                     </span>
                     <span className='text-white'>
                         {hdIcon}
                     </span>
                     <span className='text-yellow-500 flex flex-row items-center gap-1'>
-                        {starIcon} <span className='text-white text-sm'> {show?.ratings} </span>
+                        {starIcon} <span className='text-white text-md'> {show?.ratings} </span>
                     </span>
                 </div>
 
             {/* Season List */}
-            <div ref={dropdownRef} className="flex w-full mt-2 mb-1 left-2 text-white z-[50]">
+            <div ref={dropdownRef} className="flex flex-col w-full mt-2 left-2 text-white z-[50]">
                 {show?.type === "movie" ? (
-                    <div className="flex absolute items-center gap-2 text-xl font-semibold">
+                    <div className="flex absolute items-center gap-2 text-2xl font-semibold">
                         {layersIcon} <span>Movie</span>
                     </div>
                 ) : (
                     <>
                         <button 
-                            className="flex absolute items-center gap-2 text-xl font-semibold cursor-pointer"
+                            className="flex items-center gap-2 text-2xl font-semibold cursor-pointer"
                             onClick={() => {
                                 if (show?.season_digit > 1) {
                                 setSeasonDropdownOpen(!seasonDropdownOpen);
@@ -1678,33 +1708,36 @@ const MobileShows = () => {
                             <span>Season {selectedSeason}</span>
                             <Chevron isOpen={seasonDropdownOpen} />
                         </button>
+                        
 
                         {/* Season Dropdown */}
                         <AnimatePresence>
                             {seasonDropdownOpen && (
-                                <motion.div
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit"
-                                    variants={dropdownVariants}
-                                    className="absolute left-44 bottom-[50px] text-nowrap text-[#5c5c5c] bg-black rounded-md px-4 py-2 inset-shadow-sm inset-shadow-white/20"
-                                >
-                                    {Array.from({ length: show?.season_digit }, (_, i) => i + 1).map(season => (
-                                        <motion.button
-                                            key={season}
-                                            variants={itemVariants}
-                                            onClick={() => {
-                                                setSelectedSeason(season);
-                                                setSeasonDropdownOpen(false);
-                                            }}
-                                            className={`block text-left text-sm py-4 w-full cursor-pointer ${
-                                                season === selectedSeason ? "text-white font-bold" : ""
-                                            }`}
-                                        >
-                                            Season {season}
-                                        </motion.button>
-                                    ))}
-                                </motion.div>
+                              <motion.div
+                                layout
+                                variants={dropdownVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                style={{ background: bgGradient }}
+                                className="rounded-2xl w-full overflow-hidden mt-2"
+                              >
+                                {Array.from({ length: show?.season_digit }, (_, i) => i + 1).map(season => (
+                                  <motion.button
+                                    key={season}
+                                    variants={itemVariants}
+                                    onClick={() => {
+                                      setSelectedSeason(season);
+                                      setSeasonDropdownOpen(false);
+                                    }}
+                                    className={`flex justify-center text-3xl py-4 w-full cursor-pointer ${
+                                      season === selectedSeason ? "text-white font-bold border border-white/40 rounded-2xl" : "text-white/60"
+                                    }`}
+                                  >
+                                    Season {season}
+                                  </motion.button>
+                                ))}
+                              </motion.div>
                             )}
                         </AnimatePresence>
                     </>
@@ -1718,7 +1751,7 @@ const MobileShows = () => {
                 className={`${
                     show?.type === "movie"
                     ? "flex w-full justify-center mt-10 "  
-                    : "flex w-full overflow-scroll mt-8 -ml-4 overflow-x-hidden scrollbar-hidden"   
+                    : "flex w-full overflow-scroll mt-2 overflow-x-hidden scrollbar-hidden"   
                 }`}                
             >
                 <AnimatePresence mode="wait">
@@ -1728,7 +1761,7 @@ const MobileShows = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3 }}      
-                    className="flex flex-col h-full pb-20 items-end gap-6 z-[8]"
+                    className="flex flex-col h-full w-full items-end gap-6 z-[8]"
                     >
                         
                     {(show?.type === "show" 
@@ -1742,6 +1775,17 @@ const MobileShows = () => {
                         let episodeName = '';
                         let cleanedEpisodeName = '';
                         let placeholderPath = '';
+
+                        const filename = videoUrl.path.split("/").pop();  
+                        const baseName = filename.replace(".mp4", "");
+                        const parts = baseName.split("_");
+
+                        const episodeNumber = index + 1;  
+                        const rawTitleParts = parts.slice(2); 
+                        const episodeTitle = rawTitleParts
+                            .join(" ")
+                            .replace(/\b\w/g, c => c.toUpperCase()); 
+                        const wordCount = episodeTitle.trim().split(/\s+/).length;
 
                         if (show?.type === "show") {
                             const rawSeason = videoUrl.season; // S01
@@ -1773,7 +1817,7 @@ const MobileShows = () => {
                         return (
                             <motion.div 
                                 key={index}
-                                className={`flex w-full items-center cursor-pointer flex-shrink-0 snap-center ${
+                                className={`flex flex-col w-full items-center cursor-pointer flex-shrink-0 snap-center ${
                                     show?.type !== "movie" ? "gap-4" : ""
                                 }`}
                                 onClick={ async () => {
@@ -1790,32 +1834,55 @@ const MobileShows = () => {
                                 setVideoPlayerVisible(true);
                                 }}
                             >
-                                <motion.div
-                                    whileTap={{
-                                        scale: 0.90,
-                                        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                                        transition: { duration: 0.3, ease: "easeInOut" }
-                                    }}
-                                    style={{ 
-                                        backgroundImage: `url(${placeholderPath})`, 
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center',
-                                        backgroundRepeat: 'no-repeat'
-                                    }}
-                                    className={`flex ${
-                                        show?.type === "movie"
-                                        ? "w-90 h-48 rounded-3xl shadow-2xl relative z-40"  
-                                        : "w-56 h-28 rounded-2xl shadow-lg mb-2"   
-                                    }`}
-                                ></motion.div>
-
-                            {show?.type === "movie" ? (
-                                <div className=""> </div>
-                            ) : (
-                                <div className="text-white flex font-semibold text-md max-w-[100px] text-wrap whitespace-normal break-words overflow-hidden text-ellipsis">
-                                    {cleanedEpisodeName}
+                            
+                            {/* Placeholder Images */}
+                            <div className="flex flex-row items-center w-full gap-2">
+                              <motion.div
+                                  whileTap={{
+                                      scale: 0.90,
+                                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                                      transition: { duration: 0.3, ease: "easeInOut" }
+                                  }}
+                                  style={{ 
+                                      backgroundImage: `url(${placeholderPath})`, 
+                                      backgroundSize: 'cover',
+                                      backgroundPosition: 'center',
+                                      backgroundRepeat: 'no-repeat'
+                                  }}
+                                  className={`flex border border-white/10 inset-shadow-2xs inset-shadow-white/30 ${
+                                      show?.type === "movie"
+                                      ? "w-90 h-88 rounded-3xl shadow-2xl relative z-40"  
+                                      : "w-86 h-48 rounded-2xl shadow-lg mb-2"   
+                                  }`}
+                              >
+                              {show?.type === "movie" ? (
+                                  <div className=""> </div>
+                              ) : (                                
+                                <div className="p-2 h-[28%] bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl">
+                                  <span className="text-white text-4xl p-2 relative">{episodeNumber}</span>
                                 </div>
-                            )}
+                               )}
+                              </motion.div>
+                            </div>
+
+                                {show?.type === "movie" && (
+                              <div className=" w-full justify-center flex p-4 z-50 text-white/60 font-light text-md overflow-scroll text-wrap whitespace-normal break-words text-center px-4 pointer-events-none">
+                                  <span>{show?.description}</span>
+                              </div>
+                              )}                           
+
+                              {show?.type === "movie" ? (
+                                  <div className=""> </div>
+                              ) : (
+                                  <div
+                                      className={`text-white/80 flex font-semibold ${
+                                          episodeTitle.trim().split(/\s+/).length > 5 ? "text-md" : "text-4xl"
+                                      } text-wrap text-center whitespace-normal break-words overflow-hidden text-ellipsis`}
+                                  >
+                                      {episodeTitle}
+                                  </div>
+                              )}
+                              <div className="w-full h-[1px] bg-white/10"></div>
                             </motion.div>
                         );
                     })}

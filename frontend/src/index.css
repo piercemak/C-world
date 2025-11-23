@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap');
 @import "tailwindcss";
 
 
@@ -72,6 +73,9 @@
 }
 .elms-font {
   font-family: "Elms Sans", sans-serif;
+}
+.alexandria-font {
+  font-family: "Alexandria", sans-serif;
 }
 
 @media (min-width: 1024px) and (max-width: 1500px) {

@@ -14,6 +14,7 @@ import Login from './components/Login.jsx';
 import MobileLogin from './components/MobileLogin.jsx';
 import IntroScreen from './components/IntroScreen.jsx';
 import Reviews from './components/Reviews.jsx';
+import Archive from './components/Archive.jsx';
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
@@ -103,7 +104,15 @@ function App() {
                 <Reviews />
               </ProtectedRoute>
             }
-          />          
+          />      
+          <Route
+            path="/archive"
+            element={
+              <ProtectedRoute>
+                <Archive />
+              </ProtectedRoute>
+            }
+          />      
         </Routes>
       </BrowserRouter>
     </AuthProvider>
