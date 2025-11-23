@@ -418,22 +418,22 @@ const MobileLibrary = () => {
                             key={pageIndex}
                             className="snap-center shrink-0 w-full px-2 pb-2 mx-2 rounded-2xl"
                         >
-                            <div className="grid grid-cols-2 gap-3 ">
+                            <div className="grid grid-cols-2 gap-3 items-center justify-center">
                             {page.map((show) => (
                                 <motion.button
                                 key={show.id}
                                 type="button"
                                 whileTap={{ scale: 0.96 }}
                                 onClick={() => navigate(`/mobile-shows/${show.id}`)}
-                                className="relative rounded-2xl w-full"
+                                className="relative rounded-2xl w-full flex justify-center"
                                 >
                                     <img
                                         src={show.keyart}
                                         alt={show.title}
-                                        className="w-full h-full object-cover rounded-2xl border border-white/40"
+                                        className="w-[90%] h-[90%] object-cover rounded-2xl border border-white/40"
                                     />
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />         
+                                        
                                 </motion.button>
                             ))}
                             </div>
