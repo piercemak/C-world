@@ -1,36 +1,51 @@
-import { useState, useEffect } from 'react';
-import Home from './Home';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import MobileLibrary from "./MobileLibrary";
+import VideoPlayer from "./VideoPlayer";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const IntroScreen = () => {
   const [showHome, setShowHome] = useState(false);
   const [checkedSession, setCheckedSession] = useState(false);
   const [skipIntro, setSkipIntro] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Decide mobile vs desktop
   useEffect(() => {
-    const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
-    if (hasSeenIntro === 'true') {
-      setShowHome(true); // Skip intro
-      setSkipIntro(true);
-    }
-    setCheckedSession(true); // Allow render
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-    const handlePlay = (e) => {
-    const duration = e.target.duration;
-    const offset = 0.1;
-    setTimeout(() => {
-        sessionStorage.setItem('hasSeenIntro', 'true');
-        setShowHome(true);
-    }, (duration - offset) * 1000);
-    };
+  const HomeComponent = isMobile ? MobileLibrary : VideoPlayer;
 
-  if (!checkedSession) return null; // Wait until we know whether to skip
+  // Check sessionStorage once
+  useEffect(() => {
+    const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+    if (hasSeenIntro === "true") {
+      setShowHome(true);   // go straight to home
+      setSkipIntro(true);  // just so we know why
+    }
+    setCheckedSession(true);
+  }, []);
+
+  const handlePlay = (e) => {
+    const duration = e.target.duration;
+    const offset = 0.1; // end a bit early
+    setTimeout(() => {
+      sessionStorage.setItem("hasSeenIntro", "true");
+      setShowHome(true);
+    }, (duration - offset) * 1000);
+  };
+
+  if (!checkedSession) return null; // don't render until we know
 
   return (
     <div className="w-full h-dvh overflow-hidden">
       <AnimatePresence mode="wait">
-        {!showHome ? (
+        {/* INTRO VIDEO */}
+        {!showHome && !skipIntro ? (
           <motion.video
             key="intro"
             src="/videos/Intro/CworldIntro.mp4"
@@ -40,18 +55,22 @@ const IntroScreen = () => {
             className="w-full h-full object-cover"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
           />
-        ) : skipIntro ? (
-          <Home /> // no animation if skipping intro
         ) : (
+          // HOME – always animated, whether we skipped intro or not
           <motion.div
-            key="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            key={isMobile ? "mobile-home" : "desktop-home"}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 1.2,       // slower, more gradual
+              ease: "easeInOut",
+            }}
+            className=""
           >
-            <Home />
+            <HomeComponent />
           </motion.div>
         )}
       </AnimatePresence>

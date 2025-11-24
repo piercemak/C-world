@@ -2,7 +2,6 @@ import { useAuth } from './AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import IntroScreen from './IntroScreen.jsx';
 
 const MobileUser = () => {
 
@@ -41,19 +40,14 @@ const MobileUser = () => {
   const handleResetImage = () => {
     localStorage.removeItem('userProfileImage');
     setProfileImage(DEFAULT_IMAGE);
-  }; 
-  
-  {/* Navigation */}
-  const [showIntro, setShowIntro] = useState(false);
+  };  
+
+
   const handleProfileClick = () => {
-    if (!isDefaultImage) {
-      setShowIntro(true);
-    }
+    navigate('/home'); 
   };
-  
+
   return (
-  <AnimatePresence mode="wait">
-    {!showIntro ? (
     <div className='w-full h-dvh flex flex-col bg-black'>
       <div className='w-full flex flex-row justify-center items-center gap-1 text-white relative poppinsfont'>
         <span className='font-bold text-4xl'> C </span>
@@ -114,17 +108,6 @@ const MobileUser = () => {
           className="hidden"
       />       
     </div>
-      ) : (
-      <motion.div
-        key="intro"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <IntroScreen />
-      </motion.div>
-    )}
-</AnimatePresence>  
   );
 };
 
