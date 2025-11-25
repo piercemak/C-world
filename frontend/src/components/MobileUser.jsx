@@ -38,15 +38,12 @@ const MobileUser = () => {
   }; 
 
   {/* Reset Image */}
-  const handleResetImage = () => {
-    localStorage.removeItem('userProfileImage');
-    setProfileImage(DEFAULT_IMAGE);
-  }; 
-  
-  {/* Navigation */}
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(() => {
+    return sessionStorage.getItem("showIntroFromUser") === "true";
+  });
   const handleProfileClick = () => {
     if (!isDefaultImage) {
+      sessionStorage.setItem("showIntroFromUser", "true"); 
       setShowIntro(true);
     }
   };

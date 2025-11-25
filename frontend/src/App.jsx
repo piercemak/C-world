@@ -22,8 +22,7 @@ function ProtectedRoute({ children }) {
 }
 
 function RootRedirect() {
-  const isMobile = window.innerWidth <= 768;
-  return <Navigate to={isMobile ? "/home" : "/user"} replace />;
+  return <Navigate to="/home" replace />;
 }
 
 function App() {
@@ -42,7 +41,7 @@ function App() {
           <Route path="/" element={<RootRedirect />} />
           <Route path="/login" element={isMobile ? <MobileLogin /> : <Login />} />
           <Route
-            path="/user"
+            path="/home"
             element={
               <ProtectedRoute>
                 {isMobile ? <MobileUser /> : <User />}
@@ -54,14 +53,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <IntroScreen isMobile={isMobile} />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <ProtectedRoute>
-                {isMobile ? <MobileHome /> : <Home />}
               </ProtectedRoute>
             }
           />

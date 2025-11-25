@@ -49,12 +49,12 @@ const User = () => {
   const [showIntro, setShowIntro] = useState(() => {
     return sessionStorage.getItem("showIntroFromUser") === "true";
   });
-const handleProfileClick = () => {
-  if (!isDefaultImage) {
-    sessionStorage.setItem("showIntroFromUser", "true"); 
-    setShowIntro(true);
-  }
-};
+  const handleProfileClick = () => {
+    if (!isDefaultImage) {
+      sessionStorage.setItem("showIntroFromUser", "true"); 
+      setShowIntro(true);
+    }
+  };
   
   {/* Edit Icon / Card */}
   const [isHovered, setIsHovered] = useState(false)

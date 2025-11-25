@@ -11,6 +11,7 @@ const filterIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" c
 const starIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" /></svg>
 const resetIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></svg>
 const folderIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="m.5 3 .04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2m5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98z"/><path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5"/></svg>
+const profileIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/></svg>
 
 {/* Variants */}
 const listVariants = {
@@ -212,7 +213,18 @@ localStorage.setItem('profileImage', profileImage);
 
 
 
-
+{/* Profile/User Interaction */}
+const [expanded, setExpanded] = useState(false);
+const profileRef = useRef(null);
+useEffect(() => {
+const handleClick = (e) => {
+    if (profileRef.current && !profileRef.current.contains(e.target)) {
+    setExpanded(false);
+    }
+};
+document.addEventListener("mousedown", handleClick);
+return () => document.removeEventListener("mousedown", handleClick);
+}, []);
 
 
 
@@ -235,42 +247,84 @@ localStorage.setItem('profileImage', profileImage);
             >
                 {homeIcon}
             </motion.div>
-            <div className="flex flex-row items-center bg-white/20 gap-2 px-2 py-1 rounded-full">
-                <img
-                    src={profileImage}
-                    alt="Profile"
-                    className="size-8 rounded-full object-cover border border-white/20 shadow-md"
-                    onClick={() => fileInputRef.current.click()} 
-                />      
-                <input
-                    type="file"
-                    ref={fileInputRef}
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleImageChange}
-                />   
-                <div className="size-2 rounded-full bg-green-400/40 ml-1">
-                    <div className="size-2 rounded-full bg-green-400 animate-ping"></div>
-                </div>      
-            </div>
-         
         </div>
         {/* Search Icon */}
         <div className="flex justify-end">
-            <div className='size-10 z-90 fixed m-2 text-white flex items-center justify-center'>
-                <motion.span 
-                    whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
-                    transition={{
-                        type: "spring",
-                        stiffness: 600,
-                        damping: 20,    
-                    }}
-                    onClick={() => setIsSearchOpen(!isSearchOpen)}
-                    className=''
-                > 
-                    {searchIcon} 
-                </motion.span>
-            </div>
+          <div className="fixed z-90 m-2 text-white flex flex-row items-center gap-2">
+              <motion.div
+                  ref={profileRef}
+                  className="flex flex-row items-center bg-white/20 gap-2 px-2 py-1 rounded-full cursor-pointer overflow-hidden"
+                  initial={false}
+                  animate={{ width: expanded ? 140 : 70 }}  
+                  transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                  onClick={() => setExpanded(true)}
+              >
+                  {/* Profile Image */}
+                  <div
+                  className={
+                      expanded
+                      ? "pointer-events-auto w-8 h-8 flex-shrink-0"
+                      : "pointer-events-none w-8 h-8 flex-shrink-0"
+                  }
+                  >
+                  <img
+                      src={profileImage}
+                      alt="Profile"
+                      className="w-8 h-8 rounded-full object-cover border border-white/20 shadow-md"
+                      onClick={() => fileInputRef.current.click()}
+                  />
+                  <input
+                      type="file"
+                      ref={fileInputRef}
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleImageChange}
+                  />
+                  </div>
+
+                  {/* Ping dot */}
+                  <div className="size-2 rounded-full bg-green-400/40">
+                  <div className="size-2 rounded-full bg-green-400 animate-ping" />
+                  </div>
+
+                  {/* Right-side content – always rendered, just animated */}
+                  <motion.div
+                  className="flex flex-row items-center gap-4 ml-1"
+                  initial={false}
+                  animate={{
+                      opacity: expanded ? 1 : 0,
+                      x: expanded ? 0 : 8,
+                  }}
+                  style={{ pointerEvents: expanded ? "auto" : "none" }}
+                  transition={{ duration: 0.2 }}
+                  >
+                  <span className="text-white flex justify-end">
+                      {profileIcon}
+                  </span>
+                  <button
+                      onClick={(e) => {
+                      e.stopPropagation();
+                      setExpanded(false);
+                      }}
+                      className="text-white/50"
+                  >
+                      ✕
+                  </button>
+                  </motion.div>
+              </motion.div>
+
+              <motion.span
+                  whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }}
+                  transition={{
+                  type: "spring",
+                  stiffness: 600,
+                  damping: 20,
+                  }}
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+              >
+                  {searchIcon}
+              </motion.span>
+          </div>
         </div>
 
 
