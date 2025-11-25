@@ -955,6 +955,15 @@ const Library = () => {
       ],
     } 
 
+    const episodeTitles_pluribus = {
+      1: [
+        "We_Is_Us",
+        "Pirate_Lady",
+        "Grenade",
+        "Please_Carol",
+      ],
+    } 
+
 
 
     const allEpisodeTitles = {
@@ -969,6 +978,7 @@ const Library = () => {
       "lovedeathandrobots": episodeTitles_lovedeathandrobots,
       "blackmirror": episodeTitles_blackmirror,
       "severance": episodeTitles_severance,
+      "pluribus": episodeTitles_pluribus,
     };
     
 const extractS3KeyFromPath = (path) => {
@@ -1311,6 +1321,18 @@ const extractS3KeyFromPath = (path) => {
           subtitles: "yes",
           videos: videoDataByShow["severance"],
         },      
+        "pluribus": {
+          type: "show",  
+          title: "Pluribus",
+          release_year: "2025",
+          genre: "Drama",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "In a world overtaken by a mysterious wave of forced happiness, Carol Sturka, one of the few immune, must uncover what's really going on - and save humanity from its own bliss.",
+          background: "/images/pluribus/covers/pluribusCover.jpg",
+          subtitles: "yes",
+          videos: videoDataByShow["pluribus"],
+        },  
         
       };
       const show = shows[showId];

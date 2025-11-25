@@ -299,5 +299,17 @@ export const SHOWS = [
         card: "/images/cardimages/severanceLogo.svg",
         dateadded: "1-25-25",
     },      
+
+    {
+        id: "pluribus",  
+        title: "Pluribus",
+        creator: "Dan Erickson", 
+        background: "/images/pluribus/covers/pluribus_backdrop.svg", 
+        ratings: "8.5", 
+        type: "TV", 
+        keyart: "/images/pluribus/covers/pluribus_mobileLogo.png", 
+        card: "/images/cardimages/pluribusLogo.svg",
+        dateadded: "1-26-25",
+    },  
     
 ];

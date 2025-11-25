@@ -96,7 +96,10 @@ const VideoPlayer = () => {
       { title: "Love Death + Robots",       cardId: "card-22" },
       { title: "Demons",                    cardId: "card-23" },
       { title: "Black Mirror",              cardId: "card-24" },
+
       { title: "Severance",                 cardId: "card-25" },
+      { title: "Pluribus",                  cardId: "card-26" },
+
     ];
 
     const cardIdToSlug = {
@@ -129,6 +132,7 @@ const VideoPlayer = () => {
         "card-24": "blackmirror",
 
         "card-25": "severance",
+        "card-26": "pluribus",
 
       };
     const handleCardClick = (cardId) => {

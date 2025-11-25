@@ -956,6 +956,15 @@ const MobileShows = () => {
       ],
     } 
 
+    const episodeTitles_pluribus = {
+      1: [
+        "We_Is_Us",
+        "Pirate_Lady",
+        "Grenade",
+        "Please_Carol",
+      ],
+    } 
+
     const allEpisodeTitles = {
     "steven-universe": episodeTitles_stevenuniverse,
     "over-the-garden-wall": episodeTitles_overthegardenwall,
@@ -968,6 +977,7 @@ const MobileShows = () => {
     "lovedeathandrobots": episodeTitles_lovedeathandrobots,
     "blackmirror": episodeTitles_blackmirror,
     "severance": episodeTitles_severance,
+    "pluribus": episodeTitles_pluribus,
     };
 
     {/* Show/Season Handling */}
@@ -1384,7 +1394,22 @@ const MobileShows = () => {
           description: "Mark leads a team of office workers whose memories have been surgically divided between their work and personal lives; when a mysterious colleague appears outside of work, it begins a journey to discover the truth about their jobs.",
           mobilebackground: "/images/severance/covers/severance_background.jpg",
           videos: videoDataByShow["severance"],
-        },          
+        }, 
+        "pluribus": {
+          type: "show",  
+          title: "Pluribus",
+          ratings: "8.5",
+          agerating: "18",
+          creator: "Vince Gilligan",
+          release_year: "2025",
+          genre: "Drama",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "In a world overtaken by a mysterious wave of forced happiness, Carol Sturka, one of the few immune, must uncover what's really going on - and save humanity from its own bliss.",
+          mobilebackground: "/images/pluribus/covers/pluribus_background.jpg",
+          subtitles: "yes",
+          videos: videoDataByShow["pluribus"],
+        },           
         
 
 
