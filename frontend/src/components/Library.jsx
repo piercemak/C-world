@@ -1486,7 +1486,7 @@ const extractS3KeyFromPath = (path) => {
 
 
   return (
-    <div className='w-full h-dvh flex p-6 gap-4 justify-center items-center'>
+    <div  style={{ background: "var(--gradient-9)" }} className='w-full h-dvh flex p-6 gap-4 justify-center items-center'>
         <div className='w-full max-w-[1400px] h-[92vh] px-14 pt-4 bg-black/20 backdrop-blur-md rounded-[20px] border border-white/10 shadow-[inset_0_0_0.5px_0.5px_rgba(255,255,255,0.2)] relative overflow-hidden'>
             {/* Overlapping Stack (relative container) */}
             <div className="relative w-full h-[65dvh] mb-12 overflow-hidden rounded-[20px]">
