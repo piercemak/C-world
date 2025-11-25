@@ -34,156 +34,157 @@ const MobileLibrary = () => {
   const moviesIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0 1 18 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0 1 18 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 0 1 6 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125M18 18.375v-5.25m0 5.25v-1.5c0-.621.504-1.125 1.125-1.125M18 13.125v1.5c0 .621.504 1.125 1.125 1.125M18 13.125c0-.621.504-1.125 1.125-1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125M6 13.125C6 12.504 5.496 12 4.875 12m-1.5 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M19.125 12h1.5m0 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h1.5m14.25 0h1.5" /></svg>
   const rightChevron = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
 
-  {/* Nav Bar Active State */}
-  const tabs = [moviesIcon, showsIcon];
-  const [activeTab, setActiveTab] = useState('Shows');
+{/* Nav Bar Active State */}
+const tabs = [moviesIcon, showsIcon];
+const [activeTab, setActiveTab] = useState('Shows');
 
-  const archiveNavigate = () => {
-    navigate("/archive");
-  }
+const archiveNavigate = () => {
+navigate("/archive");
+}
 
-  {/* Loading */}
-  const [imageLoaded, setImageLoaded] = useState({});
-  const [cardLoaded, setCardLoaded] = useState(false);
+{/* Loading */}
+const [imageLoaded, setImageLoaded] = useState({});
+const [cardLoaded, setCardLoaded] = useState(false);
 
-  const handleImageLoad = (id) => {
-    setImageLoaded((prev) => ({
-        ...prev,
-        [id]: true,
-    }));
-  };
+const handleImageLoad = (id) => {
+setImageLoaded((prev) => ({
+    ...prev,
+    [id]: true,
+}));
+};
 
-  {/* Movie/Show Tabs */}
-    const TAB_CONFIG = [
-    { id: "Movies", icon: moviesIcon },
-    { id: "Shows", icon: showsIcon },
-    ];
+{/* Movie/Show Tabs */}
+const TAB_CONFIG = [
+{ id: "Movies", icon: moviesIcon },
+{ id: "Shows", icon: showsIcon },
+];
 
-  {/* Route Navigation */}
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-     navigate("/home");
-  };
-  {/* Back to Users */}
-  const handleBackToProfiles = () => {
-    sessionStorage.removeItem("showIntroFromUser");
-    window.location.reload();
-  };
+{/* Route Navigation */}
+const navigate = useNavigate();
+const handleNavigate = () => {
+    navigate("/home");
+};
+{/* Back to Users */}
+const handleBackToProfiles = () => {
+sessionStorage.removeItem("showIntroFromUser");
+navigate("/home");
+window.location.reload();
+};
 
-  {/* Carousel State */}
-  const shows = SHOWS;
-
-
-    {/* Search Functionality */}
-    const searchRef = useRef(null);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (searchRef.current && !searchRef.current.contains(event.target)) {
-                setIsSearchOpen(false);
-                setSearchTerm(''); 
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
-    {/* Current show */}
-    const filteredShows = shows.filter(show => 
-    (activeTab === 'Movies' ? show.type === 'Movies' : show.type === 'TV') &&
-    show.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-    if (!filteredShows.length) return;
-
-    const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % filteredShows.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-    }, [filteredShows.length]);
-    const currentShow = filteredShows.length > 0 ? filteredShows[currentIndex % filteredShows.length] : null;
+{/* Carousel State */}
+const shows = SHOWS;
 
 
-
-    const [direction, setDirection] = useState('left');
-    const handleSwipe = (newIndex) => {
-        if (newIndex > currentIndex) setDirection('left');
-        else setDirection('right');
-        setCurrentIndex(newIndex);
-    };
-
-
-
-
-    {/* Profile Picture */}
-    const fileInputRef = useRef(null);
-    const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setProfileImage(reader.result);
-        };
-        reader.readAsDataURL(file);
+{/* Search Functionality */}
+const searchRef = useRef(null);
+const [searchTerm, setSearchTerm] = useState('');
+const [isSearchOpen, setIsSearchOpen] = useState(false);
+useEffect(() => {
+    const handleClickOutside = (event) => {
+        if (searchRef.current && !searchRef.current.contains(event.target)) {
+            setIsSearchOpen(false);
+            setSearchTerm(''); 
         }
-    };    
-    useEffect(() => {
-    localStorage.setItem('profileImage', profileImage);
-    }, [profileImage]);
-
-
-    {/* Grid 2x1 */}
-    const pages = chunkArray(filteredShows, 2);
-    const sliderRef = useRef(null);
-    const [activePage, setActivePage] = useState(0);
-    useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const handleScroll = () => {
-        const pageWidth = slider.clientWidth;
-        const newIndex = Math.round(slider.scrollLeft / pageWidth);
-        setActivePage(newIndex);
     };
-    slider.addEventListener("scroll", handleScroll);
-    return () => slider.removeEventListener("scroll", handleScroll);
-    }, []);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+}, []);
+
+{/* Current show */}
+const filteredShows = shows.filter(show => 
+(activeTab === 'Movies' ? show.type === 'Movies' : show.type === 'TV') &&
+show.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+const [currentIndex, setCurrentIndex] = useState(0);
+
+useEffect(() => {
+if (!filteredShows.length) return;
+
+const interval = setInterval(() => {
+    setCurrentIndex((prev) => (prev + 1) % filteredShows.length);
+}, 4000);
+
+return () => clearInterval(interval);
+}, [filteredShows.length]);
+const currentShow = filteredShows.length > 0 ? filteredShows[currentIndex % filteredShows.length] : null;
 
 
-    {/* Dot Page Click */}
-    const handleDotClick = (index) => {
-    if (!sliderRef.current) return;
-    const slider = sliderRef.current;
+
+const [direction, setDirection] = useState('left');
+const handleSwipe = (newIndex) => {
+    if (newIndex > currentIndex) setDirection('left');
+    else setDirection('right');
+    setCurrentIndex(newIndex);
+};
+
+
+
+
+{/* Profile Picture */}
+const fileInputRef = useRef(null);
+const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
+const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        setProfileImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+    }
+};    
+useEffect(() => {
+localStorage.setItem('profileImage', profileImage);
+}, [profileImage]);
+
+
+{/* Grid 2x1 */}
+const pages = chunkArray(filteredShows, 2);
+const sliderRef = useRef(null);
+const [activePage, setActivePage] = useState(0);
+useEffect(() => {
+const slider = sliderRef.current;
+if (!slider) return;
+const handleScroll = () => {
     const pageWidth = slider.clientWidth;
+    const newIndex = Math.round(slider.scrollLeft / pageWidth);
+    setActivePage(newIndex);
+};
+slider.addEventListener("scroll", handleScroll);
+return () => slider.removeEventListener("scroll", handleScroll);
+}, []);
 
-    slider.scrollTo({
-        left: pageWidth * index,
-        behavior: "smooth",
-    });
-    };
 
-    {/* Card Carousel */}
-    const mod = (n, m) => ((n % m) + m) % m;
+{/* Dot Page Click */}
+const handleDotClick = (index) => {
+if (!sliderRef.current) return;
+const slider = sliderRef.current;
+const pageWidth = slider.clientWidth;
 
-    {/* Profile/User Interaction */}
-    const [expanded, setExpanded] = useState(false);
-    const profileRef = useRef(null);
-    useEffect(() => {
-    const handleClick = (e) => {
-        if (profileRef.current && !profileRef.current.contains(e.target)) {
-        setExpanded(false);
-        }
-    };
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-    }, []);
+slider.scrollTo({
+    left: pageWidth * index,
+    behavior: "smooth",
+});
+};
+
+{/* Card Carousel */}
+const mod = (n, m) => ((n % m) + m) % m;
+
+{/* Profile/User Interaction */}
+const [expanded, setExpanded] = useState(false);
+const profileRef = useRef(null);
+useEffect(() => {
+const handleClick = (e) => {
+    if (profileRef.current && !profileRef.current.contains(e.target)) {
+    setExpanded(false);
+    }
+};
+document.addEventListener("mousedown", handleClick);
+return () => document.removeEventListener("mousedown", handleClick);
+}, []);
 
 
   return (
@@ -357,9 +358,13 @@ const MobileLibrary = () => {
                             style={{ pointerEvents: expanded ? "auto" : "none" }}
                             transition={{ duration: 0.2 }}
                             >
-                            <span className="text-white flex justify-end">
+                            <motion.span 
+                                className="text-white flex justify-end"
+                                whileTap={{ scale: 0.9 }}
+                                onClick={handleBackToProfiles}
+                            >
                                 {profileIcon}
-                            </span>
+                            </motion.span>
                             <button
                                 onClick={(e) => {
                                 e.stopPropagation();

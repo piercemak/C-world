@@ -13,7 +13,7 @@ const MobileShows = () => {
   const layersIcon = <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-layers-fill" viewBox="0 0 16 16"><path d="M7.765 1.559a.5.5 0 0 1 .47 0l7.5 4a.5.5 0 0 1 0 .882l-7.5 4a.5.5 0 0 1-.47 0l-7.5-4a.5.5 0 0 1 0-.882z"/><path d="m2.125 8.567-1.86.992a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882l-1.86-.992-5.17 2.756a1.5 1.5 0 0 1-1.41 0z"/></svg>
   const libraryIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" /></svg>
   const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" /><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" /></svg>
-
+  const leftChevron = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg>
 
   const { showId } = useParams();
   const cleanShowId = (id) => id.replace(/-/g, "");
@@ -21,7 +21,7 @@ const MobileShows = () => {
 
   const navigate = useNavigate();
   const handleNavigate = () => {
-     navigate("/video-library");
+     navigate("/archive");
   };
 
 
@@ -1486,14 +1486,8 @@ const MobileShows = () => {
 {/* Current show */}
 const videos = SHOWS;
 const carouselShows = videos; 
-
-
 const [currentIndex, setCurrentIndex] = useState(0);
-
 const currentShow = videos.find(media => media.id === showId) || null;
-
-
-
 
 
 
@@ -1510,19 +1504,6 @@ const currentShow = videos.find(media => media.id === showId) || null;
             />
           )}
         </div>
-
-        <motion.div
-            whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
-            transition={{
-                type: "spring",
-                stiffness: 600,
-                damping: 20    
-            }}     
-            onClick={handleNavigate}
-            className="size-10 z-90 fixed m-2 text-white bg-white/20 backdrop-blur-sm flex items-center justify-center rounded-full shadow-md"
-        >
-            {homeIcon}
-        </motion.div>
 
         {videoPlayerVisible && selectedVideo && (
             <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-[100] flex items-center justify-center">
@@ -1673,6 +1654,13 @@ const currentShow = videos.find(media => media.id === showId) || null;
 
             <div className='flex flex-col alexandria-font w-full h-full px-6 pt-6 bg-black/20 overflow-scroll no-scrollbar backdrop-blur-sm border border-white/10 inset-shadow-2xs inset-shadow-white/20 rounded-2xl z-20'>
                 
+                <motion.span 
+                  className="absolute mt-1 left-2 text-white/50"
+                  whileTap={{ scale: 0.9 }}
+                  onClick={handleNavigate}
+                >
+                  {leftChevron}
+                </motion.span>
                 <span className='text-white text-center font-bold text-4xl'> {show?.title} </span> 
                 <span className='text-lg mt-1 text-center text-white/60'> {show?.creator} </span>
 
