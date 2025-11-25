@@ -9,6 +9,7 @@ import Menu from './framercomponents/Menu.jsx'
 
 
 
+const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, #add8e6, #fff)'; //ORIGINAL COLOR
 
 
 
@@ -191,22 +192,19 @@ const VideoPlayer = () => {
 
     {/* Gradient Switcher Logic */}
     const [showPicker, setShowPicker] = useState(false);
-    const [gradientValue, setGradientValue] = useState(getComputedStyle(document.documentElement).getPropertyValue('--gradient-9').trim());
+    const [gradientValue, setGradientValue] = useState(() => {
+      if (typeof window === 'undefined') return DEFAULT_GRADIENT;
+      const saved = localStorage.getItem('userGradient');
+      return saved || DEFAULT_GRADIENT;
+    });
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, #add8e6, #fff)'; //ORIGINAL COLOR
-    const handleGradientChange = (newGradient) => {
-      document.documentElement.style.setProperty('--gradient-9', newGradient);
-      localStorage.setItem('userGradient', newGradient);
-    };
-    useEffect(() => {
-      const savedGradient = localStorage.getItem('userGradient');
-      const gradient = savedGradient || DEFAULT_GRADIENT;
-      document.documentElement.style.setProperty('--gradient-9', gradient);
-      if (!savedGradient) {
-        localStorage.setItem('userGradient', DEFAULT_GRADIENT);
-      }
-    }, []);
-
+useEffect(() => {
+  document.documentElement.style.setProperty('--gradient-9', gradientValue);
+  localStorage.setItem('userGradient', gradientValue);
+}, [gradientValue]);
+const handleGradientChange = (newGradient) => {
+  setGradientValue(newGradient);
+};
 
     {/* Menu Pointer Events */}
     const [isMenuOpen, setIsMenuOpen] = useState(false);
