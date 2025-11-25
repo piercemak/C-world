@@ -54,6 +54,7 @@ const VideoPlayer = () => {
     {/* Navigation */}
     const handleNavigate = () => {
       sessionStorage.removeItem("showIntroFromUser");
+      navigate('/home');
       window.location.reload();
     };    
     const handleReviewNavigate = () => {

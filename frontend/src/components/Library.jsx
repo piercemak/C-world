@@ -1337,6 +1337,7 @@ const extractS3KeyFromPath = (path) => {
           document.documentElement.style.setProperty('--gradient-9', savedGradient);
         }
       }, []);
+      
 
 
       {/* Placeholder load state */}
