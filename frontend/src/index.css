@@ -13,6 +13,9 @@
   }
 
 
+:root {
+  --gradient-9: conic-gradient(from .5turn at bottom center in oklab, #add8e6, #fff);
+}
 
   .scrollbar-hidden {
     -ms-overflow-style: none;  
