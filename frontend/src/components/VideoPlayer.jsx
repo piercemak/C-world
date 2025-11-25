@@ -206,14 +206,6 @@ const VideoPlayer = () => {
       setGradientValue(newGradient);
     };
 
-    {/* Color Storage */}
-    useEffect(() => {
-      const savedGradient = localStorage.getItem('userGradient');
-      if (savedGradient) {
-        document.documentElement.style.setProperty('--gradient-9', savedGradient);
-      }
-    }, []);
-
     {/* Menu Pointer Events */}
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
