@@ -686,7 +686,7 @@ const VideoPlayer = () => {
                 
               ))}
               </div>
-              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden scroll-smooth safaribar-hidden snap-x snap-mandatory w-full h-full flex`}>
+              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
 
               {pages.map((page, pageIndex) => (
               <div 
