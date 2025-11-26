@@ -182,6 +182,10 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:8,
       3:9,
       4:10,
+    },  
+      severance: {
+      1:9,
+      2:10,
     },      
   };
 const displaySeason =
@@ -333,7 +337,43 @@ if (prevEpisode < 1) {
           10: { intro: { start: 0.0, end: 100.0 }, outro: { start: 1525, skipTo: "next" } },
         }
       }
-  }   
+  },   
+    "severance": {
+      seasons: {
+        1: {
+          1: { outro: { start: 2840, skipTo: "next" } },
+          2: { intro: { start: 327.0, end: 407.0 }, outro: { start: 3137, skipTo: "next" } },
+          3: { intro: { start: 131.0, end: 211.0 }, outro: { start: 3137, skipTo: "next" } },
+          4: { intro: { start: 235.0, end: 315.0 }, outro: { start: 2730, skipTo: "next" } },
+          5: { intro: { start: 170.0, end: 350.0 }, outro: { start: 2528, skipTo: "next" } },
+          6: { intro: { start: 60.0, end: 140.0 }, outro: { start: 2328, skipTo: "next" } },
+          7: { intro: { start: 349.0, end: 429.0 }, outro: { start: 2925, skipTo: "next" } },
+          8: { intro: { start: 196.0, end: 276.0 }, outro: { start: 2732, skipTo: "next" } },
+          9: { intro: { start: 153.0, end: 233.0 }, outro: { start: 2322, skipTo: "next" } },
+        },
+        2: {
+          1: { outro: { start: 3337, skipTo: "next" } },
+          2: { intro: { start: 718.0, end: 798.0 }, outro: { start: 2686, skipTo: "next" } },
+          3: { intro: { start: 190.0, end: 270.0 }, outro: { start: 3139, skipTo: "next" } },
+          4: { outro: { start: 2962, skipTo: "next" } },
+          5: { intro: { start: 142.0, end: 222.0 }, outro: { start: 2716, skipTo: "next" } },
+          6: { intro: { start: 212.0, end: 292.0 }, outro: { start: 2805, skipTo: "next" } },
+          7: { intro: { start: 300.0, end: 380.0 }, outro: { start: 2904, skipTo: "next" } },
+          8: { outro: { start: 2149, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 80.0 }, outro: { start: 4400, skipTo: "next" } },
+        },
+      }
+  },   
+    "pluribus": {
+      seasons: {
+        1: {
+          1: { outro: { start: 3291, skipTo: "next" } },
+          2: { intro: { start: 455.0, end: 477.0 }, outro: { start: 3137, skipTo: "next" } },
+          3: { intro: { start: 131.0, end: 211.0 }, outro: { start: 3629, skipTo: "next" } },
+          4: { intro: { start: 384.0, end: 406.0 }, outro: { start: 2490, skipTo: "next" } },
+        }
+      }
+  },   
 
 
   };
