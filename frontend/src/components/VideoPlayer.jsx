@@ -691,7 +691,7 @@ const VideoPlayer = () => {
               {pages.map((page, pageIndex) => (
               <div 
                   key={pageIndex}
-                  className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
+                  className={`grid grid-cols-3 gap-[24px] scrollbar-hidden snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
                   pageIndex === currentPage ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
               >
