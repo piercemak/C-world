@@ -135,30 +135,41 @@ const VideoPlayer = () => {
         "card-26": "pluribus",
 
       };
-    const handleCardClick = (cardId) => {
-        const card = document.querySelector(`.${styles[cardId]}`);
-        const mainContent = document.querySelector(`.${styles['main-content']}`);
-      
-        if (!card || !mainContent) return;
-      
-        document.startViewTransition(() => {
-          if (clickedCard === cardId) {
-            const slug = cardIdToSlug[cardId];
-            if (slug) {
-              navigate(`/video-library/${slug}`);
-            }
-          } else {
-            // First click → just focus
-            setClickedCard(cardId);
-            mainContent.classList.add(styles.expanded);
-      
-            const allCards = document.querySelectorAll(`.${styles.card}`);
-            allCards.forEach((c) => c.classList.remove(styles.active));
-      
-            card.classList.add(styles.active);
-          }
-        });
-      };
+
+    const runWithViewTransition = (callback) => {
+      if (typeof document !== "undefined" && "startViewTransition" in document) {
+        // browsers that support the View Transitions API
+        document.startViewTransition(callback);
+      } else {
+        // Safari / others → just run the logic without the fancy transition
+        callback();
+      }
+    };
+    
+const handleCardClick = (cardId) => {
+  const card = document.querySelector(`.${styles[cardId]}`);
+  const mainContent = document.querySelector(`.${styles['main-content']}`);
+
+  if (!card || !mainContent) return;
+
+  runWithViewTransition(() => {
+    if (clickedCard === cardId) {
+      const slug = cardIdToSlug[cardId];
+      if (slug) {
+        navigate(`/video-library/${slug}`);
+      }
+    } else {
+      setClickedCard(cardId);
+      mainContent.classList.add(styles.expanded);
+
+      const allCards = document.querySelectorAll(`.${styles.card}`);
+      allCards.forEach((c) => c.classList.remove(styles.active));
+
+      card.classList.add(styles.active);
+    }
+  });
+};
+
       
 
 
@@ -686,7 +697,7 @@ const VideoPlayer = () => {
                 
               ))}
               </div>
-              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
+              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
 
               {pages.map((page, pageIndex) => (
               <div 
