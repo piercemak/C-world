@@ -27,7 +27,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   const [toggleMute, setToggleMute] = useState(false);
   const [volume, setVolume] = useState(() => {
     const saved = localStorage.getItem("videoVolume");
-    return saved !== null ? parseFloat(saved) : 1; // default volume = 1
+    return saved !== null ? parseFloat(saved) : 1; 
   });
   useEffect(() => {
     if (videoRef.current) {
@@ -35,7 +35,6 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     }
     localStorage.setItem("videoVolume", volume.toString());
   }, [volume]);
-  // Keyboard to change volume
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -109,26 +108,24 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   
   const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
-  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["severance", "pluribus"]);
+  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus"]);
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
-  // Safely get just the filename (no query string)
+
   let base;
   try {
     const u = new URL(src);
     base = u.pathname.split("/").pop() || "";
   } catch {
-    // Fallback if src isn't a full URL
+
     base = src.split("/").pop() || "";
   }
-
-  // Match SxxEyy at the very start of the filename
+e
   const m = base.match(/^S(\d{1,3})E(\d{1,3})/i);
 
   const parsedSeason = m ? parseInt(m[1], 10) : null;
   const parsedEpisode = m ? parseInt(m[2], 10) : null;
 
-  // Only fall back to props if they are numbers
   const actualSeason = parsedSeason ?? (Number.isFinite(season) ? season : null);
   const actualEpisode = parsedEpisode ?? (Number.isFinite(episode) ? episode : null);
 
