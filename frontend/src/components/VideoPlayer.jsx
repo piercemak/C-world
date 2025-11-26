@@ -686,12 +686,12 @@ const VideoPlayer = () => {
                 
               ))}
               </div>
-              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
+              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-hidden snap-x snap-mandatory w-full h-full flex`}>
 
               {pages.map((page, pageIndex) => (
               <div 
                   key={pageIndex}
-                  className={`grid grid-cols-3 gap-[24px] scrollbar-hidden snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
+                  className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
                   pageIndex === currentPage ? 'opacity-100' : 'opacity-0 pointer-events-none'
                   }`}
               >
