@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (login(username, password)) {
-      navigate('/user');
+      navigate('/home');
     } else {
       alert('Invalid credentials');
     }
