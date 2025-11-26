@@ -930,7 +930,16 @@ const isLastEpisode =
           srcLang="en"
           label="English"
         />
-      )}        
+      )}     
+
+      {showId === "pluribus" && season && episode && (
+        <track
+          src={`/subtitles/pluribus/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}     
 
       Your browser does not support the video tag.
     </video>
