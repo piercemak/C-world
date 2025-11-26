@@ -147,29 +147,28 @@ const VideoPlayer = () => {
     };
     
     const handleCardClick = (cardId) => {
-        const card = document.querySelector(`.${styles[cardId]}`);
-        const mainContent = document.querySelector(`.${styles['main-content']}`);
-      
-        if (!card || !mainContent) return;
-      
-        document.startViewTransition(() => {
-          if (clickedCard === cardId) {
-            const slug = cardIdToSlug[cardId];
-            if (slug) {
-              navigate(`/video-library/${slug}`);
-            }
-          } else {
-            // First click → just focus
-            setClickedCard(cardId);
-            mainContent.classList.add(styles.expanded);
-      
-            const allCards = document.querySelectorAll(`.${styles.card}`);
-            allCards.forEach((c) => c.classList.remove(styles.active));
-      
-            card.classList.add(styles.active);
+      const card = document.querySelector(`.${styles[cardId]}`);
+      const mainContent = document.querySelector(`.${styles['main-content']}`);
+    
+      if (!card || !mainContent) return;
+    
+      runWithViewTransition(() => {
+        if (clickedCard === cardId) {
+          const slug = cardIdToSlug[cardId];
+          if (slug) {
+            navigate(`/video-library/${slug}`);
           }
-        });
-      };
+        } else {
+          setClickedCard(cardId);
+          mainContent.classList.add(styles.expanded);
+    
+          const allCards = document.querySelectorAll(`.${styles.card}`);
+          allCards.forEach((c) => c.classList.remove(styles.active));
+    
+          card.classList.add(styles.active);
+        }
+      });
+    };
 
       
 
