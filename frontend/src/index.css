@@ -25,6 +25,12 @@
     display: none;             
   }
 
+.safaribar-hidden::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent; /* just in case */
+}
+
 
 .fade-text {
   mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
