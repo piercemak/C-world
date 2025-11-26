@@ -109,6 +109,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   
   const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
+  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["severance", "pluribus"]);
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
   // Safely get just the filename (no query string)
@@ -186,14 +187,16 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       severance: {
       1:9,
       2:10,
-    },      
+    },     
+    pluribus: {
+      1:4
+    } 
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
 const displayEpisode =
   m ? parseInt(m[2], 10) : (Number.isFinite(episode) ? episode : null);
 
-// Derive next/prev from DISPLAY (single source of truth)
 const showSeasonData = seasonLength[showKey] || {};
 
 const currS = Number.isFinite(displaySeason) ? displaySeason : 1;
@@ -214,7 +217,7 @@ if (prevEpisode < 1) {
     prevSeason = currS - 1;
     prevEpisode = prevSeasonLen;
   } else {
-    prevEpisode = null; // nothing before S1E1
+    prevEpisode = null; 
   }
 }
 
@@ -416,7 +419,12 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         console.log("▶️ Attempting to play video...");
         const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
-        const startTime = (skipIntro && hasIntro)
+        const shouldAutoSkipIntro =
+          skipIntro &&
+          hasIntro &&
+          !NO_AUTO_SKIP_INTRO_SHOWS.has(showKey);
+
+        const startTime = shouldAutoSkipIntro
           ? Number(intro.end) || 0
           : (shouldStartFromBeginning ? 0 : savedProgress);
 
@@ -427,9 +435,9 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         console.log("🚩 skipIntro flag:", skipIntro);
         console.log("🎯 intro skip time:", intro?.end);
 
-        if (skipIntro && hasIntro) {
+        if (shouldAutoSkipIntro) {
           setAutoSkipDone(true);
-        }
+        }   
       } catch (err) {
         console.warn("Autoplay blocked:", err);
       }
