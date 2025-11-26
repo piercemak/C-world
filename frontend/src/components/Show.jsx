@@ -120,7 +120,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
 
     base = src.split("/").pop() || "";
   }
-e
+
   const m = base.match(/^S(\d{1,3})E(\d{1,3})/i);
 
   const parsedSeason = m ? parseInt(m[1], 10) : null;
