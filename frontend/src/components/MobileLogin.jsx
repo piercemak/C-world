@@ -18,7 +18,7 @@ const MobileLogin = () => {
 
     const success = login(username, password);
     if (success) {
-      navigate('/user');
+      navigate('/home');
     } else {
       alert('Invalid credentials');
     }
