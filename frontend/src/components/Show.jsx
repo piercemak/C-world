@@ -5,8 +5,6 @@ import ProgressBar from "./ProgressBar.jsx";
 import VolumeSlider from "./VolumeSlider.jsx";
 import SkipForward from '../assets/icons/SkipForward.svg'
 import SkipBack from '../assets/icons/SkipBack.svg'
-import { getWatchProgress, saveWatchProgress, getUserVolume, saveUserVolume } from "./api.js"; 
-
 
 
 const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, hasSubtitles = false, episodeTitles, getSignedUrl = {} }) => {
@@ -27,17 +25,16 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   {/* Volume Control */}
   const [volumeHovered, setvolumeHovered] = useState(false);
   const [toggleMute, setToggleMute] = useState(false);
-  const [volume, setVolume] = useState(1);
-  useEffect(() => {
-    getUserVolume().then(setVolume);
-  }, []);
+  const [volume, setVolume] = useState(() => {
+    const saved = localStorage.getItem("videoVolume");
+    return saved !== null ? parseFloat(saved) : 1; 
+  });
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
     }
-    saveUserVolume(volume);
+    localStorage.setItem("videoVolume", volume.toString());
   }, [volume]);
-
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -45,7 +42,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     const handleVolumeChange = () => {
       const newVolume = vid.volume;
       setVolume(newVolume);
-      saveUserVolume(newVolume);
+      localStorage.setItem("videoVolume", newVolume.toString());
     };
   
     vid.addEventListener("volumechange", handleVolumeChange);
@@ -88,7 +85,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     if (!el) return;
   
     if (!document.fullscreenElement) {
-      el.requestFullscreen().then(() => setIsFullscreen(true));
+      el.requestFullscreen().then(() => setIsFullscreen(true)); 
     } else {
       document.exitFullscreen().then(() => setIsFullscreen(false));
     }
@@ -371,8 +368,8 @@ if (prevEpisode < 1) {
       seasons: {
         1: {
           1: { outro: { start: 3291, skipTo: "next" } },
-          2: { intro: { start: 455.0, end: 477.0 }, outro: { start: 3600, skipTo: "next" } },
-          3: { intro: { start: 385.0, end: 407.0 }, outro: { start: 2516, skipTo: "next" } },
+          2: { intro: { start: 455.0, end: 477.0 }, outro: { start: 3137, skipTo: "next" } },
+          3: { intro: { start: 131.0, end: 211.0 }, outro: { start: 3629, skipTo: "next" } },
           4: { intro: { start: 384.0, end: 406.0 }, outro: { start: 2490, skipTo: "next" } },
         }
       }
@@ -396,13 +393,6 @@ const getActiveSkipTime = () => {
 const { intro, outro } = getActiveSkipTime();
 const hasIntro = !!(intro && Number.isFinite(intro.end));
 
-const [savedProgress, setSavedProgress] = useState(0);
-useEffect(() => {
-  if (season != null && episode != null) {
-    getWatchProgress(showId, season, episode).then(setSavedProgress);
-  }
-}, [showId, season, episode]);
-
   useEffect(() => {
     const vid = videoRef.current;
     console.log("🎥 Video ref:", vid);
@@ -413,6 +403,10 @@ useEffect(() => {
     const key = season === null || episode === null
       ? showId
       : `${showId}-S${season}-E${episode}`;
+      const savedProgressRaw = localStorage.getItem(`watchProgress-${key}`);
+      const savedProgress = Number.isFinite(parseFloat(savedProgressRaw))
+        ? parseFloat(savedProgressRaw)
+        : 0;
 
     const startPlayback = async () => {
       try {
@@ -475,11 +469,11 @@ useEffect(() => {
         setOutroVisible(false);
         setCountdown(null);
 
-        if (outro && time >= outro.start + 5) {
-          saveWatchProgress(showId, season, episode, 0);
-        } else {
-          saveWatchProgress(showId, season, episode, time);
-        }
+      if (duration && time < duration - 10) {
+        localStorage.setItem(`watchProgress-${key}`, time.toString());
+      } else {
+        localStorage.removeItem(`watchProgress-${key}`);
+      }
       }
     };
 
