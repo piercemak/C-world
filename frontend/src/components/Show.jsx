@@ -1210,52 +1210,65 @@ const isLastEpisode =
                 </motion.button>
               </div>
             )}
-
-            {outroVisible && (
-              <div className="absolute bottom-28 right-4 flex gap-2 text-black z-10 group"> 
-              <motion.span 
-                animate={{
-                  scale: isNextHovered ? 1.05 : 1,
-                  y: isNextHovered ?-8 : 0,
-                }} 
-                
-                className="absolute top-[-28px] text-white font-bold tracking-wider text-lg"
-              >
-                Next... {countdown !== null ? `${countdown}` : ""}
-              </motion.span>
-                <motion.div
-                  onHoverStart={() => setNextHovered(true)}
-                  onHoverEnd={() => setNextHovered(false)}
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                    transition: { duration: 0.3, ease: "easeInOut" }
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-48 h-24 bg-cover bg-center rounded-lg top cursor-pointer"
-                  style={{ backgroundImage: `url(${placeholderPath})` }}
-                  onClick={handleSkipOutro}
-                >
-                  <motion.div
-                    className="absolute bottom-0 w-full text-white font-normal tracking-wide text-sm p-1 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0))',
-                      borderBottomLeftRadius: '0.5rem',
-                      borderBottomRightRadius: '0.5rem',
-                    }}
-                  >
-                    {nextTitleFormatted}
-                  </motion.div>
-                  
-                </motion.div>
-              </div>
-            )}
           </div>
           
         </motion.div>
       )}
     </AnimatePresence>
+      {/* Skip Intro Button – independent of controlsVisible */}
+    {introVisible && (
+      <div className="absolute bottom-30 right-4 flex gap-2 text-black z-30">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="bg-black/20 backdrop-blur-sm border text-white/90 hover:text-white/70 transition-colors border-white/10 inset-shadow-2xs inset-shadow-white/20 bg-opacity-90 px-5 py-3 rounded-lg text-sm font-semibold cursor-pointer tracking-wide"
+          onClick={handleSkipIntro}
+        >
+          Skip Intro
+        </motion.button>
+      </div>
+    )}
 
+    {/* Skip Outro / Next preview – independent of controlsVisible */}
+    {outroVisible && !isMovie && !isLastEpisode && (
+      <div className="absolute bottom-28 right-4 flex gap-2 text-black z-30 group">
+        <motion.span 
+          animate={{
+            scale: isNextHovered ? 1.05 : 1,
+            y: isNextHovered ? -8 : 0,
+          }}
+          className="absolute top-[-28px] text-white font-bold tracking-wider text-lg"
+        >
+          Next... {countdown !== null ? `${countdown}` : ""}
+        </motion.span>
+
+        <motion.div
+          onHoverStart={() => setNextHovered(true)}
+          onHoverEnd={() => setNextHovered(false)}
+          whileHover={{ 
+            scale: 1.1,
+            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+            transition: { duration: 0.3, ease: "easeInOut" }
+          }}
+          whileTap={{ scale: 0.9 }}
+          className="w-48 h-24 bg-cover bg-center rounded-lg cursor-pointer"
+          style={{ backgroundImage: `url(${placeholderPath})` }}
+          onClick={handleSkipOutro}
+        >
+          <motion.div
+            className="absolute bottom-0 w-full text-white font-normal tracking-wide text-sm p-1 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0))',
+              borderBottomLeftRadius: '0.5rem',
+              borderBottomRightRadius: '0.5rem',
+            }}
+          >
+            {nextTitleFormatted}
+          </motion.div>
+        </motion.div>
+      </div>
+    )}
+    
   </div>
   );
 };
