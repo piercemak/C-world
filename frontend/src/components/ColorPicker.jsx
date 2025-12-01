@@ -24,7 +24,10 @@ const mouseIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 
 const ColorPicker = ({ initialValue, onSave, onClose }) => {
   const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, #add8e6, #fff)';
-
+  const [showGradientEditor, setShowGradientEditor] = useState(false);
+  const [gradientStart, setGradientStart] = useState('#ff3131');
+  const [gradientEnd, setGradientEnd] = useState('#004aad');
+  
   const extractFirstColor = (gradientStr) => {
     const match = gradientStr.match(/#([0-9a-f]{3,6})/gi);
     return match ? match[0] : '#ffffff';
@@ -47,12 +50,17 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
   useEffect(() => {
     const savedGradient = localStorage.getItem('userGradient');
     const savedRawColor = localStorage.getItem('userColor');
+
     if (savedGradient) {
-      onSave(savedGradient); 
+      onSave(savedGradient);
       document.documentElement.style.setProperty('--gradient-9', savedGradient);
+      setColor(savedGradient);
+      syncFromGradient(savedGradient);      
     } else {
       document.documentElement.style.setProperty('--gradient-9', DEFAULT_GRADIENT);
+      syncFromGradient(DEFAULT_GRADIENT);    
     }
+
     if (savedRawColor) setColor(savedRawColor);
   }, []);
 
@@ -89,98 +97,181 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
 
   const handlePickFavorite = (favColor) => {
     setColor(favColor);
+    if (favColor.includes('gradient')) {
+      syncFromGradient(favColor);
+    }
+  };
+  const [showModeSelector, setShowModeSelector] = useState(false);
+
+  {/* Gradient Picker */}
+  const [gradientStyle, setGradientStyle] = useState('linear'); 
+  const syncFromGradient = (gradientStr) => {
+    if (!gradientStr || !gradientStr.includes('gradient')) return;
+    const matches = gradientStr.match(/#([0-9a-f]{3,6})/gi) || [];
+    if (matches[0]) setGradientStart(matches[0]);
+    if (matches[matches.length - 1]) setGradientEnd(matches[matches.length - 1]);
+    if (gradientStr.includes('radial-gradient')) {
+      if (gradientStr.includes('circle at center')) {
+        setGradientStyle('center');
+      } else {
+        setGradientStyle('radial');
+      }
+    } else {
+      if (gradientStr.includes('135deg')) {
+        setGradientStyle('diagonal');
+      } else {
+        setGradientStyle('linear');
+      }
+    }
+  };
+
+  const buildGradient = () => {
+    switch (gradientStyle) {
+      case 'diagonal':
+        return `linear-gradient(135deg, ${gradientStart}, ${gradientEnd})`;
+      case 'radial':
+        return `radial-gradient(circle, ${gradientStart}, ${gradientEnd})`;
+      case 'center':
+        return `radial-gradient(circle at center, ${gradientEnd}, ${gradientStart})`;
+      case 'linear':
+      default:
+        return `linear-gradient(90deg, ${gradientStart}, ${gradientEnd})`;
+    }
   };
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1000]">
       <div className="bg-white p-6 rounded-xl w-[900px] 2xl:w-[380px] 2xl:h-auto h-[580px] shadow-lg border border-gray-200 relative">
-        <h2 className="text-xl font-semibold 2xl:mb-4 mb-1 text-gray-800 text-center">Pick a Solid Color</h2>
+        <h2 className="text-xl font-semibold 2xl:mb-4 mb-1 text-gray-800 text-center">Pick a Color</h2>
 
-        {/* Current Preview */}
-        <div className="flex flex-col items-center mb-6">
-          <div
-            className="2xl:size-24 size-20 rounded-full border border-gray-300 2xl:mb-3 mb-1"
-            style={
-                isGradient
-                  ? { background: color }
-                  : { backgroundColor: color }
-            }
+      <div className="flex flex-col items-center mb-6">
+        <div
+          className="2xl:size-24 size-20 rounded-full border border-gray-300 2xl:mb-3 mb-1"
+          style={
+            isGradient
+              ? { background: color }
+              : { backgroundColor: color }
+          }
+        />
+
+        {/* Palette + Dropdown */}
+        <div className="relative inline-flex items-center">
+          <motion.button
+            type="button"
+            onClick={() => setShowModeSelector((prev) => !prev)}
+            className="w-10 h-10 cursor-pointer flex items-center justify-center"
+            style={{ color: color }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="relative z-0">{paletteIcon}</span>
+            <span className="absolute z-10 ml-10 mt-8">{mouseIcon}</span>
+          </motion.button>
+          <input
+            type="color"
+            id="hidden-color-input"
+            value={color}
+            onChange={handleColorChange}
+            className="absolute inset-0 opacity-0 cursor-pointer pointer-events-none"
           />
-                {!isGradient && (
-                <>
-                    <motion.div
-                    onClick={() => document.getElementById('hidden-color-input')?.click()}
-                    className="w-10 h-10 cursor-pointer  flex items-center justify-center"
-                    style={{ color: color }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    >
-                    <span className='relative z-0 '>{paletteIcon}</span>
-                    <span className='absolute z-10 ml-10 mt-8'>{mouseIcon}</span>
-                    </motion.div>
-                    <input
-                    type="color"
-                    id="hidden-color-input"
-                    value={color}
-                    onChange={handleColorChange}
-                    className="absolute  md:right-48 lg:right-[690px] opacity-0 cursor-pointer "
-                    />
-                </>
-                )}
-            <p className="mt-2 text-sm text-gray-700 font-semibold cursor-pointer">
-            Selected: {isGradient 
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0, originX: 0 }}
+            animate={
+              showModeSelector
+                ? { opacity: 1, scaleX: 1, originX: 0 }
+                : { opacity: 0, scaleX: 0, originX: 0 }
+            }
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            className={`
+              absolute left-full ml-4 top-1/2 -translate-y-1/2
+              bg-white text-black rounded-full shadow-lg border border-gray-200
+              flex flex-row overflow-hidden z-20
+              ${showModeSelector ? 'pointer-events-auto' : 'pointer-events-none'}
+            `}
+          >
+            <button
+              onClick={() => {
+                document.getElementById('hidden-color-input')?.click();
+                setShowModeSelector(false);
+              }}
+              className="flex-1 pl-4 pr-2 py-2 text-sm font-semibold border-r border-gray-200 hover:bg-black/5 hover:text-black/80 transition-all cursor-pointer"
+            >
+              Solid
+            </button>
+            <button
+              onClick={() => {
+                if (color.includes('gradient')) {
+                  syncFromGradient(color);    
+                }                
+                setShowGradientEditor(true);
+                setShowModeSelector(false);
+              }}
+              className="flex-1 pr-4 pl-2 text-sm font-semibold hover:bg-black/5 hover:text-black/80 transition-all cursor-pointer"
+            >
+              Gradient
+            </button>
+          </motion.div>
 
-            ? <span className='font-medium text-blue-400'> Gradient </span>
-            
-            : color.toUpperCase()}
-
-            </p>
         </div>
+
+        <p className="mt-2 text-sm text-gray-700 font-semibold cursor-pointer">
+          Selected:{' '}
+          {isGradient ? (
+            <span className="font-medium text-blue-400">Gradient</span>
+          ) : (
+            color.toUpperCase()
+          )}
+        </p>
+      </div>
 
         {/* Favorite Colors */}
         <div className="mb-6 2xl:w-auto w-full">
-        <div className="flex justify-between items-center mb-2">
-            <h3 className="text-sm font-semibold tracking-wide text-gray-400">Favorites</h3>
-            <motion.button
-            whileHover={{  scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleAddToFavorites}
-            className="text-xs text-blue-600  hover:text-blue-700 cursor-pointer"
-            disabled={favorites.includes(color) || favorites.length >= 6}
-            >
-            + Add
-            </motion.button>
-        </div>
+          <div className="flex justify-between items-center mb-2">
+              <h3 className="text-sm font-semibold tracking-wide text-gray-400">Favorites</h3>
+              <motion.button
+              whileHover={{  scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleAddToFavorites}
+              className="text-xs text-blue-600  hover:text-blue-700 cursor-pointer"
+              disabled={favorites.includes(color) || favorites.length >= 6}
+              >
+              + Add
+              </motion.button>
+          </div>
 
-        <div className="grid grid-cols-6 gap-2 2xl:w-auto w-80">
+          <div className="grid grid-cols-6 gap-2 2xl:w-auto w-80">
             {favorites.length > 0 ? (
-            favorites.map((fav) => (
-                <div key={fav} className="relative group w-12 z-0">
-                <div
-                    onClick={() => handlePickFavorite(fav)}
-                    className="w-10 h-10 rounded-full cursor-pointer border z-10"
-                    style={{ backgroundColor: fav }}
-                />
-                <motion.button
-                    whileHover={{  scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={(e) => {
-                    e.stopPropagation();
-                    const updated = favorites.filter((c) => c !== fav);
-                    setFavorites(updated);
-                    localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
-                    }}
-                    className="absolute -top-2 -right-2 bg-red-500 border text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer"
-                    title="Remove"
-                >
-                    ×
-                </motion.button>
-                </div>
-            ))
+              favorites.map((fav) => {
+                const isFavGradient = fav.includes('gradient');
+
+                return (
+                  <div key={fav} className="relative group w-12 z-0">
+                    <div
+                      onClick={() => handlePickFavorite(fav)}
+                      className="w-10 h-10 rounded-full cursor-pointer border z-10"
+                      style={isFavGradient ? { background: fav } : { backgroundColor: fav }}
+                    />
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const updated = favorites.filter((c) => c !== fav);
+                        setFavorites(updated);
+                        localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
+                      }}
+                      className="absolute -top-2 -right-2 bg-red-500 border text-xs rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer"
+                      title="Remove"
+                    >
+                      ×
+                    </motion.button>
+                  </div>
+                );
+              })
             ) : (
-            <p className="col-span-3 text-xs text-gray-400 text-center">No favorites yet</p>
+              <p className="col-span-3 text-xs text-gray-400 text-center">No favorites yet</p>
             )}
-        </div>
+          </div>
         </div>
 
 
@@ -211,7 +302,10 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
                 whileHover={{  scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 key={col}
-                onClick={() => setColor(col)}
+                onClick={() => {
+                  setColor(col);
+                  syncFromGradient(col);     
+                }}
                 className="w-10 h-10 rounded-full cursor-pointer border border-gray-200"
                 style={{ background: col }}
               />
@@ -251,6 +345,117 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
           </div>
         </div>
       </div>
+
+{/* Gradient Picker */}
+{showGradientEditor && (
+  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1001]">
+    <div className="bg-white text-black p-6 rounded-xl w-[320px] shadow-lg border border-gray-200">
+      {/* Tabs header look (optional, since you already have Solid/Gradient pill above) */}
+      <div className="flex items-center justify-center gap-6 mb-4 text-sm font-semibold">
+        <span className="relative text-black text-lg mb-2">
+          Gradient
+          <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-purple-500 rounded-full" />
+        </span>
+      </div>
+
+      {/* Gradient colors row */}
+      <div className="mb-5">
+        <p className="text-sm font-semibold tracking-wide text-gray-400">Gradient colors</p>
+
+        <div className="flex items-center gap-3">
+          {/* Start color bubble */}
+          <button
+            type="button"
+            onClick={() => document.getElementById('gradient-start-input')?.click()}
+            className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer"
+            style={{ backgroundColor: gradientStart }}
+          />
+
+          {/* End color bubble */}
+          <button
+            type="button"
+            onClick={() => document.getElementById('gradient-end-input')?.click()}
+            className="w-8 h-8 rounded-full border border-gray-300 cursor-pointer"
+            style={{ backgroundColor: gradientEnd }}
+          />
+        </div>
+
+        {/* Hidden native color inputs */}
+        <input
+          id="gradient-start-input"
+          type="color"
+          value={gradientStart}
+          onChange={(e) => setGradientStart(e.target.value)}
+          className="sr-only"
+        />
+        <input
+          id="gradient-end-input"
+          type="color"
+          value={gradientEnd}
+          onChange={(e) => setGradientEnd(e.target.value)}
+          className="sr-only"
+        />
+      </div>
+
+      {/* Style row */}
+      <div className="mb-5">
+        <p className="text-sm font-semibold tracking-wide text-gray-400 mb-1">Style</p>
+
+        <div className="grid grid-cols-4 gap-2">
+          {[
+            { id: 'linear', label: 'Linear', bg: `linear-gradient(90deg, ${gradientStart}, ${gradientEnd})` },
+            { id: 'diagonal', label: 'Diagonal', bg: `linear-gradient(135deg, ${gradientStart}, ${gradientEnd})` },
+            { id: 'radial', label: 'Radial', bg: `radial-gradient(circle, ${gradientStart}, ${gradientEnd})` },
+            { id: 'center', label: 'Center', bg: `radial-gradient(circle at center, ${gradientEnd}, ${gradientStart})` },
+          ].map((style) => (
+            <button
+              key={style.id}
+              type="button"
+              onClick={() => setGradientStyle(style.id)}
+              className={`
+                h-10 rounded-md border 
+                ${gradientStyle === style.id ? 'border-purple-500 ring-2 ring-purple-200' : 'border-gray-200'}
+              `}
+              style={{ background: style.bg }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Big preview */}
+      <div
+        className="h-12 rounded-full mb-5 border border-gray-200"
+        style={{ background: buildGradient() }}
+      />
+
+      {/* Actions */}
+      <div className="flex justify-between mt-4">
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          onClick={() => {
+            const newGradient = buildGradient();
+            setColor(newGradient);
+            setShowGradientEditor(false);
+          }}
+          className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 text-sm cursor-pointer"
+        >
+          Done
+        </motion.button>
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          onClick={() => setShowGradientEditor(false)}
+          className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200 text-sm cursor-pointer"
+        >
+          Cancel
+        </motion.button>
+      </div>
+    </div>
+  </div>
+)}
+
+      
     </div>
   );
 };
