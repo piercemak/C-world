@@ -1196,26 +1196,12 @@ const isLastEpisode =
               </motion.button>
             </div>
           </div>
-          {/* Skip Buttons Overlay */}
-        
-            {introVisible && (
-              <div className="absolute bottom-30 right-4 flex gap-2 text-black z-10"> 
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="bg-black/20 backdrop-blur-sm border text-white/90 hover:text-white/70 transition-colors border-white/10 inset-shadow-2xs inset-shadow-white/20 bg-opacity-90 px-5 py-3 rounded-lg text-sm font-semibold cursor-pointer tracking-wide"
-                  onClick={handleSkipIntro}
-                >
-                  Skip Intro
-                </motion.button>
-              </div>
-            )}
-          </div>
-          
-        </motion.div>
-      )}
+        </div>  
+      </motion.div>
+    )}
     </AnimatePresence>
-      {/* Skip Intro Button – independent of controlsVisible */}
+
+    {/* Skip Intro */}
     {introVisible && (
       <div className="absolute bottom-30 right-4 flex gap-2 text-black z-30">
         <motion.button
@@ -1229,7 +1215,7 @@ const isLastEpisode =
       </div>
     )}
 
-    {/* Skip Outro / Next preview – independent of controlsVisible */}
+    {/* Skip Outro */}
     {outroVisible && !isMovie && !isLastEpisode && (
       <div className="absolute bottom-28 right-4 flex gap-2 text-black z-30 group">
         <motion.span 
