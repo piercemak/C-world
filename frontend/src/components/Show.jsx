@@ -24,6 +24,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
 
   {/* Volume Control */}
   const [volumeHovered, setvolumeHovered] = useState(false);
+  const isMovie = season === null && episode === null;
   const [toggleMute, setToggleMute] = useState(false);
   const [volume, setVolume] = useState(() => {
     const saved = localStorage.getItem("videoVolume");
@@ -576,14 +577,18 @@ const handleSkipToPrevious = async () => {
   }
 };
 
-const isFirstEpisode = currS === 1 && currE === 1;
+{/* Skip Outro padding */}
+const isFirstEpisode = !isMovie && currS === 1 && currE === 1;
+const maxSeasonNumber = Object.keys(showSeasonData).length
+  ? Math.max(...Object.keys(showSeasonData).map(Number))
+  : currS;
 const isLastEpisode =
-  currE === (episodeTitles?.[currS]?.length || 0) &&
-  currS === Object.keys(episodeTitles || {}).length;
+  !isMovie &&
+  currS === maxSeasonNumber &&
+  currE === (showSeasonData[currS] || 0);
 
 
   {/* Placeholder Images */}
-  const isMovie = season === null && episode === null;
   const cleanShowId = showId?.replace(/-/g, "");
   const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
   const placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`
