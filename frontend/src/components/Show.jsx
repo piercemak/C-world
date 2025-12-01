@@ -186,7 +186,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:10,
     },     
     pluribus: {
-      1:4
+      1:5,
     } 
   };
 const displaySeason =
@@ -462,7 +462,13 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
       const duration = vid.duration || 0;
 
-      if (time >= outro?.start) {
+      const shouldShowOutroSkip =
+        outro &&
+        time >= outro.start &&
+        !isMovie &&                                   
+        !(isLastEpisode && outro.skipTo === "next"); 
+
+      if (shouldShowOutroSkip) {
         setOutroVisible(true);
         if (countdown === null) setCountdown(10);
         localStorage.removeItem(`watchProgress-${key}`);
@@ -470,11 +476,11 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         setOutroVisible(false);
         setCountdown(null);
 
-      if (duration && time < duration - 10) {
-        localStorage.setItem(`watchProgress-${key}`, time.toString());
-      } else {
-        localStorage.removeItem(`watchProgress-${key}`);
-      }
+        if (duration && time < duration - 10) {
+          localStorage.setItem(`watchProgress-${key}`, time.toString());
+        } else {
+          localStorage.removeItem(`watchProgress-${key}`);
+        }
       }
     };
 
