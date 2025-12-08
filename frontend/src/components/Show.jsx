@@ -187,7 +187,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:10,
     },     
     pluribus: {
-      1:5,
+      1:6,
     } 
   };
 const displaySeason =
@@ -373,6 +373,7 @@ if (prevEpisode < 1) {
           3: { intro: { start: 384.0, end: 406.0 }, outro: { start: 2490, skipTo: "next" } },
           4: { intro: { start: 610.0, end: 636.0 }, outro: { start: 2623, skipTo: "next" } },
           5: { intro: { start: 472.0, end: 495.0 }, outro: { start: 2669, skipTo: "next" } },
+
         }
       }
   },   
