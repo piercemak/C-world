@@ -311,5 +311,53 @@ export const SHOWS = [
         card: "/images/cardimages/pluribusLogo.svg",
         dateadded: "1-26-25",
     },  
+
+    { 
+        id: "akira", 
+        title: "Akira", 
+        creator: "Katsuhiro Ôtomo", 
+        background: "/images/akira/covers/akira_backdrop.svg", 
+        ratings: "8.0", 
+        type: "Movies", 
+        keyart: "/images/akira/covers/akira_mobileLogo.png", 
+        card: "/images/cardimages/akiraLogo.svg", 
+        dateadded: "1-27-25",
+    },  
+
+    { 
+        id: "exmachina", 
+        title: "Ex Machina", 
+        creator: "Alex Garland", 
+        background: "/images/exmachina/covers/exmachina_backdrop.svg", 
+        ratings: "7.7", 
+        type: "Movies", 
+        keyart: "/images/exmachina/covers/exmachina_mobileLogo.png", 
+        card: "/images/cardimages/exmachinaLogo.svg", 
+        dateadded: "1-28-25",
+    }, 
+
+    { 
+        id: "annihilation", 
+        title: "Annihilation", 
+        creator: "Alex Garland", 
+        background: "/images/annihilation/covers/annihilation_backdrop.svg", 
+        ratings: "6.8", 
+        type: "Movies", 
+        keyart: "/images/annihilation/covers/exmachina_mobileLogo.png", 
+        card: "/images/cardimages/annihilationLogo.svg", 
+        dateadded: "1-29-25",
+    }, 
+
+    {
+        id: "itsalwayssunny",  
+        title: "It's Always Sunny in Philadelphia",
+        creator: "Glenn Howerton", 
+        background: "/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg", 
+        ratings: "8.8", 
+        type: "TV", 
+        keyart: "/images/itsalwayssunny/covers/itsalwayssunny_mobileLogo.png", 
+        card: "/images/cardimages/itsalwayssunnyLogo.svg",
+        dateadded: "1-30-25",
+    }, 
     
 ];

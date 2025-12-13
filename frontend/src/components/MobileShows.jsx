@@ -38,14 +38,14 @@ const MobileShows = () => {
       opacity: 0,
       scale: 0.95,
       y: -20,
-      height: 0,            // 👈 IMPORTANT
+      height: 0,            
       overflow: "hidden"
     },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
-      height: "auto",       // 👈 IMPORTANT
+      height: "auto",      
       overflow: "hidden",
       transition: {
         type: "spring",
@@ -1412,8 +1412,63 @@ const MobileShows = () => {
           subtitles: "yes",
           videos: videoDataByShow["pluribus"],
         },           
-        
-
+        "akira": {
+          type: "movie",  
+          title: "Akira",
+          ratings: "8.0",
+          agerating: "18",
+          creator: "Katsuhiro Ôtomo", 
+          release_year: "1988",
+          genre: "Cyberpunk/Action",
+          duration: "2h 4m",          
+          description: "A secret military project endangers Neo-Tokyo when it turns a teenage biker gang member into a rampaging psychic psychopath who can only be stopped by his best friend.",
+          mobilebackground: "/images/akira/covers/akira_background.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "akira", "movie"),
+        },  
+        "exmachina": {
+          type: "movie",  
+          title: "Ex Machina",
+          ratings: "7.7",
+          agerating: "18",
+          creator: "Alex Garland", 
+          release_year: "2014",
+          genre: "Thriller/Sci-Fi",
+          duration: "1h 48m",          
+          description: "A young programmer is selected to participate in a ground-breaking experiment in synthetic intelligence by evaluating the human qualities of a highly advanced humanoid A.I.",
+          mobilebackground: "/images/exmachina/covers/exmachina_background.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "exmachina", "movie"),
+        },     
+        "annihilation": {
+          type: "movie",  
+          title: "Annihilation",
+          ratings: "6.8",
+          agerating: "18",
+          creator: "Alex Garland", 
+          release_year: "2018",
+          genre: "Psychological Horror",
+          duration: "1h 55m",          
+          description: "A biologist signs up for a dangerous, secret expedition in which the laws of nature don't apply.",
+          mobilebackground: "/images/annihilation/covers/annihilation_background.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "annihilation", "movie"),
+        },    
+        "itsalwayssunny": {
+          type: "show",  
+          title: "It's Always Sunny in Philadelphia ",
+          ratings: "8.8",
+          agerating: "18",
+          creator: "Glenn Howerton",
+          release_year: "2005",
+          genre: "Comedy",
+          season_total_number: "17 seasons",
+          season_digit: 17,
+          description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
+          mobilebackground: "/images/itsalwayssunny/covers/itsalwayssunny_background.jpg",
+          subtitles: "yes",
+          videos: videoDataByShow["itsalwayssunny"],
+        }, 
 
       };
       const show = shows[showId];

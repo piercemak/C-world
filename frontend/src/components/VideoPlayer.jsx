@@ -99,6 +99,10 @@ const VideoPlayer = () => {
 
       { title: "Severance",                 cardId: "card-25" },
       { title: "Pluribus",                  cardId: "card-26" },
+      { title: "Akira",                     cardId: "card-27" },
+      { title: "Ex Machina",                cardId: "card-28" },
+      { title: "Annihilation",              cardId: "card-29" },
+      { title: "It's Always Sunny In Philadelphia",    cardId: "card-30" },
 
     ];
 
@@ -133,6 +137,10 @@ const VideoPlayer = () => {
 
         "card-25": "severance",
         "card-26": "pluribus",
+        "card-27": "akira",
+        "card-28": "exmachina",
+        "card-29": "annihilation",
+        "card-30": "itsalwayssunny",
 
       };
 
@@ -478,20 +486,31 @@ const VideoPlayer = () => {
                     transition={{ duration: 0.4 }}
                     className="flex flex-col"
                     >
-                    {pages[currentPage]?.map(({ title, cardId }) => (
-                        <a  
-                        key={cardId}
-                        className={`${styles['sidebar-menu__link']} ${
-                            clickedCard === cardId ? styles.active : ""
-                        }`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleCardClick(cardId);
-                        }}
-                        >
-                        {title}
-                        </a>
-                    ))}
+                      {pages[currentPage]?.map(({ title, cardId }) => {
+                        const words = title.split(" ");
+                        const displayTitle =
+                          words.length > 4
+                            ? <>
+                                {words.slice(0, 4).join(" ")}<br />
+                                {words.slice(4).join(" ")}
+                              </>
+                            : title;
+
+                        return (
+                          <a  
+                            key={cardId}
+                            className={`${styles['sidebar-menu__link']} ${
+                              clickedCard === cardId ? styles.active : ""
+                            }`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleCardClick(cardId);
+                            }}
+                          >
+                            {displayTitle}
+                          </a>
+                        );
+                      })}
                     </motion.div>
                 </AnimatePresence>
             </div>

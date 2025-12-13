@@ -188,7 +188,13 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     },     
     pluribus: {
       1:6,
-    } 
+    },
+    itsalwayssunny: {
+      1:7,
+      2:10,
+      3:15,
+      4:13,
+    }  
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -998,6 +1004,21 @@ const isLastEpisode =
           label="English"
         />
       )}     
+
+      {showId === "akira" && (
+        <track
+          src={`/videos/akira/akira_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}   
+
+
+
+
+
+
 
       Your browser does not support the video tag.
     </video>

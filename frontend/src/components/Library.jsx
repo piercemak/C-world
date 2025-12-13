@@ -965,6 +965,62 @@ const Library = () => {
         "HDP",
       ],
     } 
+ 
+    const episodeTitles_itsalwayssunny = {
+      1: [
+        "The_Gang_Gets_Racist",
+        "Charlie_Wants_an_Abortion",
+        "Underage_Drinking_A_National_Concern",
+        "Charlie_Has_Cancer",
+        "Gun_Fever",
+        "The_Gang_Finds_a_Dead_Guy",
+        "Charlie_Got_Molested",
+      ],
+      2: [
+        "Charlie_Gets_Crippled",
+        "The_Gang_Goes_Jihad",
+        "Dennis_and_Dee_Go_on_Welfare",
+        "Mac_Bangs_Dennis_Mom",
+        "Hundred_Dollar_Baby",
+        "The_Gang_Gives_Back",
+        "The_Gang_Exploits_a_Miracle",
+        "The_Gang_Runs_for_Office",
+        "Charlie_Goes_America_All_Over_Everybodys_Ass",
+        "Dennis_and_Dee_Get_a_New_Dad",
+      ],
+      3: [
+        "The_Gang_Finds_a_Dumpster_Baby",
+        "The_Gang_Gets_Invincible",
+        "Dennis_and_Dees_Mom_Is_Dead",
+        "The_Gang_Gets_Held_Hostage",
+        "The_Aluminum_Monster_vs_Fatty_Magoo",
+        "The_Gang_Solves_the_North_Korea_Situation",
+        "The_Gang_Sells_Out",
+        "Frank_Sets_Sweet_Dee_on_Fire",
+        "Sweet_Dees_Dating_a_Retarded_Person",
+        "Mac_Is_a_Serial_Killer",
+        "Dennis_Looks_Like_a_Registered_Sex_Offender",
+        "The_Gang_Gets_Whacked_Part_1",
+        "The_Gang_Gets_Whacked_Part_2",
+        "Bums_Making_a_Mess_All_Over_the_City",
+        "The_Gang_Dances_Their_Asses_Off"
+      ],
+      4: [
+        "Mac_and_Dennis_Manhunters",
+        "The_Gang_Solves_the_Gas_Crisis",
+        "Americas_Next_Top_Paddys_Billboard_Model_Contest",
+        "Macs_Banging_the_Waitress",
+        "Mac_&_Charlie_Die_Part_1",
+        "Mac_&_Charlie_Die_Part_2",
+        "Who_Pooped_the_Bed",
+        "Paddys_Pub_The_Worst_Bar_in_Philadelphia",
+        "Dennis_Reynolds_An_Erotic_Life",
+        "Sweet_Dee_Has_a_Heart_Attack",
+        "The_Gang_Cracks_the_Liberty_Bell",
+        "The_Gang_Gets_Extreme_Home_Makeover_Edition",
+        "The_Nightman_Cometh"
+      ],
+    } 
 
 
 
@@ -981,6 +1037,7 @@ const Library = () => {
       "blackmirror": episodeTitles_blackmirror,
       "severance": episodeTitles_severance,
       "pluribus": episodeTitles_pluribus,
+      "itsalwayssunny": episodeTitles_itsalwayssunny,
     };
     
 const extractS3KeyFromPath = (path) => {
@@ -1334,6 +1391,51 @@ const extractS3KeyFromPath = (path) => {
           background: "/images/pluribus/covers/pluribusCover.jpg",
           subtitles: "yes",
           videos: videoDataByShow["pluribus"],
+        },  
+        "akira": {
+          type: "movie",  
+          title: "Akira",
+          release_year: "1988",
+          genre: "Cyberpunk/Action",
+          duration: "2h 4m",          
+          description: "A secret military project endangers Neo-Tokyo when it turns a teenage biker gang member into a rampaging psychic psychopath who can only be stopped by his best friend.",
+          background: "/images/akira/covers/akiraCover.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "akira", "movie"),
+        }, 
+        "exmachina": {
+          type: "movie",  
+          title: "Ex Machina",
+          release_year: "2014",
+          genre: "Thriller/Sci-Fi",
+          duration: "1h 48m",          
+          description: "A young programmer is selected to participate in a ground-breaking experiment in synthetic intelligence by evaluating the human qualities of a highly advanced humanoid A.I.",
+          background: "/images/exmachina/covers/exmachinaCover.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "exmachina", "movie"),
+        }, 
+        "annihilation": {
+          type: "movie",  
+          title: "Annihilation",
+          release_year: "2018",
+          genre: "Psychological Horror",
+          duration: "1h 55m",          
+          description: "A biologist signs up for a dangerous, secret expedition in which the laws of nature don't apply.",
+          background: "/images/annihilation/covers/annihilationCover.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "annihilation", "movie"),
+        }, 
+        "itsalwayssunny": {
+          type: "show",  
+          title: "It's Always Sunny In Philadelphia",
+          release_year: "2005",
+          genre: "Comedy",
+          season_total_number: "17 seasons",
+          season_digit: 17,
+          description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
+          background: "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
+          subtitles: "yes",
+          videos: videoDataByShow["itsalwayssunny"],
         },  
         
       };
