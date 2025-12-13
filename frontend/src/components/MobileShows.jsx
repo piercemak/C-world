@@ -967,6 +967,62 @@ const MobileShows = () => {
       ],
     } 
 
+    const episodeTitles_itsalwayssunny = {
+      1: [
+        "The_Gang_Gets_Racist",
+        "Charlie_Wants_an_Abortion",
+        "Underage_Drinking_A_National_Concern",
+        "Charlie_Has_Cancer",
+        "Gun_Fever",
+        "The_Gang_Finds_a_Dead_Guy",
+        "Charlie_Got_Molested",
+      ],
+      2: [
+        "Charlie_Gets_Crippled",
+        "The_Gang_Goes_Jihad",
+        "Dennis_and_Dee_Go_on_Welfare",
+        "Mac_Bangs_Dennis_Mom",
+        "Hundred_Dollar_Baby",
+        "The_Gang_Gives_Back",
+        "The_Gang_Exploits_a_Miracle",
+        "The_Gang_Runs_for_Office",
+        "Charlie_Goes_America_All_Over_Everybodys_Ass",
+        "Dennis_and_Dee_Get_a_New_Dad",
+      ],
+      3: [
+        "The_Gang_Finds_a_Dumpster_Baby",
+        "The_Gang_Gets_Invincible",
+        "Dennis_and_Dees_Mom_Is_Dead",
+        "The_Gang_Gets_Held_Hostage",
+        "The_Aluminum_Monster_vs_Fatty_Magoo",
+        "The_Gang_Solves_the_North_Korea_Situation",
+        "The_Gang_Sells_Out",
+        "Frank_Sets_Sweet_Dee_on_Fire",
+        "Sweet_Dees_Dating_a_Retarded_Person",
+        "Mac_Is_a_Serial_Killer",
+        "Dennis_Looks_Like_a_Registered_Sex_Offender",
+        "The_Gang_Gets_Whacked_Part_1",
+        "The_Gang_Gets_Whacked_Part_2",
+        "Bums_Making_a_Mess_All_Over_the_City",
+        "The_Gang_Dances_Their_Asses_Off"
+      ],
+      4: [
+        "Mac_and_Dennis_Manhunters",
+        "The_Gang_Solves_the_Gas_Crisis",
+        "Americas_Next_Top_Paddys_Billboard_Model_Contest",
+        "Macs_Banging_the_Waitress",
+        "Mac_&_Charlie_Die_Part_1",
+        "Mac_&_Charlie_Die_Part_2",
+        "Who_Pooped_the_Bed",
+        "Paddys_Pub_The_Worst_Bar_in_Philadelphia",
+        "Dennis_Reynolds_An_Erotic_Life",
+        "Sweet_Dee_Has_a_Heart_Attack",
+        "The_Gang_Cracks_the_Liberty_Bell",
+        "The_Gang_Gets_Extreme_Home_Makeover_Edition",
+        "The_Nightman_Cometh"
+      ],
+    } 
+
     const allEpisodeTitles = {
     "steven-universe": episodeTitles_stevenuniverse,
     "over-the-garden-wall": episodeTitles_overthegardenwall,
@@ -980,6 +1036,7 @@ const MobileShows = () => {
     "blackmirror": episodeTitles_blackmirror,
     "severance": episodeTitles_severance,
     "pluribus": episodeTitles_pluribus,
+    "itsalwayssunny": episodeTitles_itsalwayssunny,
     };
 
     {/* Show/Season Handling */}
@@ -1722,6 +1779,14 @@ const currentShow = videos.find(media => media.id === showId) || null;
                 />
                 )}  
 
+                {showId === "itsalwayssunny" && selectedVideo?.season && selectedVideo?.episode && (
+                <track
+                    src={`/subtitles/itsalwayssunny/season${selectedVideo.season}/S${selectedVideo.season}E${String(selectedVideo.episode).padStart(2, "0")}_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                />
+                )}  
 
                 {subtitleText && (
                 <div className="absolute bottom-24 w-full text-center">
