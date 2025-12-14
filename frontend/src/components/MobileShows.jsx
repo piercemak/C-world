@@ -584,7 +584,6 @@ const MobileShows = () => {
           season_digit: 17,
           description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
           mobilebackground: "/images/itsalwayssunny/covers/itsalwayssunny_background.jpg",
-          subtitles: "yes",
           videos: videoDataByShow["itsalwayssunny"],
         }, 
 
@@ -834,15 +833,6 @@ const currentShow = videos.find(media => media.id === showId) || null;
                 {showId === "pluribus" && selectedVideo?.season && selectedVideo?.episode && (
                 <track
                     src={`/subtitles/pluribus/season${selectedVideo.season}/S${selectedVideo.season}E${String(selectedVideo.episode).padStart(2, "0")}_subtitles.vtt`}
-                    kind="subtitles"
-                    srcLang="en"
-                    label="English"
-                />
-                )}  
-
-                {showId === "itsalwayssunny" && selectedVideo?.season && selectedVideo?.episode && (
-                <track
-                    src={`/subtitles/itsalwayssunny/season${selectedVideo.season}/S${selectedVideo.season}E${String(selectedVideo.episode).padStart(2, "0")}_subtitles.vtt`}
                     kind="subtitles"
                     srcLang="en"
                     label="English"

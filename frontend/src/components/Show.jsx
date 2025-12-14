@@ -1014,18 +1014,6 @@ const isLastEpisode =
         />
       )}   
 
-      {showId === "itsalwayssunny" && season && episode && (
-        <track
-          src={`/subtitles/itsalwayssunny/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}  
-
-
-
-
 
       Your browser does not support the video tag.
     </video>
