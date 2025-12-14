@@ -343,7 +343,7 @@ export const SHOWS = [
         background: "/images/annihilation/covers/annihilation_backdrop.svg", 
         ratings: "6.8", 
         type: "Movies", 
-        keyart: "/images/annihilation/covers/exmachina_mobileLogo.png", 
+        keyart: "/images/annihilation/covers/annihilation_mobileLogo.png", 
         card: "/images/cardimages/annihilationLogo.svg", 
         dateadded: "1-29-25",
     }, 
