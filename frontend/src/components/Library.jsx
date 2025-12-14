@@ -487,7 +487,7 @@ const extractS3KeyFromPath = (path) => {
           release_year: "2005",
           genre: "Comedy",
           season_total_number: "17 seasons",
-          season_digit: 5,
+          season_digit: 6,
           description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
           background: "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
           videos: videoDataByShow["itsalwayssunny"],

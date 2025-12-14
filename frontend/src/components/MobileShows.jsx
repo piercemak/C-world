@@ -689,6 +689,12 @@ const [currentIndex, setCurrentIndex] = useState(0);
 const currentShow = videos.find(media => media.id === showId) || null;
 
 
+{/* Placeholder Loader */}
+const [loadedImages, setLoadedImages] = useState({});
+
+
+
+
 
   return (
     <div className='flex w-full h-dvh relative flex-col bg-black overflow-y-hidden'>
@@ -1006,9 +1012,8 @@ const currentShow = videos.find(media => media.id === showId) || null;
                             cleanedEpisodeName = displayName;
                             placeholderPath = `/images/${cleanShowId}/placeholders/${cleanShowId}_placeholder.png`;
                         }
-
+                        const isLoading = !loadedImages[placeholderPath];
                         
-
                         return (
                             <motion.div 
                                 key={index}
@@ -1030,35 +1035,63 @@ const currentShow = videos.find(media => media.id === showId) || null;
                                 }}
                             >
                             
-                            {/* Placeholder Images */}
-                            <div className="flex flex-row items-center w-full gap-2">
-                              <motion.div
+                              {/* Placeholder Images */}
+                              <div className="relative w-full flex flex-row items-center gap-2">
+                                <motion.div
                                   whileTap={{
-                                      scale: 0.90,
-                                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                                      transition: { duration: 0.3, ease: "easeInOut" }
+                                    scale: 0.9,
+                                    boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                                    transition: { duration: 0.3, ease: "easeInOut" },
                                   }}
-                                  style={{ 
-                                      backgroundImage: `url(${placeholderPath})`, 
-                                      backgroundSize: 'cover',
-                                      backgroundPosition: 'center',
-                                      backgroundRepeat: 'no-repeat'
+                                  // 👇 base styles (always applied)
+                                  style={{
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
+                                    // 👇 only set the real image *after* it's loaded
+                                    ...(loadedImages[placeholderPath]
+                                      ? { backgroundImage: `url(${placeholderPath})` }
+                                      : {}),
                                   }}
-                                  className={`flex border border-white/10 inset-shadow-2xs inset-shadow-white/30 ${
-                                      show?.type === "movie"
-                                      ? "w-90 h-88 rounded-3xl shadow-2xl relative z-40"  
-                                      : "w-86 h-48 rounded-2xl shadow-lg mb-2"   
-                                  }`}
-                              >
-                              {show?.type === "movie" ? (
-                                  <div className=""> </div>
-                              ) : (                                
-                                <div className="p-2 h-[28%] bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl">
-                                  <span className="text-white text-4xl p-2 relative">{episodeNumber}</span>
-                                </div>
-                               )}
-                              </motion.div>
-                            </div>
+                                  className={`flex border border-white/10 inset-shadow-2xs inset-shadow-white/30
+                                    ${show?.type === "movie"
+                                      ? "w-90 h-88 rounded-3xl shadow-2xl relative z-40"
+                                      : "w-86 h-48 rounded-2xl shadow-lg mb-2"
+                                    }
+                                    ${!loadedImages[placeholderPath] ? "animate-pulse bg-white/5" : ""}
+                                  `}
+                                >
+                                  {/* Hidden img only for load detection */}
+                                  <img
+                                    src={placeholderPath}
+                                    alt=""
+                                    className="hidden"
+                                    onLoad={() =>
+                                      setLoadedImages((prev) => ({
+                                        ...prev,
+                                        [placeholderPath]: true,
+                                      }))
+                                    }
+                                    onError={() =>
+                                      setLoadedImages((prev) => ({
+                                        ...prev,
+                                        [placeholderPath]: true, // stop pulsing even if it fails
+                                      }))
+                                    }
+                                  />
+
+                                  {show?.type === "movie" ? (
+                                    <div></div>
+                                  ) : (
+                                    <div className="p-2 h-[28%] bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl">
+                                      <span className="text-white text-4xl p-2 relative">{episodeNumber}</span>
+                                    </div>
+                                  )}
+                                </motion.div>
+                              </div>
+
+
+
 
                                 {show?.type === "movie" && (
                               <div className=" w-full justify-center flex p-4 z-50 text-white/60 font-light text-md overflow-scroll text-wrap whitespace-normal break-words text-center px-4 pointer-events-none">

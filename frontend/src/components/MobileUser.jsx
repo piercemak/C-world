@@ -42,10 +42,8 @@ const MobileUser = () => {
     return sessionStorage.getItem("showIntroFromUser") === "true";
   });
   const handleProfileClick = () => {
-    if (!isDefaultImage) {
       sessionStorage.setItem("showIntroFromUser", "true"); 
       setShowIntro(true);
-    }
   };
   
   return (

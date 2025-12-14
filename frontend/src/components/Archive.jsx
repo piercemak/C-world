@@ -234,7 +234,14 @@ navigate("/home");
 window.location.reload();
 };
 
-
+{/* Card Loader */}
+const [loadedImages, setLoadedImages] = useState({});
+const handleImageLoad = (id) => {
+  setLoadedImages((prev) => ({
+    ...prev,
+    [id]: true,
+  }));
+};
 
   return (
     <div className="relative w-full min-h-dvh alexandria-font">
@@ -622,10 +629,16 @@ window.location.reload();
                             onClick={() => navigate(`/mobile-shows/${media.id}`)}
                             className="flex flex-row items-center bg-white/10 backdrop-blur-xl rounded-2xl p-2 border border-white/20 shadow-lg"
                             >
+                                {!loadedImages[media.id] && (
+                                <div className="absolute inset-0 animate-pulse bg-white/20" />
+                                )}                                
                                 <img
                                     src={media.card || media.keyart || media.mobilebackground}
                                     alt={media.title}
-                                    className="size-20 object-cover rounded-xl shadow-xl mb-2"
+                                    onLoad={() => handleImageLoad(media.id)}
+                                    className={`size-20 object-cover rounded-xl shadow-xl mb-2 ${
+                                        loadedImages[media.id] ? "opacity-100" : "opacity-0"
+                                    }`}
                                 />
 
                                 <div className="flex flex-col ml-2">
