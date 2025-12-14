@@ -710,6 +710,45 @@ const updateLastWatched = (showId, season, episode) => {
     console.error("Failed to update last watched", err);
   }
 };
+const videoRef = useRef(null);
+const saveWatchProgress = (currentTime, duration) => {
+  if (!selectedVideo || !show) return;
+  if (!duration || Number.isNaN(duration)) return;
+
+  let key;
+
+  if (show.type === "movie" || show.type === "Movies") {
+    // Movies: simple key
+    key = `watchProgress-${showId}`;
+  } else {
+    // Shows: season + episode (numbers in selectedVideo)
+    const seasonNum = Number(selectedVideo.season);
+    const episodeNum = Number(selectedVideo.episode);
+
+    if (!seasonNum || !episodeNum) return;
+
+    key = `watchProgress-${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(
+      episodeNum
+    ).padStart(2, "0")}`;
+  }
+
+  try {
+    const data = {
+      currentTime,
+      duration,
+      updatedAt: Date.now(),
+    };
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (err) {
+    console.error("Failed to save watch progress", err);
+  }
+};
+
+const handleTimeUpdate = () => {
+  const video = videoRef.current;
+  if (!video) return;
+  saveWatchProgress(video.currentTime, video.duration);
+};
 
 
   return (
@@ -729,9 +768,12 @@ const updateLastWatched = (showId, season, episode) => {
         {videoPlayerVisible && selectedVideo && (
             <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-[100] flex items-center justify-center">
                 <video 
+                    ref={videoRef}
                     src={selectedVideo.path} 
                     controls 
                     autoPlay 
+                    onTimeUpdate={handleTimeUpdate}
+                    onLoadedMetadata={handleTimeUpdate}
                     className="w-[90%] h-[80%] rounded-lg shadow-lg"
                 >
 
