@@ -19,7 +19,7 @@ const MobileShows = () => {
 
   const { showId } = useParams();
   const location = useLocation();
-  const { autoplaySeason, autoplayEpisode } = location.state || {};
+  const { autoplaySeason, autoplayEpisode, fromContinueWatching } = location.state || {};
   const cleanShowId = (id) => id.replace(/-/g, "");
   const [videoPlayerVisible, setVideoPlayerVisible] = useState(false);
 
@@ -593,17 +593,20 @@ const MobileShows = () => {
       const show = shows[showId];
       console.log({ cleanShowId: cleanShowId(showId) });
 
+      const hasAutoPlayedRef = useRef(false);
+
       useEffect(() => {
         if (!show) return;
+        if (!fromContinueWatching) return;         
+        if (hasAutoPlayedRef.current) return;      
+        if (videoPlayerVisible || selectedVideo) return; 
 
         async function startAutoplay() {
           if (show.type === "movie" || show.type === "Movies") {
             const movieVideos = show.videos || [];
             const first = movieVideos[0];
             if (!first) return;
-
             let videoPath = first.path;
-
             if (awsHostedShows.includes(showId)) {
               const parts = videoPath.split(".com/");
               const s3Key = parts.length > 1 ? parts[1] : "";
@@ -611,7 +614,6 @@ const MobileShows = () => {
                 videoPath = await fetchSignedUrl(s3Key);
               }
             }
-
             updateLastWatched(showId, null, null);
             setSelectedVideo({ path: videoPath, season: null, episode: null });
             setVideoPlayerVisible(true);
@@ -619,13 +621,11 @@ const MobileShows = () => {
           }
 
           if (!autoplaySeason || !autoplayEpisode) return;
-
           const seasonKey = `season${autoplaySeason}`;
           const episodes = show.videos?.[seasonKey] || [];
           const episodeIndex = autoplayEpisode - 1;
           const ep = episodes[episodeIndex];
           if (!ep) return;
-
           let videoPath = ep.path;
           if (awsHostedShows.includes(showId)) {
             const parts = videoPath.split(".com/");
@@ -635,7 +635,6 @@ const MobileShows = () => {
             }
           }
           setSelectedSeason(autoplaySeason);
-
           updateLastWatched(showId, autoplaySeason, autoplayEpisode);
           setSelectedVideo({
             path: videoPath,
@@ -644,9 +643,13 @@ const MobileShows = () => {
           });
           setVideoPlayerVisible(true);
         }
-
+        hasAutoPlayedRef.current = true; 
         startAutoplay();
-      }, [showId, show, autoplaySeason, autoplayEpisode]);
+      }, [show, fromContinueWatching, autoplaySeason, autoplayEpisode, videoPlayerVisible, selectedVideo, showId]);
+
+
+
+
 
       {/* Scroll Reset */}
         useEffect(() => {

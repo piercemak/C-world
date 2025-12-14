@@ -657,6 +657,7 @@ setRecentlyWatched(merged);
                                     state: {
                                     autoplaySeason: media.lastSeason || null,
                                     autoplayEpisode: media.lastEpisode || null,
+                                    fromContinueWatching: true,
                                     },
                                 })
                                 }
