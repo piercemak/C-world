@@ -989,7 +989,6 @@
         "The_Gang_Saves_the_Day",
         "The_Gang_Gets_Quarantined",
         "Flowers_for_Charlie",
-        "The_Gang_Makes_Lethal_Weapon_6",
         "The_Gang_Squashes_Their_Beefs"
       ],
       10: [
@@ -1008,8 +1007,8 @@
         "Chardee_MacDennis_2_Electric_Boogaloo",
         "Frank_Falls_Out_the_Window",
         "The_Gang_Hits_the_Slopes",
-        "Dee_Made_a_Smut_Film",
-        "Mac_&_Dennis_Move_to_the_Suburbs",
+        "Dee_Made_A_Smut_Film",
+        "Mac_&_Dennis_Move_To_The_Suburbs",
         "Being_Frank",
         "McPoyle_vs_Ponderosa_The_Trial_of_the_Century",
         "Charlie_Catches_a_Leprechaun",

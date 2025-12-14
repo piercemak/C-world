@@ -355,7 +355,7 @@ export const SHOWS = [
         background: "/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg", 
         ratings: "8.8", 
         type: "TV", 
-        keyart: "/images/itsalwayssunny/covers/itsalwayssunny_mobileLogo.png", 
+        keyart: "/images/itsalwayssunny/covers/itsalwayssunny_mobileLogo.jpg", 
         card: "/images/cardimages/itsalwayssunnyLogo.svg",
         dateadded: "1-30-25",
     }, 
