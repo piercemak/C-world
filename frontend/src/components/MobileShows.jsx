@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
@@ -18,6 +18,8 @@ const MobileShows = () => {
   const leftChevron = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg>
 
   const { showId } = useParams();
+  const location = useLocation();
+  const { autoplaySeason, autoplayEpisode } = location.state || {};
   const cleanShowId = (id) => id.replace(/-/g, "");
   const [videoPlayerVisible, setVideoPlayerVisible] = useState(false);
 
@@ -591,6 +593,60 @@ const MobileShows = () => {
       const show = shows[showId];
       console.log({ cleanShowId: cleanShowId(showId) });
 
+      useEffect(() => {
+        if (!show) return;
+
+        async function startAutoplay() {
+          if (show.type === "movie" || show.type === "Movies") {
+            const movieVideos = show.videos || [];
+            const first = movieVideos[0];
+            if (!first) return;
+
+            let videoPath = first.path;
+
+            if (awsHostedShows.includes(showId)) {
+              const parts = videoPath.split(".com/");
+              const s3Key = parts.length > 1 ? parts[1] : "";
+              if (s3Key) {
+                videoPath = await fetchSignedUrl(s3Key);
+              }
+            }
+
+            updateLastWatched(showId, null, null);
+            setSelectedVideo({ path: videoPath, season: null, episode: null });
+            setVideoPlayerVisible(true);
+            return;
+          }
+
+          if (!autoplaySeason || !autoplayEpisode) return;
+
+          const seasonKey = `season${autoplaySeason}`;
+          const episodes = show.videos?.[seasonKey] || [];
+          const episodeIndex = autoplayEpisode - 1;
+          const ep = episodes[episodeIndex];
+          if (!ep) return;
+
+          let videoPath = ep.path;
+          if (awsHostedShows.includes(showId)) {
+            const parts = videoPath.split(".com/");
+            const s3Key = parts.length > 1 ? parts[1] : "";
+            if (s3Key) {
+              videoPath = await fetchSignedUrl(s3Key);
+            }
+          }
+          setSelectedSeason(autoplaySeason);
+
+          updateLastWatched(showId, autoplaySeason, autoplayEpisode);
+          setSelectedVideo({
+            path: videoPath,
+            season: autoplaySeason,
+            episode: autoplayEpisode,
+          });
+          setVideoPlayerVisible(true);
+        }
+
+        startAutoplay();
+      }, [showId, show, autoplaySeason, autoplayEpisode]);
 
       {/* Scroll Reset */}
         useEffect(() => {

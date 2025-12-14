@@ -652,7 +652,14 @@ setRecentlyWatched(merged);
                             <motion.div
                                 key={media.id}
                                 whileTap={{ scale: 0.96 }}
-                                onClick={() => navigate(`/mobile-shows/${media.id}`)}
+                                onClick={() =>
+                                navigate(`/mobile-shows/${media.id}`, {
+                                    state: {
+                                    autoplaySeason: media.lastSeason || null,
+                                    autoplayEpisode: media.lastEpisode || null,
+                                    },
+                                })
+                                }
                                 className="flex-shrink-0 w-68 h-38 rounded-2xl overflow-hidden border border-white/15  bg-white/5 relative cursor-pointer"
                             >
                                 {/* Placeholder background with MobileShows-style loader */}
