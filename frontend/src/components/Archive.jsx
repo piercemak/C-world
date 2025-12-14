@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { SHOWS } from './mobileshowsData';
+import { allEpisodeTitles } from "./episodeTitles";
 
 const Archive = () => {
 
@@ -12,6 +13,8 @@ const starIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fil
 const resetIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></svg>
 const folderIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-4" viewBox="0 0 16 16"><path d="m.5 3 .04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2m5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98z"/><path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5"/></svg>
 const profileIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/></svg>
+const closeIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+
 
 {/* Variants */}
 const listVariants = {
@@ -125,18 +128,7 @@ const currentShow =
 const searchRef = useRef(null);
 const [searchTerm, setSearchTerm] = useState('');
 const [isSearchOpen, setIsSearchOpen] = useState(false);
-useEffect(() => {
-    const handleClickOutside = (event) => {
-        if (searchRef.current && !searchRef.current.contains(event.target)) {
-            setIsSearchOpen(false);
-            setSearchTerm(''); 
-        }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-    };
-}, []);
+
 
 
 {/* Filtering */}
@@ -242,6 +234,127 @@ const handleImageLoad = (id) => {
     [id]: true,
   }));
 };
+
+
+
+{/* Cloudfront */}
+const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
+const getPlaceholderPath = (media) => {
+  const cleanId = media.id.replace(/-/g, "");
+  if (media.type === "Movies" || media.type === "movie") {
+    return `/images/${cleanId}/placeholders/${cleanId}_placeholder.png`;
+  }
+
+  const seasonNumber = Number(media.lastSeason) || 1;
+  const episodeNumber = Number(media.lastEpisode) || 1;
+
+  const cleanedSeason = `S${seasonNumber}`; 
+
+  return `${cloudFrontDomain}/${cleanId}/placeholders/season${seasonNumber}/${cleanedSeason}E${episodeNumber}_${cleanId}_placeholder.png`;
+};
+
+
+{/* Continue Watching Data */}
+const [recentlyWatched, setRecentlyWatched] = useState([]);
+useEffect(() => {
+  const getProgressForEntry = (showId, season, episode) => {
+    const key =
+      season && episode
+        ? `watchProgress-${showId}-S${String(season).padStart(2, "0")}-E${String(episode).padStart(2, "0")}`
+        : `watchProgress-${showId}`;
+
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return 0;
+
+      const data = JSON.parse(raw); 
+      if (!data.duration || data.duration === 0) return 0;
+
+      const fraction = data.currentTime / data.duration;
+      return Math.min(1, Math.max(0, fraction));
+    } catch (err) {
+      console.error("Failed to read progress", err);
+      return 0;
+    }
+  };
+
+  try {
+    const raw = localStorage.getItem("lastWatchedMobile");
+    if (!raw) return;
+
+    const history = JSON.parse(raw);
+    const byShow = new Map();
+
+    for (const entry of history) {
+      if (!entry?.showId || !entry?.watchedAt) continue;
+      const existing = byShow.get(entry.showId);
+      if (!existing || entry.watchedAt > existing.watchedAt) {
+        byShow.set(entry.showId, entry);
+      }
+    }
+const merged = Array.from(byShow.values())
+  .map((entry) => {
+    const meta = videos.find((v) => v.id === entry.showId);
+    if (!meta) return null;
+
+    // treat both "TV" and "show" as series
+    const isSeries = meta.type === "TV" || meta.type === "show";
+
+    const titlesBySeason = isSeries
+      ? allEpisodeTitles?.[entry.showId] || {}
+      : null;
+
+    let episodeTitle = null;
+
+    if (isSeries && titlesBySeason && entry.lastSeason && entry.lastEpisode) {
+      // try several possible season key formats:
+      const seasonKeyNum   = entry.lastSeason;                  // 5
+      const seasonKeyStr   = String(entry.lastSeason);          // "5"
+      const seasonKeyPref  = `season${entry.lastSeason}`;       // "season5"
+
+      const titlesForSeason =
+        titlesBySeason[seasonKeyNum] ||
+        titlesBySeason[seasonKeyStr] ||
+        titlesBySeason[seasonKeyPref] ||
+        [];
+
+      episodeTitle = titlesForSeason[entry.lastEpisode - 1] || null;
+
+      if (episodeTitle) {
+        episodeTitle = episodeTitle
+          .replace(/_/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase());
+      }
+    }
+
+    const progress = getProgressForEntry(
+      entry.showId,
+      entry.lastSeason,
+      entry.lastEpisode
+    );
+
+    return {
+      ...meta,
+      lastSeason: entry.lastSeason,
+      lastEpisode: entry.lastEpisode,
+      watchedAt: entry.watchedAt,
+      episodeTitle,
+      progress,
+    };
+  })
+  .filter(Boolean)
+  .sort((a, b) => b.watchedAt - a.watchedAt);
+
+setRecentlyWatched(merged);
+  } catch (err) {
+    console.error("Failed to load recently watched", err);
+  }
+}, []);
+
+
+
+
+
 
   return (
     <div className="relative w-full min-h-dvh alexandria-font">
@@ -356,13 +469,22 @@ const handleImageLoad = (id) => {
                 transition={{ duration: 0.3 }}
                 className="fixed w-full flex items-center p-6 z-100  bg-black/20 backdrop-blur-2xl rounded-b-2xl"
                 >
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full p-2 relative rounded-xl bg-white/10 text-white backdrop-blur-md focus:outline-none"
-                />
+                <div className="flex flex-row w-full gap-4 items-center">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full p-2 relative rounded-xl bg-white/10 text-white backdrop-blur-md focus:outline-none"
+                    />
+                    <motion.span
+                        whileTap={{ scale: 0.86, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }}
+                        className="text-white"
+                        onClick={() => setIsSearchOpen(!isSearchOpen)}
+                    >
+                        {closeIcon}
+                    </motion.span>
+                </div>
                 </motion.div>
             )}
         </AnimatePresence>
@@ -514,8 +636,92 @@ const handleImageLoad = (id) => {
 
 
 
+                    {/* Continue Watching */}
+                    {recentlyWatched.length > 0 && searchTerm.trim() === "" && (
+                    <div className="mt-6">
+                        <div className="flex flex-row justify-between items-center mb-2">
+                        <span className="text-white text-2xl">Continue Watching</span>
+                        </div>
+
+                        <div className="flex flex-row gap-3 overflow-x-auto pb-2 -mx-6 px-6 no-scrollbar">
+                        {recentlyWatched.map((media) => {
+                            const placeholderPath = getPlaceholderPath(media);
+                            const isLoading = !loadedImages[placeholderPath];
+
+                            return (
+                            <motion.div
+                                key={media.id}
+                                whileTap={{ scale: 0.96 }}
+                                onClick={() => navigate(`/mobile-shows/${media.id}`)}
+                                className="flex-shrink-0 w-68 h-38 rounded-2xl overflow-hidden border border-white/15  bg-white/5 relative cursor-pointer"
+                            >
+                                {/* Placeholder background with MobileShows-style loader */}
+                                <div
+                                className={`w-full h-full ${
+                                    isLoading ? "animate-pulse bg-white/5" : ""
+                                }`}
+                                style={
+                                    loadedImages[placeholderPath]
+                                    ? {
+                                        backgroundImage: `url(${placeholderPath})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        }
+                                    : {}
+                                }
+                                >
+                                {/* Hidden img to trigger load state */}
+                                <img
+                                    src={placeholderPath}
+                                    alt={media.title}
+                                    className="hidden"
+                                    onLoad={() =>
+                                    setLoadedImages((prev) => ({
+                                        ...prev,
+                                        [placeholderPath]: true,
+                                    }))
+                                    }
+                                    onError={() =>
+                                    setLoadedImages((prev) => ({
+                                        ...prev,
+                                        [placeholderPath]: true, // stop pulsing on error
+                                    }))
+                                    }
+                                />
+                                </div>
+
+                                {/* Subtle bottom gradient with title */}
+                                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end">
+                                    <span className="px-3 pb-1 text-md text-white font-semibold truncate">
+                                        {media.title}
+                                    </span>
+                                    {(media.type === "TV" || media.type === "show") && media.lastSeason && media.lastEpisode && (
+                                        <span className="px-3 pb-2 text-[14px] text-white/70 truncate">
+                                        S{media.lastSeason} · E{media.lastEpisode}
+                                        {media.episodeTitle ? ` · ${media.episodeTitle}` : ""}
+                                        </span>
+                                    )}
+                                    {/* Progress bar */}
+                                    <div className="w-full h-1 rounded-full bg-white/20 overflow-hidden">
+                                        <div
+                                            className="h-full bg-white"
+                                            style={{ width: `${Math.round((media.progress || 0) * 100)}%` }}
+                                        />
+                                    </div>
+                                </div>
+
+                            </motion.div>
+                            );
+                        })}
+                        </div>
+                    </div>
+                    )}
+
+                    
+
+
                     {/* All Media */}
-                    <motion.div layout>
+                    <motion.div layout className={searchTerm.trim() ? "mt-6" : "mt-0"}>
                         <div className="flex flex-row justify-between items-center mt-4 relative">
                             <span className="text-white text-2xl">All Media</span>
 
@@ -524,7 +730,7 @@ const handleImageLoad = (id) => {
                                 type="button"
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => setFilterOpen((v) => !v)}
-                                className=""
+                                className={searchTerm.trim() ? "hidden" : "visible"}
                                 >
                                 {filterIcon}
                                 </motion.button>
@@ -629,16 +835,10 @@ const handleImageLoad = (id) => {
                             onClick={() => navigate(`/mobile-shows/${media.id}`)}
                             className="flex flex-row items-center bg-white/10 backdrop-blur-xl rounded-2xl p-2 border border-white/20 shadow-lg"
                             >
-                                {!loadedImages[media.id] && (
-                                <div className="absolute inset-0 animate-pulse bg-white/20" />
-                                )}                                
                                 <img
                                     src={media.card || media.keyart || media.mobilebackground}
                                     alt={media.title}
-                                    onLoad={() => handleImageLoad(media.id)}
-                                    className={`size-20 object-cover rounded-xl shadow-xl mb-2 ${
-                                        loadedImages[media.id] ? "opacity-100" : "opacity-0"
-                                    }`}
+                                    className="size-20 object-cover rounded-xl shadow-xl mb-2"
                                 />
 
                                 <div className="flex flex-col ml-2">

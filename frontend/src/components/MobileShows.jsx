@@ -693,7 +693,23 @@ const currentShow = videos.find(media => media.id === showId) || null;
 const [loadedImages, setLoadedImages] = useState({});
 
 
-
+{/* Last Watched */}
+const updateLastWatched = (showId, season, episode) => {
+  try {
+    const raw = localStorage.getItem("lastWatchedMobile");
+    const list = raw ? JSON.parse(raw) : [];
+    const entry = {
+      showId,
+      lastSeason: season,
+      lastEpisode: episode,
+      watchedAt: Date.now(),
+    };
+    list.push(entry);
+    localStorage.setItem("lastWatchedMobile", JSON.stringify(list));
+  } catch (err) {
+    console.error("Failed to update last watched", err);
+  }
+};
 
 
   return (
@@ -1029,6 +1045,10 @@ const [loadedImages, setLoadedImages] = useState({});
                                     videoPath = await fetchSignedUrl(s3Key);
                                     console.log("✅ Signed Video URL:", videoPath);
                                 }
+
+                                const seasonForHistory = show?.type === "show" ? selectedSeason : null;
+                                const episodeForHistory = show?.type === "show" ? index + 1 : null;    
+                                updateLastWatched(showId, seasonForHistory, episodeForHistory);                            
                                 
                                 setSelectedVideo({ path: videoPath, season: selectedSeason, episode: index + 1 });
                                 setVideoPlayerVisible(true);
@@ -1043,12 +1063,10 @@ const [loadedImages, setLoadedImages] = useState({});
                                     boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
                                     transition: { duration: 0.3, ease: "easeInOut" },
                                   }}
-                                  // 👇 base styles (always applied)
                                   style={{
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                     backgroundRepeat: "no-repeat",
-                                    // 👇 only set the real image *after* it's loaded
                                     ...(loadedImages[placeholderPath]
                                       ? { backgroundImage: `url(${placeholderPath})` }
                                       : {}),
@@ -1061,7 +1079,6 @@ const [loadedImages, setLoadedImages] = useState({});
                                     ${!loadedImages[placeholderPath] ? "animate-pulse bg-white/5" : ""}
                                   `}
                                 >
-                                  {/* Hidden img only for load detection */}
                                   <img
                                     src={placeholderPath}
                                     alt=""
@@ -1075,7 +1092,7 @@ const [loadedImages, setLoadedImages] = useState({});
                                     onError={() =>
                                       setLoadedImages((prev) => ({
                                         ...prev,
-                                        [placeholderPath]: true, // stop pulsing even if it fails
+                                        [placeholderPath]: true, 
                                       }))
                                     }
                                   />

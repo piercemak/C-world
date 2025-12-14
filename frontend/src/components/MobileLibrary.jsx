@@ -281,7 +281,15 @@ return () => document.removeEventListener("mousedown", handleClick);
                                 type="button"
                                 onClick={() => {
                                     setActiveTab(tab.id);
-                                    setCurrentIndex(0);    
+                                    setCurrentIndex(0);   
+
+                                    setActivePage(0);  
+                                    if (sliderRef.current) {
+                                        sliderRef.current.scrollTo({
+                                        left: 0,
+                                        behavior: "smooth",    
+                                        });
+                                    }                                    
                                 }}
                                 className="relative flex items-center justify-center w-10 h-10 md:w-11 md:h-11"
                                 >
@@ -506,7 +514,7 @@ return () => document.removeEventListener("mousedown", handleClick);
                 {/* 2x2 Mobile Cards */}
                 {pages.length > 0 && (
                 <div className="w-full">
-                    <div onClick={archiveNavigate} className='flex justify-end items-center pr-2 pb-1 text-white/70 alexandria-font'> View more {rightChevron} </div>
+                    <motion.div whileTap={{ scale: 0.98 }} onClick={archiveNavigate} className='flex justify-end items-center pr-2 pb-1 text-white/70 alexandria-font'> View more {rightChevron} </motion.div>
                     {/* Horizontal snapping container */}
                     <div ref={sliderRef} className="w-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
                     <div className="flex w-full p-1">
