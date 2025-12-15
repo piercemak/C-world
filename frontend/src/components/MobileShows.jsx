@@ -6,6 +6,8 @@ import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
 import { SHOWS } from "./mobileshowsData.js";
 import { allEpisodeTitles } from "./episodeTitles.js";
+import WatchProgressBar from "./WatchProgressBar.jsx";
+
 
 
 const MobileShows = () => {
@@ -1238,7 +1240,7 @@ const handleTimeUpdate = () => {
                                   className={`flex border border-white/10 inset-shadow-2xs inset-shadow-white/30
                                     ${show?.type === "movie"
                                       ? "w-90 h-88 rounded-3xl shadow-2xl relative z-40"
-                                      : "w-86 h-48 rounded-2xl shadow-lg mb-2"
+                                      : "w-86 h-48 rounded-2xl shadow-lg relative mb-2"
                                     }
                                     ${!loadedImages[placeholderPath] ? "animate-pulse bg-white/5" : ""}
                                   `}
@@ -1268,6 +1270,23 @@ const handleTimeUpdate = () => {
                                       <span className="text-white text-4xl p-2 relative">{episodeNumber}</span>
                                     </div>
                                   )}
+
+                                  {/* Watch Progress Bar Overlay */}
+                                  <div className="absolute bottom-0 left-0 right-0 px-2 pb-1">
+                                    <WatchProgressBar
+                                      showId={showId}
+                                      season={
+                                        show?.type === "movie" || show?.type === "Movies"
+                                          ? null
+                                          : parseInt(videoUrl.season?.slice(1), 10) 
+                                      }
+                                      episode={
+                                        show?.type === "movie" || show?.type === "Movies"
+                                          ? null
+                                          : index + 1
+                                      }
+                                    />
+                                  </div>
                                 </motion.div>
                               </div>
 
