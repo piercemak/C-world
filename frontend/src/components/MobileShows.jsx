@@ -803,6 +803,60 @@ const saveWatchProgress = (currentTime, duration) => {
   }
 };
 
+const getSavedTime = (season, episode) => {
+  if (!show) return 0;
+  let key;
+  if (show.type === "movie" || show.type === "Movies") {
+    key = `watchProgress-${showId}`;
+  } else {
+    const seasonNum = Number(season);
+    const episodeNum = Number(episode);
+    if (!seasonNum || !episodeNum) return 0;
+    key = `watchProgress-${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(
+      episodeNum
+    ).padStart(2, "0")}`;
+  }
+
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return 0;
+
+    const data = JSON.parse(raw);
+    return data.currentTime || 0;
+  } catch (err) {
+    console.error("Failed to read watch progress", err);
+    return 0;
+  }
+};
+useEffect(() => {
+  if (!selectedVideo || !show) return;
+  const video = videoRef.current;
+  if (!video) return;
+  const seasonForKey =
+    show.type === "movie" || show.type === "Movies"
+      ? null
+      : selectedVideo.season;
+  const episodeForKey =
+    show.type === "movie" || show.type === "Movies"
+      ? null
+      : selectedVideo.episode;
+
+  const savedTime = getSavedTime(seasonForKey, episodeForKey);
+  if (!savedTime || savedTime <= 0) return;
+
+  const applyTime = () => {
+    video.currentTime = savedTime;
+    video.removeEventListener("loadedmetadata", applyTime);
+  };
+
+  if (video.readyState >= 1) {
+    applyTime();
+  } else {
+    video.addEventListener("loadedmetadata", applyTime);
+  }
+}, [selectedVideo, show, showId]);
+
+
 const handleTimeUpdate = () => {
   const video = videoRef.current;
   if (!video) return;
@@ -961,6 +1015,15 @@ const handleTimeUpdate = () => {
                     label="English"
                 />
                 )}  
+
+                {showId === "akira" && (
+                  <track
+                    src={`/videos/akira/akira_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )} 
 
                 {subtitleText && (
                 <div className="absolute bottom-24 w-full text-center">
