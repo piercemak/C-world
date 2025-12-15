@@ -989,6 +989,7 @@
         "The_Gang_Saves_the_Day",
         "The_Gang_Gets_Quarantined",
         "Flowers_for_Charlie",
+        "The_Gang_Makes_Lethal_Weapon_6",
         "The_Gang_Squashes_Their_Beefs"
       ],
       10: [

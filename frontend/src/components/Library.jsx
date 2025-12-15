@@ -486,8 +486,8 @@ const extractS3KeyFromPath = (path) => {
           title: "It's Always Sunny In Philadelphia",
           release_year: "2005",
           genre: "Comedy",
-          season_total_number: "17 seasons",
-          season_digit: 6,
+          season_total_number: "16 seasons",
+          season_digit: 16,
           description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
           background: "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
           videos: videoDataByShow["itsalwayssunny"],
@@ -665,7 +665,9 @@ const extractS3KeyFromPath = (path) => {
 
     {/* Subtitles */}
     const metaShowId = selectedVideo?.showId || showId;
-
+const seasons = show?.season_digit
+  ? Array.from({ length: show.season_digit }, (_, i) => i + 1)
+  : [];
 
   return (
     <div  style={{ background: "var(--gradient-9)" }} className='w-full h-dvh flex p-6 gap-4 justify-center items-center'>
@@ -865,27 +867,44 @@ const extractS3KeyFromPath = (path) => {
                   animate="visible"
                   exit="exit"
                   variants={dropdownVariants}
-                  className="absolute bottom-0 2xl:bottom-[-200] text-nowrap left-full ml-4 mt-1 text-[#5c5c5c] bg-black/80 rounded-md shadow-md backdrop-blur px-4 py-2"
+                  className="
+                    absolute bottom-0 left-full
+                    ml-4 mt-1
+                    bg-black/80 text-[#5c5c5c]
+                    rounded-md shadow-md backdrop-blur
+                    px-4 py-3
+                  "
                 >
-                  {Array.from({ length: show?.season_digit }, (_, i) => i + 1).map(season => (
-                    <motion.button
-                      key={season}
-                      whileHover={{ color: "rgba(255, 255, 255, 0.6)" }}
-                      variants={itemVariants}
-                      onClick={() => {
-                        setSelectedSeason(season);
-                        setSeasonDropdownOpen(false);
-                      }}
-                      className={`block text-left text-sm py-4 w-full cursor-pointer ${
-                        season === selectedSeason ? "text-white font-bold" : ""
-                      }`}
-                    >
-                      Season {season}
-                    </motion.button>
-                  ))}
+                  {/* Inner grid that actually lays out the buttons */}
+                  <div
+                    className={`
+                      grid ${show?.season_digit > 8 ? "grid-cols-2" : "grid-cols-1"}
+                      gap-x-6 gap-y-4
+                      w-max
+                    `}
+                  >
+                    {Array.from({ length: show?.season_digit }, (_, i) => i + 1).map((season) => (
+                      <motion.button
+                        key={season}
+                        whileHover={{ color: "rgba(255, 255, 255, 0.6)" }}
+                        variants={itemVariants}
+                        onClick={() => {
+                          setSelectedSeason(season);
+                          setSeasonDropdownOpen(false);
+                        }}
+                        className={`
+                          text-left text-sm px-2 py-1 cursor-pointer whitespace-nowrap
+                          ${season === selectedSeason ? "text-white font-bold" : ""}
+                        `}
+                      >
+                        Season {season}
+                      </motion.button>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
+
           </div>
 
           {/* Cards for each video */}
