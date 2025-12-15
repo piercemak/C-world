@@ -6,7 +6,6 @@ import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
 import { SHOWS } from "./mobileshowsData.js";
 import { allEpisodeTitles } from "./episodeTitles.js";
-import WatchProgressBar from "./WatchProgressBar.jsx";
 
 
 
@@ -866,6 +865,42 @@ const handleTimeUpdate = () => {
 };
 
 
+
+const getWatchProgressPercent = (showId, season, episode) => {
+  let key;
+
+  if (show?.type === "movie" || show?.type === "Movies") {
+    key = `watchProgress-${showId}`;
+  } else {
+    const seasonNum = Number(season);
+    const episodeNum = Number(episode);
+    if (!seasonNum || !episodeNum) return 0;
+
+    key = `watchProgress-${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(
+      episodeNum
+    ).padStart(2, "0")}`;
+  }
+
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return 0;
+
+    const data = JSON.parse(raw);
+    const { currentTime, duration } = data || {};
+    if (!duration || duration <= 0) return 0;
+
+    const pct = (currentTime / duration) * 100;
+    return Math.max(0, Math.min(100, pct));
+  } catch (err) {
+    console.error("Failed to read watch progress percent", err);
+    return 0;
+  }
+};
+
+
+
+
+
   return (
     <div className='flex w-full h-dvh relative flex-col bg-black overflow-y-hidden'>
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -1195,7 +1230,18 @@ const handleTimeUpdate = () => {
                             placeholderPath = `/images/${cleanShowId}/placeholders/${cleanShowId}_placeholder.png`;
                         }
                         const isLoading = !loadedImages[placeholderPath];
-                        
+                        const progressPercent = getWatchProgressPercent(
+                          showId,
+                          show?.type === "movie" || show?.type === "Movies"
+                            ? null
+                            : parseInt(videoUrl.season?.slice(1), 10),
+                          show?.type === "movie" || show?.type === "Movies"
+                            ? null
+                            : index + 1
+                        );
+
+
+
                         return (
                             <motion.div 
                                 key={index}
@@ -1270,27 +1316,21 @@ const handleTimeUpdate = () => {
                                       <span className="text-white text-4xl p-2 relative">{episodeNumber}</span>
                                     </div>
                                   )}
-
-                                  {/* Watch Progress Bar Overlay */}
-                                  <div className="absolute bottom-0 left-0 right-0 px-2 pb-1">
-                                    <WatchProgressBar
-                                      showId={showId}
-                                      season={
-                                        show?.type === "movie" || show?.type === "Movies"
-                                          ? null
-                                          : parseInt(videoUrl.season?.slice(1), 10) 
-                                      }
-                                      episode={
-                                        show?.type === "movie" || show?.type === "Movies"
-                                          ? null
-                                          : index + 1
-                                      }
-                                    />
-                                  </div>
+                                  {progressPercent > 0 && (
+                                    <div className="absolute bottom-0 left-0 right-0 px-2 pb-1">
+                                      <div className="w-full h-1.5 rounded-full bg-white/20 overflow-hidden">
+                                        <div
+                                          className="h-full rounded-full bg-white"
+                                          style={{ width: `${progressPercent}%` }}
+                                        />
+                                      </div>
+                                    </div>
+                                  )}
+                                  
                                 </motion.div>
                               </div>
 
-
+ 
 
 
                                 {show?.type === "movie" && (
