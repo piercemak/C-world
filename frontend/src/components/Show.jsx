@@ -1437,7 +1437,7 @@ const isLastEpisode =
 
     {/* Skip Intro */}
     {introVisible && (
-      <div className="absolute bottom-30 right-4 flex gap-2 text-black z-30">
+      <div className="absolute bottom-34 right-4 flex gap-2 text-black z-30">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -1451,7 +1451,7 @@ const isLastEpisode =
 
     {/* Skip Outro */}
     {outroVisible && !isMovie && !isLastEpisode && (
-      <div className="absolute bottom-28 right-4 flex gap-2 text-black z-30 group">
+      <div className="absolute bottom-32 right-4 flex gap-2 text-black z-30 group">
         <motion.span 
           animate={{
             scale: isNextHovered ? 1.05 : 1,
