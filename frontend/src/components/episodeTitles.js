@@ -943,7 +943,7 @@
         "Dennis_Gets_Divorced",
         "The_Gang_Buys_A_Boat",
         "Macs_Big_Break",
-        "Mac_and_Charlie_White_Trash",
+        "Mac_And_Charlie_White_Trash",
         "Macs_Mom_Burns_Her_House_Down",
         "Who_Got_Dee_Pregnant",
         "The_Gang_Gets_A_New_Member",
