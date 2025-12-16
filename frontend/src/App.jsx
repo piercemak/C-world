@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './components/AuthContext';
 
+import { SnowProvider } from "./components/SnowContext.jsx"; // REMOVE AFTER HOLDAYS //
+import SnowOverlay from "./components/SnowOverlay"; // REMOVE AFTER HOLDAYS //
+
 import Home from './components/Home.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
 import Library from './components/Library.jsx';
@@ -35,6 +38,8 @@ function App() {
   }, []);
 
   return (
+    <SnowProvider> 
+    <SnowOverlay />
     <AuthProvider>
       <BrowserRouter>
         <Routes>
@@ -107,6 +112,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+    </SnowProvider>
   );
 }
 

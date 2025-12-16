@@ -157,10 +157,14 @@
     border-radius: 50%;
    }
    
-   input:checked + .slider {
-    background-color: #489f8c;
-   }
-   
+    input:checked + .slider {
+    background-color: transparent;            
+    background-image: url("/images/misc/christmas_pattern.svg"); 
+    background-size: cover;                    
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+
    input:checked + .slider:before {
     transform: translateX(28px);
    }
