@@ -584,7 +584,7 @@ const MobileShows = () => {
           release_year: "2005",
           genre: "Comedy",
           season_total_number: "17 seasons",
-          season_digit: 17,
+          season_digit: 16,
           description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
           mobilebackground: "/images/itsalwayssunny/covers/itsalwayssunny_background.jpg",
           videos: videoDataByShow["itsalwayssunny"],
