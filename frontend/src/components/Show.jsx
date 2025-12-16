@@ -445,7 +445,7 @@ if (prevEpisode < 1) {
           4: { intro: { start: 85.0, end: 115.0 }, outro: { start: 1187, skipTo: "next" } },
           5: { intro: { start: 135.0, end: 165.0 }, outro: { start: 1218, skipTo: "next" } },
           6: { intro: { start: 45.0, end: 75.0 }, outro: { start: 1195, skipTo: "next" } },
-          7: { intro: { start: 180.0, end: 210.0 }, outro: { start: 1224, skipTo: "next" } },
+          7: { intro: { start: 150.0, end: 180.0 }, outro: { start: 1224, skipTo: "next" } },
           8: { intro: { start: 73.0, end: 103.0 }, outro: { start: 1226, skipTo: "next" } },
           9: { intro: { start: 144.0, end: 174.0 }, outro: { start: 1256, skipTo: "next" } },
           10: { intro: { start: 53.0, end: 83.0 }, outro: { start: 1237, skipTo: "next" } },
