@@ -109,7 +109,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   
   const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
-  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus"]);
+  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny"]);
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
 
@@ -194,6 +194,18 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:10,
       3:15,
       4:13,
+      5:12,
+      6:13,
+      7:13,
+      8:10,
+      9:10,
+      10:10,
+      11:10,
+      12:10,
+      13:10,
+      14:10,
+      15:8,
+      16:8,
     }  
   };
 const displaySeason =
