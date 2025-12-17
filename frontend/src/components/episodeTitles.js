@@ -1038,7 +1038,7 @@
         "The_Gang_Solves_the_Bathroom_Problem",
         "The_Gang_Does_a_Clip_Show",
         "Charlies_Home_Alone",
-        "The_Game_Wins_the_Big_Game",
+        "The_Gang_Wins_the_Big_Game",
         "Mac_Finds_His_Pride"
       ],
       14: [
