@@ -1000,7 +1000,7 @@
         "The_Gang_Spies_Like_US",
         "The_Gang_Misses_the_Boat",
         "Mac_Kills_His_Dad",
-        "The_Gang_Goes_on_Family_Flight",
+        "The_Gang_Goes_on_Family_Fight",
         "Frank_Retires",
         "Ass_Kickers_United_Mac_and_Charlie_Join_a_Cult"
       ],
