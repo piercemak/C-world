@@ -192,7 +192,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:10,
     },     
     pluribus: {
-      1:6,
+      1:7,
     },
     itsalwayssunny: {
       1:7,
