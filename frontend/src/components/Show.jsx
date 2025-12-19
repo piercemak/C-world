@@ -398,7 +398,7 @@ if (prevEpisode < 1) {
           5: { intro: { start: 472.0, end: 495.0 }, outro: { start: 2669, skipTo: "next" } },
           6: { intro: { start: 329.0, end: 350.0 }, outro: { start: 2865, skipTo: "next" } },
           7: { intro: { start: 298.0, end: 323.0 }, outro: { start: 2645, skipTo: "next" } },
-          
+          8: { intro: { start: 183.0, end: 205.0 }, outro: { start: 2488, skipTo: "next" } },
         }
       }
   },   
@@ -1062,7 +1062,6 @@ const isLastEpisode =
     }
 
     track.mode = "hidden"; 
-
     const handleCueChange = () => {
       const activeCues = track.activeCues;
       if (activeCues.length > 0) {
@@ -1079,17 +1078,28 @@ const isLastEpisode =
     };
   }, [src]);
 
+
+
   {/* Loading Pulse State */}
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(true); 
   }, [src]);
-
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.focus();
     }
   }, []);
+
+
+  {/* Stop Countdown */}
+  const cancelOutroCountdown = () => {
+    setCountdown(null);
+    setOutroVisible(false);        
+    outroSkipRef.current = false;  
+  };
+
+
 
   return (
   <div
@@ -1507,6 +1517,14 @@ const isLastEpisode =
             {nextTitleFormatted}
           </motion.div>
         </motion.div>
+<motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={cancelOutroCountdown}
+  className="bg-black/20 backdrop-blur-sm border text-white/80 hover:text-white/60 transition-colors border-white/10 px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer tracking-wide"
+>
+  Cancel
+</motion.button>
       </div>
     )}
     
