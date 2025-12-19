@@ -1521,7 +1521,7 @@ const isLastEpisode =
   whileHover={{ scale: 1.05 }}
   whileTap={{ scale: 0.95 }}
   onClick={cancelOutroCountdown}
-  className="bg-black/20 backdrop-blur-sm border text-white/80 hover:text-white/60 transition-colors border-white/10 px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer tracking-wide"
+  className="absolute right-0 top-0  flex items-center justify-center text-white/40 p-3 size-4 text-xs font-semibold cursor-pointer tracking-wide bg-black/20 backdrop-blur-xs border border-white/30 rounded-bl-2xl"
 >
   Cancel
 </motion.button>
