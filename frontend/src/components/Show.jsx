@@ -1484,7 +1484,7 @@ const isLastEpisode =
 
     {/* Skip Outro */}
     {outroVisible && !isMovie && !isLastEpisode && (
-      <div className="absolute bottom-32 right-4 flex gap-2 text-black z-30 group">
+      <div className="absolute bottom-32 right-4 flex flex-col gap-2 text-black z-30 group">
         <div className="flex flex-row justify-between items-center">
           <motion.span 
             animate={{
