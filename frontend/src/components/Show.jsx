@@ -1491,7 +1491,7 @@ const isLastEpisode =
               scale: isNextHovered ? 1.05 : 1,
               y: isNextHovered ? -8 : 0,
             }}
-            className="absolute top-[-28px] text-white font-bold tracking-wider text-lg"
+            className="text-white font-bold tracking-wider text-lg"
           >
             Next... {countdown !== null ? `${countdown}` : ""}
           </motion.span>
@@ -1500,6 +1500,8 @@ const isLastEpisode =
               scale: isNextHovered ? 1.05 : 1,
               y: isNextHovered ? -8 : 0,
             }}
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
             onClick={cancelOutroCountdown}
             className="text-white/60"
           >
