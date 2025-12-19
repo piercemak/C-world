@@ -1242,6 +1242,15 @@ const isLastEpisode =
         />
       )}   
 
+      {showId === "annihilation" && (
+        <track
+          src={`/videos/annihilation/annihilation_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )}  
+
 
       Your browser does not support the video tag.
     </video>
