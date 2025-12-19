@@ -702,7 +702,7 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         !isMovie &&                                   
         !(isLastEpisode && outro.skipTo === "next"); 
 
-      if (shouldShowOutroSkip) {
+      if (shouldShowOutroSkip && !outroDismissed) {
         setOutroVisible(true);
         if (countdown === null) setCountdown(10);
         localStorage.removeItem(`watchProgress-${key}`);
@@ -715,6 +715,10 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         } else {
           localStorage.removeItem(`watchProgress-${key}`);
         }
+      }
+      
+      if (!shouldShowOutroSkip && outroDismissed) {
+        setOutroDismissed(false);
       }
     };
 
@@ -1095,10 +1099,12 @@ const isLastEpisode =
 
 
   {/* Stop Countdown */}
+  const [outroDismissed, setOutroDismissed] = useState(false);
   const cancelOutroCountdown = () => {
     setCountdown(null);
-    setOutroVisible(false);        
-    outroSkipRef.current = false;  
+    setOutroVisible(false);
+    setOutroDismissed(true);
+    outroSkipRef.current = false; 
   };
 
 
@@ -1501,7 +1507,7 @@ const isLastEpisode =
               y: isNextHovered ? -8 : 0,
             }}
             whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.1 }}
             onClick={cancelOutroCountdown}
             className="text-white/60"
           >
