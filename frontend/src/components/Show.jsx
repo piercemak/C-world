@@ -194,7 +194,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       2:10,
     },     
     pluribus: {
-      1:8,
+      1:9,
     },
     itsalwayssunny: {
       1:7,
@@ -401,6 +401,7 @@ if (prevEpisode < 1) {
           6: { intro: { start: 329.0, end: 350.0 }, outro: { start: 2865, skipTo: "next" } },
           7: { intro: { start: 298.0, end: 323.0 }, outro: { start: 2645, skipTo: "next" } },
           8: { intro: { start: 183.0, end: 205.0 }, outro: { start: 2488, skipTo: "next" } },
+          
         }
       }
   },   
