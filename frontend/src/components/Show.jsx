@@ -401,7 +401,7 @@ if (prevEpisode < 1) {
           6: { intro: { start: 329.0, end: 350.0 }, outro: { start: 2865, skipTo: "next" } },
           7: { intro: { start: 298.0, end: 323.0 }, outro: { start: 2645, skipTo: "next" } },
           8: { intro: { start: 183.0, end: 205.0 }, outro: { start: 2488, skipTo: "next" } },
-          
+          9: { intro: { start: 533.0, end: 555.0 }, outro: { start: 3322, skipTo: "next" } },
         }
       }
   },   
