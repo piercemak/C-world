@@ -110,6 +110,9 @@ const VideoPlayer = () => {
       { title: "Annihilation",              cardId: "card-29" },
       { title: "It's Always Sunny In Philadelphia",    cardId: "card-30" },
 
+      { title: "The Twilight Zone",         cardId: "card-31" },
+      { title: "Redline",                   cardId: "card-32" },
+
     ];
 
     const cardIdToSlug = {
@@ -147,6 +150,9 @@ const VideoPlayer = () => {
         "card-28": "exmachina",
         "card-29": "annihilation",
         "card-30": "itsalwayssunny",
+
+        "card-31": "thetwilightzone",
+        "card-32": "redline",
 
       };
 

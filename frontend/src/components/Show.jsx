@@ -213,7 +213,14 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       14:10,
       15:8,
       16:8,
-    }  
+    },  
+    thetwilightzone: {
+      1:7,
+      2:10,
+      3:15,
+      4:13,
+      5:12,
+    } 
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);

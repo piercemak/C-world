@@ -492,6 +492,28 @@ const extractS3KeyFromPath = (path) => {
           background: "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
           videos: videoDataByShow["itsalwayssunny"],
         },  
+        "thetwilightzone": {
+          type: "show",  
+          title: "The Twilight Zone",
+          release_year: "1959",
+          genre: "Psychological Drama",
+          season_total_number: "5 seasons",
+          season_digit: 5,
+          description: "Classic American Anthology series created by Rod Serling, featuring standalone stories of science fiction, fantasy, and horror, each with a twist ending or moral lesson.",
+          background: "/images/thetwilightzone/covers/thetwilightzoneCover.jpg",
+          videos: videoDataByShow["thetwilightzone"],
+        }, 
+        "redline": {
+          type: "movie",  
+          title: "Redline",
+          release_year: "2009",
+          genre: "Action/Sci-Fi",
+          duration: "1h 42m",          
+          description: "A story about the most popular racing event in the galaxy, the Redline, and the various racers who compete in it.",
+          background: "/images/redline/covers/redlineCover.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "redline", "movie"),
+        },  
         
       };
       const show = shows[showId];

@@ -359,5 +359,29 @@ export const SHOWS = [
         card: "/images/cardimages/itsalwayssunnyLogo.svg",
         dateadded: "1-30-25",
     }, 
+
+    {
+        id: "thetwilightzone",  
+        title: "The Twilight Zone",
+        creator: "Rod Serling", 
+        background: "/images/thetwilightzone/covers/thetwilightzone_backdrop.svg", 
+        ratings: "9.0", 
+        type: "TV", 
+        keyart: "/images/thetwilightzone/covers/thetwilightzone_mobileLogo.png", 
+        card: "/images/cardimages/thetwilightzoneLogo.svg",
+        dateadded: "2-1-25",
+    }, 
+
+    { 
+        id: "redline", 
+        title: "Redline", 
+        creator: "Takeshi Koike", 
+        background: "/images/redline/covers/redline_backdrop.svg", 
+        ratings: "7.5", 
+        type: "Movies", 
+        keyart: "/images/redline/covers/redline_mobileLogo.jpg", 
+        card: "/images/cardimages/redlineLogo.svg", 
+        dateadded: "2-2-25",
+    }, 
     
 ];
