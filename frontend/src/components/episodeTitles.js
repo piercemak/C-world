@@ -1085,6 +1085,48 @@
         "The_Gang_Gets_Ready_for_Prime_Time",
         "The_Golden_Bachelor_Live"
       ]
+    }
+    
+    export const episodeTitles_thetwilightzone = {
+      1: [
+        "Where_Is_Everybody",
+        "One_for_the_Angels",
+        "Mr_Denton_on_Doomsday",
+        "The_Sixteen_Millimeter_Shrine",
+        "Walking_Distance",
+        "Escape_Clause",
+        "The_Lonely",
+        "Time_Enough_at_Last",
+        "Perchance_to_Dream",
+        "Judgment_Night",
+        "And_When_the_Sky_Was_Opened",
+        "What_You_Need",
+        "The_Four_of_Us_Are_Dying",
+        "Third_from_the_Sun",
+        "I_Shot_an_Arrow_into_the_Air",
+        "The_HitchHiker",
+        "The_Fever",
+        "The_Last_Flight",
+        "The_Purple_Testament",
+        "Elegy",
+        "Mirror_Image",
+        "The_Monsters_Are_Due_on_Maple_Street",
+        "A_World_of_Difference",
+        "Long_Live_Walter_Jameson",
+        "People_Are_Alike_All_Over",
+        "Execution",
+        "The_Big_Tall_Wish",
+        "A_Nice_Place_to_Visit",
+        "Nightmare_as_a_Child",
+        "A_Stop_at_Willoughby",
+        "The_Chaser",
+        "A_Passage_for_Trumpet",
+        "Mr_Bevis",
+        "The_After_Hours",
+        "The_Mighty_Casey",
+        "A_World_of_His_Own"
+      ],
+
     } 
 
 
@@ -1103,4 +1145,5 @@
       "severance": episodeTitles_severance,
       "pluribus": episodeTitles_pluribus,
       "itsalwayssunny": episodeTitles_itsalwayssunny,
+      "thetwilightzone": episodeTitles_thetwilightzone,
     };
