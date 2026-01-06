@@ -1126,6 +1126,37 @@
         "The_Mighty_Casey",
         "A_World_of_His_Own"
       ],
+      2: [
+        "King_Nine_Will_Not_Return",
+        "The_Man_in_the_Bottle",
+        "Nervous_Man_in_a_Four_Dollar_Room",
+        "A_Thing_About_Machines",
+        "The_Howling_Man",
+        "Eye_of_the_Beholder",
+        "Nick_of_Time",
+        "The_Lateness_of_the_Hour",
+        "The_Trouble_with_Templeton",
+        "A_Most_Unusual_Camera",
+        "The_Night_of_the_Meek",
+        "Dust",
+        "Back_There",
+        "The_Whole_Truth",
+        "The_Invaders",
+        "A_Penny_For_Your_Thoughts",
+        "Twenty_Two",
+        "The_Odyssey_of_Flight_33",
+        "Mr_Dingle_the_Strong",
+        "Static",
+        "The_Prime_Mover",
+        "Long_Distance_Call",
+        "A_Hundred_Yards_over_the_Rim",
+        "The_Rip_Van_Winkle_Caper",
+        "The_Silence",
+        "Shadow_Play",
+        "The_Mind_and_the_Matter",
+        "Will_the_Real_Martian_Please_Stand_Up",
+        "The_Obsolete_Man"
+      ]
 
     } 
 

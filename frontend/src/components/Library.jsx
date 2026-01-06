@@ -500,7 +500,7 @@ const extractS3KeyFromPath = (path) => {
           season_total_number: "5 seasons",
           season_digit: 5,
           description: "Classic American Anthology series created by Rod Serling, featuring standalone stories of science fiction, fantasy, and horror, each with a twist ending or moral lesson.",
-          background: "/images/thetwilightzone/covers/thetwilightzoneCover.jpg",
+          background: "/images/thetwilightzone/covers/thetwilightzoneCover.svg",
           videos: videoDataByShow["thetwilightzone"],
         }, 
         "redline": {
