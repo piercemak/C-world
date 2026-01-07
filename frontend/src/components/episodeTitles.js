@@ -1196,6 +1196,26 @@
         "Cavender_is_Coming",
         "The_Changing_of_the_Guard"
       ],
+      4: [
+        "In_His_Image",
+        "The_Thirty_Fathom_Grave",
+        "Valley_of_the_Shadow",
+        "Hes_Alive",
+        "Mute",
+        "Death_Ship",
+        "JessBelle",
+        "Miniature",
+        "Printers_Devil",
+        "No_Time_Like_the_Past",
+        "The_Parallel",
+        "I_Dream_of_Genie",
+        "The_New_Exhibit",
+        "Of_Late_I_Think_of_Cliffordville",
+        "The_Invisible_World_of_Horace_Ford",
+        "On_Thursday_We_Leave_for_Home",
+        "Passage_on_the_Lady_Anne",
+        "The_Bard"
+      ]
 
     } 
 

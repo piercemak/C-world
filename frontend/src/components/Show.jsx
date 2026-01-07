@@ -1278,6 +1278,15 @@ const isLastEpisode =
         />
       )}  
 
+      {showId === "redline" && (
+        <track
+          src={`/videos/redline/redline_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )} 
+
 
       Your browser does not support the video tag.
     </video>
