@@ -1215,8 +1215,45 @@
         "On_Thursday_We_Leave_for_Home",
         "Passage_on_the_Lady_Anne",
         "The_Bard"
+      ],
+      5: [
+        "In_Praise_of_Pip",
+        "Steel",
+        "Nightmare_at_20000_Feet",
+        "A_Kind_of_Stopwatch",
+        "The_Last_Night_of_a_Jockey",
+        "Living_Doll",
+        "The_Old_Man_in_the_Cave",
+        "Uncle_Simon",
+        "Probe_7_Over_and_Out",
+        "The_7th_is_Made_Up_of_Phantoms",
+        "A_Short_Drink_from_a_Certain_Fountain",
+        "Ninety_Years_Without_Slumbering",
+        "RingADing_Girl",
+        "You_Drive",
+        "The_Long_Morrow",
+        "The_Self_Improvement_of_Salvadore_Ross",
+        "Number_12_Looks_Just_Like_You",
+        "Black_Leather_Jackets",
+        "Night_Call",
+        "From_Agnes_With_Love",
+        "Spur_of_the_Moment",
+        "An_Occurrence_at_Owl_Creek_Bridge",
+        "Queen_of_the_Nile",
+        "Whats_in_the_Box",
+        "The_Masks",
+        "I_Am_the_Night_Color_Me_Black",
+        "Sounds_and_Silences",
+        "Caesar_and_Me",
+        "The_Jeopardy_Room",
+        "Stopover_in_a_Quiet_Town",
+        "The_Encounter",
+        "Mr_Garrity_and_the_Graves",
+        "The_Brain_Center_at_Whipples",
+        "Come_Wander_With_Me",
+        "The_Fear",
+        "The_Bewitchin_Pool"
       ]
-
     } 
 
 
