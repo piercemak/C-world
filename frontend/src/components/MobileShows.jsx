@@ -1099,6 +1099,15 @@ const getWatchProgressPercent = (showId, season, episode) => {
                   />
                 )} 
 
+                {showId === "redline" && (
+                  <track
+                    src={`/videos/redline/redline_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )} 
+
                 {subtitleText && (
                 <div className="absolute bottom-24 w-full text-center">
                     <div className="text-white text-[20px] font-semibold drop-shadow-md">
