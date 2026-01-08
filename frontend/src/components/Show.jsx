@@ -116,7 +116,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   
   const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
-  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny", "thetwilightzone"]);
+  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny"]);
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
 
@@ -215,11 +215,11 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       16:8,
     },  
     thetwilightzone: {
-      1:7,
-      2:10,
-      3:15,
-      4:13,
-      5:12,
+      1:36,
+      2:29,
+      3:37,
+      4:18,
+      5:36,
     } 
   };
 const displaySeason =
