@@ -594,7 +594,7 @@ const MobileShows = () => {
           title: "The Twilight Zone",
           ratings: "9.0",
           agerating: "18",
-          creator: "Rodd Serling",
+          creator: "Rod Serling",
           release_year: "1959",
           genre: "Comedy",
           season_total_number: "5 seasons",
