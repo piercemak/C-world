@@ -377,7 +377,7 @@ export const SHOWS = [
         title: "Redline", 
         creator: "Takeshi Koike", 
         background: "/images/redline/covers/redline_backdrop.svg", 
-        ratings: "7.53", 
+        ratings: "7.5", 
         type: "Movies", 
         keyart: "/images/redline/covers/redline_mobileLogo.jpg", 
         card: "/images/cardimages/redlineLogo.svg", 
