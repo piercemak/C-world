@@ -710,6 +710,10 @@
         "Transformation_Part_2",
         "The_Shibuya_Incident_Gate_Closed"        
       ],
+      3: [
+        "Execution",
+        "One_More_Time",
+      ]
     }    
 
     export const episodeTitles_cyberpunk = {
