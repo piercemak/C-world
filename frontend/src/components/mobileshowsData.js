@@ -179,6 +179,18 @@ export const SHOWS = [
         card: "/images/cardimages/fmabLogo.svg", 
         dateadded: "1-15-25",
     },
+
+    { 
+        id: "jjk", 
+        title: "Jujutsu Kaisen", 
+        creator: "Gege Akutami", 
+        background: "/images/jjk/covers/jjk_backdrop.svg", 
+        ratings: "8.5", 
+        type: "TV", 
+        keyart: "/images/jjk/covers/jjk_mobileLogo2.jpg", 
+        card: "/images/cardimages/jjkLogo2.svg", 
+        dateadded: "2-3-25",
+    }, 
     
     { 
         id: "neon-genesis", 
@@ -370,18 +382,6 @@ export const SHOWS = [
         keyart: "/images/redline/covers/redline_mobileLogo.jpg", 
         card: "/images/cardimages/redlineLogo.svg", 
         dateadded: "2-2-25",
-    }, 
-
-    { 
-        id: "jjk", 
-        title: "Jujutsu Kaisen", 
-        creator: "Gege Akutami", 
-        background: "/images/jjk/covers/jjk_backdrop.svg", 
-        ratings: "8.5", 
-        type: "TV", 
-        keyart: "/images/jjk/covers/jjk_mobileLogo2.jpg", 
-        card: "/images/cardimages/jjkLogo2.svg", 
-        dateadded: "2-3-25",
     }, 
     
 ];
