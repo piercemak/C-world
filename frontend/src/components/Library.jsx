@@ -333,7 +333,7 @@ const extractS3KeyFromPath = (path) => {
           season_total_number: "3 seasons",
           season_digit: 3,
           description: "Yuji Itadori eats a cursed finger to save a classmate, and now Ryomen Sukuna, a powerfully evil sorcerer known as the King of Curses, lives in Itadori’s soul. Curses are supernatural terrors created from negative human emotions. This cursed energy can be used as a power source by jujutsu sorcerers and cursed spirits alike.",
-          background: "/images/jjk/covers/jjkCover.jpg",
+          background: "/images/jjk/covers/jjkCover2.svg",
           subtitles: "yes",
           videos: videoDataByShow["jjk"],
         }, 
