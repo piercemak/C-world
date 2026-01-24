@@ -703,28 +703,7 @@ const MobileShows = () => {
 
 
     {/* Subtitle States */}
-    const [subtitleText, setSubtitleText] = useState("");
-    useEffect(() => {
-    const vid = document.querySelector("video");
-    if (!vid) return;
 
-    const track = vid.textTracks[0];
-    if (!track) return;
-
-    track.mode = "hidden";
-
-    const handleCueChange = () => {
-        const activeCues = track.activeCues;
-        if (activeCues.length > 0) {
-        setSubtitleText(activeCues[0].text);
-        } else {
-        setSubtitleText("");
-        }
-    };
-
-    track.addEventListener("cuechange", handleCueChange);
-    return () => track.removeEventListener("cuechange", handleCueChange);
-    }, [selectedVideo]);
 
 
   {/* Color Gradient */}
@@ -950,6 +929,7 @@ const getWatchProgressPercent = (showId, season, episode) => {
                     src={selectedVideo.path} 
                     controls 
                     autoPlay 
+                    playsInline
                     onTimeUpdate={handleTimeUpdate}
                     onLoadedMetadata={handleTimeUpdate}
                     className="w-[90%] h-[80%] rounded-lg shadow-lg"
@@ -1106,15 +1086,7 @@ const getWatchProgressPercent = (showId, season, episode) => {
                     srcLang="en"
                     label="English"
                   />
-                )} 
-
-                {subtitleText && (
-                <div className="absolute bottom-24 w-full text-center">
-                    <div className="text-white text-[20px] font-semibold drop-shadow-md">
-                    {subtitleText}
-                    </div>
-                </div>
-                )}                
+                )}             
 
                 </video>
                 <button 
