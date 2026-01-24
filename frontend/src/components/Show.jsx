@@ -1254,11 +1254,17 @@ const isLastEpisode =
     track.mode = "hidden"; 
     const handleCueChange = () => {
       const activeCues = track.activeCues;
-      if (activeCues.length > 0) {
-        setSubtitleText(activeCues[0].text);
-      } else {
+      if (!activeCues || activeCues.length === 0) {
         setSubtitleText("");
+        return;
       }
+
+      const text = Array.from(activeCues)
+        .map((c) => (c?.text || "").trim())
+        .filter(Boolean)
+        .join("\n");
+
+      setSubtitleText(text);
     };
 
     track.addEventListener("cuechange", handleCueChange);
@@ -1477,7 +1483,7 @@ const isLastEpisode =
       <div className="absolute bottom-20 2xl:bottom-24 w-full text-center">
         <div
           className={`
-            movie-subtitle 
+            movie-subtitle whitespace-pre-line
             ${isFullscreen ? "text-[40px]" : "text-[30px]"} 
             transition-all duration-300
           `}
