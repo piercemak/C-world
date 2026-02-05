@@ -179,7 +179,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     jjk: {
       1:24,
       2:23,
-      3:2,
+      3:5,
     }, 
       cyberpunk: {
       1:10,
