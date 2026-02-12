@@ -716,7 +716,8 @@
         "About_the_Culling_Game",
         "Perfect_Preparation",
         "Fever",
-        "Cog"
+        "Cog",
+        "Tokyo_Colony_No_1",
       ]
     }    
 
