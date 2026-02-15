@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import styles from './modules/videoLibrary.module.scss'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import GradientPickerModal from "./GradientPickerModal";
 import ColorPicker from "./ColorPicker";
 import Menu from './framercomponents/Menu.jsx'
+import { allEpisodeTitles } from "./episodeTitles.js";
 
 import { useSnow } from "./SnowContext.jsx"; // REMOVE AFTER HOLDAYS //
 
@@ -27,6 +28,8 @@ const VideoPlayer = () => {
     const editIcon = <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16"><path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/></svg>
     const starIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
     const profileIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/></svg>
+    const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-4" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
+    const xIcon = (<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>);
 
 
     {/* Profile Manipulation */}
@@ -158,10 +161,8 @@ const VideoPlayer = () => {
 
     const runWithViewTransition = (callback) => {
       if (typeof document !== "undefined" && "startViewTransition" in document) {
-        // browsers that support the View Transitions API
         document.startViewTransition(callback);
       } else {
-        // Safari / others → just run the logic without the fancy transition
         callback();
       }
     };
@@ -197,33 +198,24 @@ const VideoPlayer = () => {
     {/* Pagination */}
     const cardsPerPage = 6;
     const mainContentRef = useRef(null);
+  
+    const handleMainScroll = () => {
+      const el = mainContentRef.current;
+      if (!el) return;
+
+      const pageWidth = el.clientWidth;
+      const newPageIndex = Math.floor((el.scrollLeft + pageWidth / 2) / pageWidth);
+
+      setCurrentPage(newPageIndex);
+      setClickedCard(null); // clear selection when swiping
+    };
     const pages = [];
     
     for (let i = 0; i < sidebarItems.length; i += cardsPerPage) {
       pages.push(sidebarItems.slice(i, i + cardsPerPage));
     }
     const [currentPage, setCurrentPage] = useState(0);
-    useEffect(() => {
-        const mainContent = document.querySelector(`.${styles['main-content']}`);
-        if (!mainContent) return;
-      
-        const handleScroll = () => {
-            const scrollLeft = mainContent.scrollLeft;
-            const pageWidth = mainContent.clientWidth;
-            const newPageIndex = Math.floor((scrollLeft + pageWidth / 2) / pageWidth);
-          
-            setCurrentPage(newPageIndex);
-          
-            // 🧹 Clear card selection if you swipe pages
-            setClickedCard(null);
-          };
-      
-        mainContent.addEventListener('scroll', handleScroll);
-      
-        return () => {
-          mainContent.removeEventListener('scroll', handleScroll);
-        };
-      }, []);
+
 
 
     {/* Gradient Switcher Logic */}
@@ -277,6 +269,243 @@ const VideoPlayer = () => {
     };    
 
     
+  {/* Search Bar */}
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchMainRef = useRef(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef(null);
+  const searchWrapRef = useRef(null);
+  const [searchType, setSearchType] = useState("shows"); 
+  const SEARCH_PAGE_SIZE = searchType === "episodes" ? 9 : 6;
+  const [searchPage, setSearchPage] = useState(0);
+  const [isClosingSearch, setIsClosingSearch] = useState(false);
+  const CLOSE_MS = 260;
+
+  const chunk = (arr, size) => {
+    const out = [];
+    for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+    return out;
+  };
+  useEffect(() => {
+    setSearchPage(0);
+  }, [searchQuery, searchType]);
+  useEffect(() => {
+    if (searchOpen) {
+      setTimeout(() => searchInputRef.current?.focus(), 120);
+    }
+  }, [searchOpen]);
+  const resetCardClickState = () => {
+    setClickedCard(null);
+    const mainContent = document.querySelector(`.${styles["main-content"]}`);
+    if (mainContent) mainContent.classList.remove(styles.expanded);
+    const allCards = document.querySelectorAll(`.${styles.card}`);
+    allCards.forEach((c) => c.classList.remove(styles.active));
+  };
+  const resetSearchState = () => {
+    setSearchQuery("");
+    setSearchType("shows");
+    setSearchPage(0);
+
+    const el = searchMainRef.current;
+    if (el) el.scrollTo({ left: 0, behavior: "auto" });
+  };
+
+  const closeSearch = () => {
+    if (!searchOpen || isClosingSearch) return;
+    setIsClosingSearch(true);
+    setSearchOpen(false);
+    window.setTimeout(() => {
+      resetSearchState();
+      resetCardClickState();
+      setIsClosingSearch(false);
+    }, CLOSE_MS);
+  };
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeSearch();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+
+    };
+  }, []);
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+
+      if (e.key === "/") {
+        e.preventDefault();
+        resetCardClickState();
+        setSearchOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+
+  {/* Helpers */}
+  const normalize = (s = "") =>
+    s
+      .toLowerCase()
+      .replace(/_/g, " ")
+      .replace(/[^a-z0-9\s]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  const toTitle = (s = "") =>
+    s.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const cleanShowId = (id = "") => id.replace(/-/g, "");
+  const showIndex = useMemo(() => {
+    return sidebarItems.map(({ title, cardId }) => {
+      const slug = cardIdToSlug[cardId];
+      return {
+        kind: "show",
+        title,
+        cardId,
+        slug,
+        searchText: normalize(`${title} ${slug || ""}`),
+      };
+    });
+  }, [sidebarItems]);
+
+  const showResults = useMemo(() => {
+    const q = normalize(searchQuery);
+    if (!q) return [];
+    return showIndex.filter((s) => s.searchText.includes(q));
+  }, [searchQuery, showIndex]);
+  const slugToTitle = useMemo(() => {
+    const map = {};
+    sidebarItems.forEach(({ title, cardId }) => {
+      const slug = cardIdToSlug[cardId];
+      if (slug) map[slug] = title;
+    });
+    return map;
+  }, [sidebarItems]);
+
+  {/* Episode Indexing */}
+  const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
+  const episodeIndex = useMemo(() => {
+    const out = [];
+    for (const [showSlug, seasonsObj] of Object.entries(allEpisodeTitles)) {
+      const cleaned = cleanShowId(showSlug);
+      for (const [seasonStr, titles] of Object.entries(seasonsObj)) {
+        const season = parseInt(seasonStr, 10);
+        titles.forEach((rawTitle, i) => {
+          const episode = i + 1;
+          const placeholderPath = `${cloudFrontDomain}/${cleaned}/placeholders/season${season}/S${season}E${episode}_${cleaned}_placeholder.png`;
+          out.push({
+            kind: "episode",
+            showSlug,
+            season,
+            episode,
+            rawTitle,
+            displayTitle: toTitle(rawTitle),
+            searchText: normalize(
+              `${showSlug} ${rawTitle} season ${season} episode ${episode}`
+            ),
+            placeholderPath,
+          });
+        });
+      }
+    }
+    return out;
+  }, []);
+  const episodeResults = useMemo(() => {
+    const q = normalize(searchQuery);
+    if (!q) return [];
+    return episodeIndex
+      .filter((ep) => ep.searchText.includes(q))
+      .slice(0, 60); 
+  }, [searchQuery, episodeIndex]);
+  const isSearching = !!normalize(searchQuery) && searchOpen && !isClosingSearch;
+
+  const activeResults = useMemo(() => {
+    if (!isSearching) return [];
+    return searchType === "shows" ? showResults : episodeResults;
+  }, [isSearching, searchType, showResults, episodeResults]);
+
+  const searchPages = useMemo(() => {
+    return chunk(activeResults, SEARCH_PAGE_SIZE);
+  }, [activeResults]);
+
+  const visibleSearchResults = searchPages[searchPage] || [];
+  const totalSearchPages = searchPages.length;
+
+  useEffect(() => {
+    setSearchPage(0);
+    const el = searchMainRef.current;
+    if (el) el.scrollTo({ left: 0, behavior: "auto" });
+  }, [searchQuery, searchType]);
+
+
+  {/* Episode Search */}
+  const isEpisodeSearch = isSearching && searchType === "episodes";
+  const searchColsClass = isEpisodeSearch ? "grid-cols-3" : "grid-cols-3";
+  const [loadedThumbs, setLoadedThumbs] = useState({});
+  const handleThumbLoad = (key) => {
+    setLoadedThumbs((prev) => ({ ...prev, [key]: true }));
+  };
+
+  {/* Search Content Exit */}
+  const qNorm = useMemo(() => normalize(searchQuery), [searchQuery]);
+  const contentMode = searchOpen && !isClosingSearch && qNorm ? "search" : "default";
+  const isSearchMode = contentMode === "search";
+  useEffect(() => {
+    if (!qNorm) {
+      setCurrentPage(0);
+      requestAnimationFrame(() => {
+        const el = mainContentRef.current;
+        if (!el) return;
+        el.scrollTo({ left: 0, behavior: "auto" });
+      });
+    }
+  }, [qNorm]);
+
+  const handleSearchScroll = () => {
+    const el = searchMainRef.current;
+    if (!el) return;
+    const pageWidth = el.clientWidth;
+    const newIndex = Math.floor((el.scrollLeft + pageWidth / 2) / pageWidth);
+    setSearchPage(newIndex);
+    resetCardClickState();
+  };
+  const sidebarDisplayItems = useMemo(() => {
+    if (!isSearchMode) {
+      return (pages[currentPage] ?? []).map(({ title, cardId }) => ({
+        kind: "show",
+        title,
+        cardId,
+        slug: cardIdToSlug[cardId],
+      }));
+    }
+    const currentSearchPageItems = searchPages[searchPage] ?? [];
+    if (searchType === "shows") {
+      return currentSearchPageItems.filter((x) => x.kind === "show");
+    }
+
+    return currentSearchPageItems.filter((x) => x.kind === "episode");
+  }, [isSearchMode, pages, currentPage, searchPages, searchPage, searchType, cardIdToSlug]);
+  const hardCloseSearch = () => {
+    setIsClosingSearch(false);
+    setSearchOpen(false);
+    resetSearchState();
+    resetCardClickState();
+  };
+
+  
+
+
+
+
+
+
+
 
   return (
    <div className={styles['body']}>
@@ -489,30 +718,40 @@ const VideoPlayer = () => {
 
             </div>
 
-            <div className={`${styles['sidebar-menu']} text-nowrap cursor-pointer`}>
-                <AnimatePresence mode="wait">
-                    <motion.div
-                    key={currentPage} 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="flex flex-col"
-                    >
-                      {pages[currentPage]?.map(({ title, cardId }) => {
+            <div className={`${styles["sidebar-menu"]} text-nowrap cursor-pointer `}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${isSearchMode ? "search" : "default"}-${
+                    isSearchMode ? searchPage : currentPage
+                  }-${searchType}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="flex flex-col"
+                >
+                  {/* ✅ Media List */}
+                  <div className="flex flex-col">
+                    {sidebarDisplayItems
+                      .filter((item) => item.kind === "show")
+                      .map((item) => {
+                        const { title, cardId } = item;
+
                         const words = title.split(" ");
                         const displayTitle =
-                          words.length > 4
-                            ? <>
-                                {words.slice(0, 4).join(" ")}<br />
-                                {words.slice(4).join(" ")}
-                              </>
-                            : title;
+                          words.length > 4 ? (
+                            <>
+                              {words.slice(0, 4).join(" ")} <br />
+                              {words.slice(4).join(" ")}
+                            </>
+                          ) : (
+                            title
+                          );
 
                         return (
-                          <a  
+                          <a
                             key={cardId}
-                            className={`${styles['sidebar-menu__link']} ${
+                            className={`${styles["sidebar-menu__link"]} ${
                               clickedCard === cardId ? styles.active : ""
                             }`}
                             onClick={(e) => {
@@ -524,34 +763,74 @@ const VideoPlayer = () => {
                           </a>
                         );
                       })}
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-<motion.label
-  className={styles["toggle"]}
-  initial={{ scale: 1 }}
-  animate={
-    !snowEnabled
-      ? {
-          scale: [1, 1.15, 1],
-          x: [0, -3, 3, -2, 2, 0],
-        }
-      : { scale: 1, x: 0 }
-  }
-  transition={{
-    duration: 0.6,
-    ease: "easeInOut",
-    times: [0, 0.3, 1],
-  }}
->
-  <input
-    type="checkbox"
-    checked={snowEnabled}
-    onChange={(e) => setSnowEnabled(e.target.checked)}
-  />
-  <span className={styles["slider"]}></span>
-</motion.label>
+                  </div>
 
+                  {/* ✅ Episode List */}
+                  <div className="flex flex-col min-h-0 max-h-[320px] overflow-y-auto overflow-x-hidden pr-1 sidebar-scrollbar">
+                    {sidebarDisplayItems
+                      .filter((item) => item.kind === "episode")
+                      .map((item) => {
+                        const key = `${item.showSlug}-S${item.season}-E${item.episode}`;
+                        const showTitle =
+                          slugToTitle[item.showSlug] ?? item.showSlug.replace(/-/g, " ");
+
+                        return (
+                          <a
+                            key={key}
+                            className={styles["sidebar-menu__link"]}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              hardCloseSearch();
+                              navigate(
+                                `/video-library/${item.showSlug}?season=${item.season}&episode=${item.episode}`
+                              );
+                            }}
+                          >
+                            <motion.div 
+                              whileTap={{ scale: 0.9 }}
+                              whileHover={{ scale: 1.01, x: 6 }}
+                              className="leading-4"
+                            >
+                              <div className="text-white/90 text-[13px] font-semibold truncate">
+                                {showTitle}
+                              </div>
+                              <div className="text-white/60 text-[12px] truncate">
+                                S{item.season}E{item.episode} — {item.displayTitle}
+                              </div>
+                            </motion.div>
+                          </a>
+                        );
+                      })}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+              
+              <motion.label
+                className={styles["toggle"]}
+                initial={{ scale: 1 }}
+                animate={
+                  !snowEnabled
+                    ? {
+                        scale: [1, 1.15, 1],
+                        x: [0, -3, 3, -2, 2, 0],
+                      }
+                    : { scale: 1, x: 0 }
+                }
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut",
+                  times: [0, 0.3, 1],
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={snowEnabled}
+                  onChange={(e) => setSnowEnabled(e.target.checked)}
+                />
+                <span className={styles["slider"]}></span>
+              </motion.label>
             </div>
             
             <div className={styles['main']}>
@@ -696,8 +975,123 @@ const VideoPlayer = () => {
               </AnimatePresence>  
 
 
-              {/* Gradient Switcher */}
-              <div>
+              {/* Gradient Switcher & SearchBar */}
+              <div className="flex flex-row gap-4 items-center">
+                
+                {/* Search Bar */}
+                <motion.div
+                  className="relative flex items-center justify-end"
+                  initial={false}
+                  animate={{ width: searchOpen ? 470 : 40 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 32, ease: "easeInOut" }}
+                  style={{ transformOrigin: "right center" }} 
+                >
+                  {/* Background shell */}
+                  <motion.div
+                    ref={searchWrapRef}
+                    className="h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center overflow-hidden"
+                    initial={false}
+                    animate={{ width: searchOpen ? "100%" : 40 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 32 }}
+                  >
+                    {/* Left search icon (always visible) */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (searchOpen) closeSearch();
+                        else setSearchOpen(true);
+                      }}
+                      className="w-10 h-10 flex items-center justify-center text-white/70 hover:text-white/50 transition-colors duration-300 shrink-0 cursor-pointer"
+                    >
+                      {searchOpen ? xIcon : searchIcon}
+                    </button>
+
+                    {/* Input area */}
+                    <AnimatePresence mode="wait">
+                      {searchOpen && (
+                        <motion.div
+                          key="search-input"
+                          className="flex items-center w-full pr-2"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.15 }}
+                        >
+                          <AnimatePresence mode="wait">
+                            {searchOpen && (
+                              <motion.div
+                                key="search-input"
+                                initial={{ opacity: 0, x: 10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 10 }}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                                className="w-full flex items-center"
+                              >
+                                <motion.input
+                                  ref={searchInputRef}
+                                  value={searchQuery}
+                                  onChange={(e) => setSearchQuery(e.target.value)}
+                                  placeholder="What are you looking for?"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                                  className="w-full bg-transparent outline-none text-white placeholder:text-white/40 text-sm"
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        {searchOpen && (
+                          <div className="flex gap-2">
+                            <motion.button
+                              type="button"
+                              whileTap={{ scale: 0.9 }}
+                              whileHover={{ scale: 1.05 }}
+                              onClick={() => setSearchType("shows")}
+                              className={`px-3 py-1 rounded-lg text-xs font-semibold border backdrop-blur-md cursor-pointer
+                                ${searchType === "shows"
+                                  ? "text-white bg-white/15 border-white/25 hover:text-white/80"
+                                  : "text-white/60 bg-white/5 border-white/10 hover:text-white/80"
+                                }`}
+                            >
+                              Media
+                            </motion.button>
+
+                            <motion.button
+                              type="button"
+                              whileTap={{ scale: 0.9 }}
+                              whileHover={{ scale: 1.05 }}                              
+                              onClick={() => setSearchType("episodes")}
+                              className={`px-3 py-1 rounded-lg text-xs font-semibold border backdrop-blur-md cursor-pointer
+                                ${searchType === "episodes"
+                                  ? "text-white bg-white/15 border-white/25 hover:text-white/80"
+                                  : "text-white/60 bg-white/5 border-white/10 hover:text-white/80"
+                                }`}
+                            >
+                              Episodes
+                            </motion.button>
+                          </div>
+                        )}
+
+                          {/* little keycap style */}
+                          <div className="ml-2 flex items-center gap-0.5 text-white/50 text-[10px] cursor-default">
+                            <span className="w-6 h-6 flex items-center justify-center rounded-md bg-white/10 border border-white/15">
+                              ⌘
+                            </span>
+                            +
+                            <span className="w-6 h-6 flex items-center justify-center rounded-md bg-white/10 border border-white/15">
+                              /
+                            </span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </motion.div>
+
+
+
+                {/* Gradient */}
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   whileHover={{ scale: 1.05 }}
@@ -726,51 +1120,189 @@ const VideoPlayer = () => {
                   )}
                 </AnimatePresence>
               </div>
-
-
               </div>
-              <div className={styles['main-header-nav']}>
-              {pages.map((_, pageIndex) => (
-                <a
-                  key={pageIndex}
-                  className={`${styles['nav-item']} ${currentPage === pageIndex ? styles.active : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const mainContent = document.querySelector(`.${styles['main-content']}`);
-                    if (!mainContent) return;
-                    mainContent.scrollTo({
-                      left: pageIndex * mainContent.clientWidth,
-                      behavior: 'smooth'
-                    });
-                    setCurrentPage(pageIndex);
-                  }}
+
+              <div className={styles["main-header-nav"]}>
+                {isSearching ? (
+                  totalSearchPages > 1 ? (
+                    Array.from({ length: totalSearchPages }).map((_, i) => (
+                      <a
+                        key={i}
+                        className={`${styles["nav-item"]} ${searchPage === i ? styles.active : ""}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSearchPage(i);
+                          resetCardClickState();
+
+                          const el = searchMainRef.current;
+                          if (!el) return;
+                          el.scrollTo({
+                            left: i * el.clientWidth,
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        Page {i + 1}
+                      </a>
+                    ))
+                  ) : null
+                ) : (
+                  pages.map((_, pageIndex) => (
+                    <a
+                      key={pageIndex}
+                      className={`${styles["nav-item"]} ${currentPage === pageIndex ? styles.active : ""}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const mainContent = document.querySelector(`.${styles["main-content"]}`);
+                        if (!mainContent) return;
+                        mainContent.scrollTo({
+                          left: pageIndex * mainContent.clientWidth,
+                          behavior: "smooth",
+                        });
+                        setCurrentPage(pageIndex);
+                      }}
+                    >
+                      Page {pageIndex + 1}
+                    </a>
+                  ))
+                )}
+              </div>
+
+
+              <AnimatePresence mode="wait" initial={false}>
+              {contentMode === "search" ? (
+                <motion.div
+                  key="search"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="w-full h-full"
                 >
-                  Page {pageIndex + 1}
-                </a>
-                
-              ))}
-              </div>
-              <div className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
-
-              {pages.map((page, pageIndex) => (
-              <div 
-                  key={pageIndex}
-                  className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
-                  pageIndex === currentPage ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                  }`}
-              >
-                  {page.map(({ cardId }) => (
+              
+                  {/* ✅ Search Results Grid */}
                   <div
-                      key={cardId}
-                      className={`${styles.card} ${styles[cardId]} ${styles['card-img']} ${
-                      clickedCard === cardId ? styles.active : ''
-                      }`}
-                      onClick={() => handleCardClick(cardId)}
-                  />
-                  ))}
-              </div>
-              ))}
-          </div>
+                    ref={searchMainRef}
+                    onScroll={handleSearchScroll}
+                    className={`${styles["main-content"]} overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}
+                  >
+                    {searchPages.map((pageItems, pageIndex) => (
+                      <div
+                        key={pageIndex}
+                        className={`grid ${searchColsClass} gap-[24px] snap-start min-w-full flex-shrink-0 transition-opacity duration-300 ${
+                          pageIndex === searchPage ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                      >
+                        {pageItems.length === 0 ? (
+                          <div className="col-span-3 text-white/70 text-sm p-6">
+                            No results found.
+                          </div>
+                        ) : (
+                          
+                          pageItems.map((item) => {
+                          const thumbKey =
+                            item.kind === "episode"
+                              ? `${item.showSlug}-S${item.season}-E${item.episode}`
+                              : item.cardId;                          
+                            if (item.kind === "show") {
+                              return (
+                                <div
+                                  key={thumbKey}
+                                  className={`${styles.card} ${styles[item.cardId]} ${styles["card-img"]} cursor-pointer ${
+                                    clickedCard === item.cardId ? styles.active : ""
+                                  }`}
+                                  onClick={() => handleCardClick(item.cardId)}
+                                />
+                              );
+                            }
+
+                            return (
+                              <motion.div
+                                key={thumbKey}
+                                whileHover={{
+                                  scale: 0.95,
+                                  boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                                  transition: { duration: 0.3, ease: "easeInOut" }
+                                }}
+                                whileTap={{
+                                    scale: 0.90,
+                                    transition: {
+                                    type: 'spring',
+                                    stiffness: 200,
+                                    damping: 10,
+                                    },
+                                }}                                  
+                                className={`${styles.card} ${styles["card-img"]} cursor-pointer
+                                ${!loadedThumbs[thumbKey] ? "animate-pulse bg-gray-800/60" : ""}`}
+                                style={{
+                                  width: isEpisodeSearch ? "14rem" : undefined,  
+                                  height: isEpisodeSearch ? "7rem" : undefined,
+                                  backgroundImage: `url(${item.placeholderPath})`,
+                                  backgroundSize: "cover",
+                                  backgroundPosition: "center",
+                                }}
+                                onClick={() =>
+                                  navigate(
+                                    `/video-library/${item.showSlug}?season=${item.season}&episode=${item.episode}`
+                                  )
+                                }
+                              >
+                                    <img
+                                      src={item.placeholderPath}
+                                      alt=""
+                                      className="hidden"
+                                      onLoad={() => handleThumbLoad(thumbKey)}
+                                      onError={() => handleThumbLoad(thumbKey)}
+                                    />
+                                <div className="w-full h-full flex items-end">
+                                  <div className="w-full text-white text-xs font-semibold p-2 bg-gradient-to-t from-black/80 to-transparent rounded-b-[inherit]">
+                                    <div className="truncate">{slugToTitle[item.showSlug] ?? item.showSlug.replace(/-/g, " ")}</div>
+                                    <div className="truncate">
+                                      S{item.season}E{item.episode} — {item.displayTitle}
+                                    </div>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            );
+                          })
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+                
+              ) : (
+                <motion.div
+                  key="default"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 12 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  className="w-full h-full"
+                >
+                  <div ref={mainContentRef} onScroll={handleMainScroll} className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
+                    {pages.map((page, pageIndex) => (
+                    <div 
+                        key={pageIndex}
+                        className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
+                        pageIndex === currentPage ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                        }`}
+                    >
+                        {page.map(({ cardId }) => (
+                        <div
+                            key={cardId}
+                            className={`${styles.card} ${styles[cardId]} ${styles['card-img']} ${
+                            clickedCard === cardId ? styles.active : ''
+                            }`}
+                            onClick={() => handleCardClick(cardId)}
+                        />
+                        ))}
+                    </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>              
             </div>
         </div>
     </div> 

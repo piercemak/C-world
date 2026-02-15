@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Show from './Show.jsx'
 import Chevron from './Chevron.jsx'
 import Menu from './framercomponents/Menu.jsx'
@@ -15,10 +15,11 @@ const Library = () => {
     
     const { showId } = useParams();
     console.log(showId);
+    const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState(false);
     const cleanShowId = (id) => id.replace(/-/g, "");
-
+    const location = useLocation();
 
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [selectedSeason, setSelectedSeason] = useState(1);
@@ -533,6 +534,62 @@ const extractS3KeyFromPath = (path) => {
       };      
 
 
+      {/* Search Functionality */}
+useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  const seasonParam = params.get("season");
+  const episodeParam = params.get("episode");
+  if (!seasonParam || !episodeParam) return;
+
+  const s = parseInt(seasonParam, 10);
+  const e = parseInt(episodeParam, 10);
+  if (!Number.isFinite(s) || !Number.isFinite(e)) return;
+
+  const currentlyPlaying = playingRef.current;
+
+  // ✅ guard: if already playing this exact thing, do nothing
+  if (
+    currentlyPlaying?.showId === showId &&
+    currentlyPlaying?.season === s &&
+    currentlyPlaying?.episode === e
+  ) {
+    return;
+  }
+
+
+  const episodeList = show?.videos?.[`season${s}`];
+  const ep = episodeList?.[e - 1];
+  if (!ep?.path) return;
+
+  (async () => {
+    let videoPath = ep.path;
+
+    if (awsHostedShows.includes(showId)) {
+      const isCloudfrontUrl = videoPath.includes("cloudfront.net");
+      const s3Key = isCloudfrontUrl
+        ? videoPath.split("cloudfront.net/")[1]
+        : extractS3KeyFromPath(videoPath);
+
+      if (s3Key) {
+        const signed = await fetchSignedUrl(s3Key);
+        if (signed) videoPath = signed;
+      }
+    }
+
+    setSelectedSeason(s);
+    setSelectedVideo({
+      path: videoPath,
+      showId,
+      season: s,
+      episode: e,
+      skipIntro: true,
+    });
+    setExpanded(true);
+  })();
+}, [location.search, showId, awsHostedShows, show?.videos]);
+
+
+
       {/* Color Storage */}
       useEffect(() => {
         const savedGradient = localStorage.getItem('userGradient');
@@ -691,6 +748,14 @@ const seasons = show?.season_digit
   ? Array.from({ length: show.season_digit }, (_, i) => i + 1)
   : [];
 
+
+const playingRef = useRef(null);
+useEffect(() => {
+  playingRef.current = selectedVideo;
+}, [selectedVideo]);
+
+  
+
   return (
     <div  style={{ background: "var(--gradient-9)" }} className='w-full h-dvh flex p-6 gap-4 justify-center items-center'>
         <div className='w-full max-w-[1400px] h-[92vh] px-14 pt-4 bg-black/20 backdrop-blur-md rounded-[20px] border border-white/10 shadow-[inset_0_0_0.5px_0.5px_rgba(255,255,255,0.2)] relative overflow-hidden'>
@@ -758,8 +823,9 @@ const seasons = show?.season_digit
                   onClick={() => {
                     setExpanded(false);
                     setSelectedVideo(null); 
+                    navigate(`/video-library/${showId}`, { replace: true });
                     let key;
-                    if (selectedVideo.season !== null && selectedVideo.episode !== null) {
+                    if (selectedVideo?.season !== null && selectedVideo?.episode !== null) {
                       key = `${selectedVideo.showId}-S${selectedVideo.season}-E${selectedVideo.episode}`;
                     } else {
                       key = `${selectedVideo.showId}`;
@@ -771,7 +837,7 @@ const seasons = show?.season_digit
                     backgroundColor:"color-mix(in oklab, var(--color-black) 50%, transparent)",
                     transition: { duration: 0.3, ease: "easeInOut" },
                   }}
-                  className="absolute text-white text-3xl font-bold bg-black/30 rounded-full size-8 flex items-center justify-center m-12 cursor-pointer z-[7]"
+                  className="absolute text-white text-3xl font-bold bg-black/30 rounded-full size-8 flex items-center justify-center m-12 cursor-pointer z-[9999]"
                 >
                   {closeIcon}
                 </motion.button>

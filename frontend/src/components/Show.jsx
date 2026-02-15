@@ -1497,7 +1497,7 @@ const isLastEpisode =
     )}  
 
     {previewImage && (
-      <div className="absolute top-0 left-0 rounded-2xl w-full h-full bg-black/60 backdrop-blur">
+      <div className="absolute top-0 left-0 rounded-2xl w-full h-full bg-black/60 backdrop-blur pointer-events-none">
         <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-50 bg-white/60 p-1 rounded">
           <img src={previewImage} alt="Preview Frame" className="w-[350px] h-[200px] object-cover rounded" />
         </div>
