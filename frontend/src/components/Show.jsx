@@ -897,11 +897,14 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         setOutroVisible(false);
         setCountdown(null);
 
-        if (duration && time < duration - 10) {
-          localStorage.setItem(`watchProgress-${key}`, time.toString());
-        } else {
-          localStorage.removeItem(`watchProgress-${key}`);
-        }
+if (duration && time < duration - 10) {
+  localStorage.setItem(
+    `watchProgress-${key}`,
+    JSON.stringify({ t: time, updatedAt: Date.now() })
+  );
+} else {
+  localStorage.removeItem(`watchProgress-${key}`);
+}
       }
       
       if (!shouldShowOutroSkip && outroDismissed) {

@@ -535,58 +535,89 @@ const extractS3KeyFromPath = (path) => {
 
 
       {/* Search Functionality */}
-useEffect(() => {
-  const params = new URLSearchParams(location.search);
-  const seasonParam = params.get("season");
-  const episodeParam = params.get("episode");
-  if (!seasonParam || !episodeParam) return;
+      useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const seasonParam = params.get("season");
+        const episodeParam = params.get("episode");
+        const isMovie = params.get("movie") === "1";
 
-  const s = parseInt(seasonParam, 10);
-  const e = parseInt(episodeParam, 10);
-  if (!Number.isFinite(s) || !Number.isFinite(e)) return;
+        if (isMovie) {
+          const currentlyPlaying = playingRef.current;
+          if (currentlyPlaying?.showId === showId && currentlyPlaying?.type === "movie") {
+            return;
+          }
+          const moviePathRaw =
+            show?.videos?.path ||
+            show?.videos?.movie?.path ||
+            (Array.isArray(show?.videos) ? show.videos[0]?.path : null);
+          if (!moviePathRaw) return;
+          (async () => {
+            let videoPath = moviePathRaw;
 
-  const currentlyPlaying = playingRef.current;
+            if (awsHostedShows.includes(showId)) {
+              const isCloudfrontUrl = videoPath.includes("cloudfront.net");
+              const s3Key = isCloudfrontUrl
+                ? videoPath.split("cloudfront.net/")[1]
+                : extractS3KeyFromPath(videoPath);
 
-  // ✅ guard: if already playing this exact thing, do nothing
-  if (
-    currentlyPlaying?.showId === showId &&
-    currentlyPlaying?.season === s &&
-    currentlyPlaying?.episode === e
-  ) {
-    return;
-  }
+              if (s3Key) {
+                const signed = await fetchSignedUrl(s3Key);
+                if (signed) videoPath = signed;
+              }
+            }
+            setSelectedSeason(null);
+            setSelectedVideo({ path: videoPath, showId, type: "movie" });
+            setExpanded(true);
+
+            playingRef.current = { showId, type: "movie" };
+          })();
+          return;
+        }    
+
+        if (!seasonParam || !episodeParam) return;
+        const s = parseInt(seasonParam, 10);
+        const e = parseInt(episodeParam, 10);
+        if (!Number.isFinite(s) || !Number.isFinite(e)) return;
+        const currentlyPlaying = playingRef.current;
+        if (
+          currentlyPlaying?.showId === showId &&
+          currentlyPlaying?.season === s &&
+          currentlyPlaying?.episode === e
+        ) {
+          return;
+        }
 
 
-  const episodeList = show?.videos?.[`season${s}`];
-  const ep = episodeList?.[e - 1];
-  if (!ep?.path) return;
+        const episodeList = show?.videos?.[`season${s}`];
+        const ep = episodeList?.[e - 1];
+        if (!ep?.path) return;
 
-  (async () => {
-    let videoPath = ep.path;
+        (async () => {
+          let videoPath = ep.path;
 
-    if (awsHostedShows.includes(showId)) {
-      const isCloudfrontUrl = videoPath.includes("cloudfront.net");
-      const s3Key = isCloudfrontUrl
-        ? videoPath.split("cloudfront.net/")[1]
-        : extractS3KeyFromPath(videoPath);
+          if (awsHostedShows.includes(showId)) {
+            const isCloudfrontUrl = videoPath.includes("cloudfront.net");
+            const s3Key = isCloudfrontUrl
+              ? videoPath.split("cloudfront.net/")[1]
+              : extractS3KeyFromPath(videoPath);
 
-      if (s3Key) {
-        const signed = await fetchSignedUrl(s3Key);
-        if (signed) videoPath = signed;
-      }
-    }
+            if (s3Key) {
+              const signed = await fetchSignedUrl(s3Key);
+              if (signed) videoPath = signed;
+            }
+          }
 
-    setSelectedSeason(s);
-    setSelectedVideo({
-      path: videoPath,
-      showId,
-      season: s,
-      episode: e,
-      skipIntro: true,
-    });
-    setExpanded(true);
-  })();
-}, [location.search, showId, awsHostedShows, show?.videos]);
+          setSelectedSeason(s);
+          setSelectedVideo({
+            path: videoPath,
+            showId,
+            season: s,
+            episode: e,
+            skipIntro: true,
+          });
+          setExpanded(true);
+        })();
+      }, [location.search, showId, awsHostedShows, show?.videos]);
 
 
 

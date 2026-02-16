@@ -6,8 +6,10 @@ import GradientPickerModal from "./GradientPickerModal";
 import ColorPicker from "./ColorPicker";
 import Menu from './framercomponents/Menu.jsx'
 import { allEpisodeTitles } from "./episodeTitles.js";
+import { newMedia } from "./newMedia.js";
+import RandomCoverCarousel from "./RandomCoverCarousel";
 
-import { useSnow } from "./SnowContext.jsx"; // REMOVE AFTER HOLDAYS //
+import { useSnow } from "./SnowContext.jsx"; 
 
 
 
@@ -30,6 +32,9 @@ const VideoPlayer = () => {
     const profileIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/></svg>
     const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-4" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
     const xIcon = (<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>);
+    const continueIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4"><path d="M5.055 7.06C3.805 6.347 2.25 7.25 2.25 8.69v8.122c0 1.44 1.555 2.343 2.805 1.628L12 14.471v2.34c0 1.44 1.555 2.343 2.805 1.628l7.108-4.061c1.26-.72 1.26-2.536 0-3.256l-7.108-4.061C13.555 6.346 12 7.249 12 8.689v2.34L5.055 7.061Z" /></svg>
+    const rightArrow = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-5" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/></svg>
+
 
 
     {/* Profile Manipulation */}
@@ -198,6 +203,7 @@ const VideoPlayer = () => {
     {/* Pagination */}
     const cardsPerPage = 6;
     const mainContentRef = useRef(null);
+    const wasContinueOpenRef = useRef(false);
   
     const handleMainScroll = () => {
       const el = mainContentRef.current;
@@ -500,6 +506,177 @@ const VideoPlayer = () => {
 
   
 
+  {/* Continue Watching */}
+  const [continueOpen, setContinueOpen] = useState(false);
+  const openContinue = () => setContinueOpen(true);
+  const closeContinue = () => setContinueOpen(false);
+  const [loadedContinueThumbs, setLoadedContinueThumbs] = useState({});
+  const parseWatchProgress = (raw) => {
+    if (!raw) return { fraction: 0, updatedAt: 0 };
+    try {
+      const data = JSON.parse(raw);
+      const currentTime =
+        Number(data.currentTime ?? data.t ?? data.time ?? data.progress ?? 0);
+      const duration =
+        Number(data.duration ?? data.d ?? data.len ?? 0);
+      const updatedAt =
+        Number(data.updatedAt ?? data.updated ?? data.watchedAt ?? 0);
+      const fraction =
+        duration > 0 ? Math.min(1, Math.max(0, currentTime / duration)) : 0;
+      return {
+        fraction,
+        updatedAt: Number.isFinite(updatedAt) ? updatedAt : 0,
+        currentTime: Number.isFinite(currentTime) ? currentTime : 0,
+        duration: Number.isFinite(duration) ? duration : 0,
+      };
+    } catch {
+      const n = Number(raw);
+      return { fraction: Number.isFinite(n) ? 0 : 0, updatedAt: 0 };
+    }
+  };
+
+
+const buildPlaceholderCandidates = (showSlug) => {
+  const cleaned = cleanShowId(showSlug);
+  const localBases = [
+    `/images/${showSlug}/placeholders/${showSlug}_placeholder`,
+    `/images/${cleaned}/placeholders/${cleaned}_placeholder`,
+    `/images/${showSlug}/placeholders/${cleaned}_placeholder`,
+    `/images/${cleaned}/placeholders/${showSlug}_placeholder`,
+  ];
+  const cfBases = [
+    `${cloudFrontDomain}/${cleaned}/placeholders/${cleaned}_placeholder`,
+    `${cloudFrontDomain}/${showSlug}/placeholders/${showSlug}_placeholder`,
+    `${cloudFrontDomain}/${showSlug}/placeholders/${cleaned}_placeholder`,
+    `${cloudFrontDomain}/${cleaned}/placeholders/${showSlug}_placeholder`,
+  ];
+  const exts = [".png", ".webp", ".jpg", ".jpeg"];
+  const out = [];
+  [...localBases, ...cfBases].forEach((b) => exts.forEach((e) => out.push(b + e)));
+  out.push("/images/misc/placeholder.png");
+  return out;
+};
+
+
+const continueItems = useMemo(() => {
+  if (typeof window === "undefined") return [];
+
+  const rawHistory =
+    localStorage.getItem("lastWatched") ||
+    localStorage.getItem("lastWatchedMobile");
+
+  if (!rawHistory) return [];
+
+  let history = [];
+  try {
+    history = JSON.parse(rawHistory) || [];
+  } catch {
+    return [];
+  }
+  const byShow = new Map();
+  for (const entry of history) {
+    if (!entry?.showId || !entry?.watchedAt) continue;
+    const existing = byShow.get(entry.showId);
+    if (!existing || entry.watchedAt > existing.watchedAt) {
+      byShow.set(entry.showId, entry);
+    }
+  }
+
+  const merged = Array.from(byShow.values())
+    .map((entry) => {
+      const showSlug = entry.showId;
+
+      const isSeries =
+        !!allEpisodeTitles?.[showSlug] &&
+        entry.lastSeason != null &&
+        entry.lastEpisode != null;
+
+      const progressKey =
+        entry.lastSeason && entry.lastEpisode
+          ? `watchProgress-${showSlug}-S${String(entry.lastSeason).padStart(
+              2,
+              "0"
+            )}-E${String(entry.lastEpisode).padStart(2, "0")}`
+          : `/video-library/${showSlug}?movie=1`;
+
+      const prog = parseWatchProgress(localStorage.getItem(progressKey));
+      const cleaned = cleanShowId(showSlug);
+      let candidates = buildPlaceholderCandidates(showSlug);
+      let img = candidates[0];
+
+      let subtitle = "";
+      let episodeTitle = null;
+      if (isSeries) {
+        const season = Number(entry.lastSeason) || 1;
+        const episode = Number(entry.lastEpisode) || 1;
+
+        const episodeImg = `${cloudFrontDomain}/${cleaned}/placeholders/season${season}/S${season}E${episode}_${cleaned}_placeholder.png`;
+        candidates = [episodeImg, ...buildPlaceholderCandidates(showSlug)];
+        img = candidates[0];
+        const titlesBySeason = allEpisodeTitles?.[showSlug] || {};
+        const seasonKeyNum = season;
+        const seasonKeyStr = String(season);
+        const seasonKeyPref = `season${season}`;
+
+        const titlesForSeason =
+          titlesBySeason[seasonKeyNum] ||
+          titlesBySeason[seasonKeyStr] ||
+          titlesBySeason[seasonKeyPref] ||
+          [];
+        const rawTitle = titlesForSeason[episode - 1] || null;
+        if (rawTitle) {
+          episodeTitle = rawTitle
+            .replace(/_/g, " ")
+            .replace(/\b\w/g, (c) => c.toUpperCase());
+        }
+        subtitle = `S${season}E${episode}${
+          episodeTitle ? ` — ${episodeTitle}` : ""
+        }`;
+      }
+      return {
+        key: `${showSlug}-${entry.lastSeason || 0}-${entry.lastEpisode || 0}`,
+        showSlug,
+        watchedAt: entry.watchedAt,
+        title: slugToTitle[showSlug] ?? showSlug.replace(/-/g, " "),
+        subtitle,
+        img,
+        imgCandidates: candidates, 
+        progress: prog.fraction,
+        to: isSeries
+          ? `/video-library/${showSlug}?season=${Number(entry.lastSeason) || 1}&episode=${Number(entry.lastEpisode) || 1}`
+          : `/video-library/${showSlug}?movie=1`,
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => (b.watchedAt || 0) - (a.watchedAt || 0));
+
+    return merged.slice(0, 10);
+  }, [slugToTitle, cloudFrontDomain, allEpisodeTitles]);
+
+
+  {/* Cover Randomizer */}
+  const coverModules = import.meta.glob(
+    "../images/**/**Cover.{jpg,jpeg,png,svg,webp}",
+    { eager: true, import: "default" }
+  );  
+  const shuffle = (arr) => {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -517,7 +694,7 @@ const VideoPlayer = () => {
       </motion.div>
     */}
         <div className={styles['app']}>
-            <div className={styles['sidebar']}>
+            <div className={`${styles["sidebar"]} overflow-y-hidden`}>
                 
             <div className={styles['user']}>
                 {/* Profile Image Section */}
@@ -806,34 +983,41 @@ const VideoPlayer = () => {
               </AnimatePresence>
             </div>
 
+              <div className="fixed bottom-20">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.03 }}
+                  className="group flex flex-row items-center gap-2 bg-white/5 border border-white/5 px-2.5 py-1.5 text-sm tracking-wide rounded-lg ring-1 ring-white/10 shadow-lg/30 cursor-pointer text-white/70 hover:text-white transition-colors duration-300"
+                  onClick={() => {
+                    if (continueOpen) {
+                      setContinueOpen(false);
+                      setCurrentPage(0);
+
+                      requestAnimationFrame(() => {
+                        const el = mainContentRef.current;
+                        if (!el) return;
+                        el.scrollTo({ left: 0, behavior: "auto" });
+                      });
+
+                      setClickedCard(null);
+                      const mainContent = document.querySelector(`.${styles["main-content"]}`);
+                      if (mainContent) mainContent.classList.remove(styles.expanded);
+                      const allCards = document.querySelectorAll(`.${styles.card}`);
+                      allCards.forEach((c) => c.classList.remove(styles.active));
+                    } else {
+                      setContinueOpen(true);
+                    }
+                  }}
+
+                >
+                  <span>{continueIcon}</span>
+                  <span className="">Recently Watched</span>
+                </motion.button>
+              </div>
               
-              <motion.label
-                className={styles["toggle"]}
-                initial={{ scale: 1 }}
-                animate={
-                  !snowEnabled
-                    ? {
-                        scale: [1, 1.15, 1],
-                        x: [0, -3, 3, -2, 2, 0],
-                      }
-                    : { scale: 1, x: 0 }
-                }
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut",
-                  times: [0, 0.3, 1],
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={snowEnabled}
-                  onChange={(e) => setSnowEnabled(e.target.checked)}
-                />
-                <span className={styles["slider"]}></span>
-              </motion.label>
             </div>
             
-            <div className={styles['main']}>
+            <div className={`${styles["main"]} min-w-0`}>
               <div className={styles['main-header']}>
                 <div className="flex flex-row">
                   <div className={styles['main-header__title']}>Library</div>
@@ -999,7 +1183,7 @@ const VideoPlayer = () => {
                       type="button"
                       onClick={() => {
                         if (searchOpen) closeSearch();
-                        else setSearchOpen(true);
+                        else setSearchOpen(true), closeContinue(true);
                       }}
                       className="w-10 h-10 flex items-center justify-center text-white/70 hover:text-white/50 transition-colors duration-300 shrink-0 cursor-pointer"
                     >
@@ -1122,52 +1306,63 @@ const VideoPlayer = () => {
               </div>
               </div>
 
-              <div className={styles["main-header-nav"]}>
-                {isSearching ? (
-                  totalSearchPages > 1 ? (
-                    Array.from({ length: totalSearchPages }).map((_, i) => (
-                      <a
-                        key={i}
-                        className={`${styles["nav-item"]} ${searchPage === i ? styles.active : ""}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setSearchPage(i);
-                          resetCardClickState();
+              <AnimatePresence initial={false}>
+                {!continueOpen && (
+                  <motion.div
+                    key="page-nav"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.22, ease: "easeInOut" }}
+                  >
+                    <div className={styles["main-header-nav"]}>
+                      {isSearching ? (
+                        totalSearchPages > 1 ? (
+                          Array.from({ length: totalSearchPages }).map((_, i) => (
+                            <a
+                              key={i}
+                              className={`${styles["nav-item"]} ${searchPage === i ? styles.active : ""}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSearchPage(i);
+                                resetCardClickState();
 
-                          const el = searchMainRef.current;
-                          if (!el) return;
-                          el.scrollTo({
-                            left: i * el.clientWidth,
-                            behavior: "smooth",
-                          });
-                        }}
-                      >
-                        Page {i + 1}
-                      </a>
-                    ))
-                  ) : null
-                ) : (
-                  pages.map((_, pageIndex) => (
-                    <a
-                      key={pageIndex}
-                      className={`${styles["nav-item"]} ${currentPage === pageIndex ? styles.active : ""}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const mainContent = document.querySelector(`.${styles["main-content"]}`);
-                        if (!mainContent) return;
-                        mainContent.scrollTo({
-                          left: pageIndex * mainContent.clientWidth,
-                          behavior: "smooth",
-                        });
-                        setCurrentPage(pageIndex);
-                      }}
-                    >
-                      Page {pageIndex + 1}
-                    </a>
-                  ))
+                                const el = searchMainRef.current;
+                                if (!el) return;
+                                el.scrollTo({
+                                  left: i * el.clientWidth,
+                                  behavior: "smooth",
+                                });
+                              }}
+                            >
+                              Page {i + 1}
+                            </a>
+                          ))
+                        ) : null
+                      ) : (
+                        pages.map((_, pageIndex) => (
+                          <a
+                            key={pageIndex}
+                            className={`${styles["nav-item"]} ${currentPage === pageIndex ? styles.active : ""}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const mainContent = document.querySelector(`.${styles["main-content"]}`);
+                              if (!mainContent) return;
+                              mainContent.scrollTo({
+                                left: pageIndex * mainContent.clientWidth,
+                                behavior: "smooth",
+                              });
+                              setCurrentPage(pageIndex);
+                            }}
+                          >
+                            Page {pageIndex + 1}
+                          </a>
+                        ))
+                      )}
+                    </div>
+                  </motion.div>
                 )}
-              </div>
-
+              </AnimatePresence>
 
               <AnimatePresence mode="wait" initial={false}>
               {contentMode === "search" ? (
@@ -1272,35 +1467,252 @@ const VideoPlayer = () => {
                 </motion.div>
                 
               ) : (
-                <motion.div
-                  key="default"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 12 }}
-                  transition={{ duration: 0.22, ease: "easeOut" }}
-                  className="w-full h-full"
-                >
-                  <div ref={mainContentRef} onScroll={handleMainScroll} className={`${styles['main-content']} ${clickedCard ? styles.expanded : ''} overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}>
-                    {pages.map((page, pageIndex) => (
-                    <div 
-                        key={pageIndex}
-                        className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
-                        pageIndex === currentPage ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                        }`}
+                <AnimatePresence mode="wait" initial={false}>
+                  {continueOpen ? (
+                    <motion.div
+                      key="continue-view"
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 14 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="w-full h-full flex flex-col"
                     >
-                        {page.map(({ cardId }) => (
-                        <div
-                            key={cardId}
-                            className={`${styles.card} ${styles[cardId]} ${styles['card-img']} ${
-                            clickedCard === cardId ? styles.active : ''
+
+                      <div className="w-full">
+                        <RandomCoverCarousel />
+                      </div>   
+
+                      {/* ✅ NEW CONTAINER VIEW */}
+                      <div className="w-full h-full flex flex-col justify-end gap-4 mb-2">
+                        <div className="">
+                          {/* header row / extra space */}
+                          <div className="w-full mb-2 flex items-center justify-between">
+                            <div className="text-white/90 text-xl font-semibold tracking-wide flex flex-row items-center gap-1 cursor-pointer hover:text-white/60 transition-colors duration-300">
+                              <span>Recently Watched</span>
+                              {rightArrow}
+                            </div>
+
+                            <motion.button
+                              whileTap={{ scale: 0.95 }}
+                              whileHover={{ scale: 1.03 }}
+                              onClick={closeContinue}
+                              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                            >
+                              Back
+                            </motion.button>
+                          </div>
+
+                          {/* ✅ Recently watched */}
+                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-2">
+                            <div className="flex flex-nowrap gap-3 w-max">
+                              {continueItems.map((item) => {
+                                const isLoading = !loadedContinueThumbs[item.key];
+                                return (
+                                  <motion.div
+                                    key={item.key}
+                                    whileTap={{ scale: 0.96 }}
+                                    whileHover={{ scale: 0.99 }}
+                                    onClick={() => {
+                                      setContinueOpen(false);
+                                      navigate(item.to);
+                                    }}
+                                    className="relative w-52 h-28 shrink-0 rounded-2xl overflow-hidden snap-start border border-white/10 bg-white/5 cursor-pointer"
+                                  >
+                                    {/* Loader */}
+                                    <div
+                                      className={`w-full h-full ${isLoading ? "animate-pulse bg-white/5" : ""}`}
+                                      style={
+                                        !isLoading
+                                          ? {
+                                              backgroundImage: `url(${item.img})`,
+                                              backgroundSize: "cover",
+                                              backgroundPosition: "center",
+                                            }
+                                          : {}
+                                      }
+                                    >
+                                      <img
+                                        src={item.img}
+                                        alt=""
+                                        className="hidden"
+                                        onLoad={() =>
+                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
+                                        }
+                                        onError={() =>
+                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
+                                        }
+                                      />
+                                    </div>
+
+                                    {/* bottom overlay */}
+                                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end">
+                                      <div className="px-3 pb-1 text-white font-semibold truncate text-sm">
+                                        {item.title}
+                                      </div>
+                                      <div className="px-3 pb-2 text-white/70 text-xs truncate">
+                                        {item.subtitle}
+                                      </div>
+
+                                      {/* progress bar */}
+                                      <div className="w-full h-1 bg-white/20 overflow-hidden">
+                                        <div
+                                          className="h-full bg-white"
+                                          style={{ width: `${Math.round((item.progress || 0) * 100)}%` }}
+                                        />
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          {/* New on Cearaworld */}
+                          <div className="w-full mb-2 flex items-center justify-between">
+                            <div className="text-white/90 text-xl font-semibold tracking-wide flex flex-row items-center gap-1 cursor-pointer hover:text-white/60 transition-colors duration-300">
+                             <span>New on CearaWorld</span>
+                             {rightArrow}
+                            </div>
+                          </div>
+
+                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-2">
+                            <div className="flex flex-nowrap gap-3 w-max">
+                              {newMedia.map((item) => {
+                                const isLoading = !loadedContinueThumbs[item.key];
+                                return (                                
+                                  <motion.div
+                                    key={`${item.kind}-${item.showSlug}-${item.season ?? "m"}-${item.episode ?? "m"}`}
+                                    whileTap={{ scale: 0.96 }}
+                                    whileHover={{ scale: 0.99 }}
+                                    onClick={() => {
+                                      setContinueOpen(false);
+                                      navigate(item.to);
+                                    }}
+                                    className="relative w-52 h-28 shrink-0 rounded-2xl overflow-hidden snap-start border border-white/10 bg-white/5 cursor-pointer"
+                                  >
+
+                                    {/* Loader */}
+                                    <div
+                                      className={`w-full h-full ${isLoading ? "animate-pulse bg-white/5" : ""}`}
+                                      style={
+                                        !isLoading
+                                          ? {
+                                              backgroundImage: `url(${item.placeholder})`,
+                                              backgroundSize: "cover",
+                                              backgroundPosition: "center",
+                                            }
+                                          : {}
+                                      }
+                                    >
+                                      <img
+                                        src={item.placeholder}
+                                        alt=""
+                                        className="hidden"
+                                        onLoad={() =>
+                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
+                                        }
+                                        onError={() =>
+                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
+                                        }
+                                      />
+                                    </div>
+
+                                    {/* Top Right Overlay */}
+                                    <div
+                                      className="
+                                        absolute top-0 right-0
+                                        flex items-center gap-2
+                                        px-3.5 py-1
+                                        rounded-bl-full
+                                        bg-black/55
+                                        border border-white/25
+                                        shadow-lg
+                                        text-white
+                                      "
+                                    >
+                                      <span className="text-[11px] font-semibold tracking-wide uppercase">
+                                        New
+                                      </span>
+
+                                      <span className="relative flex items-center justify-center">
+                                        {/* ping behind */}
+                                        <span className="absolute inline-flex h-3 w-3 rounded-full bg-emerald-400/60 animate-ping" />
+                                        {/* solid dot */}
+                                        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+                                      </span>
+                                    </div>
+
+                                    {/* Bottom Overlay */}
+                                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end">
+                                      <div className="px-3 pb-1 text-white font-semibold truncate text-sm">
+                                        {item.showTitle}
+                                      </div>
+                                      <div className="px-3 pb-2 text-white/70 text-xs truncate">
+                                        {item.kind === "episode"
+                                          ? `S${item.season}E${item.episode} — ${item.episodeTitle ?? ""}`
+                                          : ""}
+                                      </div>
+                                    </div>
+                                  </motion.div>
+                                );                                
+                              })}
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                        {/* empty state */}
+                        {continueItems.length === 0 && (
+                          <div className="text-white/60 text-sm mt-4">
+                            No recently watched items yet.
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="default-grid"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 12 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="w-full h-full"
+                    >
+                      {/* Default pages grid */}
+                      <div
+                        ref={mainContentRef}
+                        onScroll={handleMainScroll}
+                        className={`${styles["main-content"]} ${
+                          clickedCard ? styles.expanded : ""
+                        } overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}
+                      >
+                        {pages.map((page, pageIndex) => (
+                          <div
+                            key={pageIndex}
+                            className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
+                              pageIndex === currentPage
+                                ? "opacity-100"
+                                : "opacity-0 pointer-events-none"
                             }`}
-                            onClick={() => handleCardClick(cardId)}
-                        />
+                          >
+                            {page.map(({ cardId }) => (
+                              <div
+                                key={cardId}
+                                className={`${styles.card} ${styles[cardId]} ${styles["card-img"]} ${
+                                  clickedCard === cardId ? styles.active : ""
+                                }`}
+                                onClick={() => handleCardClick(cardId)}
+                              />
+                            ))}
+                          </div>
                         ))}
-                    </div>
-                    ))}
-                  </div>
-                </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               )}
             </AnimatePresence>              
             </div>
