@@ -822,13 +822,22 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     if (!vid) return;
     setAutoSkipDone(false); 
 
-    const key = season === null || episode === null
-      ? showId
-      : `${showId}-S${season}-E${episode}`;
-      const savedProgressRaw = localStorage.getItem(`watchProgress-${key}`);
-      const savedProgress = Number.isFinite(parseFloat(savedProgressRaw))
-        ? parseFloat(savedProgressRaw)
-        : 0;
+const key = season === null || episode === null
+  ? showId
+  : `${showId}-S${season}-E${episode}`;
+
+const raw = localStorage.getItem(`watchProgress-${key}`);
+
+let savedProgress = 0;
+
+try {
+  const obj = raw ? JSON.parse(raw) : null;
+  savedProgress = Number(obj?.t ?? obj?.currentTime ?? 0) || 0;
+} catch {
+  // fallback if you ever stored a plain number before
+  savedProgress = Number(raw) || 0;
+}
+
 
     const startPlayback = async () => {
       try {
@@ -843,9 +852,10 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
           hasIntro &&
           !NO_AUTO_SKIP_INTRO_SHOWS.has(showKey);
 
-        const startTime = shouldAutoSkipIntro
-          ? Number(intro.end) || 0
-          : (shouldStartFromBeginning ? 0 : savedProgress);
+        const startTime =
+          (!shouldStartFromBeginning && savedProgress > 1)
+            ? savedProgress
+            : (shouldAutoSkipIntro ? Number(intro.end) || 0 : 0);
 
         vid.currentTime = startTime;
 
