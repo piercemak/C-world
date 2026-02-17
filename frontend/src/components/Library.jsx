@@ -617,6 +617,8 @@ const extractS3KeyFromPath = (path) => {
             skipIntro: true,
           });
           setExpanded(true);
+          pushDesktopLastWatched({ showId, season: s, episode: e });
+          
         })();
       }, [location.search, showId, awsHostedShows, show?.videos]);
 
