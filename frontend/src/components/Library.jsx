@@ -566,8 +566,9 @@ const extractS3KeyFromPath = (path) => {
               }
             }
             setSelectedSeason(null);
-            setSelectedVideo({ path: videoPath, showId, type: "movie" });
+            setSelectedVideo({ path: videoPath, showId, type: "movie", season: null, episode: null, });
             setExpanded(true);
+            pushDesktopLastWatched({ showId, season: null, episode: null });
 
             playingRef.current = { showId, type: "movie" };
           })();
@@ -710,6 +711,7 @@ const extractS3KeyFromPath = (path) => {
         });
 
         setExpanded(true);
+        pushDesktopLastWatched({ showId: matchedShowId, season, episode });
 
         // ✅ Sync progress bar state for movies or shows
         let key;
@@ -775,17 +777,44 @@ const extractS3KeyFromPath = (path) => {
 
     {/* Subtitles */}
     const metaShowId = selectedVideo?.showId || showId;
-const seasons = show?.season_digit
-  ? Array.from({ length: show.season_digit }, (_, i) => i + 1)
-  : [];
+    const seasons = show?.season_digit
+      ? Array.from({ length: show.season_digit }, (_, i) => i + 1)
+      : [];
 
+  const playingRef = useRef(null);
+  useEffect(() => {
+    playingRef.current = selectedVideo;
+  }, [selectedVideo]);
 
-const playingRef = useRef(null);
-useEffect(() => {
-  playingRef.current = selectedVideo;
-}, [selectedVideo]);
+  {/* Last Watched Videoplayer Helper */}
+  const pushDesktopLastWatched = ({ showId, season = null, episode = null }) => {
+  const KEY = "lastWatched";
+  let arr = [];
+  try { arr = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch {}
 
+  const entry = {
+    showId,
+    watchedAt: Date.now(),
+    lastSeason: season,
+    lastEpisode: episode,
+  };
+
+  // replace any prior entry for same show
+  arr = arr.filter((x) => x?.showId !== showId);
+  arr.unshift(entry);
+
+  localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 50)));
+  };
   
+
+
+
+
+
+
+
+
+
 
   return (
     <div  style={{ background: "var(--gradient-9)" }} className='w-full h-dvh flex p-6 gap-4 justify-center items-center'>
@@ -1074,6 +1103,7 @@ useEffect(() => {
                 setExpanded(true);
                 const key = `${showId}`;
                 const lastTime = parseFloat(localStorage.getItem(`watchProgress-${key}`)) || 0;
+                pushDesktopLastWatched({ showId, season: null, episode: null });
                 setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));                
               }}
               style={{ 
@@ -1176,6 +1206,7 @@ useEffect(() => {
                         episode: episodeNumber,
                       });
                       setExpanded(true);
+                      pushDesktopLastWatched({ showId, season: seasonNumber, episode: episodeNumber });
                     }}
                     
                     style={{ 

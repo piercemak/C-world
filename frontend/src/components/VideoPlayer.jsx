@@ -561,9 +561,7 @@ const buildPlaceholderCandidates = (showSlug) => {
 const continueItems = useMemo(() => {
   if (typeof window === "undefined") return [];
 
-  const rawHistory =
-    localStorage.getItem("lastWatched") ||
-    localStorage.getItem("lastWatchedMobile");
+  const rawHistory = localStorage.getItem("lastWatched");
 
   if (!rawHistory) return [];
 
@@ -581,10 +579,30 @@ const continueItems = useMemo(() => {
       byShow.set(entry.showId, entry);
     }
   }
+  const toRouteSlug = (id = "") => {
+    if (slugToTitle?.[id]) return id;
+    const cleaned = cleanShowId(id);
+    const found = Object.keys(slugToTitle || {}).find(
+      (slug) => cleanShowId(slug) === cleaned
+    );
+    return found || id;
+  };
+  const buildMoviePlaceholderCandidates = (showSlug) => {
+    const cleaned = cleanShowId(showSlug);
+
+    const bases = [
+      `/images/${cleaned}/placeholders/${cleaned}_placeholder`,
+    ];
+    const exts = [".png", ".webp", ".jpg", ".jpeg"];
+    const out = [];
+    bases.forEach((b) => exts.forEach((e) => out.push(b + e)));
+    out.push("/images/misc/placeholder.png");
+    return out;
+  };
 
   const merged = Array.from(byShow.values())
     .map((entry) => {
-      const showSlug = entry.showId;
+      const showSlug = toRouteSlug(entry.showId);
 
       const isSeries =
         !!allEpisodeTitles?.[showSlug] &&
@@ -592,17 +610,26 @@ const continueItems = useMemo(() => {
         entry.lastEpisode != null;
 
       const progressKey =
-        entry.lastSeason && entry.lastEpisode
-          ? `watchProgress-${showSlug}-S${String(entry.lastSeason).padStart(
-              2,
-              "0"
-            )}-E${String(entry.lastEpisode).padStart(2, "0")}`
-          : `/video-library/${showSlug}?movie=1`;
+        entry.lastSeason != null && entry.lastEpisode != null
+          ? `watchProgress-${showSlug}-S${String(entry.lastSeason).padStart(2,"0")}-E${String(entry.lastEpisode).padStart(2,"0")}`
+          : `watchProgress-${showSlug}`;
 
       const prog = parseWatchProgress(localStorage.getItem(progressKey));
       const cleaned = cleanShowId(showSlug);
-      let candidates = buildPlaceholderCandidates(showSlug);
-      let img = candidates[0];
+      let candidates = [];
+      let img = "";
+      if (isSeries) {
+        const cleaned = cleanShowId(showSlug);
+        const season = Number(entry.lastSeason) || 1;
+        const episode = Number(entry.lastEpisode) || 1;
+        const episodeImg = `${cloudFrontDomain}/${cleaned}/placeholders/season${season}/S${season}E${episode}_${cleaned}_placeholder.png`;
+        candidates = [episodeImg];
+        img = candidates[0];
+      } 
+      else {
+        candidates = buildMoviePlaceholderCandidates(showSlug);
+        img = candidates[0];
+      }
 
       let subtitle = "";
       let episodeTitle = null;
@@ -667,8 +694,6 @@ const continueItems = useMemo(() => {
     }
     return a;
   };
-
-
 
 
 
@@ -1507,6 +1532,8 @@ const continueItems = useMemo(() => {
                             <div className="flex flex-nowrap gap-3 w-max">
                               {continueItems.map((item) => {
                                 const isLoading = !loadedContinueThumbs[item.key];
+                                console.log("Continue img for", item.showSlug, item.img);
+console.log("Candidates:", item.imgCandidates);
                                 return (
                                   <motion.div
                                     key={item.key}
