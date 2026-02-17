@@ -740,9 +740,11 @@ const extractS3KeyFromPath = (path) => {
           k.startsWith(`watchProgress-${showId}`)
         );
         if (keys.length === 0) return;
-        const mostRecentKey = keys.sort((a, b) =>
-          (localStorage.getItem(b) || 0) - (localStorage.getItem(a) || 0)
-        )[0];
+        const mostRecentKey = keys.sort((a, b) => {
+          const aKey = a.replace(/^watchProgress-/, "");
+          const bKey = b.replace(/^watchProgress-/, "");
+          return readProgressSeconds(bKey) - readProgressSeconds(aKey);
+        })[0];
         const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
         if (!match) return;
         const [, matchedShowId, , seasonNumStr, episodeNumStr] = match;

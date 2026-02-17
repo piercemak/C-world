@@ -899,26 +899,35 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
       if (shouldShowOutroSkip && !outroDismissed) {
         setOutroVisible(true);
         if (countdown === null) setCountdown(10);
-        localStorage.removeItem(`watchProgress-${key}`);
+          if (duration) {
+            localStorage.setItem(
+              `watchProgress-${key}`,
+              JSON.stringify({ t: time, updatedAt: Date.now() })
+            );
+            window.dispatchEvent(
+              new CustomEvent("watchprogress:update", {
+                detail: { storageKey: key, t: time },
+              })
+            );
+          }        
       } else {
         setOutroVisible(false);
         setCountdown(null);
+        if (duration) {
+          const tSafe = Math.min(time, duration);
 
-        if (duration && time < duration - 10) {
           localStorage.setItem(
             `watchProgress-${key}`,
-            JSON.stringify({ t: time, updatedAt: Date.now() })
+            JSON.stringify({ t: tSafe, updatedAt: Date.now() })
           );
+
           window.dispatchEvent(
             new CustomEvent("watchprogress:update", {
-              detail: { storageKey: key, t: time },
+              detail: { storageKey: key, t: tSafe },
             })
-          );          
-        } else {
-          localStorage.removeItem(`watchProgress-${key}`);
+          );
         }
       }
-      
       if (!shouldShowOutroSkip && outroDismissed) {
         setOutroDismissed(false);
       }
