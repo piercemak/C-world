@@ -46,8 +46,9 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
     video.addEventListener("durationchange", syncProgress);
 
     return () => {
-      video.removeEventListener("timeupdate", updateProgress);
-      video.removeEventListener("loadedmetadata", updateDuration);
+      video.removeEventListener("timeupdate", syncProgress);
+      video.removeEventListener("loadedmetadata", syncProgress);
+      video.removeEventListener("durationchange", syncProgress);
     };
   }, [videoRef, src]);
 
