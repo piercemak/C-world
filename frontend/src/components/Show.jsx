@@ -822,21 +822,18 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     if (!vid) return;
     setAutoSkipDone(false); 
 
-const key = season === null || episode === null
-  ? showId
-  : `${showId}-S${season}-E${episode}`;
-
-const raw = localStorage.getItem(`watchProgress-${key}`);
-
-let savedProgress = 0;
-
-try {
-  const obj = raw ? JSON.parse(raw) : null;
-  savedProgress = Number(obj?.t ?? obj?.currentTime ?? 0) || 0;
-} catch {
-  // fallback if you ever stored a plain number before
-  savedProgress = Number(raw) || 0;
-}
+  const key = season === null || episode === null
+    ? showId
+    : `${showId}-S${season}-E${episode}`;
+    
+  const raw = localStorage.getItem(`watchProgress-${key}`);
+  let savedProgress = 0;
+  try {
+    const obj = raw ? JSON.parse(raw) : null;
+    savedProgress = Number(obj?.t ?? obj?.currentTime ?? 0) || 0;
+  } catch {
+    savedProgress = Number(raw) || 0;
+  }
 
 
     const startPlayback = async () => {
@@ -907,14 +904,19 @@ try {
         setOutroVisible(false);
         setCountdown(null);
 
-if (duration && time < duration - 10) {
-  localStorage.setItem(
-    `watchProgress-${key}`,
-    JSON.stringify({ t: time, updatedAt: Date.now() })
-  );
-} else {
-  localStorage.removeItem(`watchProgress-${key}`);
-}
+        if (duration && time < duration - 10) {
+          localStorage.setItem(
+            `watchProgress-${key}`,
+            JSON.stringify({ t: time, updatedAt: Date.now() })
+          );
+          window.dispatchEvent(
+            new CustomEvent("watchprogress:update", {
+              detail: { storageKey: key, t: time },
+            })
+          );          
+        } else {
+          localStorage.removeItem(`watchProgress-${key}`);
+        }
       }
       
       if (!shouldShowOutroSkip && outroDismissed) {

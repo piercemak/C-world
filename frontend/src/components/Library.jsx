@@ -618,7 +618,7 @@ const extractS3KeyFromPath = (path) => {
           });
           setExpanded(true);
           pushDesktopLastWatched({ showId, season: s, episode: e });
-          
+
         })();
       }, [location.search, showId, awsHostedShows, show?.videos]);
 
@@ -655,9 +655,11 @@ const extractS3KeyFromPath = (path) => {
           return;
         }
 
-        const mostRecentKey = keys.sort((a, b) =>
-          (parseFloat(localStorage.getItem(b)) || 0) - (parseFloat(localStorage.getItem(a)) || 0)
-        )[0];
+        const mostRecentKey = keys.sort((a, b) => {
+          const aKey = a.replace(/^watchProgress-/, "");
+          const bKey = b.replace(/^watchProgress-/, "");
+          return readProgressSeconds(bKey) - readProgressSeconds(aKey);
+        })[0];
 
         const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
         if (!match) return;
@@ -723,7 +725,7 @@ const extractS3KeyFromPath = (path) => {
           key = `${showId}-S${season}-E${episode}`;
         }
 
-        const lastTime = parseFloat(localStorage.getItem(`watchProgress-${key}`)) || 0;
+        const lastTime = readProgressSeconds(key);
         setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));
       };
 
@@ -800,8 +802,6 @@ const extractS3KeyFromPath = (path) => {
     lastSeason: season,
     lastEpisode: episode,
   };
-
-  // replace any prior entry for same show
   arr = arr.filter((x) => x?.showId !== showId);
   arr.unshift(entry);
 
@@ -809,7 +809,34 @@ const extractS3KeyFromPath = (path) => {
   };
   
 
+  {/* Watch Progress Helper */}
+  const readProgressSeconds = (storageKey) => {
+    const raw = localStorage.getItem(`watchProgress-${storageKey}`);
+    if (!raw) return 0;
 
+    try {
+      const obj = JSON.parse(raw);
+      const t = Number(obj?.t ?? obj?.currentTime ?? 0);
+      return Number.isFinite(t) ? t : 0;
+    } catch {
+      const n = Number(raw);
+      return Number.isFinite(n) ? n : 0;
+    }
+  };
+  useEffect(() => {
+    const onUpdate = (e) => {
+      const { storageKey, t } = e.detail || {};
+      if (!storageKey) return;
+
+      setWatchProgressMap(prev => ({
+        ...prev,
+        [storageKey]: Number.isFinite(Number(t)) ? Number(t) : (prev[storageKey] ?? 0),
+      }));
+    };
+
+    window.addEventListener("watchprogress:update", onUpdate);
+    return () => window.removeEventListener("watchprogress:update", onUpdate);
+  }, []);
 
 
 
@@ -892,7 +919,7 @@ const extractS3KeyFromPath = (path) => {
                     } else {
                       key = `${selectedVideo.showId}`;
                     }
-                    const lastTime = parseFloat(localStorage.getItem(`watchProgress-${key}`)) || 0;
+                    const lastTime = readProgressSeconds(key);
                     setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));                    
                   }}
                   whileHover={{
@@ -1104,7 +1131,7 @@ const extractS3KeyFromPath = (path) => {
                 });
                 setExpanded(true);
                 const key = `${showId}`;
-                const lastTime = parseFloat(localStorage.getItem(`watchProgress-${key}`)) || 0;
+                const lastTime = readProgressSeconds(key);
                 pushDesktopLastWatched({ showId, season: null, episode: null });
                 setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));                
               }}
