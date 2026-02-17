@@ -880,43 +880,44 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     const handleTimeUpdate = () => {
       const time = vid.currentTime;
       setCurrentTime(time);
-      console.log("time/duration", vid.currentTime, vid.duration);
-      const key = season === null || episode === null
-        ? `${showId}` // movie 
-        : `${showId}-S${season}-E${episode}`; // show 
-   
 
-      setIntroVisible(intro ? (time >= intro.start && time <= intro.end) : false);
+      const key =
+        season === null || episode === null
+          ? `${showId}` // movie
+          : `${showId}-S${season}-E${episode}`; // show
 
       const duration = vid.duration || 0;
+      const tSafe = Math.min(time, Math.max(duration - 0.25, 0));
+
+      const resetProgress = () => {
+        localStorage.setItem(
+          `watchProgress-${key}`,
+          JSON.stringify({ t: 0, d: duration || 0, updatedAt: Date.now() })
+        );
+
+        window.dispatchEvent(
+          new CustomEvent("watchprogress:update", {
+            detail: { storageKey: key, t: 0, d: duration || 0 },
+          })
+        );
+      };
+
+      setIntroVisible(intro ? (time >= intro.start && time <= intro.end) : false);
 
       const shouldShowOutroSkip =
         outro &&
         time >= outro.start &&
-        !isMovie &&                                   
-        !(isLastEpisode && outro.skipTo === "next"); 
+        !isMovie &&
+        !(isLastEpisode && outro.skipTo === "next");
 
       if (shouldShowOutroSkip && !outroDismissed) {
         setOutroVisible(true);
         if (countdown === null) setCountdown(10);
-          if (duration) {
-            localStorage.setItem(
-              `watchProgress-${key}`,
-              JSON.stringify({ t: tSafe, d: duration, updatedAt: Date.now() })
-            );
-
-            window.dispatchEvent(
-              new CustomEvent("watchprogress:update", {
-                detail: { storageKey: key, t: tSafe, d: duration },
-              })
-            );
-          }        
+        if (duration) resetProgress();
       } else {
         setOutroVisible(false);
         setCountdown(null);
         if (duration) {
-          const tSafe = Math.min(time, Math.max(duration - 0.25, 0));
-
           localStorage.setItem(
             `watchProgress-${key}`,
             JSON.stringify({ t: tSafe, d: duration, updatedAt: Date.now() })
@@ -929,10 +930,12 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
           );
         }
       }
+
       if (!shouldShowOutroSkip && outroDismissed) {
         setOutroDismissed(false);
       }
     };
+
 
     vid.addEventListener("timeupdate", handleTimeUpdate);
     return () => vid.removeEventListener("timeupdate", handleTimeUpdate);
@@ -971,6 +974,34 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
       vid.removeEventListener("durationchange", syncDuration);
     };
   }, [showId, season, episode, src]);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    const key = season === null || episode === null
+      ? `${showId}`
+      : `${showId}-S${season}-E${episode}`;
+
+    const onEnded = () => {
+      const d = Number.isFinite(vid.duration) ? vid.duration : 0;
+
+      localStorage.setItem(
+        `watchProgress-${key}`,
+        JSON.stringify({ t: 0, d, updatedAt: Date.now() })
+      );
+
+      window.dispatchEvent(
+        new CustomEvent("watchprogress:update", {
+          detail: { storageKey: key, t: 0, d },
+        })
+      );
+    };
+
+    vid.addEventListener("ended", onEnded);
+    return () => vid.removeEventListener("ended", onEnded);
+  }, [showId, season, episode, src]);
+
 
 
 
