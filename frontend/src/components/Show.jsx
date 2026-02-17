@@ -902,11 +902,12 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
           if (duration) {
             localStorage.setItem(
               `watchProgress-${key}`,
-              JSON.stringify({ t: time, updatedAt: Date.now() })
+              JSON.stringify({ t: tSafe, d: duration, updatedAt: Date.now() })
             );
+
             window.dispatchEvent(
               new CustomEvent("watchprogress:update", {
-                detail: { storageKey: key, t: time },
+                detail: { storageKey: key, t: tSafe, d: duration },
               })
             );
           }        
@@ -914,16 +915,16 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         setOutroVisible(false);
         setCountdown(null);
         if (duration) {
-          const tSafe = Math.min(time, duration);
+          const tSafe = Math.min(time, Math.max(duration - 0.25, 0));
 
           localStorage.setItem(
             `watchProgress-${key}`,
-            JSON.stringify({ t: tSafe, updatedAt: Date.now() })
+            JSON.stringify({ t: tSafe, d: duration, updatedAt: Date.now() })
           );
 
           window.dispatchEvent(
             new CustomEvent("watchprogress:update", {
-              detail: { storageKey: key, t: tSafe },
+              detail: { storageKey: key, t: tSafe, d: duration },
             })
           );
         }
@@ -936,6 +937,42 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     vid.addEventListener("timeupdate", handleTimeUpdate);
     return () => vid.removeEventListener("timeupdate", handleTimeUpdate);
   }, [intro, outro, countdown, showId, season, episode]);
+  
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    const key = season === null || episode === null
+      ? `${showId}`
+      : `${showId}-S${season}-E${episode}`;
+
+    const syncDuration = () => {
+      const d = Number(vid.duration || 0);
+      if (!d || !Number.isFinite(d)) return;
+
+      let obj = {};
+      try { obj = JSON.parse(localStorage.getItem(`watchProgress-${key}`) || "{}"); } catch {}
+      localStorage.setItem(
+        `watchProgress-${key}`,
+        JSON.stringify({ ...obj, d, updatedAt: Date.now() })
+      );
+
+      window.dispatchEvent(
+        new CustomEvent("watchprogress:update", {
+          detail: { storageKey: key, t: obj?.t ?? 0, d },
+        })
+      );
+    };
+
+    vid.addEventListener("loadedmetadata", syncDuration);
+    vid.addEventListener("durationchange", syncDuration);
+    return () => {
+      vid.removeEventListener("loadedmetadata", syncDuration);
+      vid.removeEventListener("durationchange", syncDuration);
+    };
+  }, [showId, season, episode, src]);
+
+
 
   {/* Skipping */}
   const handleSkipIntro = () => {

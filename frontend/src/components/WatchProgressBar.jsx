@@ -4,28 +4,46 @@ const WatchProgressBar = ({ storageKey, duration = null, progressOverride = null
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Detect if it's a movie (no season/episode in key)
-    const isMovie = !/S\d+E\d+/.test(storageKey);
-    const fallbackDuration = isMovie ? 3600 : 690; // 1 hr movie vs 11.5 min show
-    const finalDuration = duration || fallbackDuration;
+    const readProgress = () => {
+      const raw = localStorage.getItem(`watchProgress-${storageKey}`);
+      if (!raw) return { t: 0, d: 0 };
 
-    const saved = parseFloat(localStorage.getItem(`watchProgress-${storageKey}`)) || 0;
-    const computed = progressOverride !== null ? progressOverride : saved;
-    const computedProgress = Math.min(computed / finalDuration, 1);
+      try {
+        const obj = JSON.parse(raw);
+        const t = Number(obj?.t ?? obj?.currentTime ?? 0);
+        const d = Number(obj?.d ?? obj?.duration ?? 0);
+        return {
+          t: Number.isFinite(t) ? t : 0,
+          d: Number.isFinite(d) ? d : 0,
+        };
+      } catch {
+        const t = Number(raw);
+        return { t: Number.isFinite(t) ? t : 0, d: 0 };
+      }
+    };
 
-    console.log("📺 WatchProgressBar Debug:", {
-      storageKey,
-      isMovie,
-      finalDuration,
-      progressOverride,
-      localStorageValue: saved,
-      computedProgress
-    });
+    const ls = readProgress();
 
-    setProgress(computedProgress);
+    const t =
+      typeof progressOverride === "number" && Number.isFinite(progressOverride)
+        ? progressOverride
+        : ls.t;
+
+    const d =
+      (typeof duration === "number" && Number.isFinite(duration) && duration > 0)
+        ? duration
+        : ls.d;
+
+    if (!d || d <= 0) {
+      setProgress(0);
+      return;
+    }
+
+    const pct = Math.max(0, Math.min(t / d, 1));
+    setProgress(pct);
   }, [storageKey, duration, progressOverride]);
 
-  if (progress === 0) return null;
+  if (progress <= 0) return null;
 
   return (
     <div className="absolute bottom-0 ml-2 left-0 w-[90%] h-[4px] z-10 rounded-full overflow-hidden">

@@ -658,7 +658,7 @@ const extractS3KeyFromPath = (path) => {
         const mostRecentKey = keys.sort((a, b) => {
           const aKey = a.replace(/^watchProgress-/, "");
           const bKey = b.replace(/^watchProgress-/, "");
-          return readProgressSeconds(bKey) - readProgressSeconds(aKey);
+          return readProgress(bKey).t - readProgress(aKey).t;
         })[0];
 
         const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
@@ -725,8 +725,8 @@ const extractS3KeyFromPath = (path) => {
           key = `${showId}-S${season}-E${episode}`;
         }
 
-        const lastTime = readProgressSeconds(key);
-        setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));
+        const prog = readProgress(key);
+        setWatchProgressMap(prev => ({ ...prev, [key]: prog }));
       };
 
 
@@ -743,7 +743,7 @@ const extractS3KeyFromPath = (path) => {
         const mostRecentKey = keys.sort((a, b) => {
           const aKey = a.replace(/^watchProgress-/, "");
           const bKey = b.replace(/^watchProgress-/, "");
-          return readProgressSeconds(bKey) - readProgressSeconds(aKey);
+          return readProgress(bKey).t - readProgress(aKey).t;
         })[0];
         const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
         if (!match) return;
@@ -812,27 +812,35 @@ const extractS3KeyFromPath = (path) => {
   
 
   {/* Watch Progress Helper */}
-  const readProgressSeconds = (storageKey) => {
+  const readProgress = (storageKey) => {
     const raw = localStorage.getItem(`watchProgress-${storageKey}`);
-    if (!raw) return 0;
+    if (!raw) return { t: 0, d: 0 };
 
     try {
       const obj = JSON.parse(raw);
       const t = Number(obj?.t ?? obj?.currentTime ?? 0);
-      return Number.isFinite(t) ? t : 0;
+      const d = Number(obj?.d ?? obj?.duration ?? 0);
+
+      return {
+        t: Number.isFinite(t) ? t : 0,
+        d: Number.isFinite(d) ? d : 0,
+      };
     } catch {
       const n = Number(raw);
-      return Number.isFinite(n) ? n : 0;
+      return { t: Number.isFinite(n) ? n : 0, d: 0 };
     }
   };
   useEffect(() => {
     const onUpdate = (e) => {
-      const { storageKey, t } = e.detail || {};
+      const { storageKey, t, d } = e.detail || {};
       if (!storageKey) return;
 
       setWatchProgressMap(prev => ({
         ...prev,
-        [storageKey]: Number.isFinite(Number(t)) ? Number(t) : (prev[storageKey] ?? 0),
+        [storageKey]: {
+          t: Number.isFinite(Number(t)) ? Number(t) : (prev[storageKey]?.t ?? 0),
+          d: Number.isFinite(Number(d)) ? Number(d) : (prev[storageKey]?.d ?? 0),
+        },
       }));
     };
 
@@ -921,8 +929,8 @@ const extractS3KeyFromPath = (path) => {
                     } else {
                       key = `${selectedVideo.showId}`;
                     }
-                    const lastTime = readProgressSeconds(key);
-                    setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));                    
+                    const prog = readProgress(key);
+                    setWatchProgressMap(prev => ({ ...prev, [key]: prog }));               
                   }}
                   whileHover={{
                     backgroundColor:"color-mix(in oklab, var(--color-black) 50%, transparent)",
@@ -1021,8 +1029,8 @@ const extractS3KeyFromPath = (path) => {
                             }
                             progressOverride={
                               resumeEpisode.season !== null && resumeEpisode.episode !== null
-                                ? watchProgressMap[`${showId}-S${resumeEpisode.season}-E${resumeEpisode.episode}`]
-                                : watchProgressMap[`${showId}`]
+                                ? watchProgressMap[`${showId}-S${resumeEpisode.season}-E${resumeEpisode.episode}`]?.t
+                                : watchProgressMap[`${showId}`]?.t
                             }
                           />
                         </div>
@@ -1133,9 +1141,10 @@ const extractS3KeyFromPath = (path) => {
                 });
                 setExpanded(true);
                 const key = `${showId}`;
-                const lastTime = readProgressSeconds(key);
+                const prog = readProgress(key);
+                setWatchProgressMap(prev => ({ ...prev, [key]: prog }));
                 pushDesktopLastWatched({ showId, season: null, episode: null });
-                setWatchProgressMap(prev => ({ ...prev, [key]: lastTime }));                
+             
               }}
               style={{ 
                 backgroundImage: `url(/images/${cleanShowId(showId)}/placeholders/${cleanShowId(showId)}_placeholder.png)`, 
@@ -1158,7 +1167,7 @@ const extractS3KeyFromPath = (path) => {
 
               <WatchProgressBar
                 storageKey={`${showId}`}
-                progressOverride={watchProgressMap[`${showId}`]}
+                progressOverride={watchProgressMap[`${showId}`]?.t}
               />     
 
             </motion.div>
@@ -1269,7 +1278,7 @@ const extractS3KeyFromPath = (path) => {
 
                     <WatchProgressBar
                       storageKey={`${showId}-S${seasonNumber}-E${episodeNumber}`}
-                      progressOverride={watchProgressMap[`${showId}-S${seasonNumber}-E${episodeNumber}`]}
+                      progressOverride={watchProgressMap[`${showId}-S${seasonNumber}-E${episodeNumber}`]?.t}
                     />
                   </motion.div>   
                 );
