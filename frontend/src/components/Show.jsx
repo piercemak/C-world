@@ -880,7 +880,7 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     const handleTimeUpdate = () => {
       const time = vid.currentTime;
       setCurrentTime(time);
-
+      console.log("time/duration", vid.currentTime, vid.duration);
       const key = season === null || episode === null
         ? `${showId}` // movie 
         : `${showId}-S${season}-E${episode}`; // show 

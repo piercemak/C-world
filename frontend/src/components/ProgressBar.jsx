@@ -25,25 +25,31 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const updateProgress = () => {
-      setCurrentTime(video.currentTime);
-      setProgress((video.currentTime / video.duration) * 100);
-    };
+    const syncProgress = () => {
+      const ct = Number(video.currentTime || 0);
+      const dur = Number(video.duration || 0);
 
-    const updateDuration = () => {
-      const dur = video.duration || 0;
+      setCurrentTime(ct);
       setDuration(dur);
-      setProgress((video.currentTime / dur) * 100);
+
+      if (!dur || !Number.isFinite(dur)) {
+        setProgress(0);
+        return;
+      }
+
+      const pct = Math.max(0, Math.min(ct / dur, 1));
+      setProgress(pct * 100);
     };
 
-    video.addEventListener("timeupdate", updateProgress);
-    video.addEventListener("loadedmetadata", updateDuration);
+    video.addEventListener("timeupdate", syncProgress);
+    video.addEventListener("loadedmetadata", syncProgress);
+    video.addEventListener("durationchange", syncProgress);
 
     return () => {
       video.removeEventListener("timeupdate", updateProgress);
       video.removeEventListener("loadedmetadata", updateDuration);
     };
-  }, [src]);
+  }, [videoRef, src]);
 
   const handleSeek = (e) => {
     const bar = barRef.current;
