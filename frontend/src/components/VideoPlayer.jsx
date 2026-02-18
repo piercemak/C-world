@@ -1534,13 +1534,22 @@ const continueItems = useMemo(() => {
                             <div className="flex flex-nowrap gap-3 w-max">
                               {continueItems.map((item) => {
                                 const isLoading = !loadedContinueThumbs[item.key];
-                                console.log("Continue img for", item.showSlug, item.img);
-console.log("Candidates:", item.imgCandidates);
                                 return (
                                   <motion.div
                                     key={item.key}
-                                    whileTap={{ scale: 0.96 }}
-                                    whileHover={{ scale: 0.99 }}
+                                    whileHover={{
+                                      scale: 0.95,
+                                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                                      transition: { duration: 0.3, ease: "easeInOut" }
+                                    }}
+                                    whileTap={{
+                                        scale: 0.90,
+                                        transition: {
+                                        type: 'spring',
+                                        stiffness: 200,
+                                        damping: 10,
+                                        },
+                                    }} 
                                     onClick={() => {
                                       setContinueOpen(false);
                                       navigate(item.to);
@@ -1613,8 +1622,19 @@ console.log("Candidates:", item.imgCandidates);
                                 return (                                
                                   <motion.div
                                     key={`${item.kind}-${item.showSlug}-${item.season ?? "m"}-${item.episode ?? "m"}`}
-                                    whileTap={{ scale: 0.96 }}
-                                    whileHover={{ scale: 0.99 }}
+                                    whileHover={{
+                                      scale: 0.95,
+                                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+                                      transition: { duration: 0.3, ease: "easeInOut" }
+                                    }}
+                                    whileTap={{
+                                        scale: 0.90,
+                                        transition: {
+                                        type: 'spring',
+                                        stiffness: 200,
+                                        damping: 10,
+                                        },
+                                    }} 
                                     onClick={() => {
                                       setContinueOpen(false);
                                       navigate(item.to);
