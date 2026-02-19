@@ -74,6 +74,7 @@ const Library = () => {
         episode: targetEpisode,
         skipIntro: !isJJKOutro,
       });
+      pushDesktopLastWatched({ showId, season: targetSeason, episode: targetEpisode });
     };
 
     {/* Season Dropdown Handling */}
