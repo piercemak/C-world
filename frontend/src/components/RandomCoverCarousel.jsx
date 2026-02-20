@@ -39,7 +39,7 @@ const RandomCoverCarousel = () => {
     { id: "tokyo-godfathers", src: "/images/tokyogodfathers/covers/tokyogodfathersCover.jpg", title: "Tokyo Godfathers" },
     { id: "weapons", src: "/images/weapons/covers/weaponsCover.jpg", title: "Weapons" },
     { id: "bugonia", src: "/images/bugonia/covers/bugoniaCover.jpg", title: "Bugonia" },
-    { id: "frankenstein", src: "/images/frankstein/covers/frankensteinCover.webp", title: "Frankenstein" },
+    { id: "frankenstein", src: "/images/frankenstein/covers/frankensteinCover.webp", title: "Frankenstein" },
   ];
 
   const showsById = useMemo(() => {
