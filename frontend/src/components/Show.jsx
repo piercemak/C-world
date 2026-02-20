@@ -1564,6 +1564,15 @@ const isLastEpisode =
         />
       )} 
 
+      {showId === "bugonia" && (
+        <track
+          src={`/videos/bugonia/bugonia_subtitles.vtt`}
+          kind="subtitles"
+          srcLang="en"
+          label="English"
+        />
+      )} 
+
 
       Your browser does not support the video tag.
     </video>
