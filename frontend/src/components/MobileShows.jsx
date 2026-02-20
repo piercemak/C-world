@@ -1114,7 +1114,16 @@ const getWatchProgressPercent = (showId, season, episode) => {
                     srcLang="en"
                     label="English"
                   />
-                )}             
+                )}          
+
+                {showId === "bugonia" && (
+                  <track
+                    src={`/videos/bugonia/bugonia_subtitles.vtt`}
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                  />
+                )}     
 
                 </video>
                 <button 
