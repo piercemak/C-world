@@ -516,6 +516,28 @@ const extractS3KeyFromPath = (path) => {
           subtitles: "yes",
           videos: generateSeasonVideos({}, "redline", "movie"),
         },  
+        "bugonia": {
+          type: "movie",  
+          title: "Bugonia",
+          release_year: "2025",
+          genre: "Comedy/Sci-Fi",
+          duration: "1h 58m",          
+          description: "Two conspiracy-obsessed young men kidnap the high-powered CEO of a major company, convinced that she is an alien intent on destroying planet Earth.",
+          background: "/images/bugonia/covers/bugoniaCover.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "bugonia", "movie"),
+        },
+        "frankenstein": {
+          type: "movie",  
+          title: "Frankenstein",
+          release_year: "2025",
+          genre: "Dark Fantasy",
+          duration: "2h 29m",          
+          description: "Dr. Victor Frankenstein, a brilliant but egotistical scientist, brings a creature to life in a monstrous experiment that ultimately leads to the undoing of both the creator and his tragic creation.",
+          background: "/images/frankenstein/covers/frankensteinCover.webp",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "frankenstein", "movie"),
+        },
         
       };
       const show = shows[showId];

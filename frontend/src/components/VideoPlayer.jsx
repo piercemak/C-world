@@ -120,6 +120,8 @@ const VideoPlayer = () => {
 
       { title: "The Twilight Zone",         cardId: "card-31" },
       { title: "Redline",                   cardId: "card-32" },
+      { title: "Bugonia",                   cardId: "card-33" },
+      { title: "Frankenstein",              cardId: "card-34" },
 
     ];
 
@@ -161,6 +163,8 @@ const VideoPlayer = () => {
 
         "card-31": "thetwilightzone",
         "card-32": "redline",
+        "card-33": "bugonia",
+        "card-34": "frankenstein"
 
       };
 

@@ -179,18 +179,6 @@ export const SHOWS = [
         card: "/images/cardimages/fmabLogo.svg", 
         dateadded: "1-15-25",
     },
-
-    { 
-        id: "jjk", 
-        title: "Jujutsu Kaisen", 
-        creator: "Gege Akutami", 
-        background: "/images/jjk/covers/jjk_backdrop.svg", 
-        ratings: "8.5", 
-        type: "TV", 
-        keyart: "/images/jjk/covers/jjk_mobileLogo2.jpg", 
-        card: "/images/cardimages/jjkLogo2.svg", 
-        dateadded: "2-3-25",
-    }, 
     
     { 
         id: "neon-genesis", 
@@ -383,5 +371,42 @@ export const SHOWS = [
         card: "/images/cardimages/redlineLogo.svg", 
         dateadded: "2-2-25",
     }, 
+
+    { 
+        id: "jjk", 
+        title: "Jujutsu Kaisen", 
+        creator: "Gege Akutami", 
+        background: "/images/jjk/covers/jjk_backdrop.svg", 
+        ratings: "8.5", 
+        type: "TV", 
+        keyart: "/images/jjk/covers/jjk_mobileLogo2.jpg", 
+        card: "/images/cardimages/jjkLogo2.svg", 
+        dateadded: "2-3-25",
+    },     
+
+    { 
+        id: "bugonia", 
+        title: "Bugonia", 
+        creator: "Yorgos Lanthimos", 
+        background: "/images/bugonia/covers/bugonia_backdrop.svg", 
+        ratings: "7.4", 
+        type: "Movies", 
+        keyart: "/images/bugonia/covers/bugonia_mobileLogo.jpg", 
+        card: "/images/cardimages/bugoniaLogo.svg", 
+        dateadded: "2-4-25",
+    }, 
+
+    { 
+        id: "frankenstein", 
+        title: "Frankenstein", 
+        creator: "Guillermo del Toro", 
+        background: "/images/frankenstein/covers/frankenstein_backdrop.svg", 
+        ratings: "7.4", 
+        type: "Movies", 
+        keyart: "/images/frankenstein/covers/frankenstein_mobileLogo.jpg", 
+        card: "/images/cardimages/frankensteinLogo.svg", 
+        dateadded: "2-5-25",
+    }, 
+    
     
 ];
