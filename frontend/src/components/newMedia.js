@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "bugonia",
+        showTitle: "Bugonia",
+        placeholder: "/images/bugonia/placeholders/bugonia_placeholder.png",
+        to: `/video-library/bugonia?movie=1`,
+      },
+      {
         kind: "episode",
         showSlug: "jjk",                   
         showTitle: "Jujutsu Kaisen",
@@ -42,23 +49,4 @@
         placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E4_${clean("jjk")}_placeholder.png`,
         to: `/video-library/jjk?season=3&episode=4`,
       },      
-      {
-        kind: "episode",
-        showSlug: "jjk",                   
-        showTitle: "Jujutsu Kaisen",
-        season: 3,
-        episode: 3,
-        episodeTitle: "About The Culling Game",
-        placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E3_${clean("jjk")}_placeholder.png`,
-        to: `/video-library/jjk?season=3&episode=3`,
-      }   
-      /* FOR MOVIES
-      {
-        kind: "movie",
-        showSlug: "perfect-blue",
-        showTitle: "Perfect Blue",
-        placeholder: "/images/perfectblue/placeholders/perfectblue_placeholder.png",
-        to: `/video-library/perfect-blue?movie=1`,
-      },
-      */
     ];
