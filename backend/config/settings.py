@@ -1,5 +1,6 @@
 from dotenv import load_dotenv # type: ignore
 import os
+from django.core.exceptions import ImproperlyConfigured
 
 load_dotenv()
 
@@ -41,10 +42,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-$(!$papw_v3_drqlruu_qk*9*nn8x&r(&q7dc&!z(v@g_$3fo_"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+if not SECRET_KEY:
+    raise ImproperlyConfigured("Missing DJANGO_SECRET_KEY environment variable")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False").strip().lower() == "true"
 
 ALLOWED_HOSTS = [
     "c-world.onrender.com",             
@@ -162,7 +165,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AWS_S3_REGION_NAME = AWS_REGION_NAME
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
-
 
 
 
