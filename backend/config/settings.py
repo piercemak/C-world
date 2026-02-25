@@ -50,9 +50,11 @@ if not SECRET_KEY:
 DEBUG = os.getenv("DEBUG", "False").strip().lower() == "true"
 
 ALLOWED_HOSTS = [
-    "c-world.onrender.com",             
-    "c-world-frontend.onrender.com",     
-]             
+    "c-world.onrender.com",
+    "c-world-frontend.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -63,11 +65,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
     "storages",
     "uploadtest",
     "config",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+}
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -84,7 +97,11 @@ CORS_ALLOWED_ORIGINS = [
     "https://c-world-frontend.onrender.com",
     "https://c-world.onrender.com",
     "https://cearaworld.com",
-    "https://www.cearaworld.com"    
+    "https://www.cearaworld.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -165,6 +182,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AWS_S3_REGION_NAME = AWS_REGION_NAME
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
-
-
-

@@ -20,7 +20,8 @@ import Reviews from './components/Reviews.jsx';
 import Archive from './components/Archive.jsx';
 
 function ProtectedRoute({ children }) {
-  const { user } = useAuth();
+  const { user, authLoading } = useAuth();
+  if (authLoading) return null;
   return user ? children : <Navigate to="/login" replace />;
 }
 

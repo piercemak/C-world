@@ -1,18 +1,22 @@
-import boto3
 from django.conf import settings
-from rest_framework.decorators import api_view # type: ignore
+from django.contrib.auth import authenticate
+from rest_framework.decorators import api_view, authentication_classes, permission_classes # type: ignore
 from rest_framework.response import Response # type: ignore
+from rest_framework import status # type: ignore
+from rest_framework.authentication import TokenAuthentication # type: ignore
+from rest_framework.permissions import IsAuthenticated # type: ignore
+from rest_framework.authtoken.models import Token # type: ignore
 from django.core.mail import send_mail
-from django.conf import settings
 from datetime import datetime, timedelta
 import base64
 import json
-import hashlib
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.backends import default_backend
 from urllib.parse import quote_plus
 import os
+from .serializers import RegisterSerializer, UserSerializer, ProfileSerializer
+from .models import Profile
 
 
 
@@ -83,3 +87,94 @@ def send_request_email(request):
     )
 
     return Response({"success": True})
+
+
+@api_view(["POST"])
+def register_user(request):
+    serializer = RegisterSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    user = serializer.save()
+    # Create a default profile so the profile picker has content after signup.
+    Profile.objects.create(user=user, name=user.username)
+    token, _ = Token.objects.get_or_create(user=user)
+
+    return Response(
+        {"token": token.key, "user": UserSerializer(user).data},
+        status=status.HTTP_201_CREATED,
+    )
+
+
+@api_view(["POST"])
+def login_user(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+
+    if not username or not password:
+        return Response(
+            {"error": "Username and password are required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    user = authenticate(username=username, password=password)
+    if not user:
+        return Response(
+            {"error": "Invalid credentials"},
+            status=status.HTTP_401_UNAUTHORIZED,
+        )
+
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response({"token": token.key, "user": UserSerializer(user).data})
+
+
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def logout_user(request):
+    Token.objects.filter(user=request.user).delete()
+    return Response({"success": True})
+
+
+@api_view(["GET"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def me(request):
+    return Response({"user": UserSerializer(request.user).data})
+
+
+@api_view(["GET", "POST"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def profiles(request):
+    if request.method == "GET":
+        queryset = Profile.objects.filter(user=request.user)
+        return Response(ProfileSerializer(queryset, many=True).data)
+
+    serializer = ProfileSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    profile = serializer.save(user=request.user)
+    return Response(ProfileSerializer(profile).data, status=status.HTTP_201_CREATED)
+
+
+@api_view(["PATCH", "DELETE"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def profile_detail(request, profile_id):
+    try:
+        profile = Profile.objects.get(id=profile_id, user=request.user)
+    except Profile.DoesNotExist:
+        return Response({"error": "Profile not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == "DELETE":
+        profile.delete()
+        return Response({"success": True})
+
+    serializer = ProfileSerializer(profile, data=request.data, partial=True)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    serializer.save()
+    return Response(serializer.data)
