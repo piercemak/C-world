@@ -12,15 +12,20 @@ const MobileLogin = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const success = login(username, password);
-    if (success) {
-      navigate('/home');
-    } else {
-      alert('Invalid credentials');
+    setIsSubmitting(true);
+    try {
+      const result = await login(username, password);
+      if (result.success) {
+        navigate('/home');
+      } else {
+        alert(result.error || 'Invalid credentials');
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -50,6 +55,7 @@ const MobileLogin = () => {
         />
         <motion.button 
           type="submit" 
+          disabled={isSubmitting}
           className="bg-black p-2 w-[80%] h-14 px-6 rounded-full font-bold mt-4"
           whileTap={{ scale: 0.9, color: "color-mix(in oklab, var(--color-white) 60%, transparent)" }} 
           transition={{
@@ -58,7 +64,7 @@ const MobileLogin = () => {
               damping: 20    
           }}             
         >
-          Log In
+          {isSubmitting ? "Logging in..." : "Log In"}
         </motion.button>
       </div>
     </form>

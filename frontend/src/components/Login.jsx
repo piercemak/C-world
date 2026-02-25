@@ -11,13 +11,20 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (login(username, password)) {
-      navigate('/home');
-    } else {
-      alert('Invalid credentials');
+    setIsSubmitting(true);    
+    try {
+      const result = await login(username, password);
+      if (result.success) {
+        navigate('/home');
+      } else {
+        alert(result.error || 'Invalid credentials');
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -76,7 +83,9 @@ const Login = () => {
                     },
                 }}
                 type="submit" 
-                className="bg-black text-white p-3 rounded-3xl font-bold cursor-pointer">Sign In
+                disabled={isSubmitting}
+                className="bg-black text-white p-3 rounded-3xl font-bold cursor-pointer disabled:opacity-60">
+                {isSubmitting ? "Signing in..." : "Sign In"}
               </motion.button>
             </form>
             <p className="text-sm text-center mt-6">
