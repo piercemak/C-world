@@ -1,6 +1,6 @@
 from rest_framework import serializers # type: ignore
 from django.contrib.auth.models import User
-from .models import Episode, Profile
+from .models import Episode, Profile, WatchProgress, WatchHistory
 
 class EpisodeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,3 +34,25 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ["id", "name", "avatar_url", "is_kid", "created_at"]
         read_only_fields = ["id", "created_at"]
+
+
+class WatchProgressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WatchProgress
+        fields = [
+            "id",
+            "show_id",
+            "season",
+            "episode",
+            "current_time",
+            "duration",
+            "updated_at",
+        ]
+        read_only_fields = ["id", "updated_at"]
+
+
+class WatchHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WatchHistory
+        fields = ["id", "show_id", "season", "episode", "watched_at"]
+        read_only_fields = ["id", "watched_at"]

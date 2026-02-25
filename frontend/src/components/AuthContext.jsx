@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import { hydrateWatchDataFromServer } from "../lib/watchSync.js";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
@@ -18,12 +19,13 @@ export const AuthProvider = ({ children }) => {
   });
   const [authLoading, setAuthLoading] = useState(true);
 
-  const fetchAuthed = async (path, options = {}) => {
+  const fetchAuthed = async (path, options = {}, tokenOverride = null) => {
+    const authToken = tokenOverride || token;
     const headers = {
       "Content-Type": "application/json",
       ...(options.headers || {}),
     };
-    if (token) headers.Authorization = `Token ${token}`;
+    if (authToken) headers.Authorization = `Token ${authToken}`;
 
     return fetch(`${API_BASE}${path}`, {
       ...options,
@@ -31,15 +33,16 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  const loadProfiles = async () => {
-    if (!token) {
+  const loadProfiles = async (tokenOverride = null) => {
+    const authToken = tokenOverride || token;
+    if (!authToken) {
       setProfiles([]);
       setActiveProfile(null);
       localStorage.removeItem("activeProfile");
-      return;
+      return null;
     }
 
-    const res = await fetchAuthed("/api/profiles/");
+    const res = await fetchAuthed("/api/profiles/", {}, authToken);
     if (!res.ok) return;
 
     const data = await res.json();
@@ -50,6 +53,7 @@ export const AuthProvider = ({ children }) => {
     const selected = data.find((p) => p.id === savedId) || data[0] || null;
     setActiveProfile(selected);
     if (selected) localStorage.setItem("activeProfile", JSON.stringify(selected));
+    return selected;
   };
 
   useEffect(() => {
@@ -60,12 +64,15 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
-        const res = await fetchAuthed("/api/auth/me/");
+        const res = await fetchAuthed("/api/auth/me/", {}, token);
         if (!res.ok) throw new Error("Invalid token");
         const data = await res.json();
         setUser(data.user);
         localStorage.setItem("user", JSON.stringify(data.user));
-        await loadProfiles();
+        const selected = await loadProfiles();
+        if (selected?.id) {
+          await hydrateWatchDataFromServer(selected.id);
+        }
       } catch {
         setUser(null);
         setToken(null);
@@ -97,7 +104,10 @@ export const AuthProvider = ({ children }) => {
       setToken(data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("authToken", data.token);
-      await loadProfiles();
+      const selected = await loadProfiles(data.token);
+      if (selected?.id) {
+        await hydrateWatchDataFromServer(selected.id);
+      }
       return { success: true };
     } catch {
       return { success: false, error: "Unable to reach server. Check backend/CORS settings." };
@@ -118,7 +128,10 @@ export const AuthProvider = ({ children }) => {
       setToken(data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("authToken", data.token);
-      await loadProfiles();
+      const selected = await loadProfiles(data.token);
+      if (selected?.id) {
+        await hydrateWatchDataFromServer(selected.id);
+      }
       return { success: true };
     } catch {
       return { success: false, error: "Unable to reach server. Check backend/CORS settings." };
@@ -130,6 +143,7 @@ export const AuthProvider = ({ children }) => {
     setActiveProfile(profile);
     if (profile) {
       localStorage.setItem("activeProfile", JSON.stringify(profile));
+      hydrateWatchDataFromServer(profile.id);
     } else {
       localStorage.removeItem("activeProfile");
     }

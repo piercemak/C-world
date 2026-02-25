@@ -15,8 +15,14 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.backends import default_backend
 from urllib.parse import quote_plus
 import os
-from .serializers import RegisterSerializer, UserSerializer, ProfileSerializer
-from .models import Profile
+from .serializers import (
+    RegisterSerializer,
+    UserSerializer,
+    ProfileSerializer,
+    WatchProgressSerializer,
+    WatchHistorySerializer,
+)
+from .models import Profile, WatchProgress, WatchHistory
 
 
 
@@ -178,3 +184,86 @@ def profile_detail(request, profile_id):
 
     serializer.save()
     return Response(serializer.data)
+
+
+def _get_active_profile(request):
+    profile_id = request.headers.get("X-Profile-Id") or request.query_params.get("profile_id")
+    if not profile_id:
+        return None, Response(
+            {"error": "X-Profile-Id header is required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+    try:
+        profile = Profile.objects.get(id=profile_id, user=request.user)
+    except (ValueError, Profile.DoesNotExist):
+        return None, Response(
+            {"error": "Invalid profile"},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+    return profile, None
+
+
+@api_view(["GET", "POST"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def progress(request):
+    profile, error_response = _get_active_profile(request)
+    if error_response:
+        return error_response
+
+    if request.method == "GET":
+        queryset = WatchProgress.objects.filter(profile=profile)
+        return Response(WatchProgressSerializer(queryset, many=True).data)
+
+    show_id = request.data.get("show_id")
+    if not show_id:
+        return Response(
+            {"error": "show_id is required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    season = request.data.get("season")
+    episode = request.data.get("episode")
+    current_time = float(request.data.get("current_time", 0) or 0)
+    duration = float(request.data.get("duration", 0) or 0)
+
+    obj, _ = WatchProgress.objects.update_or_create(
+        profile=profile,
+        show_id=show_id,
+        season=season if season is not None else None,
+        episode=episode if episode is not None else None,
+        defaults={"current_time": current_time, "duration": duration},
+    )
+    return Response(WatchProgressSerializer(obj).data)
+
+
+@api_view(["GET", "POST"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def history(request):
+    profile, error_response = _get_active_profile(request)
+    if error_response:
+        return error_response
+
+    if request.method == "GET":
+        queryset = WatchHistory.objects.filter(profile=profile)
+        return Response(WatchHistorySerializer(queryset, many=True).data)
+
+    show_id = request.data.get("show_id")
+    if not show_id:
+        return Response(
+            {"error": "show_id is required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+    season = request.data.get("season")
+    episode = request.data.get("episode")
+
+    obj, _ = WatchHistory.objects.update_or_create(
+        profile=profile,
+        show_id=show_id,
+        defaults={
+            "season": season if season is not None else None,
+            "episode": episode if episode is not None else None,
+        },
+    )
+    return Response(WatchHistorySerializer(obj).data)

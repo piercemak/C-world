@@ -6,6 +6,7 @@ import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
 import { SHOWS } from "./mobileshowsData.js";
 import { allEpisodeTitles } from "./episodeTitles.js";
+import { queueWatchProgressSync, syncWatchHistory } from "../lib/watchSync.js";
 
 
 
@@ -801,6 +802,7 @@ const updateLastWatched = (showId, season, episode) => {
     };
     list.push(entry);
     localStorage.setItem("lastWatchedMobile", JSON.stringify(list));
+    syncWatchHistory({ showId, season, episode });
   } catch (err) {
     console.error("Failed to update last watched", err);
   }
@@ -834,6 +836,13 @@ const saveWatchProgress = (currentTime, duration) => {
       updatedAt: Date.now(),
     };
     localStorage.setItem(key, JSON.stringify(data));
+    queueWatchProgressSync({
+      showId,
+      season: show.type === "movie" || show.type === "Movies" ? null : Number(selectedVideo?.season || 0),
+      episode: show.type === "movie" || show.type === "Movies" ? null : Number(selectedVideo?.episode || 0),
+      currentTime,
+      duration,
+    });
   } catch (err) {
     console.error("Failed to save watch progress", err);
   }
