@@ -8,6 +8,7 @@ import Menu from './framercomponents/Menu.jsx'
 import WatchProgressBar from "./WatchProgressBar.jsx";
 import { allEpisodeTitles } from "./episodeTitles.js";
 import { buildLibraryShows } from "../data/libraryShowsData.js";
+import { syncWatchHistory } from "../lib/watchSync.js";
 
 
 
@@ -448,6 +449,7 @@ const extractS3KeyFromPath = (path) => {
   arr.unshift(entry);
 
   localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 50)));
+  syncWatchHistory({ showId, season, episode });
   };
   
 

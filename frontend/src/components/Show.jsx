@@ -5,6 +5,7 @@ import ProgressBar from "./ProgressBar.jsx";
 import VolumeSlider from "./VolumeSlider.jsx";
 import SkipForward from '../assets/icons/SkipForward.svg'
 import SkipBack from '../assets/icons/SkipBack.svg'
+import { queueWatchProgressSync } from "../lib/watchSync.js";
 
 
 const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, hasSubtitles = false, episodeTitles, getSignedUrl = {} }) => {
@@ -894,6 +895,13 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
           `watchProgress-${key}`,
           JSON.stringify({ t: 0, d: duration || 0, updatedAt: Date.now() })
         );
+        queueWatchProgressSync({
+          showId,
+          season,
+          episode,
+          currentTime: 0,
+          duration: duration || 0,
+        });
 
         window.dispatchEvent(
           new CustomEvent("watchprogress:update", {
@@ -922,6 +930,13 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
             `watchProgress-${key}`,
             JSON.stringify({ t: tSafe, d: duration, updatedAt: Date.now() })
           );
+          queueWatchProgressSync({
+            showId,
+            season,
+            episode,
+            currentTime: tSafe,
+            duration,
+          });
 
           window.dispatchEvent(
             new CustomEvent("watchprogress:update", {
@@ -959,6 +974,13 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         `watchProgress-${key}`,
         JSON.stringify({ ...obj, d, updatedAt: Date.now() })
       );
+      queueWatchProgressSync({
+        showId,
+        season,
+        episode,
+        currentTime: Number(obj?.t ?? 0),
+        duration: d,
+      });
 
       window.dispatchEvent(
         new CustomEvent("watchprogress:update", {
@@ -990,6 +1012,13 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
         `watchProgress-${key}`,
         JSON.stringify({ t: 0, d, updatedAt: Date.now() })
       );
+      queueWatchProgressSync({
+        showId,
+        season,
+        episode,
+        currentTime: 0,
+        duration: d,
+      });
 
       window.dispatchEvent(
         new CustomEvent("watchprogress:update", {

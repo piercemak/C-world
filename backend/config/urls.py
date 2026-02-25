@@ -7,6 +7,8 @@ from uploadtest.views import (
     me,
     profiles,
     profile_detail,
+    progress,
+    history,
 )
 from django.urls import path
 from django.contrib import admin
@@ -21,4 +23,6 @@ urlpatterns = [
     path("api/auth/me/", me),
     path("api/profiles/", profiles),
     path("api/profiles/<int:profile_id>/", profile_detail),
+    path("api/progress/", progress),
+    path("api/history/", history),
 ]
