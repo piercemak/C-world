@@ -42,8 +42,8 @@ const VideoPlayer = () => {
 
 
     {/* Profile Manipulation */}
-    const [profileName, setProfileName] = useState(() => localStorage.getItem('profileName') || "User");
-    const [profileEmail, setProfileEmail] = useState(() => localStorage.getItem('profileEmail') || "User Bio");
+    const [profileName, setProfileName] = useState(() => localStorage.getItem('profileName') || localStorage.getItem('profileDisplayName') || "User");
+    const [profileEmail, setProfileEmail] = useState(() => localStorage.getItem('profileBio') || localStorage.getItem('profileEmail') || "User Bio");
     const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
     const [editField, setEditField] = useState(null);
     const [hoverField, setHoverField] = useState(null);
@@ -59,9 +59,11 @@ const VideoPlayer = () => {
     };    
     useEffect(() => {
         localStorage.setItem('profileName', profileName);
+        localStorage.setItem('profileDisplayName', profileName);
       }, [profileName]);
       
       useEffect(() => {
+        localStorage.setItem('profileBio', profileEmail);
         localStorage.setItem('profileEmail', profileEmail);
       }, [profileEmail]);
       
@@ -1454,6 +1456,13 @@ const continueItems = useMemo(() => {
                             </motion.button>
                           </div>
 
+                        {/* empty state */}
+                        {continueItems.length === 0 && (
+                          <div className="text-white/60 text-sm mt-4">
+                            No recently watched items yet.
+                          </div>
+                        )}
+
                           {/* ✅ Recently watched */}
                           <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-2">
                             <div className="flex flex-nowrap gap-3 w-max">
@@ -1636,14 +1645,6 @@ const continueItems = useMemo(() => {
                           </div>
                         </div>
 
-
-
-                        {/* empty state */}
-                        {continueItems.length === 0 && (
-                          <div className="text-white/60 text-sm mt-4">
-                            No recently watched items yet.
-                          </div>
-                        )}
                       </div>
                     </motion.div>
                   ) : (
