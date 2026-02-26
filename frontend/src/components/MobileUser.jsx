@@ -60,7 +60,7 @@ const MobileUser = () => {
         <span className='font-bold text-4xl'> C </span>
         <span>{globeIcon}</span>
       </div>
-      <div className='flex flex-col leading-none mt-18'>
+      <div className='flex flex-col leading-none mt-14'>
         <span className='text-white flex justify-center text-[50px] font-bold tracking-wide'> Who's </span>
         <span className='text-white flex justify-center text-[50px] font-bold tracking-wide'> Watching? </span>
       </div>
