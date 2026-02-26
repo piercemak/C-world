@@ -149,6 +149,7 @@ const User = () => {
                 )}  
                 </motion.div>
             </div>
+                <div className='flex flex-row gap-4'>
                 <motion.div 
                     whileHover={{
                         color: "#99a1af",
@@ -201,6 +202,7 @@ const User = () => {
                 >
                   Log out
                 </motion.button>
+                </div>
             </div>
         </div>
       </motion.div>
