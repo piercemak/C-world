@@ -180,7 +180,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     jjk: {
       1:24,
       2:23,
-      3:7,
+      3:8,
     }, 
       cyberpunk: {
       1:10,
@@ -363,6 +363,7 @@ if (prevEpisode < 1) {
           5: { intro: { start: 380.0, end: 470.0 }, outro: { start: 1330, skipTo: "next" } },
           6: { intro: { start: 198.0, end: 288.0 }, outro: { start: 1330, skipTo: "next" } },
           7: { intro: { start: 183.0, end: 273.0 }, outro: { start: 1328, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1330, skipTo: "next" } },
         }
       }
     },
