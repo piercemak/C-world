@@ -130,6 +130,11 @@ def login_user(request):
             status=status.HTTP_401_UNAUTHORIZED,
         )
 
+    # Accounts created outside the register endpoint may not have a profile yet.
+    # Ensure at least one profile exists so progress/history sync can attach to it.
+    if not Profile.objects.filter(user=user).exists():
+        Profile.objects.create(user=user, name=user.username)
+
     token, _ = Token.objects.get_or_create(user=user)
     return Response({"token": token.key, "user": UserSerializer(user).data})
 
