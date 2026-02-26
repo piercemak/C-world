@@ -808,6 +808,22 @@ const updateLastWatched = (showId, season, episode) => {
   }
 };
 const videoRef = useRef(null);
+const parseProgressPayload = (payload) => {
+  if (!payload || typeof payload !== "object") {
+    return { currentTime: 0, duration: 0 };
+  }
+
+  const currentTime = Number(
+    payload.currentTime ?? payload.t ?? payload.time ?? payload.progress ?? 0
+  );
+  const duration = Number(payload.duration ?? payload.d ?? 0);
+
+  return {
+    currentTime: Number.isFinite(currentTime) ? currentTime : 0,
+    duration: Number.isFinite(duration) ? duration : 0,
+  };
+};
+
 const saveWatchProgress = (currentTime, duration) => {
   if (!selectedVideo || !show) return;
   if (!duration || Number.isNaN(duration)) return;
@@ -831,6 +847,8 @@ const saveWatchProgress = (currentTime, duration) => {
 
   try {
     const data = {
+      t: currentTime,
+      d: duration,
       currentTime,
       duration,
       updatedAt: Date.now(),
@@ -867,7 +885,7 @@ const getSavedTime = (season, episode) => {
     if (!raw) return 0;
 
     const data = JSON.parse(raw);
-    return data.currentTime || 0;
+    return parseProgressPayload(data).currentTime;
   } catch (err) {
     console.error("Failed to read watch progress", err);
     return 0;
@@ -930,7 +948,7 @@ const getWatchProgressPercent = (showId, season, episode) => {
     if (!raw) return 0;
 
     const data = JSON.parse(raw);
-    const { currentTime, duration } = data || {};
+    const { currentTime, duration } = parseProgressPayload(data);
     if (!duration || duration <= 0) return 0;
 
     const pct = (currentTime / duration) * 100;
