@@ -1437,10 +1437,10 @@ const continueItems = useMemo(() => {
                       </div>   
 
                       {/* ✅ NEW CONTAINER VIEW */}
-                      <div className="w-full h-full flex flex-col justify-end gap-4 mb-2">
+                      <div className="w-full h-full flex flex-col justify-end gap-2 mb-2">
                         <div className="">
                           {/* header row / extra space */}
-                          <div className="w-full mb-2 flex items-center justify-between">
+                          <div className="w-full mt-1 mb-0.5 flex items-center justify-between">
                             <div className="text-white/90 text-xl font-semibold tracking-wide flex flex-row items-center gap-1 cursor-pointer hover:text-white/60 transition-colors duration-300">
                               <span>Recently Watched</span>
                               {rightArrow}
@@ -1450,7 +1450,7 @@ const continueItems = useMemo(() => {
                               whileTap={{ scale: 0.95 }}
                               whileHover={{ scale: 1.03 }}
                               onClick={closeContinue}
-                              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                              className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition cursor-pointer"
                             >
                               Back
                             </motion.button>
@@ -1464,7 +1464,7 @@ const continueItems = useMemo(() => {
                         )}
 
                           {/* ✅ Recently watched */}
-                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-">
+                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-1">
                             <div className="flex flex-nowrap gap-3 w-max">
                               {continueItems.map((item) => {
                                 const isLoading = !loadedContinueThumbs[item.key];
@@ -1549,7 +1549,7 @@ const continueItems = useMemo(() => {
                             </div>
                           </div>
 
-                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-2">
+                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-1">
                             <div className="flex flex-nowrap gap-3 w-max">
                               {newMedia.map((item) => {
                                 const isLoading = !loadedContinueThumbs[item.key];
