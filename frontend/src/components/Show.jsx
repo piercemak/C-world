@@ -1355,11 +1355,11 @@ const isLastEpisode =
   }, [isPlaying, isPreviewing]);
 
   const [subtitlesEnabled, setSubtitlesEnabled] = useState(hasSubtitles);
-  const [subtitleText, setSubtitleText] = useState("");
+  const [activeSubtitleCues, setActiveSubtitleCues] = useState([]);
 
   useEffect(() => {
   setSubtitlesEnabled(hasSubtitles);
-  setSubtitleText("");
+  setActiveSubtitleCues([]);
   }, [hasSubtitles, src]);
 
   useEffect(() => {
@@ -1371,7 +1371,7 @@ const isLastEpisode =
 
     if (!subtitlesEnabled) {
       track.mode = "disabled";
-      setSubtitleText("");
+      setActiveSubtitleCues([]);
       return;
     }
 
@@ -1379,24 +1379,28 @@ const isLastEpisode =
     const handleCueChange = () => {
       const activeCues = track.activeCues;
       if (!activeCues || activeCues.length === 0) {
-        setSubtitleText("");
+        setActiveSubtitleCues([]);
         return;
       }
 
-      const text = Array.from(activeCues)
-        .map((c) => (c?.text || "").trim())
-        .filter(Boolean)
-        .join("\n");
+      const normalized = Array.from(activeCues)
+        .map((cue) => ({
+          text: (cue?.text || "").trim(),
+          startTime: Number(cue?.startTime || 0),
+        }))
+        .filter((cue) => cue.text)
+        .sort((a, b) => a.startTime - b.startTime);
 
-      setSubtitleText(text);
+      setActiveSubtitleCues(normalized);
     };
 
     track.addEventListener("cuechange", handleCueChange);
+    handleCueChange();
 
     return () => {
       track.removeEventListener("cuechange", handleCueChange);
     };
-  }, [src]);
+  }, [src, subtitlesEnabled]);
 
 
 
@@ -1612,7 +1616,7 @@ const isLastEpisode =
       </div>
     )}    
 
-    {subtitleText && subtitlesEnabled && (
+    {activeSubtitleCues.length > 0 && subtitlesEnabled && (
       <div className="absolute bottom-20 2xl:bottom-24 w-full text-center">
         <div
           className={`
@@ -1621,10 +1625,27 @@ const isLastEpisode =
             transition-all duration-300
           `}
         >
-          {subtitleText}
+          {activeSubtitleCues[0]?.text}
         </div>
       </div>
-    )}  
+    )}
+
+    {activeSubtitleCues.length > 1 && subtitlesEnabled && (
+      <div className="absolute top-20 2xl:top-24 w-full text-center">
+        <div
+          className={`
+            movie-subtitle whitespace-pre-line
+            ${isFullscreen ? "text-[40px]" : "text-[30px]"} 
+            transition-all duration-300
+          `}
+        >
+          {activeSubtitleCues
+            .slice(1)
+            .map((cue) => cue.text)
+            .join("\n")}
+        </div>
+      </div>
+    )}
 
     {previewImage && (
       <div className="absolute top-0 left-0 rounded-2xl w-full h-full bg-black/60 backdrop-blur pointer-events-none">
