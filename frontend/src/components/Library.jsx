@@ -660,9 +660,14 @@ const extractS3KeyFromPath = (path) => {
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         className="absolute bottom-[120%] left-0 w-64 bg-black text-white p-2 rounded-md shadow-lg z-50 pointer-events-none"
                       >
-                        <img src={placeholderPath} alt="" className="hidden" />
-                        <div className="relative w-full h-32 rounded mb-2 bg-cover bg-center" style={{ backgroundImage: `url(${placeholderPath})` }}>                        
-                          <img src={placeholderPath} alt="" className="hidden" />                 
+                        <div className="relative w-full h-32 rounded mb-2 overflow-hidden bg-gray-800/40">
+                          <img
+                            src={placeholderPath}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
                           <WatchProgressBar
                             storageKey={
                               resumeEpisode.season !== null && resumeEpisode.episode !== null
@@ -891,19 +896,17 @@ const extractS3KeyFromPath = (path) => {
                       pushDesktopLastWatched({ showId, season: seasonNumber, episode: episodeNumber });
                     }}
                     
-                    style={{ 
-                      backgroundImage: `url(${placeholderPath})`, 
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat'
-                    }}
                     className={`relative w-56 h-28 rounded-2xl cursor-pointer group flex-shrink-0 snap-center 
-                      ${!loadedPlaceholders[placeholderKey] ? "animate-pulse bg-gray-800/60" : ""}`}
+                      ${!loadedPlaceholders[placeholderKey] ? "animate-pulse bg-gray-800/60" : ""} overflow-hidden`}
                     >
                     <img 
                       src={placeholderPath} 
                       alt="" 
-                      className="hidden" 
+                      loading="lazy"
+                      decoding="async"
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                        loadedPlaceholders[placeholderKey] ? "opacity-100" : "opacity-0"
+                      }`}
                       onLoad={() => handleImageLoad(placeholderKey)} 
                     />
                     {/* TEXT OVERLAY */}

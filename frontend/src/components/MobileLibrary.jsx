@@ -37,6 +37,8 @@ const MobileLibrary = () => {
 {/* Nav Bar Active State */}
 const tabs = [moviesIcon, showsIcon];
 const [activeTab, setActiveTab] = useState('Shows');
+const [isTabSwitching, setIsTabSwitching] = useState(false);
+const tabSwitchTimeoutRef = useRef(null);
 
 const archiveNavigate = () => {
 navigate("/archive");
@@ -120,6 +122,25 @@ const handleSwipe = (newIndex) => {
     setCurrentIndex(newIndex);
 };
 
+const switchTab = (nextTab) => {
+    if (nextTab === activeTab) return;
+    if (tabSwitchTimeoutRef.current) clearTimeout(tabSwitchTimeoutRef.current);
+
+    setIsTabSwitching(true);
+    tabSwitchTimeoutRef.current = setTimeout(() => {
+        setActiveTab(nextTab);
+        setCurrentIndex(0);
+        setActivePage(0);
+        if (sliderRef.current) {
+            sliderRef.current.scrollTo({
+                left: 0,
+                behavior: "smooth",
+            });
+        }
+        setIsTabSwitching(false);
+    }, 130);
+};
+
 
 
 
@@ -186,6 +207,12 @@ document.addEventListener("mousedown", handleClick);
 return () => document.removeEventListener("mousedown", handleClick);
 }, []);
 
+useEffect(() => {
+  return () => {
+    if (tabSwitchTimeoutRef.current) clearTimeout(tabSwitchTimeoutRef.current);
+  };
+}, []);
+
 
   return (
     <div className='relative w-full h-dvh flex flex-col overflow-hidden bg-black '>
@@ -234,7 +261,7 @@ return () => document.removeEventListener("mousedown", handleClick);
         )}
 
         {/* Background Carousel Images */}
-        <div className='h-dvh object-cover object-center w-full flex absolute z-0 overflow-hidden min-h-[300px]'>
+        <div className={`h-dvh object-cover object-center w-full flex absolute z-0 overflow-hidden min-h-[300px] transition-opacity duration-200 ${isTabSwitching ? "opacity-0" : "opacity-100"}`}>
         {filteredShows.length > 0 && (
             <motion.div
             className="flex w-full h-full"
@@ -247,13 +274,15 @@ return () => document.removeEventListener("mousedown", handleClick);
             }}
             style={{ width: `${filteredShows.length * 100}%` }}
             >
-            {filteredShows.map((show) => (
+            {filteredShows.map((show, index) => (
                 <div key={show.id} className="w-full h-full flex-shrink-0">
                 <img 
                     src={show.background} 
                     className="w-full h-full object-cover" 
                     style={{ aspectRatio: "16/9" }} 
                     alt={show.title} 
+                    loading={index === currentIndex ? "eager" : "lazy"}
+                    decoding="async"
                 />
                 </div>
             ))}
@@ -279,18 +308,7 @@ return () => document.removeEventListener("mousedown", handleClick);
                                 <button
                                 key={tab.id}
                                 type="button"
-                                onClick={() => {
-                                    setActiveTab(tab.id);
-                                    setCurrentIndex(0);   
-
-                                    setActivePage(0);  
-                                    if (sliderRef.current) {
-                                        sliderRef.current.scrollTo({
-                                        left: 0,
-                                        behavior: "smooth",    
-                                        });
-                                    }                                    
-                                }}
+                                onClick={() => switchTab(tab.id)}
                                 className="relative flex items-center justify-center w-10 h-10 md:w-11 md:h-11"
                                 >
                                 {isActive && (
@@ -399,6 +417,15 @@ return () => document.removeEventListener("mousedown", handleClick);
                     </div>
 
                 </div>
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="w-full"
+                  >
                 {/* Card Row Content*/}
                 <div className="relative w-full flex flex-col gap-4 justify-center items-center mt-4 px-4 text-white">
                     <div
@@ -492,6 +519,8 @@ return () => document.removeEventListener("mousedown", handleClick);
                                     <img
                                     src={show.card}
                                     alt={show.title}
+                                    loading="lazy"
+                                    decoding="async"
                                     onLoad={() => handleImageLoad(show.id)}
                                     className={`w-full h-full object-cover rounded-3xl transition-opacity duration-300 ${
                                         imageLoaded[show.id] ? "opacity-100" : "opacity-0"
@@ -541,6 +570,8 @@ return () => document.removeEventListener("mousedown", handleClick);
                                         <img
                                             src={show.keyart}
                                             alt={show.title}
+                                            loading="lazy"
+                                            decoding="async"
                                             onLoad={() => handleImageLoad(show.id)}
                                             className={`w-full h-full object-cover rounded-2xl border border-white/40 transition-opacity duration-300 ${
                                             imageLoaded[show.id] ? "opacity-100" : "opacity-0"
@@ -575,6 +606,8 @@ return () => document.removeEventListener("mousedown", handleClick);
                     />
                 ))}
                 </div>
+                </motion.div>
+                </AnimatePresence>
             </div>
         </div>
 
