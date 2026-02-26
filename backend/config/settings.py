@@ -2,6 +2,7 @@ from dotenv import load_dotenv # type: ignore
 import dj_database_url # type: ignore
 import os
 from django.core.exceptions import ImproperlyConfigured
+from corsheaders.defaults import default_headers
 
 load_dotenv()
 
@@ -103,6 +104,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+]
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "x-profile-id",
 ]
 
 ROOT_URLCONF = "config.urls"
