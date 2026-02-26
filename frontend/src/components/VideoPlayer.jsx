@@ -1464,7 +1464,7 @@ const continueItems = useMemo(() => {
                         )}
 
                           {/* ✅ Recently watched */}
-                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-2">
+                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-">
                             <div className="flex flex-nowrap gap-3 w-max">
                               {continueItems.map((item) => {
                                 const isLoading = !loadedContinueThumbs[item.key];
