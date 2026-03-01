@@ -454,8 +454,29 @@ const extractS3KeyFromPath = (path) => {
   
 
   {/* Watch Progress Helper */}
+  const toProgressStorageKey = (id, season = null, episode = null) => {
+    if (season == null || episode == null) return `${id}`;
+    const seasonNum = Number(season);
+    const episodeNum = Number(episode);
+    if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return `${id}`;
+    return `${id}-S${String(seasonNum).padStart(2, "0")}-E${String(episodeNum).padStart(2, "0")}`;
+  };
   const readProgress = (storageKey) => {
-    const raw = localStorage.getItem(`watchProgress-${storageKey}`);
+    const primaryKey = `watchProgress-${storageKey}`;
+    let raw = localStorage.getItem(primaryKey);
+    if (!raw) {
+      const m = storageKey.match(/^(.*)-S(\d+)-E(\d+)$/);
+      if (m) {
+        const legacyStorageKey = `${m[1]}-S${Number(m[2])}-E${Number(m[3])}`;
+        const legacyKey = `watchProgress-${legacyStorageKey}`;
+        const legacyRaw = localStorage.getItem(legacyKey);
+        if (legacyRaw) {
+          localStorage.setItem(primaryKey, legacyRaw);
+          localStorage.removeItem(legacyKey);
+          raw = legacyRaw;
+        }
+      }
+    }
     if (!raw) return { t: 0, d: 0 };
 
     try {
@@ -567,7 +588,7 @@ const extractS3KeyFromPath = (path) => {
                     navigate(`/video-library/${showId}`, { replace: true });
                     let key;
                     if (selectedVideo?.season !== null && selectedVideo?.episode !== null) {
-                      key = `${selectedVideo.showId}-S${selectedVideo.season}-E${selectedVideo.episode}`;
+                      key = toProgressStorageKey(selectedVideo.showId, selectedVideo.season, selectedVideo.episode);
                     } else {
                       key = `${selectedVideo.showId}`;
                     }
@@ -671,12 +692,12 @@ const extractS3KeyFromPath = (path) => {
                           <WatchProgressBar
                             storageKey={
                               resumeEpisode.season !== null && resumeEpisode.episode !== null
-                                ? `${showId}-S${resumeEpisode.season}-E${resumeEpisode.episode}`
+                                ? toProgressStorageKey(showId, resumeEpisode.season, resumeEpisode.episode)
                                 : `${showId}`
                             }
                             progressOverride={
                               resumeEpisode.season !== null && resumeEpisode.episode !== null
-                                ? watchProgressMap[`${showId}-S${resumeEpisode.season}-E${resumeEpisode.episode}`]?.t
+                                ? watchProgressMap[toProgressStorageKey(showId, resumeEpisode.season, resumeEpisode.episode)]?.t
                                 : watchProgressMap[`${showId}`]?.t
                             }
                           />
@@ -922,8 +943,8 @@ const extractS3KeyFromPath = (path) => {
                     </div>
 
                     <WatchProgressBar
-                      storageKey={`${showId}-S${seasonNumber}-E${episodeNumber}`}
-                      progressOverride={watchProgressMap[`${showId}-S${seasonNumber}-E${episodeNumber}`]?.t}
+                      storageKey={toProgressStorageKey(showId, seasonNumber, episodeNumber)}
+                      progressOverride={watchProgressMap[toProgressStorageKey(showId, seasonNumber, episodeNumber)]?.t}
                     />
                   </motion.div>   
                 );
