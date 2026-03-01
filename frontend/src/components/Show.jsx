@@ -113,6 +113,9 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   const [introVisible, setIntroVisible] = useState(false);
   const [outroVisible, setOutroVisible] = useState(false);
   const [autoSkipDone, setAutoSkipDone] = useState(false); 
+  const lastProgressPersistAtRef = useRef(0);
+  const lastPersistedTimeRef = useRef(-1);
+  const outroProgressResetRef = useRef(false);
 
   
   const pathParts = src.split("/");
@@ -252,6 +255,15 @@ if (prevEpisode < 1) {
     prevEpisode = null; 
   }
 }
+
+const isFirstEpisode = !isMovie && currS === 1 && currE === 1;
+const maxSeasonNumber = Object.keys(showSeasonData).length
+  ? Math.max(...Object.keys(showSeasonData).map(Number))
+  : currS;
+const isLastEpisode =
+  !isMovie &&
+  currS === maxSeasonNumber &&
+  currE === (showSeasonData[currS] || 0);
 
 
   const skipTimes = {
@@ -819,8 +831,6 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
   useEffect(() => {
     const vid = videoRef.current;
-    console.log("🎥 Video ref:", vid);
-    console.log("🎬 Video src:", src);
     if (!vid) return;
     setAutoSkipDone(false); 
 
@@ -842,8 +852,6 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
       try {
         vid.load();           
         vid.volume = volume;
-
-        console.log("▶️ Attempting to play video...");
         const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
         const shouldAutoSkipIntro =
@@ -860,9 +868,6 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
         await vid.play();
 
-        console.log("🚩 skipIntro flag:", skipIntro);
-        console.log("🎯 intro skip time:", intro?.end);
-
         if (shouldAutoSkipIntro) {
           setAutoSkipDone(true);
         }   
@@ -873,6 +878,11 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     startPlayback();
   }, [src, skipIntro, intro?.end]);
   const [countdown, setCountdown] = useState(null);
+  const [outroDismissed, setOutroDismissed] = useState(false);
+  const countdownRef = useRef(null);
+  useEffect(() => {
+    countdownRef.current = countdown;
+  }, [countdown]);
 
   {/* Time */}
   useEffect(() => {
@@ -890,23 +900,25 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
       const duration = vid.duration || 0;
       const tSafe = Math.min(time, Math.max(duration - 0.25, 0));
+      const now = Date.now();
+      const keyWithPrefix = `watchProgress-${key}`;
 
-      const resetProgress = () => {
+      const persistProgress = (t, d) => {
         localStorage.setItem(
-          `watchProgress-${key}`,
-          JSON.stringify({ t: 0, d: duration || 0, updatedAt: Date.now() })
+          keyWithPrefix,
+          JSON.stringify({ t, d, updatedAt: now })
         );
         queueWatchProgressSync({
           showId,
           season,
           episode,
-          currentTime: 0,
-          duration: duration || 0,
+          currentTime: t,
+          duration: d,
         });
 
         window.dispatchEvent(
           new CustomEvent("watchprogress:update", {
-            detail: { storageKey: key, t: 0, d: duration || 0 },
+            detail: { storageKey: key, t, d },
           })
         );
       };
@@ -921,29 +933,23 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
       if (shouldShowOutroSkip && !outroDismissed) {
         setOutroVisible(true);
-        if (countdown === null) setCountdown(10);
-        if (duration) resetProgress();
+        if (countdownRef.current === null) setCountdown(10);
+        if (duration && !outroProgressResetRef.current) {
+          persistProgress(0, duration || 0);
+          outroProgressResetRef.current = true;
+        }
       } else {
         setOutroVisible(false);
         setCountdown(null);
+        outroProgressResetRef.current = false;
         if (duration) {
-          localStorage.setItem(
-            `watchProgress-${key}`,
-            JSON.stringify({ t: tSafe, d: duration, updatedAt: Date.now() })
-          );
-          queueWatchProgressSync({
-            showId,
-            season,
-            episode,
-            currentTime: tSafe,
-            duration,
-          });
-
-          window.dispatchEvent(
-            new CustomEvent("watchprogress:update", {
-              detail: { storageKey: key, t: tSafe, d: duration },
-            })
-          );
+          const shouldPersistByTime = now - lastProgressPersistAtRef.current >= 1500;
+          const shouldPersistByDelta = Math.abs(tSafe - lastPersistedTimeRef.current) >= 1;
+          if (shouldPersistByTime && shouldPersistByDelta) {
+            persistProgress(tSafe, duration);
+            lastProgressPersistAtRef.current = now;
+            lastPersistedTimeRef.current = tSafe;
+          }
         }
       }
 
@@ -955,7 +961,7 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
     vid.addEventListener("timeupdate", handleTimeUpdate);
     return () => vid.removeEventListener("timeupdate", handleTimeUpdate);
-  }, [intro, outro, countdown, showId, season, episode]);
+  }, [intro, outro, showId, season, episode, outroDismissed, isMovie, isLastEpisode]);
   
   useEffect(() => {
     const vid = videoRef.current;
@@ -1030,6 +1036,52 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
 
     vid.addEventListener("ended", onEnded);
     return () => vid.removeEventListener("ended", onEnded);
+  }, [showId, season, episode, src]);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    const key = season === null || episode === null
+      ? `${showId}`
+      : `${showId}-S${season}-E${episode}`;
+
+    const flushProgress = () => {
+      const d = Number(vid.duration || 0);
+      if (!d || !Number.isFinite(d)) return;
+      const tSafe = Math.min(Number(vid.currentTime || 0), Math.max(d - 0.25, 0));
+
+      localStorage.setItem(
+        `watchProgress-${key}`,
+        JSON.stringify({ t: tSafe, d, updatedAt: Date.now() })
+      );
+      queueWatchProgressSync({
+        showId,
+        season,
+        episode,
+        currentTime: tSafe,
+        duration: d,
+      });
+
+      window.dispatchEvent(
+        new CustomEvent("watchprogress:update", {
+          detail: { storageKey: key, t: tSafe, d },
+        })
+      );
+
+      lastProgressPersistAtRef.current = Date.now();
+      lastPersistedTimeRef.current = tSafe;
+    };
+
+    vid.addEventListener("pause", flushProgress);
+    vid.addEventListener("seeked", flushProgress);
+    window.addEventListener("beforeunload", flushProgress);
+
+    return () => {
+      vid.removeEventListener("pause", flushProgress);
+      vid.removeEventListener("seeked", flushProgress);
+      window.removeEventListener("beforeunload", flushProgress);
+    };
   }, [showId, season, episode, src]);
 
 
@@ -1127,17 +1179,6 @@ const handleSkipToPrevious = async () => {
     onSkipToNext?.(prevSeason, prevEpisode);
   }
 };
-
-{/* Skip Outro padding */}
-const isFirstEpisode = !isMovie && currS === 1 && currE === 1;
-const maxSeasonNumber = Object.keys(showSeasonData).length
-  ? Math.max(...Object.keys(showSeasonData).map(Number))
-  : currS;
-const isLastEpisode =
-  !isMovie &&
-  currS === maxSeasonNumber &&
-  currE === (showSeasonData[currS] || 0);
-
 
   {/* Placeholder Images */}
   const cleanShowId = showId?.replace(/-/g, "");
@@ -1410,6 +1451,8 @@ const isLastEpisode =
   useEffect(() => {
     setIsLoading(true); 
   }, [src]);
+  const handleMediaLoadStart = () => setIsLoading(true);
+  const handleMediaCanPlay = () => setIsLoading(false);
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.focus();
@@ -1418,7 +1461,6 @@ const isLastEpisode =
 
 
   {/* Stop Countdown */}
-  const [outroDismissed, setOutroDismissed] = useState(false);
   const cancelOutroCountdown = () => {
     setCountdown(null);
     setOutroVisible(false);
@@ -1441,7 +1483,13 @@ const isLastEpisode =
       preload="auto"
       onClick={handleSingleClick}
       onDoubleClick={handleDoubleClick}
-      onCanPlay={() => setIsLoading(false)}
+      onLoadStart={handleMediaLoadStart}
+      onWaiting={handleMediaLoadStart}
+      onSeeking={handleMediaLoadStart}
+      onStalled={handleMediaLoadStart}
+      onCanPlay={handleMediaCanPlay}
+      onSeeked={handleMediaCanPlay}
+      onPlaying={handleMediaCanPlay}
     >
       <source src={src} type="video/mp4" />
 
