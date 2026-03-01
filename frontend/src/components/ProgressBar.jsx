@@ -20,6 +20,8 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
   const [hoverTime, setHoverTime] = useState(null);
   const [hoverX, setHoverX] = useState(0);
   const barRef = useRef(null);
+  const dragRafRef = useRef(null);
+  const pendingDragTimeRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -54,6 +56,7 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
 
   const handleSeek = (e) => {
     const bar = barRef.current;
+    if (!bar) return;
     const rect = bar.getBoundingClientRect();
     const offsetX = e.clientX - rect.left;
     const percentage = offsetX / rect.width;
@@ -65,6 +68,7 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
   };
   const handleMouseMove = (e) => {
     const bar = barRef.current;
+    if (!bar) return;
     const rect = bar.getBoundingClientRect();
     const offsetX = e.clientX - rect.left;
     const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
@@ -74,7 +78,15 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
     setHoverX(offsetX);
   
     if (isDragging && videoRef.current) {
-      videoRef.current.currentTime = time;
+      pendingDragTimeRef.current = time;
+      if (!dragRafRef.current) {
+        dragRafRef.current = requestAnimationFrame(() => {
+          dragRafRef.current = null;
+          if (videoRef.current && pendingDragTimeRef.current != null) {
+            videoRef.current.currentTime = pendingDragTimeRef.current;
+          }
+        });
+      }
     }
   };
 
@@ -92,7 +104,13 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
   useEffect(() => {
     const handleUp = () => setIsDragging(false);
     document.addEventListener("mouseup", handleUp);
-    return () => document.removeEventListener("mouseup", handleUp);
+    return () => {
+      document.removeEventListener("mouseup", handleUp);
+      if (dragRafRef.current) {
+        cancelAnimationFrame(dragRafRef.current);
+        dragRafRef.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -100,7 +118,7 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
       setCurrentTime(videoRef.current.currentTime);
       const dur = videoRef.current.duration || 0;
       setDuration(dur);
-      setProgress((videoRef.current.currentTime / dur) * 100);
+      setProgress(dur > 0 ? (videoRef.current.currentTime / dur) * 100 : 0);
     }
   }, [controlsVisible]);
 
