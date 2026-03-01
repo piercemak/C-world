@@ -540,7 +540,7 @@ const continueItems = useMemo(() => {
 
       const progressKey =
         entry.lastSeason != null && entry.lastEpisode != null
-          ? `watchProgress-${showSlug}-S${Number(entry.lastSeason)}-E${Number(entry.lastEpisode)}`
+          ? `watchProgress-${showSlug}-S${String(Number(entry.lastSeason)).padStart(2, "0")}-E${String(Number(entry.lastEpisode)).padStart(2, "0")}`
           : `watchProgress-${showSlug}`;
 
       const prog = parseWatchProgress(localStorage.getItem(progressKey));

@@ -828,17 +828,46 @@ const getActiveSkipTime = () => {
 };
 const { intro, outro } = getActiveSkipTime();
 const hasIntro = !!(intro && Number.isFinite(intro.end));
+const formatProgressStorageKey = (s = season, e = episode) => {
+  if (s == null || e == null) return `${showId}`;
+  const seasonNum = Number(s);
+  const episodeNum = Number(e);
+  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return `${showId}`;
+  return `${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(episodeNum).padStart(2, "0")}`;
+};
+const formatLegacyProgressStorageKey = (s = season, e = episode) => {
+  if (s == null || e == null) return `${showId}`;
+  const seasonNum = Number(s);
+  const episodeNum = Number(e);
+  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return `${showId}`;
+  return `${showId}-S${seasonNum}-E${episodeNum}`;
+};
+const readProgressRawWithMigration = (storageKey) => {
+  const primary = `watchProgress-${storageKey}`;
+  const raw = localStorage.getItem(primary);
+  if (raw != null) return raw;
+
+  const legacyKey = formatLegacyProgressStorageKey();
+  if (legacyKey !== storageKey) {
+    const legacyFull = `watchProgress-${legacyKey}`;
+    const legacyRaw = localStorage.getItem(legacyFull);
+    if (legacyRaw != null) {
+      localStorage.setItem(primary, legacyRaw);
+      localStorage.removeItem(legacyFull);
+      return legacyRaw;
+    }
+  }
+  return null;
+};
 
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
     setAutoSkipDone(false); 
 
-  const key = season === null || episode === null
-    ? showId
-    : `${showId}-S${season}-E${episode}`;
+  const key = formatProgressStorageKey();
     
-  const raw = localStorage.getItem(`watchProgress-${key}`);
+  const raw = readProgressRawWithMigration(key);
   let savedProgress = 0;
   try {
     const obj = raw ? JSON.parse(raw) : null;
@@ -893,10 +922,7 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
       const time = vid.currentTime;
       setCurrentTime(time);
 
-      const key =
-        season === null || episode === null
-          ? `${showId}` // movie
-          : `${showId}-S${season}-E${episode}`; // show
+      const key = formatProgressStorageKey();
 
       const duration = vid.duration || 0;
       const tSafe = Math.min(time, Math.max(duration - 0.25, 0));
@@ -967,16 +993,14 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     const vid = videoRef.current;
     if (!vid) return;
 
-    const key = season === null || episode === null
-      ? `${showId}`
-      : `${showId}-S${season}-E${episode}`;
+    const key = formatProgressStorageKey();
 
     const syncDuration = () => {
       const d = Number(vid.duration || 0);
       if (!d || !Number.isFinite(d)) return;
 
       let obj = {};
-      try { obj = JSON.parse(localStorage.getItem(`watchProgress-${key}`) || "{}"); } catch {}
+      try { obj = JSON.parse(readProgressRawWithMigration(key) || "{}"); } catch {}
       localStorage.setItem(
         `watchProgress-${key}`,
         JSON.stringify({ ...obj, d, updatedAt: Date.now() })
@@ -1008,9 +1032,7 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     const vid = videoRef.current;
     if (!vid) return;
 
-    const key = season === null || episode === null
-      ? `${showId}`
-      : `${showId}-S${season}-E${episode}`;
+    const key = formatProgressStorageKey();
 
     const onEnded = () => {
       const d = Number.isFinite(vid.duration) ? vid.duration : 0;
@@ -1042,9 +1064,7 @@ const hasIntro = !!(intro && Number.isFinite(intro.end));
     const vid = videoRef.current;
     if (!vid) return;
 
-    const key = season === null || episode === null
-      ? `${showId}`
-      : `${showId}-S${season}-E${episode}`;
+    const key = formatProgressStorageKey();
 
     const flushProgress = () => {
       const d = Number(vid.duration || 0);
