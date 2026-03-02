@@ -299,7 +299,11 @@ const extractS3KeyFromPath = (path) => {
         const mostRecentKey = keys.sort((a, b) => {
           const aKey = a.replace(/^watchProgress-/, "");
           const bKey = b.replace(/^watchProgress-/, "");
-          return readProgress(bKey).t - readProgress(aKey).t;
+          const aProg = readProgress(aKey);
+          const bProg = readProgress(bKey);
+          const byUpdated = (bProg.updatedAt || 0) - (aProg.updatedAt || 0);
+          if (byUpdated !== 0) return byUpdated;
+          return (bProg.t || 0) - (aProg.t || 0);
         })[0];
 
         const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
@@ -363,7 +367,7 @@ const extractS3KeyFromPath = (path) => {
         if (isMovie) {
           key = `${showId}`;
         } else {
-          key = `${showId}-S${season}-E${episode}`;
+          key = toProgressStorageKey(showId, season, episode);
         }
 
         const prog = readProgress(key);
@@ -384,7 +388,11 @@ const extractS3KeyFromPath = (path) => {
         const mostRecentKey = keys.sort((a, b) => {
           const aKey = a.replace(/^watchProgress-/, "");
           const bKey = b.replace(/^watchProgress-/, "");
-          return readProgress(bKey).t - readProgress(aKey).t;
+          const aProg = readProgress(aKey);
+          const bProg = readProgress(bKey);
+          const byUpdated = (bProg.updatedAt || 0) - (aProg.updatedAt || 0);
+          if (byUpdated !== 0) return byUpdated;
+          return (bProg.t || 0) - (aProg.t || 0);
         })[0];
         const match = mostRecentKey.match(/watchProgress-(.+?)(-S(\d+)-E(\d+))?$/);
         if (!match) return;
@@ -477,20 +485,22 @@ const extractS3KeyFromPath = (path) => {
         }
       }
     }
-    if (!raw) return { t: 0, d: 0 };
+    if (!raw) return { t: 0, d: 0, updatedAt: 0 };
 
     try {
       const obj = JSON.parse(raw);
       const t = Number(obj?.t ?? obj?.currentTime ?? 0);
       const d = Number(obj?.d ?? obj?.duration ?? 0);
+      const updatedAt = Number(obj?.updatedAt ?? 0);
 
       return {
         t: Number.isFinite(t) ? t : 0,
         d: Number.isFinite(d) ? d : 0,
+        updatedAt: Number.isFinite(updatedAt) ? updatedAt : 0,
       };
     } catch {
       const n = Number(raw);
-      return { t: Number.isFinite(n) ? n : 0, d: 0 };
+      return { t: Number.isFinite(n) ? n : 0, d: 0, updatedAt: 0 };
     }
   };
   useEffect(() => {
@@ -503,6 +513,7 @@ const extractS3KeyFromPath = (path) => {
         [storageKey]: {
           t: Number.isFinite(Number(t)) ? Number(t) : (prev[storageKey]?.t ?? 0),
           d: Number.isFinite(Number(d)) ? Number(d) : (prev[storageKey]?.d ?? 0),
+          updatedAt: Date.now(),
         },
       }));
     };
