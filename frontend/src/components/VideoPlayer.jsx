@@ -436,7 +436,22 @@ const VideoPlayer = () => {
   {/* Continue Watching */}
   const [continueOpen, setContinueOpen] = useState(false);
   const openContinue = () => setContinueOpen(true);
-  const closeContinue = () => setContinueOpen(false);
+  const closeContinue = () => {
+    setContinueOpen(false);
+    setCurrentPage(0);
+
+    requestAnimationFrame(() => {
+      const el = mainContentRef.current;
+      if (!el) return;
+      el.scrollTo({ left: 0, behavior: "auto" });
+    });
+
+    setClickedCard(null);
+    const mainContent = document.querySelector(`.${styles["main-content"]}`);
+    if (mainContent) mainContent.classList.remove(styles.expanded);
+    const allCards = document.querySelectorAll(`.${styles.card}`);
+    allCards.forEach((c) => c.classList.remove(styles.active));
+  };
   const [loadedContinueThumbs, setLoadedContinueThumbs] = useState({});
   const parseWatchProgress = (raw) => {
     if (!raw) return { fraction: 0, updatedAt: 0 };
@@ -944,20 +959,7 @@ const continueItems = useMemo(() => {
                   className="group flex flex-row items-center gap-2 bg-white/5 border border-white/5 px-2.5 py-1.5 text-sm tracking-wide rounded-lg ring-1 ring-white/10 shadow-lg/30 cursor-pointer text-white/70 hover:text-white transition-colors duration-300"
                   onClick={() => {
                     if (continueOpen) {
-                      setContinueOpen(false);
-                      setCurrentPage(0);
-
-                      requestAnimationFrame(() => {
-                        const el = mainContentRef.current;
-                        if (!el) return;
-                        el.scrollTo({ left: 0, behavior: "auto" });
-                      });
-
-                      setClickedCard(null);
-                      const mainContent = document.querySelector(`.${styles["main-content"]}`);
-                      if (mainContent) mainContent.classList.remove(styles.expanded);
-                      const allCards = document.querySelectorAll(`.${styles.card}`);
-                      allCards.forEach((c) => c.classList.remove(styles.active));
+                      closeContinue();
                     } else {
                       setContinueOpen(true);
                     }
