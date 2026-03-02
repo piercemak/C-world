@@ -382,6 +382,28 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "frankenstein", "movie"),
         },
+        "truedetective": {
+          type: "show",  
+          title: "True Detective",
+          release_year: "2014",
+          genre: "Psychological Drama",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "True Detective explores Cohle and Hart's recollection of their investigation of the murder of Dora Lange from 1995 to 2002.",
+          background: "/images/truedetective/covers/truedetectiveCover.svg",
+          videos: videoDataByShow["truedetective"],
+        }, 
+        "sunsetboulevard": {
+          type: "movie",  
+          title: "Sunset Boulevard",
+          release_year: "1950",
+          genre: "Psychological Drama",
+          duration: "1h 50m",          
+          description: "A screenwriter develops a dangerous relationship with a faded film star determined to make a triumphant return.",
+          background: "/images/sunsetboulevard/covers/sunsetboulevardCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "sunsetboulevard", "movie"),
+        },
         
       };
 

@@ -33,6 +33,8 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Redline", cardId: "card-32" },
   { title: "Bugonia", cardId: "card-33" },
   { title: "Frankenstein", cardId: "card-34" },
+  { title: "True Detective", cardId: "card-35" },
+  { title: "Sunset Boulevard", cardId: "card-36" }
 ];
 
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -70,4 +72,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-32": "redline",
   "card-33": "bugonia",
   "card-34": "frankenstein",
+  "card-35": "truedetective",
+  "card-36": "sunsetboulevard",
 };

@@ -408,5 +408,28 @@ export const SHOWS = [
         dateadded: "2-5-25",
     }, 
     
+    { 
+        id: "truedetective", 
+        title: "True Detective", 
+        creator: "Nic Pizzolatto", 
+        background: "/images/truedetective/covers/truedetective_backdrop.svg", 
+        ratings: "8.8", 
+        type: "TV", 
+        keyart: "/images/truedetective/covers/truedetective_mobileLogo.jpg", 
+        card: "/images/cardimages/truedetectiveLogo.svg", 
+        dateadded: "2-6-25",
+    },
+
+    { 
+        id: "sunsetboulevard", 
+        title: "Sunset Boulevard", 
+        creator: "Billy Wilder", 
+        background: "/images/sunsetboulevard/covers/sunsetboulevard_backdrop.svg", 
+        ratings: "8.4", 
+        type: "Movies", 
+        keyart: "/images/sunsetboulevard/covers/sunsetboulevard_mobileLogo.jpg", 
+        card: "/images/cardimages/sunsetboulevardLogo.svg", 
+        dateadded: "2-7-25",
+    },     
     
 ];
