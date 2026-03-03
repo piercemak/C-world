@@ -12,6 +12,7 @@ import {
   VIDEO_PLAYER_CARD_ID_TO_SLUG,
   VIDEO_PLAYER_SIDEBAR_ITEMS,
 } from "../data/videoPlayerCatalogData.js";
+import { removeWatchHistory } from "../lib/watchSync.js";
 
 import { useSnow } from "./SnowContext.jsx"; 
 
@@ -38,7 +39,7 @@ const VideoPlayer = () => {
     const xIcon = (<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>);
     const continueIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4"><path d="M5.055 7.06C3.805 6.347 2.25 7.25 2.25 8.69v8.122c0 1.44 1.555 2.343 2.805 1.628L12 14.471v2.34c0 1.44 1.555 2.343 2.805 1.628l7.108-4.061c1.26-.72 1.26-2.536 0-3.256l-7.108-4.061C13.555 6.346 12 7.249 12 8.689v2.34L5.055 7.061Z" /></svg>
     const rightArrow = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-5" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/></svg>
-
+    const closeIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-5" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>
 
 
     {/* Profile Manipulation */}
@@ -453,6 +454,49 @@ const VideoPlayer = () => {
     allCards.forEach((c) => c.classList.remove(styles.active));
   };
   const [loadedContinueThumbs, setLoadedContinueThumbs] = useState({});
+  const [recentlyWatchedRev, setRecentlyWatchedRev] = useState(0);
+  const removeRecentlyWatched = async (target) => {
+    if (!target?.showSlug) return;
+
+    const matchesTarget = (entry) => {
+      if (!entry?.showId) return false;
+      const sameShow = cleanShowId(entry.showId) === cleanShowId(target.showSlug);
+      if (!sameShow) return false;
+
+      const targetSeason = target.season == null ? null : Number(target.season);
+      const targetEpisode = target.episode == null ? null : Number(target.episode);
+      const entrySeason = entry.lastSeason == null ? null : Number(entry.lastSeason);
+      const entryEpisode = entry.lastEpisode == null ? null : Number(entry.lastEpisode);
+
+      return entrySeason === targetSeason && entryEpisode === targetEpisode;
+    };
+
+    const pruneList = (storageKey) => {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) return;
+      try {
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) return;
+        const next = parsed.filter((entry) => !matchesTarget(entry));
+        localStorage.setItem(storageKey, JSON.stringify(next));
+      } catch {
+        // Ignore malformed cache payloads and leave untouched.
+      }
+    };
+
+    pruneList("lastWatched");
+    pruneList("lastWatchedMobile");
+    try {
+      await removeWatchHistory({
+        showId: target.showSlug,
+        season: target.season,
+        episode: target.episode,
+      });
+    } catch {
+      // Keep local removal even if network/delete fails.
+    }
+    setRecentlyWatchedRev((v) => v + 1);
+  };
   const parseWatchProgress = (raw) => {
     if (!raw) return { fraction: 0, updatedAt: 0 };
     try {
@@ -607,6 +651,8 @@ const continueItems = useMemo(() => {
       return {
         key: `${showSlug}-${entry.lastSeason || 0}-${entry.lastEpisode || 0}`,
         showSlug,
+        season: isSeries ? (Number(entry.lastSeason) || 1) : null,
+        episode: isSeries ? (Number(entry.lastEpisode) || 1) : null,
         watchedAt: entry.watchedAt,
         title: slugToTitle[showSlug] ?? showSlug.replace(/-/g, " "),
         subtitle,
@@ -622,7 +668,7 @@ const continueItems = useMemo(() => {
     .sort((a, b) => (b.watchedAt || 0) - (a.watchedAt || 0));
 
     return merged.slice(0, 10);
-  }, [slugToTitle, cloudFrontDomain, allEpisodeTitles]);
+  }, [slugToTitle, cloudFrontDomain, allEpisodeTitles, recentlyWatchedRev]);
 
 
   {/* Cover Randomizer */}
@@ -1467,12 +1513,20 @@ const continueItems = useMemo(() => {
 
                           {/* ✅ Recently watched */}
                           <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-1">
-                            <div className="flex flex-nowrap gap-3 w-max">
+                            <motion.div layout className="flex flex-nowrap gap-3 w-max">
+                              <AnimatePresence initial={false}>
                               {continueItems.map((item) => {
                                 const isLoading = !loadedContinueThumbs[item.key];
                                 return (
                                   <motion.div
                                     key={item.key}
+                                    layout
+                                    exit={{ opacity: 0, y: 22, scale: 0.98 }}
+                                    transition={{
+                                      layout: { type: "spring", stiffness: 260, damping: 28 },
+                                      opacity: { duration: 0.2 },
+                                      y: { duration: 0.22, ease: "easeOut" },
+                                    }}
                                     whileHover={{
                                       scale: 0.95,
                                       boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
@@ -1490,8 +1544,21 @@ const continueItems = useMemo(() => {
                                       setContinueOpen(false);
                                       navigate(item.to);
                                     }}
-                                    className="relative w-52 h-28 shrink-0 rounded-2xl overflow-hidden snap-start border border-white/10 bg-white/5 cursor-pointer"
+                                    className="group relative w-52 h-28 shrink-0 rounded-2xl overflow-hidden snap-start border border-white/10 bg-white/5 cursor-pointer"
                                   >
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        void removeRecentlyWatched(item);
+                                      }}
+                                      className="absolute top-2 right-2 z-20 flex items-center justify-center size-6 rounded-full bg-black/65 text-white/80 border border-white/20 opacity-0 translate-x-1 -translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200 hover:text-white hover:bg-black/80 cursor-pointer"
+                                      aria-label="Remove from recently watched"
+                                      title="Remove"
+                                    >
+                                      {closeIcon}
+                                    </button>
                                     {/* Loader */}
                                     <div
                                       className={`w-full h-full ${isLoading ? "animate-pulse bg-white/5" : ""}`}
@@ -1538,7 +1605,8 @@ const continueItems = useMemo(() => {
                                   </motion.div>
                                 );
                               })}
-                            </div>
+                              </AnimatePresence>
+                            </motion.div>
                           </div>
                         </div>
 

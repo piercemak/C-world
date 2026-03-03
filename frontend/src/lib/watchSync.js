@@ -103,3 +103,14 @@ export const syncWatchHistory = async ({ showId, season = null, episode = null }
     }),
   });
 };
+
+export const removeWatchHistory = async ({ showId, season = null, episode = null }) => {
+  await authedFetch("/api/history/", {
+    method: "DELETE",
+    body: JSON.stringify({
+      show_id: showId,
+      season,
+      episode,
+    }),
+  });
+};
