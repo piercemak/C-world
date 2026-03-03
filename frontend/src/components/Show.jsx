@@ -1214,6 +1214,10 @@ const handleSkipOutro = async () => {
     }
   }
 };
+const handleSkipOutroRef = useRef(handleSkipOutro);
+useEffect(() => {
+  handleSkipOutroRef.current = handleSkipOutro;
+}, [handleSkipOutro]);
 
 const skippingRef = useRef(false);
 
@@ -1328,7 +1332,7 @@ const handleSkipToPrevious = async () => {
   useEffect(() => {
     if (countdown === null) return;
     if (countdown === 0) {
-      handleSkipOutro(); // Trigger the skip
+      handleSkipOutroRef.current?.(); // Trigger skip using latest handler state
       return;
     }
   
