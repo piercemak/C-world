@@ -267,10 +267,12 @@ useEffect(() => {
       const raw = localStorage.getItem(key);
       if (!raw) return 0;
 
-      const data = JSON.parse(raw); 
-      if (!data.duration || data.duration === 0) return 0;
+      const data = JSON.parse(raw);
+      const currentTime = Number(data.currentTime ?? data.t ?? 0);
+      const duration = Number(data.duration ?? data.d ?? 0);
+      if (!duration || duration <= 0) return 0;
 
-      const fraction = data.currentTime / data.duration;
+      const fraction = currentTime / duration;
       return Math.min(1, Math.max(0, fraction));
     } catch (err) {
       console.error("Failed to read progress", err);
