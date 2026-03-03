@@ -242,7 +242,7 @@ def progress(request):
     return Response(WatchProgressSerializer(obj).data)
 
 
-@api_view(["GET", "POST"])
+@api_view(["GET", "POST", "DELETE"])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def history(request):
@@ -262,6 +262,13 @@ def history(request):
         )
     season = request.data.get("season")
     episode = request.data.get("episode")
+
+    if request.method == "DELETE":
+        deleted_count, _ = WatchHistory.objects.filter(
+            profile=profile,
+            show_id=show_id,
+        ).delete()
+        return Response({"deleted": deleted_count > 0}, status=status.HTTP_200_OK)
 
     obj, _ = WatchHistory.objects.update_or_create(
         profile=profile,
