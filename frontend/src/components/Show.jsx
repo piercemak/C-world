@@ -893,6 +893,14 @@ const getActiveSkipTime = () => {
 };
 const { intro, outro } = getActiveSkipTime();
 const hasIntro = !!(intro && Number.isFinite(intro.end));
+const debugOutro =
+  import.meta.env.DEV &&
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("debugOutro") === "1";
+const [debugOutroDismissed, setDebugOutroDismissed] = useState(false);
+useEffect(() => {
+  setDebugOutroDismissed(false);
+}, [src, debugOutro]);
 const formatProgressStorageKey = (s = season, e = episode) => {
   if (s == null || e == null) return `${showId}`;
   const seasonNum = Number(s);
@@ -1017,10 +1025,13 @@ const readProgressRawWithMigration = (storageKey) => {
       setIntroVisible(intro ? (time >= intro.start && time <= intro.end) : false);
 
       const shouldShowOutroSkip =
-        outro &&
-        time >= outro.start &&
-        !isMovie &&
-        !(isLastEpisode && outro.skipTo === "next");
+        debugOutro ||
+        (
+          outro &&
+          time >= outro.start &&
+          !isMovie &&
+          !(isLastEpisode && outro.skipTo === "next")
+        );
 
       if (shouldShowOutroSkip && !outroDismissed) {
         setOutroVisible(true);
@@ -1550,8 +1561,59 @@ const handleSkipToPrevious = async () => {
     setCountdown(null);
     setOutroVisible(false);
     setOutroDismissed(true);
+    if (debugOutro) setDebugOutroDismissed(true);
     outroSkipRef.current = false; 
   };
+  const outroCountdownMax = 10;
+  const showOutroCta = (outroVisible || (debugOutro && !debugOutroDismissed)) && !isMovie && !isLastEpisode;
+  const [outroSweepProgress, setOutroSweepProgress] = useState(0);
+  const outroSweepElapsedMsRef = useRef(0);
+  const outroSweepLastTsRef = useRef(null);
+  const outroSweepActiveRef = useRef(false);
+  useEffect(() => {
+    if (showOutroCta) {
+      if (!outroSweepActiveRef.current) {
+        outroSweepElapsedMsRef.current = 0;
+        outroSweepLastTsRef.current = null;
+        setOutroSweepProgress(0);
+        outroSweepActiveRef.current = true;
+      }
+      return;
+    }
+    outroSweepElapsedMsRef.current = 0;
+    outroSweepLastTsRef.current = null;
+    setOutroSweepProgress(0);
+    outroSweepActiveRef.current = false;
+  }, [showOutroCta]);
+  useEffect(() => {
+    if (!showOutroCta || !isPlaying) {
+      outroSweepLastTsRef.current = null;
+      return;
+    }
+
+    let rafId = 0;
+    const maxMs = outroCountdownMax * 1000;
+    const step = (ts) => {
+      if (outroSweepLastTsRef.current == null) {
+        outroSweepLastTsRef.current = ts;
+      }
+      const dt = ts - outroSweepLastTsRef.current;
+      outroSweepLastTsRef.current = ts;
+
+      outroSweepElapsedMsRef.current = Math.min(
+        maxMs,
+        outroSweepElapsedMsRef.current + Math.max(0, dt)
+      );
+      setOutroSweepProgress(outroSweepElapsedMsRef.current / maxMs);
+
+      if (outroSweepElapsedMsRef.current < maxMs) {
+        rafId = requestAnimationFrame(step);
+      }
+    };
+
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, [showOutroCta, isPlaying, outroCountdownMax]);
 
 
 
@@ -1976,57 +2038,50 @@ const handleSkipToPrevious = async () => {
     )}
 
     {/* Skip Outro */}
-    {outroVisible && !isMovie && !isLastEpisode && (
-      <div className="absolute bottom-32 right-4 flex flex-col gap-2 text-black z-30 group">
-        <div className="flex flex-row justify-between items-center">
-          <motion.span 
-            animate={{
-              scale: isNextHovered ? 1.05 : 1,
-              y: isNextHovered ? -8 : 0,
-            }}
-            className="text-white font-bold tracking-wider text-lg"
-          >
-            Next... {countdown !== null ? `${countdown}` : ""}
-          </motion.span>
-          <motion.span
-            animate={{
-              scale: isNextHovered ? 1.05 : 1,
-              y: isNextHovered ? -8 : 0,
-            }}
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.1 }}
-            onClick={cancelOutroCountdown}
-            className="text-white/60"
-          >
-            {closeIcon}
-          </motion.span>
-        </div>
+    <AnimatePresence>
+      {showOutroCta && (
         <motion.div
+          className="absolute bottom-32 right-4 flex flex-col gap-2 text-black z-30 group bg-black/20 border-1 border-white/10 backdrop-blur-2xl p-2 rounded-lg"
+          initial={{ opacity: 0, y: 22, scale: 0.98 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            scale: isNextHovered ? 1.03 : 1,
+          }}
+          exit={{ opacity: 0, y: 18, scale: 0.98 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
           onHoverStart={() => setNextHovered(true)}
           onHoverEnd={() => setNextHovered(false)}
-          whileHover={{ 
-            scale: 1.1,
-            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-            transition: { duration: 0.3, ease: "easeInOut" }
-          }}
-          whileTap={{ scale: 0.9 }}
-          className="w-48 h-24 bg-cover bg-center rounded-lg cursor-pointer"
-          style={{ backgroundImage: `url(${placeholderPath})` }}
-          onClick={handleSkipOutro}
         >
           <motion.div
-            className="absolute bottom-0 w-full text-white font-normal tracking-wide text-sm p-1 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            style={{
-              backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0))',
-              borderBottomLeftRadius: '0.5rem',
-              borderBottomRightRadius: '0.5rem',
-            }}
+            whileTap={{ scale: 0.9 }}
+            className="w-48 h-24 bg-cover bg-center rounded-lg cursor-pointer"
+            style={{ backgroundImage: `url(${placeholderPath})` }}
+            onClick={handleSkipOutro}
           >
-            {nextTitleFormatted}
           </motion.div>
+          <div className="relative flex flex-row justify-between items-center bg-transparent rounded-md px-2 overflow-hidden">
+            <div
+              className="absolute inset-y-0 left-0 rounded-md bg-white/10"
+              style={{ width: `${Math.max(0, Math.min(outroSweepProgress, 1)) * 100}%` }}
+            />
+            <motion.span 
+              className="relative z-10 text-white/60 tracking-widest text-md font-semibold"
+            >
+              Next Episode
+            </motion.span>
+            <motion.span
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.1 }}
+              onClick={cancelOutroCountdown}
+              className="relative z-10 text-white/60 hover:text-white/40"
+            >
+              {closeIcon}
+            </motion.span>
+          </div>
         </motion.div>
-      </div>
-    )}
+      )}
+    </AnimatePresence>
     
   </div>
   );
