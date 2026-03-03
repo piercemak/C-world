@@ -120,7 +120,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   
   const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
-  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny"]);
+  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny", "mobpsycho"]);
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
 
@@ -225,6 +225,9 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       3:37,
       4:18,
       5:36,
+    },
+    truedetective: {
+      1:8,
     } 
   };
 const displaySeason =
@@ -314,6 +317,54 @@ const isLastEpisode =
         }
       ]
     },
+    "mobpsycho": {
+      seasons: {
+        1: {
+          1: { outro: { start: 1429, skipTo: "next" } },
+          2: { intro: { start: 61.0, end: 154.0 }, outro: { start: 1331, skipTo: "next" } },
+          3: { intro: { start: 40.0, end: 130.0 }, outro: { start: 1434, skipTo: "next" } },
+          4: { intro: { start: 56.0, end: 146.0 }, outro: { start: 1345, skipTo: "next" } },
+          5: { intro: { start: 42.0, end: 133.0 }, outro: { start: 1341, skipTo: "next" } },
+          6: { intro: { start: 35.0, end: 126.0 }, outro: { start: 1345, skipTo: "next" } },
+          7: { intro: { start: 57.0, end: 147.0 }, outro: { start: 1345, skipTo: "next" } },
+          8: { intro: { start: 54.0, end: 144.0 }, outro: { start: 1435, skipTo: "next" } },
+          9: { intro: { start: 63.0, end: 153.0 }, outro: { start: 1345, skipTo: "next" } },
+          10: { intro: { start: 32.0, end: 122.0 }, outro: { start: 1302, skipTo: "next" } },
+          11: { intro: { start: 33.0, end: 123.0 }, outro: { start: 1345, skipTo: "next" } },
+          12: { intro: { start: 45.0, end: 135.0 }, outro: { start: 1451, skipTo: "next" } },
+        },
+        2: {
+          1: { intro: { start: 395.0, end: 485.0 }, outro: { start: 1432, skipTo: "next" } },
+          2: { intro: { start: 19.0, end: 109.0 }, outro: { start: 1345, skipTo: "next" } },
+          3: { intro: { start: 24.0, end: 114.0 }, outro: { start: 1345, skipTo: "next" } },
+          4: { intro: { start: 27.0, end: 117.0 }, outro: { start: 1345, skipTo: "next" } },
+          5: { intro: { start: 10.0, end: 100.0 }, outro: { start: 1431, skipTo: "next" } },
+          6: { intro: { start: 57.0, end: 147.0 }, outro: { start: 1345, skipTo: "next" } },
+          7: { intro: { start: 20.0, end: 110.0 }, outro: { start: 1434, skipTo: "next" } },
+          8: { intro: { start: 43.0, end: 133.0 }, outro: { start: 1345, skipTo: "next" } },
+          9: { intro: { start: 83.0, end: 173.0 }, outro: { start: 1345, skipTo: "next" } },
+          10: { intro: { start: 52.0, end: 142.0 }, outro: { start: 1345, skipTo: "next" } },
+          11: { intro: { start: 63.0, end: 153.0 }, outro: { start: 1313, skipTo: "next" } },
+          12: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1345, skipTo: "next" } },
+          13: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1446, skipTo: "next" } },
+        },
+        3: {
+          1: { intro: { start: 32.0, end: 122.0 }, outro: { start: 1380, skipTo: "next" } },
+          2: { intro: { start: 47.0, end: 137.0 }, outro: { start: 1299, skipTo: "next" } },
+          3: { intro: { start: 275.0, end: 365.0 }, outro: { start: 1316, skipTo: "next" } },
+          4: { intro: { start: 43.0, end: 133.0 }, outro: { start: 1404, skipTo: "next" } },
+          5: { intro: { start: 149.0, end: 239.0 }, outro: { start: 1315, skipTo: "next" } },
+          6: { intro: { start: 83.0, end: 173.0 }, outro: { start: 1405, skipTo: "next" } },
+          7: { intro: { start: 177.0, end: 267.0 }, outro: { start: 1315, skipTo: "next" } },
+          8: { intro: { start: 104.0, end: 194.0 }, outro: { start: 1397, skipTo: "next" } },
+          9: { intro: { start: 39.0, end: 129.0 }, outro: { start: 1315, skipTo: "next" } },
+          10: { intro: { start: 123.0, end: 213.0 }, outro: { start: 1315, skipTo: "next" } },
+          11: { intro: { start: 81.0, end: 171.0 }, outro: { start: 1315, skipTo: "next" } },
+          12: { intro: { start: 110.0, end: 200.0 }, outro: { start: 1410, skipTo: "next" } },
+        }
+
+      }
+  }, 
     "jjk": {
       seasons: {
         1: {
@@ -810,7 +861,21 @@ const isLastEpisode =
         36: { intro: { start: 0.0, end: 29.0 }, outro: { start: 1468, skipTo: "next" } },
       }
     },   
-  }
+  },
+  "truedetective": {
+    seasons: {
+      1: {
+        2: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3513, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3413, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3431, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3362, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3375, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3452, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3147, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3223, skipTo: "next" } },
+      }
+    }
+  }, 
 
   };
  
