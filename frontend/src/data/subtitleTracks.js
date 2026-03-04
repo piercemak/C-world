@@ -13,6 +13,9 @@ const MOVIE_SUBTITLE_TRACKS = {
   "bugonia": "/videos/bugonia/bugonia_subtitles.vtt",
   "frankenstein": "/videos/frankenstein/frankenstein_subtitles.vtt",
   "sunsetboulevard": "/videos/sunsetboulevard/sunsetboulevard_subtitles.vtt",
+  "shikijitsu": "/videos/shikijitsu/shikijitsu_subtitles.vtt",
+  "speaknoevil": "/videos/speaknoevil/speaknoevil_subtitles.vtt",
+  "ikiru": "/videos/ikiru/ikiru_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {
@@ -23,7 +26,6 @@ const SERIES_SUBTITLE_PATTERNS = {
   cyberpunk: "/subtitles/cyberpunk/season{season}/S{season}E{episode2}_subtitles.vtt",
   severance: "/subtitles/severance/season{season}/S{season}E{episode2}_subtitles.vtt",
   pluribus: "/subtitles/pluribus/season{season}/S{season}E{episode2}_subtitles.vtt",
-  itsalwayssunny: "/subtitles/itsalwayssunny/season{season}/S{season}E{episode2}_subtitles.vtt",
   truedetective: "/subtitles/truedetective/season{season}/S{season}E{episode2}_subtitles.vtt",
 };
 

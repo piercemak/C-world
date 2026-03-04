@@ -431,5 +431,41 @@ export const SHOWS = [
         card: "/images/cardimages/sunsetboulevardLogo.svg", 
         dateadded: "2-7-25",
     },     
+
+    {
+        id: "shikijitsu",
+        title: "Shiki-Jitsu",
+        creator: "Hideaki Anno", 
+        background: "/images/shikijitsu/covers/shikijitsu_backdrop.svg",
+        ratings: "7.5",
+        type: "Movies",
+        keyart: "/images/shikijitsu/covers/shikijitsu_mobileLogo.jpg", 
+        card: "/images/cardimages/shikijitsuLogo.svg", 
+        dateadded: "2-8-25",
+    },
+
+    {
+        id: "speaknoevil",
+        title: "Speak No Evil",
+        creator: "Christian Tafdrup", 
+        background: "/images/speaknoevil/covers/speaknoevil_backdrop.svg",
+        ratings: "6.7",
+        type: "Movies",
+        keyart: "/images/speaknoevil/covers/speaknoevil_mobileLogo.jpg", 
+        card: "/images/cardimages/speaknoevilLogo.svg", 
+        dateadded: "2-9-25",
+    },
+
+    {
+        id: "ikiru",
+        title: "Ikiru",
+        creator: "Akira Kurosawa", 
+        background: "/images/ikiru/covers/ikiru_backdrop.svg",
+        ratings: "8.3",
+        type: "Movies",
+        keyart: "/images/ikiru/covers/ikiru_mobileLogo.jpg", 
+        card: "/images/cardimages/ikiruLogo.svg", 
+        dateadded: "2-10-25",
+    },
     
 ];

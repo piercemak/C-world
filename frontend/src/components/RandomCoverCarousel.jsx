@@ -42,6 +42,9 @@ const RandomCoverCarousel = () => {
     { id: "frankenstein", src: "/images/frankenstein/covers/frankensteinCover.webp", title: "Frankenstein" },
     { id: "truedetective", src: "/images/truedetective/covers/truedetectiveCover.svg", title: "True Detective" },
     { id: "sunsetboulevard", src: "/images/sunsetboulevard/covers/sunsetboulevardCover.svg", title: "Sunset Boulevard" },
+    { id: "shikijitsu", src: "/images/shikijitsu/covers/shikijitsuCover.svg", title: "Shiki-Jitsu" },
+    { id: "speaknoevil", src: "/images/speaknoevil/covers/speaknoevilCover.svg", title: "Speak No Evil" },
+    { id: "ikiru", src: "/images/ikiru/covers/ikiruCover.jpg", title: "Ikiru" },
   ];
 
   const showsById = useMemo(() => {

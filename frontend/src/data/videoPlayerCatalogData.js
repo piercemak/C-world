@@ -34,7 +34,11 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Bugonia", cardId: "card-33" },
   { title: "Frankenstein", cardId: "card-34" },
   { title: "True Detective", cardId: "card-35" },
-  { title: "Sunset Boulevard", cardId: "card-36" }
+  { title: "Sunset Boulevard", cardId: "card-36" },
+  { title: "Shiki-Jitsu", cardId: "card-37" },
+  { title: "Speak No Evil", cardId: "card-38" },
+  { title: "Ikiru", cardId: "card-39" },
+
 ];
 
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -74,4 +78,7 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-34": "frankenstein",
   "card-35": "truedetective",
   "card-36": "sunsetboulevard",
+  "card-37": "shikijitsu",
+  "card-38": "speaknoevil",
+  "card-39": "ikiru",
 };
