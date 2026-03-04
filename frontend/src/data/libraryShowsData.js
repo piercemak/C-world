@@ -391,6 +391,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 1,
           description: "True Detective explores Cohle and Hart's recollection of their investigation of the murder of Dora Lange from 1995 to 2002.",
           background: "/images/truedetective/covers/truedetectiveCover.svg",
+          subtitles: "yes",
           videos: videoDataByShow["truedetective"],
         }, 
         "sunsetboulevard": {

@@ -658,6 +658,7 @@ const MobileShows = () => {
           season_digit: 1,
           description: "True Detective explores Cohle and Hart's recollection of their investigation of the murder of Dora Lange from 1995 to 2002.",
           mobilebackground: "/images/thetwilightzone/covers/itsalwayssunny_background.jpg",
+          subtitles: "yes",
           videos: videoDataByShow["truedetective"],
         }, 
         "sunsetboulevard": {

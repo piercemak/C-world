@@ -6,6 +6,7 @@ import VolumeSlider from "./VolumeSlider.jsx";
 import SkipForward from '../assets/icons/SkipForward.svg'
 import SkipBack from '../assets/icons/SkipBack.svg'
 import { queueWatchProgressSync } from "../lib/watchSync.js";
+import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
 
 
 const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, hasSubtitles = false, episodeTitles, getSignedUrl = {} }) => {
@@ -1498,6 +1499,7 @@ const handleSkipToPrevious = async () => {
 
   const [subtitlesEnabled, setSubtitlesEnabled] = useState(hasSubtitles);
   const [activeSubtitleCues, setActiveSubtitleCues] = useState([]);
+  const subtitleTrackSrc = getSubtitleTrackSrc({ showId, season, episode });
 
   useEffect(() => {
   setSubtitlesEnabled(hasSubtitles);
@@ -1644,167 +1646,14 @@ const handleSkipToPrevious = async () => {
     >
       <source src={src} type="video/mp4" />
 
-      {showId === "perfect-blue" && (
+      {subtitleTrackSrc && (
         <track
-          src={`/videos/perfectblue/perfectblue.vtt`}
+          src={subtitleTrackSrc}
           kind="subtitles"
           srcLang="en"
           label="English"
         />
       )}
-
-      {showId === "paprika" && (
-        <track
-          src={`/videos/paprika/paprikaSub.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}
-
-      {showId === "neon-genesis" && season && episode && (
-        <track
-          src={`/subtitles/neongenesis/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}
-
-      {showId === "mob-psycho" && season && episode && (
-        <track
-          src={`/subtitles/mobpsycho/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}
-
-      {showId === "fmab" && season && episode && (
-        <track
-          src={`/subtitles/fmab/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )} 
-
-      {showId === "jjk" && season && episode && (
-        <track
-          src={`/subtitles/jjk/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}                    
-
-      {showId === "the-vanishing" && (
-        <track
-          src={`/videos/thevanishing/thevanishing_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}
-
-      {showId === "ghost-in-the-shell" && (
-        <track
-          src={`/videos/ghostintheshell/ghostintheshell_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}
-
-      {showId === "tokyo-godfathers" && (
-        <track
-          src={`/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}  
-
-      {showId === "cyberpunk" && season && episode && (
-        <track
-          src={`/subtitles/cyberpunk/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )} 
-
-      {showId === "solaris" && (
-        <track
-          src={`/videos/solaris/solaris_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}
-
-      {showId === "demons" && (
-        <track
-          src={`/videos/demons/demons_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}     
-
-      {showId === "severance" && season && episode && (
-        <track
-          src={`/subtitles/severance/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}     
-
-      {showId === "pluribus" && season && episode && (
-        <track
-          src={`/subtitles/pluribus/season${season}/S${season}E${String(episode).padStart(2, "0")}_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}     
-
-      {showId === "akira" && (
-        <track
-          src={`/videos/akira/akira_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}   
-
-      {showId === "annihilation" && (
-        <track
-          src={`/videos/annihilation/annihilation_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )}  
-
-      {showId === "redline" && (
-        <track
-          src={`/videos/redline/redline_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )} 
-
-      {showId === "bugonia" && (
-        <track
-          src={`/videos/bugonia/bugonia_subtitles.vtt`}
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-      )} 
 
 
       Your browser does not support the video tag.
