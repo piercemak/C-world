@@ -336,6 +336,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 16,
           description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
           background: "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
+          subtitles: "yes",
           videos: videoDataByShow["itsalwayssunny"],
         },  
         "thetwilightzone": {
@@ -391,6 +392,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 1,
           description: "True Detective explores Cohle and Hart's recollection of their investigation of the murder of Dora Lange from 1995 to 2002.",
           background: "/images/truedetective/covers/truedetectiveCover.svg",
+          subtitles: "yes",
           videos: videoDataByShow["truedetective"],
         }, 
         "sunsetboulevard": {
