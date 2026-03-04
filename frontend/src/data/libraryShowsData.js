@@ -336,6 +336,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 16,
           description: "Five friends with big egos and small brains are the proprietors of an Irish pub in Philadelphia.",
           background: "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
+          subtitles: "yes",
           videos: videoDataByShow["itsalwayssunny"],
         },  
         "thetwilightzone": {
