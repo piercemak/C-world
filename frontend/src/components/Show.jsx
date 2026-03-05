@@ -268,6 +268,32 @@ const isLastEpisode =
   !isMovie &&
   currS === maxSeasonNumber &&
   currE === (showSeasonData[currS] || 0);
+const cleanIdForS3 = showId?.replace(/-/g, "");
+const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
+  if (!cleanIdForS3) return "";
+  const seasonNum = Number(targetSeason);
+  const episodeNum = Number(targetEpisode);
+  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return "";
+  const seasonStr = `S${String(seasonNum).padStart(2, "0")}`;
+  const episodeStr = `E${String(episodeNum).padStart(2, "0")}`;
+  const titleRaw = episodeTitles?.[seasonNum]?.[episodeNum - 1] || "";
+  return `${cleanIdForS3}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanIdForS3}_${titleRaw}.mp4`;
+};
+const [playbackSrc, setPlaybackSrc] = useState(src);
+const intendedResumeTimeRef = useRef(null);
+const stallTimerRef = useRef(null);
+const recoveryInFlightRef = useRef(false);
+const recoveryAttemptCountRef = useRef(0);
+const recoveryWindowStartRef = useRef(0);
+const recoveryWindowMs = 45_000;
+const recoveryMaxAttempts = 2;
+useEffect(() => {
+  setPlaybackSrc(src);
+  intendedResumeTimeRef.current = null;
+  recoveryInFlightRef.current = false;
+  recoveryAttemptCountRef.current = 0;
+  recoveryWindowStartRef.current = 0;
+}, [src]);
 
 
   const skipTimes = {
@@ -981,6 +1007,29 @@ const readProgressRawWithMigration = (storageKey) => {
     };
     startPlayback();
   }, [src, skipIntro, intro?.end]);
+  useEffect(() => {
+    const vid = videoRef.current;
+    const resumeAt = intendedResumeTimeRef.current;
+    if (!vid || resumeAt == null) return;
+
+    const handleResumeReady = async () => {
+      try {
+        vid.currentTime = Math.max(0, Number(resumeAt) || 0);
+        await vid.play();
+      } catch (err) {
+        console.warn("Recovery resume play failed:", err);
+      } finally {
+        intendedResumeTimeRef.current = null;
+      }
+    };
+
+    vid.addEventListener("loadedmetadata", handleResumeReady, { once: true });
+    vid.addEventListener("canplay", handleResumeReady, { once: true });
+    return () => {
+      vid.removeEventListener("loadedmetadata", handleResumeReady);
+      vid.removeEventListener("canplay", handleResumeReady);
+    };
+  }, [playbackSrc]);
   const [countdown, setCountdown] = useState(null);
   const [outroDismissed, setOutroDismissed] = useState(false);
   const countdownRef = useRef(null);
@@ -1370,7 +1419,11 @@ const handleSkipToPrevious = async () => {
   const generateFramePreview = async (time) => {
     const tempVideo = document.createElement('video');
     tempVideo.crossOrigin = 'anonymous'; 
-    tempVideo.src = new URL(src).toString();
+    try {
+      tempVideo.src = new URL(playbackSrc, window.location.origin).toString();
+    } catch {
+      tempVideo.src = playbackSrc;
+    }
     tempVideo.preload = 'auto';
     tempVideo.muted = true;
     return new Promise((resolve, reject) => {
@@ -1554,8 +1607,79 @@ const handleSkipToPrevious = async () => {
   useEffect(() => {
     setIsLoading(true); 
   }, [src]);
-  const handleMediaLoadStart = () => setIsLoading(true);
-  const handleMediaCanPlay = () => setIsLoading(false);
+  const clearStallWatchdog = () => {
+    if (stallTimerRef.current) {
+      clearTimeout(stallTimerRef.current);
+      stallTimerRef.current = null;
+    }
+  };
+  const attemptPlaybackRecovery = async (reason = "stall") => {
+    if (recoveryInFlightRef.current) return;
+    if (!getSignedUrl || typeof getSignedUrl !== "function") return;
+
+    const now = Date.now();
+    if (!recoveryWindowStartRef.current || now - recoveryWindowStartRef.current > recoveryWindowMs) {
+      recoveryWindowStartRef.current = now;
+      recoveryAttemptCountRef.current = 0;
+    }
+    if (recoveryAttemptCountRef.current >= recoveryMaxAttempts) return;
+
+    let currentKey = isMovie
+      ? (cleanIdForS3 ? `${cleanIdForS3}/${cleanIdForS3}.mp4` : "")
+      : buildEpisodeS3Key(actualSeason, actualEpisode);
+    const hasMissingTitleInKey =
+      !!cleanIdForS3 && currentKey.endsWith(`_${cleanIdForS3}_.mp4`);
+    if (!currentKey || hasMissingTitleInKey) {
+      try {
+        const candidate = new URL(playbackSrc, window.location.origin).pathname
+          .replace(/^\/+/, "");
+        if (candidate.endsWith(".mp4")) {
+          currentKey = decodeURIComponent(candidate);
+        }
+      } catch {
+        // Ignore fallback parsing errors; no safe key to refresh.
+      }
+    }
+    if (!currentKey) return;
+
+    recoveryInFlightRef.current = true;
+    recoveryAttemptCountRef.current += 1;
+    const currentTimeSnapshot = Number(videoRef.current?.currentTime || 0);
+    try {
+      const refreshedUrl = await getSignedUrl(currentKey);
+      if (!refreshedUrl) return;
+      intendedResumeTimeRef.current = currentTimeSnapshot;
+      setPlaybackSrc(refreshedUrl);
+      setIsLoading(true);
+      console.warn(`Playback recovery attempt (${reason})`, {
+        attempt: recoveryAttemptCountRef.current,
+      });
+    } catch (err) {
+      console.warn("Playback recovery failed:", err);
+    } finally {
+      recoveryInFlightRef.current = false;
+    }
+  };
+  const armStallWatchdog = () => {
+    clearStallWatchdog();
+    stallTimerRef.current = setTimeout(() => {
+      attemptPlaybackRecovery("watchdog-timeout");
+    }, 8000);
+  };
+  const handleMediaLoadStart = () => {
+    setIsLoading(true);
+    armStallWatchdog();
+  };
+  const handleMediaCanPlay = () => {
+    setIsLoading(false);
+    clearStallWatchdog();
+  };
+  const handleMediaError = () => {
+    setIsLoading(true);
+    clearStallWatchdog();
+    attemptPlaybackRecovery("media-error");
+  };
+  useEffect(() => () => clearStallWatchdog(), []);
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.focus();
@@ -1631,7 +1755,7 @@ const handleSkipToPrevious = async () => {
     className={`relative w-full h-full outline-none focus:outline-none ${cursorVisible ? "cursor-pointer" : "cursor-none"}`} 
   >
     <video
-      key={src}
+      key={playbackSrc}
       ref={videoRef}
       className={`w-full h-full object-contain rounded-2xl z-[5] ${isLoading ? "animate-pulse bg-black/60" : ""}`}
       preload="auto"
@@ -1644,8 +1768,9 @@ const handleSkipToPrevious = async () => {
       onCanPlay={handleMediaCanPlay}
       onSeeked={handleMediaCanPlay}
       onPlaying={handleMediaCanPlay}
+      onError={handleMediaError}
     >
-      <source src={src} type="video/mp4" />
+      <source src={playbackSrc} type="video/mp4" />
 
       {subtitleTrackSrc && (
         <track

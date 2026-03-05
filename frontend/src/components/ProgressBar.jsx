@@ -20,8 +20,21 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
   const [hoverTime, setHoverTime] = useState(null);
   const [hoverX, setHoverX] = useState(0);
   const barRef = useRef(null);
-  const dragRafRef = useRef(null);
   const pendingDragTimeRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const getTimeFromClientX = (clientX) => {
+    const bar = barRef.current;
+    if (!bar || !duration) return null;
+    const rect = bar.getBoundingClientRect();
+    const offsetX = Math.min(Math.max(clientX - rect.left, 0), rect.width);
+    const pct = rect.width > 0 ? offsetX / rect.width : 0;
+    return {
+      time: pct * duration,
+      offsetX,
+      pct,
+    };
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -55,38 +68,21 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
   }, [videoRef, src]);
 
   const handleSeek = (e) => {
-    const bar = barRef.current;
-    if (!bar) return;
-    const rect = bar.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const percentage = offsetX / rect.width;
-  
-    if (duration > 0 && videoRef.current) {
-      const newTime = percentage * duration;
-      videoRef.current.currentTime = newTime;
-    }
+    if (isDragging) return;
+    const point = getTimeFromClientX(e.clientX);
+    if (!point || !videoRef.current) return;
+    videoRef.current.currentTime = point.time;
   };
   const handleMouseMove = (e) => {
-    const bar = barRef.current;
-    if (!bar) return;
-    const rect = bar.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const percentage = Math.min(Math.max(offsetX / rect.width, 0), 1);
-    const time = percentage * duration;
-  
-    setHoverTime(time);
-    setHoverX(offsetX);
-  
-    if (isDragging && videoRef.current) {
-      pendingDragTimeRef.current = time;
-      if (!dragRafRef.current) {
-        dragRafRef.current = requestAnimationFrame(() => {
-          dragRafRef.current = null;
-          if (videoRef.current && pendingDragTimeRef.current != null) {
-            videoRef.current.currentTime = pendingDragTimeRef.current;
-          }
-        });
-      }
+    const point = getTimeFromClientX(e.clientX);
+    if (!point) return;
+    setHoverTime(point.time);
+    setHoverX(point.offsetX);
+
+    if (isDragging) {
+      pendingDragTimeRef.current = point.time;
+      setCurrentTime(point.time);
+      setProgress(point.pct * 100);
     }
   };
 
@@ -94,24 +90,28 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
     setHoverTime(null);
   };
 
-  const [isDragging, setIsDragging] = useState(false);
-  const handleMouseDown = () => {
+  const handleMouseDown = (e) => {
     setIsDragging(true);
-  };
-  const handleMouseUp = () => {
-    setIsDragging(false);
+    const point = getTimeFromClientX(e.clientX);
+    if (!point) return;
+    pendingDragTimeRef.current = point.time;
+    setHoverTime(point.time);
+    setHoverX(point.offsetX);
+    setCurrentTime(point.time);
+    setProgress(point.pct * 100);
   };
   useEffect(() => {
-    const handleUp = () => setIsDragging(false);
-    document.addEventListener("mouseup", handleUp);
-    return () => {
-      document.removeEventListener("mouseup", handleUp);
-      if (dragRafRef.current) {
-        cancelAnimationFrame(dragRafRef.current);
-        dragRafRef.current = null;
+    const handleCommitUp = () => {
+      if (videoRef.current && pendingDragTimeRef.current != null) {
+        videoRef.current.currentTime = pendingDragTimeRef.current;
       }
+      setIsDragging(false);
     };
-  }, []);
+    document.addEventListener("mouseup", handleCommitUp);
+    return () => {
+      document.removeEventListener("mouseup", handleCommitUp);
+    };
+  }, [videoRef]);
 
   useEffect(() => {
     if (controlsVisible && videoRef.current) {
