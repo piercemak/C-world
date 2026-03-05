@@ -52,7 +52,8 @@ def get_signed_url(request):
         return Response({'error': 'Missing key parameter'}, status=400)
 
     resource_url = f"https://{CLOUDFRONT_DOMAIN}/{key}"
-    expires = int((datetime.utcnow() + timedelta(hours=1)).timestamp())
+    signed_url_ttl_seconds = int(os.getenv("SIGNED_URL_TTL_SECONDS", "21600"))
+    expires = int((datetime.utcnow() + timedelta(seconds=signed_url_ttl_seconds)).timestamp())
 
     policy = {
         "Statement": [{
