@@ -438,6 +438,17 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "ikiru", "movie"),
         },
+        "theericandreshow": {
+          type: "show",  
+          title: "The Eric Andre Show",
+          release_year: "2012",
+          genre: "Sketch Comedy",
+          season_total_number: "5 seasons",
+          season_digit: 5,
+          description: "Eric Andre tries to host a talk show in a bizarre environment, where he is sometimes the player of pranks and sometimes the victim.",
+          background: "/images/theericandreshow/covers/theericandreshowCover.svg",
+          videos: videoDataByShow["theericandreshow"],
+        },
         
       };
 

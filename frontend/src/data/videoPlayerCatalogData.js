@@ -38,6 +38,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Shiki-Jitsu", cardId: "card-37" },
   { title: "Speak No Evil", cardId: "card-38" },
   { title: "Ikiru", cardId: "card-39" },
+  { title: "The Eric Andre Show", cardId: "card-40" },
 
 ];
 
@@ -81,4 +82,5 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-37": "shikijitsu",
   "card-38": "speaknoevil",
   "card-39": "ikiru",
+  "card-40": "theericandreshow",
 };

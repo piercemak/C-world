@@ -467,5 +467,16 @@ export const SHOWS = [
         card: "/images/cardimages/ikiruLogo.svg", 
         dateadded: "2-10-25",
     },
-    
+
+    {
+        id: "theericandreshow",
+        title: "The Eric Andre Show",
+        creator: "Eric André", 
+        background: "/images/theericandreshow/covers/theericandreshow_backdrop.svg",
+        ratings: "8.5",
+        type: "TV",
+        keyart: "/images/theericandreshow/covers/theericandreshow_mobileLogo.jpg", 
+        card: "/images/cardimages/theericandreshowLogo.svg", 
+        dateadded: "2-11-25",
+    },    
 ];

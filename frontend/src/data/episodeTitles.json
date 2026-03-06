@@ -805,7 +805,7 @@
     ],
     "7": [
       "Common_People",
-      "Bête_Noire",
+      "B\u00eate_Noire",
       "Hotel_Reverie",
       "Plaything",
       "Eulogy",
@@ -1241,6 +1241,69 @@
       "Haunted_Houses",
       "After_Youve_Gone",
       "Form_and_Void"
+    ]
+  },
+  "theericandreshow": {
+    "1": [
+      "Dolph_Lundgren",
+      "Rick_Fox",
+      "Tatyana_Ali",
+      "Brandi_Glanville",
+      "Reese_Witherspoon",
+      "Jack",
+      "Sinbad",
+      "J_Moe",
+      "Evangelos",
+      "Ryan_Phillippe",
+      "New_Years_Eve_Spooktacular"
+    ],
+    "2": [
+      "Maria_Menounos_Eric_Balfour",
+      "Krysten_Ritter_Dominic_Monaghan",
+      "Lou_Ferrigno_Downtown_Julie_Brown",
+      "Jodie_Sweetin_Vivica_A_Fox",
+      "James_Van_Der_Beek_Stevo_O",
+      "Wink_Martindale_Sarah_Burns",
+      "Lance_Reddick_Harry_Shum_Jr",
+      "Joey_Fatone_Richard_Hatch",
+      "Chance_The_Rapper_Mel_B",
+      "Scott_Porter_Brutus_The_Barber_Beefcake"
+    ],
+    "3": [
+      "Seth_Rogan_Asa_Akira",
+      "Lauren_Conrad_Reese_Witherspoon",
+      "Ryan_Kwanten_Beyonce_and_Jay_Z",
+      "Jillian_Barberie_Victor_Ortiz",
+      "The_Hannibal_Buress_Show",
+      "Wiz_Khalifa_Aubrey_Peeples",
+      "Naturi_Naughton_Ryan_Phillippe",
+      "Jimmy_Kimmel_Tyler_The_Creator",
+      "Pauly_D_Rick_Springfield",
+      "Bird_Up"
+    ],
+    "4": [
+      "T_I_Abby_Lee_Miller",
+      "Stacey_Dash_Jack_McBrayer",
+      "Howie_Mandel_Malaysia_Pargo",
+      "Tichina_Arnold_Steve_Shirripa",
+      "Jesse_Williams_Jillian_Michaels",
+      "Warren_G_Kelly_Osbourne",
+      "Raymond_Cruz_Amber_Rose",
+      "Chris_Jericho_Roy_Hibbert_Flavor_Flav",
+      "Dennis_Rodman_Haley_Joel_Osment",
+      "Jack_Black_Jennette_McCurdy"
+    ],
+    "5": [
+      "King_is_Born",
+      "Hannibal_Quits",
+      "You_Got_Served",
+      "Lizzo_Up",
+      "The_ASAP_Ferg_Show",
+      "Blannibal_Quits",
+      "Named_After_My_Dads_Penis",
+      "Bone_TV",
+      "Is_Your_Wife_Still_Depressed",
+      "The_50th_Episode"
     ]
   }
 }
