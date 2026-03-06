@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen flex bg-[url('/images/misc/loginBackground.jpg')] bg-cover bg-center text-white overflow-hidden p-10">
+    <div className="w-full h-screen flex bg-[url('/images/misc/lilliesLogin.svg')] bg-cover bg-center text-white overflow-hidden p-10">
       {/* Left - quote area */}
       <div className="w-1/2 p-12 flex flex-col justify-between border-[10px] border-white rounded-l-3xl">
         <div className="text-sm uppercase tracking-wider flex items-center gap-1 poppinsfont">   
