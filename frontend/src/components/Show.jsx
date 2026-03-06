@@ -280,6 +280,7 @@ const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
   return `${cleanIdForS3}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanIdForS3}_${titleRaw}.mp4`;
 };
 const [playbackSrc, setPlaybackSrc] = useState(src);
+const [mediaNotFound, setMediaNotFound] = useState(false);
 const intendedResumeTimeRef = useRef(null);
 const stallTimerRef = useRef(null);
 const recoveryInFlightRef = useRef(false);
@@ -289,6 +290,7 @@ const recoveryWindowMs = 45_000;
 const recoveryMaxAttempts = 2;
 useEffect(() => {
   setPlaybackSrc(src);
+  setMediaNotFound(!src);
   intendedResumeTimeRef.current = null;
   recoveryInFlightRef.current = false;
   recoveryAttemptCountRef.current = 0;
@@ -1605,6 +1607,10 @@ const handleSkipToPrevious = async () => {
   {/* Loading Pulse State */}
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    if (!src) {
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true); 
   }, [src]);
   const clearStallWatchdog = () => {
@@ -1647,7 +1653,12 @@ const handleSkipToPrevious = async () => {
     const currentTimeSnapshot = Number(videoRef.current?.currentTime || 0);
     try {
       const refreshedUrl = await getSignedUrl(currentKey);
-      if (!refreshedUrl) return;
+      if (!refreshedUrl) {
+        setIsLoading(false);
+        setMediaNotFound(true);
+        clearStallWatchdog();
+        return;
+      }
       intendedResumeTimeRef.current = currentTimeSnapshot;
       setPlaybackSrc(refreshedUrl);
       setIsLoading(true);
@@ -1672,9 +1683,17 @@ const handleSkipToPrevious = async () => {
   };
   const handleMediaCanPlay = () => {
     setIsLoading(false);
+    setMediaNotFound(false);
     clearStallWatchdog();
   };
   const handleMediaError = () => {
+    const canRecover = !!(getSignedUrl && typeof getSignedUrl === "function");
+    if (!canRecover || recoveryAttemptCountRef.current >= recoveryMaxAttempts) {
+      setIsLoading(false);
+      setMediaNotFound(true);
+      clearStallWatchdog();
+      return;
+    }
     setIsLoading(true);
     clearStallWatchdog();
     attemptPlaybackRecovery("media-error");
@@ -1785,7 +1804,15 @@ const handleSkipToPrevious = async () => {
       Your browser does not support the video tag.
     </video>
 
-    {isLoading && (
+    {mediaNotFound && (
+      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none">
+        <div className="text-white/90 text-xl font-medium">
+          Media Not Found. Text me and I will fix :)
+        </div>
+      </div>
+    )}
+
+    {!mediaNotFound && isLoading && (
       <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none">
         {spinner}
       </div>
