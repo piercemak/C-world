@@ -14,6 +14,23 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
 
   const containerRef = useRef(null)
   const videoRef = useRef(null);
+  const [playbackSrc, setPlaybackSrc] = useState(src);
+  const [mediaNotFound, setMediaNotFound] = useState(false);
+  const intendedResumeTimeRef = useRef(null);
+  const stallTimerRef = useRef(null);
+  const recoveryInFlightRef = useRef(false);
+  const recoveryAttemptCountRef = useRef(0);
+  const recoveryWindowStartRef = useRef(0);
+  const recoveryWindowMs = 45_000;
+  const recoveryMaxAttempts = 2;
+  useEffect(() => {
+    setPlaybackSrc(src);
+    setMediaNotFound(!src);
+    intendedResumeTimeRef.current = null;
+    recoveryInFlightRef.current = false;
+    recoveryAttemptCountRef.current = 0;
+    recoveryWindowStartRef.current = 0;
+  }, [src]);
   const spinner = <svg xmlns="http://www.w3.org/2000/svg" className="size-14" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FCFAFF"></stop><stop offset=".3" stop-color="#FCFAFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FCFAFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FCFAFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FCFAFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FCFAFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
   
   const fullscreenIcon = <svg xmlns="http://www.w3.org/2000/svg"  height="16" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/></svg>
@@ -85,7 +102,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
       vid.removeEventListener("play", handlePlay);
       vid.removeEventListener("pause", handlePause);
     };
-  }, [src]); 
+  }, [playbackSrc]); 
 
 
   {/* Fullscreen Toggle */}
@@ -286,25 +303,6 @@ const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
   const titleRaw = episodeTitles?.[seasonNum]?.[episodeNum - 1] || "";
   return `${cleanIdForS3}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanIdForS3}_${titleRaw}.mp4`;
 };
-const [playbackSrc, setPlaybackSrc] = useState(src);
-const [mediaNotFound, setMediaNotFound] = useState(false);
-const intendedResumeTimeRef = useRef(null);
-const stallTimerRef = useRef(null);
-const recoveryInFlightRef = useRef(false);
-const recoveryAttemptCountRef = useRef(0);
-const recoveryWindowStartRef = useRef(0);
-const recoveryWindowMs = 45_000;
-const recoveryMaxAttempts = 2;
-useEffect(() => {
-  setPlaybackSrc(src);
-  setMediaNotFound(!src);
-  intendedResumeTimeRef.current = null;
-  recoveryInFlightRef.current = false;
-  recoveryAttemptCountRef.current = 0;
-  recoveryWindowStartRef.current = 0;
-}, [src]);
-
-
   const skipTimes = {
     "stevenuniverse": {
       default: {
@@ -1038,6 +1036,7 @@ const readProgressRawWithMigration = (storageKey) => {
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
+    if (intendedResumeTimeRef.current != null) return;
     setAutoSkipDone(false); 
 
   const key = formatProgressStorageKey();
@@ -1080,7 +1079,7 @@ const readProgressRawWithMigration = (storageKey) => {
       }
     };
     startPlayback();
-  }, [src, skipIntro, intro?.end]);
+  }, [playbackSrc, skipIntro, intro?.end]);
   useEffect(() => {
     const vid = videoRef.current;
     const resumeAt = intendedResumeTimeRef.current;
@@ -1632,7 +1631,7 @@ const handleSkipToPrevious = async () => {
   useEffect(() => {
   setSubtitlesEnabled(hasSubtitles);
   setActiveSubtitleCues([]);
-  }, [hasSubtitles, src]);
+  }, [hasSubtitles, playbackSrc]);
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -1672,19 +1671,19 @@ const handleSkipToPrevious = async () => {
     return () => {
       track.removeEventListener("cuechange", handleCueChange);
     };
-  }, [src, subtitlesEnabled]);
+  }, [playbackSrc, subtitlesEnabled]);
 
 
 
   {/* Loading Pulse State */}
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (!src) {
+    if (!playbackSrc) {
       setIsLoading(false);
       return;
     }
     setIsLoading(true); 
-  }, [src]);
+  }, [playbackSrc]);
   const clearStallWatchdog = () => {
     if (stallTimerRef.current) {
       clearTimeout(stallTimerRef.current);
@@ -1942,7 +1941,7 @@ const handleSkipToPrevious = async () => {
         <div className="relative bottom-8">
           {/* Progress Bar */}
           <div className="flex-grow bottom-4 relative">
-            <ProgressBar videoRef={videoRef} src={src} controlsVisible={controlsVisible} />
+            <ProgressBar videoRef={videoRef} src={playbackSrc} controlsVisible={controlsVisible} />
           </div>
 
           <div className="flex w-full items-center gap-4 text-white relative ">
@@ -2107,7 +2106,10 @@ const handleSkipToPrevious = async () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="bg-black/20 backdrop-blur-sm border text-white/90 hover:text-white/70 transition-colors border-white/10 inset-shadow-2xs inset-shadow-white/20 bg-opacity-90 px-5 py-3 rounded-lg text-sm font-semibold cursor-pointer tracking-wide"
+          tabIndex={-1}
+          onMouseDown={(e) => e.preventDefault()}
+          onFocus={(e) => e.currentTarget.blur()}
+          className="bg-black/20 backdrop-blur-sm border text-white/90 hover:text-white/70 transition-colors border-white/10 inset-shadow-2xs inset-shadow-white/20 bg-opacity-90 px-5 py-3 rounded-lg text-sm font-semibold cursor-pointer tracking-wide focus:outline-none"
           onClick={handleSkipIntro}
         >
           Skip Intro
