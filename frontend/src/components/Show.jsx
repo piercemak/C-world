@@ -462,6 +462,7 @@ const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
           7: { intro: { start: 183.0, end: 273.0 }, outro: { start: 1328, skipTo: "next" } },
           8: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1330, skipTo: "next" } },
           9: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1229, skipTo: "next" } },
+          10: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1313, skipTo: "next" } },
         }
       }
     },

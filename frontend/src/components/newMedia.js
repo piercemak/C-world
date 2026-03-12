@@ -4,6 +4,16 @@
     export const newMedia = [
       {
         kind: "episode",
+        showSlug: "jjk",                   
+        showTitle: "Jujutsu Kaisen",
+        season: 3,
+        episode: 10,
+        episodeTitle: "Tokyo Colony No 4",
+        placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E10_${clean("jjk")}_placeholder.png`,
+        to: `/video-library/jjk?season=3&episode=10`,
+      },
+      {
+        kind: "episode",
         showSlug: "theericandreshow",                   
         showTitle: "The Eric Andre Show",
         season: 1,
@@ -36,11 +46,4 @@
         placeholder: "/images/speaknoevil/placeholders/speaknoevil_placeholder.png",
         to: `/video-library/speaknoevil?movie=1`,
       },
-      {
-        kind: "movie",
-        showSlug: "shikijitsu",
-        showTitle: "Shiki-Jitsu",
-        placeholder: "/images/shikijitsu/placeholders/shikijitsu_placeholder.png",
-        to: `/video-library/shikijitsu?movie=1`,
-      },   
     ];
