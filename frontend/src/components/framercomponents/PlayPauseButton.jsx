@@ -7,7 +7,7 @@ const PlayPauseButton = ({ isPlaying, onToggle }) => {
       key="pause"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      className="size-8"
+      className="size-10"
       viewBox="0 0 16 16"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ const PlayPauseButton = ({ isPlaying, onToggle }) => {
       key="play"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      className="size-8"
+      className="size-10"
       viewBox="0 0 16 16"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -39,8 +39,8 @@ const PlayPauseButton = ({ isPlaying, onToggle }) => {
       onClick={onToggle}
       aria-label="Toggle play/pause"
       className="relative cursor-pointer focus-visible:outline-none"
-      whileTap={{ scale: 0.9 }}
-      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.92 }}
+      whileHover={{ scale: 1.14, y: -1 }}
     >
       <AnimatePresence mode="wait" initial={false}>
         {isPlaying ? pauseIcon : playIcon}

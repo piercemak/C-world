@@ -33,13 +33,13 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   }, [src]);
   const spinner = <svg xmlns="http://www.w3.org/2000/svg" className="size-14" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FCFAFF"></stop><stop offset=".3" stop-color="#FCFAFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FCFAFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FCFAFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FCFAFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FCFAFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
   
-  const fullscreenIcon = <svg xmlns="http://www.w3.org/2000/svg"  height="16" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/></svg>
-  const fullscreenexitIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z"/></svg>
-  const volumeIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8"/></svg>
+  const fullscreenIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/></svg>
+  const fullscreenexitIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z"/></svg>
+  const volumeIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-10" viewBox="0 0 16 16"><path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8"/></svg>
   const mutedIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/></svg>
-  const nextepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z"/></svg>
-  const prevepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0z"/></svg>
-  const closeIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-6" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>
+  const nextepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z"/></svg>
+  const prevepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0z"/></svg>
+  const closeIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>
 
 
   {/* Outro Ref */}
@@ -1416,9 +1416,21 @@ const handleSkipToPrevious = async () => {
     : (isMovie ? showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
               : `Episode ${nextEpisode}`);
 
-  const formattedShowTitle = showId
-    ?.replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  const displayTitleMap = {
+    jjk: "Jujutsu Kaisen",
+    fmab: "Fullmetal Alchemist: Brotherhood",
+    mobpsycho: "Mob Psycho 100",
+    neongenesis: "Neon Genesis Evangelion",
+    overthegardenwall: "Over The Garden Wall",
+    itsalwayssunny: "It's Always Sunny In Philadelphia",
+    lovedeathandrobots: "Love, Death & Robots",
+    thetwilightzone: "The Twilight Zone",
+    theericandreshow: "The Eric Andre Show",
+  };
+  const cleanedShowKey = (showId || "").replace(/-/g, "").toLowerCase();
+  const formattedShowTitle =
+    displayTitleMap[cleanedShowKey] ||
+    showId?.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
     const [dispS, setDispS] = useState(null);
     const [dispE, setDispE] = useState(null);
@@ -1437,17 +1449,20 @@ const handleSkipToPrevious = async () => {
         }
       };
 
-      const [s, e] = parseSE(src);
+      const [s, e] = parseSE(playbackSrc);
       setDispS(Number.isFinite(s) ? s : (Number.isFinite(season) ? season : null));
       setDispE(Number.isFinite(e) ? e : (Number.isFinite(episode) ? episode : null));
-    }, [src, season, episode]);
+    }, [playbackSrc, season, episode]);
 
     const currentTitleRaw = dispS && dispE && episodeTitles?.[dispS]?.[dispE - 1];
     const currentTitleFormatted = currentTitleRaw
       ? currentTitleRaw.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
       : (dispE != null ? `Episode ${dispE}` : "");
 
-    const displayEpisodeNumber = dispE != null ? `E${dispE}` : "";
+    const displayEpisodeNumber =
+      dispS != null && dispE != null
+        ? `S${dispS}E${dispE}`
+        : (dispE != null ? `E${dispE}` : "");
     const displayTitle = formattedShowTitle;
     const displayEpisodeTitle = currentTitleFormatted;
  
@@ -1788,6 +1803,7 @@ const handleSkipToPrevious = async () => {
   const outroCountdownMax = 10;
   const showOutroCta = (outroVisible || (debugOutro && !debugOutroDismissed)) && !isMovie && !isLastEpisode;
   const [outroSweepProgress, setOutroSweepProgress] = useState(0);
+  const outroSweepPercent = Math.max(0, Math.min(outroSweepProgress, 1)) * 100;
   const outroSweepElapsedMsRef = useRef(0);
   const outroSweepLastTsRef = useRef(null);
   const outroSweepActiveRef = useRef(false);
@@ -1847,7 +1863,7 @@ const handleSkipToPrevious = async () => {
     <video
       key={playbackSrc}
       ref={videoRef}
-      className={`w-full h-full object-contain rounded-2xl z-[5] ${isLoading ? "animate-pulse bg-black/60" : ""}`}
+      className={`w-full h-full object-contain rounded-2xl z-[5] ${isLoading ? "bg-black/60 backdrop-blur-2xl" : ""}`}
       preload="auto"
       onClick={handleSingleClick}
       onDoubleClick={handleDoubleClick}
@@ -1928,6 +1944,28 @@ const handleSkipToPrevious = async () => {
       </div>
     )}
 
+    <AnimatePresence>
+      {controlsVisible && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.24, ease: "easeOut" }}
+          className="absolute top-0 left-0 right-0 z-30 bg-gradient-to-b from-black/75 rounded-2xl to-transparent px-6 pt-5 2xl:pt-10 pb-12 text-right elms-font uppercase pointer-events-none"
+        >
+          <div className="text-white text-[16px] 2xl:text-[24px] font-semibold tracking-wide leading-tight">
+            {displayTitle}
+          </div>
+          {!isMovie && (
+            <div className="mt-1 text-white/75 text-[13px] 2xl:text-[18px] font-medium tracking-wide leading-tight">
+              {displayEpisodeNumber}
+              {displayEpisodeTitle ? ` • ${displayEpisodeTitle}` : ""}
+            </div>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+
   
   <AnimatePresence>
     {controlsVisible && (
@@ -1936,77 +1974,74 @@ const handleSkipToPrevious = async () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.3 }}
-        className="absolute bottom-0 left-0 right-0 z-20 px-4 pt-44 rounded-2xl bg-gradient-to-t from-black/80 to-transparent pointer-events-auto"
+        className="absolute bottom-0 left-0 right-0 z-40 px-4 pt-44 rounded-2xl bg-gradient-to-t from-black/80 to-transparent pointer-events-none"
       >
         <div className="relative bottom-8">
           {/* Progress Bar */}
-          <div className="flex-grow bottom-4 relative">
+          <div className="relative z-40 mb-5 pointer-events-auto">
             <ProgressBar videoRef={videoRef} src={playbackSrc} controlsVisible={controlsVisible} />
           </div>
 
-          <div className="flex w-full items-center gap-4 text-white relative ">
-
-          <div className="flex flex-wrap text-white absolute items-center max-w-[40%] leading-none">
-            <span className="font-bold italic poppinsfont text-[14px]">{displayTitle}</span>
-            {!isMovie && (
-              <>
-                <span className="ml-[6px] text-[14px] font-extralight">{displayEpisodeNumber}</span>
-                <span className="mx-2">-</span>
-                <span className="text-[14px] font-extralight tracking-wide">{displayEpisodeTitle}</span>
-              </>
-            )}
-          </div>
-
-            {/* Play/Pause */}
-              <div className="w-full justify-center gap-4 flex items-center relative left-8">
+          <div className="relative z-30 grid grid-cols-[1fr_auto_1fr] items-center text-white pt-1 pointer-events-auto">
+            <div />
+            <div className="justify-center gap-5 flex items-center">
 
               {!isMovie && !isFirstEpisode && (
-                <motion.div
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.05 }}
+                <motion.button
+                  whileTap={{ scale: 0.92 }}
+                  whileHover={{ scale: 1.18, y: -1 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="cursor-pointer focus-visible:outline-none text-white/90 hover:text-white"
                   onClick={handleSkipToPrevious}
                 >
                   <span>{prevepIcon}</span>
-                </motion.div>
+                </motion.button>
               )}
 
-                <motion.div onClick={skipBackward} 
+                <motion.button
+                  onClick={skipBackward} 
                   className="cursor-pointer focus-visible:outline-none"
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.92 }}
+                  whileHover={{ scale: 1.14, y: -1 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
                 >
-                  <img src={SkipBack} alt="Skip Forward" className="size-7" />
-                </motion.div>
+                  <img src={SkipBack} alt="Skip Forward" className="size-10" />
+                </motion.button>
 
-                  <div className="relative flex items-center">
-                    <PlayPauseButton isPlaying={isPlaying} onToggle={togglePlay} />
-                  </div>
+                <div className="relative flex items-center">
+                  <PlayPauseButton isPlaying={isPlaying} onToggle={togglePlay} />
+                </div>
 
-                <motion.div onClick={skipForward} 
+                <motion.button
+                  onClick={skipForward} 
                   className="cursor-pointer focus-visible:outline-none"
-                  whileTap={{ scale: 0.9 }}
-                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.92 }}
+                  whileHover={{ scale: 1.14, y: -1 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
                 >
-                  <img src={SkipForward} alt="Skip forward" className="size-7" />
-                </motion.div>
+                  <img src={SkipForward} alt="Skip forward" className="size-10" />
+                </motion.button>
 
                 {!isMovie && !isLastEpisode && (
-                  <motion.div
-                    whileTap={{ scale: 0.9 }}
-                    whileHover={{ scale: 1.05 }}
+                  <motion.button
+                    whileTap={{ scale: 0.92 }}
+                    whileHover={{ scale: 1.18, y: -1 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="cursor-pointer focus-visible:outline-none text-white/90 hover:text-white"
                     onClick={handleNextEpisode}
                   >
                     <span>{nextepIcon}</span>
-                  </motion.div>
+                  </motion.button>
                 )}
-
-              </div>
-
-
-            <div className="flex flex-row gap-2 ">
+            </div>
+            <div
+              className={`justify-self-end grid items-center justify-items-center gap-3 ${
+                hasSubtitles ? "grid-cols-3 min-w-[144px]" : "grid-cols-2 min-w-[96px]"
+              }`}
+            >
               {/* Volume Button */}
               <div
-                className="relative flex flex-col items-center"
+                className="relative flex h-10 w-10 items-center justify-center"
                 onMouseEnter={() => setvolumeHovered(true)}
                 onMouseLeave={() => setvolumeHovered(false)}
               >
@@ -2014,14 +2049,13 @@ const handleSkipToPrevious = async () => {
                 <AnimatePresence mode="wait">
                   {volumeHovered && (
                     <motion.div
-                      className="absolute bottom-12 right-[2px] w-8 h-10 z-20 cursor-pointer"
-                      initial={{ scaleY: 0 }}
-                      animate={{ scaleY: 3 }}
-                      exit={{ scaleY: 0 }}
-                      transition={{ duration: 1.0, type: "spring", bounce: 0.25 }}
-                      originY={0} // grow from bottom only
+                      className="absolute bottom-full left-1/2 z-[120] -translate-x-1/2 cursor-pointer mb-3"
+                      initial={{ opacity: 0, y: 10, scale: 0.92 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.94 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      <div className="w-full h-full flex justify-center">  
+                      <div className="flex justify-center rounded-lg border border-white/15 bg-black/55 px-2 py-2 backdrop-blur-md">
                         <VolumeSlider
                           volume={volume}
                           muted={toggleMute}
@@ -2043,25 +2077,31 @@ const handleSkipToPrevious = async () => {
 
                 {/* Volume Icon */}
                 {toggleMute ? (
-                  <button
-                    className="relative z-30 cursor-pointer focus-visible:outline-none"
+                  <motion.button
+                    whileTap={{ scale: 0.92 }}
+                    whileHover={{ scale: 1.14, y: -1 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="relative z-30 flex h-10 w-10 items-center justify-center cursor-pointer focus-visible:outline-none text-white/90 hover:text-white"
                     onClick={() => {
                       setToggleMute(false);
                       if (videoRef.current) videoRef.current.muted = false;
                     }}
                   >
                     {mutedIcon}
-                  </button>
+                  </motion.button>
                 ) : (
-                  <button
-                    className="realtive z-30 cursor-pointer focus-visible:outline-none"
+                  <motion.button
+                    whileTap={{ scale: 0.92 }}
+                    whileHover={{ scale: 1.14, y: -1 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="relative z-30 flex h-10 w-10 items-center justify-center cursor-pointer focus-visible:outline-none text-white/90 hover:text-white"
                     onClick={() => {
                       setToggleMute(true);
                       if (videoRef.current) videoRef.current.muted = true;
                     }}
                   >
                     {volumeIcon}
-                  </button>
+                  </motion.button>
                 )}
 
               </div>
@@ -2069,13 +2109,14 @@ const handleSkipToPrevious = async () => {
               {/* Subtitles */}
               {hasSubtitles && (
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.14, }}
+                  whileTap={{ scale: 0.92 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
                   onClick={() => setSubtitlesEnabled((v) => !v)}
-                  className={` text-white cursor-pointer transition-colors mr-2 text-lg font-bold elms-font
+                  className={`flex items-center justify-center text-white cursor-pointer transition-colors text-2xl font-bold elms-font
                     ${subtitlesEnabled
-                      ? "text-white/90 border-white hover:text-white/80"
-                      : "text-white/40 border-white/40 hover:text-white/50"
+                      ? "text-white/90 hover:text-white"
+                      : "text-white/40 hover:text-white/70"
                     }
                   `}
                 >
@@ -2086,10 +2127,11 @@ const handleSkipToPrevious = async () => {
 
               {/* Fullscreen */}
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.14, y: -1 }}
+                whileTap={{ scale: 0.92 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
                 onClick={toggleFullscreen}
-                className="cursor-pointer focus-visible:outline-none"
+                className="flex h-10 w-10 items-center justify-center cursor-pointer focus-visible:outline-none text-white/90 hover:text-white"
               >
                 {isFullscreen ? fullscreenexitIcon : fullscreenIcon}
               </motion.button>
@@ -2102,7 +2144,7 @@ const handleSkipToPrevious = async () => {
 
     {/* Skip Intro */}
     {introVisible && (
-      <div className="absolute bottom-34 right-4 flex gap-2 text-black z-30">
+      <div className="absolute bottom-42 right-4 flex gap-2 text-black z-30">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -2121,20 +2163,20 @@ const handleSkipToPrevious = async () => {
     <AnimatePresence>
       {showOutroCta && (
         <motion.div
-          className="absolute bottom-32 right-4 flex flex-col gap-2 text-black z-30 group bg-black/20 border-1 border-white/10 backdrop-blur-2xl p-2 rounded-lg"
+          className="absolute bottom-42 right-4 flex flex-col gap-2 text-black z-30 group bg-black/20 border-1 border-white/10 backdrop-blur-2xl p-2 rounded-lg"
           initial={{ opacity: 0, y: 22, scale: 0.98 }}
           animate={{
             opacity: 1,
             y: 0,
             scale: isNextHovered ? 1.03 : 1,
           }}
+          whileTap={{ scale: 0.9 }}
           exit={{ opacity: 0, y: 18, scale: 0.98 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
           onHoverStart={() => setNextHovered(true)}
           onHoverEnd={() => setNextHovered(false)}
         >
           <motion.div
-            whileTap={{ scale: 0.9 }}
             className="w-48 h-24 bg-cover bg-center rounded-lg cursor-pointer"
             style={{ backgroundImage: `url(${placeholderPath})` }}
             onClick={handleSkipOutro}
@@ -2142,22 +2184,25 @@ const handleSkipToPrevious = async () => {
           </motion.div>
           <div className="relative flex flex-row justify-between items-center bg-transparent rounded-md px-2 overflow-hidden">
             <div
-              className="absolute inset-y-0 left-0 rounded-md bg-white/10"
-              style={{ width: `${Math.max(0, Math.min(outroSweepProgress, 1)) * 100}%` }}
+              className="absolute inset-y-0 left-0 rounded-md bg-white"
+              style={{ width: `${outroSweepPercent}%` }}
             />
-            <motion.span 
-              className="relative z-10 text-white/60 tracking-widest text-md font-semibold"
-            >
-              Next Episode
-            </motion.span>
-            <motion.span
-              whileTap={{ scale: 0.9 }}
-              whileHover={{ scale: 1.1 }}
-              onClick={cancelOutroCountdown}
-              className="relative z-10 text-white/60 hover:text-white/40"
-            >
-              {closeIcon}
-            </motion.span>
+            <div className="relative z-10 flex w-full items-center justify-between mix-blend-difference">
+              <motion.span
+                className="tracking-widest text-md font-semibold text-white"
+                onClick={handleSkipOutro}
+              >
+                Next Episode
+              </motion.span>
+              <motion.span
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+                onClick={cancelOutroCountdown}
+                className="text-white"
+              >
+                {closeIcon}
+              </motion.span>
+            </div>
           </div>
         </motion.div>
       )}

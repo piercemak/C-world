@@ -33,15 +33,15 @@ const VolumeSlider = ({ volume, setVolume, muted }) => {
   return (
     <div
       ref={sliderRef}
-      className="h-8 w-4 bg-white/20 backdrop-blur rounded relative cursor-pointer overflow-hidden"
+      className="h-24 w-3 bg-white/20 backdrop-blur rounded-full relative cursor-pointer overflow-hidden"
       onPointerDown={handlePointerDown}
     >
       <motion.div
-        className="absolute bottom-0 left-0 w-full bg-white"
+        className="absolute bottom-0 left-0 w-full bg-white rounded-full"
         style={{ height: `${muted ? 0 : volume * 100}%` }}
         initial={false}
         animate={{ height: `${muted ? 0 : volume * 100}%` }}
-        transition={{ ease: "easeOut", duration: 0.15 }}
+        transition={{ ease: "easeOut", duration: 0.22 }}
       />
     </div>
   );

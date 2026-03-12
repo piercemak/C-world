@@ -25,12 +25,13 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
 
   const getTimeFromClientX = (clientX) => {
     const bar = barRef.current;
-    if (!bar || !duration) return null;
+    if (!bar) return null;
     const rect = bar.getBoundingClientRect();
     const offsetX = Math.min(Math.max(clientX - rect.left, 0), rect.width);
     const pct = rect.width > 0 ? offsetX / rect.width : 0;
+    const effectiveDuration = Number(videoRef.current?.duration || duration || 0);
     return {
-      time: pct * duration,
+      time: pct * Math.max(0, effectiveDuration),
       offsetX,
       pct,
     };
@@ -136,11 +137,12 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="w-full h-2 cursor-pointer bg-white/20 rounded-md overflow-visible relative"
+        className="w-full h-6 cursor-pointer overflow-visible relative"
       >
         {/* Filled Progress */}
+        <div className="absolute inset-x-0 top-1/2 h-2 -translate-y-1/2 rounded-md bg-white/20" />
         <div
-          className="h-full bg-white/70 transition-all rounded-md duration-100 ease-out"
+          className="absolute left-0 top-1/2 h-2 -translate-y-1/2 bg-white/70 transition-all rounded-md duration-100 ease-out"
           style={{ width: `${progress}%` }}
         />
 
