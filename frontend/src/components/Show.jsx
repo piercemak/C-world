@@ -121,7 +121,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   
   const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
-  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny", "mobpsycho"]);
+  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny", "mobpsycho","theericandreshow"]);
   const filename = pathParts[pathParts.length - 1];
   const match = filename.match(/S(\d+)E(\d+)/);
 
@@ -229,7 +229,14 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     },
     truedetective: {
       1:8,
-    } 
+    },
+    theericandreshow: {
+      1:11,
+      2:10,
+      3:10,
+      4:10,
+      5:10,
+    }  
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -895,7 +902,7 @@ useEffect(() => {
   "truedetective": {
     seasons: {
       1: {
-        2: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3513, skipTo: "next" } },
+        1: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3513, skipTo: "next" } },
         2: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3413, skipTo: "next" } },
         3: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3431, skipTo: "next" } },
         4: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3362, skipTo: "next" } },
@@ -904,6 +911,71 @@ useEffect(() => {
         7: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3147, skipTo: "next" } },
         8: { intro: { start: 0.0, end: 97.0 }, outro: { start: 3223, skipTo: "next" } },
       }
+    }
+  }, 
+  "theericandreshow": {
+    seasons: {
+      1: {
+        1: { intro: { start: 0.0, end: 44.0 }, outro: { start: 630, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 44.0 }, outro: { start: 651, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 44.0 }, outro: { start: 649, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 41.0 }, outro: { start: 660, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 44.0 }, outro: { start: 658, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 33.0 }, outro: { start: 636, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 44.0 }, outro: { start: 641, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 66.0 }, outro: { start: 658, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 66.0 }, outro: { start: 635, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 44.0 }, outro: { start: 625, skipTo: "next" } },
+        11: { intro: { start: 0.0, end: 54.0 }, outro: { start: 1616, skipTo: "next" } },
+      },
+      2: {
+        1: { intro: { start: 0.0, end: 48.0 }, outro: { start: 657, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 48.0 }, outro: { start: 660, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 48.0 }, outro: { start: 645, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 55.0 }, outro: { start: 660, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 48.0 }, outro: { start: 660, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 52.0 }, outro: { start: 660, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 54.0 }, outro: { start: 654, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 51.0 }, outro: { start: 661, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 54.0 }, outro: { start: 649, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 61.0 }, outro: { start: 618, skipTo: "next" } },
+      },
+      3: {
+        1: { intro: { start: 0.0, end: 57.0 }, outro: { start: 660, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 45.0 }, outro: { start: 660, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 50.0 }, outro: { start: 645, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 45.0 }, outro: { start: 640, skipTo: "next" } },
+        5: { outro: { start: 638, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 53.0 }, outro: { start: 652, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 54.0 }, outro: { start: 635, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 54.0 }, outro: { start: 635, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 45.0 }, outro: { start: 635, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 45.0 }, outro: { start: 650, skipTo: "next" } },
+      },
+      4: {
+        1: { intro: { start: 0.0, end: 48.0 }, outro: { start: 645, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 48.0 }, outro: { start: 665, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 48.0 }, outro: { start: 660, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 48.0 }, outro: { start: 665, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 62.0 }, outro: { start: 665, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 71.0 }, outro: { start: 630, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 52.0 }, outro: { start: 635, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 53.0 }, outro: { start: 660, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 64.0 }, outro: { start: 667, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 56.0 }, outro: { start: 665, skipTo: "next" } },
+      },
+      5: {
+        1: { intro: { start: 0.0, end: 40.0 }, outro: { start: 665, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 55.0 }, outro: { start: 660, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 53.0 }, outro: { start: 660, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 47.0 }, outro: { start: 657, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 52.0 }, outro: { start: 657, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 52.0 }, outro: { start: 652, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 46.0 }, outro: { start: 657, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 43.0 }, outro: { start: 655, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 63.0 }, outro: { start: 653, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 51.0 }, outro: { start: 860, skipTo: "next" } },
+      },
     }
   }, 
 
