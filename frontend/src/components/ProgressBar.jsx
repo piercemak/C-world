@@ -126,7 +126,7 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
   return (
     <div className="w-full relative">
       {/* Time display */}
-      <div className="flex justify-end relative bottom-4 text-md text-white/80 tracking-wide font-light overflow-visible">
+      <div className="flex justify-end relative bottom-1 text-md text-white/80 tracking-wide font-light overflow-visible">
         {formatTime(duration - currentTime)}
       </div>
 
