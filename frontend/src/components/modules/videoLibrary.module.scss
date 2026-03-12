@@ -89,6 +89,15 @@
         padding-top: 18px !important;
     }
     }
+
+   @media (min-width: 1281px) and (max-width: 1535px) {
+    .sidebar-menu {
+        padding-top: 16px !important;
+    }
+    .user {
+        padding-bottom: 16px !important;
+    }
+   }
    
    .user {
     display: flex;
@@ -527,6 +536,12 @@
     }
     }
 
+    @media (min-width: 1281px) and (max-width: 1535px) {
+    .card {
+        width: 200px;
+    }
+    }
+
    
 
 
@@ -550,6 +565,12 @@
     width: auto;
    }
     @media (max-width: 1280px) {
+    .card.active {
+        width: 400px;
+    }
+    }   
+
+    @media (min-width: 1281px) and (max-width: 1535px) {
     .card.active {
         width: 400px;
     }

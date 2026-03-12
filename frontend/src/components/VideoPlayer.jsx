@@ -382,8 +382,32 @@ const VideoPlayer = () => {
   const isEpisodeSearch = isSearching && searchType === "episodes";
   const searchColsClass = isEpisodeSearch ? "grid-cols-3" : "grid-cols-3";
   const [loadedThumbs, setLoadedThumbs] = useState({});
+  const pendingThumbLoadsRef = useRef(new Set());
   const handleThumbLoad = (key) => {
-    setLoadedThumbs((prev) => ({ ...prev, [key]: true }));
+    setLoadedThumbs((prev) => (prev[key] ? prev : { ...prev, [key]: true }));
+    pendingThumbLoadsRef.current.delete(key);
+  };
+  const preloadCssCardThumb = (key, node) => {
+    if (!node || loadedThumbs[key] || pendingThumbLoadsRef.current.has(key)) return;
+    if (typeof window === "undefined") {
+      handleThumbLoad(key);
+      return;
+    }
+
+    const bgValue = window.getComputedStyle(node).backgroundImage || "";
+    const match = bgValue.match(/url\((['"]?)(.*?)\1\)/);
+    const src = match?.[2];
+
+    if (!src) {
+      handleThumbLoad(key);
+      return;
+    }
+
+    pendingThumbLoadsRef.current.add(key);
+    const img = new Image();
+    img.onload = () => handleThumbLoad(key);
+    img.onerror = () => handleThumbLoad(key);
+    img.src = src;
   };
 
   {/* Search Content Exit */}
@@ -1402,14 +1426,22 @@ const continueItems = useMemo(() => {
                               ? `${item.showSlug}-S${item.season}-E${item.episode}`
                               : item.cardId;                          
                             if (item.kind === "show") {
+                              const isCardLoaded = !!loadedThumbs[item.cardId];
                               return (
                                 <div
                                   key={thumbKey}
                                   className={`${styles.card} ${styles[item.cardId]} ${styles["card-img"]} cursor-pointer ${
                                     clickedCard === item.cardId ? styles.active : ""
                                   }`}
+                                  ref={(node) => preloadCssCardThumb(item.cardId, node)}
                                   onClick={() => handleCardClick(item.cardId)}
-                                />
+                                >
+                                  <div
+                                    className={`absolute inset-0 rounded-[inherit] bg-white/8 pointer-events-none transition-opacity duration-300 ${
+                                      isCardLoaded ? "opacity-0" : "opacity-100 animate-pulse"
+                                    }`}
+                                  />
+                                </div>
                               );
                             }
 
@@ -1744,13 +1776,25 @@ const continueItems = useMemo(() => {
                             }`}
                           >
                             {page.map(({ cardId }) => (
-                              <div
-                                key={cardId}
-                                className={`${styles.card} ${styles[cardId]} ${styles["card-img"]} ${
-                                  clickedCard === cardId ? styles.active : ""
-                                }`}
-                                onClick={() => handleCardClick(cardId)}
-                              />
+                              (() => {
+                                const isCardLoaded = !!loadedThumbs[cardId];
+                                return (
+                                  <div
+                                    key={cardId}
+                                    className={`${styles.card} ${styles[cardId]} ${styles["card-img"]} ${
+                                      clickedCard === cardId ? styles.active : ""
+                                    }`}
+                                    ref={(node) => preloadCssCardThumb(cardId, node)}
+                                    onClick={() => handleCardClick(cardId)}
+                                  >
+                                    <div
+                                      className={`absolute inset-0 rounded-[inherit] bg-white/8 pointer-events-none transition-opacity duration-300 ${
+                                        isCardLoaded ? "opacity-0" : "opacity-100 animate-pulse"
+                                      }`}
+                                    />
+                                  </div>
+                                );
+                              })()
                             ))}
                           </div>
                         ))}
