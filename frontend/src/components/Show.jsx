@@ -40,7 +40,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
   const nextepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z"/></svg>
   const prevepIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0z"/></svg>
   const closeIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/></svg>
-
+  const restartIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-10" viewBox="0 0 16 16"><path fillRule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/><path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/></svg>
 
   {/* Outro Ref */}
   const outroSkipRef = useRef(false);
@@ -1502,6 +1502,27 @@ const handleSkipToPrevious = async () => {
       );
     }
   };
+  const restartVideo = async () => {
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    const wasPlaying = !vid.paused && !vid.ended;
+    setCountdown(null);
+    setOutroVisible(false);
+    setOutroDismissed(false);
+    setIsPreviewing(false);
+    setPreviewImage(null);
+    outroProgressResetRef.current = false;
+    vid.currentTime = 0;
+
+    if (wasPlaying) {
+      try {
+        await vid.play();
+      } catch {
+        
+      }
+    }
+  };
 
   {/* Frame Preview Handling */}
   const [isPreviewing, setIsPreviewing] = useState(false);
@@ -1905,6 +1926,20 @@ const handleSkipToPrevious = async () => {
         {spinner}
       </div>
     )}    
+
+    {isFullscreen && (
+      <motion.button
+        onClick={restartVideo}
+        whileHover={{ scale: 1.14 }}
+        whileTap={{ scale: 0.92 }}
+        transition={{ duration: 0.18, ease: "easeOut" }}
+        className="fixed top-8 left-8 text-white flex items-center justify-center cursor-pointer z-[9999] pointer-events-auto"
+        aria-label="Restart video"
+        title="Restart video"
+      >
+        {restartIcon}
+      </motion.button>
+    )}
 
     {activeSubtitleCues.length > 0 && subtitlesEnabled && (
       <div className="absolute bottom-20 2xl:bottom-24 w-full text-center">
