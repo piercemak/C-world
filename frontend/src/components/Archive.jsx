@@ -4,6 +4,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SHOWS } from './mobileshowsData';
 import { allEpisodeTitles } from "./episodeTitles";
 
+const chunkArray = (arr, size) => {
+  const chunks = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
+  }
+  return chunks;
+};
+
 const Archive = () => {
 
 const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
@@ -34,6 +42,26 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: { type: "spring", stiffness: 400, damping: 28 },
+  },
+};
+const allMediaPageVariants = {
+  hidden: { opacity: 0, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.05,
+    },
+  },
+};
+const allMediaItemVariants = {
+  hidden: { opacity: 0, y: 12, scale: 0.985 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 420, damping: 30 },
   },
 };
 const newest1Variants = {
@@ -168,10 +196,46 @@ const filteredVideos = useMemo(() => {
   });
   return result;
 }, [videos, sortMode, typeFilter, searchTerm]); 
+const ALL_MEDIA_PER_PAGE = 5;
+const allMediaSliderRef = useRef(null);
+const allMediaScrollRafRef = useRef(null);
+const [allMediaPage, setAllMediaPage] = useState(0);
+const allMediaPages = useMemo(
+  () => chunkArray(filteredVideos, ALL_MEDIA_PER_PAGE),
+  [filteredVideos]
+);
+const totalAllMediaPages = Math.max(1, allMediaPages.length);
+const scrollAllMediaToPage = (pageIndex, behavior = "smooth") => {
+  const slider = allMediaSliderRef.current;
+  if (!slider) return;
+  slider.scrollTo({
+    left: slider.clientWidth * pageIndex,
+    behavior,
+  });
+};
 useEffect(() => {
   setSortMode("newest");
   setTypeFilter("all");
   setFilterOpen(false);
+}, []);
+useEffect(() => {
+  setAllMediaPage(0);
+  requestAnimationFrame(() => scrollAllMediaToPage(0, "auto"));
+}, [searchTerm, sortMode, typeFilter]);
+useEffect(() => {
+  const maxPageIndex = Math.max(0, totalAllMediaPages - 1);
+  if (allMediaPage > maxPageIndex) {
+    setAllMediaPage(maxPageIndex);
+    requestAnimationFrame(() => scrollAllMediaToPage(maxPageIndex, "auto"));
+  }
+}, [allMediaPage, totalAllMediaPages]);
+useEffect(() => {
+  return () => {
+    if (allMediaScrollRafRef.current) {
+      cancelAnimationFrame(allMediaScrollRafRef.current);
+      allMediaScrollRafRef.current = null;
+    }
+  };
 }, []);
 useEffect(() => {
   if (!filterOpen) return;
@@ -360,6 +424,19 @@ setRecentlyWatched(merged);
 
   return (
     <div className="relative w-full min-h-dvh alexandria-font">
+        <style>
+          {`
+            .archive-all-media-scroll {
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+            }
+            .archive-all-media-scroll::-webkit-scrollbar {
+              width: 0 !important;
+              height: 0 !important;
+              display: none !important;
+            }
+          `}
+        </style>
         {/* Home Nav */}
         <div className="flex flex-row z-90 fixed items-center">
             <motion.div
@@ -645,7 +722,7 @@ setRecentlyWatched(merged);
                         <span className="text-white text-2xl">Continue Watching</span>
                         </div>
 
-                        <div className="flex flex-row gap-3 overflow-x-auto pb-2 -mx-6 px-6 no-scrollbar">
+                        <div className="flex flex-row gap-3 overflow-x-auto pb-3 -mx-6 px-6 no-scrollbar">
                         {recentlyWatched.map((media) => {
                             const placeholderPath = getPlaceholderPath(media);
                             const isLoading = !loadedImages[placeholderPath];
@@ -732,7 +809,7 @@ setRecentlyWatched(merged);
 
                     {/* All Media */}
                     <motion.div layout className={searchTerm.trim() ? "mt-6" : "mt-0"}>
-                        <div className="flex flex-row justify-between items-center mt-4 relative">
+                        <div className="flex flex-row justify-between items-center mt-2 relative">
                             <span className="text-white text-2xl">All Media</span>
 
                             <div className="flex flex-row text-white/80 text-lg items-center relative">
@@ -830,42 +907,85 @@ setRecentlyWatched(merged);
                         </div>
                     </motion.div>
 
-                    <motion.div
-                        key={`${sortMode}-${typeFilter}`} 
-                        className="flex flex-col gap-2"
-                        variants={listVariants}
-                        initial="hidden"
-                        animate="visible"
+                    <div
+                        ref={allMediaSliderRef}
+                        onScroll={() => {
+                          if (allMediaScrollRafRef.current) {
+                            cancelAnimationFrame(allMediaScrollRafRef.current);
+                          }
+                          allMediaScrollRafRef.current = requestAnimationFrame(() => {
+                            const slider = allMediaSliderRef.current;
+                            if (!slider) return;
+                            const pageWidth = slider.clientWidth || 1;
+                            const newPage = Math.round(slider.scrollLeft / pageWidth);
+                            setAllMediaPage((prev) => (prev === newPage ? prev : newPage));
+                          });
+                        }}
+                        className="archive-all-media-scroll w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory no-scrollbar touch-pan-x overscroll-x-contain"
                     >
-                        {filteredVideos.map((media) => (
+                      <motion.div
+                          key={`${sortMode}-${typeFilter}-${searchTerm.trim()}`} 
+                          className="flex w-full"
+                      >
+                          {(allMediaPages.length ? allMediaPages : [[]]).map((page, pageIndex) => (
                             <motion.div
-                            key={media.id}
-                            variants={itemVariants}
-                            whileTap={{ scale: 0.97 }}
-                            onClick={() => navigate(`/mobile-shows/${media.id}`)}
-                            className="flex flex-row items-center bg-white/10 backdrop-blur-xl rounded-2xl p-2 border border-white/20 shadow-lg"
+                              key={`all-media-page-${pageIndex}`}
+                              className="snap-start shrink-0 w-full flex flex-col gap-2 pr-0.5 overflow-y-hidden"
+                              variants={allMediaPageVariants}
+                              initial="hidden"
+                              animate={pageIndex === allMediaPage ? "visible" : "hidden"}
                             >
-                                <img
-                                    src={media.card || media.keyart || media.mobilebackground}
-                                    alt={media.title}
-                                    className="size-20 object-cover rounded-xl shadow-xl mb-2"
-                                />
+                              {page.map((media) => (
+                                  <motion.div
+                                  key={media.id}
+                                  variants={allMediaItemVariants}
+                                  whileTap={{ scale: 0.97 }}
+                                  onClick={() => navigate(`/mobile-shows/${media.id}`)}
+                                  className="flex flex-row items-center bg-white/10 backdrop-blur-xl rounded-2xl p-2 border border-white/20 shadow-lg"
+                                  >
+                                      <img
+                                          src={media.card || media.keyart || media.mobilebackground}
+                                          alt={media.title}
+                                          className="size-20 object-cover rounded-xl shadow-xl mb-2"
+                                      />
 
-                                <div className="flex flex-col ml-2">
-                                    <span className="text-white text-xl font-bold">
-                                        {media.title}
-                                    </span>
-                                    <div className="flex flex-row items-center gap-2">
-                                        <span className="text-white/60 text-sm">{media.creator}</span>
-                                        <div className="flex flex-row text-sm items-center gap-1 text-white/60 font-light relative ">
-                                            <span>{starIcon}</span>
-                                            <span className="">{media.ratings}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                      <div className="flex flex-col ml-2">
+                                          <span className="text-white text-xl font-bold">
+                                              {media.title}
+                                          </span>
+                                          <div className="flex flex-row items-center gap-2">
+                                              <span className="text-white/60 text-sm">{media.creator}</span>
+                                              <div className="flex flex-row text-sm items-center gap-1 text-white/60 font-light relative ">
+                                                  <span>{starIcon}</span>
+                                                  <span className="">{media.ratings}</span>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </motion.div>
+                              ))}
                             </motion.div>
+                          ))}
+                      </motion.div>
+                    </div>
+
+                    {totalAllMediaPages > 1 && (
+                      <div className="flex items-center justify-center gap-2 pt-3">
+                        {Array.from({ length: totalAllMediaPages }).map((_, i) => (
+                          <button
+                            key={`all-media-dot-${i}`}
+                            type="button"
+                            onClick={() => {
+                              setAllMediaPage(i);
+                              scrollAllMediaToPage(i, "smooth");
+                            }}
+                            className={`h-2 rounded-full transition-all ${
+                              allMediaPage === i ? "w-5 bg-white" : "w-2 bg-white/45"
+                            }`}
+                            aria-label={`Go to media page ${i + 1}`}
+                          />
                         ))}
-                    </motion.div>
+                      </div>
+                    )}
                 </motion.div>
             </div>
         </div>

@@ -101,15 +101,32 @@ show.title.toLowerCase().includes(searchTerm.toLowerCase())
 );
 
 const [currentIndex, setCurrentIndex] = useState(0);
-
-useEffect(() => {
-if (!filteredShows.length) return;
-
-const interval = setInterval(() => {
+const carouselIntervalRef = useRef(null);
+const restartCarouselTimer = () => {
+  if (carouselIntervalRef.current) {
+    clearInterval(carouselIntervalRef.current);
+    carouselIntervalRef.current = null;
+  }
+  if (!filteredShows.length) return;
+  carouselIntervalRef.current = setInterval(() => {
     setCurrentIndex((prev) => (prev + 1) % filteredShows.length);
-}, 4000);
-
-return () => clearInterval(interval);
+  }, 4000);
+};
+useEffect(() => {
+  restartCarouselTimer();
+  return () => {
+    if (carouselIntervalRef.current) {
+      clearInterval(carouselIntervalRef.current);
+      carouselIntervalRef.current = null;
+    }
+  };
+}, [filteredShows.length]);
+useEffect(() => {
+  if (!filteredShows.length) {
+    setCurrentIndex(0);
+    return;
+  }
+  setCurrentIndex((prev) => prev % filteredShows.length);
 }, [filteredShows.length]);
 const currentShow = filteredShows.length > 0 ? filteredShows[currentIndex % filteredShows.length] : null;
 
@@ -120,6 +137,7 @@ const handleSwipe = (newIndex) => {
     if (newIndex > currentIndex) setDirection('left');
     else setDirection('right');
     setCurrentIndex(newIndex);
+    restartCarouselTimer();
 };
 
 const switchTab = (nextTab) => {
@@ -428,7 +446,7 @@ useEffect(() => {
                   >
                 {/* Card Row Content*/}
                 <div className="relative w-full flex flex-col gap-4 justify-center items-center mt-4 px-4 text-white">
-                    <div
+                    <motion.div
                         className="relative flex items-center justify-center w-full max-w-sm h-[260px] overflow-visible"
                         drag="x"
                         dragConstraints={{ left: 0, right: 0 }}
@@ -530,7 +548,7 @@ useEffect(() => {
                             </motion.div>
                         );
                         })}
-                    </div>
+                    </motion.div>
                     
                     <div className='w-full flex flex-col justify-center items-center mt-2 alexandria-font'>
                         <span className='text-white text-2xl'>{currentShow?.title}</span>
