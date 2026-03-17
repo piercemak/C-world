@@ -1524,6 +1524,12 @@ const handleSkipToPrevious = async () => {
     }
   };
 
+  const handleRestartClick = async (e) => {
+    // Keep keyboard focus on the player flow so spacebar controls play/pause.
+    e.currentTarget.blur();
+    await restartVideo();
+  };
+
   {/* Frame Preview Handling */}
   const [isPreviewing, setIsPreviewing] = useState(false);
   const generateFramePreview = async (time) => {
@@ -1929,7 +1935,10 @@ const handleSkipToPrevious = async () => {
 
     {isFullscreen && (
       <motion.button
-        onClick={restartVideo}
+        type="button"
+        tabIndex={-1}
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={handleRestartClick}
         whileHover={{ scale: 1.14 }}
         whileTap={{ scale: 0.92 }}
         transition={{ duration: 0.18, ease: "easeOut" }}

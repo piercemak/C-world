@@ -1410,39 +1410,28 @@ const continueItems = useMemo(() => {
                             if (item.kind === "show") {
                               const isCardLoaded = !!loadedThumbs[item.cardId];
                               return (
-                                <div
+                                <motion.div
                                   key={thumbKey}
-                                  className={`${styles.card} ${styles[item.cardId]} ${styles["card-img"]} cursor-pointer ${
-                                    clickedCard === item.cardId ? styles.active : ""
-                                  }`}
+                                  className={`${styles.card} ${styles[item.cardId]} ${styles["card-img"]} cursor-pointer`}
                                   ref={(node) => preloadCssCardThumb(item.cardId, node)}
-                                  onClick={() => handleCardClick(item.cardId)}
+                                  onClick={() => navigate(`/video-library/${item.slug}`)}
+                                  whileHover={{ y: -4, boxShadow: "0px 14px 30px rgba(0,0,0,0.28)" }}
+                                  whileTap={{ scale: 0.99 }}
                                 >
                                   <div
                                     className={`absolute inset-0 rounded-[inherit] bg-white/8 pointer-events-none transition-opacity duration-300 ${
                                       isCardLoaded ? "opacity-0" : "opacity-100 animate-pulse"
                                     }`}
                                   />
-                                </div>
+                                </motion.div>
                               );
                             }
 
                             return (
                               <motion.div
                                 key={thumbKey}
-                                whileHover={{
-                                  scale: 0.95,
-                                  boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                                  transition: { duration: 0.3, ease: "easeInOut" }
-                                }}
-                                whileTap={{
-                                    scale: 0.90,
-                                    transition: {
-                                    type: 'spring',
-                                    stiffness: 200,
-                                    damping: 10,
-                                    },
-                                }}                                  
+                                whileHover={{ y: -4, boxShadow: "0px 14px 30px rgba(0,0,0,0.28)" }}
+                                whileTap={{ scale: 0.99 }}
                                 className={`${styles.card} ${styles["card-img"]} cursor-pointer
                                 ${!loadedThumbs[thumbKey] ? "animate-pulse bg-gray-800/60" : ""}`}
                                 style={{
