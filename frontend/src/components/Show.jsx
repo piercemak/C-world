@@ -1933,22 +1933,27 @@ const handleSkipToPrevious = async () => {
       </div>
     )}    
 
-    {isFullscreen && (
-      <motion.button
-        type="button"
-        tabIndex={-1}
-        onMouseDown={(e) => e.preventDefault()}
-        onClick={handleRestartClick}
-        whileHover={{ scale: 1.14 }}
-        whileTap={{ scale: 0.92 }}
-        transition={{ duration: 0.18, ease: "easeOut" }}
-        className="fixed top-8 left-8 text-white flex items-center justify-center cursor-pointer z-[9999] pointer-events-auto"
-        aria-label="Restart video"
-        title="Restart video"
-      >
-        {restartIcon}
-      </motion.button>
-    )}
+    <AnimatePresence>
+      {isFullscreen && controlsVisible && (
+        <motion.button
+          type="button"
+          tabIndex={-1}
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={handleRestartClick}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          whileHover={{ scale: 1.14 }}
+          whileTap={{ scale: 0.92 }}
+          transition={{ duration: 0.18, ease: "easeOut" }}
+          className="fixed top-8 left-8 text-white flex items-center justify-center cursor-pointer z-[9999] pointer-events-auto"
+          aria-label="Restart video"
+          title="Restart video"
+        >
+          {restartIcon}
+        </motion.button>
+      )}
+    </AnimatePresence>
 
     {activeSubtitleCues.length > 0 && subtitlesEnabled && (
       <div className="absolute bottom-20 2xl:bottom-24 w-full text-center">
