@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import styles from './modules/videoLibrary.module.scss'
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import GradientPickerModal from "./GradientPickerModal";
 import ColorPicker from "./ColorPicker";
@@ -101,26 +101,15 @@ const VideoPlayer = () => {
     };
     
     const handleCardClick = (cardId) => {
-      const card = document.querySelector(`.${styles[cardId]}`);
-      const mainContent = document.querySelector(`.${styles['main-content']}`);
-    
-      if (!card || !mainContent) return;
-    
       runWithViewTransition(() => {
         if (clickedCard === cardId) {
           const slug = cardIdToSlug[cardId];
           if (slug) {
             navigate(`/video-library/${slug}`);
           }
-        } else {
-          setClickedCard(cardId);
-          mainContent.classList.add(styles.expanded);
-    
-          const allCards = document.querySelectorAll(`.${styles.card}`);
-          allCards.forEach((c) => c.classList.remove(styles.active));
-    
-          card.classList.add(styles.active);
+          return;
         }
+        setClickedCard(cardId);
       });
     };
 
@@ -230,10 +219,6 @@ const VideoPlayer = () => {
   }, [searchOpen]);
   const resetCardClickState = () => {
     setClickedCard(null);
-    const mainContent = document.querySelector(`.${styles["main-content"]}`);
-    if (mainContent) mainContent.classList.remove(styles.expanded);
-    const allCards = document.querySelectorAll(`.${styles.card}`);
-    allCards.forEach((c) => c.classList.remove(styles.active));
   };
   const resetSearchState = () => {
     setSearchQuery("");
@@ -472,10 +457,6 @@ const VideoPlayer = () => {
     });
 
     setClickedCard(null);
-    const mainContent = document.querySelector(`.${styles["main-content"]}`);
-    if (mainContent) mainContent.classList.remove(styles.expanded);
-    const allCards = document.querySelectorAll(`.${styles.card}`);
-    allCards.forEach((c) => c.classList.remove(styles.active));
   };
   const [loadedContinueThumbs, setLoadedContinueThumbs] = useState({});
   const [recentlyWatchedRev, setRecentlyWatchedRev] = useState(0);
@@ -1372,7 +1353,7 @@ const continueItems = useMemo(() => {
                             className={`${styles["nav-item"]} ${currentPage === pageIndex ? styles.active : ""}`}
                             onClick={(e) => {
                               e.preventDefault();
-                              const mainContent = document.querySelector(`.${styles["main-content"]}`);
+                              const mainContent = mainContentRef.current;
                               if (!mainContent) return;
                               mainContent.scrollTo({
                                 left: pageIndex * mainContent.clientWidth,
@@ -1405,15 +1386,16 @@ const continueItems = useMemo(() => {
                   <div
                     ref={searchMainRef}
                     onScroll={handleSearchScroll}
-                    className={`${styles["main-content"]} overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}
+                    className="overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full"
                   >
-                    {searchPages.map((pageItems, pageIndex) => (
-                      <div
-                        key={pageIndex}
-                        className={`grid ${searchColsClass} gap-[24px] snap-start min-w-full flex-shrink-0 transition-opacity duration-300 ${
-                          pageIndex === searchPage ? "opacity-100" : "opacity-0 pointer-events-none"
-                        }`}
-                      >
+                    <div className={`${styles["main-content"]} w-full min-h-full flex pt-2`}>
+                      {searchPages.map((pageItems, pageIndex) => (
+                        <div
+                          key={pageIndex}
+                          className={`grid ${searchColsClass} gap-[24px] snap-start min-w-full flex-shrink-0 transition-opacity duration-300 ${
+                            pageIndex === searchPage ? "opacity-100" : "opacity-0 pointer-events-none"
+                          }`}
+                        >
                         {pageItems.length === 0 ? (
                           <div className="col-span-3 text-white/70 text-sm p-6">
                             No results found.
@@ -1495,8 +1477,9 @@ const continueItems = useMemo(() => {
                             );
                           })
                         )}
-                      </div>
-                    ))}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
                 
@@ -1762,42 +1745,89 @@ const continueItems = useMemo(() => {
                       <div
                         ref={mainContentRef}
                         onScroll={handleMainScroll}
-                        className={`${styles["main-content"]} ${
-                          clickedCard ? styles.expanded : ""
-                        } overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full flex`}
+                        className="overflow-x-auto overflow-y-hidden safaribar-hidden scroll-smooth snap-x snap-mandatory w-full h-full"
                       >
-                        {pages.map((page, pageIndex) => (
-                          <div
-                            key={pageIndex}
-                            className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
-                              pageIndex === currentPage
-                                ? "opacity-100"
-                                : "opacity-0 pointer-events-none"
-                            }`}
-                          >
-                            {page.map(({ cardId }) => (
-                              (() => {
+                        <div
+                          className={`${styles["main-content"]} ${
+                            clickedCard ? styles.expanded : ""
+                          } w-full min-h-full flex pt-2`}
+                        >
+                          <LayoutGroup id="library-card-layout">
+                            {pages.map((page, pageIndex) => (
+                              <div
+                                key={pageIndex}
+                                className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
+                                  pageIndex === currentPage
+                                    ? "opacity-100"
+                                    : "opacity-0 pointer-events-none"
+                                }`}
+                              >
+                              {page.map(({ cardId }, cardIndex) => {
                                 const isCardLoaded = !!loadedThumbs[cardId];
+                                const isExpanded = !!clickedCard;
+                                const isActiveCard = clickedCard === cardId;
+                                const isDimmedCard = isExpanded && !isActiveCard;
+                                const staggerDelay = Math.min(0.15, cardIndex * 0.035);
+
                                 return (
-                                  <div
+                                  <motion.div
                                     key={cardId}
+                                    layout
+                                    layoutId={`library-${cardId}`}
+                                    initial={false}
                                     className={`${styles.card} ${styles[cardId]} ${styles["card-img"]} ${
-                                      clickedCard === cardId ? styles.active : ""
+                                      isActiveCard ? styles.active : ""
                                     }`}
                                     ref={(node) => preloadCssCardThumb(cardId, node)}
                                     onClick={() => handleCardClick(cardId)}
+                                    animate={
+                                      isDimmedCard
+                                        ? { opacity: 0.42, scale: 0.965, x: 6 }
+                                        : { opacity: 1, scale: 1, x: 0 }
+                                    }
+                                    transition={{
+                                      layout: {
+                                        type: "spring",
+                                        stiffness: 380,
+                                        damping: 30,
+                                        mass: 0.82,
+                                      },
+                                      opacity: {
+                                        duration: 0.24,
+                                        ease: "easeOut",
+                                        delay: isDimmedCard ? staggerDelay : 0,
+                                      },
+                                      x: {
+                                        type: "spring",
+                                        stiffness: 320,
+                                        damping: 28,
+                                        delay: isDimmedCard ? staggerDelay : 0,
+                                      },
+                                      scale: {
+                                        type: "spring",
+                                        stiffness: 300,
+                                        damping: 26,
+                                      },
+                                    }}
+                                    whileHover={
+                                      !isExpanded
+                                        ? { y: -4, boxShadow: "0px 14px 30px rgba(0,0,0,0.28)" }
+                                        : undefined
+                                    }
+                                    whileTap={!isExpanded ? { scale: 0.99 } : undefined}
                                   >
                                     <div
                                       className={`absolute inset-0 rounded-[inherit] bg-white/8 pointer-events-none transition-opacity duration-300 ${
                                         isCardLoaded ? "opacity-0" : "opacity-100 animate-pulse"
                                       }`}
                                     />
-                                  </div>
+                                  </motion.div>
                                 );
-                              })()
+                              })}
+                              </div>
                             ))}
-                          </div>
-                        ))}
+                          </LayoutGroup>
+                        </div>
                       </div>
                     </motion.div>
                   )}

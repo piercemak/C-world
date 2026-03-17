@@ -299,6 +299,7 @@
    .main-content {
     scrollbar-width: none;
     gap: 24px;
+    overflow-y: visible;
    
     @media (max-width: 480px) {
      gap: 10px;
@@ -309,12 +310,20 @@
     border-radius: 20px;
     overflow: hidden;
     max-width: 100%;
-    contain: layout;
+    contain: paint;
     position: relative;
     z-index: 1;
     cursor: pointer;
     width: auto;
     aspect-ratio: 1/1;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+    transition: box-shadow 280ms cubic-bezier(.22,.61,.36,1);
+
+    &:hover {
+     z-index: 40;
+    }
    
     @media (max-width: 480px) {
      aspect-ratio: 1/1.4;
@@ -562,29 +571,77 @@
     grid-row-end: 6;
     z-index: 999;
     aspect-ratio: 1/1;
-    width: auto;
+    width: clamp(360px, 31vw, 470px);
+    box-shadow: 0 24px 52px rgba(0, 0, 0, 0.32);
    }
     @media (max-width: 1280px) {
     .card.active {
-        width: 400px;
+        width: clamp(420px, 32vw, 390px);
     }
     }   
 
     @media (min-width: 1281px) and (max-width: 1535px) {
     .card.active {
-        width: 400px;
+        width: clamp(450px, 30vw, 420px);
+    }
+    }  
+
+    @media (min-width: 1536px) {
+    .card.active {
+        width: clamp(620px, 43vw, 740px);
     }
     }   
    
    .main-content.expanded .card:not(.active) {
     opacity: 0.4;
     pointer-events: none;
-    aspect-ratio: 3/1;
+    aspect-ratio: 2.7/1;
     grid-column-start: 3;
+    transform-origin: center left;
    
     @media (max-width: 480px) {
      aspect-ratio: 1;
      grid-column-start: auto;
+    }
+   }
+
+   @media (max-width: 1280px) {
+    .main-content.expanded > div {
+      gap: 12px !important;
+    }
+
+    .main-content.expanded .card:not(.active) {
+      aspect-ratio: 3.5/1;
+    }
+   }
+
+   @media (min-width: 1281px) and (max-width: 1535px) {
+    .main-content.expanded > div {
+      gap: 13px !important;
+    }
+
+    .main-content.expanded .card:not(.active) {
+      aspect-ratio: 3.1/1;
+    }
+   }
+
+   @media (min-width: 1536px) {
+    .main-content.expanded > div {
+      gap: 14px !important;
+    }
+
+    .main-content.expanded .card:not(.active) {
+      aspect-ratio: 3.4/1;
+    }
+   }
+
+   @media (max-height: 760px) and (max-width: 1535px) {
+    .main-content.expanded > div {
+      gap: 10px !important;
+    }
+
+    .main-content.expanded .card:not(.active) {
+      aspect-ratio: 3.9/1;
     }
    }
    
