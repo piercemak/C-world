@@ -1,6 +1,6 @@
 [package]
 name = "cearaworld"
-version = "0.1.0"
+version = "0.1.1"
 description = "CearaWorld desktop shell"
 authors = ["Pierce"]
 license = ""

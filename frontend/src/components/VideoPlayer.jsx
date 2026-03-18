@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import styles from './modules/videoLibrary.module.scss'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { isTauri } from "@tauri-apps/api/core";
 import { useNavigate } from 'react-router-dom';
 import GradientPickerModal from "./GradientPickerModal";
 import ColorPicker from "./ColorPicker";
@@ -93,6 +94,11 @@ const VideoPlayer = () => {
     const cardIdToSlug = VIDEO_PLAYER_CARD_ID_TO_SLUG;
 
     const runWithViewTransition = (callback) => {
+      if (isTauri()) {
+        callback();
+        return;
+      }
+
       if (typeof document !== "undefined" && "startViewTransition" in document) {
         document.startViewTransition(callback);
       } else {

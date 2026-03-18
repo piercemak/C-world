@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { isTauri } from "@tauri-apps/api/core";
+import { getCurrentWindow } from "@tauri-apps/api/window";
 import PlayPauseButton from "./framercomponents/PlayPauseButton";
 import ProgressBar from "./ProgressBar.jsx";
 import VolumeSlider from "./VolumeSlider.jsx";
@@ -107,17 +109,52 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
 
   {/* Fullscreen Toggle */}
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const toggleFullscreen = () => {
+  const toggleFullscreen = async () => {
     const el = containerRef.current;
     if (!el) return;
-  
+
+    if (isTauri()) {
+      const appWindow = getCurrentWindow();
+      const nextFullscreenState = !(await appWindow.isFullscreen());
+      await appWindow.setFullscreen(nextFullscreenState);
+      setIsFullscreen(nextFullscreenState);
+      return;
+    }
+
     if (!document.fullscreenElement) {
-      el.requestFullscreen().then(() => setIsFullscreen(true)); 
+      el.requestFullscreen().then(() => setIsFullscreen(true));
     } else {
       document.exitFullscreen().then(() => setIsFullscreen(false));
     }
   };
   useEffect(() => {
+    if (isTauri()) {
+      const appWindow = getCurrentWindow();
+      let unlistenResize = null;
+
+      const syncFullscreenState = async () => {
+        try {
+          setIsFullscreen(await appWindow.isFullscreen());
+        } catch {
+          // Ignore window state read errors and preserve the last known UI state.
+        }
+      };
+
+      syncFullscreenState();
+
+      appWindow.onResized(() => {
+        syncFullscreenState();
+      }).then((unlisten) => {
+        unlistenResize = unlisten;
+      });
+
+      return () => {
+        if (unlistenResize) {
+          unlistenResize();
+        }
+      };
+    }
+
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
