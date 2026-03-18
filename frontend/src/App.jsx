@@ -18,6 +18,7 @@ import MobileLogin from './components/MobileLogin.jsx';
 import IntroScreen from './components/IntroScreen.jsx';
 import Reviews from './components/Reviews.jsx';
 import Archive from './components/Archive.jsx';
+import DesktopUpdater from './components/DesktopUpdater.jsx';
 
 function ProtectedRoute({ children }) {
   const { user, authLoading } = useAuth();
@@ -42,6 +43,7 @@ function App() {
     <SnowProvider> 
     <SnowOverlay />
     <AuthProvider>
+      <DesktopUpdater />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<RootRedirect />} />
