@@ -238,7 +238,7 @@ const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipI
     jjk: {
       1:24,
       2:23,
-      3:10,
+      3:11,
     }, 
       cyberpunk: {
       1:10,
@@ -500,6 +500,7 @@ const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
           8: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1330, skipTo: "next" } },
           9: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1229, skipTo: "next" } },
           10: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1313, skipTo: "next" } },
+          11: { intro: { start: 270.0, end: 360.0 }, outro: { start: 1316, skipTo: "next" } },
         }
       }
     },

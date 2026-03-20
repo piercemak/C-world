@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect x="64" y="64" width="896" height="896" rx="220" ry="220" fill="#57bd6d"/>
+  <image href="/Users/faraimakombe/Code/C-world/frontend/public/images/misc/CearaLogo.png" x="172" y="172" width="680" height="680" preserveAspectRatio="xMidYMid meet"/>
+</svg>
+qlmanage -t -s 1024 -o /tmp frontend/src-tauri/icons/CearaWorldGreenIcon.svg >/dev/null
+ls -la /tmp | rg 'CearaWorldGreenIcon.*png' -n || true
