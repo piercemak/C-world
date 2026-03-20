@@ -39,6 +39,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Speak No Evil", cardId: "card-38" },
   { title: "Ikiru", cardId: "card-39" },
   { title: "The Eric Andre Show", cardId: "card-40" },
+  { title: "Pokémon 2000", cardId: "card-41" },
 
 ];
 
@@ -83,4 +84,5 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-38": "speaknoevil",
   "card-39": "ikiru",
   "card-40": "theericandreshow",
+  "card-41": "pokemon2000",
 };

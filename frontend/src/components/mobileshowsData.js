@@ -479,4 +479,16 @@ export const SHOWS = [
         card: "/images/cardimages/theericandreshowLogo.svg", 
         dateadded: "2-11-25",
     },    
+
+    {
+        id: "pokemon2000",
+        title: "Pokémon 2000",
+        creator: "Kunihiko Yuyama", 
+        background: "/images/pokemon2000/covers/pokemon2000_backdrop.svg",
+        ratings: "6.1",
+        type: "Movies",
+        keyart: "/images/pokemon2000/covers/pokemon2000_mobileLogo.jpg", 
+        card: "/images/cardimages/pokemon2000Logo.svg", 
+        dateadded: "2-12-25",
+    }, 
 ];

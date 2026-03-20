@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "pokemon2000",
+        showTitle: "Pokémon 2000",
+        placeholder: "/images/pokemon2000/placeholders/pokemon2000_placeholder.png",
+        to: `/video-library/pokemon2000?movie=1`,
+      },      
+      {
         kind: "episode",
         showSlug: "jjk",                   
         showTitle: "Jujutsu Kaisen",
@@ -41,12 +48,5 @@
         episodeTitle: "Tokyo Colony No 3",
         placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E9_${clean("jjk")}_placeholder.png`,
         to: `/video-library/jjk?season=3&episode=9`,
-      },
-      {
-        kind: "movie",
-        showSlug: "ikiru",
-        showTitle: "Ikiru",
-        placeholder: "/images/ikiru/placeholders/ikiru_placeholder.png",
-        to: `/video-library/ikiru?movie=1`,
       },
     ];

@@ -449,6 +449,17 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           background: "/images/theericandreshow/covers/theericandreshowCover.svg",
           videos: videoDataByShow["theericandreshow"],
         },
+        "pokemon2000": {
+          type: "movie",  
+          title: "Pokémon 2000",
+          release_year: "1999",
+          genre: "Adventure",
+          duration: "1h 39m",          
+          description: "Ash Ketchum must gather the three spheres of fire, ice and lightning in order to restore balance to the Orange Islands.",
+          background: "/images/pokemon2000/covers/pokemon2000Cover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "pokemon2000", "movie"),
+        }, 
         
       };
 

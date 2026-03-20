@@ -720,7 +720,7 @@ const MobileShows = () => {
         },
         "theericandreshow": {
           type: "show",  
-          title: "The Eric Andre Show",
+          title: "The Eric André Show",
           ratings: "8.5",
           agerating: "18",
           creator: "Eric André", 
@@ -732,6 +732,20 @@ const MobileShows = () => {
           mobilebackground: "/images/theericandreshow/covers/theericandreshow_background.jpg",
           videos: videoDataByShow["theericandreshow"],
         },
+        "pokemon2000": {
+          type: "movie",  
+          title: "Pokémon 2000",
+          ratings: "6.1",
+          agerating: "12",
+          creator: "Kunihiko Yuyama", 
+          release_year: "1999",
+          genre: "Adventure",
+          duration: "1h 39m",          
+          description: "Ash Ketchum must gather the three spheres of fire, ice and lightning in order to restore balance to the Orange Islands.",
+          mobilebackground: "/images/pokemon2000/covers/pokemon2000_background.jpg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "pokemon2000", "movie"),
+        }, 
 
       };
       const show = shows[showId];
