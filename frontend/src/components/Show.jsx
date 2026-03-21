@@ -11,7 +11,19 @@ import { queueWatchProgressSync } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
 
 
-const Show = ({ src, delayPlay = 0, onSkipToNext, showId, season, episode, skipIntro = false, hasSubtitles = false, episodeTitles, getSignedUrl = {} }) => {
+const Show = ({
+  src,
+  delayPlay = 0,
+  onSkipToNext,
+  showId,
+  season,
+  episode,
+  skipIntro = false,
+  hasSubtitles = false,
+  episodeTitles,
+  getSignedUrl = {},
+  getSignedEpisodeUrl = null,
+}) => {
 
 
   const containerRef = useRef(null)
@@ -339,6 +351,15 @@ const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
   const episodeStr = `E${String(episodeNum).padStart(2, "0")}`;
   const titleRaw = episodeTitles?.[seasonNum]?.[episodeNum - 1] || "";
   return `${cleanIdForS3}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanIdForS3}_${titleRaw}.mp4`;
+};
+const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
+  if (typeof getSignedEpisodeUrl === "function") {
+    return getSignedEpisodeUrl(showId, targetSeason, targetEpisode);
+  }
+  if (typeof getSignedUrl === "function") {
+    return getSignedUrl(buildEpisodeS3Key(targetSeason, targetEpisode));
+  }
+  return "";
 };
   const skipTimes = {
     "stevenuniverse": {
@@ -1359,13 +1380,8 @@ const handleSkipOutro = async () => {
 
   if (outro?.skipTo === "next") {
     const opts = { source: "outro" };
-    if (getSignedUrl && typeof getSignedUrl === "function") {
-      const cleanId = showId.replace(/-/g, "");
-      const seasonStr = `S${String(nextSeason).padStart(2, "0")}`;
-      const episodeStr = `E${String(nextEpisode).padStart(2, "0")}`;
-      const titleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1] || "";
-      const s3Key = `${cleanId}/season${nextSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
-      const signedUrl = await getSignedUrl(s3Key);
+    if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
+      const signedUrl = await resolveSignedEpisodeUrl(nextSeason, nextEpisode);
 
       onSkipToNext?.(nextSeason, nextEpisode, signedUrl, opts);
     } else {
@@ -1406,13 +1422,8 @@ const handleNextEpisode = async () => {
   console.log(`🚀 Initiating skip to → S${targetS}E${targetE}`);
 
   try {
-    if (typeof getSignedUrl === "function") {
-      const cleanId = showId.replace(/-/g, "");
-      const seasonStr = `S${String(targetS).padStart(2, "0")}`;
-      const episodeStr = `E${String(targetE).padStart(2, "0")}`;
-      const safeTitle = (episodeTitles?.[targetS]?.[targetE - 1] || "").replace(/\s+/g, "_");
-      const s3Key = `${cleanId}/season${targetS}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${safeTitle}.mp4`;
-      const signedUrl = await getSignedUrl(s3Key);
+    if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
+      const signedUrl = await resolveSignedEpisodeUrl(targetS, targetE);
       onSkipToNext?.(targetS, targetE, signedUrl);
     } else {
       onSkipToNext?.(targetS, targetE);
@@ -1430,13 +1441,8 @@ const handleNextEpisode = async () => {
 const handleSkipToPrevious = async () => {
   if (!prevEpisode || prevSeason < 1) return; 
 
-  if (getSignedUrl && typeof getSignedUrl === "function") {
-    const cleanId = showId.replace(/-/g, "");
-    const seasonStr = `S${String(prevSeason).padStart(2, "0")}`;
-    const episodeStr = `E${String(prevEpisode).padStart(2, "0")}`;
-    const titleRaw = episodeTitles?.[prevSeason]?.[prevEpisode - 1] || "";
-    const s3Key = `${cleanId}/season${prevSeason}-mp4s/${seasonStr}${episodeStr}_${cleanId}_${titleRaw}.mp4`;
-    const signedUrl = await getSignedUrl(s3Key);
+  if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
+    const signedUrl = await resolveSignedEpisodeUrl(prevSeason, prevEpisode);
     onSkipToNext?.(prevSeason, prevEpisode, signedUrl);
   } else {
     onSkipToNext?.(prevSeason, prevEpisode);
@@ -1771,9 +1777,14 @@ const handleSkipToPrevious = async () => {
       stallTimerRef.current = null;
     }
   };
-  const attemptPlaybackRecovery = async (reason = "stall") => {
+const attemptPlaybackRecovery = async (reason = "stall") => {
     if (recoveryInFlightRef.current) return;
-    if (!getSignedUrl || typeof getSignedUrl !== "function") return;
+    if (
+      (!isMovie && typeof getSignedEpisodeUrl !== "function" && typeof getSignedUrl !== "function") ||
+      (isMovie && typeof getSignedUrl !== "function")
+    ) {
+      return;
+    }
 
     const now = Date.now();
     if (!recoveryWindowStartRef.current || now - recoveryWindowStartRef.current > recoveryWindowMs) {
@@ -1784,7 +1795,7 @@ const handleSkipToPrevious = async () => {
 
     let currentKey = isMovie
       ? (cleanIdForS3 ? `${cleanIdForS3}/${cleanIdForS3}.mp4` : "")
-      : buildEpisodeS3Key(actualSeason, actualEpisode);
+      : "";
     const hasMissingTitleInKey =
       !!cleanIdForS3 && currentKey.endsWith(`_${cleanIdForS3}_.mp4`);
     if (!currentKey || hasMissingTitleInKey) {
@@ -1804,7 +1815,9 @@ const handleSkipToPrevious = async () => {
     recoveryAttemptCountRef.current += 1;
     const currentTimeSnapshot = Number(videoRef.current?.currentTime || 0);
     try {
-      const refreshedUrl = await getSignedUrl(currentKey);
+      const refreshedUrl = isMovie
+        ? await getSignedUrl(currentKey)
+        : await resolveSignedEpisodeUrl(actualSeason, actualEpisode);
       if (!refreshedUrl) {
         setIsLoading(false);
         setMediaNotFound(true);
@@ -1839,7 +1852,9 @@ const handleSkipToPrevious = async () => {
     clearStallWatchdog();
   };
   const handleMediaError = () => {
-    const canRecover = !!(getSignedUrl && typeof getSignedUrl === "function");
+    const canRecover = isMovie
+      ? typeof getSignedUrl === "function"
+      : typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function";
     if (!canRecover || recoveryAttemptCountRef.current >= recoveryMaxAttempts) {
       setIsLoading(false);
       setMediaNotFound(true);

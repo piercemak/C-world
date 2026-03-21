@@ -8,6 +8,10 @@ import { SHOWS } from "./mobileshowsData.js";
 import { allEpisodeTitles } from "./episodeTitles.js";
 import { queueWatchProgressSync, syncWatchHistory } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
+import {
+  fetchSignedUrl as fetchSignedAssetUrl,
+  fetchSignedEpisodeUrl as fetchSignedEpisodePlaybackUrl,
+} from "../lib/mediaSigning.js";
 
 
 
@@ -786,11 +790,7 @@ const MobileShows = () => {
           if (!ep) return;
           let videoPath = ep.path;
           if (awsHostedShows.includes(showId)) {
-            const parts = videoPath.split(".com/");
-            const s3Key = parts.length > 1 ? parts[1] : "";
-            if (s3Key) {
-              videoPath = await fetchSignedUrl(s3Key);
-            }
+            videoPath = await fetchSignedEpisodeUrl(showId, autoplaySeason, autoplayEpisode);
           }
           setSelectedSeason(autoplaySeason);
           updateLastWatched(showId, autoplaySeason, autoplayEpisode);
@@ -818,17 +818,15 @@ const MobileShows = () => {
 
       {/* AWS Signed Urls */}
       const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-      const fetchSignedUrl = async (s3Key) => {
-      const bucketName = "all-shows";
-        try {
-          const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
-          const data = await res.json();
-          return data.url;
-        } catch (err) {
-          console.error("❌ Failed to fetch signed URL:", err);
-          return ""; 
-        }
-      };  
+      const fetchSignedUrl = async (s3Key) =>
+        fetchSignedAssetUrl({ apiBase: API_BASE, key: s3Key });
+      const fetchSignedEpisodeUrl = async (targetShowId, season, episode) =>
+        fetchSignedEpisodePlaybackUrl({
+          apiBase: API_BASE,
+          showId: targetShowId,
+          season,
+          episode,
+        });
 
 
     {/* Subtitle States */}
@@ -1286,9 +1284,7 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                                 let videoPath = videoUrl.path;
                             
                                 if (awsHostedShows.includes(showId)) {
-                                    const urlParts = videoUrl.path.split(".com/");
-                                    const s3Key = urlParts.length > 1 ? urlParts[1] : "";
-                                    videoPath = await fetchSignedUrl(s3Key);
+                                    videoPath = await fetchSignedEpisodeUrl(showId, selectedSeason, index + 1);
                                     console.log("✅ Signed Video URL:", videoPath);
                                 }
 
