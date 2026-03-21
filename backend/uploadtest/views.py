@@ -15,6 +15,7 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.backends import default_backend
 from urllib.parse import quote_plus
 import os
+import boto3
 from .serializers import (
     RegisterSerializer,
     UserSerializer,
@@ -45,12 +46,8 @@ def rsa_signer(message: str):
         hashes.SHA1()
     )
 
-@api_view(['GET'])
-def get_signed_url(request):
-    key = request.query_params.get('key')
-    if not key:
-        return Response({'error': 'Missing key parameter'}, status=400)
 
+def build_signed_cloudfront_url(key: str):
     resource_url = f"https://{CLOUDFRONT_DOMAIN}/{key}"
     signed_url_ttl_seconds = int(os.getenv("SIGNED_URL_TTL_SECONDS", "21600"))
     expires = int((datetime.utcnow() + timedelta(seconds=signed_url_ttl_seconds)).timestamp())
@@ -69,13 +66,91 @@ def get_signed_url(request):
 
     key_pair_id = settings.CLOUDFRONT_KEY_PAIR_ID
 
-    signed_url = (
+    return (
         f"{resource_url}?Policy={quote_plus(policy_b64)}"
         f"&Signature={quote_plus(signature_b64)}"
         f"&Key-Pair-Id={quote_plus(key_pair_id)}"
     )
 
-    return Response({'url': signed_url})
+
+def get_s3_client():
+    return boto3.client(
+        "s3",
+        region_name=getattr(settings, "AWS_REGION_NAME", None),
+        aws_access_key_id=getattr(settings, "AWS_ACCESS_KEY_ID", None),
+        aws_secret_access_key=getattr(settings, "AWS_SECRET_ACCESS_KEY", None),
+    )
+
+
+def resolve_episode_s3_key(show_id: str, season: int, episode: int, bucket_name: str):
+    clean_show_id = (show_id or "").replace("-", "")
+    if not clean_show_id:
+        return ""
+
+    season_str = f"S{season:02d}"
+    episode_str = f"E{episode:02d}"
+    season_folder = f"{clean_show_id}/season{season}-mp4s/"
+    preferred_prefix = f"{season_folder}{season_str}{episode_str}_{clean_show_id}_"
+    fallback_prefix = f"{season_folder}{season_str}{episode_str}_"
+
+    s3_client = get_s3_client()
+
+    for prefix in (preferred_prefix, fallback_prefix):
+        response = s3_client.list_objects_v2(
+            Bucket=bucket_name,
+            Prefix=prefix,
+            MaxKeys=50,
+        )
+        contents = response.get("Contents", [])
+        matches = [
+            item["Key"]
+            for item in contents
+            if item.get("Key", "").lower().endswith(".mp4")
+        ]
+        if matches:
+            return sorted(matches, key=lambda key: (len(key), key))[0]
+
+    return ""
+
+@api_view(['GET'])
+def get_signed_url(request):
+    key = request.query_params.get('key')
+    if not key:
+        return Response({'error': 'Missing key parameter'}, status=400)
+    return Response({'url': build_signed_cloudfront_url(key)})
+
+
+@api_view(['GET'])
+def get_signed_episode_url(request):
+    show_id = request.query_params.get('show_id')
+    season_raw = request.query_params.get('season')
+    episode_raw = request.query_params.get('episode')
+    bucket_name = request.query_params.get('bucket') or "all-shows"
+
+    if not show_id or season_raw is None or episode_raw is None:
+        return Response(
+            {'error': 'show_id, season, and episode are required'},
+            status=400,
+        )
+
+    try:
+        season = int(season_raw)
+        episode = int(episode_raw)
+    except (TypeError, ValueError):
+        return Response({'error': 'season and episode must be integers'}, status=400)
+
+    try:
+        key = resolve_episode_s3_key(show_id, season, episode, bucket_name)
+    except Exception as exc:
+        return Response(
+            {'error': f'Failed to resolve episode key: {exc}'},
+            status=500,
+        )
+
+    if not key:
+        return Response({'error': 'Episode media not found'}, status=404)
+
+    return Response({'url': build_signed_cloudfront_url(key), 'key': key})
 
 
 @api_view(['POST'])

@@ -9,6 +9,10 @@ import WatchProgressBar from "./WatchProgressBar.jsx";
 import { allEpisodeTitles } from "./episodeTitles.js";
 import { buildLibraryShows } from "../data/libraryShowsData.js";
 import { syncWatchHistory } from "../lib/watchSync.js";
+import {
+  fetchSignedUrl as fetchSignedAssetUrl,
+  fetchSignedEpisodeUrl as fetchSignedEpisodePlaybackUrl,
+} from "../lib/mediaSigning.js";
 
 
 
@@ -162,17 +166,15 @@ const extractS3KeyFromPath = (path) => {
       
       {/* AWS Signed Urls */}
       const API_BASE = import.meta.env.VITE_API_URL;
-      const fetchSignedUrl = async (s3Key) => {
-      const bucketName = "all-shows";
-        try {
-          const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
-          const data = await res.json();
-          return data.url;
-        } catch (err) {
-          console.error("❌ Failed to fetch signed URL:", err);
-          return ""; 
-        }
-      };      
+      const fetchSignedUrl = async (s3Key) =>
+        fetchSignedAssetUrl({ apiBase: API_BASE, key: s3Key });
+      const fetchSignedEpisodeUrl = async (targetShowId, season, episode) =>
+        fetchSignedEpisodePlaybackUrl({
+          apiBase: API_BASE,
+          showId: targetShowId,
+          season,
+          episode,
+        });
 
 
       {/* Search Functionality */}
@@ -230,23 +232,16 @@ const extractS3KeyFromPath = (path) => {
         }
 
 
-        const episodeList = show?.videos?.[`season${s}`];
-        const ep = episodeList?.[e - 1];
-        if (!ep?.path) return;
-
         (async () => {
+          const episodeList = show?.videos?.[`season${s}`];
+          const ep = episodeList?.[e - 1];
+          if (!ep?.path) return;
+
           let videoPath = ep.path;
 
           if (awsHostedShows.includes(showId)) {
-            const isCloudfrontUrl = videoPath.includes("cloudfront.net");
-            const s3Key = isCloudfrontUrl
-              ? videoPath.split("cloudfront.net/")[1]
-              : extractS3KeyFromPath(videoPath);
-
-            if (s3Key) {
-              const signed = await fetchSignedUrl(s3Key);
-              if (signed) videoPath = signed;
-            }
+            const signed = await fetchSignedEpisodeUrl(showId, s, e);
+            if (signed) videoPath = signed;
           }
 
           setSelectedSeason(s);
@@ -625,6 +620,7 @@ const extractS3KeyFromPath = (path) => {
                     episodeTitles={allEpisodeTitles[showId] || allEpisodeTitles[cleanShowId(showId)]}
                     onSkipToNext={handleSkipToNext}
                     getSignedUrl={fetchSignedUrl}
+                    getSignedEpisodeUrl={fetchSignedEpisodeUrl}
                     hasSubtitles={shows[metaShowId]?.subtitles === "yes"}
                     
                     />
@@ -902,17 +898,7 @@ const extractS3KeyFromPath = (path) => {
                       let videoPath = videoUrl.path;
 
                       if (awsHostedShows.includes(showId)) {
-                        const isCloudfrontUrl = videoUrl.path.includes("cloudfront.net");
-                        const s3Key = isCloudfrontUrl
-                          ? videoUrl.path.split("cloudfront.net/")[1]
-                          : extractS3KeyFromPath(videoUrl.path);
-
-                        if (!s3Key) {
-                          console.error("❌ Could not extract s3Key:", videoUrl.path);
-                          return;
-                        }
-
-                        videoPath = await fetchSignedUrl(s3Key);
+                        videoPath = await fetchSignedEpisodeUrl(showId, seasonNumber, episodeNumber);
                         console.log("✅ Signed CloudFront URL:", videoPath);
                       }
 
