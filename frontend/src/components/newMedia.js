@@ -4,6 +4,13 @@
     export const newMedia = [
       {
         kind: "movie",
+        showSlug: "coherence",
+        showTitle: "Coherence",
+        placeholder: "/images/coherence/placeholders/coherence_placeholder.png",
+        to: `/video-library/coherence?movie=1`,
+      }, 
+      {
+        kind: "movie",
         showSlug: "pokemon2000",
         showTitle: "Pokémon 2000",
         placeholder: "/images/pokemon2000/placeholders/pokemon2000_placeholder.png",

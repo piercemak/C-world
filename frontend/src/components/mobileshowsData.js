@@ -491,4 +491,16 @@ export const SHOWS = [
         card: "/images/cardimages/pokemon2000Logo.svg", 
         dateadded: "2-12-25",
     }, 
+
+    {
+        id: "coherence",
+        title: "Coherence",
+        creator: "James Ward Byrkit", 
+        background: "/images/coherence/covers/coherence_backdrop.svg",
+        ratings: "7.2",
+        type: "Movies",
+        keyart: "/images/coherence/covers/coherence_mobileLogo.jpg", 
+        card: "/images/cardimages/coherenceLogo.svg", 
+        dateadded: "2-13-25",
+    }, 
 ];

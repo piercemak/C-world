@@ -17,6 +17,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "speaknoevil": "/videos/speaknoevil/speaknoevil_subtitles.vtt",
   "ikiru": "/videos/ikiru/ikiru_subtitles.vtt",
   "pokemon2000": "/videos/pokemon2000/pokemon2000_subtitles.vtt",
+  "coherence": "/videos/coherence/coherence_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

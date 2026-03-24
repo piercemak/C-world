@@ -750,6 +750,20 @@ const MobileShows = () => {
           subtitles: "yes",
           videos: generateSeasonVideos({}, "pokemon2000", "movie"),
         }, 
+        "coherence": {
+          type: "movie",  
+          title: "Coherence",
+          ratings: "7.2",
+          agerating: "18",
+          creator: "James Ward Byrkit", 
+          release_year: "2013",
+          genre: "Psychological Thriller",
+          duration: "1h 29m",          
+          description: "Strange things begin to happen when a group of friends gather for a dinner party on an evening when a comet is passing overhead.",
+          background: "/images/coherence/covers/coherenceCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "coherence", "movie"),
+        }, 
 
       };
       const show = shows[showId];

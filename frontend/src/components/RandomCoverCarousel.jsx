@@ -47,6 +47,7 @@ const RandomCoverCarousel = () => {
     { id: "ikiru", src: "/images/ikiru/covers/ikiruCover.jpg", title: "Ikiru" },
     { id: "theericandreshow", src: "/images/theericandreshow/covers/theericandreshowCover.svg", title: "The Eric Andre Show" },
     { id: "pokemon2000", src: "/images/pokemon2000/covers/pokemon2000Cover.svg", title: "Pokémon 2000" },
+    { id: "coherence", src: "/images/coherence/covers/coherenceCover.svg", title: "Coherence" },
   ];
 
   const showsById = useMemo(() => {

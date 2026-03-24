@@ -460,6 +460,17 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "pokemon2000", "movie"),
         }, 
+        "coherence": {
+          type: "movie",  
+          title: "Coherence",
+          release_year: "2013",
+          genre: "Psychological Thriller",
+          duration: "1h 29m",          
+          description: "Strange things begin to happen when a group of friends gather for a dinner party on an evening when a comet is passing overhead.",
+          background: "/images/coherence/covers/coherenceCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "coherence", "movie"),
+        }, 
         
       };
 
