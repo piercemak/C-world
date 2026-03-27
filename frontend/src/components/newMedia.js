@@ -3,6 +3,16 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "episode",
+        showSlug: "jjk",                   
+        showTitle: "Jujutsu Kaisen",
+        season: 3,
+        episode: 12,
+        episodeTitle: "Sendai Colony",
+        placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E12_${clean("jjk")}_placeholder.png`,
+        to: `/video-library/jjk?season=3&episode=12`,
+      },
+      {
         kind: "movie",
         showSlug: "coherence",
         showTitle: "Coherence",
@@ -45,15 +55,5 @@
         episodeTitle: "Dolph Lundgren",
         placeholder: `${cloudFrontDomain}/${clean("theericandreshow")}/placeholders/season1/S1E1_${clean("theericandreshow")}_placeholder.png`,
         to: `/video-library/theericandreshow?season=1&episode=1`,
-      },
-      {
-        kind: "episode",
-        showSlug: "jjk",                   
-        showTitle: "Jujutsu Kaisen",
-        season: 3,
-        episode: 9,
-        episodeTitle: "Tokyo Colony No 3",
-        placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E9_${clean("jjk")}_placeholder.png`,
-        to: `/video-library/jjk?season=3&episode=9`,
       },
     ];

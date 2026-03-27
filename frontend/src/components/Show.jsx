@@ -250,7 +250,7 @@ const Show = ({
     jjk: {
       1:24,
       2:23,
-      3:11,
+      3:12,
     }, 
       cyberpunk: {
       1:10,
@@ -522,6 +522,7 @@ const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
           9: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1229, skipTo: "next" } },
           10: { intro: { start: 0.0, end: 90.0 }, outro: { start: 1313, skipTo: "next" } },
           11: { intro: { start: 270.0, end: 360.0 }, outro: { start: 1316, skipTo: "next" } },
+          12: { outro: { start: 1618, skipTo: "next" } },
         }
       }
     },
