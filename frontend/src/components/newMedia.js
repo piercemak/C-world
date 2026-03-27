@@ -46,14 +46,4 @@
         placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E10_${clean("jjk")}_placeholder.png`,
         to: `/video-library/jjk?season=3&episode=10`,
       },
-      {
-        kind: "episode",
-        showSlug: "theericandreshow",                   
-        showTitle: "The Eric Andre Show",
-        season: 1,
-        episode: 1,
-        episodeTitle: "Dolph Lundgren",
-        placeholder: `${cloudFrontDomain}/${clean("theericandreshow")}/placeholders/season1/S1E1_${clean("theericandreshow")}_placeholder.png`,
-        to: `/video-library/theericandreshow?season=1&episode=1`,
-      },
     ];
