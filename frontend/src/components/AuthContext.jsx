@@ -5,6 +5,21 @@ const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const ACTIVE_PROFILE_ID_KEY = "activeProfileId";
+
+const getStoredActiveProfileId = () => {
+  const directId = localStorage.getItem(ACTIVE_PROFILE_ID_KEY);
+  if (directId) return Number(directId) || null;
+
+  const legacy = localStorage.getItem("activeProfile");
+  if (!legacy) return null;
+
+  try {
+    return JSON.parse(legacy)?.id || null;
+  } catch {
+    return null;
+  }
+};
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -13,33 +28,20 @@ export const AuthProvider = ({ children }) => {
   });
   const [token, setToken] = useState(() => localStorage.getItem("authToken"));
   const [profiles, setProfiles] = useState([]);
-  const [activeProfile, setActiveProfile] = useState(() => {
-    const saved = localStorage.getItem("activeProfile");
-    return saved ? JSON.parse(saved) : null;
-  });
+  const [activeProfile, setActiveProfile] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
 
   const syncProfilePreferences = (profile) => {
-    if (!profile) {
-      localStorage.removeItem("profileImage");
-      localStorage.removeItem("userProfileImage");
-      localStorage.removeItem("archiveSelectedBackdrop");
+    localStorage.removeItem("profileImage");
+    localStorage.removeItem("userProfileImage");
+    localStorage.removeItem("archiveSelectedBackdrop");
+    if (!profile?.id) {
+      localStorage.removeItem(ACTIVE_PROFILE_ID_KEY);
+      localStorage.removeItem("activeProfile");
       return;
     }
-
-    if (profile.avatar_url) {
-      localStorage.setItem("profileImage", profile.avatar_url);
-      localStorage.setItem("userProfileImage", profile.avatar_url);
-    } else {
-      localStorage.removeItem("profileImage");
-      localStorage.removeItem("userProfileImage");
-    }
-
-    if (profile.archive_backdrop) {
-      localStorage.setItem("archiveSelectedBackdrop", profile.archive_backdrop);
-    } else {
-      localStorage.removeItem("archiveSelectedBackdrop");
-    }
+    localStorage.setItem(ACTIVE_PROFILE_ID_KEY, String(profile.id));
+    localStorage.removeItem("activeProfile");
   };
 
   const fetchAuthed = async (path, options = {}, tokenOverride = null) => {
@@ -61,6 +63,7 @@ export const AuthProvider = ({ children }) => {
     if (!authToken) {
       setProfiles([]);
       setActiveProfile(null);
+      localStorage.removeItem(ACTIVE_PROFILE_ID_KEY);
       localStorage.removeItem("activeProfile");
       return null;
     }
@@ -71,15 +74,9 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
     setProfiles(data);
 
-    const saved = localStorage.getItem("activeProfile");
-    const savedId = saved ? JSON.parse(saved)?.id : null;
+    const savedId = getStoredActiveProfileId();
     const selected = data.find((p) => p.id === savedId) || data[0] || null;
     setActiveProfile(selected);
-    if (selected) {
-      localStorage.setItem("activeProfile", JSON.stringify(selected));
-    } else {
-      localStorage.removeItem("activeProfile");
-    }
     syncProfilePreferences(selected);
     return selected;
   };
@@ -100,7 +97,6 @@ export const AuthProvider = ({ children }) => {
       profile.id === updated.id ? updated : profile
     )));
     setActiveProfile(updated);
-    localStorage.setItem("activeProfile", JSON.stringify(updated));
     syncProfilePreferences(updated);
     return updated;
   };
@@ -129,6 +125,7 @@ export const AuthProvider = ({ children }) => {
         setActiveProfile(null);
         localStorage.removeItem("user");
         localStorage.removeItem("authToken");
+        localStorage.removeItem(ACTIVE_PROFILE_ID_KEY);
         localStorage.removeItem("activeProfile");
       } finally {
         setAuthLoading(false);
@@ -191,11 +188,9 @@ export const AuthProvider = ({ children }) => {
     const profile = profiles.find((p) => p.id === profileId) || null;
     setActiveProfile(profile);
     if (profile) {
-      localStorage.setItem("activeProfile", JSON.stringify(profile));
       syncProfilePreferences(profile);
       hydrateWatchDataFromServer(profile.id);
     } else {
-      localStorage.removeItem("activeProfile");
       syncProfilePreferences(null);
     }
   };
@@ -214,6 +209,7 @@ export const AuthProvider = ({ children }) => {
     setActiveProfile(null);
     localStorage.removeItem('user');
     localStorage.removeItem("authToken");
+    localStorage.removeItem(ACTIVE_PROFILE_ID_KEY);
     localStorage.removeItem("activeProfile");
     syncProfilePreferences(null);
   };

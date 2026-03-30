@@ -1,9 +1,20 @@
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const ACTIVE_PROFILE_ID_KEY = "activeProfileId";
 
 const getAuthContext = () => {
   const token = localStorage.getItem("authToken");
-  const activeProfile = JSON.parse(localStorage.getItem("activeProfile") || "null");
-  return { token, profileId: activeProfile?.id || null };
+  const activeProfileId = localStorage.getItem(ACTIVE_PROFILE_ID_KEY);
+
+  if (activeProfileId) {
+    return { token, profileId: Number(activeProfileId) || null };
+  }
+
+  try {
+    const activeProfile = JSON.parse(localStorage.getItem("activeProfile") || "null");
+    return { token, profileId: activeProfile?.id || null };
+  } catch {
+    return { token, profileId: null };
+  }
 };
 
 const authedFetch = async (path, options = {}, profileIdOverride = null) => {
