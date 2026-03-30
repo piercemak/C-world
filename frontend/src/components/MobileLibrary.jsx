@@ -6,6 +6,7 @@ import styles from './modules/cardDesign.module.scss'
 import ColorThief from 'colorthief';
 import SearchXIcon from "../assets/icons/SearchXIcon.svg?react"
 import { SHOWS } from './mobileshowsData';
+import { useAuth } from './AuthContext.jsx';
 
 
 
@@ -24,6 +25,7 @@ const colorCache = new Map();
 
 
 const MobileLibrary = () => {
+const { activeProfile, updateActiveProfile } = useAuth();
 
   const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
   const playIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="size-10" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/></svg>
@@ -164,20 +166,25 @@ const switchTab = (nextTab) => {
 
 {/* Profile Picture */}
 const fileInputRef = useRef(null);
-const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
+const [profileImage, setProfileImage] = useState("/images/misc/profilepictureBlank.webp");
 const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
     const reader = new FileReader();
-    reader.onloadend = () => {
+    reader.onloadend = async () => {
         setProfileImage(reader.result);
+        try {
+          await updateActiveProfile?.({ avatar_url: reader.result });
+        } catch (err) {
+          console.error("Failed to save profile image", err);
+        }
     };
     reader.readAsDataURL(file);
     }
 };    
 useEffect(() => {
-localStorage.setItem('profileImage', profileImage);
-}, [profileImage]);
+setProfileImage(activeProfile?.avatar_url || "/images/misc/profilepictureBlank.webp");
+}, [activeProfile?.avatar_url]);
 
 
 {/* Grid 2x1 */}

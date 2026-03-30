@@ -14,6 +14,7 @@ import {
   VIDEO_PLAYER_SIDEBAR_ITEMS,
 } from "../data/videoPlayerCatalogData.js";
 import { removeWatchHistory } from "../lib/watchSync.js";
+import { useAuth } from "./AuthContext.jsx";
 
 import { useSnow } from "./SnowContext.jsx"; 
 
@@ -27,6 +28,7 @@ const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, 
 
 const VideoPlayer = () => {
     const navigate = useNavigate();
+    const { activeProfile, updateActiveProfile } = useAuth();
     
     const { snowEnabled, setSnowEnabled } = useSnow(); // REMOVE AFTER HOLDAYS //
 
@@ -46,15 +48,20 @@ const VideoPlayer = () => {
     {/* Profile Manipulation */}
     const [profileName, setProfileName] = useState(() => localStorage.getItem('profileName') || localStorage.getItem('profileDisplayName') || "User");
     const [profileEmail, setProfileEmail] = useState(() => localStorage.getItem('profileBio') || localStorage.getItem('profileEmail') || "User Bio");
-    const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
+    const [profileImage, setProfileImage] = useState("/images/misc/profilepictureBlank.webp");
     const [editField, setEditField] = useState(null);
     const [hoverField, setHoverField] = useState(null);
     const handleImageChange = (e) => {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onloadend = () => {
+        reader.onloadend = async () => {
           setProfileImage(reader.result);
+          try {
+            await updateActiveProfile?.({ avatar_url: reader.result });
+          } catch (err) {
+            console.error("Failed to save profile image", err);
+          }
         };
         reader.readAsDataURL(file);
       }
@@ -70,8 +77,8 @@ const VideoPlayer = () => {
       }, [profileEmail]);
       
       useEffect(() => {
-        localStorage.setItem('profileImage', profileImage);
-      }, [profileImage]);
+        setProfileImage(activeProfile?.avatar_url || "/images/misc/profilepictureBlank.webp");
+      }, [activeProfile?.avatar_url]);
 
     {/* Navigation */}
     const handleNavigate = () => {

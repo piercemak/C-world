@@ -32,7 +32,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ["id", "name", "avatar_url", "is_kid", "created_at"]
+        fields = ["id", "name", "avatar_url", "archive_backdrop", "is_kid", "created_at"]
         read_only_fields = ["id", "created_at"]
 
 

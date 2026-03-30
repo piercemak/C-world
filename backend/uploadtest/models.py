@@ -14,7 +14,8 @@ class Episode(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="profiles")
     name = models.CharField(max_length=50)
-    avatar_url = models.URLField(blank=True)
+    avatar_url = models.TextField(blank=True)
+    archive_backdrop = models.TextField(blank=True)
     is_kid = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

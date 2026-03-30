@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { SHOWS } from './mobileshowsData';
 import { allEpisodeTitles } from "./episodeTitles";
+import { useAuth } from "./AuthContext.jsx";
 
 const chunkArray = (arr, size) => {
   const chunks = [];
@@ -13,6 +14,7 @@ const chunkArray = (arr, size) => {
 };
 
 const Archive = () => {
+const { activeProfile, updateActiveProfile } = useAuth();
 
 const searchIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8"><path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
 const homeIcon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"><path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" /><path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" /></svg>
@@ -155,13 +157,7 @@ const handleNavigate = () => {
 };
 
 const [currentIndex, setCurrentIndex] = useState(0);
-const [selectedBackdrop, setSelectedBackdrop] = useState(() => {
-  try {
-    return localStorage.getItem("archiveSelectedBackdrop") || "";
-  } catch {
-    return "";
-  }
-});
+const [selectedBackdrop, setSelectedBackdrop] = useState("");
 const [isBackdropPickerOpen, setIsBackdropPickerOpen] = useState(false);
 const [backdropPage, setBackdropPage] = useState(0);
 const backdropInputRef = useRef(null);
@@ -181,6 +177,9 @@ const selectedBackdropLabel = useMemo(() => {
   if (selectedBackdrop.startsWith("data:")) return "Custom Backdrop";
   return getBackdropName(selectedBackdrop);
 }, [selectedBackdrop]);
+useEffect(() => {
+  setSelectedBackdrop(activeProfile?.archive_backdrop || "");
+}, [activeProfile?.archive_backdrop]);
 
 useEffect(() => {
   if (!carouselShows.length) return;
@@ -299,31 +298,25 @@ useEffect(() => {
 
 {/* Profile Picture */}
 const fileInputRef = useRef(null);
-const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || "/images/misc/profilepictureBlank.webp");
+const [profileImage, setProfileImage] = useState("/images/misc/profilepictureBlank.webp");
 const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
     const reader = new FileReader();
-    reader.onloadend = () => {
+    reader.onloadend = async () => {
         setProfileImage(reader.result);
+        try {
+          await updateActiveProfile?.({ avatar_url: reader.result });
+        } catch (err) {
+          console.error("Failed to save archive profile image", err);
+        }
     };
     reader.readAsDataURL(file);
     }
 };    
 useEffect(() => {
-localStorage.setItem('profileImage', profileImage);
-}, [profileImage]);
-useEffect(() => {
-  try {
-    if (selectedBackdrop) {
-      localStorage.setItem("archiveSelectedBackdrop", selectedBackdrop);
-    } else {
-      localStorage.removeItem("archiveSelectedBackdrop");
-    }
-  } catch (err) {
-    console.error("Failed to store selected backdrop", err);
-  }
-}, [selectedBackdrop]);
+  setProfileImage(activeProfile?.avatar_url || "/images/misc/profilepictureBlank.webp");
+}, [activeProfile?.avatar_url]);
 useEffect(() => {
   if (backdropPage <= totalBackdropPages - 1) return;
   setBackdropPage(Math.max(0, totalBackdropPages - 1));
@@ -348,10 +341,15 @@ const handleBackdropImageChange = (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onloadend = () => {
+  reader.onloadend = async () => {
     if (typeof reader.result === "string") {
       setSelectedBackdrop(reader.result);
       setIsBackdropPickerOpen(false);
+      try {
+        await updateActiveProfile?.({ archive_backdrop: reader.result });
+      } catch (err) {
+        console.error("Failed to save custom backdrop", err);
+      }
     }
   };
   reader.readAsDataURL(file);
@@ -713,9 +711,14 @@ setRecentlyWatched(merged);
                         return (
                           <button
                             key={item.src}
-                            onClick={() => {
+                            onClick={async () => {
                               setSelectedBackdrop(item.src);
                               setIsBackdropPickerOpen(false);
+                              try {
+                                await updateActiveProfile?.({ archive_backdrop: item.src });
+                              } catch (err) {
+                                console.error("Failed to save selected backdrop", err);
+                              }
                             }}
                             className={`overflow-hidden rounded-2xl border text-left transition ${
                               isActive
@@ -751,7 +754,14 @@ setRecentlyWatched(merged);
 
                 <div className="mt-4 flex justify-between gap-3">
                   <button
-                    onClick={() => setSelectedBackdrop("")}
+                    onClick={async () => {
+                      setSelectedBackdrop("");
+                      try {
+                        await updateActiveProfile?.({ archive_backdrop: "" });
+                      } catch (err) {
+                        console.error("Failed to reset backdrop", err);
+                      }
+                    }}
                     className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70"
                   >
                     Use Default Carousel

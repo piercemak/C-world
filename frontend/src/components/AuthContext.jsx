@@ -19,6 +19,29 @@ export const AuthProvider = ({ children }) => {
   });
   const [authLoading, setAuthLoading] = useState(true);
 
+  const syncProfilePreferences = (profile) => {
+    if (!profile) {
+      localStorage.removeItem("profileImage");
+      localStorage.removeItem("userProfileImage");
+      localStorage.removeItem("archiveSelectedBackdrop");
+      return;
+    }
+
+    if (profile.avatar_url) {
+      localStorage.setItem("profileImage", profile.avatar_url);
+      localStorage.setItem("userProfileImage", profile.avatar_url);
+    } else {
+      localStorage.removeItem("profileImage");
+      localStorage.removeItem("userProfileImage");
+    }
+
+    if (profile.archive_backdrop) {
+      localStorage.setItem("archiveSelectedBackdrop", profile.archive_backdrop);
+    } else {
+      localStorage.removeItem("archiveSelectedBackdrop");
+    }
+  };
+
   const fetchAuthed = async (path, options = {}, tokenOverride = null) => {
     const authToken = tokenOverride || token;
     const headers = {
@@ -52,8 +75,34 @@ export const AuthProvider = ({ children }) => {
     const savedId = saved ? JSON.parse(saved)?.id : null;
     const selected = data.find((p) => p.id === savedId) || data[0] || null;
     setActiveProfile(selected);
-    if (selected) localStorage.setItem("activeProfile", JSON.stringify(selected));
+    if (selected) {
+      localStorage.setItem("activeProfile", JSON.stringify(selected));
+    } else {
+      localStorage.removeItem("activeProfile");
+    }
+    syncProfilePreferences(selected);
     return selected;
+  };
+
+  const updateActiveProfile = async (patch) => {
+    if (!token || !activeProfile?.id) return null;
+
+    const res = await fetchAuthed(`/api/profiles/${activeProfile.id}/`, {
+      method: "PATCH",
+      body: JSON.stringify(patch),
+    });
+    if (!res.ok) {
+      throw new Error("Failed to update profile");
+    }
+
+    const updated = await res.json();
+    setProfiles((prev) => prev.map((profile) => (
+      profile.id === updated.id ? updated : profile
+    )));
+    setActiveProfile(updated);
+    localStorage.setItem("activeProfile", JSON.stringify(updated));
+    syncProfilePreferences(updated);
+    return updated;
   };
 
   useEffect(() => {
@@ -143,9 +192,11 @@ export const AuthProvider = ({ children }) => {
     setActiveProfile(profile);
     if (profile) {
       localStorage.setItem("activeProfile", JSON.stringify(profile));
+      syncProfilePreferences(profile);
       hydrateWatchDataFromServer(profile.id);
     } else {
       localStorage.removeItem("activeProfile");
+      syncProfilePreferences(null);
     }
   };
 
@@ -164,6 +215,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
     localStorage.removeItem("authToken");
     localStorage.removeItem("activeProfile");
+    syncProfilePreferences(null);
   };
 
   return (
@@ -179,6 +231,7 @@ export const AuthProvider = ({ children }) => {
         logout,
         loadProfiles,
         setActiveProfileById,
+        updateActiveProfile,
       }}
     >
       {children}
