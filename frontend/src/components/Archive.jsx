@@ -68,6 +68,26 @@ const allMediaItemVariants = {
     transition: { type: "spring", stiffness: 420, damping: 30 },
   },
 };
+const backdropPageVariants = {
+  hidden: { opacity: 0, y: 0 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.05,
+    },
+  },
+};
+const backdropItemVariants = {
+  hidden: { opacity: 0, y: 12, scale: 0.985 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 420, damping: 30 },
+  },
+};
 const newest1Variants = {
   hidden: { opacity: 0, x: -60 },
   visible: {
@@ -115,7 +135,7 @@ const newest3Variants = {
 {/* Current show */}
 const videos = SHOWS;
 const carouselShows = videos; 
-const BACKDROPS_PER_PAGE = 6;
+const BACKDROPS_PER_PAGE = 4;
 const getBackdropName = (src = "") => {
   const fileName = src.split("/").pop() || src;
   return fileName.replace(/\.[^.]+$/, "");
@@ -160,7 +180,8 @@ const [currentIndex, setCurrentIndex] = useState(0);
 const [selectedBackdrop, setSelectedBackdrop] = useState("");
 const [isBackdropPickerOpen, setIsBackdropPickerOpen] = useState(false);
 const [backdropPage, setBackdropPage] = useState(0);
-const backdropTouchStartXRef = useRef(null);
+const backdropSliderRef = useRef(null);
+const backdropScrollRafRef = useRef(null);
 const backdropInputRef = useRef(null);
 const backdropPickerItems = useMemo(
   () => [{ type: "custom", label: "Select Your Own Image" }, ...backdropOptions],
@@ -258,6 +279,14 @@ const scrollAllMediaToPage = (pageIndex, behavior = "smooth") => {
     behavior,
   });
 };
+const scrollBackdropToPage = (pageIndex, behavior = "smooth") => {
+  const slider = backdropSliderRef.current;
+  if (!slider) return;
+  slider.scrollTo({
+    left: slider.clientWidth * pageIndex,
+    behavior,
+  });
+};
 useEffect(() => {
   setSortMode("newest");
   setTypeFilter("all");
@@ -320,6 +349,27 @@ useEffect(() => {
   if (backdropPage <= totalBackdropPages - 1) return;
   setBackdropPage(Math.max(0, totalBackdropPages - 1));
 }, [backdropPage, totalBackdropPages]);
+useEffect(() => {
+  if (!isBackdropPickerOpen) return;
+  setBackdropPage(0);
+  requestAnimationFrame(() => scrollBackdropToPage(0, "auto"));
+}, [isBackdropPickerOpen]);
+useEffect(() => {
+  if (!isBackdropPickerOpen) return;
+  const maxPageIndex = Math.max(0, totalBackdropPages - 1);
+  if (backdropPage > maxPageIndex) {
+    setBackdropPage(maxPageIndex);
+    requestAnimationFrame(() => scrollBackdropToPage(maxPageIndex, "auto"));
+  }
+}, [backdropPage, totalBackdropPages, isBackdropPickerOpen]);
+useEffect(() => {
+  return () => {
+    if (backdropScrollRafRef.current) {
+      cancelAnimationFrame(backdropScrollRafRef.current);
+      backdropScrollRafRef.current = null;
+    }
+  };
+}, []);
 const handleBackdropImageChange = (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
@@ -337,27 +387,6 @@ const handleBackdropImageChange = (e) => {
   };
   reader.readAsDataURL(file);
   e.target.value = "";
-};
-const paginateBackdrop = (direction) => {
-  setBackdropPage((prev) => Math.min(Math.max(prev + direction, 0), totalBackdropPages - 1));
-};
-const handleBackdropTouchStart = (e) => {
-  backdropTouchStartXRef.current = e.changedTouches?.[0]?.clientX ?? null;
-};
-const handleBackdropTouchEnd = (e) => {
-  const startX = backdropTouchStartXRef.current;
-  const endX = e.changedTouches?.[0]?.clientX ?? null;
-  backdropTouchStartXRef.current = null;
-  if (startX == null || endX == null) return;
-
-  const deltaX = endX - startX;
-  const swipeThreshold = 28;
-
-  if (deltaX <= -swipeThreshold && backdropPage < totalBackdropPages - 1) {
-    paginateBackdrop(1);
-  } else if (deltaX >= swipeThreshold && backdropPage > 0) {
-    paginateBackdrop(-1);
-  }
 };
 
 
@@ -380,7 +409,6 @@ return () => document.removeEventListener("mousedown", handleClick);
 const handleBackToProfiles = () => {
 sessionStorage.removeItem("showIntroFromUser");
 navigate("/home");
-window.location.reload();
 };
 
 {/* Card Loader */}
@@ -650,7 +678,7 @@ setRecentlyWatched(merged);
         <AnimatePresence>
           {isBackdropPickerOpen && (
             <motion.div
-              className="fixed inset-0 z-[120] bg-black/80 text-white backdrop-blur-2xl"
+              className="fixed inset-0 z-[120] overscroll-contain bg-black/80 text-white backdrop-blur-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -662,11 +690,12 @@ setRecentlyWatched(merged);
                 transition={{ duration: 0.2, ease: "easeOut" }}
                 className="flex h-full w-full flex-col px-5 pb-8 pt-6"
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-4 mb-2">
                   <div>
                     <div className="text-2xl">Choose Backdrop</div>
                   </div>
                   <button
+                    type="button"
                     onClick={() => setIsBackdropPickerOpen(false)}
                     className="rounded-full bg-white/10 p-2 text-white/70"
                   >
@@ -682,25 +711,37 @@ setRecentlyWatched(merged);
                   onChange={handleBackdropImageChange}
                 />
 
-                <div className="relative mt-6 flex flex-1 overflow-hidden">
-                  <motion.div
-                    onTouchStart={handleBackdropTouchStart}
-                    onTouchEnd={handleBackdropTouchEnd}
-                    animate={{ x: `-${backdropPage * 100}%` }}
-                    transition={{ type: "tween", duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex h-full w-full touch-pan-y"
-                    style={{ width: `${totalBackdropPages * 100}%` }}
-                  >
+                <div
+                  ref={backdropSliderRef}
+                  onScroll={() => {
+                    if (backdropScrollRafRef.current) {
+                      cancelAnimationFrame(backdropScrollRafRef.current);
+                    }
+                    backdropScrollRafRef.current = requestAnimationFrame(() => {
+                      const slider = backdropSliderRef.current;
+                      if (!slider) return;
+                      const pageWidth = slider.clientWidth || 1;
+                      const newPage = Math.round(slider.scrollLeft / pageWidth);
+                      setBackdropPage((prev) => (prev === newPage ? prev : newPage));
+                    });
+                  }}
+                  className="w-full flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hidden touch-pan-x overscroll-x-contain overscroll-y-contain"
+                >
+                  <motion.div className="flex w-full">
                     {backdropPages.map((page, pageIndex) => (
-                      <div
+                      <motion.div
                         key={`backdrop-page-${pageIndex}`}
-                        className="grid min-w-full grid-cols-2 grid-rows-3 gap-3 pr-1 sm:grid-cols-3 sm:grid-rows-2"
+                        className="grid min-w-full snap-start grid-cols-2 grid-rows-2 gap-3 pr-1"
+                        variants={backdropPageVariants}
+                        initial="hidden"
+                        animate={pageIndex === backdropPage ? "visible" : "hidden"}
                       >
                         {page.map((item) => {
                           if (item.type === "custom") {
                             return (
                               <button
                                 key="custom-backdrop"
+                                type="button"
                                 onClick={() => backdropInputRef.current?.click()}
                                 className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/20 bg-white/5 px-3 text-center text-sm text-white/80"
                               >
@@ -713,8 +754,10 @@ setRecentlyWatched(merged);
                           const isActive = selectedBackdrop === item.src;
                           const isBackdropLoading = !loadedImages[item.src];
                           return (
-                            <button
+                            <motion.button
                               key={item.src}
+                              type="button"
+                              variants={backdropItemVariants}
                               onClick={async () => {
                                 setSelectedBackdrop(item.src);
                                 setIsBackdropPickerOpen(false);
@@ -745,10 +788,10 @@ setRecentlyWatched(merged);
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                               </div>
-                            </button>
+                            </motion.button>
                           );
                         })}
-                      </div>
+                      </motion.div>
                     ))}
                   </motion.div>
                 </div>
@@ -766,6 +809,7 @@ setRecentlyWatched(merged);
 
                 <div className="mt-4 flex justify-between gap-3">
                   <button
+                    type="button"
                     onClick={async () => {
                       setSelectedBackdrop("");
                       try {
@@ -779,6 +823,7 @@ setRecentlyWatched(merged);
                     Use Default Carousel
                   </button>
                   <button
+                    type="button"
                     onClick={() => setIsBackdropPickerOpen(false)}
                     className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white"
                   >
@@ -1249,7 +1294,7 @@ setRecentlyWatched(merged);
                                   onClick={() => navigate(`/mobile-shows/${media.id}`)}
                                   className="flex flex-row items-center bg-white/10 backdrop-blur-xl rounded-2xl p-2 border border-white/20 shadow-lg"
                                   >
-                                      <div className={`relative size-20 overflow-hidden rounded-xl shadow-xl mb-2 ${
+                                      <div className={`relative size-20 flex-shrink-0 overflow-hidden rounded-xl shadow-xl mb-2 ${
                                         isLoading ? "animate-pulse bg-white/10" : ""
                                       }`}>
                                           {imageSrc && (
@@ -1266,7 +1311,7 @@ setRecentlyWatched(merged);
                                           {isLoading && <div className="absolute inset-0 bg-white/10" />}
                                       </div>
 
-                                      <div className="flex flex-col ml-2">
+                                      <div className="ml-2 flex min-w-0 flex-col">
                                           <span className="text-white text-xl font-bold">
                                               {media.title}
                                           </span>
