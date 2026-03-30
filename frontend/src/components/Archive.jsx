@@ -160,9 +160,8 @@ const [currentIndex, setCurrentIndex] = useState(0);
 const [selectedBackdrop, setSelectedBackdrop] = useState("");
 const [isBackdropPickerOpen, setIsBackdropPickerOpen] = useState(false);
 const [backdropPage, setBackdropPage] = useState(0);
+const backdropTouchStartXRef = useRef(null);
 const backdropInputRef = useRef(null);
-const backdropSliderRef = useRef(null);
-const backdropScrollRafRef = useRef(null);
 const backdropPickerItems = useMemo(
   () => [{ type: "custom", label: "Select Your Own Image" }, ...backdropOptions],
   [backdropOptions]
@@ -321,22 +320,6 @@ useEffect(() => {
   if (backdropPage <= totalBackdropPages - 1) return;
   setBackdropPage(Math.max(0, totalBackdropPages - 1));
 }, [backdropPage, totalBackdropPages]);
-useEffect(() => {
-  return () => {
-    if (backdropScrollRafRef.current) {
-      cancelAnimationFrame(backdropScrollRafRef.current);
-      backdropScrollRafRef.current = null;
-    }
-  };
-}, []);
-useEffect(() => {
-  if (!isBackdropPickerOpen) return;
-  const slider = backdropSliderRef.current;
-  if (!slider) return;
-  requestAnimationFrame(() => {
-    slider.scrollTo({ left: slider.clientWidth * backdropPage, behavior: "auto" });
-  });
-}, [isBackdropPickerOpen, backdropPage]);
 const handleBackdropImageChange = (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
@@ -355,17 +338,26 @@ const handleBackdropImageChange = (e) => {
   reader.readAsDataURL(file);
   e.target.value = "";
 };
-const handleBackdropSliderScroll = () => {
-  const slider = backdropSliderRef.current;
-  if (!slider || !slider.clientWidth) return;
-  if (backdropScrollRafRef.current) {
-    cancelAnimationFrame(backdropScrollRafRef.current);
+const paginateBackdrop = (direction) => {
+  setBackdropPage((prev) => Math.min(Math.max(prev + direction, 0), totalBackdropPages - 1));
+};
+const handleBackdropTouchStart = (e) => {
+  backdropTouchStartXRef.current = e.changedTouches?.[0]?.clientX ?? null;
+};
+const handleBackdropTouchEnd = (e) => {
+  const startX = backdropTouchStartXRef.current;
+  const endX = e.changedTouches?.[0]?.clientX ?? null;
+  backdropTouchStartXRef.current = null;
+  if (startX == null || endX == null) return;
+
+  const deltaX = endX - startX;
+  const swipeThreshold = 28;
+
+  if (deltaX <= -swipeThreshold && backdropPage < totalBackdropPages - 1) {
+    paginateBackdrop(1);
+  } else if (deltaX >= swipeThreshold && backdropPage > 0) {
+    paginateBackdrop(-1);
   }
-  backdropScrollRafRef.current = requestAnimationFrame(() => {
-    const nextPage = Math.round(slider.scrollLeft / slider.clientWidth);
-    setBackdropPage((prev) => (prev === nextPage ? prev : nextPage));
-    backdropScrollRafRef.current = null;
-  });
 };
 
 
@@ -394,6 +386,13 @@ window.location.reload();
 {/* Card Loader */}
 const [loadedImages, setLoadedImages] = useState({});
 const handleImageLoad = (id) => {
+  setLoadedImages((prev) => ({
+    ...prev,
+    [id]: true,
+  }));
+};
+const getCardImage = (media) => media.card || media.keyart || media.mobilebackground;
+const setImageResolved = (id) => {
   setLoadedImages((prev) => ({
     ...prev,
     [id]: true,
@@ -683,62 +682,75 @@ setRecentlyWatched(merged);
                   onChange={handleBackdropImageChange}
                 />
 
-                <div
-                  ref={backdropSliderRef}
-                  onScroll={handleBackdropSliderScroll}
-                  className="archive-all-media-scroll mt-6 flex flex-1 snap-x snap-mandatory overflow-x-auto overscroll-x-contain"
-                >
-                  {backdropPages.map((page, pageIndex) => (
-                    <div
-                      key={`backdrop-page-${pageIndex}`}
-                      className="grid min-w-full snap-center grid-cols-2 grid-rows-3 gap-3 pr-1 sm:grid-cols-3 sm:grid-rows-2"
-                    >
-                      {page.map((item) => {
-                        if (item.type === "custom") {
+                <div className="relative mt-6 flex flex-1 overflow-hidden">
+                  <motion.div
+                    onTouchStart={handleBackdropTouchStart}
+                    onTouchEnd={handleBackdropTouchEnd}
+                    animate={{ x: `-${backdropPage * 100}%` }}
+                    transition={{ type: "tween", duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex h-full w-full touch-pan-y"
+                    style={{ width: `${totalBackdropPages * 100}%` }}
+                  >
+                    {backdropPages.map((page, pageIndex) => (
+                      <div
+                        key={`backdrop-page-${pageIndex}`}
+                        className="grid min-w-full grid-cols-2 grid-rows-3 gap-3 pr-1 sm:grid-cols-3 sm:grid-rows-2"
+                      >
+                        {page.map((item) => {
+                          if (item.type === "custom") {
+                            return (
+                              <button
+                                key="custom-backdrop"
+                                onClick={() => backdropInputRef.current?.click()}
+                                className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/20 bg-white/5 px-3 text-center text-sm text-white/80"
+                              >
+                                <span className="mb-2 text-white">{uploadIcon}</span>
+                                <span>Select Your Own Image</span>
+                              </button>
+                            );
+                          }
+
+                          const isActive = selectedBackdrop === item.src;
+                          const isBackdropLoading = !loadedImages[item.src];
                           return (
                             <button
-                              key="custom-backdrop"
-                              onClick={() => backdropInputRef.current?.click()}
-                              className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/20 bg-white/5 px-3 text-center text-sm text-white/80"
+                              key={item.src}
+                              onClick={async () => {
+                                setSelectedBackdrop(item.src);
+                                setIsBackdropPickerOpen(false);
+                                try {
+                                  await updateActiveProfile?.({ archive_backdrop: item.src });
+                                } catch (err) {
+                                  console.error("Failed to save selected backdrop", err);
+                                }
+                              }}
+                              className={`overflow-hidden rounded-2xl border text-left transition ${
+                                isActive
+                                  ? "border-white shadow-[0_0_0_1px_rgba(87,189,109,0.45)]"
+                                  : "border-white/10"
+                              }`}
                             >
-                              <span className="mb-2 text-white">{uploadIcon}</span>
-                              <span>Select Your Own Image</span>
+                              <div className={`relative bg-black ${isBackdropLoading ? "animate-pulse" : ""}`}>
+                                {isBackdropLoading && (
+                                  <div className="absolute inset-0 bg-white/10" />
+                                )}
+                                <img
+                                  src={item.src}
+                                  alt={item.label}
+                                  className={`h-full w-full object-cover transition-opacity duration-300 ${
+                                    isBackdropLoading ? "opacity-0" : "opacity-100"
+                                  }`}
+                                  onLoad={() => setImageResolved(item.src)}
+                                  onError={() => setImageResolved(item.src)}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                              </div>
                             </button>
                           );
-                        }
-
-                        const isActive = selectedBackdrop === item.src;
-                        return (
-                          <button
-                            key={item.src}
-                            onClick={async () => {
-                              setSelectedBackdrop(item.src);
-                              setIsBackdropPickerOpen(false);
-                              try {
-                                await updateActiveProfile?.({ archive_backdrop: item.src });
-                              } catch (err) {
-                                console.error("Failed to save selected backdrop", err);
-                              }
-                            }}
-                            className={`overflow-hidden rounded-2xl border text-left transition ${
-                              isActive
-                                ? "border-white shadow-[0_0_0_1px_rgba(87,189,109,0.45)]"
-                                : "border-white/10"
-                            }`}
-                          >
-                            <div className="relative bg-black">
-                              <img
-                                src={item.src}
-                                alt={item.label}
-                                className="h-full w-full object-cover"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  ))}
+                        })}
+                      </div>
+                    ))}
+                  </motion.div>
                 </div>
 
                 <div className="mt-5 flex items-center justify-center gap-2">
@@ -896,67 +908,106 @@ setRecentlyWatched(merged);
 
                         <div className="flex flex-row items-center justify-center gap-2 mt-2">
                             {latestThree[0] && (
+                            (() => {
+                              const imageSrc = getCardImage(latestThree[0]);
+                              const isLoading = !loadedImages[imageSrc];
+                              return (
                             <motion.div
                                 variants={newest1Variants}
                                 initial="hidden"
                                 animate="visible"
                                 onClick={() => navigate(`/mobile-shows/${latestThree[0].id}`)}
-                                className="size-60 rounded-2xl shadow-xl bg-cover bg-center"
-                                style={{
-                                backgroundImage: `url(${
-                                    latestThree[0].card ||
-                                    latestThree[0].keyart ||
-                                    latestThree[0].mobilebackground
-                                })`,
-                                }}
+                                className={`relative size-60 overflow-hidden rounded-2xl shadow-xl bg-cover bg-center ${
+                                  isLoading ? "animate-pulse bg-white/10" : ""
+                                }`}
                             >
+                                {imageSrc && (
+                                  <img
+                                    src={imageSrc}
+                                    alt={latestThree[0].title}
+                                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+                                      isLoading ? "opacity-0" : "opacity-100"
+                                    }`}
+                                    onLoad={() => setImageResolved(imageSrc)}
+                                    onError={() => setImageResolved(imageSrc)}
+                                  />
+                                )}
+                                {isLoading && <div className="absolute inset-0 bg-white/10" />}
                                 <div className="size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">
                                 {latestThree[0].ratings}
                                 </div>
                             </motion.div>
+                              );
+                            })()
                             )}
 
                             <div className="flex flex-col gap-2">
                             {latestThree[1] && (
+                                (() => {
+                                  const imageSrc = getCardImage(latestThree[1]);
+                                  const isLoading = !loadedImages[imageSrc];
+                                  return (
                                 <motion.div
                                 variants={newest2Variants}
                                 initial="hidden"
                                 animate="visible"
                                 onClick={() => navigate(`/mobile-shows/${latestThree[1].id}`)}
-                                className="size-30 rounded-2xl shadow-lg bg-cover bg-center"
-                                style={{
-                                    backgroundImage: `url(${
-                                    latestThree[1].card ||
-                                    latestThree[1].keyart ||
-                                    latestThree[1].mobilebackground
-                                    })`,
-                                }}
+                                className={`relative size-30 overflow-hidden rounded-2xl shadow-lg bg-cover bg-center ${
+                                  isLoading ? "animate-pulse bg-white/10" : ""
+                                }`}
                                 >
+                                {imageSrc && (
+                                  <img
+                                    src={imageSrc}
+                                    alt={latestThree[1].title}
+                                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+                                      isLoading ? "opacity-0" : "opacity-100"
+                                    }`}
+                                    onLoad={() => setImageResolved(imageSrc)}
+                                    onError={() => setImageResolved(imageSrc)}
+                                  />
+                                )}
+                                {isLoading && <div className="absolute inset-0 bg-white/10" />}
                                 <div className="size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">
                                     {latestThree[1].ratings}
                                 </div>
                                 </motion.div>
+                                  );
+                                })()
                             )}
 
                             {latestThree[2] && (
+                                (() => {
+                                  const imageSrc = getCardImage(latestThree[2]);
+                                  const isLoading = !loadedImages[imageSrc];
+                                  return (
                                 <motion.div
                                 variants={newest3Variants}
                                 initial="hidden"
                                 animate="visible"
                                 onClick={() => navigate(`/mobile-shows/${latestThree[2].id}`)}
-                                className="size-30 rounded-2xl shadow-lg bg-cover bg-center"
-                                style={{
-                                    backgroundImage: `url(${
-                                    latestThree[2].card ||
-                                    latestThree[2].keyart ||
-                                    latestThree[2].mobilebackground
-                                    })`,
-                                }}
+                                className={`relative size-30 overflow-hidden rounded-2xl shadow-lg bg-cover bg-center ${
+                                  isLoading ? "animate-pulse bg-white/10" : ""
+                                }`}
                                 >
+                                {imageSrc && (
+                                  <img
+                                    src={imageSrc}
+                                    alt={latestThree[2].title}
+                                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+                                      isLoading ? "opacity-0" : "opacity-100"
+                                    }`}
+                                    onLoad={() => setImageResolved(imageSrc)}
+                                    onError={() => setImageResolved(imageSrc)}
+                                  />
+                                )}
+                                {isLoading && <div className="absolute inset-0 bg-white/10" />}
                                 <div className="size-12 p-2 bg-black/20 backdrop-blur-xs border border-white/30 rounded-tl-2xl rounded-br-2xl text-white text-xl">
                                     {latestThree[2].ratings}
                                 </div>
                                 </motion.div>
+                                  );
+                                })()
                             )}
                             </div>
                         </div>
@@ -1187,6 +1238,10 @@ setRecentlyWatched(merged);
                               animate={pageIndex === allMediaPage ? "visible" : "hidden"}
                             >
                               {page.map((media) => (
+                                  (() => {
+                                    const imageSrc = getCardImage(media);
+                                    const isLoading = !loadedImages[imageSrc];
+                                    return (
                                   <motion.div
                                   key={media.id}
                                   variants={allMediaItemVariants}
@@ -1194,11 +1249,22 @@ setRecentlyWatched(merged);
                                   onClick={() => navigate(`/mobile-shows/${media.id}`)}
                                   className="flex flex-row items-center bg-white/10 backdrop-blur-xl rounded-2xl p-2 border border-white/20 shadow-lg"
                                   >
-                                      <img
-                                          src={media.card || media.keyart || media.mobilebackground}
-                                          alt={media.title}
-                                          className="size-20 object-cover rounded-xl shadow-xl mb-2"
-                                      />
+                                      <div className={`relative size-20 overflow-hidden rounded-xl shadow-xl mb-2 ${
+                                        isLoading ? "animate-pulse bg-white/10" : ""
+                                      }`}>
+                                          {imageSrc && (
+                                            <img
+                                                src={imageSrc}
+                                                alt={media.title}
+                                                className={`size-20 object-cover rounded-xl transition-opacity duration-300 ${
+                                                  isLoading ? "opacity-0" : "opacity-100"
+                                                }`}
+                                                onLoad={() => setImageResolved(imageSrc)}
+                                                onError={() => setImageResolved(imageSrc)}
+                                            />
+                                          )}
+                                          {isLoading && <div className="absolute inset-0 bg-white/10" />}
+                                      </div>
 
                                       <div className="flex flex-col ml-2">
                                           <span className="text-white text-xl font-bold">
@@ -1213,6 +1279,8 @@ setRecentlyWatched(merged);
                                           </div>
                                       </div>
                                   </motion.div>
+                                    );
+                                  })()
                               ))}
                             </motion.div>
                           ))}
