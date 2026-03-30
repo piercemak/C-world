@@ -1298,7 +1298,15 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                                 let videoPath = videoUrl.path;
                             
                                 if (awsHostedShows.includes(showId)) {
-                                    videoPath = await fetchSignedEpisodeUrl(showId, selectedSeason, index + 1);
+                                    if (show?.type === "movie" || show?.type === "Movies") {
+                                        const urlParts = videoUrl.path.split(".com/");
+                                        const s3Key = urlParts.length > 1 ? urlParts[1] : "";
+                                        if (s3Key) {
+                                            videoPath = await fetchSignedUrl(s3Key);
+                                        }
+                                    } else {
+                                        videoPath = await fetchSignedEpisodeUrl(showId, selectedSeason, index + 1);
+                                    }
                                     console.log("✅ Signed Video URL:", videoPath);
                                 }
 
@@ -1306,7 +1314,11 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                                 const episodeForHistory = show?.type === "show" ? index + 1 : null;    
                                 updateLastWatched(showId, seasonForHistory, episodeForHistory);                            
                                 
-                                setSelectedVideo({ path: videoPath, season: selectedSeason, episode: index + 1 });
+                                setSelectedVideo({
+                                    path: videoPath,
+                                    season: show?.type === "show" ? selectedSeason : null,
+                                    episode: show?.type === "show" ? index + 1 : null
+                                });
                                 setVideoPlayerVisible(true);
                                 }}
                             >
