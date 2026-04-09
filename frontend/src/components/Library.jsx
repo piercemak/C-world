@@ -611,6 +611,12 @@ const extractS3KeyFromPath = (path) => {
                 <div className="flex-1 w-full p-8">
                   {selectedVideo && (
                     <Show
+                    key={[
+                      selectedVideo.showId,
+                      selectedVideo.season ?? "movie",
+                      selectedVideo.episode ?? "movie",
+                      selectedVideo.path,
+                    ].join(":")}
                     src={selectedVideo.path}
                     delayPlay={2000}
                     showId={selectedVideo.showId}

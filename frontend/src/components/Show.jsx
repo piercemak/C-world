@@ -31,6 +31,7 @@ const Show = ({
   const [playbackSrc, setPlaybackSrc] = useState(src);
   const [mediaNotFound, setMediaNotFound] = useState(false);
   const intendedResumeTimeRef = useRef(null);
+  const startupAttemptRef = useRef(0);
   const stallTimerRef = useRef(null);
   const recoveryInFlightRef = useRef(false);
   const recoveryAttemptCountRef = useRef(0);
@@ -41,6 +42,7 @@ const Show = ({
     setPlaybackSrc(src);
     setMediaNotFound(!src);
     intendedResumeTimeRef.current = null;
+    startupAttemptRef.current += 1;
     recoveryInFlightRef.current = false;
     recoveryAttemptCountRef.current = 0;
     recoveryWindowStartRef.current = 0;
@@ -1123,14 +1125,31 @@ const readProgressRawWithMigration = (storageKey) => {
         ? savedProgress
         : (shouldAutoSkipIntro ? Number(intro.end) || 0 : 0);
 
-    let cancelled = false;
-    const applyInitialStart = async () => {
-      if (cancelled) return;
+    const attemptId = startupAttemptRef.current;
+    let started = false;
+
+    const cleanupListeners = () => {
+      vid.removeEventListener("loadedmetadata", handleStartReady);
+      vid.removeEventListener("canplay", handleStartReady);
+    };
+
+    const handleStartReady = async () => {
+      if (started || attemptId !== startupAttemptRef.current) return;
+      started = true;
+      cleanupListeners();
+
       try {
-        if (Number.isFinite(startTime) && startTime > 0) {
-          vid.currentTime = startTime;
-        }
         vid.volume = volume;
+        if (Number.isFinite(startTime) && startTime > 0) {
+          const safeStartTime =
+            Number.isFinite(vid.duration) && vid.duration > 0
+              ? Math.min(startTime, Math.max(vid.duration - 0.25, 0))
+              : startTime;
+          vid.currentTime = Math.max(0, safeStartTime);
+        } else {
+          vid.currentTime = 0;
+        }
+
         await vid.play();
 
         if (shouldAutoSkipIntro) {
@@ -1141,17 +1160,14 @@ const readProgressRawWithMigration = (storageKey) => {
       }
     };
 
-    if (vid.readyState >= 1) {
-      applyInitialStart();
-    } else {
-      vid.addEventListener("loadedmetadata", applyInitialStart, { once: true });
-    }
-    vid.load();
+    vid.addEventListener("loadedmetadata", handleStartReady);
+    vid.addEventListener("canplay", handleStartReady);
 
-    return () => {
-      cancelled = true;
-      vid.removeEventListener("loadedmetadata", applyInitialStart);
-    };
+    if (vid.readyState >= 1) {
+      handleStartReady();
+    }
+
+    return cleanupListeners;
   }, [playbackSrc, skipIntro, intro?.end, outro?.start, hasIntro, showKey, volume]);
   useEffect(() => {
     const vid = videoRef.current;
@@ -1328,20 +1344,20 @@ const readProgressRawWithMigration = (storageKey) => {
         })
       );
 
-      const shouldAutoAdvanceOnEnded =
+      const shouldAdvanceToNext =
         !isMovie &&
         !isLastEpisode &&
         outro?.skipTo === "next" &&
-        (countdownRef.current !== null || outroVisible);
+        countdownRef.current !== null;
 
-      if (shouldAutoAdvanceOnEnded) {
+      if (shouldAdvanceToNext) {
         handleSkipOutroRef.current?.();
       }
     };
 
     vid.addEventListener("ended", onEnded);
     return () => vid.removeEventListener("ended", onEnded);
-  }, [showId, season, episode, src, isMovie, isLastEpisode, outro?.skipTo, outroVisible]);
+  }, [showId, season, episode, src, isMovie, isLastEpisode, outro?.skipTo]);
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -1398,16 +1414,8 @@ const readProgressRawWithMigration = (storageKey) => {
 const handleSkipOutro = async () => {
   if (outroSkipRef.current) return;
   outroSkipRef.current = true;
-  clearStallWatchdog();
-  recoveryInFlightRef.current = false;
-  setIsLoading(true);
-  setMediaNotFound(false);
   setCountdown(null);
   setOutroVisible(false);
-  setOutroDismissed(false);
-  if (videoRef.current && !videoRef.current.paused) {
-    videoRef.current.pause();
-  }
 
   if (outro?.skipTo === "next") {
     const opts = { source: "outro" };
@@ -1444,16 +1452,8 @@ const handleNextEpisode = async () => {
   }
 
   skippingRef.current = true;
-  clearStallWatchdog();
-  recoveryInFlightRef.current = false;
-  setIsLoading(true);
-  setMediaNotFound(false);
   setCountdown(null);
   setOutroVisible(false);
-  setOutroDismissed(false);
-  if (videoRef.current && !videoRef.current.paused) {
-    videoRef.current.pause();
-  }
 
   const targetS = nextSeason;
   const targetE = nextEpisode;
@@ -1479,16 +1479,6 @@ const handleNextEpisode = async () => {
 
 const handleSkipToPrevious = async () => {
   if (!prevEpisode || prevSeason < 1) return; 
-  clearStallWatchdog();
-  recoveryInFlightRef.current = false;
-  setIsLoading(true);
-  setMediaNotFound(false);
-  setCountdown(null);
-  setOutroVisible(false);
-  setOutroDismissed(false);
-  if (videoRef.current && !videoRef.current.paused) {
-    videoRef.current.pause();
-  }
 
   if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
     const signedUrl = await resolveSignedEpisodeUrl(prevSeason, prevEpisode);
