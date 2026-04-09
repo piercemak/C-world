@@ -31,7 +31,6 @@ const Show = ({
   const [playbackSrc, setPlaybackSrc] = useState(src);
   const [mediaNotFound, setMediaNotFound] = useState(false);
   const intendedResumeTimeRef = useRef(null);
-  const startupAttemptRef = useRef(0);
   const stallTimerRef = useRef(null);
   const recoveryInFlightRef = useRef(false);
   const recoveryAttemptCountRef = useRef(0);
@@ -42,7 +41,6 @@ const Show = ({
     setPlaybackSrc(src);
     setMediaNotFound(!src);
     intendedResumeTimeRef.current = null;
-    startupAttemptRef.current += 1;
     recoveryInFlightRef.current = false;
     recoveryAttemptCountRef.current = 0;
     recoveryWindowStartRef.current = 0;
@@ -1113,62 +1111,36 @@ const readProgressRawWithMigration = (storageKey) => {
     savedProgress = Number(raw) || 0;
   }
 
-    const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
-    const shouldAutoSkipIntro =
-      skipIntro &&
-      hasIntro &&
-      !NO_AUTO_SKIP_INTRO_SHOWS.has(showKey);
-
-    const startTime =
-      (!shouldStartFromBeginning && savedProgress > 1)
-        ? savedProgress
-        : (shouldAutoSkipIntro ? Number(intro.end) || 0 : 0);
-
-    const attemptId = startupAttemptRef.current;
-    let started = false;
-
-    const cleanupListeners = () => {
-      vid.removeEventListener("loadedmetadata", handleStartReady);
-      vid.removeEventListener("canplay", handleStartReady);
-    };
-
-    const handleStartReady = async () => {
-      if (started || attemptId !== startupAttemptRef.current) return;
-      started = true;
-      cleanupListeners();
-
+    const startPlayback = async () => {
       try {
+        vid.load();           
         vid.volume = volume;
-        if (Number.isFinite(startTime) && startTime > 0) {
-          const safeStartTime =
-            Number.isFinite(vid.duration) && vid.duration > 0
-              ? Math.min(startTime, Math.max(vid.duration - 0.25, 0))
-              : startTime;
-          vid.currentTime = Math.max(0, safeStartTime);
-        } else {
-          vid.currentTime = 0;
-        }
+        const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
+
+        const shouldAutoSkipIntro =
+          skipIntro &&
+          hasIntro &&
+          !NO_AUTO_SKIP_INTRO_SHOWS.has(showKey);
+
+        const startTime =
+          (!shouldStartFromBeginning && savedProgress > 1)
+            ? savedProgress
+            : (shouldAutoSkipIntro ? Number(intro.end) || 0 : 0);
+
+        vid.currentTime = startTime;
 
         await vid.play();
 
         if (shouldAutoSkipIntro) {
           setAutoSkipDone(true);
-        }
+        }   
       } catch (err) {
         console.warn("Autoplay blocked:", err);
       }
     };
-
-    vid.addEventListener("loadedmetadata", handleStartReady);
-    vid.addEventListener("canplay", handleStartReady);
-
-    if (vid.readyState >= 1) {
-      handleStartReady();
-    }
-
-    return cleanupListeners;
-  }, [playbackSrc, skipIntro, intro?.end, outro?.start, hasIntro, showKey, volume]);
+    startPlayback();
+  }, [playbackSrc, skipIntro, intro?.end]);
   useEffect(() => {
     const vid = videoRef.current;
     const resumeAt = intendedResumeTimeRef.current;
@@ -1343,21 +1315,11 @@ const readProgressRawWithMigration = (storageKey) => {
           detail: { storageKey: key, t: 0, d },
         })
       );
-
-      const shouldAdvanceToNext =
-        !isMovie &&
-        !isLastEpisode &&
-        outro?.skipTo === "next" &&
-        countdownRef.current !== null;
-
-      if (shouldAdvanceToNext) {
-        handleSkipOutroRef.current?.();
-      }
     };
 
     vid.addEventListener("ended", onEnded);
     return () => vid.removeEventListener("ended", onEnded);
-  }, [showId, season, episode, src, isMovie, isLastEpisode, outro?.skipTo]);
+  }, [showId, season, episode, src]);
 
   useEffect(() => {
     const vid = videoRef.current;
