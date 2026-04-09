@@ -1111,36 +1111,48 @@ const readProgressRawWithMigration = (storageKey) => {
     savedProgress = Number(raw) || 0;
   }
 
+    const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
-    const startPlayback = async () => {
+    const shouldAutoSkipIntro =
+      skipIntro &&
+      hasIntro &&
+      !NO_AUTO_SKIP_INTRO_SHOWS.has(showKey);
+
+    const startTime =
+      (!shouldStartFromBeginning && savedProgress > 1)
+        ? savedProgress
+        : (shouldAutoSkipIntro ? Number(intro.end) || 0 : 0);
+
+    let cancelled = false;
+    const applyInitialStart = async () => {
+      if (cancelled) return;
       try {
-        vid.load();           
+        if (Number.isFinite(startTime) && startTime > 0) {
+          vid.currentTime = startTime;
+        }
         vid.volume = volume;
-        const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
-
-        const shouldAutoSkipIntro =
-          skipIntro &&
-          hasIntro &&
-          !NO_AUTO_SKIP_INTRO_SHOWS.has(showKey);
-
-        const startTime =
-          (!shouldStartFromBeginning && savedProgress > 1)
-            ? savedProgress
-            : (shouldAutoSkipIntro ? Number(intro.end) || 0 : 0);
-
-        vid.currentTime = startTime;
-
         await vid.play();
 
         if (shouldAutoSkipIntro) {
           setAutoSkipDone(true);
-        }   
+        }
       } catch (err) {
         console.warn("Autoplay blocked:", err);
       }
     };
-    startPlayback();
-  }, [playbackSrc, skipIntro, intro?.end]);
+
+    if (vid.readyState >= 1) {
+      applyInitialStart();
+    } else {
+      vid.addEventListener("loadedmetadata", applyInitialStart, { once: true });
+    }
+    vid.load();
+
+    return () => {
+      cancelled = true;
+      vid.removeEventListener("loadedmetadata", applyInitialStart);
+    };
+  }, [playbackSrc, skipIntro, intro?.end, outro?.start, hasIntro, showKey, volume]);
   useEffect(() => {
     const vid = videoRef.current;
     const resumeAt = intendedResumeTimeRef.current;
@@ -1315,11 +1327,21 @@ const readProgressRawWithMigration = (storageKey) => {
           detail: { storageKey: key, t: 0, d },
         })
       );
+
+      const shouldAutoAdvanceOnEnded =
+        !isMovie &&
+        !isLastEpisode &&
+        outro?.skipTo === "next" &&
+        (countdownRef.current !== null || outroVisible);
+
+      if (shouldAutoAdvanceOnEnded) {
+        handleSkipOutroRef.current?.();
+      }
     };
 
     vid.addEventListener("ended", onEnded);
     return () => vid.removeEventListener("ended", onEnded);
-  }, [showId, season, episode, src]);
+  }, [showId, season, episode, src, isMovie, isLastEpisode, outro?.skipTo, outroVisible]);
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -1376,8 +1398,16 @@ const readProgressRawWithMigration = (storageKey) => {
 const handleSkipOutro = async () => {
   if (outroSkipRef.current) return;
   outroSkipRef.current = true;
+  clearStallWatchdog();
+  recoveryInFlightRef.current = false;
+  setIsLoading(true);
+  setMediaNotFound(false);
   setCountdown(null);
   setOutroVisible(false);
+  setOutroDismissed(false);
+  if (videoRef.current && !videoRef.current.paused) {
+    videoRef.current.pause();
+  }
 
   if (outro?.skipTo === "next") {
     const opts = { source: "outro" };
@@ -1414,8 +1444,16 @@ const handleNextEpisode = async () => {
   }
 
   skippingRef.current = true;
+  clearStallWatchdog();
+  recoveryInFlightRef.current = false;
+  setIsLoading(true);
+  setMediaNotFound(false);
   setCountdown(null);
   setOutroVisible(false);
+  setOutroDismissed(false);
+  if (videoRef.current && !videoRef.current.paused) {
+    videoRef.current.pause();
+  }
 
   const targetS = nextSeason;
   const targetE = nextEpisode;
@@ -1441,6 +1479,16 @@ const handleNextEpisode = async () => {
 
 const handleSkipToPrevious = async () => {
   if (!prevEpisode || prevSeason < 1) return; 
+  clearStallWatchdog();
+  recoveryInFlightRef.current = false;
+  setIsLoading(true);
+  setMediaNotFound(false);
+  setCountdown(null);
+  setOutroVisible(false);
+  setOutroDismissed(false);
+  if (videoRef.current && !videoRef.current.paused) {
+    videoRef.current.pause();
+  }
 
   if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
     const signedUrl = await resolveSignedEpisodeUrl(prevSeason, prevEpisode);
