@@ -58,17 +58,87 @@ const Library = () => {
       visible: { opacity: 1, x: 0 },
     };
 
+    const getValidatedSequentialTarget = (requestedSeason, requestedEpisode) => {
+      const currentSeason = Number(playingRef.current?.season);
+      const currentEpisode = Number(playingRef.current?.episode);
+      const nextSeason = Number(requestedSeason);
+      const nextEpisode = Number(requestedEpisode);
+
+      if (
+        !Number.isFinite(currentSeason) ||
+        !Number.isFinite(currentEpisode) ||
+        !Number.isFinite(nextSeason) ||
+        !Number.isFinite(nextEpisode)
+      ) {
+        return {
+          season: requestedSeason,
+          episode: requestedEpisode,
+          corrected: false,
+        };
+      }
+
+      if (currentSeason !== nextSeason || currentEpisode !== nextEpisode) {
+        return {
+          season: requestedSeason,
+          episode: requestedEpisode,
+          corrected: false,
+        };
+      }
+
+      const availableSeasons = Object.keys(show?.videos || {})
+        .map((key) => {
+          const match = key.match(/^season(\d+)$/);
+          return match ? Number(match[1]) : null;
+        })
+        .filter((value) => Number.isFinite(value))
+        .sort((a, b) => a - b);
+
+      for (const seasonNumber of availableSeasons) {
+        const episodes = show?.videos?.[`season${seasonNumber}`] || [];
+        if (seasonNumber < currentSeason) continue;
+
+        if (seasonNumber === currentSeason) {
+          const candidateEpisode = currentEpisode + 1;
+          if (episodes[candidateEpisode - 1]) {
+            return { season: seasonNumber, episode: candidateEpisode, corrected: true };
+          }
+          continue;
+        }
+
+        if (episodes[0]) {
+          return { season: seasonNumber, episode: 1, corrected: true };
+        }
+      }
+
+      return {
+        season: requestedSeason,
+        episode: requestedEpisode,
+        corrected: false,
+      };
+    };
+
     {/* Skip Handler */}
     const handleSkipToNext = async (targetSeason, targetEpisode, signedUrl = null, opts = {}) => {
       const isJJKOutro = opts.source === "outro" && showId === "jjk";
-      const episodes = show?.videos?.[`season${targetSeason}`] || [];
-      const idx = Math.max(0, (targetEpisode ?? 1) - 1);
+      const validatedTarget = getValidatedSequentialTarget(targetSeason, targetEpisode);
+      const effectiveSeason = validatedTarget.season;
+      const effectiveEpisode = validatedTarget.episode;
+      const episodes = show?.videos?.[`season${effectiveSeason}`] || [];
+      const idx = Math.max(0, (effectiveEpisode ?? 1) - 1);
       const ep = episodes[idx];
-      const videoPath = signedUrl || ep?.path;
+      let videoPath = signedUrl || ep?.path;
+
+      if (validatedTarget.corrected && awsHostedShows.includes(showId)) {
+        const correctedSignedUrl = await fetchSignedEpisodeUrl(showId, effectiveSeason, effectiveEpisode);
+        if (correctedSignedUrl) {
+          videoPath = correctedSignedUrl;
+        }
+      }
+
       if (!videoPath) {
         console.warn("🛑 No path for target episode; not changing selection.", {
-          targetSeason,
-          targetEpisode,
+          targetSeason: effectiveSeason,
+          targetEpisode: effectiveEpisode,
           hasEpisodes: episodes.length,
         });
         return;
@@ -76,11 +146,11 @@ const Library = () => {
       setSelectedVideo({
         path: videoPath,
         showId,
-        season: targetSeason,
-        episode: targetEpisode,
+        season: effectiveSeason,
+        episode: effectiveEpisode,
         skipIntro: !isJJKOutro,
       });
-      pushDesktopLastWatched({ showId, season: targetSeason, episode: targetEpisode });
+      pushDesktopLastWatched({ showId, season: effectiveSeason, episode: effectiveEpisode });
     };
 
     {/* Season Dropdown Handling */}
