@@ -1166,10 +1166,14 @@ const readProgressRawWithMigration = (storageKey) => {
   }, [playbackSrc]);
   const [countdown, setCountdown] = useState(null);
   const [outroDismissed, setOutroDismissed] = useState(false);
+  const [countdownAfterEnded, setCountdownAfterEnded] = useState(false);
   const countdownRef = useRef(null);
   useEffect(() => {
     countdownRef.current = countdown;
   }, [countdown]);
+  useEffect(() => {
+    setCountdownAfterEnded(false);
+  }, [playbackSrc]);
 
   {/* Time */}
   useEffect(() => {
@@ -1228,6 +1232,7 @@ const readProgressRawWithMigration = (storageKey) => {
       } else {
         setOutroVisible(false);
         setCountdown(null);
+        setCountdownAfterEnded(false);
         outroProgressResetRef.current = false;
         if (duration) {
           const shouldPersistByTime = now - lastProgressPersistAtRef.current >= 1500;
@@ -1297,6 +1302,10 @@ const readProgressRawWithMigration = (storageKey) => {
 
     const onEnded = () => {
       const d = Number.isFinite(vid.duration) ? vid.duration : 0;
+
+      if (countdownRef.current !== null) {
+        setCountdownAfterEnded(true);
+      }
 
       localStorage.setItem(
         `watchProgress-${key}`,
@@ -1517,16 +1526,17 @@ const handleSkipToPrevious = async () => {
   useEffect(() => {
     if (countdown === null) return;
     if (countdown === 0) {
+      setCountdownAfterEnded(false);
       handleSkipOutroRef.current?.(); // Trigger skip using latest handler state
       return;
     }
   
-    if (!isPlaying) return;
+    if (!isPlaying && !countdownAfterEnded) return;
     const timer = setTimeout(() => {
       setCountdown((c) => c - 1);
     }, 1000);
     return () => clearTimeout(timer);
-  }, [countdown, isPlaying]);
+  }, [countdown, isPlaying, countdownAfterEnded]);
 
 
   {/* Skip ahead buttons */}
@@ -1879,6 +1889,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
     setCountdown(null);
     setOutroVisible(false);
     setOutroDismissed(true);
+    setCountdownAfterEnded(false);
     if (debugOutro) setDebugOutroDismissed(true);
     outroSkipRef.current = false; 
   };
