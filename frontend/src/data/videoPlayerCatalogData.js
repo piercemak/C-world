@@ -41,6 +41,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "The Eric Andre Show", cardId: "card-40" },
   { title: "Pokémon 2000", cardId: "card-41" },
   { title: "Coherence", cardId: "card-42" },
+  { title: "Exit 8", cardId: "card-43" },
 
 ];
 
@@ -87,4 +88,5 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-40": "theericandreshow",
   "card-41": "pokemon2000",
   "card-42": "coherence",
+  "card-43": "exit8",
 };

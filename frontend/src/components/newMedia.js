@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "exit8",
+        showTitle: "Exit 8",
+        placeholder: "/images/exit8/placeholders/exit8_placeholder.png",
+        to: `/video-library/exit8?movie=1`,
+      }, 
+      {
         kind: "episode",
         showSlug: "jjk",                   
         showTitle: "Jujutsu Kaisen",
@@ -35,15 +42,5 @@
         episodeTitle: "Tokyo Colony No 5",
         placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E11_${clean("jjk")}_placeholder.png`,
         to: `/video-library/jjk?season=3&episode=11`,
-      },
-      {
-        kind: "episode",
-        showSlug: "jjk",                   
-        showTitle: "Jujutsu Kaisen",
-        season: 3,
-        episode: 10,
-        episodeTitle: "Tokyo Colony No 4",
-        placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E10_${clean("jjk")}_placeholder.png`,
-        to: `/video-library/jjk?season=3&episode=10`,
       },
     ];

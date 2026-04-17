@@ -18,6 +18,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "ikiru": "/videos/ikiru/ikiru_subtitles.vtt",
   "pokemon2000": "/videos/pokemon2000/pokemon2000_subtitles.vtt",
   "coherence": "/videos/coherence/coherence_subtitles.vtt",
+  "exit8": "/videos/exit8/exit8_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

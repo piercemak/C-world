@@ -503,4 +503,16 @@ export const SHOWS = [
         card: "/images/cardimages/coherenceLogo.svg", 
         dateadded: "2-13-25",
     }, 
+
+    {
+        id: "exit8",
+        title: "Exit 8",
+        creator: "Genki Kawamura", 
+        background: "/images/exit8/covers/exit8_backdrop.svg",
+        ratings: "6.4",
+        type: "Movies",
+        keyart: "/images/exit8/covers/exit8_mobileLogo.jpg", 
+        card: "/images/cardimages/exit8Logo.svg", 
+        dateadded: "2-14-25",
+    }, 
 ];

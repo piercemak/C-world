@@ -764,6 +764,20 @@ const MobileShows = () => {
           subtitles: "yes",
           videos: generateSeasonVideos({}, "coherence", "movie"),
         }, 
+        "exit8": {
+          type: "movie",  
+          title: "Exit 8",
+          ratings: "6.4",
+          agerating: "18",
+          creator: "Genki Kawamura", 
+          release_year: "2026",
+          genre: "Psychological Horror",
+          duration: "1h 35m",          
+          description: "A man becomes increasingly desperate when he realizes he is trapped in a subway station, needing to complete a mission to get out.",
+          background: "/images/exit8/covers/exit8Cover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "exit8", "movie"),
+        }, 
 
       };
       const show = shows[showId];
