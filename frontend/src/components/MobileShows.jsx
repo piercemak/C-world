@@ -6,7 +6,7 @@ import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
 import { SHOWS } from "./mobileshowsData.js";
 import { allEpisodeTitles } from "./episodeTitles.js";
-import { queueWatchProgressSync, syncWatchHistory } from "../lib/watchSync.js";
+import { queueWatchProgressSync, syncWatchHistory, flushWatchProgressSync } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
 import {
   fetchSignedUrl as fetchSignedAssetUrl,
@@ -1051,6 +1051,48 @@ const handleTimeUpdate = () => {
   if (!video) return;
   saveWatchProgress(video.currentTime, video.duration);
 };
+
+useEffect(() => {
+  if (!videoPlayerVisible || !selectedVideo || !show) return;
+  const video = videoRef.current;
+  if (!video) return;
+
+  const flushProgress = async () => {
+    const duration = Number(video.duration || 0);
+    if (!duration || !Number.isFinite(duration)) return;
+
+    const currentTime = Math.min(Number(video.currentTime || 0), Math.max(duration - 0.25, 0));
+
+    saveWatchProgress(currentTime, duration);
+    await flushWatchProgressSync({
+      showId,
+      season: show.type === "movie" || show.type === "Movies" ? null : Number(selectedVideo?.season || 0),
+      episode: show.type === "movie" || show.type === "Movies" ? null : Number(selectedVideo?.episode || 0),
+      currentTime,
+      duration,
+    });
+  };
+
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === "hidden") {
+      flushProgress();
+    }
+  };
+
+  video.addEventListener("pause", flushProgress);
+  video.addEventListener("seeked", flushProgress);
+  window.addEventListener("beforeunload", flushProgress);
+  window.addEventListener("pagehide", flushProgress);
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+
+  return () => {
+    video.removeEventListener("pause", flushProgress);
+    video.removeEventListener("seeked", flushProgress);
+    window.removeEventListener("beforeunload", flushProgress);
+    window.removeEventListener("pagehide", flushProgress);
+    document.removeEventListener("visibilitychange", handleVisibilityChange);
+  };
+}, [videoPlayerVisible, selectedVideo, show, showId]);
 
 
 

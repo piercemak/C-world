@@ -82,14 +82,17 @@ export const hydrateWatchDataFromServer = async (profileId = null) => {
 };
 
 const progressDebounce = new Map();
-export const queueWatchProgressSync = ({ showId, season = null, episode = null, currentTime = 0, duration = 0 }) => {
-  const debounceKey = `${showId}:${season ?? "m"}:${episode ?? "m"}`;
-  const existing = progressDebounce.get(debounceKey);
-  if (existing) clearTimeout(existing.timeoutId);
 
-  const timeoutId = setTimeout(async () => {
-    progressDebounce.delete(debounceKey);
-    await authedFetch("/api/progress/", {
+const postWatchProgress = async ({
+  showId,
+  season = null,
+  episode = null,
+  currentTime = 0,
+  duration = 0,
+}, { keepalive = false } = {}) => {
+  await authedFetch(
+    "/api/progress/",
+    {
       method: "POST",
       body: JSON.stringify({
         show_id: showId,
@@ -98,10 +101,43 @@ export const queueWatchProgressSync = ({ showId, season = null, episode = null, 
         current_time: Number(currentTime || 0),
         duration: Number(duration || 0),
       }),
-    });
+      keepalive,
+    },
+    null
+  );
+};
+
+export const queueWatchProgressSync = ({ showId, season = null, episode = null, currentTime = 0, duration = 0 }) => {
+  const debounceKey = `${showId}:${season ?? "m"}:${episode ?? "m"}`;
+  const existing = progressDebounce.get(debounceKey);
+  if (existing) clearTimeout(existing.timeoutId);
+
+  const timeoutId = setTimeout(async () => {
+    progressDebounce.delete(debounceKey);
+    await postWatchProgress({ showId, season, episode, currentTime, duration });
   }, 1500);
 
   progressDebounce.set(debounceKey, { timeoutId });
+};
+
+export const flushWatchProgressSync = async ({
+  showId,
+  season = null,
+  episode = null,
+  currentTime = 0,
+  duration = 0,
+}) => {
+  const debounceKey = `${showId}:${season ?? "m"}:${episode ?? "m"}`;
+  const existing = progressDebounce.get(debounceKey);
+  if (existing) {
+    clearTimeout(existing.timeoutId);
+    progressDebounce.delete(debounceKey);
+  }
+
+  await postWatchProgress(
+    { showId, season, episode, currentTime, duration },
+    { keepalive: true }
+  );
 };
 
 export const syncWatchHistory = async ({ showId, season = null, episode = null }) => {

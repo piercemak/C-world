@@ -7,7 +7,7 @@ import ProgressBar from "./ProgressBar.jsx";
 import VolumeSlider from "./VolumeSlider.jsx";
 import SkipForward from '../assets/icons/SkipForward.svg'
 import SkipBack from '../assets/icons/SkipBack.svg'
-import { queueWatchProgressSync } from "../lib/watchSync.js";
+import { queueWatchProgressSync, flushWatchProgressSync } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
 
 
@@ -1271,7 +1271,7 @@ const readProgressRawWithMigration = (storageKey) => {
         `watchProgress-${key}`,
         JSON.stringify({ ...obj, d, updatedAt: Date.now() })
       );
-      queueWatchProgressSync({
+      flushWatchProgressSync({
         showId,
         season,
         episode,
@@ -1311,7 +1311,7 @@ const readProgressRawWithMigration = (storageKey) => {
         `watchProgress-${key}`,
         JSON.stringify({ t: 0, d, updatedAt: Date.now() })
       );
-      queueWatchProgressSync({
+      flushWatchProgressSync({
         showId,
         season,
         episode,
@@ -1345,7 +1345,7 @@ const readProgressRawWithMigration = (storageKey) => {
         `watchProgress-${key}`,
         JSON.stringify({ t: tSafe, d, updatedAt: Date.now() })
       );
-      queueWatchProgressSync({
+      flushWatchProgressSync({
         showId,
         season,
         episode,
@@ -1363,14 +1363,24 @@ const readProgressRawWithMigration = (storageKey) => {
       lastPersistedTimeRef.current = tSafe;
     };
 
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        flushProgress();
+      }
+    };
+
     vid.addEventListener("pause", flushProgress);
     vid.addEventListener("seeked", flushProgress);
     window.addEventListener("beforeunload", flushProgress);
+    window.addEventListener("pagehide", flushProgress);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       vid.removeEventListener("pause", flushProgress);
       vid.removeEventListener("seeked", flushProgress);
       window.removeEventListener("beforeunload", flushProgress);
+      window.removeEventListener("pagehide", flushProgress);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [showId, season, episode, src]);
 
