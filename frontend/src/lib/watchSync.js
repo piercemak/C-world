@@ -40,19 +40,65 @@ const clearLocalWatchState = () => {
   keys.forEach((key) => localStorage.removeItem(key));
 };
 
+const parseStoredProgress = (raw) => {
+  if (!raw) return { t: 0, d: 0, updatedAt: 0 };
+  try {
+    const obj = JSON.parse(raw);
+    const t = Number(obj?.t ?? obj?.currentTime ?? 0);
+    const d = Number(obj?.d ?? obj?.duration ?? 0);
+    const updatedAt = Number(obj?.updatedAt ?? 0);
+    return {
+      t: Number.isFinite(t) ? t : 0,
+      d: Number.isFinite(d) ? d : 0,
+      updatedAt: Number.isFinite(updatedAt) ? updatedAt : 0,
+    };
+  } catch {
+    const t = Number(raw);
+    return { t: Number.isFinite(t) ? t : 0, d: 0, updatedAt: 0 };
+  }
+};
+
 const toStorageKey = ({ show_id, season, episode }) => {
   if (season == null || episode == null) return `watchProgress-${show_id}`;
   return `watchProgress-${show_id}-S${String(season).padStart(2, "0")}-E${String(episode).padStart(2, "0")}`;
 };
 
 export const hydrateWatchDataFromServer = async (profileId = null) => {
+  const localProgressSnapshot = new Map(
+    Object.keys(localStorage)
+      .filter((key) => key.startsWith("watchProgress-"))
+      .map((key) => [key, parseStoredProgress(localStorage.getItem(key))])
+  );
   clearLocalWatchState();
 
   const progressRes = await authedFetch("/api/progress/", { method: "GET" }, profileId);
   if (progressRes?.ok) {
     const progressItems = await progressRes.json();
+    const now = Date.now();
+    const recentLocalWindowMs = 15 * 60 * 1000;
+
     progressItems.forEach((item) => {
       const key = toStorageKey(item);
+      const localKey = key;
+      const localSnapshot = localProgressSnapshot.get(localKey);
+      const serverUpdatedAt = new Date(item.updated_at).getTime() || 0;
+      const shouldPreferRecentLocal =
+        localSnapshot &&
+        localSnapshot.updatedAt > serverUpdatedAt &&
+        now - localSnapshot.updatedAt <= recentLocalWindowMs;
+
+      if (shouldPreferRecentLocal) {
+        localStorage.setItem(
+          key,
+          JSON.stringify({
+            t: Number(localSnapshot.t || 0),
+            d: Number(localSnapshot.d || 0),
+            updatedAt: Number(localSnapshot.updatedAt || now),
+          })
+        );
+        return;
+      }
+
       localStorage.setItem(
         key,
         JSON.stringify({
@@ -62,6 +108,21 @@ export const hydrateWatchDataFromServer = async (profileId = null) => {
         })
       );
     });
+
+    for (const [key, localSnapshot] of localProgressSnapshot.entries()) {
+      if (localStorage.getItem(key)) continue;
+      if (!localSnapshot?.updatedAt) continue;
+      if (now - localSnapshot.updatedAt > recentLocalWindowMs) continue;
+
+      localStorage.setItem(
+        key,
+        JSON.stringify({
+          t: Number(localSnapshot.t || 0),
+          d: Number(localSnapshot.d || 0),
+          updatedAt: Number(localSnapshot.updatedAt || now),
+        })
+      );
+    }
   }
 
   const historyRes = await authedFetch("/api/history/", { method: "GET" }, profileId);
