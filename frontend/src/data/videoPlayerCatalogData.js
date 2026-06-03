@@ -42,6 +42,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Pokémon 2000", cardId: "card-41" },
   { title: "Coherence", cardId: "card-42" },
   { title: "Exit 8", cardId: "card-43" },
+  { title: "Hokum", cardId: "card-44" },
 
 ];
 
@@ -89,4 +90,5 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-41": "pokemon2000",
   "card-42": "coherence",
   "card-43": "exit8",
+  "card-44": "hokum"
 };

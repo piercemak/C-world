@@ -482,6 +482,17 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "exit8", "movie"),
         }, 
+        "hokum": {
+          type: "movie",  
+          title: "Hokum",
+          release_year: "2026",
+          genre: "Psychological Horror",
+          duration: "1h 47m",          
+          description: "A horror writer visits an Irish inn to scatter his parents' ashes, unaware the property is said to be haunted by a witch.",
+          background: "/images/hokum/covers/hokumCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "hokum", "movie"),
+        }, 
         
       };
 

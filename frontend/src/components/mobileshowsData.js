@@ -515,4 +515,16 @@ export const SHOWS = [
         card: "/images/cardimages/exit8Logo.svg", 
         dateadded: "2-14-25",
     }, 
+
+    {
+        id: "hokum",
+        title: "Exit 8",
+        creator: "Damian McCarthy", 
+        background: "/images/hokum/covers/hokum_backdrop.svg",
+        ratings: "7.3",
+        type: "Movies",
+        keyart: "/images/hokum/covers/hokum_mobileLogo.jpg", 
+        card: "/images/cardimages/hokumLogo.svg", 
+        dateadded: "2-15-25",
+    }, 
 ];
