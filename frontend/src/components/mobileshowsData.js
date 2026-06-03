@@ -518,7 +518,7 @@ export const SHOWS = [
 
     {
         id: "hokum",
-        title: "Exit 8",
+        title: "Hokum",
         creator: "Damian McCarthy", 
         background: "/images/hokum/covers/hokum_backdrop.svg",
         ratings: "7.3",
