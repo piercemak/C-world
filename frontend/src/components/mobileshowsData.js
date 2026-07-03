@@ -527,4 +527,28 @@ export const SHOWS = [
         card: "/images/cardimages/hokumLogo.svg", 
         dateadded: "2-15-25",
     }, 
+
+    {
+        id: "obsession",
+        title: "Obsession",
+        creator: "Curry Barker", 
+        background: "/images/obsession/covers/obsession_backdrop.svg",
+        ratings: "8.1",
+        type: "Movies",
+        keyart: "/images/obsession/covers/obsession_mobileLogo.jpg", 
+        card: "/images/cardimages/obsessionLogo.svg", 
+        dateadded: "2-16-25",
+    }, 
+
+    {
+        id: "projecthailmary",
+        title: "Obsession",
+        creator: "Phil Lord", 
+        background: "/images/projecthailmary/covers/projecthailmary_backdrop.svg",
+        ratings: "8.2",
+        type: "Movies",
+        keyart: "/images/projecthailmary/covers/projecthailmary_mobileLogo.jpg", 
+        card: "/images/cardimages/projecthailmaryLogo.svg", 
+        dateadded: "2-17-25",
+    }, 
 ];

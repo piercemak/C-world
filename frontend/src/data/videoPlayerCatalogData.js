@@ -43,6 +43,8 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Coherence", cardId: "card-42" },
   { title: "Exit 8", cardId: "card-43" },
   { title: "Hokum", cardId: "card-44" },
+  { title: "Obsession", cardId: "card-45" },
+  { title: "Project Hail Mary", cardId: "card-46" },
 
 ];
 
@@ -90,5 +92,7 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-41": "pokemon2000",
   "card-42": "coherence",
   "card-43": "exit8",
-  "card-44": "hokum"
+  "card-44": "hokum",
+  "card-45": "obsession",
+  "card-46": "projecthailmary"
 };

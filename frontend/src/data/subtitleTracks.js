@@ -20,6 +20,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "coherence": "/videos/coherence/coherence_subtitles.vtt",
   "exit8": "/videos/exit8/exit8_subtitles.vtt",
   "hokum": "/videos/hokum/hokum_subtitles.vtt",
+  "projecthailmary": "/videos/projecthailmary/projecthailmary_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

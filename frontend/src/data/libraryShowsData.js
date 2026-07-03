@@ -493,6 +493,28 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "hokum", "movie"),
         }, 
+        "obsession": {
+          type: "movie",  
+          title: "Obsession",
+          release_year: "2026",
+          genre: "Psychological Horror",
+          duration: "1h 48m",          
+          description: "After breaking the mysterious 'One Wish Willow' to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
+          background: "/images/obsession/covers/obsessionCover.svg",
+          subtitles: "no",
+          videos: generateSeasonVideos({}, "obsession", "movie"),
+        }, 
+        "projecthailmary": {
+          type: "movie",  
+          title: "Project Hail Mary",
+          release_year: "2026",
+          genre: "Adventure Epic",
+          duration: "2h 36m",          
+          description: "A science teacher wakes up alone on a spaceship. As his memory returns, he uncovers a mission to stop a mysterious substance killing Earth's sun, and realizes that an unexpected friendship may be the key.",
+          background: "/images/projecthailmary/covers/projecthailmaryCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "projecthailmary", "movie"),
+        }, 
         
       };
 
