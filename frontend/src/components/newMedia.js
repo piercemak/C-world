@@ -3,6 +3,20 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "projecthailmary",
+        showSlug: "projecthailmary",
+        showTitle: "Project Hail Mary",
+        placeholder: "/images/projecthailmary/placeholders/projecthailmary_placeholder.png",
+        to: `/video-library/projecthailmary?movie=1`,
+      }, 
+      {
+        kind: "movie",
+        showSlug: "obsession",
+        showTitle: "Obsession",
+        placeholder: "/images/obsession/placeholders/obsession_placeholder.png",
+        to: `/video-library/obsession?movie=1`,
+      }, 
+      {
         kind: "hokum",
         showSlug: "hokum",
         showTitle: "Hokum",
@@ -25,19 +39,5 @@
         episodeTitle: "Sendai Colony",
         placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E12_${clean("jjk")}_placeholder.png`,
         to: `/video-library/jjk?season=3&episode=12`,
-      },
-      {
-        kind: "movie",
-        showSlug: "coherence",
-        showTitle: "Coherence",
-        placeholder: "/images/coherence/placeholders/coherence_placeholder.png",
-        to: `/video-library/coherence?movie=1`,
-      }, 
-      {
-        kind: "movie",
-        showSlug: "pokemon2000",
-        showTitle: "Pokémon 2000",
-        placeholder: "/images/pokemon2000/placeholders/pokemon2000_placeholder.png",
-        to: `/video-library/pokemon2000?movie=1`,
-      },      
+      },   
     ];

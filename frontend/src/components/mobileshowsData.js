@@ -542,7 +542,7 @@ export const SHOWS = [
 
     {
         id: "projecthailmary",
-        title: "Obsession",
+        title: "Project Hail Mary",
         creator: "Phil Lord", 
         background: "/images/projecthailmary/covers/projecthailmary_backdrop.svg",
         ratings: "8.2",
