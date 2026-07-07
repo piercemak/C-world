@@ -3,6 +3,20 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "theanimatrix",
+        showTitle: "The Animatrix",
+        placeholder: "/images/theanimatrix/placeholders/theanimatrix_placeholder.png",
+        to: `/video-library/theanimatrix?movie=1`,
+      }, 
+      {
+        kind: "movie",
+        showSlug: "bloodthelastvampire",
+        showTitle: "Blood: The Last Vampire",
+        placeholder: "/images/bloodthelastvampire/placeholders/bloodthelastvampire_placeholder.png",
+        to: `/video-library/bloodthelastvampire?movie=1`,
+      }, 
+      {
         kind: "projecthailmary",
         showSlug: "projecthailmary",
         showTitle: "Project Hail Mary",

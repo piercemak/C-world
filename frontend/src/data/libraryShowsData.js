@@ -515,6 +515,28 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "projecthailmary", "movie"),
         }, 
+        "bloodthelastvampire": {
+          type: "movie",  
+          title: "Blood: The Last Vampire",
+          release_year: "2009",
+          genre: "Action",
+          duration: "1h 31m",          
+          description: "A vampire named Saya, who is part of a covert government agency that hunts and destroys demons in a post-WWII Japan, is inserted in a military school to discover which one of her classmates is a demon in disguise.",
+          background: "/images/bloodthelastvampire/covers/bloodthelastvampireCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "bloodthelastvampire", "movie"),
+        }, 
+        "theanimatrix": {
+          type: "movie",  
+          title: "The Animatrix",
+          release_year: "2003",
+          genre: "Animation",
+          duration: "1hr 42m",          
+          description: "An anthology of short films that detail the backstory of the 'Matrix' universe and focus on the original war between man and machines which led to its creation.",
+          background: "/images/theanimatrix/covers/theanimatrixCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "theanimatrix", "movie"),
+        }, 
         
       };
 

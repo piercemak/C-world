@@ -44,7 +44,9 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Exit 8", cardId: "card-43" },
   { title: "Hokum", cardId: "card-44" },
   { title: "Obsession", cardId: "card-45" },
-  { title: "Project Hail Mary", cardId: "card-46" },
+  { title: "Project Hail Mary", cardId: "card-46" },  
+  { title: "Blood: The Last Vampire", cardId: "card-47" },  
+  { title: "The Animatrix", cardId: "card-48" },
 
 ];
 
@@ -94,5 +96,7 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-43": "exit8",
   "card-44": "hokum",
   "card-45": "obsession",
-  "card-46": "projecthailmary"
+  "card-46": "projecthailmary",
+  "card-47": "bloodthelastvampire",
+  "card-48": "theanimatrix"
 };

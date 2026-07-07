@@ -52,6 +52,8 @@ const RandomCoverCarousel = () => {
     { id: "hokum", src: "/images/hokum/covers/hokumCover.svg", title: "Hokum" },
     { id: "obsession", src: "/images/obsession/covers/obsessionCover.svg", title: "Obsession" },
     { id: "projecthailmary", src: "/images/projecthailmary/covers/projecthailmaryCover.svg", title: "Project Hail Mary" },
+    { id: "bloodthelastvampire", src: "/images/bloodthelastvampire/covers/bloodthelastvampireCover.svg", title: "Blood: The Last Vampire" },
+    { id: "theanimatrix", src: "/images/theanimatrix/covers/theanimatrixCover.svg", title: "The Animatrix" },
   ];
 
   const showsById = useMemo(() => {
