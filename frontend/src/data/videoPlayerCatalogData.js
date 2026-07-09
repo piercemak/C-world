@@ -47,7 +47,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Project Hail Mary", cardId: "card-46" },  
   { title: "Blood: The Last Vampire", cardId: "card-47" },  
   { title: "The Animatrix", cardId: "card-48" },
-  { title: "Beck: Mongolian Chop Squad", cardId: "card-49" },  { title: "Widow's Bay", cardId: "card-50" },
+  { title: "Beck: Mongolian Chop Squad", cardId: "card-49" },  { title: "Widow's Bay", cardId: "card-50" },  { title: "Backrooms", cardId: "card-51" },
 
 ];
 
@@ -101,5 +101,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-47": "bloodthelastvampire",
   "card-48": "theanimatrix",
   "card-49": "mongolianchopsquad",
-  "card-50": "widowsbay"
+  "card-50": "widowsbay",
+  "card-51": "backrooms"
 };

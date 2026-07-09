@@ -599,4 +599,15 @@ export const SHOWS = [
         card: "/images/cardimages/widowsbayLogo.svg", 
         dateadded: "7-9-26",
     }, 
+    {
+        id: "backrooms",
+        title: "Backrooms",
+        creator: "Kane Parsons", 
+        background: "/images/backrooms/covers/backrooms_backdrop.svg",
+        ratings: "7.0",
+        type: "Movies",
+        keyart: "/images/backrooms/covers/backrooms_mobileLogo.jpg", 
+        card: "/images/cardimages/backroomsLogo.svg", 
+        dateadded: "7-9-26",
+    }, 
 ];
