@@ -808,7 +808,7 @@
     ],
     "7": [
       "Common_People",
-      "B\u00eate_Noire",
+      "Bête_Noire",
       "Hotel_Reverie",
       "Plaything",
       "Eulogy",
@@ -1337,6 +1337,20 @@
       "Third_Stage",
       "Slip_Out",
       "America"
+    ]
+  },
+  "widowsbay": {
+    "1": [
+      "Welcome_to_Widows_Bay",
+      "Lodging",
+      "The_Inaugural_Swim",
+      "Beach_Reads",
+      "What_to_Expect_on_Your_Trip",
+      "Our_History",
+      "Seasickness",
+      "Your_Baggage",
+      "Emergency_Shelter",
+      "We_Hope_You_Enjoyed_Your_Time"
     ]
   }
 }

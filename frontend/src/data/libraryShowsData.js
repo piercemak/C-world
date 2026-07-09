@@ -553,6 +553,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           background: "/images/mongolianchopsquad/covers/mongolianchopsquadCover.svg",
           videos: videoDataByShow["mongolianchopsquad"],
         },
+        "widowsbay": {
+          type: "show",  
+          title: "Widow's Bay",
+          agerating: "18+",
+          release_year: "2026",
+          genre: "Folk Horror",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "A skeptical mayor leads the superstitious residents of a cursed New England island.",
+          background: "/images/widowsbay/covers/widowsbayCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["widowsbay"],
+        }, 
         
       };
 

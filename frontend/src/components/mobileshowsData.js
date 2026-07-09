@@ -588,4 +588,15 @@ export const SHOWS = [
         dateadded: "7-8-26",
     },  
 
+    {
+        id: "widowsbay",
+        title: "Widow's Bay",
+        creator: "Katie Dippold", 
+        background: "/images/widowsbay/covers/widowsbay_backdrop.svg",
+        ratings: "8.2",
+        type: "TV",
+        keyart: "/images/widowsbay/covers/widowsbay_mobileLogo.jpg", 
+        card: "/images/cardimages/widowsbayLogo.svg", 
+        dateadded: "7-9-26",
+    }, 
 ];

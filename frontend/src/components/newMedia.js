@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "show",
+        showSlug: "widowsbay",
+        showTitle: "Widow's Bay",
+        placeholder: "/images/misc/TBD.jpg",
+        to: `/video-library/widowsbay`,
+      }, 
+      {
         kind: "episode",
         showSlug: "mongolianchopsquad",                   
         showTitle: "Beck: Mongolian Chop Squad",
