@@ -47,6 +47,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Project Hail Mary", cardId: "card-46" },  
   { title: "Blood: The Last Vampire", cardId: "card-47" },  
   { title: "The Animatrix", cardId: "card-48" },
+  { title: "Beck: Mongolian Chop Squad", cardId: "card-49" },
 
 ];
 
@@ -98,5 +99,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-45": "obsession",
   "card-46": "projecthailmary",
   "card-47": "bloodthelastvampire",
-  "card-48": "theanimatrix"
+  "card-48": "theanimatrix",
+  "card-49": "mongolianchopsquad"
 };

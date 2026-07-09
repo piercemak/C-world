@@ -6,6 +6,7 @@ import ColorThief from 'colorthief';
 import Chevron from './Chevron.jsx'
 import { SHOWS } from "./mobileshowsData.js";
 import { allEpisodeTitles } from "./episodeTitles.js";
+import { buildLibraryShows } from "../data/libraryShowsData.js";
 import { queueWatchProgressSync, syncWatchHistory, flushWatchProgressSync } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
 import {
@@ -13,6 +14,11 @@ import {
   fetchSignedEpisodeUrl as fetchSignedEpisodePlaybackUrl,
 } from "../lib/mediaSigning.js";
 
+const formatAgeRating = (value) => {
+  const rating = String(value || "").trim();
+  if (!rating || /^(NR|unrated|not rated)$/i.test(rating)) return "13+";
+  return /^\d+$/.test(rating) ? `${rating}+` : rating;
+};
 
 
 const MobileShows = () => {
@@ -159,8 +165,8 @@ const MobileShows = () => {
       ])
     );
 
-    {/* Show Database */}
-    const shows = {
+    {/* Legacy mobile-only overrides. The generated catalog is merged below. */}
+    const legacyShows = {
         "steven-universe": {
           type: "show",
           title: "Steven Universe",
@@ -794,6 +800,31 @@ const MobileShows = () => {
         },         
 
       };
+      const libraryShows = buildLibraryShows({ videoDataByShow, generateSeasonVideos });
+      const mobileMetadataById = Object.fromEntries(
+        SHOWS.map((item) => [item.id, item]),
+      );
+      const showIds = new Set([
+        ...Object.keys(libraryShows),
+        ...Object.keys(legacyShows),
+      ]);
+      const shows = Object.fromEntries(
+        [...showIds].map((id) => {
+          const libraryShow = libraryShows[id] || {};
+          const legacyShow = legacyShows[id] || {};
+          const mobileMetadata = mobileMetadataById[id] || {};
+
+          return [
+            id,
+            {
+              ...libraryShow,
+              ...legacyShow,
+              creator: mobileMetadata.creator || legacyShow.creator || "",
+              ratings: mobileMetadata.ratings || legacyShow.ratings || "",
+            },
+          ];
+        }),
+      );
       const show = shows[showId];
       console.log({ cleanShowId: cleanShowId(showId) });
 
@@ -1212,7 +1243,7 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
 
                 <div className='flex flex-row w-full mt-3 items-center justify-center gap-4'>
                     <span className='flex justify-center items-center border w-10 p-1 rounded-lg text-sm text-white'>
-                        {show?.agerating}+
+                        {formatAgeRating(show?.agerating)}
                     </span>
                     <span className='text-white'>
                         {hdIcon}

@@ -3,6 +3,16 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "episode",
+        showSlug: "mongolianchopsquad",                   
+        showTitle: "Beck: Mongolian Chop Squad",
+        season: 1,
+        episode: 1,
+        episodeTitle: "The View at 14",
+        placeholder: `${cloudFrontDomain}/${clean("mongolianchopsquad")}/placeholders/season1/S1E1_${clean("mongolianchopsquad")}_placeholder.png`,
+        to: `/video-library/jjk?season=1&episode=1`,
+      }, 
+      {
         kind: "movie",
         showSlug: "theanimatrix",
         showTitle: "The Animatrix",
@@ -30,28 +40,4 @@
         placeholder: "/images/obsession/placeholders/obsession_placeholder.png",
         to: `/video-library/obsession?movie=1`,
       }, 
-      {
-        kind: "hokum",
-        showSlug: "hokum",
-        showTitle: "Hokum",
-        placeholder: "/images/hokum/placeholders/hokum_placeholder.png",
-        to: `/video-library/hokum?movie=1`,
-      }, 
-      {
-        kind: "movie",
-        showSlug: "exit8",
-        showTitle: "Exit 8",
-        placeholder: "/images/exit8/placeholders/exit8_placeholder.png",
-        to: `/video-library/exit8?movie=1`,
-      }, 
-      {
-        kind: "episode",
-        showSlug: "jjk",                   
-        showTitle: "Jujutsu Kaisen",
-        season: 3,
-        episode: 12,
-        episodeTitle: "Sendai Colony",
-        placeholder: `${cloudFrontDomain}/${clean("jjk")}/placeholders/season3/S3E12_${clean("jjk")}_placeholder.png`,
-        to: `/video-library/jjk?season=3&episode=12`,
-      },   
     ];

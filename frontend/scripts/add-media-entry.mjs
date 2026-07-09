@@ -16,6 +16,8 @@ const FILES = {
   carousel: path.join(SRC, "components/RandomCoverCarousel.jsx"),
   styles: path.join(SRC, "components/modules/videoLibrary.module.scss"),
   newMedia: path.join(SRC, "components/newMedia.js"),
+  episodeTitles: path.join(SRC, "data/episodeTitles.json"),
+  showPlayer: path.join(SRC, "components/Show.jsx"),
   packageJson: path.join(ROOT, "package.json"),
 };
 
@@ -38,7 +40,19 @@ async function main() {
   const assetId = normalizeAssetId(args["asset-id"] || id);
   const currentDate = new Date();
   const metadata = await resolveMetadata({ title, mediaType, year: args.year });
+  const episodeCatalog = mediaType === "show"
+    ? await fetchTmdbEpisodeCatalog({
+        title,
+        year: args.year || metadata.releaseYear,
+        tmdbId: args["tmdb-id"],
+        requestedSeasons: args.seasons,
+      })
+    : null;
+  if (episodeCatalog) {
+    metadata.seasons = episodeCatalog.seasonCount;
+  }
   const entry = buildEntry({ id, title, mediaType, assetId, metadata });
+  entry.episodeCatalog = episodeCatalog;
   const edits = [];
   const copies = [];
   const subtitleCopies = [];
@@ -47,6 +61,11 @@ async function main() {
     path.join(PUBLIC, "images", assetId, "covers"),
     path.join(PUBLIC, "images", assetId, "placeholders"),
   ];
+  if (episodeCatalog && entry.subtitles === "yes") {
+    for (const season of Object.keys(episodeCatalog.titlesBySeason)) {
+      directories.push(path.join(PUBLIC, "subtitles", assetId, `season${season}`));
+    }
+  }
 
   const paths = resolveAssetPaths({ id, title, assetId, entry });
   Object.assign(entry, paths);
@@ -66,6 +85,10 @@ async function main() {
   edits.push(updateMobileShows(files.mobile, entry, currentDate));
   edits.push(updateRandomCoverCarousel(files.carousel, entry));
   edits.push(updateVideoLibraryStyles(files.styles, entry));
+  if (episodeCatalog) {
+    edits.push(updateEpisodeTitles(files.episodeTitles, entry));
+    edits.push(updateShowPlayer(files.showPlayer, entry));
+  }
 
   if (entry.subtitles === "yes") {
     edits.push(updateSubtitleTracks(files.subtitles, entry));
@@ -87,11 +110,20 @@ async function main() {
     `${subtitleCopies.length} subtitle file(s) to copy`,
     `${edits.length} source file(s) to update`,
   ];
+  if (episodeCatalog) {
+    plan.push(
+      `TMDB series ${episodeCatalog.tmdbId}: ${episodeCatalog.episodeCount} episode(s) across ${episodeCatalog.seasonCount} season(s)`,
+    );
+  }
 
   if (args["dry-run"]) {
     console.log(plan.join("\n"));
     console.log("\nGenerated library entry:\n");
     console.log(formatLibraryEntry(entry));
+    if (episodeCatalog) {
+      console.log("\nGenerated episode catalog:\n");
+      console.log(JSON.stringify({ [entry.id]: episodeCatalog.titlesBySeason }, null, 2));
+    }
     return;
   }
 
@@ -178,6 +210,14 @@ function normalizeMediaType(value) {
 async function resolveMetadata({ title, mediaType, year }) {
   const omdb = args.fetch === "omdb" || args.omdb;
   const fetched = omdb ? await fetchOmdbMetadata({ title, mediaType, year }) : {};
+  const tmdbAgeRating = args["age-rating"]
+    ? ""
+    : await fetchTmdbAgeRating({
+        title,
+        mediaType,
+        year: args.year || fetched.releaseYear,
+        tmdbId: args["tmdb-id"],
+      });
   return {
     releaseYear: args.year || fetched.releaseYear || "",
     genre: args.genre || fetched.genre || "",
@@ -185,6 +225,7 @@ async function resolveMetadata({ title, mediaType, year }) {
     description: args.description || fetched.description || "",
     creator: args.creator || fetched.creator || "",
     rating: args.rating || fetched.rating || "",
+    ageRating: normalizeAgeRating(args["age-rating"] || tmdbAgeRating || fetched.ageRating),
     seasons: Number(args.seasons || fetched.seasons || 1),
   };
 }
@@ -215,8 +256,186 @@ async function fetchOmdbMetadata({ title, mediaType, year }) {
     description: data.Plot && data.Plot !== "N/A" ? data.Plot : "",
     creator: firstName(data.Director !== "N/A" ? data.Director : data.Writer),
     rating: data.imdbRating && data.imdbRating !== "N/A" ? data.imdbRating : "",
+    ageRating: data.Rated && data.Rated !== "N/A" ? data.Rated : "",
     seasons: Number(data.totalSeasons || 1),
   };
+}
+
+async function fetchTmdbAgeRating({ title, mediaType, year, tmdbId }) {
+  const apiKey = process.env.TMDB_API_KEY;
+  const accessToken = process.env.TMDB_READ_ACCESS_TOKEN;
+  if (!apiKey && !accessToken) return "";
+
+  try {
+    const request = async (pathname, params = {}) => {
+      const search = new URLSearchParams(params);
+      if (apiKey) search.set("api_key", apiKey);
+      const suffix = search.size ? `?${search.toString()}` : "";
+      const response = await fetch(`https://api.themoviedb.org/3${pathname}${suffix}`, {
+        headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+      });
+      if (!response.ok) return null;
+      return response.json();
+    };
+
+    let mediaId = clampPositiveInt(tmdbId, 0);
+    if (!mediaId) {
+      const searchPath = mediaType === "show" ? "/search/tv" : "/search/movie";
+      const yearKey = mediaType === "show" ? "first_air_date_year" : "primary_release_year";
+      const searchData = await request(searchPath, {
+        query: title,
+        ...(parseReleaseYear(year) ? { [yearKey]: parseReleaseYear(year) } : {}),
+      });
+      mediaId = selectTmdbMediaId(searchData?.results || [], { title, year, mediaType });
+    }
+    if (!mediaId) return "";
+
+    if (mediaType === "show") {
+      const data = await request(`/tv/${mediaId}/content_ratings`);
+      return data?.results?.find((item) => item.iso_3166_1 === "US")?.rating || "";
+    }
+
+    const data = await request(`/movie/${mediaId}/release_dates`);
+    const usDates = data?.results?.find((item) => item.iso_3166_1 === "US")?.release_dates || [];
+    const releaseTypePriority = new Map([3, 4, 5, 6, 2, 1].map((type, index) => [type, index]));
+    return usDates
+      .filter((item) => String(item.certification || "").trim())
+      .sort((a, b) => {
+        return (releaseTypePriority.get(a.type) ?? 99) - (releaseTypePriority.get(b.type) ?? 99);
+      })[0]?.certification || "";
+  } catch {
+    return "";
+  }
+}
+
+async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }) {
+  const apiKey = process.env.TMDB_API_KEY;
+  const accessToken = process.env.TMDB_READ_ACCESS_TOKEN;
+  if (!apiKey && !accessToken) {
+    throw new Error("TMDB_API_KEY or TMDB_READ_ACCESS_TOKEN is required when adding a show.");
+  }
+
+  const request = async (pathname, params = {}) => {
+    const search = new URLSearchParams({ language: "en-US", ...params });
+    if (apiKey) search.set("api_key", apiKey);
+    const response = await fetch(`https://api.themoviedb.org/3${pathname}?${search.toString()}`, {
+      headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.status_message || `TMDB request failed with ${response.status}.`);
+    }
+    return data;
+  };
+
+  let mediaId = clampPositiveInt(tmdbId, 0);
+  if (!mediaId) {
+    const searchData = await request("/search/tv", {
+      query: title,
+      ...(parseReleaseYear(year) ? { first_air_date_year: parseReleaseYear(year) } : {}),
+    });
+    mediaId = selectTmdbMediaId(searchData.results || [], {
+      title,
+      year,
+      mediaType: "show",
+    });
+  }
+  if (!mediaId) {
+    throw new Error(`TMDB could not identify the show "${title}". Select it in MediaScraper or enter its TMDB ID.`);
+  }
+
+  const series = await request(`/tv/${mediaId}`);
+  const seasonLimit = clampPositiveInt(requestedSeasons, 0);
+  const seasons = (series.seasons || [])
+    .filter((season) => Number(season.season_number) > 0 && Number(season.episode_count) > 0)
+    .filter((season) => !seasonLimit || Number(season.season_number) <= seasonLimit)
+    .sort((a, b) => Number(a.season_number) - Number(b.season_number));
+
+  const titlesBySeason = {};
+  let episodeCount = 0;
+
+  for (const season of seasons) {
+    const seasonNumber = Number(season.season_number);
+    const seasonData = await request(`/tv/${mediaId}/season/${seasonNumber}`);
+    const episodes = (seasonData.episodes || [])
+      .filter((episode) => Number(episode.episode_number) > 0)
+      .sort((a, b) => Number(a.episode_number) - Number(b.episode_number));
+    if (!episodes.length) continue;
+
+    const highestEpisode = Math.max(...episodes.map((episode) => Number(episode.episode_number)));
+    const titles = Array.from({ length: highestEpisode }, (_, index) => `Episode_${index + 1}`);
+    for (const episode of episodes) {
+      const episodeNumber = Number(episode.episode_number);
+      titles[episodeNumber - 1] = formatEpisodeTitleToken(
+        episode.name || `Episode ${episodeNumber}`,
+        episodeNumber,
+      );
+    }
+    titlesBySeason[String(seasonNumber)] = titles;
+    episodeCount += titles.length;
+  }
+
+  const seasonNumbers = Object.keys(titlesBySeason).map(Number);
+  if (!seasonNumbers.length || !episodeCount) {
+    throw new Error(`TMDB did not return regular episodes for "${title}".`);
+  }
+
+  return {
+    tmdbId: mediaId,
+    seasonCount: Math.max(...seasonNumbers),
+    episodeCount,
+    titlesBySeason,
+  };
+}
+
+function formatEpisodeTitleToken(value, episodeNumber) {
+  const token = String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/['"]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .replace(/_{2,}/g, "_");
+  return token || `Episode_${episodeNumber}`;
+}
+
+function selectTmdbMediaId(results, { title, year, mediaType }) {
+  const expectedTitle = normalizeMatchText(title);
+  const expectedYear = parseReleaseYear(year);
+  const titleField = mediaType === "show" ? "name" : "title";
+  const originalTitleField = mediaType === "show" ? "original_name" : "original_title";
+  const dateField = mediaType === "show" ? "first_air_date" : "release_date";
+  const exactTitles = results.filter((item) => {
+    return [item[titleField], item[originalTitleField]]
+      .filter(Boolean)
+      .some((value) => normalizeMatchText(value) === expectedTitle);
+  });
+  const exactYear = expectedYear
+    ? exactTitles.filter((item) => parseReleaseYear(item[dateField]) === expectedYear)
+    : exactTitles;
+  const match = exactYear[0] || exactTitles[0];
+  return clampPositiveInt(match?.id, 0);
+}
+
+function normalizeMatchText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function normalizeAgeRating(value) {
+  const rating = String(value || "").trim();
+  const normalized = rating.toUpperCase().replace(/\s+/g, "");
+
+  if (/^\d+\+$/.test(normalized)) return normalized;
+  if (/^\d+$/.test(normalized)) return `${normalized}+`;
+  if (["G", "TV-Y", "TV-G"].includes(normalized)) return "0+";
+  if (["PG", "TV-Y7", "TV-Y7-FV", "TV-PG"].includes(normalized)) return "7+";
+  if (["PG-13", "TV-14"].includes(normalized)) return "13+";
+  if (["R", "NC-17", "TV-MA"].includes(normalized)) return "18+";
+  return "13+";
 }
 
 function buildEntry({ id, title, mediaType, assetId, metadata }) {
@@ -236,6 +455,7 @@ function buildEntry({ id, title, mediaType, assetId, metadata }) {
     description: metadata.description || "Description TBD.",
     creator: metadata.creator || "TBD",
     rating: metadata.rating || "TBD",
+    ageRating: metadata.ageRating || "13+",
     seasonCount: Math.max(1, Number(metadata.seasons || 1)),
     subtitles,
   };
@@ -341,6 +561,12 @@ function assertCanInsert(files, entry) {
   if (files.mobile.includes(`id: "${entry.id}"`)) throw new Error(`mobileshowsData already has ${entry.id}.`);
   if (files.carousel.includes(`id: "${entry.id}"`)) throw new Error(`RandomCoverCarousel already has ${entry.id}.`);
   if (files.styles.includes(`&.${entry.cardId}`)) throw new Error(`videoLibrary.module.scss already has ${entry.cardId}.`);
+  if (entry.mediaType === "show") {
+    const episodeTitles = JSON.parse(files.episodeTitles);
+    if (Object.hasOwn(episodeTitles, entry.id)) {
+      throw new Error(`episodeTitles.json already has ${entry.id}.`);
+    }
+  }
 }
 
 function updateLibraryShows(content, entry) {
@@ -389,6 +615,60 @@ function updateVideoLibraryStyles(content, entry) {
   return replaceInFile(FILES.styles, content, /(\n\n\s*}\n\n\n\n\s*@media \(max-width: 1280px\) \{)/, `\n${block}$1`);
 }
 
+function updateEpisodeTitles(content, entry) {
+  const catalog = JSON.parse(content);
+  catalog[entry.id] = entry.episodeCatalog.titlesBySeason;
+  return {
+    file: FILES.episodeTitles,
+    content: `${JSON.stringify(catalog, null, 2)}\n`,
+  };
+}
+
+function updateShowPlayer(content, entry) {
+  const seasonLengthBlock = [
+    `    ${quote(entry.assetId)}: {`,
+    ...Object.entries(entry.episodeCatalog.titlesBySeason).map(
+      ([season, titles]) => `      ${season}: ${titles.length},`,
+    ),
+    "    },",
+  ].join("\n");
+
+  const skipLines = [
+    `    ${quote(entry.assetId)}: {`,
+    "      seasons: {",
+  ];
+  for (const [season, titles] of Object.entries(entry.episodeCatalog.titlesBySeason)) {
+    skipLines.push(`        ${season}: {`);
+    titles.forEach((_, index) => {
+      skipLines.push(
+        `          ${index + 1}: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },`,
+      );
+    });
+    skipLines.push("        },");
+  }
+  skipLines.push("      },", "    },");
+
+  let next = insertIntoDeclaredObject(content, "const seasonLength = {", seasonLengthBlock);
+  next = insertIntoDeclaredObject(next, "const skipTimes = {", skipLines.join("\n"));
+  return { file: FILES.showPlayer, content: next };
+}
+
+function insertIntoDeclaredObject(content, declaration, block) {
+  const start = content.indexOf(declaration);
+  if (start < 0) {
+    throw new Error(`Could not find ${declaration} in Show.jsx.`);
+  }
+  const end = content.indexOf("\n  };", start);
+  if (end < 0) {
+    throw new Error(`Could not find the end of ${declaration} in Show.jsx.`);
+  }
+  const before = content.slice(0, end);
+  const trailingWhitespace = before.match(/\s*$/)?.[0] || "";
+  const body = before.slice(0, before.length - trailingWhitespace.length);
+  const normalizedBody = body.endsWith(",") ? body : `${body},`;
+  return `${normalizedBody}${trailingWhitespace}\n${block}${content.slice(end)}`;
+}
+
 function updateSubtitleTracks(content, entry) {
   if (entry.mediaType === "movie") {
     const line = `  ${quote(entry.id)}: ${quote(entry.subtitlePath)},`;
@@ -433,6 +713,7 @@ function formatLibraryEntry(entry) {
     `        ${quote(entry.id)}: {`,
     `          type: ${quote(entry.mediaType)},  `,
     `          title: ${quote(entry.title)},`,
+    `          agerating: ${quote(entry.ageRating)},`,
     `          release_year: ${quote(entry.releaseYear)},`,
     `          genre: ${quote(entry.genre)},`,
   ];
@@ -514,7 +795,9 @@ Useful:
   --fetch omdb                 Fetch metadata using OMDB_API_KEY
   --year 2026 --genre Adventure --duration "2h 36m"
   --description "..." --creator "Phil Lord" --rating 8.2
-  --seasons 3                 Show-only season count
+  --age-rating PG-13          Override fetched US certification
+  --tmdb-id 687163            Optional exact TMDB movie/show ID
+  --seasons 3                 Optional show season limit; blank imports all regular seasons
   --subtitles yes|no
   --new-media                 Add to newMedia.js
   --cover /path/file.jpg      Copy to public/images/<asset>/covers
@@ -527,6 +810,8 @@ Useful:
   --series-subtitles-folder /path/folder
                               Sorted .vtt files copy to public/subtitles/<asset>/seasonN
   --subtitle-season 1 --subtitle-start-episode 1
+                              Show additions also create every season subtitle folder,
+                              update episodeTitles.json, and add Show.jsx navigation/skip scaffolding
   --dry-run                   Print the plan without changing files
 
 Example:

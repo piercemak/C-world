@@ -551,6 +551,7 @@ export const SHOWS = [
         card: "/images/cardimages/projecthailmaryLogo.svg", 
         dateadded: "2-17-25",
     }, 
+
     {
         id: "bloodthelastvampire",
         title: "Blood: The Last Vampire",
@@ -562,6 +563,7 @@ export const SHOWS = [
         card: "/images/cardimages/bloodthelastvampireLogo.svg", 
         dateadded: "7-6-26",
     }, 
+
     {
         id: "theanimatrix",
         title: "The Animatrix",
@@ -573,4 +575,17 @@ export const SHOWS = [
         card: "/images/cardimages/theanimatrixLogo.svg", 
         dateadded: "7-7-26",
     }, 
+
+    {
+        id: "mongolianchopsquad",
+        title: "Beck: Mongolian Chop Squad",
+        creator: "Harold Sakuishi", 
+        background: "/images/mongolianchopsquad/covers/mongolianchopsquad_backdrop.svg",
+        ratings: "8.2",
+        type: "TV",
+        keyart: "/images/mongolianchopsquad/covers/mongolianchopsquad_mobileLogo.jpg", 
+        card: "/images/cardimages/mongolianchopsquadLogo.svg", 
+        dateadded: "7-8-26",
+    },  
+
 ];

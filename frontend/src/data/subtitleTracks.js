@@ -34,6 +34,7 @@ const SERIES_SUBTITLE_PATTERNS = {
   severance: "/subtitles/severance/season{season}/S{season}E{episode2}_subtitles.vtt",
   pluribus: "/subtitles/pluribus/season{season}/S{season}E{episode2}_subtitles.vtt",
   truedetective: "/subtitles/truedetective/season{season}/S{season}E{episode2}_subtitles.vtt",
+  mongolianchopsquad: "/subtitles/mongolianchopsquad/season{season}/S{season}E{episode2}_subtitles.vtt",
 };
 
 const fillPattern = (pattern, season, episode) => {

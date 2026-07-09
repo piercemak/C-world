@@ -496,6 +496,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
         "obsession": {
           type: "movie",  
           title: "Obsession",
+          agerating: "18+",
           release_year: "2026",
           genre: "Psychological Horror",
           duration: "1h 48m",          
@@ -507,6 +508,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
         "projecthailmary": {
           type: "movie",  
           title: "Project Hail Mary",
+          agerating: "13+",
           release_year: "2026",
           genre: "Adventure Epic",
           duration: "2h 36m",          
@@ -518,6 +520,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
         "bloodthelastvampire": {
           type: "movie",  
           title: "Blood: The Last Vampire",
+          agerating: "18+",
           release_year: "2009",
           genre: "Action",
           duration: "1h 31m",          
@@ -529,6 +532,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
         "theanimatrix": {
           type: "movie",  
           title: "The Animatrix",
+          agerating: "13+",
           release_year: "2003",
           genre: "Animation",
           duration: "1hr 42m",          
@@ -537,6 +541,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "theanimatrix", "movie"),
         }, 
+        "mongolianchopsquad": {
+          type: "show",
+          title: "Beck: Mongolian Chop Squad",
+          agerating: "18+",
+          release_year: "2004",
+          genre: "Music",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "Koyuki thinks life is a drag-until he meets Ryusuke, a local guitar hero with a bad reputation. The two misfits start a band and set out to save rock n' roll. If the guys can stay true to their vision, the whole world awaits.",
+          background: "/images/mongolianchopsquad/covers/mongolianchopsquadCover.svg",
+          videos: videoDataByShow["mongolianchopsquad"],
+        },
         
       };
 

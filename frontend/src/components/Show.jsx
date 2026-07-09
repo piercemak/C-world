@@ -302,7 +302,10 @@ const Show = ({
       3:10,
       4:10,
       5:10,
-    }  
+    },
+    mongolianchopsquad: {
+      1:26,
+    }
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -1047,9 +1050,11 @@ const getActiveSkipTime = () => {
   if (!defaultTimes) return { intro: null, outro: null };
   const rules = perEp ? [] : (skipTimes[showKey]?.rules || []);
   const matched = rules.find(rule => rule.condition(actualSeason, actualEpisode));
+  const introCandidate = (matched?.intro ?? defaultTimes?.intro) || null;
+  const outroCandidate = (matched?.outro ?? defaultTimes?.outro) || null;
   return {
-    intro: (matched?.intro ?? defaultTimes?.intro) || null,
-    outro: (matched?.outro ?? defaultTimes?.outro) || null,
+    intro: introCandidate && introCandidate.end > introCandidate.start ? introCandidate : null,
+    outro: outroCandidate && outroCandidate.start > 0 ? outroCandidate : null,
   };
 };
 const { intro, outro } = getActiveSkipTime();
