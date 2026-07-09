@@ -124,6 +124,10 @@ async function main() {
       console.log("\nGenerated episode catalog:\n");
       console.log(JSON.stringify({ [entry.id]: episodeCatalog.titlesBySeason }, null, 2));
     }
+    if (args["new-media"]) {
+      console.log("\nGenerated newMedia entry:\n");
+      console.log(formatNewMediaEntry(entry));
+    }
     return;
   }
 
@@ -352,6 +356,7 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
     .sort((a, b) => Number(a.season_number) - Number(b.season_number));
 
   const titlesBySeason = {};
+  const displayTitlesBySeason = {};
   let episodeCount = 0;
 
   for (const season of seasons) {
@@ -364,14 +369,20 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
 
     const highestEpisode = Math.max(...episodes.map((episode) => Number(episode.episode_number)));
     const titles = Array.from({ length: highestEpisode }, (_, index) => `Episode_${index + 1}`);
+    const displayTitles = Array.from({ length: highestEpisode }, (_, index) => `Episode ${index + 1}`);
     for (const episode of episodes) {
       const episodeNumber = Number(episode.episode_number);
       titles[episodeNumber - 1] = formatEpisodeTitleToken(
         episode.name || `Episode ${episodeNumber}`,
         episodeNumber,
       );
+      displayTitles[episodeNumber - 1] = formatEpisodeDisplayTitle(
+        episode.name || `Episode ${episodeNumber}`,
+        episodeNumber,
+      );
     }
     titlesBySeason[String(seasonNumber)] = titles;
+    displayTitlesBySeason[String(seasonNumber)] = displayTitles;
     episodeCount += titles.length;
   }
 
@@ -385,6 +396,7 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
     seasonCount: Math.max(...seasonNumbers),
     episodeCount,
     titlesBySeason,
+    displayTitlesBySeason,
   };
 }
 
@@ -397,6 +409,11 @@ function formatEpisodeTitleToken(value, episodeNumber) {
     .replace(/^_+|_+$/g, "")
     .replace(/_{2,}/g, "_");
   return token || `Episode_${episodeNumber}`;
+}
+
+function formatEpisodeDisplayTitle(value, episodeNumber) {
+  const title = String(value || "").trim().replace(/\s+/g, " ");
+  return title || `Episode ${episodeNumber}`;
 }
 
 function selectTmdbMediaId(results, { title, year, mediaType }) {
@@ -681,7 +698,17 @@ function updateSubtitleTracks(content, entry) {
 }
 
 function updateNewMedia(content, entry) {
-  const block = [
+  const block = formatNewMediaEntry(entry);
+
+  return replaceInFile(FILES.newMedia, content, /(export const newMedia = \[\n)/, `$1${block}\n`);
+}
+
+function formatNewMediaEntry(entry) {
+  if (entry.mediaType === "show") {
+    return formatNewEpisodeMediaBlock(entry);
+  }
+
+  return [
     "      {",
     `        kind: ${quote(entry.mediaType)},`,
     `        showSlug: ${quote(entry.id)},`,
@@ -690,8 +717,30 @@ function updateNewMedia(content, entry) {
     `        to: \`/video-library/${entry.id}${entry.mediaType === "movie" ? "?movie=1" : ""}\`,`,
     "      }, ",
   ].join("\n");
+}
 
-  return replaceInFile(FILES.newMedia, content, /(export const newMedia = \[\n)/, `$1${block}\n`);
+function formatNewEpisodeMediaBlock(entry) {
+  const episodeTitle = entry.episodeCatalog?.displayTitlesBySeason?.["1"]?.[0]
+    || displayEpisodeTitleToken(entry.episodeCatalog?.titlesBySeason?.["1"]?.[0])
+    || "Episode 1";
+
+  return [
+    "      {",
+    `        kind: "episode",`,
+    `        showSlug: ${quote(entry.id)},`,
+    `        showTitle: ${quote(entry.title)},`,
+    "        season: 1,",
+    "        episode: 1,",
+    `        episodeTitle: ${quote(episodeTitle)},`,
+    `        placeholder: \`\${cloudFrontDomain}/\${clean(${quote(entry.id)})}/placeholders/season1/S1E1_\${clean(${quote(entry.id)})}_placeholder.png\`,`,
+    `        to: \`/video-library/${entry.id}?season=1&episode=1\`,`,
+    "      }, ",
+  ].join("\n");
+}
+
+function displayEpisodeTitleToken(value) {
+  const text = String(value || "").replace(/_/g, " ").trim();
+  return text ? text.replace(/\b\w/g, (character) => character.toUpperCase()) : "";
 }
 
 function updatePackageJson(content) {

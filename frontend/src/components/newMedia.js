@@ -3,11 +3,14 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
-        kind: "show",
+        kind: "episode",
         showSlug: "widowsbay",
         showTitle: "Widow's Bay",
-        placeholder: "/images/misc/TBD.jpg",
-        to: `/video-library/widowsbay`,
+        season: 1,
+        episode: 1,
+        episodeTitle: "Welcome to Widow's Bay!",
+        placeholder: `${cloudFrontDomain}/${clean("widowsbay")}/placeholders/season1/S1E1_${clean("widowsbay")}_placeholder.png`,
+        to: `/video-library/widowsbay?season=1&episode=1`,
       }, 
       {
         kind: "episode",

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import { useNavigate } from 'react-router-dom';
 import styles from './modules/cardDesign.module.scss'
@@ -189,29 +189,78 @@ setProfileImage(activeProfile?.avatar_url || "/images/misc/profilepictureBlank.w
 
 {/* Grid 2x1 */}
 const pages = chunkArray(filteredShows, 2);
+const pageSetKey = filteredShows.map((show) => show.id).join("|");
 const sliderRef = useRef(null);
+const [sliderNode, setSliderNode] = useState(null);
+const dotRefs = useRef([]);
 const [activePage, setActivePage] = useState(0);
-useEffect(() => {
-const slider = sliderRef.current;
-if (!slider) return;
-const handleScroll = () => {
-    const pageWidth = slider.clientWidth;
-    const newIndex = Math.round(slider.scrollLeft / pageWidth);
-    setActivePage(newIndex);
-};
-slider.addEventListener("scroll", handleScroll);
-return () => slider.removeEventListener("scroll", handleScroll);
+const setSliderElement = useCallback((node) => {
+    sliderRef.current = node;
+    setSliderNode(node);
 }, []);
+useEffect(() => {
+    const slider = sliderNode;
+    if (!slider) return;
+
+    let frame = null;
+    const syncActivePage = () => {
+        if (frame) cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+            if (!pages.length || !slider.clientWidth) {
+                setActivePage(0);
+                return;
+            }
+
+            const maxIndex = Math.max(pages.length - 1, 0);
+            const nextIndex = Math.min(
+                Math.max(Math.round(slider.scrollLeft / slider.clientWidth), 0),
+                maxIndex,
+            );
+
+            setActivePage((current) => (current === nextIndex ? current : nextIndex));
+        });
+    };
+
+    syncActivePage();
+    slider.addEventListener("scroll", syncActivePage, { passive: true });
+    window.addEventListener("resize", syncActivePage);
+    return () => {
+        if (frame) cancelAnimationFrame(frame);
+        slider.removeEventListener("scroll", syncActivePage);
+        window.removeEventListener("resize", syncActivePage);
+    };
+}, [sliderNode, activeTab, pageSetKey, pages.length]);
+
+useEffect(() => {
+    dotRefs.current = dotRefs.current.slice(0, pages.length);
+    setActivePage((current) => Math.min(current, Math.max(pages.length - 1, 0)));
+}, [activeTab, pageSetKey, pages.length]);
+
+useEffect(() => {
+    setActivePage(0);
+    requestAnimationFrame(() => {
+        sliderNode?.scrollTo({ left: 0, behavior: "auto" });
+    });
+}, [sliderNode, activeTab, searchTerm]);
+
+useEffect(() => {
+    dotRefs.current[activePage]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+    });
+}, [activePage, activeTab, pageSetKey]);
 
 
 {/* Dot Page Click */}
 const handleDotClick = (index) => {
-if (!sliderRef.current) return;
-const slider = sliderRef.current;
-const pageWidth = slider.clientWidth;
+const slider = sliderNode || sliderRef.current;
+if (!slider) return;
+const left = slider.clientWidth * index;
 
+setActivePage(index);
 slider.scrollTo({
-    left: pageWidth * index,
+    left,
     behavior: "smooth",
 });
 };
@@ -570,12 +619,12 @@ useEffect(() => {
                 <div className="w-full">
                     <motion.div whileTap={{ scale: 0.98 }} onClick={archiveNavigate} className='flex justify-end items-center pr-2 pb-1 text-white/70 alexandria-font'> View more {rightChevron} </motion.div>
                     {/* Horizontal snapping container */}
-                    <div ref={sliderRef} className="w-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-                    <div className="flex w-full p-1">
+                    <div ref={setSliderElement} className="w-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden">
+                    <div className="flex w-full">
                         {pages.map((page, pageIndex) => (
                         <div
                             key={pageIndex}
-                            className="snap-center shrink-0 w-full px-2 pb-2 mx-2 rounded-2xl"
+                            className="snap-start shrink-0 w-full px-4 pb-2 rounded-2xl"
                         >
                             <div className="grid grid-cols-2 gap-3 items-center justify-center">
                             {page.map((show) => (
@@ -616,20 +665,32 @@ useEffect(() => {
                 </div>
                 )}
                 {/* Page Indicator Dots */}
-                <div className="flex justify-center items-center gap-2 z-900">
-                {pages.map((_, i) => (
-                    <motion.button
-                    key={i}
-                    type="button"
-                    onClick={() => handleDotClick(i)}
-                    className="h-2 rounded-full bg-white"
-                    animate={{
-                        width: activePage === i ? 8 : 8,
-                        opacity: activePage === i ? 1 : 0.4,
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    />
-                ))}
+                <div className="z-[30] flex w-full justify-center px-4 pb-1">
+                    <div className="flex max-w-[88vw] items-center gap-1.5 overflow-x-auto scrollbar-hidden rounded-full border border-white/10 bg-black/30 px-2 py-1.5 shadow-lg shadow-black/30 backdrop-blur-xl">
+                    {pages.map((_, i) => {
+                        const isActive = activePage === i;
+
+                        return (
+                        <motion.button
+                        key={i}
+                        ref={(node) => {
+                            dotRefs.current[i] = node;
+                        }}
+                        type="button"
+                        onClick={() => handleDotClick(i)}
+                        aria-label={`Go to page ${i + 1}`}
+                        aria-current={isActive ? "page" : undefined}
+                        className={`h-2.5 shrink-0 rounded-full transition-colors ${isActive ? "bg-white shadow-[0_0_14px_rgba(255,255,255,0.55)]" : "bg-white/35"}`}
+                        animate={{
+                            width: isActive ? 24 : 8,
+                            opacity: isActive ? 1 : 0.55,
+                            scale: isActive ? 1 : 0.92,
+                        }}
+                        transition={{ type: "spring", stiffness: 360, damping: 26 }}
+                        />
+                        );
+                    })}
+                    </div>
                 </div>
                 </motion.div>
                 </AnimatePresence>
