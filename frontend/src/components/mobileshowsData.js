@@ -608,6 +608,6 @@ export const SHOWS = [
         type: "Movies",
         keyart: "/images/backrooms/covers/backrooms_mobileLogo.jpg", 
         card: "/images/cardimages/backroomsLogo.svg", 
-        dateadded: "7-9-26",
+        dateadded: "7-10-26",
     }, 
 ];
