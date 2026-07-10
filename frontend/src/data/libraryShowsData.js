@@ -551,6 +551,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 1,
           description: "Koyuki thinks life is a drag-until he meets Ryusuke, a local guitar hero with a bad reputation. The two misfits start a band and set out to save rock n' roll. If the guys can stay true to their vision, the whole world awaits.",
           background: "/images/mongolianchopsquad/covers/mongolianchopsquadCover.svg",
+          subtitles: "yes",
           videos: videoDataByShow["mongolianchopsquad"],
         },
         "widowsbay": {
