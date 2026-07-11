@@ -306,7 +306,7 @@ const Show = ({
     mongolianchopsquad: {
       1:26,
     },
-    "widowsbay": {
+    widowsbay: {
       1: 10,
     },
   };
@@ -1043,23 +1043,55 @@ const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
       },
     }
   }, 
+  "mongolianchopsquad": {
+    seasons: {
+      1: {
+        1: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1362.0, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1365.0, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1365.0, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1365.0, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1365.0, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1363.0, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        11: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        12: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        13: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        14: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        15: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        16: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        17: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        18: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        19: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        20: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        21: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        22: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        23: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        24: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        25: { intro: { start: 0.0, end: 96.0 }, outro: { start: 1364.0, skipTo: "next" } },
+        26: { intro: { start: 0.0, end: 96.0 } },
 
-    "widowsbay": {
-      seasons: {
-        1: {
-          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-          10: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
-        },
       },
     },
+  },
+  "widowsbay": {
+    seasons: {
+      1: {
+        1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        10: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+      },
+    },
+  },
   };
  
 const getActiveSkipTime = () => {

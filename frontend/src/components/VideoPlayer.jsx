@@ -949,7 +949,12 @@ const continueItems = useMemo(() => {
 
                         const words = title.split(" ");
                         const displayTitle =
-                          words.length > 4 ? (
+                          title === "Beck: Mongolian Chop Squad" ? (
+                            <>
+                              Beck: <br />
+                              Mongolian Chop Squad
+                            </>
+                          ) : words.length > 4 ? (
                             <>
                               {words.slice(0, 4).join(" ")} <br />
                               {words.slice(4).join(" ")}
