@@ -4,6 +4,13 @@
     export const newMedia = [
       {
         kind: "movie",
+        showSlug: "pokemondestinydeoxys",
+        showTitle: "Pokémon: Destiny Deoxys",
+        placeholder: "/images/pokemondestinydeoxys/placeholders/pokemondestinydeoxys_placeholder.png",
+        to: `/video-library/pokemondestinydeoxys?movie=1`,
+      }, 
+      {
+        kind: "movie",
         showSlug: "backrooms",
         showTitle: "Backrooms",
         placeholder: "/images/backrooms/placeholders/backrooms_placeholder.png",

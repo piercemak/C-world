@@ -24,6 +24,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "bloodthelastvampire": "/videos/bloodthelastvampire/bloodthelastvampire_subtitles.vtt",
   "theanimatrix": "/videos/theanimatrix/theanimatrix_subtitles.vtt",
   "backrooms": "/videos/backrooms/backrooms_subtitles.vtt",
+  "pokemondestinydeoxys": "/videos/pokemondestinydeoxys/pokemondestinydeoxys_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

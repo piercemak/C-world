@@ -579,6 +579,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "backrooms", "movie"),
         }, 
+        "pokemondestinydeoxys": {
+          type: "movie",  
+          title: "Pokémon: Destiny Deoxys",
+          agerating: "13+",
+          release_year: "2004",
+          genre: "Adventure",
+          duration: "1h 38m",          
+          description: "A comet bearing a deadly Pokemon creature crash-lands onto Earth, terrorising a nearby high-tech city, where Ash, Pikachu and friends are currently visiting.",
+          background: "/images/pokemondestinydeoxys/covers/pokemondestinydeoxysCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "pokemondestinydeoxys", "movie"),
+        }, 
         
       };
 

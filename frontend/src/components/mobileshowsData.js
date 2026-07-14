@@ -610,4 +610,15 @@ export const SHOWS = [
         card: "/images/cardimages/backroomsLogo.svg", 
         dateadded: "7-10-26",
     }, 
+    {
+        id: "pokemondestinydeoxys",
+        title: "Pokémon: Destiny Deoxys",
+        creator: "Kunihiko Yuyama", 
+        background: "/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg",
+        ratings: "6.1",
+        type: "Movies",
+        keyart: "/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_mobileLogo.jpg", 
+        card: "/images/cardimages/pokemondestinydeoxysLogo.svg", 
+        dateadded: "7-14-26",
+    }, 
 ];
