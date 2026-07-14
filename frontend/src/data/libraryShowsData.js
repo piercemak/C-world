@@ -576,7 +576,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           duration: "1h 50m",          
           description: "After a therapist's patient disappears into a dimension beyond reality, she must venture into the unknown to save him.",
           background: "/images/backrooms/covers/backroomsCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "backrooms", "movie"),
         }, 
         
