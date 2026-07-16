@@ -604,6 +604,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: videoDataByShow["atlanta"],
         }, 
+        "chronicle": {
+          type: "movie",  
+          title: "Chronicle",
+          agerating: "18+",
+          release_year: "2012",
+          genre: "Drama",
+          duration: "1h 24m",          
+          description: "Three high school friends gain superpowers after making an incredible discovery underground. Soon they find their lives spinning out of control and their bond tested as they embrace their darker sides.",
+          background: "/images/chronicle/covers/chronicleCover.svg",
+          subtitles: "no",
+          videos: generateSeasonVideos({}, "chronicle", "movie"),
+        }, 
         
       };
 

@@ -632,4 +632,15 @@ export const SHOWS = [
         card: "/images/cardimages/atlantaLogo.svg", 
         dateadded: "7-16-26",
     }, 
+    {
+        id: "chronicle",
+        title: "Chronicle",
+        creator: "Josh Trank", 
+        background: "/images/chronicle/covers/chronicle_backdrop.svg",
+        ratings: "7.0",
+        type: "Movies",
+        keyart: "/images/chronicle/covers/chronicle_mobileLogo.jpg", 
+        card: "/images/cardimages/chronicleLogo.svg", 
+        dateadded: "7-16-26",
+    }, 
 ];

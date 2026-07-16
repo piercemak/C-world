@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "chronicle",
+        showTitle: "Chronicle",
+        placeholder: "/images/chronicle/placeholders/chronicle_placeholder.png",
+        to: `/video-library/chronicle?movie=1`,
+      }, 
+      {
         kind: "episode",
         showSlug: "atlanta",
         showTitle: "Atlanta",
