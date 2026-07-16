@@ -43,25 +43,4 @@
         placeholder: "/images/theanimatrix/placeholders/theanimatrix_placeholder.png",
         to: `/video-library/theanimatrix?movie=1`,
       }, 
-      {
-        kind: "movie",
-        showSlug: "bloodthelastvampire",
-        showTitle: "Blood: The Last Vampire",
-        placeholder: "/images/bloodthelastvampire/placeholders/bloodthelastvampire_placeholder.png",
-        to: `/video-library/bloodthelastvampire?movie=1`,
-      }, 
-      {
-        kind: "projecthailmary",
-        showSlug: "projecthailmary",
-        showTitle: "Project Hail Mary",
-        placeholder: "/images/projecthailmary/placeholders/projecthailmary_placeholder.png",
-        to: `/video-library/projecthailmary?movie=1`,
-      }, 
-      {
-        kind: "movie",
-        showSlug: "obsession",
-        showTitle: "Obsession",
-        placeholder: "/images/obsession/placeholders/obsession_placeholder.png",
-        to: `/video-library/obsession?movie=1`,
-      }, 
     ];
