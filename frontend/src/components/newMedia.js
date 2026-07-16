@@ -3,6 +3,16 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "episode",
+        showSlug: "atlanta",
+        showTitle: "Atlanta",
+        season: 1,
+        episode: 1,
+        episodeTitle: "The Big Bang",
+        placeholder: `${cloudFrontDomain}/${clean("atlanta")}/placeholders/season1/S1E1_${clean("atlanta")}_placeholder.png`,
+        to: `/video-library/atlanta?season=1&episode=1`,
+      }, 
+      {
         kind: "movie",
         showSlug: "pokemondestinydeoxys",
         showTitle: "Pokémon: Destiny Deoxys",

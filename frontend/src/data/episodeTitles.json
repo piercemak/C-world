@@ -1352,5 +1352,56 @@
       "Emergency_Shelter",
       "We_Hope_You_Enjoyed_Your_Time"
     ]
+  },
+  "atlanta": {
+    "1": [
+      "The_Big_Bang",
+      "Streets_on_Lock",
+      "Go_for_Broke",
+      "The_Streisand_Effect",
+      "Nobody_Beats_the_Biebs",
+      "Value",
+      "B_A_N",
+      "The_Club",
+      "Juneteenth",
+      "The_Jacket"
+    ],
+    "2": [
+      "Alligator_Man",
+      "Sportin_Waves",
+      "Money_Bag_Shawty",
+      "Helen",
+      "Barbershop",
+      "Teddy_Perkins",
+      "Champagne_Papi",
+      "Woods",
+      "North_of_the_Border",
+      "FUBU",
+      "Crabs_in_a_Barrel"
+    ],
+    "3": [
+      "Three_Slaps",
+      "Sinterklaas_Is_Coming_to_Town",
+      "The_Old_Man_and_the_Tree",
+      "The_Big_Payback",
+      "Cancer_Attack",
+      "White_Fashion",
+      "Trini_2_De_Bone",
+      "New_Jazz",
+      "Rich_Wigga_Poor_Wigga",
+      "Tarrare"
+    ],
+    "4": [
+      "The_Most_Atlanta",
+      "The_Homeliest_Little_Horse",
+      "Born_2_Die",
+      "Light_Skinned_Ed",
+      "Work_Ethic",
+      "Crank_Dat_Killer",
+      "Snipe_Hunt",
+      "The_Goof_Who_Sat_by_the_Door",
+      "Andrew_Wyeth_Alfreds_World",
+      "It_Was_All_a_Dream"
+    ]
   }
 }

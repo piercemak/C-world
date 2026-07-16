@@ -621,4 +621,15 @@ export const SHOWS = [
         card: "/images/cardimages/pokemondestinydeoxysLogo.svg", 
         dateadded: "7-14-26",
     }, 
+    {
+        id: "atlanta",
+        title: "Atlanta",
+        creator: "Donald Glover", 
+        background: "/images/atlanta/covers/atlanta_backdrop.svg",
+        ratings: "8.6",
+        type: "TV",
+        keyart: "/images/atlanta/covers/atlanta_mobileLogo.jpg", 
+        card: "/images/cardimages/atlantaLogo.svg", 
+        dateadded: "7-16-26",
+    }, 
 ];

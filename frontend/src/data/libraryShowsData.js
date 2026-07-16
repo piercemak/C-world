@@ -591,6 +591,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "pokemondestinydeoxys", "movie"),
         }, 
+        "atlanta": {
+          type: "show",  
+          title: "Atlanta",
+          agerating: "18+",
+          release_year: "2016",
+          genre: "Comedy",
+          season_total_number: "4 seasons",
+          season_digit: 4,
+          description: "Earn and his cousin Alfred try to make their way in the world through Atlanta's rap scene. Along the way they come face-to-face with social and economic issues touching on race, relationships, poverty, status, and parenthood.",
+          background: "/images/atlanta/covers/atlantaCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["atlanta"],
+        }, 
         
       };
 

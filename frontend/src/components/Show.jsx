@@ -309,6 +309,12 @@ const Show = ({
     widowsbay: {
       1: 10,
     },
+    "atlanta": {
+      1: 10,
+      2: 11,
+      3: 10,
+      4: 10,
+    },
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -1092,6 +1098,59 @@ const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
       },
     },
   },
+    "atlanta": {
+      seasons: {
+        1: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          10: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        },
+        2: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          10: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          11: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        },
+        3: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          10: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        },
+        4: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          10: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        },
+      },
+    },
   };
  
 const getActiveSkipTime = () => {
