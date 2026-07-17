@@ -641,6 +641,6 @@ export const SHOWS = [
         type: "Movies",
         keyart: "/images/chronicle/covers/chronicle_mobileLogo.jpg", 
         card: "/images/cardimages/chronicleLogo.svg", 
-        dateadded: "7-16-26",
+        dateadded: "7-17-26",
     }, 
 ];
