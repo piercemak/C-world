@@ -643,4 +643,15 @@ export const SHOWS = [
         card: "/images/cardimages/chronicleLogo.svg", 
         dateadded: "7-17-26",
     }, 
+    {
+        id: "jojos",
+        title: "JoJo's Bizarre Adventure",
+        creator: "N/A", 
+        background: "/images/jojos/covers/jojos_backdrop.svg",
+        ratings: "8.5",
+        type: "TV",
+        keyart: "/images/jojos/covers/jojos_mobileLogo.webp", 
+        card: "/images/cardimages/jojosLogo.svg", 
+        dateadded: "7-20-26",
+    }, 
 ];

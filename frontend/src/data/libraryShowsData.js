@@ -616,6 +616,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: generateSeasonVideos({}, "chronicle", "movie"),
         }, 
+        "jojos": {
+          type: "show",  
+          title: "JoJo's Bizarre Adventure",
+          agerating: "18+",
+          release_year: "2012",
+          genre: "Animation",
+          season_total_number: "6 seasons",
+          season_digit: 6,
+          description: "The story of the Joestar family, who are possessed with intense psychic strength, and the adventures each member encounters throughout their lives.",
+          background: "/images/jojos/covers/jojosCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["jojos"],
+        }, 
         
       };
 

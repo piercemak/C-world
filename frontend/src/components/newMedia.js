@@ -3,6 +3,16 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "episode",
+        showSlug: "jojos",
+        showTitle: "JoJo's Bizarre Adventure",
+        season: 1,
+        episode: 1,
+        episodeTitle: "Dio the Invader",
+        placeholder: `${cloudFrontDomain}/${clean("jojos")}/placeholders/season1/S1E1_${clean("jojos")}_placeholder.png`,
+        to: `/video-library/jojos?season=1&episode=1`,
+      }, 
+      {
         kind: "movie",
         showSlug: "chronicle",
         showTitle: "Chronicle",

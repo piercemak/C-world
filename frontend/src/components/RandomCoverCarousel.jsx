@@ -60,6 +60,7 @@ const RandomCoverCarousel = () => {
     { id: "pokemondestinydeoxys", src: "/images/pokemondestinydeoxys/covers/pokemondestinydeoxysCover.svg", title: "Pokémon: Destiny Deoxys" },
     { id: "atlanta", src: "/images/atlanta/covers/atlantaCover.svg", title: "Atlanta" },
     { id: "chronicle", src: "/images/chronicle/covers/chronicleCover.svg", title: "Chronicle" },
+    { id: "jojos", src: "/images/jojos/covers/jojosCover.svg", title: "JoJo's Bizarre Adventure" },
   ];
 
   const showsById = useMemo(() => {
