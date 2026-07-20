@@ -26,6 +26,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "backrooms": "/videos/backrooms/backrooms_subtitles.vtt",
   "pokemondestinydeoxys": "/videos/pokemondestinydeoxys/pokemondestinydeoxys_subtitles.vtt",
   "chronicle": "/videos/chronicle/chronicle_subtitles.vtt",
+  "beingjohnmalkovich": "/videos/beingjohnmalkovich/beingjohnmalkovich_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {
