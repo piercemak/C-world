@@ -646,7 +646,7 @@ export const SHOWS = [
     {
         id: "jojos",
         title: "JoJo's Bizarre Adventure",
-        creator: "N/A", 
+        creator: "Hirohiko Araki", 
         background: "/images/jojos/covers/jojos_backdrop.svg",
         ratings: "8.5",
         type: "TV",
