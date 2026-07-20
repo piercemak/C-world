@@ -323,6 +323,9 @@ const Show = ({
       5: 38,
       6: 12,
     },
+    "chernobyl": {
+      1: 5,
+    },
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -1200,6 +1203,17 @@ const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
           36: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
           37: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
           38: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        },
+      },
+    },
+    "chernobyl": {
+      seasons: {
+        1: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
         },
       },
     },

@@ -629,6 +629,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: videoDataByShow["jojos"],
         }, 
+        "chernobyl": {
+          type: "show",  
+          title: "Chernobyl",
+          agerating: "18+",
+          release_year: "2019",
+          genre: "Drama",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "In April 1986, the city of Chernobyl in the Soviet Union suffers one of the worst nuclear disasters in the history of mankind. Consequently, many heroes put their lives on the line in the following days, weeks and months.",
+          background: "/images/chernobyl/covers/chernobylCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["chernobyl"],
+        }, 
         
       };
 

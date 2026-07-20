@@ -654,4 +654,15 @@ export const SHOWS = [
         card: "/images/cardimages/jojosLogo.svg", 
         dateadded: "7-20-26",
     }, 
+    {
+        id: "chernobyl",
+        title: "Chernobyl",
+        creator: "Craig Mazin", 
+        background: "/images/chernobyl/covers/chernobyl_backdrop.svg",
+        ratings: "9.3",
+        type: "TV",
+        keyart: "/images/chernobyl/covers/chernobyl_mobileLogo.jpg", 
+        card: "/images/cardimages/chernobylLogo.svg", 
+        dateadded: "7-20-26",
+    }, 
 ];
