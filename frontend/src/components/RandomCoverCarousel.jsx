@@ -90,7 +90,7 @@ const RandomCoverCarousel = () => {
   }, [unified.length]);
 
   return (
-    <div className="relative w-full h-48 2xl:h-100 rounded-2xl overflow-hidden mt-1">
+    <div className="relative w-full h-88 2xl:h-100 rounded-2xl overflow-hidden mt-1">
       <AnimatePresence mode="wait">
         <motion.img
           key={current.src}
