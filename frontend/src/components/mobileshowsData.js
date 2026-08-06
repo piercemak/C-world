@@ -676,4 +676,15 @@ export const SHOWS = [
         card: "/images/cardimages/beingjohnmalkovichLogo.svg", 
         dateadded: "7-22-26",
     }, 
+    {
+        id: "attackontitan",
+        title: "Attack on Titan",
+        creator: "Yasuko Kobayashi", 
+        background: "/images/attackontitan/covers/attackontitan_backdrop.svg",
+        ratings: "9.1",
+        type: "TV",
+        keyart: "/images/attackontitan/covers/attackontitan_mobileLogo.jpg", 
+        card: "/images/cardimages/attackontitanLogo.svg", 
+        dateadded: "8-6-26",
+    }, 
 ];

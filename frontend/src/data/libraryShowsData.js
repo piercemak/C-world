@@ -654,6 +654,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: generateSeasonVideos({}, "beingjohnmalkovich", "movie"),
         }, 
+        "attackontitan": {
+          type: "show",  
+          title: "Attack on Titan",
+          agerating: "18+",
+          release_year: "2013",
+          genre: "Animation",
+          season_total_number: "4 seasons",
+          season_digit: 4,
+          description: "In a world where humanity shelters behind towering walls from man-eating Titans, a determined teen joins the elite Survey Corps to fight the giants and uncover the secrets of their origin.",
+          background: "/images/attackontitan/covers/attackontitanCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["attackontitan"],
+        }, 
         
       };
 

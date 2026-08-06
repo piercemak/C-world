@@ -63,6 +63,7 @@ const RandomCoverCarousel = () => {
     { id: "jojos", src: "/images/jojos/covers/jojosCover.svg", title: "JoJo's Bizarre Adventure" },
     { id: "chernobyl", src: "/images/chernobyl/covers/chernobylCover.svg", title: "Chernobyl" },
     { id: "beingjohnmalkovich", src: "/images/beingjohnmalkovich/covers/beingjohnmalkovichCover.svg", title: "Being John Malkovich" },
+    { id: "attackontitan", src: "/images/attackontitan/covers/attackontitanCover.svg", title: "Attack on Titan" },
   ];
 
   const showsById = useMemo(() => {
