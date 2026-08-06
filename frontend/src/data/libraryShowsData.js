@@ -642,6 +642,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: videoDataByShow["chernobyl"],
         }, 
+        "beingjohnmalkovich": {
+          type: "movie",  
+          title: "Being John Malkovich",
+          agerating: "18+",
+          release_year: "1999",
+          genre: "Comedy",
+          duration: "1h 53m",          
+          description: "A puppeteer discovers a portal that leads literally into the head of movie star John Malkovich.",
+          background: "/images/beingjohnmalkovich/covers/beingjohnmalkovichCover.svg",
+          subtitles: "no",
+          videos: generateSeasonVideos({}, "beingjohnmalkovich", "movie"),
+        }, 
         
       };
 

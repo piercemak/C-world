@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "beingjohnmalkovich",
+        showTitle: "Being John Malkovich",
+        placeholder: "/images/beingjohnmalkovich/placeholders/beingjohnmalkovich_placeholder.png",
+        to: `/video-library/beingjohnmalkovich?movie=1`,
+      }, 
+      {
         kind: "episode",
         showSlug: "chernobyl",
         showTitle: "Chernobyl",
@@ -38,46 +45,5 @@
         episodeTitle: "The Big Bang",
         placeholder: `${cloudFrontDomain}/${clean("atlanta")}/placeholders/season1/S1E1_${clean("atlanta")}_placeholder.png`,
         to: `/video-library/atlanta?season=1&episode=1`,
-      }, 
-      {
-        kind: "movie",
-        showSlug: "pokemondestinydeoxys",
-        showTitle: "Pokémon: Destiny Deoxys",
-        placeholder: "/images/pokemondestinydeoxys/placeholders/pokemondestinydeoxys_placeholder.png",
-        to: `/video-library/pokemondestinydeoxys?movie=1`,
-      }, 
-      {
-        kind: "movie",
-        showSlug: "backrooms",
-        showTitle: "Backrooms",
-        placeholder: "/images/backrooms/placeholders/backrooms_placeholder.png",
-        to: `/video-library/backrooms?movie=1`,
-      }, 
-      {
-        kind: "episode",
-        showSlug: "widowsbay",
-        showTitle: "Widow's Bay",
-        season: 1,
-        episode: 1,
-        episodeTitle: "Welcome to Widow's Bay!",
-        placeholder: `${cloudFrontDomain}/${clean("widowsbay")}/placeholders/season1/S1E1_${clean("widowsbay")}_placeholder.png`,
-        to: `/video-library/widowsbay?season=1&episode=1`,
-      }, 
-      {
-        kind: "episode",
-        showSlug: "mongolianchopsquad",                   
-        showTitle: "Beck: Mongolian Chop Squad",
-        season: 1,
-        episode: 1,
-        episodeTitle: "The View at 14",
-        placeholder: `${cloudFrontDomain}/${clean("mongolianchopsquad")}/placeholders/season1/S1E1_${clean("mongolianchopsquad")}_placeholder.png`,
-        to: `/video-library/jjk?season=1&episode=1`,
-      }, 
-      {
-        kind: "movie",
-        showSlug: "theanimatrix",
-        showTitle: "The Animatrix",
-        placeholder: "/images/theanimatrix/placeholders/theanimatrix_placeholder.png",
-        to: `/video-library/theanimatrix?movie=1`,
       }, 
     ];

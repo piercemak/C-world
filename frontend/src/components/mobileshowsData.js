@@ -663,6 +663,17 @@ export const SHOWS = [
         type: "TV",
         keyart: "/images/chernobyl/covers/chernobyl_mobileLogo.jpg", 
         card: "/images/cardimages/chernobylLogo.svg", 
-        dateadded: "7-20-26",
+        dateadded: "7-21-26",
+    }, 
+    {
+        id: "beingjohnmalkovich",
+        title: "Being John Malkovich",
+        creator: "Spike Jonze", 
+        background: "/images/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.svg",
+        ratings: "7.7",
+        type: "Movies",
+        keyart: "/images/beingjohnmalkovich/covers/beingjohnmalkovich_mobileLogo.jpg", 
+        card: "/images/cardimages/beingjohnmalkovichLogo.svg", 
+        dateadded: "7-22-26",
     }, 
 ];
