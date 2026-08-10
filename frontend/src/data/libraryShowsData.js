@@ -667,6 +667,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: videoDataByShow["attackontitan"],
         }, 
+        "thedrama": {
+          type: "movie",  
+          title: "The Drama",
+          agerating: "18+",
+          release_year: "2026",
+          genre: "Comedy",
+          duration: "1h 45m",          
+          description: "A happily-engaged couple is put to the test when an unexpected turn sends their wedding week off the rails.",
+          background: "/images/thedrama/covers/thedramaCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "thedrama", "movie"),
+        }, 
         
       };
 

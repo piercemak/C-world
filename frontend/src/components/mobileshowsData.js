@@ -687,4 +687,15 @@ export const SHOWS = [
         card: "/images/cardimages/attackontitanLogo.svg", 
         dateadded: "8-6-26",
     }, 
+    {
+        id: "thedrama",
+        title: "The Drama",
+        creator: "Kristoffer Borgli", 
+        background: "/images/thedrama/covers/thedrama_backdrop.svg",
+        ratings: "7.2",
+        type: "Movies",
+        keyart: "/images/thedrama/covers/thedrama_mobileLogo.webp", 
+        card: "/images/cardimages/thedramaLogo.svg", 
+        dateadded: "8-10-26",
+    }, 
 ];
