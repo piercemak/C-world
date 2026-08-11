@@ -46,21 +46,4 @@
         placeholder: `${cloudFrontDomain}/${clean("jojos")}/placeholders/season1/S1E1_${clean("jojos")}_placeholder.png`,
         to: `/video-library/jojos?season=1&episode=1`,
       }, 
-      {
-        kind: "movie",
-        showSlug: "chronicle",
-        showTitle: "Chronicle",
-        placeholder: "/images/chronicle/placeholders/chronicle_placeholder.png",
-        to: `/video-library/chronicle?movie=1`,
-      }, 
-      {
-        kind: "episode",
-        showSlug: "atlanta",
-        showTitle: "Atlanta",
-        season: 1,
-        episode: 1,
-        episodeTitle: "The Big Bang",
-        placeholder: `${cloudFrontDomain}/${clean("atlanta")}/placeholders/season1/S1E1_${clean("atlanta")}_placeholder.png`,
-        to: `/video-library/atlanta?season=1&episode=1`,
-      }, 
     ];
