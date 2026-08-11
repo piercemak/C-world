@@ -679,6 +679,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "thedrama", "movie"),
         }, 
+        "thenightisshort": {
+          type: "movie",  
+          title: "The Night Is Short, Walk on Girl",
+          agerating: "13+",
+          release_year: "2017",
+          genre: "Animation",
+          duration: "1h 32m",          
+          description: "In this comedy about one epic night in Kyoto, a college sophomore goes on a series of surreal encounters with the local nightlife, all the while unaware of the romantic longings of her classmate Senpai.",
+          background: "/images/thenightisshort/covers/thenightisshortCover.svg",
+          subtitles: "no",
+          videos: generateSeasonVideos({}, "thenightisshort", "movie"),
+        }, 
         
       };
 

@@ -698,4 +698,15 @@ export const SHOWS = [
         card: "/images/cardimages/thedramaLogo.svg", 
         dateadded: "8-10-26",
     }, 
+    {
+        id: "thenightisshort",
+        title: "The Night Is Short, Walk on Girl",
+        creator: "Masaaki Yuasa", 
+        background: "/images/thenightisshort/covers/thenightisshort_backdrop.svg",
+        ratings: "7.5",
+        type: "Movies",
+        keyart: "/images/thenightisshort/covers/thenightisshort_mobileLogo.jpg", 
+        card: "/images/cardimages/thenightisshortLogo.svg", 
+        dateadded: "8-11-26",
+    }, 
 ];
