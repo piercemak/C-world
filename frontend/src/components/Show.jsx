@@ -330,7 +330,7 @@ const Show = ({
       1: 25,
       2: 12,
       3: 22,
-      4: 28,
+      4: 29,
     },
   };
 const displaySeason =
