@@ -601,7 +601,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 4,
           description: "Earn and his cousin Alfred try to make their way in the world through Atlanta's rap scene. Along the way they come face-to-face with social and economic issues touching on race, relationships, poverty, status, and parenthood.",
           background: "/images/atlanta/covers/atlantaCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: videoDataByShow["atlanta"],
         }, 
         "chronicle": {
@@ -613,7 +613,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           duration: "1h 24m",          
           description: "Three high school friends gain superpowers after making an incredible discovery underground. Soon they find their lives spinning out of control and their bond tested as they embrace their darker sides.",
           background: "/images/chronicle/covers/chronicleCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "chronicle", "movie"),
         }, 
         "jojos": {
@@ -626,7 +626,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 1,
           description: "The story of the Joestar family, who are possessed with intense psychic strength, and the adventures each member encounters throughout their lives.",
           background: "/images/jojos/covers/jojosCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: videoDataByShow["jojos"],
         }, 
         "chernobyl": {
@@ -639,7 +639,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 1,
           description: "In April 1986, the city of Chernobyl in the Soviet Union suffers one of the worst nuclear disasters in the history of mankind. Consequently, many heroes put their lives on the line in the following days, weeks and months.",
           background: "/images/chernobyl/covers/chernobylCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: videoDataByShow["chernobyl"],
         }, 
         "beingjohnmalkovich": {
@@ -651,7 +651,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           duration: "1h 53m",          
           description: "A puppeteer discovers a portal that leads literally into the head of movie star John Malkovich.",
           background: "/images/beingjohnmalkovich/covers/beingjohnmalkovichCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "beingjohnmalkovich", "movie"),
         }, 
         "attackontitan": {
@@ -664,7 +664,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           season_digit: 4,
           description: "In a world where humanity shelters behind towering walls from man-eating Titans, a determined teen joins the elite Survey Corps to fight the giants and uncover the secrets of their origin.",
           background: "/images/attackontitan/covers/attackontitanCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: videoDataByShow["attackontitan"],
         }, 
         "thedrama": {
@@ -688,7 +688,7 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           duration: "1h 32m",          
           description: "In this comedy about one epic night in Kyoto, a college sophomore goes on a series of surreal encounters with the local nightlife, all the while unaware of the romantic longings of her classmate Senpai.",
           background: "/images/thenightisshort/covers/thenightisshortCover.svg",
-          subtitles: "no",
+          subtitles: "yes",
           videos: generateSeasonVideos({}, "thenightisshort", "movie"),
         }, 
         

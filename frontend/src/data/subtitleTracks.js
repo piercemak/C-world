@@ -28,6 +28,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "chronicle": "/videos/chronicle/chronicle_subtitles.vtt",
   "beingjohnmalkovich": "/videos/beingjohnmalkovich/beingjohnmalkovich_subtitles.vtt",
   "thedrama": "/videos/thedrama/thedrama_subtitles.vtt",
+  "thenightisshort": "/videos/thenightisshort/thenightisshort_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

@@ -43,14 +43,4 @@
         placeholder: `${cloudFrontDomain}/${clean("chernobyl")}/placeholders/season1/S1E1_${clean("chernobyl")}_placeholder.png`,
         to: `/video-library/chernobyl?season=1&episode=1`,
       }, 
-      {
-        kind: "episode",
-        showSlug: "jojos",
-        showTitle: "JoJo's Bizarre Adventure",
-        season: 1,
-        episode: 1,
-        episodeTitle: "Stone Ocean",
-        placeholder: `${cloudFrontDomain}/${clean("jojos")}/placeholders/season1/S1E1_${clean("jojos")}_placeholder.png`,
-        to: `/video-library/jojos?season=1&episode=1`,
-      }, 
     ];
