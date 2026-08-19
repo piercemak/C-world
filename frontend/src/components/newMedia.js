@@ -4,6 +4,13 @@
     export const newMedia = [
       {
         kind: "movie",
+        showSlug: "theinvite",
+        showTitle: "The Invite",
+        placeholder: "/images/theinvite/placeholders/theinvite_placeholder.png",
+        to: `/video-library/theinvite?movie=1`,
+      }, 
+      {
+        kind: "movie",
         showSlug: "cure",
         showTitle: "Cure",
         placeholder: "/images/cure/placeholders/cure_placeholder.png",

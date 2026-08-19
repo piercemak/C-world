@@ -30,6 +30,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "thedrama": "/videos/thedrama/thedrama_subtitles.vtt",
   "thenightisshort": "/videos/thenightisshort/thenightisshort_subtitles.vtt",
   "cure": "/videos/cure/cure_subtitles.vtt",
+  "theinvite": "/videos/theinvite/theinvite_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

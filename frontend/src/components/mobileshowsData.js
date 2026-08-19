@@ -720,4 +720,15 @@ export const SHOWS = [
         card: "/images/cardimages/cureLogo.svg", 
         dateadded: "8-19-26",
     }, 
+    {
+        id: "theinvite",
+        title: "The Invite",
+        creator: "Olivia Wilde", 
+        background: "/images/theinvite/covers/theinvite_backdrop.svg",
+        ratings: "7.8",
+        type: "Movies",
+        keyart: "/images/theinvite/covers/theinvite_mobileLogo.jpg", 
+        card: "/images/cardimages/theinviteLogo.svg", 
+        dateadded: "8-19-26",
+    }, 
 ];

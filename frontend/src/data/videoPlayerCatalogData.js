@@ -47,7 +47,7 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   { title: "Project Hail Mary", cardId: "card-46" },  
   { title: "Blood: The Last Vampire", cardId: "card-47" },  
   { title: "The Animatrix", cardId: "card-48" },
-  { title: "Beck: Mongolian Chop Squad", cardId: "card-49" },  { title: "Widow's Bay", cardId: "card-50" },  { title: "Backrooms", cardId: "card-51" },  { title: "Pokémon: Destiny Deoxys", cardId: "card-52" },  { title: "Atlanta", cardId: "card-53" },  { title: "Chronicle", cardId: "card-54" },  { title: "JoJo's Bizarre Adventure", cardId: "card-55" },  { title: "Chernobyl", cardId: "card-56" },  { title: "Being John Malkovich", cardId: "card-57" },  { title: "Attack on Titan", cardId: "card-58" },  { title: "The Drama", cardId: "card-59" },  { title: "The Night Is Short, Walk on Girl", cardId: "card-60" },  { title: "Cure", cardId: "card-61" },
+  { title: "Beck: Mongolian Chop Squad", cardId: "card-49" },  { title: "Widow's Bay", cardId: "card-50" },  { title: "Backrooms", cardId: "card-51" },  { title: "Pokémon: Destiny Deoxys", cardId: "card-52" },  { title: "Atlanta", cardId: "card-53" },  { title: "Chronicle", cardId: "card-54" },  { title: "JoJo's Bizarre Adventure", cardId: "card-55" },  { title: "Chernobyl", cardId: "card-56" },  { title: "Being John Malkovich", cardId: "card-57" },  { title: "Attack on Titan", cardId: "card-58" },  { title: "The Drama", cardId: "card-59" },  { title: "The Night Is Short, Walk on Girl", cardId: "card-60" },  { title: "Cure", cardId: "card-61" },  { title: "The Invite", cardId: "card-62" },
 
 ];
 
@@ -112,5 +112,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-58": "attackontitan",
   "card-59": "thedrama",
   "card-60": "thenightisshort",
-  "card-61": "cure"
+  "card-61": "cure",
+  "card-62": "theinvite"
 };

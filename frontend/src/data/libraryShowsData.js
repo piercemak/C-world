@@ -703,6 +703,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "cure", "movie"),
         }, 
+        "theinvite": {
+          type: "movie",  
+          title: "The Invite",
+          agerating: "18+",
+          release_year: "2026",
+          genre: "Comedy",
+          duration: "1h 47m",          
+          description: "Joe and Angela's marriage is on thin ice. When they invite their enigmatic upstairs neighbors for a dinner party, the night spirals into unexpected places.",
+          background: "/images/theinvite/covers/theinviteCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "theinvite", "movie"),
+        }, 
         
       };
 
