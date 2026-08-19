@@ -4,6 +4,13 @@
     export const newMedia = [
       {
         kind: "movie",
+        showSlug: "cure",
+        showTitle: "Cure",
+        placeholder: "/images/cure/placeholders/cure_placeholder.png",
+        to: `/video-library/cure?movie=1`,
+      }, 
+      {
+        kind: "movie",
         showSlug: "thenightisshort",
         showTitle: "The Night Is Short, Walk on Girl",
         placeholder: "/images/thenightisshort/placeholders/thenightisshort_placeholder.png",

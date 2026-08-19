@@ -691,6 +691,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "thenightisshort", "movie"),
         }, 
+        "cure": {
+          type: "movie",  
+          title: "Cure",
+          agerating: "13+",
+          release_year: "1997",
+          genre: "Crime",
+          duration: "1h 51m",          
+          description: "A frustrated detective deals with the case of several gruesome murders committed by people who have no recollection of what they've done.",
+          background: "/images/cure/covers/cureCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "cure", "movie"),
+        }, 
         
       };
 

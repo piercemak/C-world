@@ -709,4 +709,15 @@ export const SHOWS = [
         card: "/images/cardimages/thenightisshortLogo.svg", 
         dateadded: "8-11-26",
     }, 
+    {
+        id: "cure",
+        title: "Cure",
+        creator: "Kiyoshi Kurosawa", 
+        background: "/images/cure/covers/cure_backdrop.svg",
+        ratings: "7.5",
+        type: "Movies",
+        keyart: "/images/cure/covers/cure_mobileLogo.jpg", 
+        card: "/images/cardimages/cureLogo.svg", 
+        dateadded: "8-19-26",
+    }, 
 ];
