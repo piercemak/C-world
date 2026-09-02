@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useCallback, useState, useRef, useEffect, useMemo } from "react";
 import { useParams } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
@@ -13,6 +13,11 @@ import {
   fetchSignedUrl as fetchSignedAssetUrl,
   fetchSignedEpisodeUrl as fetchSignedEpisodePlaybackUrl,
 } from "../lib/mediaSigning.js";
+import {
+  readWatchProgress,
+  upsertHistoryEntry,
+  writeWatchProgress,
+} from "../lib/watchProgressStorage.js";
 
 const formatAgeRating = (value) => {
   const rating = String(value || "").trim();
@@ -33,7 +38,7 @@ const MobileShows = () => {
   const { showId } = useParams();
   const location = useLocation();
   const { autoplaySeason, autoplayEpisode, fromContinueWatching } = location.state || {};
-  const cleanShowId = (id) => id.replace(/-/g, "");
+  const cleanShowId = useCallback((id) => id.replace(/-/g, ""), []);
   const [videoPlayerVisible, setVideoPlayerVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -116,8 +121,11 @@ const MobileShows = () => {
 
 
     {/* Show/Season Handling */}
-    const awsHostedShows = import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",") || [];
-    const generateSeasonVideos = (titlesBySeason, rawId, type = "show") => {
+    const awsHostedShows = useMemo(
+      () => import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",").filter(Boolean) || [],
+      [],
+    );
+    const generateSeasonVideos = useCallback((titlesBySeason, rawId, type = "show") => {
       const cleanId = cleanShowId(rawId);
       const isAwsHosted = awsHostedShows.includes(rawId);
       const videos = {};
@@ -156,13 +164,16 @@ const MobileShows = () => {
         });
       });
       return videos;
-    };
+    }, [awsHostedShows, cleanShowId]);
   
-    const videoDataByShow = Object.fromEntries(
-      Object.entries(allEpisodeTitles).map(([showId, titlesBySeason]) => [
-        showId,
-        generateSeasonVideos(titlesBySeason, showId)
-      ])
+    const videoDataByShow = useMemo(
+      () => Object.fromEntries(
+        Object.entries(allEpisodeTitles).map(([showId, titlesBySeason]) => [
+          showId,
+          generateSeasonVideos(titlesBySeason, showId)
+        ])
+      ),
+      [generateSeasonVideos],
     );
 
     {/* Legacy mobile-only overrides. The generated catalog is merged below. */}
@@ -828,6 +839,28 @@ const MobileShows = () => {
       const show = shows[showId];
       console.log({ cleanShowId: cleanShowId(showId) });
 
+      const fetchSignedUrl = useCallback((s3Key) =>
+        fetchSignedAssetUrl({ key: s3Key }), []);
+      const fetchSignedEpisodeUrl = useCallback((targetShowId, season, episode) =>
+        fetchSignedEpisodePlaybackUrl({
+          showId: targetShowId,
+          season,
+          episode,
+        }), []);
+      const updateLastWatched = useCallback((showId, season, episode) => {
+        try {
+          upsertHistoryEntry("lastWatchedMobile", {
+            showId,
+            lastSeason: season,
+            lastEpisode: episode,
+            watchedAt: Date.now(),
+          });
+          syncWatchHistory({ showId, season, episode });
+        } catch (err) {
+          console.error("Failed to update last watched", err);
+        }
+      }, []);
+
       const hasAutoPlayedRef = useRef(false);
 
       useEffect(() => {
@@ -876,7 +909,19 @@ const MobileShows = () => {
         }
         hasAutoPlayedRef.current = true; 
         startAutoplay();
-      }, [show, fromContinueWatching, autoplaySeason, autoplayEpisode, videoPlayerVisible, selectedVideo, showId]);
+      }, [
+        awsHostedShows,
+        autoplayEpisode,
+        autoplaySeason,
+        fetchSignedEpisodeUrl,
+        fetchSignedUrl,
+        fromContinueWatching,
+        selectedVideo,
+        show,
+        showId,
+        updateLastWatched,
+        videoPlayerVisible,
+      ]);
 
 
 
@@ -889,27 +934,14 @@ const MobileShows = () => {
         }
         }, [selectedSeason]);      
 
-      {/* AWS Signed Urls */}
-      const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-      const fetchSignedUrl = async (s3Key) =>
-        fetchSignedAssetUrl({ apiBase: API_BASE, key: s3Key });
-      const fetchSignedEpisodeUrl = async (targetShowId, season, episode) =>
-        fetchSignedEpisodePlaybackUrl({
-          apiBase: API_BASE,
-          showId: targetShowId,
-          season,
-          episode,
-        });
-
-
-    {/* Subtitle States */}
+      {/* Subtitle States */}
 
 
 
   {/* Color Gradient */}
   const rgba = (arr, a=1) => `rgba(${arr[0]}, ${arr[1]}, ${arr[2]}, ${a})`;
 
-  function buildGradientFromPalette(palette) {
+  const buildGradientFromPalette = useCallback((palette) => {
     // palette[0] = dominant, [1],[2] = supporting
     const a = palette[0] ?? [0,0,0];
     const b = palette[1] ?? a;
@@ -923,7 +955,7 @@ const MobileShows = () => {
       ${rgba(c, 1.00)} 35%,
       ${rgba(c, 1.00)} 0%
     )`;
-  }
+  }, []);
   useEffect(() => {
   const img = bgImgRef.current;
   if (!img) return;
@@ -944,7 +976,7 @@ const MobileShows = () => {
   } else {
     img.addEventListener('load', extract, { once: true });
   }
-}, [showId]);
+}, [buildGradientFromPalette, showId]);
 
 
 
@@ -960,108 +992,55 @@ const currentShow = videos.find(media => media.id === showId) || null;
 const [loadedImages, setLoadedImages] = useState({});
 
 
-{/* Last Watched */}
-const updateLastWatched = (showId, season, episode) => {
-  try {
-    const raw = localStorage.getItem("lastWatchedMobile");
-    const list = raw ? JSON.parse(raw) : [];
-    const entry = {
-      showId,
-      lastSeason: season,
-      lastEpisode: episode,
-      watchedAt: Date.now(),
-    };
-    list.push(entry);
-    localStorage.setItem("lastWatchedMobile", JSON.stringify(list));
-    syncWatchHistory({ showId, season, episode });
-  } catch (err) {
-    console.error("Failed to update last watched", err);
-  }
-};
 const videoRef = useRef(null);
-const parseProgressPayload = (payload) => {
-  if (!payload || typeof payload !== "object") {
-    return { currentTime: 0, duration: 0 };
-  }
-
-  const currentTime = Number(
-    payload.currentTime ?? payload.t ?? payload.time ?? payload.progress ?? 0
-  );
-  const duration = Number(payload.duration ?? payload.d ?? 0);
-
-  return {
-    currentTime: Number.isFinite(currentTime) ? currentTime : 0,
-    duration: Number.isFinite(duration) ? duration : 0,
-  };
-};
-
-const saveWatchProgress = (currentTime, duration) => {
+const saveWatchProgress = useCallback((currentTime, duration) => {
   if (!selectedVideo || !show) return;
   if (!duration || Number.isNaN(duration)) return;
 
-  let key;
+  const isMovie = show.type === "movie" || show.type === "Movies";
+  const seasonValue = isMovie ? null : Number(selectedVideo.season);
+  const episodeValue = isMovie ? null : Number(selectedVideo.episode);
 
-  if (show.type === "movie" || show.type === "Movies") {
-    // Movies: simple key
-    key = `watchProgress-${showId}`;
-  } else {
-    // Shows: season + episode (numbers in selectedVideo)
-    const seasonNum = Number(selectedVideo.season);
-    const episodeNum = Number(selectedVideo.episode);
-
-    if (!seasonNum || !episodeNum) return;
-
-    key = `watchProgress-${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(
-      episodeNum
-    ).padStart(2, "0")}`;
-  }
+  if (!isMovie && (!seasonValue || !episodeValue)) return;
 
   try {
-    const data = {
-      t: currentTime,
-      d: duration,
+    writeWatchProgress({
+      showId,
+      season: seasonValue,
+      episode: episodeValue,
       currentTime,
       duration,
-      updatedAt: Date.now(),
-    };
-    localStorage.setItem(key, JSON.stringify(data));
+    });
     queueWatchProgressSync({
       showId,
-      season: show.type === "movie" || show.type === "Movies" ? null : Number(selectedVideo?.season || 0),
-      episode: show.type === "movie" || show.type === "Movies" ? null : Number(selectedVideo?.episode || 0),
+      season: seasonValue,
+      episode: episodeValue,
       currentTime,
       duration,
     });
   } catch (err) {
     console.error("Failed to save watch progress", err);
   }
-};
+}, [selectedVideo, show, showId]);
 
-const getSavedTime = (season, episode) => {
+const getSavedTime = useCallback((season, episode) => {
   if (!show) return 0;
-  let key;
-  if (show.type === "movie" || show.type === "Movies") {
-    key = `watchProgress-${showId}`;
-  } else {
-    const seasonNum = Number(season);
-    const episodeNum = Number(episode);
-    if (!seasonNum || !episodeNum) return 0;
-    key = `watchProgress-${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(
-      episodeNum
-    ).padStart(2, "0")}`;
-  }
+  const isMovie = show.type === "movie" || show.type === "Movies";
+  const seasonValue = isMovie ? null : Number(season);
+  const episodeValue = isMovie ? null : Number(episode);
+  if (!isMovie && (!seasonValue || !episodeValue)) return 0;
 
   try {
-    const raw = localStorage.getItem(key);
-    if (!raw) return 0;
-
-    const data = JSON.parse(raw);
-    return parseProgressPayload(data).currentTime;
+    return readWatchProgress({
+      showId,
+      season: seasonValue,
+      episode: episodeValue,
+    }).currentTime;
   } catch (err) {
     console.error("Failed to read watch progress", err);
     return 0;
   }
-};
+}, [show, showId]);
 useEffect(() => {
   if (!selectedVideo || !show) return;
   const video = videoRef.current;
@@ -1088,7 +1067,7 @@ useEffect(() => {
   } else {
     video.addEventListener("loadedmetadata", applyTime);
   }
-}, [selectedVideo, show, showId]);
+}, [getSavedTime, selectedVideo, show, showId]);
 
 
 const handleTimeUpdate = () => {
@@ -1137,31 +1116,22 @@ useEffect(() => {
     window.removeEventListener("pagehide", flushProgress);
     document.removeEventListener("visibilitychange", handleVisibilityChange);
   };
-}, [videoPlayerVisible, selectedVideo, show, showId]);
+}, [saveWatchProgress, selectedVideo, show, showId, videoPlayerVisible]);
 
 
 
 const getWatchProgressPercent = (showId, season, episode) => {
-  let key;
-
-  if (show?.type === "movie" || show?.type === "Movies") {
-    key = `watchProgress-${showId}`;
-  } else {
-    const seasonNum = Number(season);
-    const episodeNum = Number(episode);
-    if (!seasonNum || !episodeNum) return 0;
-
-    key = `watchProgress-${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(
-      episodeNum
-    ).padStart(2, "0")}`;
-  }
+  const isMovie = show?.type === "movie" || show?.type === "Movies";
+  const seasonValue = isMovie ? null : Number(season);
+  const episodeValue = isMovie ? null : Number(episode);
+  if (!isMovie && (!seasonValue || !episodeValue)) return 0;
 
   try {
-    const raw = localStorage.getItem(key);
-    if (!raw) return 0;
-
-    const data = JSON.parse(raw);
-    const { currentTime, duration } = parseProgressPayload(data);
+    const { currentTime, duration } = readWatchProgress({
+      showId,
+      season: seasonValue,
+      episode: episodeValue,
+    });
     if (!duration || duration <= 0) return 0;
 
     const pct = (currentTime / duration) * 100;

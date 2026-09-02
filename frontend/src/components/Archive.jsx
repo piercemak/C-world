@@ -291,7 +291,7 @@ useEffect(() => {
   setSortMode("newest");
   setTypeFilter("all");
   setFilterOpen(false);
-}, []);
+}, [videos]);
 useEffect(() => {
   setAllMediaPage(0);
   requestAnimationFrame(() => scrollAllMediaToPage(0, "auto"));
@@ -310,7 +310,7 @@ useEffect(() => {
       allMediaScrollRafRef.current = null;
     }
   };
-}, []);
+}, [videos]);
 useEffect(() => {
   if (!filterOpen) return;
   const handleClick = (e) => {
@@ -369,7 +369,7 @@ useEffect(() => {
       backdropScrollRafRef.current = null;
     }
   };
-}, []);
+}, [videos]);
 const handleBackdropImageChange = (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
@@ -543,7 +543,7 @@ setRecentlyWatched(merged);
   } catch (err) {
     console.error("Failed to load recently watched", err);
   }
-}, []);
+}, [videos]);
 
 
 

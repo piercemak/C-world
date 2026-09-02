@@ -1,10 +1,10 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useCallback, useState, useContext, useEffect } from 'react';
 import { hydrateWatchDataFromServer } from "../lib/watchSync.js";
+import { apiFetch } from "../lib/apiClient.js";
 
 const AuthContext = createContext(null);
 export const useAuth = () => useContext(AuthContext);
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const ACTIVE_PROFILE_ID_KEY = "activeProfileId";
 
 const getStoredActiveProfileId = () => {
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const [activeProfile, setActiveProfile] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
 
-  const syncProfilePreferences = (profile) => {
+  const syncProfilePreferences = useCallback((profile) => {
     localStorage.removeItem("profileImage");
     localStorage.removeItem("userProfileImage");
     localStorage.removeItem("archiveSelectedBackdrop");
@@ -42,9 +42,9 @@ export const AuthProvider = ({ children }) => {
     }
     localStorage.setItem(ACTIVE_PROFILE_ID_KEY, String(profile.id));
     localStorage.removeItem("activeProfile");
-  };
+  }, []);
 
-  const fetchAuthed = async (path, options = {}, tokenOverride = null) => {
+  const fetchAuthed = useCallback(async (path, options = {}, tokenOverride = null) => {
     const authToken = tokenOverride || token;
     const headers = {
       "Content-Type": "application/json",
@@ -52,13 +52,13 @@ export const AuthProvider = ({ children }) => {
     };
     if (authToken) headers.Authorization = `Token ${authToken}`;
 
-    return fetch(`${API_BASE}${path}`, {
+    return apiFetch(path, {
       ...options,
       headers,
     });
-  };
+  }, [token]);
 
-  const loadProfiles = async (tokenOverride = null) => {
+  const loadProfiles = useCallback(async (tokenOverride = null) => {
     const authToken = tokenOverride || token;
     if (!authToken) {
       setProfiles([]);
@@ -79,9 +79,9 @@ export const AuthProvider = ({ children }) => {
     setActiveProfile(selected);
     syncProfilePreferences(selected);
     return selected;
-  };
+  }, [fetchAuthed, syncProfilePreferences, token]);
 
-  const updateActiveProfile = async (patch) => {
+  const updateActiveProfile = useCallback(async (patch) => {
     if (!token || !activeProfile?.id) return null;
 
     const res = await fetchAuthed(`/api/profiles/${activeProfile.id}/`, {
@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
     setActiveProfile(updated);
     syncProfilePreferences(updated);
     return updated;
-  };
+  }, [activeProfile?.id, fetchAuthed, syncProfilePreferences, token]);
 
   useEffect(() => {
     const bootstrapAuth = async () => {
@@ -133,11 +133,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     bootstrapAuth();
-  }, []);
+  }, [fetchAuthed, loadProfiles, token]);
 
   const login = async (username, password) => {
     try {
-      const res = await fetch(`${API_BASE}/api/auth/login/`, {
+      const res = await apiFetch("/api/auth/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -162,7 +162,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async ({ username, email, password }) => {
     try {
-      const res = await fetch(`${API_BASE}/api/auth/register/`, {
+      const res = await apiFetch("/api/auth/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),

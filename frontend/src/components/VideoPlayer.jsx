@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useCallback, useEffect, useState, useRef, useMemo } from "react";
 import styles from './modules/videoLibrary.module.scss'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { isTauri } from "@tauri-apps/api/core";
@@ -15,6 +15,7 @@ import {
 } from "../data/videoPlayerCatalogData.js";
 import { removeWatchHistory } from "../lib/watchSync.js";
 import { useAuth } from "./AuthContext.jsx";
+import { apiFetch } from "../lib/apiClient.js";
 
 import { useSnow } from "./SnowContext.jsx"; 
 
@@ -145,11 +146,13 @@ const VideoPlayer = () => {
       setCurrentPage(newPageIndex);
       setClickedCard(null); // clear selection when swiping
     };
-    const pages = [];
-    
-    for (let i = 0; i < sidebarItems.length; i += cardsPerPage) {
-      pages.push(sidebarItems.slice(i, i + cardsPerPage));
-    }
+    const pages = useMemo(() => {
+      const nextPages = [];
+      for (let i = 0; i < sidebarItems.length; i += cardsPerPage) {
+        nextPages.push(sidebarItems.slice(i, i + cardsPerPage));
+      }
+      return nextPages;
+    }, [sidebarItems]);
     const [currentPage, setCurrentPage] = useState(0);
 
 
@@ -179,7 +182,7 @@ const VideoPlayer = () => {
     const [languageSubs, setLanguageSubs] = useState('');
     const handleSubmit = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/send-request/`, {
+        const res = await apiFetch("/api/send-request/", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -217,11 +220,11 @@ const VideoPlayer = () => {
   const [isClosingSearch, setIsClosingSearch] = useState(false);
   const CLOSE_MS = 260;
 
-  const chunk = (arr, size) => {
+  const chunk = useCallback((arr, size) => {
     const out = [];
     for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
     return out;
-  };
+  }, []);
   useEffect(() => {
     setSearchPage(0);
   }, [searchQuery, searchType]);
@@ -230,19 +233,19 @@ const VideoPlayer = () => {
       setTimeout(() => searchInputRef.current?.focus(), 120);
     }
   }, [searchOpen]);
-  const resetCardClickState = () => {
+  const resetCardClickState = useCallback(() => {
     setClickedCard(null);
-  };
-  const resetSearchState = () => {
+  }, []);
+  const resetSearchState = useCallback(() => {
     setSearchQuery("");
     setSearchType("shows");
     setSearchPage(0);
 
     const el = searchMainRef.current;
     if (el) el.scrollTo({ left: 0, behavior: "auto" });
-  };
+  }, []);
 
-  const closeSearch = () => {
+  const closeSearch = useCallback(() => {
     if (!searchOpen || isClosingSearch) return;
     setIsClosingSearch(true);
     setSearchOpen(false);
@@ -251,7 +254,7 @@ const VideoPlayer = () => {
       resetCardClickState();
       setIsClosingSearch(false);
     }, CLOSE_MS);
-  };
+  }, [isClosingSearch, resetCardClickState, resetSearchState, searchOpen]);
 
   useEffect(() => {
     const onKeyDown = (e) => {
@@ -264,7 +267,7 @@ const VideoPlayer = () => {
       window.removeEventListener("keydown", onKeyDown);
 
     };
-  }, []);
+  }, [closeSearch]);
   useEffect(() => {
     const handleKeyDown = (e) => {
       const tag = document.activeElement?.tagName;
@@ -279,20 +282,20 @@ const VideoPlayer = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [resetCardClickState]);
 
 
   {/* Helpers */}
-  const normalize = (s = "") =>
+  const normalize = useCallback((s = "") =>
     s
       .toLowerCase()
       .replace(/_/g, " ")
       .replace(/[^a-z0-9\s]/g, "")
       .replace(/\s+/g, " ")
-      .trim();
-  const toTitle = (s = "") =>
-    s.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-  const cleanShowId = (id = "") => id.replace(/-/g, "");
+      .trim(), []);
+  const toTitle = useCallback((s = "") =>
+    s.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()), []);
+  const cleanShowId = useCallback((id = "") => id.replace(/-/g, ""), []);
   const showIndex = useMemo(() => {
     return sidebarItems.map(({ title, cardId }) => {
       const slug = cardIdToSlug[cardId];
@@ -304,13 +307,13 @@ const VideoPlayer = () => {
         searchText: normalize(`${title} ${slug || ""}`),
       };
     });
-  }, [sidebarItems]);
+  }, [cardIdToSlug, normalize, sidebarItems]);
 
   const showResults = useMemo(() => {
     const q = normalize(searchQuery);
     if (!q) return [];
     return showIndex.filter((s) => s.searchText.includes(q));
-  }, [searchQuery, showIndex]);
+  }, [normalize, searchQuery, showIndex]);
   const slugToTitle = useMemo(() => {
     const map = {};
     sidebarItems.forEach(({ title, cardId }) => {
@@ -318,7 +321,7 @@ const VideoPlayer = () => {
       if (slug) map[slug] = title;
     });
     return map;
-  }, [sidebarItems]);
+  }, [cardIdToSlug, sidebarItems]);
 
   {/* Episode Indexing */}
   const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
@@ -347,14 +350,14 @@ const VideoPlayer = () => {
       }
     }
     return out;
-  }, []);
+  }, [cleanShowId, cloudFrontDomain, normalize, toTitle]);
   const episodeResults = useMemo(() => {
     const q = normalize(searchQuery);
     if (!q) return [];
     return episodeIndex
       .filter((ep) => ep.searchText.includes(q))
       .slice(0, 60); 
-  }, [searchQuery, episodeIndex]);
+  }, [episodeIndex, normalize, searchQuery]);
   const isSearching = !!normalize(searchQuery) && searchOpen && !isClosingSearch;
 
   const activeResults = useMemo(() => {
@@ -364,7 +367,7 @@ const VideoPlayer = () => {
 
   const searchPages = useMemo(() => {
     return chunk(activeResults, SEARCH_PAGE_SIZE);
-  }, [activeResults]);
+  }, [SEARCH_PAGE_SIZE, activeResults, chunk]);
 
   const visibleSearchResults = searchPages[searchPage] || [];
   const totalSearchPages = searchPages.length;
@@ -409,7 +412,7 @@ const VideoPlayer = () => {
   };
 
   {/* Search Content Exit */}
-  const qNorm = useMemo(() => normalize(searchQuery), [searchQuery]);
+  const qNorm = useMemo(() => normalize(searchQuery), [normalize, searchQuery]);
   const contentMode = searchOpen && !isClosingSearch && qNorm ? "search" : "default";
   const isSearchMode = contentMode === "search";
   useEffect(() => {
@@ -540,7 +543,7 @@ const VideoPlayer = () => {
   };
 
 
-const buildPlaceholderCandidates = (showSlug) => {
+const buildPlaceholderCandidates = useCallback((showSlug) => {
   const cleaned = cleanShowId(showSlug);
   const localBases = [
     `/images/${showSlug}/placeholders/${showSlug}_placeholder`,
@@ -559,10 +562,11 @@ const buildPlaceholderCandidates = (showSlug) => {
   [...localBases, ...cfBases].forEach((b) => exts.forEach((e) => out.push(b + e)));
   out.push("/images/misc/placeholder.png");
   return out;
-};
+}, [cleanShowId, cloudFrontDomain]);
 
 
 const continueItems = useMemo(() => {
+  void recentlyWatchedRev;
   if (typeof window === "undefined") return [];
 
   const rawHistory = localStorage.getItem("lastWatched");
@@ -686,7 +690,7 @@ const continueItems = useMemo(() => {
     .sort((a, b) => (b.watchedAt || 0) - (a.watchedAt || 0));
 
     return merged.slice(0, 10);
-  }, [slugToTitle, cloudFrontDomain, allEpisodeTitles, recentlyWatchedRev]);
+  }, [slugToTitle, buildPlaceholderCandidates, cleanShowId, cloudFrontDomain, recentlyWatchedRev]);
 
 
   {/* Cover Randomizer */}

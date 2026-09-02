@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -9,11 +9,26 @@ import SkipForward from '../assets/icons/SkipForward.svg'
 import SkipBack from '../assets/icons/SkipBack.svg'
 import { queueWatchProgressSync, flushWatchProgressSync } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
+import {
+  dispatchWatchProgressUpdate,
+  readWatchProgressRaw,
+  writeWatchProgress,
+} from "../lib/watchProgressStorage.js";
 
+const NO_AUTO_SKIP_INTRO_SHOWS = new Set([
+  "jjk",
+  "cyberpunk",
+  "severance",
+  "pluribus",
+  "itsalwayssunny",
+  "mobpsycho",
+  "theericandreshow",
+  "jojos",
+  "attackontitan",
+]);
 
 const Show = ({
   src,
-  delayPlay = 0,
   onSkipToNext,
   showId,
   season,
@@ -109,7 +124,7 @@ const Show = ({
 
   {/* Pause buttons */}
   const [isPlaying, setIsPlaying] = useState(false);
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => {
     const vid = videoRef.current;
     if (!vid) return;
   
@@ -118,7 +133,7 @@ const Show = ({
     } else {
       vid.pause();
     }
-  };
+  }, []);
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -192,20 +207,16 @@ const Show = ({
 
 
   {/* Skip intro/outro Handling */}
-  const [currentTime, setCurrentTime] = useState(0);
+  const [, setCurrentTime] = useState(0);
   const [introVisible, setIntroVisible] = useState(false);
   const [outroVisible, setOutroVisible] = useState(false);
-  const [autoSkipDone, setAutoSkipDone] = useState(false); 
+  const [, setAutoSkipDone] = useState(false); 
   const lastProgressPersistAtRef = useRef(0);
   const lastPersistedTimeRef = useRef(-1);
   const outroProgressResetRef = useRef(false);
 
   
-  const pathParts = src.split("/");
   const showKey = showId?.replace(/-/g, "").toLowerCase();
-  const NO_AUTO_SKIP_INTRO_SHOWS = new Set(["jjk", "cyberpunk", "severance", "pluribus", "itsalwayssunny", "mobpsycho","theericandreshow", "jojos", "attackontitan"]);
-  const filename = pathParts[pathParts.length - 1];
-  const match = filename.match(/S(\d+)E(\d+)/);
 
   let base;
   try {
@@ -387,7 +398,7 @@ const isLastEpisode =
   currS === maxSeasonNumber &&
   currE === (showSeasonData[currS] || 0);
 const cleanIdForS3 = showId?.replace(/-/g, "");
-const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
+const buildEpisodeS3Key = useCallback((targetSeason, targetEpisode) => {
   if (!cleanIdForS3) return "";
   const seasonNum = Number(targetSeason);
   const episodeNum = Number(targetEpisode);
@@ -396,8 +407,8 @@ const buildEpisodeS3Key = (targetSeason, targetEpisode) => {
   const episodeStr = `E${String(episodeNum).padStart(2, "0")}`;
   const titleRaw = episodeTitles?.[seasonNum]?.[episodeNum - 1] || "";
   return `${cleanIdForS3}/season${seasonNum}-mp4s/${seasonStr}${episodeStr}_${cleanIdForS3}_${titleRaw}.mp4`;
-};
-const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
+}, [cleanIdForS3, episodeTitles]);
+const resolveSignedEpisodeUrl = useCallback(async (targetSeason, targetEpisode) => {
   if (typeof getSignedEpisodeUrl === "function") {
     return getSignedEpisodeUrl(showId, targetSeason, targetEpisode);
   }
@@ -405,7 +416,7 @@ const resolveSignedEpisodeUrl = async (targetSeason, targetEpisode) => {
     return getSignedUrl(buildEpisodeS3Key(targetSeason, targetEpisode));
   }
   return "";
-};
+}, [buildEpisodeS3Key, getSignedEpisodeUrl, getSignedUrl, showId]);
   const skipTimes = {
     "stevenuniverse": {
       default: {
@@ -1354,37 +1365,9 @@ const [debugOutroDismissed, setDebugOutroDismissed] = useState(false);
 useEffect(() => {
   setDebugOutroDismissed(false);
 }, [src, debugOutro]);
-const formatProgressStorageKey = (s = season, e = episode) => {
-  if (s == null || e == null) return `${showId}`;
-  const seasonNum = Number(s);
-  const episodeNum = Number(e);
-  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return `${showId}`;
-  return `${showId}-S${String(seasonNum).padStart(2, "0")}-E${String(episodeNum).padStart(2, "0")}`;
-};
-const formatLegacyProgressStorageKey = (s = season, e = episode) => {
-  if (s == null || e == null) return `${showId}`;
-  const seasonNum = Number(s);
-  const episodeNum = Number(e);
-  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return `${showId}`;
-  return `${showId}-S${seasonNum}-E${episodeNum}`;
-};
-const readProgressRawWithMigration = (storageKey) => {
-  const primary = `watchProgress-${storageKey}`;
-  const raw = localStorage.getItem(primary);
-  if (raw != null) return raw;
-
-  const legacyKey = formatLegacyProgressStorageKey();
-  if (legacyKey !== storageKey) {
-    const legacyFull = `watchProgress-${legacyKey}`;
-    const legacyRaw = localStorage.getItem(legacyFull);
-    if (legacyRaw != null) {
-      localStorage.setItem(primary, legacyRaw);
-      localStorage.removeItem(legacyFull);
-      return legacyRaw;
-    }
-  }
-  return null;
-};
+const readProgressRawWithMigration = useCallback(() => (
+  readWatchProgressRaw({ showId, season, episode })
+), [episode, season, showId]);
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -1392,9 +1375,7 @@ const readProgressRawWithMigration = (storageKey) => {
     if (intendedResumeTimeRef.current != null) return;
     setAutoSkipDone(false); 
 
-  const key = formatProgressStorageKey();
-    
-  const raw = readProgressRawWithMigration(key);
+  const raw = readProgressRawWithMigration();
   let savedProgress = 0;
   try {
     const obj = raw ? JSON.parse(raw) : null;
@@ -1432,7 +1413,7 @@ const readProgressRawWithMigration = (storageKey) => {
       }
     };
     startPlayback();
-  }, [playbackSrc, skipIntro, intro?.end]);
+  }, [hasIntro, intro?.end, outro?.start, playbackSrc, readProgressRawWithMigration, showKey, skipIntro, volume]);
   useEffect(() => {
     const vid = videoRef.current;
     const resumeAt = intendedResumeTimeRef.current;
@@ -1476,18 +1457,19 @@ const readProgressRawWithMigration = (storageKey) => {
       const time = vid.currentTime;
       setCurrentTime(time);
 
-      const key = formatProgressStorageKey();
-
       const duration = vid.duration || 0;
       const tSafe = Math.min(time, Math.max(duration - 0.25, 0));
       const now = Date.now();
-      const keyWithPrefix = `watchProgress-${key}`;
 
       const persistProgress = (t, d) => {
-        localStorage.setItem(
-          keyWithPrefix,
-          JSON.stringify({ t, d, updatedAt: now })
-        );
+        writeWatchProgress({
+          showId,
+          season,
+          episode,
+          currentTime: t,
+          duration: d,
+          updatedAt: now,
+        });
         queueWatchProgressSync({
           showId,
           season,
@@ -1496,11 +1478,7 @@ const readProgressRawWithMigration = (storageKey) => {
           duration: d,
         });
 
-        window.dispatchEvent(
-          new CustomEvent("watchprogress:update", {
-            detail: { storageKey: key, t, d },
-          })
-        );
+        dispatchWatchProgressUpdate({ showId, season, episode, t, d });
       };
 
       setIntroVisible(intro ? (time >= intro.start && time <= intro.end) : false);
@@ -1545,24 +1523,29 @@ const readProgressRawWithMigration = (storageKey) => {
 
     vid.addEventListener("timeupdate", handleTimeUpdate);
     return () => vid.removeEventListener("timeupdate", handleTimeUpdate);
-  }, [intro, outro, showId, season, episode, outroDismissed, isMovie, isLastEpisode]);
+  }, [debugOutro, episode, intro, isLastEpisode, isMovie, outro, outroDismissed, season, showId]);
   
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-
-    const key = formatProgressStorageKey();
 
     const syncDuration = () => {
       const d = Number(vid.duration || 0);
       if (!d || !Number.isFinite(d)) return;
 
       let obj = {};
-      try { obj = JSON.parse(readProgressRawWithMigration(key) || "{}"); } catch {}
-      localStorage.setItem(
-        `watchProgress-${key}`,
-        JSON.stringify({ ...obj, d, updatedAt: Date.now() })
-      );
+      try {
+        obj = JSON.parse(readProgressRawWithMigration() || "{}");
+      } catch {
+        obj = {};
+      }
+      writeWatchProgress({
+        showId,
+        season,
+        episode,
+        currentTime: Number(obj?.t ?? 0),
+        duration: d,
+      });
       flushWatchProgressSync({
         showId,
         season,
@@ -1571,11 +1554,7 @@ const readProgressRawWithMigration = (storageKey) => {
         duration: d,
       });
 
-      window.dispatchEvent(
-        new CustomEvent("watchprogress:update", {
-          detail: { storageKey: key, t: obj?.t ?? 0, d },
-        })
-      );
+      dispatchWatchProgressUpdate({ showId, season, episode, t: obj?.t ?? 0, d });
     };
 
     vid.addEventListener("loadedmetadata", syncDuration);
@@ -1584,13 +1563,11 @@ const readProgressRawWithMigration = (storageKey) => {
       vid.removeEventListener("loadedmetadata", syncDuration);
       vid.removeEventListener("durationchange", syncDuration);
     };
-  }, [showId, season, episode, src]);
+  }, [episode, readProgressRawWithMigration, season, showId, src]);
 
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-
-    const key = formatProgressStorageKey();
 
     const onEnded = () => {
       const d = Number.isFinite(vid.duration) ? vid.duration : 0;
@@ -1599,10 +1576,13 @@ const readProgressRawWithMigration = (storageKey) => {
         setCountdownAfterEnded(true);
       }
 
-      localStorage.setItem(
-        `watchProgress-${key}`,
-        JSON.stringify({ t: 0, d, updatedAt: Date.now() })
-      );
+      writeWatchProgress({
+        showId,
+        season,
+        episode,
+        currentTime: 0,
+        duration: d,
+      });
       flushWatchProgressSync({
         showId,
         season,
@@ -1611,32 +1591,29 @@ const readProgressRawWithMigration = (storageKey) => {
         duration: d,
       });
 
-      window.dispatchEvent(
-        new CustomEvent("watchprogress:update", {
-          detail: { storageKey: key, t: 0, d },
-        })
-      );
+      dispatchWatchProgressUpdate({ showId, season, episode, t: 0, d });
     };
 
     vid.addEventListener("ended", onEnded);
     return () => vid.removeEventListener("ended", onEnded);
-  }, [showId, season, episode, src]);
+  }, [episode, season, showId, src]);
 
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
-
-    const key = formatProgressStorageKey();
 
     const flushProgress = () => {
       const d = Number(vid.duration || 0);
       if (!d || !Number.isFinite(d)) return;
       const tSafe = Math.min(Number(vid.currentTime || 0), Math.max(d - 0.25, 0));
 
-      localStorage.setItem(
-        `watchProgress-${key}`,
-        JSON.stringify({ t: tSafe, d, updatedAt: Date.now() })
-      );
+      writeWatchProgress({
+        showId,
+        season,
+        episode,
+        currentTime: tSafe,
+        duration: d,
+      });
       flushWatchProgressSync({
         showId,
         season,
@@ -1645,11 +1622,7 @@ const readProgressRawWithMigration = (storageKey) => {
         duration: d,
       });
 
-      window.dispatchEvent(
-        new CustomEvent("watchprogress:update", {
-          detail: { storageKey: key, t: tSafe, d },
-        })
-      );
+      dispatchWatchProgressUpdate({ showId, season, episode, t: tSafe, d });
 
       lastProgressPersistAtRef.current = Date.now();
       lastPersistedTimeRef.current = tSafe;
@@ -1674,7 +1647,7 @@ const readProgressRawWithMigration = (storageKey) => {
       window.removeEventListener("pagehide", flushProgress);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [showId, season, episode, src]);
+  }, [episode, season, showId, src]);
 
 
 
@@ -1684,7 +1657,7 @@ const readProgressRawWithMigration = (storageKey) => {
     if (intro && videoRef.current) videoRef.current.currentTime = intro.end;
   };
 
-const handleSkipOutro = async () => {
+const handleSkipOutro = useCallback(async () => {
   if (outroSkipRef.current) return;
   outroSkipRef.current = true;
   setCountdown(null);
@@ -1704,7 +1677,7 @@ const handleSkipOutro = async () => {
       videoRef.current.currentTime = outro?.skipTo;
     }
   }
-};
+}, [getSignedEpisodeUrl, getSignedUrl, nextEpisode, nextSeason, onSkipToNext, outro?.skipTo, resolveSignedEpisodeUrl]);
 const handleSkipOutroRef = useRef(handleSkipOutro);
 useEffect(() => {
   handleSkipOutroRef.current = handleSkipOutro;
@@ -1765,13 +1738,6 @@ const handleSkipToPrevious = async () => {
   const cleanShowId = showId?.replace(/-/g, "");
   const cloudFrontDomain = "https://d20honz3pkzrs8.cloudfront.net";
   const placeholderPath = `${cloudFrontDomain}/${cleanShowId}/placeholders/season${nextSeason}/S${nextSeason}E${nextEpisode}_${cleanShowId}_placeholder.png`
-
-  { /* Episode Title */}
-  let nextTitleRaw = episodeTitles?.[nextSeason]?.[nextEpisode - 1];
-  let nextTitleFormatted = nextTitleRaw
-    ? nextTitleRaw.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
-    : (isMovie ? showId.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())
-              : `Episode ${nextEpisode}`);
 
   const displayTitleMap = {
     jjk: "Jujutsu Kaisen",
@@ -1953,7 +1919,7 @@ const handleSkipToPrevious = async () => {
     return queuedFrame;
   }, [playbackSrc]);
 
-  const handleSkipPreview = (direction) => {
+  const handleSkipPreview = useCallback((direction) => {
     const video = videoRef.current;
     if (!video || !Number.isFinite(video.duration)) return;
 
@@ -1976,7 +1942,7 @@ const handleSkipToPrevious = async () => {
         setPreviewImage(preview);
       }
     });
-  };
+  }, [getPreviewFrame, isPreviewing]);
   useEffect(() => {
     if (isPlaying && isPreviewing) {
       setPreviewImage(null);
@@ -2006,7 +1972,7 @@ const handleSkipToPrevious = async () => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isPreviewing, togglePlay]);
+  }, [handleSkipPreview, isPreviewing, togglePlay]);
 
 
   {/* Next ... */}

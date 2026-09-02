@@ -1,12 +1,15 @@
+import { apiFetch, getApiBase } from "./apiClient.js";
+
 const DEFAULT_BUCKET_NAME = "all-shows";
 
-export const fetchSignedUrl = async ({ apiBase, key, bucket = DEFAULT_BUCKET_NAME }) => {
+export const fetchSignedUrl = async ({ apiBase = getApiBase(), key, bucket = DEFAULT_BUCKET_NAME }) => {
   if (!apiBase || !key) return "";
 
-  try {
-    const res = await fetch(
-      `${apiBase}/api/signed-url/?key=${encodeURIComponent(key)}&bucket=${encodeURIComponent(bucket)}`
-    );
+	  try {
+	    const res = await apiFetch(
+	      `/api/signed-url/?key=${encodeURIComponent(key)}&bucket=${encodeURIComponent(bucket)}`,
+	      { baseUrl: apiBase },
+	    );
     const data = await res.json();
     return data.url || "";
   } catch (err) {
@@ -16,7 +19,7 @@ export const fetchSignedUrl = async ({ apiBase, key, bucket = DEFAULT_BUCKET_NAM
 };
 
 export const fetchSignedEpisodeUrl = async ({
-  apiBase,
+  apiBase = getApiBase(),
   showId,
   season,
   episode,
@@ -26,12 +29,12 @@ export const fetchSignedEpisodeUrl = async ({
 
   try {
     const url =
-      `${apiBase}/api/signed-episode-url/` +
+      "/api/signed-episode-url/" +
       `?show_id=${encodeURIComponent(showId)}` +
       `&season=${encodeURIComponent(season)}` +
       `&episode=${encodeURIComponent(episode)}` +
       `&bucket=${encodeURIComponent(bucket)}`;
-    const res = await fetch(url);
+	    const res = await apiFetch(url, { baseUrl: apiBase });
     const data = await res.json();
     return data.url || "";
   } catch (err) {

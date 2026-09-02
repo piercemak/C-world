@@ -2,6 +2,7 @@ import { React, useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './modules/radiogroup.module.css'
 import { motion } from "framer-motion";
+import { fetchSignedUrl } from "../lib/mediaSigning.js";
 
 
 
@@ -86,18 +87,6 @@ const Home = () => {
   }, []);
 
   {/* AWS Signed Urls */}
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-  const fetchSignedUrl = async (s3Key) => {
-  const bucketName = "all-shows";
-    try {
-      const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
-      const data = await res.json();
-      return data.url;
-    } catch (err) {
-      console.error("❌ Failed to fetch signed URL:", err);
-      return ""; 
-    }
-  };  
   const [videoUrl, setVideoUrl] = useState("");
   const [waterfallUrl, setWaterfallUrl] = useState("");
   useEffect(() => {
@@ -105,10 +94,10 @@ const Home = () => {
       const cloudKeys = ["misc/cartoonMashup1.mp4"];
       const randomIndex = Math.floor(Math.random() * cloudKeys.length);
       const selectedKey = cloudKeys[randomIndex];
-      const signedRandom = await fetchSignedUrl(selectedKey);
+      const signedRandom = await fetchSignedUrl({ key: selectedKey });
       setVideoUrl(signedRandom);
 
-      const signedWaterfall = await fetchSignedUrl("misc/waterfallLoop.mp4");
+      const signedWaterfall = await fetchSignedUrl({ key: "misc/waterfallLoop.mp4" });
       setWaterfallUrl(signedWaterfall);
     };
 

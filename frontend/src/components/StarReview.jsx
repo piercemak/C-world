@@ -1,33 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './modules/starReview.scss'; 
 
 const StarReview = ({ showId }) => {
   const formRef = useRef(null);
   const [rating, setRating] = useState(null);
 
-  const ratings = [
+  const ratings = useMemo(() => [
     { id: 1, name: 'Terrible' },
     { id: 2, name: 'Bad' },
     { id: 3, name: 'OK' },
     { id: 4, name: 'Good' },
     { id: 5, name: 'Excellent' },
-  ];
+  ], []);
 
   const storageKey = `rating-${showId}`;
 
-  useEffect(() => {
-    const savedRating = parseInt(localStorage.getItem(storageKey), 10);
-    if (savedRating) {
-      const event = { target: { value: savedRating } };
-      handleChange(event); 
-      formRef.current.querySelector(`#rating-${showId}-${savedRating}`).checked = true;
-    } else {
-      formRef.current?.reset();
-    }
-  }, []);
-
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const newRating = ratings.find(r => r.id === +e.target.value);
+    if (!newRating) return;
     const prevRatingID = rating?.id || 0;
     setRating(newRating);
     localStorage.setItem(storageKey, newRating.id);
@@ -53,7 +43,18 @@ const StarReview = ({ showId }) => {
         display?.removeAttribute('hidden');
       }
     });
-  };
+  }, [rating?.id, ratings, storageKey]);
+
+  useEffect(() => {
+    const savedRating = parseInt(localStorage.getItem(storageKey), 10);
+    if (savedRating) {
+      handleChange({ target: { value: savedRating } });
+      const input = formRef.current?.querySelector(`#rating-${showId}-${savedRating}`);
+      if (input) input.checked = true;
+    } else {
+      formRef.current?.reset();
+    }
+  }, [handleChange, showId, storageKey]);
 
   return (
     <form className="rating" ref={formRef} onChange={handleChange}>

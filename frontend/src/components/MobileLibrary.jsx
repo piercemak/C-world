@@ -104,7 +104,7 @@ show.title.toLowerCase().includes(searchTerm.toLowerCase())
 
 const [currentIndex, setCurrentIndex] = useState(0);
 const carouselIntervalRef = useRef(null);
-const restartCarouselTimer = () => {
+const restartCarouselTimer = useCallback(() => {
   if (carouselIntervalRef.current) {
     clearInterval(carouselIntervalRef.current);
     carouselIntervalRef.current = null;
@@ -113,7 +113,7 @@ const restartCarouselTimer = () => {
   carouselIntervalRef.current = setInterval(() => {
     setCurrentIndex((prev) => (prev + 1) % filteredShows.length);
   }, 4000);
-};
+}, [filteredShows.length]);
 useEffect(() => {
   restartCarouselTimer();
   return () => {
@@ -122,7 +122,7 @@ useEffect(() => {
       carouselIntervalRef.current = null;
     }
   };
-}, [filteredShows.length]);
+}, [restartCarouselTimer]);
 useEffect(() => {
   if (!filteredShows.length) {
     setCurrentIndex(0);

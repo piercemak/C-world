@@ -1,24 +1,22 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './components/AuthContext';
 
 import { SnowProvider } from "./components/SnowContext.jsx"; // REMOVE AFTER HOLDAYS //
 import SnowOverlay from "./components/SnowOverlay"; // REMOVE AFTER HOLDAYS //
 
-import Home from './components/Home.jsx';
-import VideoPlayer from './components/VideoPlayer.jsx';
-import Library from './components/Library.jsx';
-import MobileHome from './components/MobileHome.jsx';
-import MobileLibrary from './components/MobileLibrary.jsx';
-import MobileShows from './components/MobileShows.jsx';
-import User from './components/User.jsx';
-import MobileUser from './components/MobileUser.jsx';
-import Login from './components/Login.jsx';
-import MobileLogin from './components/MobileLogin.jsx';
-import IntroScreen from './components/IntroScreen.jsx';
-import Reviews from './components/Reviews.jsx';
-import Archive from './components/Archive.jsx';
-import DesktopUpdater from './components/DesktopUpdater.jsx';
+const VideoPlayer = lazy(() => import('./components/VideoPlayer.jsx'));
+const Library = lazy(() => import('./components/Library.jsx'));
+const MobileLibrary = lazy(() => import('./components/MobileLibrary.jsx'));
+const MobileShows = lazy(() => import('./components/MobileShows.jsx'));
+const User = lazy(() => import('./components/User.jsx'));
+const MobileUser = lazy(() => import('./components/MobileUser.jsx'));
+const Login = lazy(() => import('./components/Login.jsx'));
+const MobileLogin = lazy(() => import('./components/MobileLogin.jsx'));
+const IntroScreen = lazy(() => import('./components/IntroScreen.jsx'));
+const Reviews = lazy(() => import('./components/Reviews.jsx'));
+const Archive = lazy(() => import('./components/Archive.jsx'));
+const DesktopUpdater = lazy(() => import('./components/DesktopUpdater.jsx'));
 
 function ProtectedRoute({ children }) {
   const { user, authLoading } = useAuth();
@@ -43,6 +41,7 @@ function App() {
     <SnowProvider> 
     <SnowOverlay />
     <AuthProvider>
+      <Suspense fallback={null}>
       <DesktopUpdater />
       <BrowserRouter>
         <Routes>
@@ -114,6 +113,7 @@ function App() {
           />      
         </Routes>
       </BrowserRouter>
+      </Suspense>
     </AuthProvider>
     </SnowProvider>
   );

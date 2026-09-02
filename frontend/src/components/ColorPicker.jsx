@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 
@@ -17,13 +17,13 @@ const GRADIENT_COLORS = [
 
 
 const FAVORITES_KEY = 'favoriteColors';
+const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, #add8e6, #fff)';
 const paletteIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className='2xl:size-10 size-9' viewBox="0 0 16 16"><path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>
 const mouseIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" /></svg>
 
 
 
 const ColorPicker = ({ initialValue, onSave, onClose }) => {
-  const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, #add8e6, #fff)';
   const [showGradientEditor, setShowGradientEditor] = useState(false);
   const [gradientStart, setGradientStart] = useState('#ff3131');
   const [gradientEnd, setGradientEnd] = useState('#004aad');
@@ -42,11 +42,31 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
     return stored ? JSON.parse(stored) : [];
   });
 
+  const [showModeSelector, setShowModeSelector] = useState(false);
+  const [gradientStyle, setGradientStyle] = useState('linear'); 
+  const syncFromGradient = useCallback((gradientStr) => {
+    if (!gradientStr || !gradientStr.includes('gradient')) return;
+    const matches = gradientStr.match(/#([0-9a-f]{3,6})/gi) || [];
+    if (matches[0]) setGradientStart(matches[0]);
+    if (matches[matches.length - 1]) setGradientEnd(matches[matches.length - 1]);
+    if (gradientStr.includes('radial-gradient')) {
+      if (gradientStr.includes('circle at center')) {
+        setGradientStyle('center');
+      } else {
+        setGradientStyle('radial');
+      }
+    } else if (gradientStr.includes('135deg')) {
+      setGradientStyle('diagonal');
+    } else {
+      setGradientStyle('linear');
+    }
+  }, []);
+
   useEffect(() => {
     if (!initialValue) {
       onSave(DEFAULT_GRADIENT);
     }
-  }, []);
+  }, [initialValue, onSave]);
   useEffect(() => {
     const savedGradient = localStorage.getItem('userGradient');
     const savedRawColor = localStorage.getItem('userColor');
@@ -62,7 +82,7 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
     }
 
     if (savedRawColor) setColor(savedRawColor);
-  }, []);
+  }, [onSave, syncFromGradient]);
 
   const handleColorChange = (e) => {
     setColor(e.target.value);
@@ -101,30 +121,6 @@ const ColorPicker = ({ initialValue, onSave, onClose }) => {
       syncFromGradient(favColor);
     }
   };
-  const [showModeSelector, setShowModeSelector] = useState(false);
-
-  {/* Gradient Picker */}
-  const [gradientStyle, setGradientStyle] = useState('linear'); 
-  const syncFromGradient = (gradientStr) => {
-    if (!gradientStr || !gradientStr.includes('gradient')) return;
-    const matches = gradientStr.match(/#([0-9a-f]{3,6})/gi) || [];
-    if (matches[0]) setGradientStart(matches[0]);
-    if (matches[matches.length - 1]) setGradientEnd(matches[matches.length - 1]);
-    if (gradientStr.includes('radial-gradient')) {
-      if (gradientStr.includes('circle at center')) {
-        setGradientStyle('center');
-      } else {
-        setGradientStyle('radial');
-      }
-    } else {
-      if (gradientStr.includes('135deg')) {
-        setGradientStyle('diagonal');
-      } else {
-        setGradientStyle('linear');
-      }
-    }
-  };
-
   const buildGradient = () => {
     switch (gradientStyle) {
       case 'diagonal':

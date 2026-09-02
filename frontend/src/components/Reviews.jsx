@@ -23,6 +23,7 @@ import {
 
 import { CSS } from '@dnd-kit/utilities';
 import { REVIEWS_SHOWS } from "../data/reviewsShowsData.js";
+import { fetchSignedUrl } from "../lib/mediaSigning.js";
 
 
 
@@ -70,19 +71,6 @@ const navigate = useNavigate();
 
 
 
-  {/* AWS Signed Urls */}
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-  const fetchSignedUrl = async (s3Key) => {
-  const bucketName = "all-shows";
-    try {
-      const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
-      const data = await res.json();
-      return data.url;
-    } catch (err) {
-      console.error("❌ Failed to fetch signed URL:", err);
-      return ""; 
-    }
-  };  
   const [videoUrl, setVideoUrl] = useState("");
   useEffect(() => {
     const getSignedUrl = async () => {
@@ -91,7 +79,7 @@ const navigate = useNavigate();
       ];
       const randomIndex = Math.floor(Math.random() * cloudKeys.length);
       const selectedKey = cloudKeys[randomIndex];
-      const signed = await fetchSignedUrl(selectedKey);
+      const signed = await fetchSignedUrl({ key: selectedKey });
       setVideoUrl(signed);
     };
     getSignedUrl();
@@ -109,7 +97,7 @@ useEffect(() => {
     }, 350); 
     return () => clearTimeout(timeout);
   }
-}, [reviewList]);
+}, [currentShowId, reviewList]);
 
 const SortableReview = ({ id, children }) => {
   const {

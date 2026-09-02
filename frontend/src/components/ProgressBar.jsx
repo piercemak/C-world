@@ -126,7 +126,7 @@ const ProgressBar = ({ videoRef, src, controlsVisible, getPreviewFrame }) => {
       setDuration(dur);
       setProgress(dur > 0 ? (videoRef.current.currentTime / dur) * 100 : 0);
     }
-  }, [controlsVisible]);
+  }, [controlsVisible, videoRef]);
 
   useEffect(() => {
     if (previewBucket === null || !getPreviewFrame) {

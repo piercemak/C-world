@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom';
+import { fetchSignedUrl } from "../lib/mediaSigning.js";
 
 
 const MobileHome = () => {
@@ -51,23 +52,10 @@ useEffect(() => {
 }, [showDropdown]);
 
 
-{/* AWS Signed Urls */}
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-const fetchSignedUrl = async (s3Key) => {
-const bucketName = "all-shows";
-  try {
-    const res = await fetch(`${API_BASE}/api/signed-url/?key=${encodeURIComponent(s3Key)}&bucket=${bucketName}`);
-    const data = await res.json();
-    return data.url;
-  } catch (err) {
-    console.error("❌ Failed to fetch signed URL:", err);
-    return ""; 
-  }
-};  
 const [videoUrl, setVideoUrl] = useState("");
 useEffect(() => {
   const getSignedUrl = async () => {
-    const signed = await fetchSignedUrl("misc/cartoonMashup1.mp4");
+    const signed = await fetchSignedUrl({ key: "misc/cartoonMashup1.mp4" });
     setVideoUrl(signed);
   };
   getSignedUrl();

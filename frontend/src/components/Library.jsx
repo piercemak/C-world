@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useCallback, useState, useRef, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
@@ -13,6 +13,12 @@ import {
   fetchSignedUrl as fetchSignedAssetUrl,
   fetchSignedEpisodeUrl as fetchSignedEpisodePlaybackUrl,
 } from "../lib/mediaSigning.js";
+import {
+  cleanMediaId,
+  formatWatchProgressKey,
+  readWatchProgress,
+  upsertHistoryEntry,
+} from "../lib/watchProgressStorage.js";
 
 
 
@@ -24,7 +30,7 @@ const Library = () => {
     const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState(false);
-    const cleanShowId = (id) => id.replace(/-/g, "");
+    const cleanShowId = useCallback((id) => cleanMediaId(id), []);
     const location = useLocation();
 
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -180,8 +186,11 @@ const extractS3KeyFromPath = (path) => {
 };
 
     {/* Show/Season Handling */}
-    const awsHostedShows = import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",") || [];
-    const generateSeasonVideos = (titlesBySeason, rawId, type = "show") => {
+    const awsHostedShows = useMemo(
+      () => import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",").filter(Boolean) || [],
+      [],
+    );
+    const generateSeasonVideos = useCallback((titlesBySeason, rawId, type = "show") => {
       const cleanId = cleanShowId(rawId);
       const isAwsHosted = awsHostedShows.includes(rawId);
       const videos = {};
@@ -220,31 +229,35 @@ const extractS3KeyFromPath = (path) => {
         });
       });
       return videos;
-    };
+    }, [awsHostedShows, cleanShowId]);
   
-    const videoDataByShow = Object.fromEntries(
-      Object.entries(allEpisodeTitles).map(([showId, titlesBySeason]) => [
-        showId,
-        generateSeasonVideos(titlesBySeason, showId)
-      ])
+    const videoDataByShow = useMemo(
+      () => Object.fromEntries(
+        Object.entries(allEpisodeTitles).map(([showId, titlesBySeason]) => [
+          showId,
+          generateSeasonVideos(titlesBySeason, showId)
+        ])
+      ),
+      [generateSeasonVideos],
     );
 
 
     {/* Show Database */}
-    const shows = buildLibraryShows({ videoDataByShow, generateSeasonVideos });
+    const shows = useMemo(
+      () => buildLibraryShows({ videoDataByShow, generateSeasonVideos }),
+      [generateSeasonVideos, videoDataByShow],
+    );
     const show = shows[showId];
       
       {/* AWS Signed Urls */}
-      const API_BASE = import.meta.env.VITE_API_URL;
-      const fetchSignedUrl = async (s3Key) =>
-        fetchSignedAssetUrl({ apiBase: API_BASE, key: s3Key });
-      const fetchSignedEpisodeUrl = async (targetShowId, season, episode) =>
+      const fetchSignedUrl = useCallback((s3Key) =>
+        fetchSignedAssetUrl({ key: s3Key }), []);
+      const fetchSignedEpisodeUrl = useCallback((targetShowId, season, episode) =>
         fetchSignedEpisodePlaybackUrl({
-          apiBase: API_BASE,
           showId: targetShowId,
           season,
           episode,
-        });
+        }), []);
 
 
       {/* Search Functionality */}
@@ -326,7 +339,7 @@ const extractS3KeyFromPath = (path) => {
           pushDesktopLastWatched({ showId, season: s, episode: e });
 
         })();
-      }, [location.search, showId, awsHostedShows, show?.videos]);
+      }, [location.search, showId, awsHostedShows, show?.videos, fetchSignedUrl, fetchSignedEpisodeUrl]);
 
 
 
@@ -497,10 +510,6 @@ const extractS3KeyFromPath = (path) => {
 
     {/* Subtitles */}
     const metaShowId = selectedVideo?.showId || showId;
-    const seasons = show?.season_digit
-      ? Array.from({ length: show.season_digit }, (_, i) => i + 1)
-      : [];
-
   const playingRef = useRef(null);
   useEffect(() => {
     playingRef.current = selectedVideo;
@@ -508,65 +517,29 @@ const extractS3KeyFromPath = (path) => {
 
   {/* Last Watched Videoplayer Helper */}
   const pushDesktopLastWatched = ({ showId, season = null, episode = null }) => {
-  const KEY = "lastWatched";
-  let arr = [];
-  try { arr = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch {}
-
-  const entry = {
-    showId,
-    watchedAt: Date.now(),
-    lastSeason: season,
-    lastEpisode: episode,
-  };
-  arr = arr.filter((x) => x?.showId !== showId);
-  arr.unshift(entry);
-
-  localStorage.setItem(KEY, JSON.stringify(arr.slice(0, 50)));
-  syncWatchHistory({ showId, season, episode });
+    const entry = {
+      showId,
+      watchedAt: Date.now(),
+      lastSeason: season,
+      lastEpisode: episode,
+    };
+    upsertHistoryEntry("lastWatched", entry);
+    syncWatchHistory({ showId, season, episode });
   };
   
 
   {/* Watch Progress Helper */}
   const toProgressStorageKey = (id, season = null, episode = null) => {
-    if (season == null || episode == null) return `${id}`;
-    const seasonNum = Number(season);
-    const episodeNum = Number(episode);
-    if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return `${id}`;
-    return `${id}-S${String(seasonNum).padStart(2, "0")}-E${String(episodeNum).padStart(2, "0")}`;
+    return formatWatchProgressKey({ showId: id, season, episode });
   };
   const readProgress = (storageKey) => {
-    const primaryKey = `watchProgress-${storageKey}`;
-    let raw = localStorage.getItem(primaryKey);
-    if (!raw) {
-      const m = storageKey.match(/^(.*)-S(\d+)-E(\d+)$/);
-      if (m) {
-        const legacyStorageKey = `${m[1]}-S${Number(m[2])}-E${Number(m[3])}`;
-        const legacyKey = `watchProgress-${legacyStorageKey}`;
-        const legacyRaw = localStorage.getItem(legacyKey);
-        if (legacyRaw) {
-          localStorage.setItem(primaryKey, legacyRaw);
-          localStorage.removeItem(legacyKey);
-          raw = legacyRaw;
-        }
-      }
-    }
-    if (!raw) return { t: 0, d: 0, updatedAt: 0 };
-
-    try {
-      const obj = JSON.parse(raw);
-      const t = Number(obj?.t ?? obj?.currentTime ?? 0);
-      const d = Number(obj?.d ?? obj?.duration ?? 0);
-      const updatedAt = Number(obj?.updatedAt ?? 0);
-
-      return {
-        t: Number.isFinite(t) ? t : 0,
-        d: Number.isFinite(d) ? d : 0,
-        updatedAt: Number.isFinite(updatedAt) ? updatedAt : 0,
-      };
-    } catch {
-      const n = Number(raw);
-      return { t: Number.isFinite(n) ? n : 0, d: 0, updatedAt: 0 };
-    }
+    const match = storageKey.match(/^(.*?)(?:-S(\d+)-E(\d+))?$/);
+    if (!match) return { t: 0, d: 0, updatedAt: 0 };
+    return readWatchProgress({
+      showId: match[1],
+      season: match[2] == null ? null : Number(match[2]),
+      episode: match[3] == null ? null : Number(match[3]),
+    });
   };
   useEffect(() => {
     const onUpdate = (e) => {

@@ -5,7 +5,7 @@ import RatingRing from "./RatingRing";
 
 const RandomCoverCarousel = () => {
 
-  const covers = [
+  const covers = useMemo(() => [
     { id: "adventure-time", src: "/images/adventuretime/covers/adventuretimeCover.jpg", title: "Adventure Time" },
     { id: "a-ghost-story", src: "/images/aghoststory/covers/aghoststoryCover.webp", title: "A Ghost Story" },
     { id: "akira", src: "/images/akira/covers/akiraCover.jpg", title: "Akira" },
@@ -68,7 +68,7 @@ const RandomCoverCarousel = () => {
     { id: "thenightisshort", src: "/images/thenightisshort/covers/thenightisshortCover.svg", title: "The Night Is Short, Walk on Girl" },
     { id: "cure", src: "/images/cure/covers/cureCover.svg", title: "Cure" },
     { id: "theinvite", src: "/images/theinvite/covers/theinviteCover.svg", title: "The Invite" },
-  ];
+  ], []);
 
   const showsById = useMemo(() => {
     const m = new Map();
@@ -85,7 +85,7 @@ const RandomCoverCarousel = () => {
         ratings: show?.ratings ?? "",
       };
     });
-  }, [showsById]);
+  }, [covers, showsById]);
 
   const [index, setIndex] = useState(() => Math.floor(Math.random() * unified.length));
   const current = unified[index];

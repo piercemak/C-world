@@ -1,37 +1,15 @@
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
-const ACTIVE_PROFILE_ID_KEY = "activeProfileId";
+import { apiFetch } from "./apiClient.js";
+import {
+  parseWatchProgressPayload,
+  toWatchProgressStorageKey,
+} from "./watchProgressStorage.js";
 
-const getAuthContext = () => {
-  const token = localStorage.getItem("authToken");
-  const activeProfileId = localStorage.getItem(ACTIVE_PROFILE_ID_KEY);
-
-  if (activeProfileId) {
-    return { token, profileId: Number(activeProfileId) || null };
-  }
-
-  try {
-    const activeProfile = JSON.parse(localStorage.getItem("activeProfile") || "null");
-    return { token, profileId: activeProfile?.id || null };
-  } catch {
-    return { token, profileId: null };
-  }
-};
-
-const authedFetch = async (path, options = {}, profileIdOverride = null) => {
-  const { token, profileId } = getAuthContext();
-  if (!token) return null;
-
-  const headers = {
-    "Content-Type": "application/json",
-    ...(options.headers || {}),
-    Authorization: `Token ${token}`,
-    "X-Profile-Id": String(profileIdOverride || profileId || ""),
-  };
-
-  if (!headers["X-Profile-Id"] || headers["X-Profile-Id"] === "null") return null;
-
-  return fetch(`${API_BASE}${path}`, { ...options, headers });
-};
+const authedFetch = async (path, options = {}, profileIdOverride = null) =>
+  apiFetch(path, {
+    ...options,
+    auth: true,
+    profileId: profileIdOverride,
+  });
 
 const clearLocalWatchState = () => {
   const keys = Object.keys(localStorage).filter(
@@ -40,34 +18,11 @@ const clearLocalWatchState = () => {
   keys.forEach((key) => localStorage.removeItem(key));
 };
 
-const parseStoredProgress = (raw) => {
-  if (!raw) return { t: 0, d: 0, updatedAt: 0 };
-  try {
-    const obj = JSON.parse(raw);
-    const t = Number(obj?.t ?? obj?.currentTime ?? 0);
-    const d = Number(obj?.d ?? obj?.duration ?? 0);
-    const updatedAt = Number(obj?.updatedAt ?? 0);
-    return {
-      t: Number.isFinite(t) ? t : 0,
-      d: Number.isFinite(d) ? d : 0,
-      updatedAt: Number.isFinite(updatedAt) ? updatedAt : 0,
-    };
-  } catch {
-    const t = Number(raw);
-    return { t: Number.isFinite(t) ? t : 0, d: 0, updatedAt: 0 };
-  }
-};
-
-const toStorageKey = ({ show_id, season, episode }) => {
-  if (season == null || episode == null) return `watchProgress-${show_id}`;
-  return `watchProgress-${show_id}-S${String(season).padStart(2, "0")}-E${String(episode).padStart(2, "0")}`;
-};
-
 export const hydrateWatchDataFromServer = async (profileId = null) => {
   const localProgressSnapshot = new Map(
     Object.keys(localStorage)
       .filter((key) => key.startsWith("watchProgress-"))
-      .map((key) => [key, parseStoredProgress(localStorage.getItem(key))])
+      .map((key) => [key, parseWatchProgressPayload(localStorage.getItem(key))])
   );
   clearLocalWatchState();
 
@@ -78,7 +33,11 @@ export const hydrateWatchDataFromServer = async (profileId = null) => {
     const recentLocalWindowMs = 15 * 60 * 1000;
 
     progressItems.forEach((item) => {
-      const key = toStorageKey(item);
+      const key = toWatchProgressStorageKey({
+        showId: item.show_id,
+        season: item.season,
+        episode: item.episode,
+      });
       const localKey = key;
       const localSnapshot = localProgressSnapshot.get(localKey);
       const serverUpdatedAt = new Date(item.updated_at).getTime() || 0;
