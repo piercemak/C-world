@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -28,6 +28,14 @@ const Show = ({
 
   const containerRef = useRef(null)
   const videoRef = useRef(null);
+  const previewVideoRef = useRef(null);
+  const previewFrameCacheRef = useRef(new Map());
+  const previewQueueRef = useRef(Promise.resolve());
+  const previewSourceRef = useRef("");
+  const previewSessionRef = useRef(0);
+  const previewRequestedFrameKeyRef = useRef("");
+  const previewTargetRef = useRef(null);
+  const previewRequestIdRef = useRef(0);
   const [playbackSrc, setPlaybackSrc] = useState(src);
   const [mediaNotFound, setMediaNotFound] = useState(false);
   const intendedResumeTimeRef = useRef(null);
@@ -45,6 +53,14 @@ const Show = ({
     recoveryAttemptCountRef.current = 0;
     recoveryWindowStartRef.current = 0;
   }, [src]);
+  useEffect(() => {
+    previewSessionRef.current += 1;
+    previewFrameCacheRef.current.clear();
+    previewQueueRef.current = Promise.resolve();
+    previewSourceRef.current = "";
+    previewRequestedFrameKeyRef.current = "";
+    previewTargetRef.current = null;
+  }, [playbackSrc]);
   const spinner = <svg xmlns="http://www.w3.org/2000/svg" className="size-14" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FCFAFF"></stop><stop offset=".3" stop-color="#FCFAFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FCFAFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FCFAFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FCFAFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FCFAFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
   
   const fullscreenIcon = <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="size-8" viewBox="0 0 16 16"><path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/></svg>
@@ -1825,24 +1841,6 @@ const handleSkipToPrevious = async () => {
   }, [countdown, isPlaying, countdownAfterEnded]);
 
 
-  {/* Skip ahead buttons */}
-  const skipTriggeredRef = useRef(false);
-  const skipForward = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = Math.min(
-        videoRef.current.currentTime + 15,
-        videoRef.current.duration
-      );
-    }
-  };
-  const skipBackward = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = Math.max(
-        videoRef.current.currentTime - 15,
-        0
-      );
-    }
-  };
   const restartVideo = async () => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -1873,60 +1871,117 @@ const handleSkipToPrevious = async () => {
 
   {/* Frame Preview Handling */}
   const [isPreviewing, setIsPreviewing] = useState(false);
-  const generateFramePreview = async (time) => {
-    const tempVideo = document.createElement('video');
-    tempVideo.crossOrigin = 'anonymous'; 
-    try {
-      tempVideo.src = new URL(playbackSrc, window.location.origin).toString();
-    } catch {
-      tempVideo.src = playbackSrc;
-    }
-    tempVideo.preload = 'auto';
-    tempVideo.muted = true;
-    return new Promise((resolve, reject) => {
-      tempVideo.addEventListener('loadedmetadata', () => {
-        tempVideo.currentTime = Math.min(time, tempVideo.duration);
-      }, { once: true });
-      tempVideo.addEventListener('seeked', () => {
-        try {
-          const canvas = document.createElement('canvas');
-          canvas.width = 854;
-          canvas.height = 480;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
-          const dataUrl = canvas.toDataURL('image/jpeg');
-          resolve(dataUrl);
-        } catch (err) {
-          console.warn("❌ Canvas draw failed (CORS issue?)", err);
-          reject(err);
-        }
-      }, { once: true });
-      tempVideo.addEventListener('error', (e) => {
-        console.error("❌ Preview video load error", e);
-        reject(e);
-      });
-    });
-  };
   const [previewImage, setPreviewImage] = useState(null);
-  const handleSkipPreview = async (direction) => {
-    if (!videoRef.current) return;
-  
+  const getPreviewFrame = useCallback((requestedTime) => {
+    const previewVideo = previewVideoRef.current;
+    if (!previewVideo || !playbackSrc) return Promise.resolve(null);
+
+    const frameInterval = 2;
+    const frameTime = Math.max(0, Math.round(Number(requestedTime || 0) / frameInterval) * frameInterval);
+    const cacheKey = `${playbackSrc}:${frameTime}`;
+    previewRequestedFrameKeyRef.current = cacheKey;
+    const cachedFrame = previewFrameCacheRef.current.get(cacheKey);
+    if (cachedFrame) return Promise.resolve(cachedFrame);
+
+    const session = previewSessionRef.current;
+    const waitFor = (eventName) => new Promise((resolve, reject) => {
+      const cleanup = () => {
+        window.clearTimeout(timeout);
+        previewVideo.removeEventListener(eventName, onSuccess);
+        previewVideo.removeEventListener("error", onError);
+      };
+      const onSuccess = () => {
+        cleanup();
+        resolve();
+      };
+      const onError = () => {
+        cleanup();
+        reject(new Error("Preview video could not load."));
+      };
+      const timeout = window.setTimeout(() => {
+        cleanup();
+        reject(new Error("Preview frame timed out."));
+      }, 8000);
+      previewVideo.addEventListener(eventName, onSuccess, { once: true });
+      previewVideo.addEventListener("error", onError, { once: true });
+    });
+
+    const renderFrame = async () => {
+      if (previewRequestedFrameKeyRef.current !== cacheKey) return null;
+      if (previewSourceRef.current !== playbackSrc) {
+        previewSourceRef.current = playbackSrc;
+        previewVideo.src = playbackSrc;
+        previewVideo.load();
+      }
+
+      if (previewVideo.readyState < 1 || !Number.isFinite(previewVideo.duration)) {
+        await waitFor("loadedmetadata");
+      }
+      if (session !== previewSessionRef.current) return null;
+      if (previewRequestedFrameKeyRef.current !== cacheKey) return null;
+
+      const targetTime = Math.min(frameTime, Math.max(0, Number(previewVideo.duration || frameTime)));
+      if (Math.abs(previewVideo.currentTime - targetTime) > 0.05) {
+        const seeked = waitFor("seeked");
+        previewVideo.currentTime = targetTime;
+        await seeked;
+      }
+      if (session !== previewSessionRef.current) return null;
+      if (previewRequestedFrameKeyRef.current !== cacheKey) return null;
+
+      const canvas = document.createElement("canvas");
+      canvas.width = 480;
+      canvas.height = 270;
+      const context = canvas.getContext("2d");
+      if (!context) return null;
+      context.drawImage(previewVideo, 0, 0, canvas.width, canvas.height);
+      const image = canvas.toDataURL("image/jpeg", 0.82);
+
+      const cache = previewFrameCacheRef.current;
+      cache.set(cacheKey, image);
+      if (cache.size > 90) cache.delete(cache.keys().next().value);
+      return image;
+    };
+
+    const queuedFrame = previewQueueRef.current
+      .then(renderFrame, renderFrame)
+      .catch((error) => {
+        console.debug("Preview frame unavailable.", error);
+        return null;
+      });
+    previewQueueRef.current = queuedFrame.then(() => undefined);
+    return queuedFrame;
+  }, [playbackSrc]);
+
+  const handleSkipPreview = (direction) => {
+    const video = videoRef.current;
+    if (!video || !Number.isFinite(video.duration)) return;
+
+    const startingTime = isPreviewing && previewTargetRef.current != null
+      ? previewTargetRef.current
+      : video.currentTime;
     const newTime = Math.min(
-      Math.max(videoRef.current.currentTime + (direction === 'forward' ? 15 : -15), 0),
-      videoRef.current.duration
+      Math.max(startingTime + (direction === "forward" ? 15 : -15), 0),
+      video.duration
     );
-  
-    const preview = await generateFramePreview(newTime);
-    setPreviewImage(preview);
-    setIsPreviewing(true); 
-  
-    videoRef.current.currentTime = newTime;
-    videoRef.current.pause(); 
+
+    previewTargetRef.current = newTime;
+    setIsPreviewing(true);
+    video.currentTime = newTime;
+    video.pause();
+
+    const requestId = ++previewRequestIdRef.current;
+    getPreviewFrame(newTime).then((preview) => {
+      if (requestId === previewRequestIdRef.current && preview) {
+        setPreviewImage(preview);
+      }
+    });
   };
   useEffect(() => {
     if (isPlaying && isPreviewing) {
       setPreviewImage(null);
       setIsPreviewing(false);
+      previewTargetRef.current = null;
     }
   }, [isPlaying, isPreviewing]);
   useEffect(() => {
@@ -1939,9 +1994,10 @@ const handleSkipToPrevious = async () => {
         handleSkipPreview("backward");
       } else if (e.key === "Enter" && isPreviewing) {
         e.preventDefault();
-        videoRef.current.play();
+        videoRef.current?.play();
         setIsPreviewing(false);
         setPreviewImage(null);
+        previewTargetRef.current = null;
       } else if (e.key === " " && !isPreviewing) {
         e.preventDefault();
         togglePlay();
@@ -1950,7 +2006,7 @@ const handleSkipToPrevious = async () => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isPreviewing]);
+  }, [isPreviewing, togglePlay]);
 
 
   {/* Next ... */}
@@ -2270,6 +2326,16 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
       Your browser does not support the video tag.
     </video>
 
+    <video
+      ref={previewVideoRef}
+      className="pointer-events-none absolute h-px w-px opacity-0"
+      crossOrigin="anonymous"
+      muted
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+    />
+
     {mediaNotFound && (
       <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none">
         <div className="text-white/90 text-xl font-medium">
@@ -2380,7 +2446,12 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
         <div className="relative bottom-8">
           {/* Progress Bar */}
           <div className="relative z-40 mb-5 pointer-events-auto">
-            <ProgressBar videoRef={videoRef} src={playbackSrc} controlsVisible={controlsVisible} />
+            <ProgressBar
+              videoRef={videoRef}
+              src={playbackSrc}
+              controlsVisible={controlsVisible}
+              getPreviewFrame={getPreviewFrame}
+            />
           </div>
 
           <div className="relative z-30 grid grid-cols-[1fr_auto_1fr] items-center text-white pt-1 pointer-events-auto">
@@ -2400,7 +2471,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
               )}
 
                 <motion.button
-                  onClick={skipBackward} 
+                  onClick={() => handleSkipPreview("backward")}
                   className="cursor-pointer focus-visible:outline-none"
                   whileTap={{ scale: 0.92 }}
                   whileHover={{ scale: 1.14, y: -1 }}
@@ -2414,7 +2485,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
                 </div>
 
                 <motion.button
-                  onClick={skipForward} 
+                  onClick={() => handleSkipPreview("forward")}
                   className="cursor-pointer focus-visible:outline-none"
                   whileTap={{ scale: 0.92 }}
                   whileHover={{ scale: 1.14, y: -1 }}

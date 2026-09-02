@@ -13,15 +13,18 @@ const formatTime = (seconds) => {
     : `${paddedMins}:${paddedSecs}`;
 };
 
-const ProgressBar = ({ videoRef, src, controlsVisible }) => {
+const ProgressBar = ({ videoRef, src, controlsVisible, getPreviewFrame }) => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [hoverTime, setHoverTime] = useState(null);
   const [hoverX, setHoverX] = useState(0);
+  const [hoverPreview, setHoverPreview] = useState(null);
   const barRef = useRef(null);
   const pendingDragTimeRef = useRef(null);
+  const hoverPreviewRequestRef = useRef(0);
   const [isDragging, setIsDragging] = useState(false);
+  const previewBucket = hoverTime === null ? null : Math.round(hoverTime / 2) * 2;
 
   const getTimeFromClientX = (clientX) => {
     const bar = barRef.current;
@@ -89,6 +92,8 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
 
   const handleMouseLeave = () => {
     setHoverTime(null);
+    hoverPreviewRequestRef.current += 1;
+    setHoverPreview(null);
   };
 
   const handleMouseDown = (e) => {
@@ -123,6 +128,23 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
     }
   }, [controlsVisible]);
 
+  useEffect(() => {
+    if (previewBucket === null || !getPreviewFrame) {
+      setHoverPreview(null);
+      return undefined;
+    }
+
+    const requestId = ++hoverPreviewRequestRef.current;
+    const timeout = window.setTimeout(async () => {
+      const image = await getPreviewFrame(previewBucket);
+      if (requestId === hoverPreviewRequestRef.current) {
+        setHoverPreview(image);
+      }
+    }, 70);
+
+    return () => window.clearTimeout(timeout);
+  }, [getPreviewFrame, previewBucket, src]);
+
   return (
     <div className="w-full relative">
       {/* Time display */}
@@ -154,10 +176,21 @@ const ProgressBar = ({ videoRef, src, controlsVisible }) => {
             style={{ left: `${hoverX}px` }}
           />
           <div
-            className="absolute -top-6 text-xs px-1 py-0.5 bg-black text-white rounded-sm pointer-events-none whitespace-nowrap"
-            style={{ left: `${hoverX}px`, transform: "translateX(-50%)" }}
+            className="absolute bottom-full z-50 mb-2 w-48 -translate-x-1/2 overflow-hidden rounded-lg border border-white/20 bg-black/95 shadow-2xl pointer-events-none"
+            style={{ left: `${hoverX}px` }}
           >
-            {formatTime(hoverTime)}
+            {hoverPreview ? (
+              <img
+                src={hoverPreview}
+                alt={`Preview at ${formatTime(hoverTime)}`}
+                className="aspect-video w-full object-cover"
+              />
+            ) : (
+              <div className="aspect-video w-full animate-pulse bg-white/10" />
+            )}
+            <div className="px-2 py-1 text-center text-xs font-medium tabular-nums text-white">
+              {formatTime(hoverTime)}
+            </div>
           </div>
         </>
         )}
