@@ -393,41 +393,56 @@ const extractS3KeyFromPath = (path) => {
         let videoPath = null;
         let season = null;
         let episode = null;
+        let progressKey = matchedShowId;
 
         if (isMovie) {
           videoPath = show?.videos?.[0]?.path || null;
         } else {
           season = parseInt(seasonNumStr);
           episode = parseInt(episodeNumStr);
+          progressKey = toProgressStorageKey(matchedShowId, season, episode);
           const episodeList = show?.videos?.[`season${season}`];
           if (!episodeList || !episodeList[episode - 1]) return;
 
           videoPath = episodeList[episode - 1].path;
         }
 
+        const resumeProgress = readProgress(progressKey);
+        const resumeTime = Number(resumeProgress?.t || 0);
+
         if (!videoPath) {
           console.error("❌ No video path found for resume.");
           return;
         }
 
-        if (awsHostedShows.includes(showId)) {
-          const isCloudfrontUrl = videoPath.includes("cloudfront.net");
-          const s3Key = isCloudfrontUrl
-            ? videoPath.split("cloudfront.net/")[1]
-            : extractS3KeyFromPath(videoPath);
+        if (awsHostedShows.includes(showId) || awsHostedShows.includes(matchedShowId)) {
+          if (!isMovie) {
+            const signedUrl = await fetchSignedEpisodeUrl(matchedShowId, season, episode);
+            if (!signedUrl) {
+              console.error("❌ Signed episode URL fetch failed.");
+              return;
+            }
 
-          if (!s3Key) {
-            console.error("❌ Could not extract s3Key from resume video path:", videoPath);
-            return;
+            videoPath = signedUrl;
+          } else {
+            const isCloudfrontUrl = videoPath.includes("cloudfront.net");
+            const s3Key = isCloudfrontUrl
+              ? videoPath.split("cloudfront.net/")[1]
+              : extractS3KeyFromPath(videoPath);
+
+            if (!s3Key) {
+              console.error("❌ Could not extract s3Key from resume video path:", videoPath);
+              return;
+            }
+
+            const signedUrl = await fetchSignedUrl(s3Key);
+            if (!signedUrl) {
+              console.error("❌ Signed URL fetch failed.");
+              return;
+            }
+
+            videoPath = signedUrl;
           }
-
-          const signedUrl = await fetchSignedUrl(s3Key);
-          if (!signedUrl) {
-            console.error("❌ Signed URL fetch failed.");
-            return;
-          }
-
-          videoPath = signedUrl;
         }
 
         setSelectedVideo({
@@ -435,21 +450,14 @@ const extractS3KeyFromPath = (path) => {
           showId: matchedShowId,
           season: season,
           episode: episode,
+          resumeTime,
         });
 
         setExpanded(true);
         pushDesktopLastWatched({ showId: matchedShowId, season, episode });
 
         // ✅ Sync progress bar state for movies or shows
-        let key;
-        if (isMovie) {
-          key = `${showId}`;
-        } else {
-          key = toProgressStorageKey(showId, season, episode);
-        }
-
-        const prog = readProgress(key);
-        setWatchProgressMap(prev => ({ ...prev, [key]: prog }));
+        setWatchProgressMap(prev => ({ ...prev, [progressKey]: resumeProgress }));
       };
 
 
@@ -660,6 +668,7 @@ const extractS3KeyFromPath = (path) => {
                     season={selectedVideo.season}
                     episode={selectedVideo.episode}
                     skipIntro={selectedVideo.skipIntro}
+                    resumeTime={selectedVideo.resumeTime}
                     episodeTitles={allEpisodeTitles[showId] || allEpisodeTitles[cleanShowId(showId)]}
                     onSkipToNext={handleSkipToNext}
                     getSignedUrl={fetchSignedUrl}

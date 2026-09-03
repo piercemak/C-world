@@ -38,6 +38,7 @@ const Show = ({
   episodeTitles,
   getSignedUrl = {},
   getSignedEpisodeUrl = null,
+  resumeTime = null,
 }) => {
 
 
@@ -51,9 +52,12 @@ const Show = ({
   const previewRequestedFrameKeyRef = useRef("");
   const previewTargetRef = useRef(null);
   const previewRequestIdRef = useRef(0);
+  const previewHideTimeoutRef = useRef(null);
   const [playbackSrc, setPlaybackSrc] = useState(src);
   const [mediaNotFound, setMediaNotFound] = useState(false);
   const intendedResumeTimeRef = useRef(null);
+  const startupResumeTimeRef = useRef(null);
+  const startupResumeGuardUntilRef = useRef(0);
   const stallTimerRef = useRef(null);
   const recoveryInFlightRef = useRef(false);
   const recoveryAttemptCountRef = useRef(0);
@@ -61,13 +65,18 @@ const Show = ({
   const recoveryWindowMs = 45_000;
   const recoveryMaxAttempts = 2;
   useEffect(() => {
+    const initialResumeTime = Number(resumeTime);
+    const hasResumeTime = Number.isFinite(initialResumeTime) && initialResumeTime > 1;
+
     setPlaybackSrc(src);
     setMediaNotFound(!src);
     intendedResumeTimeRef.current = null;
+    startupResumeTimeRef.current = hasResumeTime ? initialResumeTime : null;
+    startupResumeGuardUntilRef.current = hasResumeTime ? Date.now() + 8000 : 0;
     recoveryInFlightRef.current = false;
     recoveryAttemptCountRef.current = 0;
     recoveryWindowStartRef.current = 0;
-  }, [src]);
+  }, [src, resumeTime]);
   useEffect(() => {
     previewSessionRef.current += 1;
     previewFrameCacheRef.current.clear();
@@ -75,6 +84,8 @@ const Show = ({
     previewSourceRef.current = "";
     previewRequestedFrameKeyRef.current = "";
     previewTargetRef.current = null;
+    window.clearTimeout(previewHideTimeoutRef.current);
+    previewHideTimeoutRef.current = null;
   }, [playbackSrc]);
   const spinner = <svg xmlns="http://www.w3.org/2000/svg" className="size-14" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FCFAFF"></stop><stop offset=".3" stop-color="#FCFAFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FCFAFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FCFAFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FCFAFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FCFAFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
   
@@ -1384,6 +1395,11 @@ const readProgressRawWithMigration = useCallback(() => (
     savedProgress = Number(raw) || 0;
   }
 
+  const startupResumeTime = Number(startupResumeTimeRef.current);
+  if (Number.isFinite(startupResumeTime) && startupResumeTime > 1) {
+    savedProgress = Math.max(savedProgress, startupResumeTime);
+  }
+
 
     const startPlayback = async () => {
       try {
@@ -1462,6 +1478,20 @@ const readProgressRawWithMigration = useCallback(() => (
       const now = Date.now();
 
       const persistProgress = (t, d) => {
+        const guardedResumeTime = Number(startupResumeTimeRef.current);
+        const guardActive = startupResumeGuardUntilRef.current > now
+          && Number.isFinite(guardedResumeTime)
+          && guardedResumeTime > 1;
+
+        if (guardActive && t < Math.max(0, guardedResumeTime - 2)) {
+          return;
+        }
+
+        if (guardActive && t >= Math.max(0, guardedResumeTime - 1)) {
+          startupResumeGuardUntilRef.current = 0;
+          startupResumeTimeRef.current = null;
+        }
+
         writeWatchProgress({
           showId,
           season,
@@ -1539,22 +1569,28 @@ const readProgressRawWithMigration = useCallback(() => (
       } catch {
         obj = {};
       }
+      const storedTime = Number(obj?.t ?? obj?.currentTime ?? 0) || 0;
+      const guardedResumeTime = Number(startupResumeTimeRef.current);
+      const currentTime = Number.isFinite(guardedResumeTime) && guardedResumeTime > 1
+        ? Math.max(storedTime, guardedResumeTime)
+        : storedTime;
+
       writeWatchProgress({
         showId,
         season,
         episode,
-        currentTime: Number(obj?.t ?? 0),
+        currentTime,
         duration: d,
       });
       flushWatchProgressSync({
         showId,
         season,
         episode,
-        currentTime: Number(obj?.t ?? 0),
+        currentTime,
         duration: d,
       });
 
-      dispatchWatchProgressUpdate({ showId, season, episode, t: obj?.t ?? 0, d });
+      dispatchWatchProgressUpdate({ showId, season, episode, t: currentTime, d });
     };
 
     vid.addEventListener("loadedmetadata", syncDuration);
@@ -1919,7 +1955,35 @@ const handleSkipToPrevious = async () => {
     return queuedFrame;
   }, [playbackSrc]);
 
-  const handleSkipPreview = useCallback((direction) => {
+  const clearPreviewOverlay = useCallback(() => {
+    window.clearTimeout(previewHideTimeoutRef.current);
+    previewHideTimeoutRef.current = null;
+    previewRequestIdRef.current += 1;
+    previewTargetRef.current = null;
+    setPreviewImage(null);
+    setIsPreviewing(false);
+  }, []);
+
+  const schedulePreviewClear = useCallback((delay = 900) => {
+    window.clearTimeout(previewHideTimeoutRef.current);
+    previewHideTimeoutRef.current = window.setTimeout(() => {
+      clearPreviewOverlay();
+    }, delay);
+  }, [clearPreviewOverlay]);
+
+  const seekVideoBySeconds = useCallback((seconds) => {
+    const video = videoRef.current;
+    if (!video || !Number.isFinite(video.duration)) return;
+
+    clearPreviewOverlay();
+    const newTime = Math.min(
+      Math.max(video.currentTime + seconds, 0),
+      video.duration
+    );
+    video.currentTime = newTime;
+  }, [clearPreviewOverlay]);
+
+  const handleArrowScrubPreview = useCallback((direction) => {
     const video = videoRef.current;
     if (!video || !Number.isFinite(video.duration)) return;
 
@@ -1933,46 +1997,45 @@ const handleSkipToPrevious = async () => {
 
     previewTargetRef.current = newTime;
     setIsPreviewing(true);
+    setPreviewImage(null);
     video.currentTime = newTime;
-    video.pause();
 
     const requestId = ++previewRequestIdRef.current;
+    schedulePreviewClear(900);
     getPreviewFrame(newTime).then((preview) => {
       if (requestId === previewRequestIdRef.current && preview) {
         setPreviewImage(preview);
+        schedulePreviewClear(900);
       }
     });
-  }, [getPreviewFrame, isPreviewing]);
+  }, [getPreviewFrame, isPreviewing, schedulePreviewClear]);
+
   useEffect(() => {
-    if (isPlaying && isPreviewing) {
-      setPreviewImage(null);
-      setIsPreviewing(false);
-      previewTargetRef.current = null;
-    }
-  }, [isPlaying, isPreviewing]);
+    return () => window.clearTimeout(previewHideTimeoutRef.current);
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowRight") {
         e.preventDefault();
-        handleSkipPreview("forward");
+        handleArrowScrubPreview("forward");
       } else if (e.key === "ArrowLeft") {
         e.preventDefault();
-        handleSkipPreview("backward");
+        handleArrowScrubPreview("backward");
       } else if (e.key === "Enter" && isPreviewing) {
         e.preventDefault();
         videoRef.current?.play();
-        setIsPreviewing(false);
-        setPreviewImage(null);
-        previewTargetRef.current = null;
-      } else if (e.key === " " && !isPreviewing) {
+        clearPreviewOverlay();
+      } else if (e.key === " ") {
         e.preventDefault();
+        clearPreviewOverlay();
         togglePlay();
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleSkipPreview, isPreviewing, togglePlay]);
+  }, [clearPreviewOverlay, handleArrowScrubPreview, isPreviewing, togglePlay]);
 
 
   {/* Next ... */}
@@ -2437,7 +2500,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
               )}
 
                 <motion.button
-                  onClick={() => handleSkipPreview("backward")}
+                  onClick={() => seekVideoBySeconds(-15)}
                   className="cursor-pointer focus-visible:outline-none"
                   whileTap={{ scale: 0.92 }}
                   whileHover={{ scale: 1.14, y: -1 }}
@@ -2451,7 +2514,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
                 </div>
 
                 <motion.button
-                  onClick={() => handleSkipPreview("forward")}
+                  onClick={() => seekVideoBySeconds(15)}
                   className="cursor-pointer focus-visible:outline-none"
                   whileTap={{ scale: 0.92 }}
                   whileHover={{ scale: 1.14, y: -1 }}
