@@ -117,10 +117,9 @@ const Show = ({
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
-      videoRef.current.muted = toggleMute;
     }
     localStorage.setItem("videoVolume", volume.toString());
-  }, [toggleMute, volume]);
+  }, [volume]);
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;

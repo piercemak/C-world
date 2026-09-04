@@ -344,7 +344,6 @@ const BetterEpisodePreview = () => {
   const isAwsHostedMedia = useCallback((id, path = "") => {
     const value = String(path || "");
     if (value.includes("amazonaws.com") || value.includes("cloudfront.net")) return true;
-    if (awsHostedShows.length === 0) return true;
 
     const cleanId = cleanMediaId(id);
     return awsHostedShows.some((hostedId) => (
@@ -642,6 +641,7 @@ const BetterEpisodePreview = () => {
       type: isMovie ? "movie" : "show",
       season,
       episode: episodeNumber,
+      skipIntro: options.skipIntro,
       resumeTime,
     });
     pushDesktopLastWatched({ showId: selectedMedia.id, season, episode: episodeNumber });
@@ -773,8 +773,13 @@ const BetterEpisodePreview = () => {
   const resumeTarget = useMemo(() => {
     if (!isProductionRoute || !selectedMedia?.id || typeof localStorage === "undefined") return null;
 
-    const prefix = `watchProgress-${selectedMedia.id}`;
-    const keys = Object.keys(localStorage).filter((key) => key.startsWith(prefix));
+    const progressPrefixes = [
+      `watchProgress-${selectedMedia.id}`,
+      `watchProgress-${selectedMedia.cleanId}`,
+    ];
+    const keys = Object.keys(localStorage).filter((key) =>
+      progressPrefixes.some((prefix) => key.startsWith(prefix))
+    );
     if (keys.length === 0) return null;
 
     const mostRecentKey = keys.sort((a, b) => {
@@ -868,7 +873,7 @@ const BetterEpisodePreview = () => {
     const titles = getEpisodesForSeason(selectedMedia, season, progressResolver);
     const targetEpisode = titles[episodeNumber - 1];
     if (targetEpisode) {
-      startProductionPlayback(targetEpisode);
+      startProductionPlayback(targetEpisode, { season, skipIntro: true });
     }
   }, [
     episodes,
