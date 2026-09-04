@@ -16,6 +16,7 @@ import {
 import { removeWatchHistory } from "../lib/watchSync.js";
 import { useAuth } from "./AuthContext.jsx";
 import { apiFetch } from "../lib/apiClient.js";
+import { readWatchProgress } from "../lib/watchProgressStorage.js";
 
 import { useSnow } from "./SnowContext.jsx"; 
 
@@ -582,9 +583,10 @@ const continueItems = useMemo(() => {
   const byShow = new Map();
   for (const entry of history) {
     if (!entry?.showId || !entry?.watchedAt) continue;
-    const existing = byShow.get(entry.showId);
+    const historyKey = cleanShowId(entry.showId);
+    const existing = byShow.get(historyKey);
     if (!existing || entry.watchedAt > existing.watchedAt) {
-      byShow.set(entry.showId, entry);
+      byShow.set(historyKey, entry);
     }
   }
   const toRouteSlug = (id = "") => {
@@ -619,13 +621,28 @@ const continueItems = useMemo(() => {
         entry.lastSeason != null &&
         entry.lastEpisode != null;
 
-      const progressKey =
-        entry.lastSeason != null && entry.lastEpisode != null
-          ? `watchProgress-${showSlug}-S${String(Number(entry.lastSeason)).padStart(2, "0")}-E${String(Number(entry.lastEpisode)).padStart(2, "0")}`
-          : `watchProgress-${showSlug}`;
-
-      const prog = parseWatchProgress(localStorage.getItem(progressKey));
       const cleaned = cleanShowId(showSlug);
+      const progressForRouteSlug = readWatchProgress({
+        showId: showSlug,
+        season: entry.lastSeason == null ? null : Number(entry.lastSeason),
+        episode: entry.lastEpisode == null ? null : Number(entry.lastEpisode),
+      });
+      const progressForStoredId = entry.showId === showSlug
+        ? progressForRouteSlug
+        : readWatchProgress({
+          showId: entry.showId,
+          season: entry.lastSeason == null ? null : Number(entry.lastSeason),
+          episode: entry.lastEpisode == null ? null : Number(entry.lastEpisode),
+        });
+      const progress = progressForRouteSlug.duration > 0
+        ? progressForRouteSlug
+        : progressForStoredId;
+      const prog = {
+        fraction: progress.fraction || 0,
+        currentTime: progress.currentTime || 0,
+        duration: progress.duration || 0,
+        updatedAt: progress.updatedAt || 0,
+      };
       let candidates = [];
       let img = "";
       if (isSeries) {

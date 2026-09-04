@@ -331,16 +331,29 @@ const BetterEpisodePreview = () => {
   const [previewIsPlaying, setPreviewIsPlaying] = useState(false);
   const [previewVolumeHovered, setPreviewVolumeHovered] = useState(false);
   const [previewMuted, setPreviewMuted] = useState(false);
-  const [previewVolume, setPreviewVolume] = useState(1);
+  const [previewVolume, setPreviewVolume] = useState(() => {
+    const savedVolume = Number(localStorage.getItem("videoVolume"));
+    return Number.isFinite(savedVolume) ? Math.max(0, Math.min(1, savedVolume)) : 1;
+  });
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [watchProgressVersion, setWatchProgressVersion] = useState(0);
   const awsHostedShows = useMemo(
     () => import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",").filter(Boolean) || [],
     [],
   );
+  const isAwsHostedMedia = useCallback((id, path = "") => {
+    const value = String(path || "");
+    if (value.includes("amazonaws.com") || value.includes("cloudfront.net")) return true;
+    if (awsHostedShows.length === 0) return true;
+
+    const cleanId = cleanMediaId(id);
+    return awsHostedShows.some((hostedId) => (
+      hostedId === id || cleanMediaId(hostedId) === cleanId
+    ));
+  }, [awsHostedShows]);
   const generateSeasonVideos = useCallback((titlesBySeason, rawId, type = "show") => {
     const cleanId = cleanMediaId(rawId);
-    const isAwsHosted = awsHostedShows.includes(rawId);
+    const isAwsHosted = isAwsHostedMedia(rawId);
 
     if (type === "movie") {
       const s3Key = `${cleanId}/${cleanId}.mp4`;
@@ -378,7 +391,7 @@ const BetterEpisodePreview = () => {
         return [seasonKey, videos];
       }),
     );
-  }, [awsHostedShows]);
+  }, [isAwsHostedMedia]);
   const videoDataByShow = useMemo(
     () => Object.fromEntries(
       Object.entries(allEpisodeTitles).map(([id, titlesBySeason]) => [
@@ -392,14 +405,21 @@ const BetterEpisodePreview = () => {
     () => buildLibraryShows({ videoDataByShow, generateSeasonVideos }),
     [generateSeasonVideos, videoDataByShow],
   );
-  const selectedShow = routeShowId ? shows[routeShowId] : null;
+  const routedShowId = useMemo(() => {
+    if (!routeShowId) return "";
+    if (shows[routeShowId]) return routeShowId;
+
+    const routeCleanId = cleanMediaId(routeShowId);
+    return Object.keys(shows).find((id) => cleanMediaId(id) === routeCleanId) || routeShowId;
+  }, [routeShowId, shows]);
+  const selectedShow = routeShowId ? shows[routedShowId] : null;
   const selectedMedia = useMemo(
     () => (
       isProductionRoute
-        ? createMediaFromShow(routeShowId, selectedShow)
+        ? createMediaFromShow(routedShowId, selectedShow)
         : mediaList.find((media) => media.id === selectedMediaId) || mediaList[0]
     ),
-    [isProductionRoute, routeShowId, selectedMediaId, selectedShow],
+    [isProductionRoute, routedShowId, selectedMediaId, selectedShow],
   );
 
   const [selectedSeasonByMedia, setSelectedSeasonByMedia] = useState(() => {
@@ -549,16 +569,16 @@ const BetterEpisodePreview = () => {
     let videoPath = typeof video === "string" ? video : video?.path;
     if (!videoPath) return "";
 
-    if (!awsHostedShows.includes(selectedMedia.id)) return videoPath;
+    if (!isAwsHostedMedia(selectedMedia.id, videoPath)) return videoPath;
 
     if (selectedMedia.type === "movie") {
-      const s3Key = extractS3KeyFromPath(videoPath);
+      const s3Key = extractS3KeyFromPath(videoPath) || `${selectedMedia.cleanId}/${selectedMedia.cleanId}.mp4`;
       if (!s3Key) return "";
       return fetchSignedUrl(s3Key);
     }
 
     return fetchSignedEpisodeUrl(selectedMedia.id, season, episode);
-  }, [awsHostedShows, fetchSignedEpisodeUrl, fetchSignedUrl, selectedMedia.id, selectedMedia.type]);
+  }, [fetchSignedEpisodeUrl, fetchSignedUrl, isAwsHostedMedia, selectedMedia.cleanId, selectedMedia.id, selectedMedia.type]);
   const buildPreviewPlayerState = useCallback((episode) => {
     const previewRect = sidePreviewRef.current?.getBoundingClientRect();
     const target = getViewportTarget();
@@ -641,9 +661,9 @@ const BetterEpisodePreview = () => {
   ]);
 
   useEffect(() => {
-    if (!routeShowId) return;
-    setSelectedMediaId(routeShowId);
-  }, [routeShowId]);
+    if (!routedShowId) return;
+    setSelectedMediaId(routedShowId);
+  }, [routedShowId]);
 
   useEffect(() => {
     if (!selectedMedia?.id) return;
@@ -723,7 +743,7 @@ const BetterEpisodePreview = () => {
 
     if (!videoPath) return;
 
-    if (validatedTarget.corrected && awsHostedShows.includes(selectedMedia.id)) {
+    if (validatedTarget.corrected && isAwsHostedMedia(selectedMedia.id, videoPath)) {
       const correctedSignedUrl = await fetchSignedEpisodeUrl(selectedMedia.id, effectiveSeason, effectiveEpisode);
       if (correctedSignedUrl) videoPath = correctedSignedUrl;
     }
@@ -742,10 +762,10 @@ const BetterEpisodePreview = () => {
     pushDesktopLastWatched({ showId: selectedMedia.id, season: effectiveSeason, episode: effectiveEpisode });
     setWatchProgressVersion((value) => value + 1);
   }, [
-    awsHostedShows,
     fetchSignedEpisodeUrl,
     getValidatedSequentialTarget,
     getVideoForEpisode,
+    isAwsHostedMedia,
     pushDesktopLastWatched,
     selectedMedia.id,
   ]);
@@ -1440,7 +1460,7 @@ const BetterEpisodePreview = () => {
                 <motion.div whileHover={{ y: -3, backgroundColor: "rgba(255,255,255,0.1)" }} className="rounded-md border border-white/10 bg-white/6 px-2 py-3">
                   <div className="text-xs leading-5 text-white/55">Resume</div>
                   <div className="mt-1 text-sm font-bold leading-5">
-                    {sideEpisode?.progress > 0 ? `${sideEpisode.progress}%` : "Start"}
+                    {sideEpisode?.progress > 0 ? formatProgress(sideEpisode.progress) : "Start"}
                   </div>
                   <div className="mt-1 truncate text-[11px] text-white/45">watch progress</div>
                 </motion.div>
@@ -1623,55 +1643,60 @@ const BetterEpisodePreview = () => {
                   />
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-transparent to-black/20" />
 
-                  <motion.div
-                    className="absolute left-8 top-8 z-[9999] flex cursor-pointer items-center justify-center text-white"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    whileHover={{ scale: 1.14 }}
-                    whileTap={{ scale: 0.94 }}
-                    transition={{ duration: 0.18, ease: "easeOut" }}
-                  >
-                    <button
-                      type="button"
-                      onClick={(event) => event.stopPropagation()}
-                      className="cursor-pointer focus-visible:outline-none"
-                      aria-label="Restart video"
-                      title="Restart video"
+                  {!(isProductionRoute && realPlayerVisible) && (
+                    <motion.div
+                      className="absolute left-8 top-8 z-[9999] flex cursor-pointer items-center justify-center text-white"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      whileHover={{ scale: 1.14 }}
+                      whileTap={{ scale: 0.94 }}
+                      transition={{ duration: 0.18, ease: "easeOut" }}
                     >
-                      {restartIcon}
-                    </button>
-                  </motion.div>
+                      <button
+                        type="button"
+                        onClick={(event) => event.stopPropagation()}
+                        className="cursor-pointer focus-visible:outline-none"
+                        aria-label="Restart video"
+                        title="Restart video"
+                      >
+                        {restartIcon}
+                      </button>
+                    </motion.div>
+                  )}
 
                   <AnimatePresence>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ delay: 0.14, duration: 0.24, ease: "easeOut" }}
-                      className="pointer-events-none absolute left-0 right-0 top-0 z-30 rounded-2xl bg-gradient-to-b from-black/75 to-transparent px-6 pb-12 pt-7 text-right uppercase 2xl:pt-8 elms-font"
-                    >
-                      <div className="ml-auto max-w-[min(82vw,56rem)] truncate text-[16px] font-semibold leading-tight tracking-wide text-white 2xl:text-[24px]">
-                        {previewPlayer.displayTitle}
-                      </div>
-                      {previewPlayer.isEpisode && (
-                        <>
-                          <div className="ml-auto mt-1 max-w-[min(82vw,56rem)] truncate pb-0.5 text-[13px] font-medium leading-[1.35] tracking-wide text-white/75 2xl:text-[18px]">
-                            {previewPlayer.displayEpisodeNumber}
-                            {previewPlayer.displayEpisodeTitle ? ` • ${previewPlayer.displayEpisodeTitle}` : ""}
-                          </div>
-                        </>
-                      )}
-                    </motion.div>
+                    {!(isProductionRoute && realPlayerVisible) && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ delay: 0.14, duration: 0.24, ease: "easeOut" }}
+                        className="pointer-events-none absolute left-0 right-0 top-0 z-30 rounded-2xl bg-gradient-to-b from-black/75 to-transparent px-6 pb-12 pt-7 text-right uppercase 2xl:pt-8 elms-font"
+                      >
+                        <div className="ml-auto max-w-[min(82vw,56rem)] truncate text-[16px] font-semibold leading-tight tracking-wide text-white 2xl:text-[24px]">
+                          {previewPlayer.displayTitle}
+                        </div>
+                        {previewPlayer.isEpisode && (
+                          <>
+                            <div className="ml-auto mt-1 max-w-[min(82vw,56rem)] truncate pb-0.5 text-[13px] font-medium leading-[1.35] tracking-wide text-white/75 2xl:text-[18px]">
+                              {previewPlayer.displayEpisodeNumber}
+                              {previewPlayer.displayEpisodeTitle ? ` • ${previewPlayer.displayEpisodeTitle}` : ""}
+                            </div>
+                          </>
+                        )}
+                      </motion.div>
+                    )}
                   </AnimatePresence>
 
-                  <motion.div
-                    className="pointer-events-none absolute bottom-0 left-0 right-0 z-40 rounded-2xl bg-gradient-to-t from-black/80 to-transparent px-4 pt-44"
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ delay: 0.16, duration: 0.3 }}
-                  >
+                  {!(isProductionRoute && realPlayerVisible) && (
+                    <motion.div
+                      className="pointer-events-none absolute bottom-0 left-0 right-0 z-40 rounded-2xl bg-gradient-to-t from-black/80 to-transparent px-4 pt-44"
+                      initial={{ opacity: 0, y: 24 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 20 }}
+                      transition={{ delay: 0.16, duration: 0.3 }}
+                    >
                     <div className="relative bottom-8">
                       <div className="pointer-events-auto relative z-40 mb-5">
                         <div className="h-1 overflow-hidden rounded-full bg-white/18">
@@ -1806,7 +1831,8 @@ const BetterEpisodePreview = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                    </motion.div>
+                  )}
 
                   {previewPlayer.playbackError && (
                     <div className="absolute inset-0 z-[90] flex items-center justify-center bg-black/72 px-6 text-center text-lg font-semibold text-white">

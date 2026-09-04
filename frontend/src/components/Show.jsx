@@ -111,15 +111,16 @@ const Show = ({
   const isMovie = season === null && episode === null;
   const [toggleMute, setToggleMute] = useState(false);
   const [volume, setVolume] = useState(() => {
-    const saved = localStorage.getItem("videoVolume");
-    return saved !== null ? parseFloat(saved) : 1; 
+    const saved = Number(localStorage.getItem("videoVolume"));
+    return Number.isFinite(saved) ? Math.max(0, Math.min(1, saved)) : 1;
   });
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
+      videoRef.current.muted = toggleMute;
     }
     localStorage.setItem("videoVolume", volume.toString());
-  }, [volume]);
+  }, [toggleMute, volume]);
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -132,7 +133,7 @@ const Show = ({
   
     vid.addEventListener("volumechange", handleVolumeChange);
     return () => vid.removeEventListener("volumechange", handleVolumeChange);
-  }, []);
+  }, [playbackSrc]);
 
   const showVolumeFlyout = useCallback(() => {
     window.clearTimeout(volumeHoverCloseTimeoutRef.current);
