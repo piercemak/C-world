@@ -36,6 +36,7 @@ const Show = ({
   skipIntro = false,
   hasSubtitles = false,
   episodeTitles,
+  episodeMetadata,
   getSignedUrl = {},
   getSignedEpisodeUrl = null,
   resumeTime = null,
@@ -106,6 +107,7 @@ const Show = ({
 
   {/* Volume Control */}
   const [volumeHovered, setvolumeHovered] = useState(false);
+  const volumeHoverCloseTimeoutRef = useRef(null);
   const isMovie = season === null && episode === null;
   const [toggleMute, setToggleMute] = useState(false);
   const [volume, setVolume] = useState(() => {
@@ -130,6 +132,24 @@ const Show = ({
   
     vid.addEventListener("volumechange", handleVolumeChange);
     return () => vid.removeEventListener("volumechange", handleVolumeChange);
+  }, []);
+
+  const showVolumeFlyout = useCallback(() => {
+    window.clearTimeout(volumeHoverCloseTimeoutRef.current);
+    volumeHoverCloseTimeoutRef.current = null;
+    setvolumeHovered(true);
+  }, []);
+
+  const scheduleHideVolumeFlyout = useCallback(() => {
+    window.clearTimeout(volumeHoverCloseTimeoutRef.current);
+    volumeHoverCloseTimeoutRef.current = window.setTimeout(() => {
+      setvolumeHovered(false);
+      volumeHoverCloseTimeoutRef.current = null;
+    }, 160);
+  }, []);
+
+  useEffect(() => () => {
+    window.clearTimeout(volumeHoverCloseTimeoutRef.current);
   }, []);
   
 
@@ -2447,16 +2467,18 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.24, ease: "easeOut" }}
-          className="absolute top-0 left-0 right-0 z-30 bg-gradient-to-b from-black/75 rounded-2xl to-transparent px-6 pt-5 2xl:pt-10 pb-12 text-right elms-font uppercase pointer-events-none"
+          className="absolute top-0 left-0 right-0 z-30 bg-gradient-to-b from-black/75 rounded-2xl to-transparent px-6 pt-7 2xl:pt-8 pb-12 text-right elms-font uppercase pointer-events-none"
         >
-          <div className="text-white text-[16px] 2xl:text-[24px] font-semibold tracking-wide leading-tight">
+          <div className="ml-auto max-w-[min(82vw,56rem)] truncate text-white text-[16px] 2xl:text-[24px] font-semibold tracking-wide leading-tight">
             {displayTitle}
           </div>
           {!isMovie && (
-            <div className="mt-1 text-white/75 text-[13px] 2xl:text-[18px] font-medium tracking-wide leading-tight">
-              {displayEpisodeNumber}
-              {displayEpisodeTitle ? ` • ${displayEpisodeTitle}` : ""}
-            </div>
+            <>
+              <div className="ml-auto mt-1 max-w-[min(82vw,56rem)] truncate text-white/75 text-[13px] 2xl:text-[18px] font-medium tracking-wide leading-[1.35] pb-0.5">
+                {displayEpisodeNumber}
+                {displayEpisodeTitle ? ` • ${displayEpisodeTitle}` : ""}
+              </div>
+            </>
           )}
         </motion.div>
       )}
@@ -2543,14 +2565,16 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
               {/* Volume Button */}
               <div
                 className="relative flex h-10 w-10 items-center justify-center"
-                onMouseEnter={() => setvolumeHovered(true)}
-                onMouseLeave={() => setvolumeHovered(false)}
+                onMouseEnter={showVolumeFlyout}
+                onMouseLeave={scheduleHideVolumeFlyout}
               >
                 {/* Volume Bar */}
                 <AnimatePresence mode="wait">
                   {volumeHovered && (
                     <motion.div
-                      className="absolute bottom-full left-1/2 z-[120] -translate-x-1/2 cursor-pointer mb-3"
+                      className="absolute bottom-full left-1/2 z-[120] -translate-x-1/2 cursor-pointer pb-3"
+                      onMouseEnter={showVolumeFlyout}
+                      onMouseLeave={scheduleHideVolumeFlyout}
                       initial={{ opacity: 0, y: 10, scale: 0.92 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.94 }}

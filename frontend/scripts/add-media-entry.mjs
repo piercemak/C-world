@@ -17,6 +17,7 @@ const FILES = {
   styles: path.join(SRC, "components/modules/videoLibrary.module.scss"),
   newMedia: path.join(SRC, "components/newMedia.js"),
   episodeTitles: path.join(SRC, "data/episodeTitles.json"),
+  episodeMetadata: path.join(SRC, "data/episodeMetadata.json"),
   showPlayer: path.join(SRC, "components/Show.jsx"),
   packageJson: path.join(ROOT, "package.json"),
 };
@@ -87,6 +88,7 @@ async function main() {
   edits.push(updateVideoLibraryStyles(files.styles, entry));
   if (episodeCatalog) {
     edits.push(updateEpisodeTitles(files.episodeTitles, entry));
+    edits.push(updateEpisodeMetadata(files.episodeMetadata, entry));
     edits.push(updateShowPlayer(files.showPlayer, entry));
   }
 
@@ -123,6 +125,8 @@ async function main() {
     if (episodeCatalog) {
       console.log("\nGenerated episode catalog:\n");
       console.log(JSON.stringify({ [entry.id]: episodeCatalog.titlesBySeason }, null, 2));
+      console.log("\nGenerated episode metadata:\n");
+      console.log(JSON.stringify({ [entry.id]: episodeCatalog.metadataBySeason }, null, 2));
     }
     if (args["new-media"]) {
       console.log("\nGenerated newMedia entry:\n");
@@ -357,6 +361,7 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
 
   const titlesBySeason = {};
   const displayTitlesBySeason = {};
+  const metadataBySeason = {};
   let episodeCount = 0;
 
   for (const season of seasons) {
@@ -370,6 +375,12 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
     const highestEpisode = Math.max(...episodes.map((episode) => Number(episode.episode_number)));
     const titles = Array.from({ length: highestEpisode }, (_, index) => `Episode_${index + 1}`);
     const displayTitles = Array.from({ length: highestEpisode }, (_, index) => `Episode ${index + 1}`);
+    const metadata = Array.from({ length: highestEpisode }, (_, index) => ({
+      title: `Episode ${index + 1}`,
+      description: "",
+      airDate: "",
+      tmdbId: null,
+    }));
     for (const episode of episodes) {
       const episodeNumber = Number(episode.episode_number);
       titles[episodeNumber - 1] = formatEpisodeTitleToken(
@@ -380,9 +391,19 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
         episode.name || `Episode ${episodeNumber}`,
         episodeNumber,
       );
+      metadata[episodeNumber - 1] = {
+        title: formatEpisodeDisplayTitle(
+          episode.name || `Episode ${episodeNumber}`,
+          episodeNumber,
+        ),
+        description: String(episode.overview || "").trim(),
+        airDate: episode.air_date || "",
+        tmdbId: clampPositiveInt(episode.id, 0) || null,
+      };
     }
     titlesBySeason[String(seasonNumber)] = titles;
     displayTitlesBySeason[String(seasonNumber)] = displayTitles;
+    metadataBySeason[String(seasonNumber)] = metadata;
     episodeCount += titles.length;
   }
 
@@ -397,6 +418,7 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
     episodeCount,
     titlesBySeason,
     displayTitlesBySeason,
+    metadataBySeason,
   };
 }
 
@@ -583,6 +605,10 @@ function assertCanInsert(files, entry) {
     if (Object.hasOwn(episodeTitles, entry.id)) {
       throw new Error(`episodeTitles.json already has ${entry.id}.`);
     }
+    const episodeMetadata = JSON.parse(files.episodeMetadata);
+    if (Object.hasOwn(episodeMetadata, entry.id)) {
+      throw new Error(`episodeMetadata.json already has ${entry.id}.`);
+    }
   }
 }
 
@@ -637,6 +663,15 @@ function updateEpisodeTitles(content, entry) {
   catalog[entry.id] = entry.episodeCatalog.titlesBySeason;
   return {
     file: FILES.episodeTitles,
+    content: `${JSON.stringify(catalog, null, 2)}\n`,
+  };
+}
+
+function updateEpisodeMetadata(content, entry) {
+  const catalog = JSON.parse(content);
+  catalog[entry.id] = entry.episodeCatalog.metadataBySeason;
+  return {
+    file: FILES.episodeMetadata,
     content: `${JSON.stringify(catalog, null, 2)}\n`,
   };
 }

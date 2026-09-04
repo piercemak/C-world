@@ -6,7 +6,7 @@ import Show from './Show.jsx'
 import Chevron from './Chevron.jsx'
 import Menu from './framercomponents/Menu.jsx'
 import WatchProgressBar from "./WatchProgressBar.jsx";
-import { allEpisodeTitles } from "./episodeTitles.js";
+import { allEpisodeMetadata, allEpisodeTitles } from "./episodeTitles.js";
 import { buildLibraryShows } from "../data/libraryShowsData.js";
 import { syncWatchHistory } from "../lib/watchSync.js";
 import {
@@ -670,6 +670,7 @@ const extractS3KeyFromPath = (path) => {
                     skipIntro={selectedVideo.skipIntro}
                     resumeTime={selectedVideo.resumeTime}
                     episodeTitles={allEpisodeTitles[showId] || allEpisodeTitles[cleanShowId(showId)]}
+                    episodeMetadata={allEpisodeMetadata[showId] || allEpisodeMetadata[cleanShowId(showId)]}
                     onSkipToNext={handleSkipToNext}
                     getSignedUrl={fetchSignedUrl}
                     getSignedEpisodeUrl={fetchSignedEpisodeUrl}

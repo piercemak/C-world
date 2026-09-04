@@ -17,6 +17,7 @@ const IntroScreen = lazy(() => import('./components/IntroScreen.jsx'));
 const Reviews = lazy(() => import('./components/Reviews.jsx'));
 const Archive = lazy(() => import('./components/Archive.jsx'));
 const DesktopUpdater = lazy(() => import('./components/DesktopUpdater.jsx'));
+const BetterEpisodePreview = lazy(() => import('./components/BetterEpisodePreview.jsx'));
 
 function ProtectedRoute({ children }) {
   const { user, authLoading } = useAuth();
@@ -83,6 +84,14 @@ function App() {
             path="/video-library/:showId"
             element={
               <ProtectedRoute>
+                {isMobile ? <Navigate to="/video-library" replace /> : <BetterEpisodePreview />}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/video-library-legacy/:showId"
+            element={
+              <ProtectedRoute>
                 {isMobile ? <Navigate to="/video-library" replace /> : <Library />}
               </ProtectedRoute>
             }
@@ -108,6 +117,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Archive />
+              </ProtectedRoute>
+            }
+          />      
+          <Route
+            path="/episode-preview"
+            element={
+              <ProtectedRoute>
+                <BetterEpisodePreview />
               </ProtectedRoute>
             }
           />      
