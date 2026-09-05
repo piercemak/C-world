@@ -337,6 +337,14 @@ const BetterEpisodePreview = () => {
   });
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [watchProgressVersion, setWatchProgressVersion] = useState(0);
+  const handlePreviewVolumeChange = useCallback((value) => {
+    const nextVolume = Math.max(0, Math.min(1, Number(value) || 0));
+    setPreviewVolume(nextVolume);
+    localStorage.setItem("videoVolume", nextVolume.toString());
+  }, []);
+  const handlePreviewMutedChange = useCallback((muted) => {
+    setPreviewMuted(Boolean(muted));
+  }, []);
   const awsHostedShows = useMemo(
     () => import.meta.env.VITE_AWS_HOSTED_SHOWS?.split(",").filter(Boolean) || [],
     [],
@@ -1789,9 +1797,9 @@ const BetterEpisodePreview = () => {
                                       volume={previewVolume}
                                       muted={previewMuted}
                                       setVolume={(value) => {
-                                        setPreviewVolume(value);
+                                        handlePreviewVolumeChange(value);
                                         if (value > 0 && previewMuted) {
-                                          setPreviewMuted(false);
+                                          handlePreviewMutedChange(false);
                                         }
                                       }}
                                     />
@@ -1854,6 +1862,10 @@ const BetterEpisodePreview = () => {
                         episode={selectedVideo.episode}
                         skipIntro={selectedVideo.skipIntro}
                         resumeTime={selectedVideo.resumeTime}
+                        initialVolume={previewVolume}
+                        initialMuted={previewMuted}
+                        onVolumeChange={handlePreviewVolumeChange}
+                        onMutedChange={handlePreviewMutedChange}
                         episodeTitles={allEpisodeTitles[selectedMedia.id] || allEpisodeTitles[cleanMediaId(selectedMedia.id)]}
                         episodeMetadata={allEpisodeMetadata[selectedMedia.id] || allEpisodeMetadata[cleanMediaId(selectedMedia.id)]}
                         onSkipToNext={handleSkipToNext}

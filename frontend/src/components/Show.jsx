@@ -40,6 +40,10 @@ const Show = ({
   getSignedUrl = {},
   getSignedEpisodeUrl = null,
   resumeTime = null,
+  initialVolume = null,
+  initialMuted = null,
+  onVolumeChange = null,
+  onMutedChange = null,
 }) => {
 
 
@@ -109,17 +113,42 @@ const Show = ({
   const [volumeHovered, setvolumeHovered] = useState(false);
   const volumeHoverCloseTimeoutRef = useRef(null);
   const isMovie = season === null && episode === null;
-  const [toggleMute, setToggleMute] = useState(false);
+  const [toggleMute, setToggleMute] = useState(() => (
+    typeof initialMuted === "boolean" ? initialMuted : false
+  ));
+  const toggleMuteRef = useRef(toggleMute);
   const [volume, setVolume] = useState(() => {
+    const providedVolume = Number(initialVolume);
+    if (Number.isFinite(providedVolume)) {
+      return Math.max(0, Math.min(1, providedVolume));
+    }
+
     const saved = Number(localStorage.getItem("videoVolume"));
     return Number.isFinite(saved) ? Math.max(0, Math.min(1, saved)) : 1;
   });
+  const volumeRef = useRef(volume);
+  useEffect(() => {
+    volumeRef.current = volume;
+  }, [volume]);
+  useEffect(() => {
+    toggleMuteRef.current = toggleMute;
+  }, [toggleMute]);
+  useEffect(() => {
+    const providedVolume = Number(initialVolume);
+    if (!Number.isFinite(providedVolume)) return;
+    setVolume(Math.max(0, Math.min(1, providedVolume)));
+  }, [initialVolume]);
+  useEffect(() => {
+    if (typeof initialMuted !== "boolean") return;
+    setToggleMute(initialMuted);
+  }, [initialMuted]);
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
     }
     localStorage.setItem("videoVolume", volume.toString());
-  }, [volume]);
+    onVolumeChange?.(volume);
+  }, [onVolumeChange, volume]);
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -128,11 +157,12 @@ const Show = ({
       const newVolume = vid.volume;
       setVolume(newVolume);
       localStorage.setItem("videoVolume", newVolume.toString());
+      onVolumeChange?.(newVolume);
     };
   
     vid.addEventListener("volumechange", handleVolumeChange);
     return () => vid.removeEventListener("volumechange", handleVolumeChange);
-  }, [playbackSrc]);
+  }, [onVolumeChange, playbackSrc]);
 
   const showVolumeFlyout = useCallback(() => {
     window.clearTimeout(volumeHoverCloseTimeoutRef.current);
@@ -1424,7 +1454,8 @@ const readProgressRawWithMigration = useCallback(() => (
     const startPlayback = async () => {
       try {
         vid.load();           
-        vid.volume = volume;
+        vid.volume = volumeRef.current;
+        vid.muted = toggleMuteRef.current;
         const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
 
         const shouldAutoSkipIntro =
@@ -1449,7 +1480,7 @@ const readProgressRawWithMigration = useCallback(() => (
       }
     };
     startPlayback();
-  }, [hasIntro, intro?.end, outro?.start, playbackSrc, readProgressRawWithMigration, showKey, skipIntro, volume]);
+  }, [hasIntro, intro?.end, outro?.start, playbackSrc, readProgressRawWithMigration, showKey, skipIntro]);
   useEffect(() => {
     const vid = videoRef.current;
     const resumeAt = intendedResumeTimeRef.current;
@@ -2083,7 +2114,8 @@ const handleSkipToPrevious = async () => {
     if (videoRef.current) {
       videoRef.current.muted = toggleMute;
     }
-  }, [toggleMute]);
+    onMutedChange?.(toggleMute);
+  }, [onMutedChange, toggleMute]);
 
 
   {/* Controls Visiblity */}
