@@ -94,6 +94,10 @@
         "artwork": { "$ref": "#/$defs/artwork" },
         "metadata": { "$ref": "#/$defs/metadata" },
         "subtitles": { "type": "boolean" },
+        "subtitleTracks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/url" }
+        },
         "movieAsset": { "$ref": "#/$defs/playbackRef" },
         "seasons": { "type": "array", "items": { "$ref": "#/$defs/season" } }
       },

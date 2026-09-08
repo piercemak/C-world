@@ -35,7 +35,7 @@
             <Label id="detailStatus" translation="[420,640]" width="770" height="40" font="font:MediumSystemFont" color="#ffb86b" ellipsisText="..." />
         </Group>
 
-        <Video id="video" translation="[0,0]" width="1280" height="720" enableUI="true" enableTrickPlay="true" visible="false" />
+        <Video id="video" translation="[0,0]" width="1280" height="720" visible="false" />
         <CatalogTask id="catalogTask" />
         <PlaybackTask id="playbackTask" />
         <LoginTask id="loginTask" />

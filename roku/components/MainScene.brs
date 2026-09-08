@@ -44,6 +44,7 @@ sub init()
     m.pendingFinalProgress = false
     m.lastProgressPosition = 0
     m.resumePosition = 0
+    m.playbackSubtitleUrls = []
     m.playbackRef = { mediaId: "", season: 0, episode: 0 }
 
     m.catalogTask.observeField("resultJson", "onCatalogLoaded")
@@ -568,6 +569,22 @@ sub requestSelectedPlayback(season as Integer, episode as Integer)
         episode: episode
     }
     m.resumePosition = resumePositionFor(m.selectedItem.id, season, episode)
+    m.playbackSubtitleUrls = []
+    if m.selectedItem.type = "movie"
+        if m.selectedItem.subtitleTracks <> invalid
+            m.playbackSubtitleUrls = m.selectedItem.subtitleTracks
+        end if
+    else
+        for each showSeason in m.selectedItem.seasons
+            if showSeason.number = season
+                for each showEpisode in showSeason.episodes
+                    if showEpisode.number = episode
+                        m.playbackSubtitleUrls = showEpisode.subtitles
+                    end if
+                end for
+            end if
+        end for
+    end if
     m.playbackTask.apiBase = m.apiBase
     m.playbackTask.authToken = m.authToken
     m.playbackTask.mediaId = m.selectedItem.id
@@ -591,6 +608,18 @@ sub onPlaybackReady()
     mediaContent.url = payload.url
     mediaContent.streamFormat = "mp4"
     mediaContent.title = m.selectedItem.title
+    mediaContent.VideoDisableUI = false
+    if m.playbackSubtitleUrls.Count() > 0
+        subtitleTracks = []
+        for each subtitleUrl in m.playbackSubtitleUrls
+            subtitleTracks.Push({
+                Language: "eng",
+                Description: "English",
+                TrackName: subtitleUrl
+            })
+        end for
+        mediaContent.SubtitleTracks = subtitleTracks
+    end if
     m.video.content = mediaContent
     m.lastProgressPosition = m.resumePosition
     m.detailView.visible = false

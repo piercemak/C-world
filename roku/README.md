@@ -8,6 +8,8 @@ This is a standalone Roku SceneGraph client for the Phase 2 rollout. It reads th
 2. `source/Config.local.brs.example` is a reference template for local configuration; it is not loaded automatically by Roku.
 3. Package the contents of this directory as a Roku channel, or sideload it from the Roku developer web page.
 
+To create a sideload package from the repository, run `sh package-roku.sh`. Open the generated `dist/cworld-roku.zip` in the Roku developer installer. The package script includes only the manifest, BrightScript source, and SceneGraph components.
+
 The default API host is `https://cearaworld.com`. For local testing, set `CWORLD_API_BASE` to a host reachable from the Roku, such as your computer's LAN IP. `localhost` will refer to the Roku itself and will not reach a development server running on the computer.
 
 ## Controls
@@ -22,4 +24,4 @@ When a title has saved progress for the selected profile, playback resumes from 
 
 ## Phase 2 boundary
 
-This client covers the end-to-end catalog, authentication, profile, playback, and basic watch-progress path. It does not yet implement subtitles, downloads, or production channel packaging. Those are subsequent phases and do not require changes to the desktop frontend.
+This client covers the end-to-end catalog, authentication, profile, playback, basic watch-progress, caption, and sideload-package path. It does not yet implement downloads or production channel certification. Those are subsequent phases and do not require changes to the desktop frontend.

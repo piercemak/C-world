@@ -21,6 +21,7 @@ The response must be JSON, served over HTTPS, and contain absolute HTTPS artwork
 - Episode display titles and descriptions are independent from playback object filenames.
 - Movies use `type: "movie"` and have `movieAsset`; shows use `type: "show"` and have `seasons`.
 - Public clients receive `playbackRef`, not an unsigned S3 URL or a private signing key.
+- `subtitleTracks` contains absolute, public caption URLs for movies; episode-level `subtitles` contains the URLs for that episode.
 
 ## Playback rules
 
@@ -43,6 +44,7 @@ The backend resolves the reference to the actual object key and returns a short-
 - `schemaVersion` changes only when the response shape is incompatible.
 - `catalogRevision` changes for every published catalog update.
 - Missing optional metadata is represented by an empty string or empty array, never by a client-specific fallback title.
+- Caption files are published in a Roku-compatible format by the frontend build; clients should consume the URLs from the catalog.
 
 ## Example
 

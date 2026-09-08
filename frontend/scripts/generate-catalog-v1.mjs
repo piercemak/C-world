@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildLibraryShows } from "../src/data/libraryShowsData.js";
 import { SHOWS } from "../src/components/mobileshowsData.js";
+import { getSubtitleTrackSrc } from "../src/data/subtitleTracks.js";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const frontendDir = path.resolve(scriptDir, "..");
@@ -27,6 +28,19 @@ const normalizePath = (value) => {
 };
 
 const cleanAssetId = (value) => String(value || "").replace(/-/g, "");
+
+const getRokuSubtitlePath = ({ showId, season = null, episode = null }) => {
+  const source = getSubtitleTrackSrc({ showId, season, episode });
+  if (!source) return null;
+  return source
+    .replace(/^\//, "/roku-captions/")
+    .replace(/\.vtt$/i, ".srt");
+};
+
+const getSubtitleUrl = ({ showId, season = null, episode = null }) => {
+  const source = getRokuSubtitlePath({ showId, season, episode });
+  return source ? normalizePath(source) : null;
+};
 
 const generateSeasonVideos = (titlesBySeason, rawId, type = "show") => {
   const mediaId = String(rawId || "");
@@ -72,7 +86,7 @@ const toEpisode = (mediaId, season, fallbackTitle, index) => {
       season: Number(season),
       episode: index + 1,
     },
-    subtitles: [],
+    subtitles: [getSubtitleUrl({ showId: mediaId, season, episode: index + 1 })].filter(Boolean),
   };
 };
 
@@ -100,10 +114,12 @@ const toMedia = ([id, desktop]) => {
       ageRating: String(desktop.agerating || ""),
     },
     subtitles: String(desktop.subtitles || mobile.subtitles || "").toLowerCase() === "yes",
+    subtitleTracks: [],
   };
 
   if (type === "movie") {
     item.movieAsset = { mediaId: id, season: null, episode: null };
+    item.subtitleTracks = [getSubtitleUrl({ showId: id })].filter(Boolean);
     return item;
   }
 

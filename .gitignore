@@ -48,3 +48,7 @@ backend/db.sqlite3
 
 # Roku local credentials/configuration
 roku/source/Config.local.brs
+
+# Build-generated Roku caption files
+frontend/public/roku-captions/
+roku/dist/
