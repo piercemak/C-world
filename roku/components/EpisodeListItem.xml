@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="EpisodeListItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+    <children>
+        <Rectangle id="background" width="1180" height="74" color="#222831" opacity="0.0" />
+        <Label id="label" translation="[24,12]" width="1120" height="48" font="font:MediumSystemFont" ellipsisText="..." />
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/EpisodeListItem.brs" />
+</component>

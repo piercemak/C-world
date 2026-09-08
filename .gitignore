@@ -45,3 +45,6 @@ backend/db.sqlite3
 
 # VS Code workspace history
 .vscode/*.code-workspace
+
+# Roku local credentials/configuration
+roku/source/Config.local.brs

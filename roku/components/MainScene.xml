@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="MainScene" extends="Scene">
+    <interface>
+        <field id="config" type="assocarray" onChange="onConfigChanged" />
+    </interface>
+    <children>
+        <Rectangle id="background" width="1280" height="720" color="#111318" />
+        <Label id="brand" translation="[72,42]" text="CWorld" font="font:LargeBoldSystemFont" color="#ffffff" />
+        <Label id="status" translation="[72,104]" width="1136" height="44" font="font:MediumSystemFont" color="#9ba5b4" ellipsisText="..." />
+        <MarkupGrid id="catalogGrid" translation="[72,170]" itemComponentName="CatalogGridItem" numColumns="4" itemSize="[280,450]" numRows="1" />
+
+        <Group id="detailView" visible="false">
+            <Poster id="detailPoster" translation="[72,80]" width="300" height="450" />
+            <Label id="detailTitle" translation="[420,92]" width="770" height="70" font="font:LargeBoldSystemFont" color="#ffffff" ellipsisText="..." />
+            <Label id="detailMeta" translation="[420,174]" width="770" height="42" font="font:MediumSystemFont" color="#aeb8c7" ellipsisText="..." />
+            <Label id="detailDescription" translation="[420,230]" width="770" height="140" font="font:MediumSystemFont" color="#e0e5ed" wrap="true" ellipsisText="..." />
+            <MarkupList id="episodeList" translation="[420,395]" itemComponentName="EpisodeListItem" itemSize="[1180,82]" visible="false" />
+            <Button id="moviePlayButton" translation="[420,410]" text="Play" minWidth="220" visible="false" />
+            <Label id="detailStatus" translation="[420,640]" width="770" height="40" font="font:MediumSystemFont" color="#ffb86b" ellipsisText="..." />
+        </Group>
+
+        <Video id="video" translation="[0,0]" width="1280" height="720" visible="false" />
+        <CatalogTask id="catalogTask" />
+        <PlaybackTask id="playbackTask" />
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+</component>
