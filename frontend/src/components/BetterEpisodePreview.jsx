@@ -159,6 +159,93 @@ const textContentVariants = {
   exit: { opacity: 0, y: -8, filter: "blur(5px)" },
 };
 
+const EpisodePlaceholderCard = ({
+  episode,
+  selectedMedia,
+  isSelected,
+  isPreviewed,
+  onSelect,
+  onHoverStart,
+  onHoverEnd,
+}) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <motion.button
+      type="button"
+      onClick={() => onSelect(episode)}
+      onMouseEnter={() => onHoverStart(episode)}
+      onMouseLeave={() => onHoverEnd(episode)}
+      onFocus={() => onHoverStart(episode)}
+      onBlur={() => onHoverEnd(episode)}
+      variants={cardVariants}
+      whileHover={{
+        y: -5,
+        scale: 1.025,
+        boxShadow: "0px 18px 36px rgba(0,0,0,0.38)",
+      }}
+      whileTap={{ scale: 0.97 }}
+      transition={softHoverTransition}
+      className={`group w-72 shrink-0 transform-gpu cursor-pointer snap-start overflow-hidden rounded-lg border text-left transition-colors will-change-transform md:w-80 ${
+        isSelected || isPreviewed
+          ? "border-white/45 bg-white/14"
+          : "border-white/10 bg-white/6 hover:border-white/28 hover:bg-white/10"
+      }`}
+    >
+      <div className="relative aspect-video overflow-hidden bg-[#11141a]">
+        <div
+          className={`absolute inset-0 transition-opacity duration-300 ${imageLoaded ? "opacity-0" : "opacity-100"}`}
+          aria-hidden="true"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_28%),radial-gradient(circle_at_78%_30%,rgba(125,211,252,0.14),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
+          <div className="absolute inset-0 animate-pulse bg-white/[0.035]" />
+          <div className="absolute inset-x-3 bottom-3 space-y-2">
+            <div className="h-2.5 w-2/3 animate-pulse rounded-full bg-white/13" />
+            <div className="h-2 w-1/3 animate-pulse rounded-full bg-white/9" />
+          </div>
+        </div>
+        <img
+          src={episode.thumb}
+          alt=""
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(true)}
+          className={`absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+        />
+        <div className="absolute inset-0 bg-black/20 transition duration-300 group-hover:bg-black/10" />
+        <motion.div
+          className="absolute left-3 top-3 rounded-full bg-black/65 px-2 py-1 text-xs font-bold backdrop-blur"
+          animate={{
+            backgroundColor: isSelected || isPreviewed ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.65)",
+            color: isSelected || isPreviewed ? "#000000" : "#ffffff",
+          }}
+        >
+          {episode.id}
+        </motion.div>
+        {episode.progress > 0 && (
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-white/15">
+            <motion.div
+              className="h-full bg-emerald-300"
+              initial={{ width: 0 }}
+              animate={{ width: `${episode.progress}%` }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+            />
+          </div>
+        )}
+      </div>
+      <div className="p-3">
+        <div className="flex items-start gap-3">
+          <div className="min-w-0">
+            <div className="truncate pb-0.5 text-sm font-bold leading-5 transition group-hover:text-white">{episode.title}</div>
+            <div className="mt-1 text-xs leading-5 text-white/50">
+              {selectedMedia.type === "movie" ? "Movie" : `Episode ${episode.number}`} • {episode.runtime}
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.button>
+  );
+};
+
 const getHeroTitleSizeClass = (title, isEpisodeMode) => {
   const length = String(title || "").length;
   const words = String(title || "").trim().split(/\s+/).filter(Boolean).length;
@@ -1535,71 +1622,21 @@ const BetterEpisodePreview = () => {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                  >
-                    {episodes.map((episode) => {
-                      const isSelected = episode.id === selectedEpisode?.id;
-                      const isPreviewed = episode.id === hoverIntentEpisode?.id;
-                      return (
-                        <motion.button
+                    >
+                      {episodes.map((episode) => {
+                        const isSelected = episode.id === selectedEpisode?.id;
+                        const isPreviewed = episode.id === hoverIntentEpisode?.id;
+                        return (
+                        <EpisodePlaceholderCard
                           key={episode.id}
-                          type="button"
-                          onClick={() => handleEpisodeSelect(episode)}
-                          onMouseEnter={() => handleEpisodeHoverStart(episode)}
-                          onMouseLeave={() => handleEpisodeHoverEnd(episode)}
-                          onFocus={() => handleEpisodeHoverStart(episode)}
-                          onBlur={() => handleEpisodeHoverEnd(episode)}
-                          variants={cardVariants}
-                          whileHover={{
-                            y: -5,
-                            scale: 1.025,
-                            boxShadow: "0px 18px 36px rgba(0,0,0,0.38)",
-                          }}
-                          whileTap={{ scale: 0.97 }}
-                          transition={softHoverTransition}
-                          className={`group w-72 shrink-0 transform-gpu cursor-pointer snap-start overflow-hidden rounded-lg border text-left transition-colors will-change-transform md:w-80 ${
-                            isSelected || isPreviewed
-                              ? "border-white/45 bg-white/14"
-                              : "border-white/10 bg-white/6 hover:border-white/28 hover:bg-white/10"
-                          }`}
-                        >
-                          <div className="relative aspect-video overflow-hidden bg-white/5">
-                            <img
-                              src={episode.thumb}
-                              alt=""
-                              className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-black/20 transition duration-300 group-hover:bg-black/10" />
-                            <motion.div
-                              className="absolute left-3 top-3 rounded-full bg-black/65 px-2 py-1 text-xs font-bold backdrop-blur"
-                              animate={{
-                                backgroundColor: isSelected || isPreviewed ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.65)",
-                                color: isSelected || isPreviewed ? "#000000" : "#ffffff",
-                              }}
-                            >
-                              {episode.id}
-                            </motion.div>
-                            {episode.progress > 0 && (
-                              <div className="absolute inset-x-0 bottom-0 h-1 bg-white/15">
-                                <motion.div
-                                  className="h-full bg-emerald-300"
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${episode.progress}%` }}
-                                  transition={{ duration: 0.45, ease: "easeOut" }}
-                                />
-                              </div>
-                            )}
-                          </div>
-                          <div className="p-3">
-                            <div className="flex items-start gap-3">
-                              <div className="min-w-0">
-                                <div className="truncate pb-0.5 text-sm font-bold leading-5 transition group-hover:text-white">{episode.title}</div>
-                                <div className="mt-1 text-xs leading-5 text-white/50">
-                                  {selectedMedia.type === "movie" ? "Movie" : `Episode ${episode.number}`} • {episode.runtime}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.button>
+                          episode={episode}
+                          selectedMedia={selectedMedia}
+                          isSelected={isSelected}
+                          isPreviewed={isPreviewed}
+                          onSelect={handleEpisodeSelect}
+                          onHoverStart={handleEpisodeHoverStart}
+                          onHoverEnd={handleEpisodeHoverEnd}
+                        />
                       );
                     })}
                   </motion.div>
