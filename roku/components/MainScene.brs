@@ -22,10 +22,15 @@ sub init()
     m.detailStatus = m.top.findNode("detailStatus")
     m.episodeList = m.top.findNode("episodeList")
     m.moviePlayButton = m.top.findNode("moviePlayButton")
+    m.allTitlesButton = m.top.findNode("allTitlesButton")
+    m.continueButton = m.top.findNode("continueButton")
     m.video = m.top.findNode("video")
     m.status = m.top.findNode("status")
     m.view = "boot"
     m.catalogItems = []
+    m.activeItems = []
+    m.continueSelections = []
+    m.gridMode = "all"
     m.episodeItems = []
     m.profiles = []
     m.progressByKey = {}
@@ -55,6 +60,8 @@ sub init()
     m.catalogGrid.observeField("itemSelected", "onCatalogItemSelected")
     m.episodeList.observeField("itemSelected", "onEpisodeSelected")
     m.moviePlayButton.observeField("buttonSelected", "onMoviePlaySelected")
+    m.allTitlesButton.observeField("buttonSelected", "onAllTitlesSelected")
+    m.continueButton.observeField("buttonSelected", "onContinueSelected")
     m.loginButton.observeField("buttonSelected", "onLoginSelected")
     m.profileList.observeField("itemSelected", "onProfileSelected")
     m.video.observeField("position", "onVideoPositionChanged")
@@ -227,17 +234,7 @@ sub onCatalogLoaded()
     end if
 
     m.catalogItems = payload.items
-    content = CreateObject("roSGNode", "ContentNode")
-    for each item in m.catalogItems
-        tile = content.CreateChild("ContentNode")
-        tile.id = item.id
-        tile.title = item.title
-        if item.artwork <> invalid
-            tile.HDPosterUrl = item.artwork.poster
-        end if
-    end for
-
-    m.catalogGrid.content = content
+    showAllTitles()
     m.catalogLoaded = true
     maybeShowCatalog()
 end sub
@@ -302,15 +299,134 @@ sub maybeShowCatalog()
 
     m.view = "catalog"
     m.status.visible = true
-    m.status.text = m.catalogItems.Count().ToStr() + " titles"
+    m.loginView.visible = false
+    m.profileView.visible = false
     m.catalogGrid.visible = true
-    m.catalogGrid.setFocus(true)
+    buildContinueSelections()
+    showAllTitles()
 end sub
+
+sub onAllTitlesSelected()
+    if m.view = "catalog"
+        showAllTitles()
+        m.catalogGrid.setFocus(true)
+    end if
+end sub
+
+sub onContinueSelected()
+    if m.view = "catalog"
+        showContinueWatching()
+        m.catalogGrid.setFocus(true)
+    end if
+end sub
+
+sub showAllTitles()
+    m.gridMode = "all"
+    m.activeItems = m.catalogItems
+    m.status.text = m.catalogItems.Count().ToStr() + " titles"
+    setCatalogGridContent(m.catalogItems, invalid)
+end sub
+
+sub showContinueWatching()
+    m.gridMode = "continue"
+    if m.continueSelections.Count() = 0
+        m.activeItems = []
+        m.status.text = "No saved progress for this profile"
+        setCatalogGridContent([], invalid)
+        return
+    end if
+
+    m.activeItems = []
+    for each selection in m.continueSelections
+        m.activeItems.Push(selection.item)
+    end for
+    m.status.text = "Continue Watching"
+    setCatalogGridContent(m.activeItems, m.continueSelections)
+end sub
+
+sub setCatalogGridContent(items as Object, selections as Object)
+    content = CreateObject("roSGNode", "ContentNode")
+    for index = 0 to items.Count() - 1
+        item = items[index]
+        tile = content.CreateChild("ContentNode")
+        tile.id = item.id
+        if selections <> invalid
+            tile.title = selections[index].label
+        else
+            tile.title = item.title
+        end if
+        if item.artwork <> invalid
+            tile.HDPosterUrl = item.artwork.poster
+        end if
+    end for
+    m.catalogGrid.content = content
+end sub
+
+sub buildContinueSelections()
+    m.continueSelections = []
+    for each item in m.catalogItems
+        if item.type = "movie"
+            key = progressKey(item.id, 0, 0)
+            if m.progressByKey.DoesExist(key)
+                progress = m.progressByKey[key]
+                if hasResumableProgress(progress)
+                    m.continueSelections.Push({
+                        item: item,
+                        season: 0,
+                        episode: 0,
+                        label: item.title
+                    })
+                end if
+            end if
+        else
+            for each season in item.seasons
+                for each episode in season.episodes
+                    key = progressKey(item.id, season.number, episode.number)
+                    if m.progressByKey.DoesExist(key)
+                        progress = m.progressByKey[key]
+                        if hasResumableProgress(progress)
+                            m.continueSelections.Push({
+                                item: item,
+                                season: season.number,
+                                episode: episode.number,
+                                label: item.title + "  S" + season.number.ToStr() + "E" + episode.number.ToStr() + "  " + episode.title
+                            })
+                        end if
+                    end if
+                end for
+            end for
+        end if
+    end for
+end sub
+
+function hasResumableProgress(progress as Object) as Boolean
+    currentTime = CDbl(progress.current_time)
+    duration = CDbl(progress.duration)
+    if currentTime < 5
+        return false
+    end if
+    return duration = 0 or currentTime < duration - 10
+end function
 
 sub onCatalogItemSelected()
     if m.view = "catalog"
-        openSelectedTitle()
+        if m.gridMode = "continue"
+            startContinueSelection()
+        else
+            openSelectedTitle()
+        end if
     end if
+end sub
+
+sub startContinueSelection()
+    index = m.catalogGrid.itemSelected
+    if index < 0 or index >= m.continueSelections.Count()
+        return
+    end if
+
+    selection = m.continueSelections[index]
+    m.selectedItem = selection.item
+    requestSelectedPlayback(selection.season, selection.episode)
 end sub
 
 sub onEpisodeSelected()
@@ -491,7 +607,11 @@ end sub
 
 sub onPlaybackError()
     if m.playbackTask.errorMessage <> ""
-        m.detailStatus.text = m.playbackTask.errorMessage
+        if m.gridMode = "continue" and m.view = "catalog"
+            m.status.text = m.playbackTask.errorMessage
+        else
+            m.detailStatus.text = m.playbackTask.errorMessage
+        end if
     end if
 end sub
 
