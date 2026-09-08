@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node scripts/generate-offline-assets.mjs && vite",
     "build": "node scripts/generate-offline-assets.mjs && vite build",
+    "catalog:generate": "node scripts/generate-catalog-v1.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "vite preview --port 3000 --host 0.0.0.0",

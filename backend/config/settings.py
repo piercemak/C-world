@@ -39,6 +39,11 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+CWORLD_CATALOG_PATH = os.getenv(
+    "CWORLD_CATALOG_PATH",
+    str(BASE_DIR / "uploadtest" / "catalog_v1.json"),
+)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
