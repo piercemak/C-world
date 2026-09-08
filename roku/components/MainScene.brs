@@ -2,6 +2,18 @@ sub init()
     m.catalogGrid = m.top.findNode("catalogGrid")
     m.catalogTask = m.top.findNode("catalogTask")
     m.playbackTask = m.top.findNode("playbackTask")
+    m.loginView = m.top.findNode("loginView")
+    m.usernameInput = m.top.findNode("usernameInput")
+    m.passwordInput = m.top.findNode("passwordInput")
+    m.loginButton = m.top.findNode("loginButton")
+    m.loginStatus = m.top.findNode("loginStatus")
+    m.profileView = m.top.findNode("profileView")
+    m.profileList = m.top.findNode("profileList")
+    m.profileStatus = m.top.findNode("profileStatus")
+    m.loginTask = m.top.findNode("loginTask")
+    m.profileTask = m.top.findNode("profileTask")
+    m.progressTask = m.top.findNode("progressTask")
+    m.historyTask = m.top.findNode("historyTask")
     m.detailView = m.top.findNode("detailView")
     m.detailPoster = m.top.findNode("detailPoster")
     m.detailTitle = m.top.findNode("detailTitle")
@@ -12,18 +24,40 @@ sub init()
     m.moviePlayButton = m.top.findNode("moviePlayButton")
     m.video = m.top.findNode("video")
     m.status = m.top.findNode("status")
-    m.view = "catalog"
+    m.view = "boot"
     m.catalogItems = []
     m.episodeItems = []
+    m.profiles = []
+    m.progressByKey = {}
     m.selectedItem = invalid
+    m.profileId = ""
+    m.apiBase = ""
+    m.authToken = ""
+    m.catalogLoaded = false
+    m.progressLoaded = false
+    m.progressSyncBusy = false
+    m.pendingFinalProgress = false
+    m.lastProgressPosition = 0
+    m.resumePosition = 0
+    m.playbackRef = { mediaId: "", season: 0, episode: 0 }
 
     m.catalogTask.observeField("resultJson", "onCatalogLoaded")
     m.catalogTask.observeField("errorMessage", "onCatalogError")
     m.playbackTask.observeField("resultJson", "onPlaybackReady")
     m.playbackTask.observeField("errorMessage", "onPlaybackError")
+    m.loginTask.observeField("resultJson", "onLoginReady")
+    m.loginTask.observeField("errorMessage", "onLoginError")
+    m.profileTask.observeField("resultJson", "onProfilesLoaded")
+    m.profileTask.observeField("errorMessage", "onProfilesError")
+    m.progressTask.observeField("resultJson", "onProgressResult")
+    m.progressTask.observeField("errorMessage", "onProgressError")
+    m.historyTask.observeField("errorMessage", "onHistoryError")
     m.catalogGrid.observeField("itemSelected", "onCatalogItemSelected")
     m.episodeList.observeField("itemSelected", "onEpisodeSelected")
     m.moviePlayButton.observeField("buttonSelected", "onMoviePlaySelected")
+    m.loginButton.observeField("buttonSelected", "onLoginSelected")
+    m.profileList.observeField("itemSelected", "onProfileSelected")
+    m.video.observeField("position", "onVideoPositionChanged")
     m.video.observeField("state", "onVideoStateChanged")
 end sub
 
@@ -35,10 +69,150 @@ sub onConfigChanged()
 
     m.apiBase = config.apiBase
     m.authToken = config.authToken
+    if m.authToken = ""
+        showLogin("Sign in with your CWorld account to continue.")
+    else
+        requestProfiles()
+    end if
+end sub
+
+sub showLogin(message as String)
+    m.view = "login"
+    m.catalogGrid.visible = false
+    m.status.visible = false
+    m.detailView.visible = false
+    m.profileView.visible = false
+    m.video.visible = false
+    m.loginView.visible = true
+    m.loginStatus.text = message
+    m.usernameInput.setFocus(true)
+end sub
+
+sub onLoginSelected()
+    if m.view <> "login"
+        return
+    end if
+
+    if m.usernameInput.text = "" or m.passwordInput.text = ""
+        m.loginStatus.text = "Enter a username and password."
+        return
+    end if
+
+    m.loginStatus.text = "Signing in..."
+    m.loginTask.apiBase = m.apiBase
+    m.loginTask.username = m.usernameInput.text
+    m.loginTask.password = m.passwordInput.text
+    m.loginTask.errorMessage = ""
+    m.loginTask.resultJson = ""
+    m.loginTask.control = "RUN"
+end sub
+
+sub onLoginReady()
+    payload = ParseJson(m.loginTask.resultJson)
+    if payload = invalid
+        m.loginStatus.text = "Login response was not valid."
+        return
+    end if
+    if payload.token = invalid or payload.token = ""
+        m.loginStatus.text = "Login response was not valid."
+        return
+    end if
+
+    m.authToken = payload.token
+    m.passwordInput.text = ""
+    requestProfiles()
+end sub
+
+sub onLoginError()
+    if m.loginTask.errorMessage <> ""
+        m.loginStatus.text = m.loginTask.errorMessage
+    end if
+end sub
+
+sub requestProfiles()
+    m.view = "profiles"
+    m.loginView.visible = false
+    m.profileView.visible = true
+    m.catalogGrid.visible = false
+    m.status.visible = false
+    m.detailView.visible = false
+    m.profileStatus.text = "Loading profiles..."
+    m.profileTask.apiBase = m.apiBase
+    m.profileTask.authToken = m.authToken
+    m.profileTask.errorMessage = ""
+    m.profileTask.resultJson = ""
+    m.profileTask.control = "RUN"
+end sub
+
+sub onProfilesLoaded()
+    payload = ParseJson(m.profileTask.resultJson)
+    if payload = invalid
+        m.profileStatus.text = "Profiles response was not valid."
+        return
+    end if
+    if payload.Count() = 0
+        m.profileStatus.text = "No CWorld profiles were found."
+        return
+    end if
+
+    m.profiles = payload
+    content = CreateObject("roSGNode", "ContentNode")
+    for each profile in m.profiles
+        row = content.CreateChild("ContentNode")
+        row.title = profile.name
+    end for
+    m.profileList.content = content
+    m.profileStatus.text = "Select a profile"
+    m.profileList.setFocus(true)
+end sub
+
+sub onProfilesError()
+    if m.profileTask.errorMessage <> ""
+        showLogin("Your CWorld session expired. Please sign in again.")
+        m.loginStatus.text = m.profileTask.errorMessage
+    end if
+end sub
+
+sub onProfileSelected()
+    if m.view <> "profiles"
+        return
+    end if
+
+    index = m.profileList.itemSelected
+    if index < 0 or index >= m.profiles.Count()
+        return
+    end if
+
+    m.profileId = m.profiles[index].id.ToStr()
+    loadCatalogAndProgress()
+end sub
+
+sub loadCatalogAndProgress()
+    m.view = "loading"
+    m.profileView.visible = false
+    m.catalogGrid.visible = false
+    m.status.visible = true
+    m.status.text = "Loading your CWorld library..."
+    m.catalogLoaded = false
+    m.progressLoaded = false
+    m.progressByKey = {}
+
     m.catalogTask.apiBase = m.apiBase
     m.catalogTask.authToken = m.authToken
-    m.status.text = "Loading catalog..."
+    m.catalogTask.errorMessage = ""
+    m.catalogTask.resultJson = ""
     m.catalogTask.control = "RUN"
+
+    m.progressSyncBusy = true
+    m.progressTask.apiBase = m.apiBase
+    m.progressTask.authToken = m.authToken
+    m.progressTask.profileId = m.profileId
+    m.progressTask.method = "GET"
+    m.progressTask.bodyJson = ""
+    m.progressTask.errorMessage = ""
+    m.progressTask.resultJson = ""
+    m.progressOperation = "GET"
+    m.progressTask.control = "RUN"
 end sub
 
 sub onCatalogLoaded()
@@ -64,14 +238,73 @@ sub onCatalogLoaded()
     end for
 
     m.catalogGrid.content = content
-    m.status.text = m.catalogItems.Count().ToStr() + " titles"
-    m.catalogGrid.setFocus(true)
+    m.catalogLoaded = true
+    maybeShowCatalog()
 end sub
 
 sub onCatalogError()
     if m.catalogTask.errorMessage <> ""
         m.status.text = m.catalogTask.errorMessage
+        m.catalogLoaded = true
+        maybeShowCatalog()
     end if
+end sub
+
+sub onProgressResult()
+    m.progressSyncBusy = false
+    if m.progressOperation = "GET"
+        payload = ParseJson(m.progressTask.resultJson)
+        if payload <> invalid
+            for each item in payload
+                key = progressKey(item.show_id, item.season, item.episode)
+                m.progressByKey[key] = item
+            end for
+        end if
+        m.progressLoaded = true
+        maybeShowCatalog()
+        return
+    end if
+
+    key = progressKey(m.playbackRef.mediaId, m.playbackRef.season, m.playbackRef.episode)
+    m.progressByKey[key] = {
+        current_time: currentVideoPosition(),
+        duration: currentVideoDuration()
+    }
+    if m.pendingFinalProgress
+        m.pendingFinalProgress = false
+        requestProgressPost()
+    end if
+end sub
+
+sub onProgressError()
+    m.progressSyncBusy = false
+    if m.progressOperation = "GET"
+        m.progressLoaded = true
+        maybeShowCatalog()
+        return
+    end if
+
+    if m.pendingFinalProgress
+        m.pendingFinalProgress = false
+    end if
+end sub
+
+sub onHistoryError()
+    if m.historyTask.errorMessage <> "" and m.view = "detail"
+        m.detailStatus.text = "Playback started, but watch history could not sync."
+    end if
+end sub
+
+sub maybeShowCatalog()
+    if not m.catalogLoaded or not m.progressLoaded
+        return
+    end if
+
+    m.view = "catalog"
+    m.status.visible = true
+    m.status.text = m.catalogItems.Count().ToStr() + " titles"
+    m.catalogGrid.visible = true
+    m.catalogGrid.setFocus(true)
 end sub
 
 sub onCatalogItemSelected()
@@ -149,6 +382,50 @@ function buildMetaText(item as Object) as String
     return parts.Join("  |  ")
 end function
 
+function progressKey(mediaId as String, season, episode) as String
+    seasonPart = "m"
+    episodePart = "m"
+    if season <> invalid
+        seasonPart = season.ToStr()
+    end if
+    if episode <> invalid
+        episodePart = episode.ToStr()
+    end if
+    return mediaId + ":" + seasonPart + ":" + episodePart
+end function
+
+function currentVideoPosition() as Float
+    if m.video.position = invalid
+        return 0
+    end if
+    return CDbl(m.video.position)
+end function
+
+function currentVideoDuration() as Float
+    if m.video.duration = invalid
+        return 0
+    end if
+    return CDbl(m.video.duration)
+end function
+
+function resumePositionFor(mediaId as String, season as Integer, episode as Integer) as Float
+    key = progressKey(mediaId, season, episode)
+    if not m.progressByKey.DoesExist(key)
+        return 0
+    end if
+
+    item = m.progressByKey[key]
+    currentTime = CDbl(item.current_time)
+    duration = CDbl(item.duration)
+    if currentTime < 5
+        return 0
+    end if
+    if duration > 0 and currentTime >= duration - 10
+        return 0
+    end if
+    return currentTime
+end function
+
 sub populateEpisodes(item as Object)
     m.episodeItems = []
     content = CreateObject("roSGNode", "ContentNode")
@@ -163,7 +440,18 @@ sub populateEpisodes(item as Object)
 end sub
 
 sub requestSelectedPlayback(season as Integer, episode as Integer)
+    if m.authToken = ""
+        m.detailStatus.text = "Sign in before starting playback."
+        return
+    end if
+
     m.detailStatus.text = "Preparing playback..."
+    m.playbackRef = {
+        mediaId: m.selectedItem.id,
+        season: season,
+        episode: episode
+    }
+    m.resumePosition = resumePositionFor(m.selectedItem.id, season, episode)
     m.playbackTask.apiBase = m.apiBase
     m.playbackTask.authToken = m.authToken
     m.playbackTask.mediaId = m.selectedItem.id
@@ -188,11 +476,17 @@ sub onPlaybackReady()
     mediaContent.streamFormat = "mp4"
     mediaContent.title = m.selectedItem.title
     m.video.content = mediaContent
+    m.lastProgressPosition = m.resumePosition
     m.detailView.visible = false
     m.video.visible = true
     m.view = "video"
     m.video.setFocus(true)
     m.video.control = "play"
+    if m.resumePosition > 0
+        m.video.position = m.resumePosition
+        m.video.seek = true
+    end if
+    requestHistoryUpdate()
 end sub
 
 sub onPlaybackError()
@@ -201,17 +495,88 @@ sub onPlaybackError()
     end if
 end sub
 
+sub onVideoPositionChanged()
+    if m.view <> "video" or m.progressSyncBusy
+        return
+    end if
+
+    if currentVideoPosition() < m.lastProgressPosition + 30
+        return
+    end if
+
+    requestProgressPost()
+end sub
+
+sub requestProgressPost()
+    if m.profileId = "" or m.playbackRef.mediaId = ""
+        return
+    end if
+
+    m.progressSyncBusy = true
+    m.progressOperation = "POST"
+    m.progressTask.apiBase = m.apiBase
+    m.progressTask.authToken = m.authToken
+    m.progressTask.profileId = m.profileId
+    m.progressTask.method = "POST"
+    m.progressTask.bodyJson = FormatJson({
+        show_id: m.playbackRef.mediaId,
+        season: m.playbackRef.season,
+        episode: m.playbackRef.episode,
+        current_time: currentVideoPosition(),
+        duration: currentVideoDuration()
+    })
+    m.lastProgressPosition = currentVideoPosition()
+    m.progressTask.errorMessage = ""
+    m.progressTask.resultJson = ""
+    m.progressTask.control = "RUN"
+end sub
+
+sub saveCurrentProgress()
+    if m.view = "video" and m.profileId <> ""
+        m.pendingFinalProgress = true
+        if not m.progressSyncBusy
+            m.pendingFinalProgress = false
+            requestProgressPost()
+        end if
+    end if
+end sub
+
+sub requestHistoryUpdate()
+    if m.profileId = "" or m.playbackRef.mediaId = ""
+        return
+    end if
+
+    m.historyTask.apiBase = m.apiBase
+    m.historyTask.authToken = m.authToken
+    m.historyTask.profileId = m.profileId
+    m.historyTask.bodyJson = FormatJson({
+        show_id: m.playbackRef.mediaId,
+        season: m.playbackRef.season,
+        episode: m.playbackRef.episode
+    })
+    m.historyTask.errorMessage = ""
+    m.historyTask.control = "RUN"
+end sub
+
+sub returnToDetail()
+    saveCurrentProgress()
+    m.video.control = "stop"
+    m.video.visible = false
+    m.detailView.visible = true
+    m.view = "detail"
+    if m.selectedItem.type = "movie"
+        m.moviePlayButton.setFocus(true)
+    else
+        m.episodeList.setFocus(true)
+    end if
+end sub
+
 sub onVideoStateChanged()
     if m.video.state = "finished" or m.video.state = "error"
-        m.video.control = "stop"
-        m.video.visible = false
-        m.detailView.visible = true
-        m.view = "detail"
-        if m.selectedItem.type = "movie"
-            m.moviePlayButton.setFocus(true)
-        else
-            m.episodeList.setFocus(true)
+        if m.video.state = "error"
+            m.detailStatus.text = "CWorld could not play this media."
         end if
+        returnToDetail()
     end if
 end sub
 
@@ -222,15 +587,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
 
     if key = "back"
         if m.view = "video"
-            m.video.control = "stop"
-            m.video.visible = false
-            m.detailView.visible = true
-            m.view = "detail"
-            if m.selectedItem.type = "movie"
-                m.moviePlayButton.setFocus(true)
-            else
-                m.episodeList.setFocus(true)
-            end if
+            returnToDetail()
             return true
         end if
 

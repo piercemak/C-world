@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ProfileListItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+    <children>
+        <Rectangle id="background" width="760" height="82" color="#222831" opacity="0.0" />
+        <Label id="label" translation="[24,14]" width="700" height="54" font="font:MediumSystemFont" />
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/ProfileListItem.brs" />
+</component>

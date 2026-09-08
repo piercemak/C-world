@@ -9,6 +9,20 @@
         <Label id="status" translation="[72,104]" width="1136" height="44" font="font:MediumSystemFont" color="#9ba5b4" ellipsisText="..." />
         <MarkupGrid id="catalogGrid" translation="[72,170]" itemComponentName="CatalogGridItem" numColumns="4" itemSize="[280,450]" numRows="1" />
 
+        <Group id="loginView" visible="false">
+            <Label translation="[300,150]" text="Sign in to CWorld" font="font:LargeBoldSystemFont" color="#ffffff" />
+            <TextEditBox id="usernameInput" translation="[300,245]" width="680" height="64" hintText="Username" />
+            <TextEditBox id="passwordInput" translation="[300,330]" width="680" height="64" hintText="Password" secureMode="true" />
+            <Button id="loginButton" translation="[300,430]" text="Sign in" minWidth="220" />
+            <Label id="loginStatus" translation="[300,525]" width="680" height="44" font="font:MediumSystemFont" color="#ffb86b" ellipsisText="..." />
+        </Group>
+
+        <Group id="profileView" visible="false">
+            <Label translation="[300,150]" text="Choose a profile" font="font:LargeBoldSystemFont" color="#ffffff" />
+            <MarkupList id="profileList" translation="[300,245]" itemComponentName="ProfileListItem" itemSize="[760,90]" />
+            <Label id="profileStatus" translation="[300,610]" width="760" height="44" font="font:MediumSystemFont" color="#ffb86b" ellipsisText="..." />
+        </Group>
+
         <Group id="detailView" visible="false">
             <Poster id="detailPoster" translation="[72,80]" width="300" height="450" />
             <Label id="detailTitle" translation="[420,92]" width="770" height="70" font="font:LargeBoldSystemFont" color="#ffffff" ellipsisText="..." />
@@ -22,6 +36,10 @@
         <Video id="video" translation="[0,0]" width="1280" height="720" visible="false" />
         <CatalogTask id="catalogTask" />
         <PlaybackTask id="playbackTask" />
+        <LoginTask id="loginTask" />
+        <ProfileTask id="profileTask" />
+        <ProgressTask id="progressTask" />
+        <HistoryTask id="historyTask" />
     </children>
     <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
 </component>

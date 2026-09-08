@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="HistoryTask" extends="Task">
+    <interface>
+        <field id="apiBase" type="string" />
+        <field id="authToken" type="string" />
+        <field id="profileId" type="string" />
+        <field id="bodyJson" type="string" />
+        <field id="errorMessage" type="string" alwaysNotify="true" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/source/HistoryTask.brs" />
+</component>
