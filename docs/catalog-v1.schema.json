@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cearaworld.com/schemas/catalog-v1.schema.json",
+  "title": "CWorld Catalog v1",
+  "type": "object",
+  "required": ["schemaVersion", "catalogRevision", "generatedAt", "items"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "catalogRevision": { "type": "string", "minLength": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/media" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "artwork": {
+      "type": "object",
+      "required": ["card", "poster", "backdrop"],
+      "properties": {
+        "card": { "$ref": "#/$defs/url" },
+        "poster": { "$ref": "#/$defs/url" },
+        "backdrop": { "$ref": "#/$defs/url" },
+        "mobileBackdrop": { "$ref": "#/$defs/url" }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["creator", "rating", "year", "genres", "duration", "ageRating"],
+      "properties": {
+        "creator": { "type": "string" },
+        "rating": { "type": "string" },
+        "year": { "type": "string" },
+        "genres": { "type": "array", "items": { "type": "string" } },
+        "duration": { "type": "string" },
+        "ageRating": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "playbackRef": {
+      "type": "object",
+      "required": ["mediaId"],
+      "properties": {
+        "mediaId": { "$ref": "#/$defs/id" },
+        "season": { "type": ["integer", "null"], "minimum": 1 },
+        "episode": { "type": ["integer", "null"], "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "episode": {
+      "type": "object",
+      "required": ["number", "title", "description", "airDate", "duration", "playbackRef", "subtitles"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "airDate": { "type": "string" },
+        "duration": { "type": "string" },
+        "playbackRef": { "$ref": "#/$defs/playbackRef" },
+        "subtitles": { "type": "array", "items": { "$ref": "#/$defs/url" } }
+      },
+      "additionalProperties": false
+    },
+    "season": {
+      "type": "object",
+      "required": ["number", "episodes"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "episodes": { "type": "array", "items": { "$ref": "#/$defs/episode" } }
+      },
+      "additionalProperties": false
+    },
+    "media": {
+      "type": "object",
+      "required": ["id", "assetId", "type", "title", "description", "artwork", "metadata", "subtitles"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "assetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+$"
+        },
+        "type": { "enum": ["movie", "show"] },
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "artwork": { "$ref": "#/$defs/artwork" },
+        "metadata": { "$ref": "#/$defs/metadata" },
+        "subtitles": { "type": "boolean" },
+        "movieAsset": { "$ref": "#/$defs/playbackRef" },
+        "seasons": { "type": "array", "items": { "$ref": "#/$defs/season" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "movie" } } },
+          "then": { "required": ["movieAsset"], "not": { "required": ["seasons"] } }
+        },
+        {
+          "if": { "properties": { "type": { "const": "show" } } },
+          "then": { "required": ["seasons"], "not": { "required": ["movieAsset"] } }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
