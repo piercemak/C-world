@@ -100,7 +100,13 @@ def device_login_start(request):
 
 @api_view(["POST"])
 def device_login_poll(request):
-    poll_token = (request.data.get("pollToken") or request.data.get("poll_token") or "").strip()
+    poll_token = (
+        request.data.get("pollToken")
+        or request.data.get("poll_token")
+        or request.query_params.get("pollToken")
+        or request.query_params.get("poll_token")
+        or ""
+    ).strip()
     if not poll_token:
         return Response(
             {"error": "pollToken is required"},

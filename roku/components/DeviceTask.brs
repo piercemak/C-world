@@ -13,7 +13,7 @@ sub executeTask()
 
     body = {}
     if m.top.operation = "POLL"
-        transfer.SetUrl(m.top.apiBase + "/api/auth/device/poll/")
+        transfer.SetUrl(m.top.apiBase + "/api/auth/device/poll/?pollToken=" + m.top.pollToken)
         body.pollToken = m.top.pollToken
     else
         transfer.SetUrl(m.top.apiBase + "/api/auth/device/start/")
