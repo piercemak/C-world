@@ -18,6 +18,7 @@ const Reviews = lazy(() => import('./components/Reviews.jsx'));
 const Archive = lazy(() => import('./components/Archive.jsx'));
 const DesktopUpdater = lazy(() => import('./components/DesktopUpdater.jsx'));
 const BetterEpisodePreview = lazy(() => import('./components/BetterEpisodePreview.jsx'));
+const DeviceLogin = lazy(() => import('./components/DeviceLogin.jsx'));
 
 function ProtectedRoute({ children }) {
   const { user, authLoading } = useAuth();
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<RootRedirect />} />
           <Route path="/login" element={isMobile ? <MobileLogin /> : <Login />} />
+          <Route path="/device" element={<DeviceLogin />} />
           <Route
             path="/home"
             element={
