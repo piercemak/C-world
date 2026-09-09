@@ -1029,6 +1029,14 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
         else if key = "right" and m.allTitlesButton.hasFocus()
             m.continueButton.setFocus(true)
             return true
+        else if key = "OK"
+            if m.allTitlesButton.hasFocus()
+                onAllTitlesSelected()
+                return true
+            else if m.continueButton.hasFocus()
+                onContinueSelected()
+                return true
+            end if
         end if
     end if
 
