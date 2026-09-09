@@ -208,7 +208,12 @@ sub onDeviceLoginError()
     if m.deviceTask.errorMessage = ""
         return
     end if
-    if m.deviceTask.operation = "POLL" and instr(1, m.deviceTask.errorMessage, "expired") = 0
+    isTransientPollError = m.deviceTask.operation = "POLL" and (
+        instr(1, m.deviceTask.errorMessage, "timed out") > 0 or
+        instr(1, m.deviceTask.errorMessage, "could not start") > 0 or
+        instr(1, m.deviceTask.errorMessage, "HTTP 5") > 0
+    )
+    if isTransientPollError
         m.deviceStatus.text = "Waiting for approval..."
     else
         m.devicePollTimer.control = "stop"
