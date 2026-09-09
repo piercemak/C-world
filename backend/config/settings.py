@@ -43,6 +43,9 @@ CWORLD_CATALOG_PATH = os.getenv(
     "CWORLD_CATALOG_PATH",
     str(BASE_DIR / "uploadtest" / "catalog_v1.json"),
 )
+CWORLD_PUBLIC_WEB_URL = os.getenv("CWORLD_PUBLIC_WEB_URL", "https://cearaworld.com").rstrip("/")
+CWORLD_PUBLIC_API_URL = os.getenv("CWORLD_PUBLIC_API_URL", "https://c-world.onrender.com").rstrip("/")
+CWORLD_DEVICE_LOGIN_TTL_SECONDS = int(os.getenv("CWORLD_DEVICE_LOGIN_TTL_SECONDS", "300"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -59,6 +62,8 @@ DEBUG = os.getenv("DEBUG", "False").strip().lower() == "true"
 ALLOWED_HOSTS = [
     "c-world.onrender.com",
     "c-world-frontend.onrender.com",
+    "cearaworld.com",
+    "www.cearaworld.com",
     "localhost",
     "127.0.0.1",
 ]

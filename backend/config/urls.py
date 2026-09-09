@@ -10,6 +10,10 @@ from uploadtest.views import (
     profile_detail,
     progress,
     history,
+    device_login_start,
+    device_login_poll,
+    device_login_approve,
+    device_login_qr,
 )
 from uploadtest.catalog_views import catalog_media_v1, catalog_v1, playback_session
 from django.urls import path
@@ -24,6 +28,10 @@ urlpatterns = [
     path("api/auth/login/", login_user),
     path("api/auth/logout/", logout_user),
     path("api/auth/me/", me),
+    path("api/auth/device/start/", device_login_start),
+    path("api/auth/device/poll/", device_login_poll),
+    path("api/auth/device/approve/", device_login_approve),
+    path("api/auth/device/qr/", device_login_qr),
     path("api/profiles/", profiles),
     path("api/profiles/<int:profile_id>/", profile_detail),
     path("api/progress/", progress),

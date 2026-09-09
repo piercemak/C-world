@@ -1,5 +1,8 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
+from django.db import IntegrityError, transaction
+from django.http import HttpResponse
+from django.utils import timezone
 from rest_framework.decorators import api_view, authentication_classes, permission_classes # type: ignore
 from rest_framework.response import Response # type: ignore
 from rest_framework import status # type: ignore
@@ -15,7 +18,11 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.backends import default_backend
 from urllib.parse import quote_plus
 import os
+import hashlib
+import io
+import secrets
 import boto3
+import qrcode
 from .serializers import (
     RegisterSerializer,
     UserSerializer,
@@ -23,11 +30,214 @@ from .serializers import (
     WatchProgressSerializer,
     WatchHistorySerializer,
 )
-from .models import Profile, WatchProgress, WatchHistory
+from .models import DeviceLoginSession, Profile, WatchProgress, WatchHistory
 
 
 
 CLOUDFRONT_DOMAIN = settings.CLOUDFRONT_DOMAIN
+DEVICE_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+
+
+def _hash_device_value(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def _new_device_code() -> str:
+    first = "".join(secrets.choice(DEVICE_CODE_ALPHABET) for _ in range(4))
+    second = "".join(secrets.choice(DEVICE_CODE_ALPHABET) for _ in range(4))
+    return f"{first}-{second}"
+
+
+def _canonical_device_code(value: str) -> str:
+    return "".join(str(value or "").upper().split()).replace("-", "")
+
+
+def _ensure_user_profile(user):
+    if not Profile.objects.filter(user=user).exists():
+        Profile.objects.create(user=user, name=user.username)
+
+
+@api_view(["POST"])
+def device_login_start(request):
+    now = timezone.now()
+    ttl_seconds = max(60, int(getattr(settings, "CWORLD_DEVICE_LOGIN_TTL_SECONDS", 300)))
+
+    DeviceLoginSession.objects.filter(
+        status__in=[DeviceLoginSession.STATUS_PENDING, DeviceLoginSession.STATUS_APPROVED],
+        expires_at__lte=now,
+    ).update(status=DeviceLoginSession.STATUS_CONSUMED, consumed_at=now)
+
+    for _ in range(3):
+        poll_token = secrets.token_urlsafe(32)
+        device_code = _new_device_code()
+        try:
+            session = DeviceLoginSession.objects.create(
+                poll_token_hash=_hash_device_value(poll_token),
+                user_code_hash=_hash_device_value(_canonical_device_code(device_code)),
+                expires_at=now + timedelta(seconds=ttl_seconds),
+            )
+            break
+        except IntegrityError:
+            continue
+    else:
+        return Response(
+            {"error": "Unable to create a device login session."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
+    verification_url = f"{settings.CWORLD_PUBLIC_WEB_URL}/device?code={device_code}"
+    qr_url = f"{settings.CWORLD_PUBLIC_API_URL}/api/auth/device/qr/?code={device_code}"
+    return Response({
+        "status": DeviceLoginSession.STATUS_PENDING,
+        "pollToken": poll_token,
+        "deviceCode": device_code,
+        "verificationUrl": verification_url,
+        "qrUrl": qr_url,
+        "expiresIn": ttl_seconds,
+        "expiresAt": session.expires_at.isoformat(),
+    })
+
+
+@api_view(["POST"])
+def device_login_poll(request):
+    poll_token = (request.data.get("pollToken") or request.data.get("poll_token") or "").strip()
+    if not poll_token:
+        return Response(
+            {"error": "pollToken is required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    now = timezone.now()
+    try:
+        with transaction.atomic():
+            session = DeviceLoginSession.objects.select_for_update().select_related("user").get(
+                poll_token_hash=_hash_device_value(poll_token)
+            )
+            if session.expires_at <= now:
+                session.status = DeviceLoginSession.STATUS_CONSUMED
+                session.consumed_at = now
+                session.save(update_fields=["status", "consumed_at"])
+                return Response(
+                    {"status": "expired", "error": "This device code has expired."},
+                    status=status.HTTP_410_GONE,
+                )
+
+            if session.status == DeviceLoginSession.STATUS_PENDING:
+                return Response({"status": DeviceLoginSession.STATUS_PENDING}, status=status.HTTP_202_ACCEPTED)
+
+            if session.status != DeviceLoginSession.STATUS_APPROVED or session.user is None:
+                return Response(
+                    {"status": "expired", "error": "This device login is no longer available."},
+                    status=status.HTTP_410_GONE,
+                )
+
+            user = session.user
+            _ensure_user_profile(user)
+            token, _ = Token.objects.get_or_create(user=user)
+            session.status = DeviceLoginSession.STATUS_CONSUMED
+            session.consumed_at = now
+            session.save(update_fields=["status", "consumed_at"])
+    except DeviceLoginSession.DoesNotExist:
+        return Response(
+            {"error": "Invalid device login session."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    return Response({
+        "status": DeviceLoginSession.STATUS_APPROVED,
+        "token": token.key,
+        "user": UserSerializer(user).data,
+    })
+
+
+@api_view(["POST"])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def device_login_approve(request):
+    device_code = _canonical_device_code(request.data.get("deviceCode") or request.data.get("code"))
+    if not device_code:
+        return Response(
+            {"error": "deviceCode is required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    now = timezone.now()
+    try:
+        with transaction.atomic():
+            session = DeviceLoginSession.objects.select_for_update().get(
+                user_code_hash=_hash_device_value(device_code)
+            )
+            if session.expires_at <= now:
+                session.status = DeviceLoginSession.STATUS_CONSUMED
+                session.consumed_at = now
+                session.save(update_fields=["status", "consumed_at"])
+                return Response(
+                    {"error": "This device code has expired."},
+                    status=status.HTTP_410_GONE,
+                )
+            if session.status == DeviceLoginSession.STATUS_CONSUMED:
+                return Response(
+                    {"error": "This device code has already been used."},
+                    status=status.HTTP_410_GONE,
+                )
+            if session.status == DeviceLoginSession.STATUS_APPROVED:
+                if session.user_id != request.user.id:
+                    return Response(
+                        {"error": "This device code has already been approved."},
+                        status=status.HTTP_409_CONFLICT,
+                    )
+                return Response(
+                    {"status": "approved"},
+                    status=status.HTTP_200_OK,
+                )
+
+            session.user = request.user
+            session.status = DeviceLoginSession.STATUS_APPROVED
+            session.approved_at = now
+            session.save(update_fields=["user", "status", "approved_at"])
+    except DeviceLoginSession.DoesNotExist:
+        return Response(
+            {"error": "Invalid device code."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    return Response({"status": DeviceLoginSession.STATUS_APPROVED})
+
+
+@api_view(["GET"])
+def device_login_qr(request):
+    device_code = _canonical_device_code(request.query_params.get("code"))
+    if not device_code:
+        return Response(
+            {"error": "code is required"},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    try:
+        session = DeviceLoginSession.objects.get(
+            user_code_hash=_hash_device_value(device_code)
+        )
+    except DeviceLoginSession.DoesNotExist:
+        return Response({"error": "Invalid device code."}, status=status.HTTP_404_NOT_FOUND)
+
+    if session.expires_at <= timezone.now() or session.status != DeviceLoginSession.STATUS_PENDING:
+        return Response({"error": "This device code is no longer available."}, status=status.HTTP_410_GONE)
+
+    verification_url = f"{settings.CWORLD_PUBLIC_WEB_URL}/device?code={device_code}"
+    qr = qrcode.QRCode(
+        version=None,
+        error_correction=qrcode.constants.ERROR_CORRECT_M,
+        box_size=8,
+        border=4,
+    )
+    qr.add_data(verification_url)
+    qr.make(fit=True)
+    image = qr.make_image(fill_color="black", back_color="white")
+    output = io.BytesIO()
+    image.save(output, format="PNG")
+    response = HttpResponse(output.getvalue(), content_type="image/png")
+    response["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    return response
 
 def rsa_signer(message: str):
     key_data = os.getenv("CLOUDFRONT_PRIVATE_KEY")

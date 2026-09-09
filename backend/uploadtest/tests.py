@@ -94,4 +94,53 @@ class CatalogApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         sign.assert_called_once_with("testmovie/testmovie.mp4")
 
+    def test_device_login_requires_approval_and_is_one_time(self):
+        start = self.client.post("/api/auth/device/start/", {}, format="json")
+        self.assertEqual(start.status_code, 200)
+        self.assertTrue(start.data["pollToken"])
+        self.assertRegex(start.data["deviceCode"], r"^[A-Z2-9]{4}-[A-Z2-9]{4}$")
+
+        pending = self.client.post(
+            "/api/auth/device/poll/",
+            {"pollToken": start.data["pollToken"]},
+            format="json",
+        )
+        self.assertEqual(pending.status_code, 202)
+        self.assertEqual(pending.data["status"], "pending")
+
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
+        approved = self.client.post(
+            "/api/auth/device/approve/",
+            {"deviceCode": start.data["deviceCode"].lower()},
+            format="json",
+        )
+        self.assertEqual(approved.status_code, 200)
+
+        completed = self.client.post(
+            "/api/auth/device/poll/",
+            {"pollToken": start.data["pollToken"]},
+            format="json",
+        )
+        self.assertEqual(completed.status_code, 200)
+        self.assertEqual(completed.data["status"], "approved")
+        self.assertEqual(completed.data["token"], self.token.key)
+        self.assertEqual(completed.data["user"]["username"], "catalog-user")
+
+        consumed = self.client.post(
+            "/api/auth/device/poll/",
+            {"pollToken": start.data["pollToken"]},
+            format="json",
+        )
+        self.assertEqual(consumed.status_code, 410)
+
+    def test_device_login_qr_returns_png(self):
+        start = self.client.post("/api/auth/device/start/", {}, format="json")
+        response = self.client.get(
+            "/api/auth/device/qr/",
+            {"code": start.data["deviceCode"]},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "image/png")
+        self.assertTrue(response.content.startswith(b"\x89PNG"))
+
 # Create your tests here.

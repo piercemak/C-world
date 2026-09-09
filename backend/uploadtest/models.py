@@ -51,3 +51,32 @@ class WatchHistory(models.Model):
     class Meta:
         unique_together = ("profile", "show_id")
         ordering = ["-watched_at"]
+
+
+class DeviceLoginSession(models.Model):
+    STATUS_PENDING = "pending"
+    STATUS_APPROVED = "approved"
+    STATUS_CONSUMED = "consumed"
+
+    status = models.CharField(max_length=16, default=STATUS_PENDING)
+    poll_token_hash = models.CharField(max_length=64, unique=True)
+    user_code_hash = models.CharField(max_length=64, unique=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="device_login_sessions",
+    )
+    expires_at = models.DateTimeField()
+    approved_at = models.DateTimeField(null=True, blank=True)
+    consumed_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["status", "expires_at"]),
+        ]
+
+    def __str__(self):
+        return f"Device login {self.id} ({self.status})"
