@@ -11,6 +11,15 @@ sub init()
     m.profileList = m.top.findNode("profileList")
     m.profileStatus = m.top.findNode("profileStatus")
     m.loginTask = m.top.findNode("loginTask")
+    m.deviceLoginView = m.top.findNode("deviceLoginView")
+    m.deviceQr = m.top.findNode("deviceQr")
+    m.deviceCode = m.top.findNode("deviceCode")
+    m.deviceUrl = m.top.findNode("deviceUrl")
+    m.deviceStatus = m.top.findNode("deviceStatus")
+    m.useRemoteLoginButton = m.top.findNode("useRemoteLoginButton")
+    m.refreshDeviceButton = m.top.findNode("refreshDeviceButton")
+    m.deviceTask = m.top.findNode("deviceTask")
+    m.devicePollTimer = m.top.findNode("devicePollTimer")
     m.profileTask = m.top.findNode("profileTask")
     m.progressTask = m.top.findNode("progressTask")
     m.historyTask = m.top.findNode("historyTask")
@@ -44,6 +53,12 @@ sub init()
     m.pendingFinalProgress = false
     m.lastProgressPosition = 0
     m.resumePosition = 0
+    m.usernameValue = ""
+    m.passwordValue = ""
+    m.loginField = ""
+    m.loginKeyboard = invalid
+    m.devicePollToken = ""
+    m.devicePollBusy = false
     m.playbackSubtitleUrls = []
     m.playbackRef = { mediaId: "", season: 0, episode: 0 }
 
@@ -53,6 +68,8 @@ sub init()
     m.playbackTask.observeField("errorMessage", "onPlaybackError")
     m.loginTask.observeField("resultJson", "onLoginReady")
     m.loginTask.observeField("errorMessage", "onLoginError")
+    m.deviceTask.observeField("resultJson", "onDeviceLoginReady")
+    m.deviceTask.observeField("errorMessage", "onDeviceLoginError")
     m.profileTask.observeField("resultJson", "onProfilesLoaded")
     m.profileTask.observeField("errorMessage", "onProfilesError")
     m.progressTask.observeField("resultJson", "onProgressResult")
@@ -63,10 +80,16 @@ sub init()
     m.moviePlayButton.observeField("buttonSelected", "onMoviePlaySelected")
     m.allTitlesButton.observeField("buttonSelected", "onAllTitlesSelected")
     m.continueButton.observeField("buttonSelected", "onContinueSelected")
+    m.usernameInput.observeField("buttonSelected", "onUsernameSelected")
+    m.passwordInput.observeField("buttonSelected", "onPasswordSelected")
     m.loginButton.observeField("buttonSelected", "onLoginSelected")
+    m.useRemoteLoginButton.observeField("buttonSelected", "onUseRemoteLoginSelected")
+    m.refreshDeviceButton.observeField("buttonSelected", "onRefreshDeviceSelected")
     m.profileList.observeField("itemSelected", "onProfileSelected")
     m.video.observeField("position", "onVideoPositionChanged")
     m.video.observeField("state", "onVideoStateChanged")
+    m.devicePollTimer.observeField("fire", "onDevicePollTimerFired")
+    m.top.setFocus(true)
 end sub
 
 sub onConfigChanged()
@@ -78,7 +101,7 @@ sub onConfigChanged()
     m.apiBase = config.apiBase
     m.authToken = config.authToken
     if m.authToken = ""
-        showLogin("Sign in with your CWorld account to continue.")
+        startDeviceLogin("Scan the QR code with your phone to sign in.")
     else
         requestProfiles()
     end if
@@ -86,14 +109,200 @@ end sub
 
 sub showLogin(message as String)
     m.view = "login"
+    m.deviceLoginView.visible = false
+    m.devicePollTimer.control = "stop"
+    m.devicePollToken = ""
+    m.devicePollBusy = false
     m.catalogGrid.visible = false
     m.status.visible = false
     m.detailView.visible = false
     m.profileView.visible = false
     m.video.visible = false
     m.loginView.visible = true
+    m.usernameInput.text = loginFieldText(m.usernameValue, "Username")
+    m.passwordInput.text = loginFieldText(m.passwordValue, "Password")
     m.loginStatus.text = message
     m.usernameInput.setFocus(true)
+end sub
+
+sub startDeviceLogin(message as String)
+    m.view = "deviceLogin"
+    m.catalogGrid.visible = false
+    m.status.visible = false
+    m.detailView.visible = false
+    m.profileView.visible = false
+    m.loginView.visible = false
+    m.video.visible = false
+    m.deviceLoginView.visible = true
+    m.deviceCode.text = "Creating a sign-in code..."
+    m.deviceUrl.text = ""
+    m.deviceStatus.text = message
+    m.deviceQr.uri = ""
+    m.devicePollToken = ""
+    m.devicePollBusy = false
+    m.devicePollTimer.control = "stop"
+    m.deviceTask.apiBase = m.apiBase
+    m.deviceTask.operation = "START"
+    m.deviceTask.pollToken = ""
+    m.deviceTask.errorMessage = ""
+    m.deviceTask.resultJson = ""
+    m.deviceTask.control = "RUN"
+    m.refreshDeviceButton.setFocus(true)
+end sub
+
+sub onDeviceLoginReady()
+    if m.deviceTask.resultJson = ""
+        return
+    end if
+    payload = ParseJson(m.deviceTask.resultJson)
+    if payload = invalid
+        m.devicePollBusy = false
+        m.deviceStatus.text = "The sign-in response was not valid. Select New QR code to try again."
+        return
+    end if
+
+    if m.deviceTask.operation = "START"
+        if payload.pollToken = invalid or payload.pollToken = ""
+            m.deviceStatus.text = "A sign-in code could not be created. Select New QR code to try again."
+            return
+        end if
+        m.devicePollToken = payload.pollToken
+        if payload.deviceCode <> invalid
+            m.deviceCode.text = "Code: " + payload.deviceCode
+        end if
+        if payload.verificationUrl <> invalid
+            m.deviceUrl.text = payload.verificationUrl
+        end if
+        if payload.qrUrl <> invalid
+            m.deviceQr.uri = payload.qrUrl
+        end if
+        m.deviceStatus.text = "Waiting for approval..."
+        m.devicePollBusy = false
+        m.devicePollTimer.control = "start"
+        return
+    end if
+
+    if payload.status = "pending"
+        m.devicePollBusy = false
+        m.deviceStatus.text = "Waiting for approval..."
+        return
+    end if
+
+    if payload.token = invalid or payload.token = ""
+        m.devicePollBusy = false
+        m.deviceStatus.text = "Approval was incomplete. Select New QR code to try again."
+        return
+    end if
+
+    m.devicePollTimer.control = "stop"
+    m.devicePollBusy = false
+    m.devicePollToken = ""
+    m.authToken = payload.token
+    m.deviceStatus.text = "Connected. Loading profiles..."
+    requestProfiles()
+end sub
+
+sub onDeviceLoginError()
+    m.devicePollBusy = false
+    if m.deviceTask.errorMessage = ""
+        return
+    end if
+    if m.deviceTask.operation = "POLL" and instr(1, m.deviceTask.errorMessage, "expired") = 0
+        m.deviceStatus.text = "Waiting for approval..."
+    else
+        m.devicePollTimer.control = "stop"
+        m.deviceStatus.text = m.deviceTask.errorMessage
+    end if
+end sub
+
+sub onDevicePollTimerFired()
+    if m.view <> "deviceLogin" or m.devicePollToken = "" or m.devicePollBusy
+        return
+    end if
+
+    m.devicePollBusy = true
+    m.deviceTask.apiBase = m.apiBase
+    m.deviceTask.operation = "POLL"
+    m.deviceTask.pollToken = m.devicePollToken
+    m.deviceTask.errorMessage = ""
+    m.deviceTask.resultJson = ""
+    m.deviceTask.control = "RUN"
+end sub
+
+sub onUseRemoteLoginSelected()
+    if m.view = "deviceLogin"
+        showLogin("Use the Roku remote to sign in to CWorld.")
+    end if
+end sub
+
+sub onRefreshDeviceSelected()
+    if m.view = "deviceLogin"
+        startDeviceLogin("Creating a new sign-in code...")
+    end if
+end sub
+
+function loginFieldText(value as String, placeholder as String) as String
+    if value = ""
+        return placeholder
+    end if
+    return value
+end function
+
+sub onUsernameSelected()
+    if m.view = "login"
+        openLoginKeyboard("username")
+    end if
+end sub
+
+sub onPasswordSelected()
+    if m.view = "login"
+        openLoginKeyboard("password")
+    end if
+end sub
+
+sub openLoginKeyboard(field as String)
+    m.loginField = field
+    m.loginKeyboard = CreateObject("roSGNode", "KeyboardDialog")
+    if field = "password"
+        m.loginKeyboard.title = "Enter your password"
+        m.loginKeyboard.text = m.passwordValue
+        m.loginKeyboard.keyboard.textEditBox.secureMode = true
+    else
+        m.loginKeyboard.title = "Enter your username"
+        m.loginKeyboard.text = m.usernameValue
+        m.loginKeyboard.keyboard.textEditBox.secureMode = false
+    end if
+    m.loginKeyboard.buttons = ["OK", "Cancel"]
+    m.loginKeyboard.observeField("buttonSelected", "onLoginKeyboardSelected")
+    m.top.dialog = m.loginKeyboard
+end sub
+
+sub onLoginKeyboardSelected()
+    if m.loginKeyboard = invalid
+        return
+    end if
+
+    if m.loginKeyboard.buttonSelected = 0
+        if m.loginField = "password"
+            m.passwordValue = m.loginKeyboard.text
+            m.passwordInput.text = loginFieldText(m.passwordValue, "Password")
+            m.loginButton.setFocus(true)
+        else
+            m.usernameValue = m.loginKeyboard.text
+            m.usernameInput.text = loginFieldText(m.usernameValue, "Username")
+            m.passwordInput.setFocus(true)
+        end if
+    else
+        if m.loginField = "password"
+            m.passwordInput.setFocus(true)
+        else
+            m.usernameInput.setFocus(true)
+        end if
+    end if
+
+    m.top.dialog = invalid
+    m.loginKeyboard = invalid
+    m.loginField = ""
 end sub
 
 sub onLoginSelected()
@@ -101,15 +310,20 @@ sub onLoginSelected()
         return
     end if
 
-    if m.usernameInput.text = "" or m.passwordInput.text = ""
+    if m.usernameValue = "" or m.passwordValue = ""
         m.loginStatus.text = "Enter a username and password."
+        if m.usernameValue = ""
+            m.usernameInput.setFocus(true)
+        else
+            m.passwordInput.setFocus(true)
+        end if
         return
     end if
 
     m.loginStatus.text = "Signing in..."
     m.loginTask.apiBase = m.apiBase
-    m.loginTask.username = m.usernameInput.text
-    m.loginTask.password = m.passwordInput.text
+    m.loginTask.username = m.usernameValue
+    m.loginTask.password = m.passwordValue
     m.loginTask.errorMessage = ""
     m.loginTask.resultJson = ""
     m.loginTask.control = "RUN"
@@ -127,7 +341,8 @@ sub onLoginReady()
     end if
 
     m.authToken = payload.token
-    m.passwordInput.text = ""
+    m.passwordValue = ""
+    m.passwordInput.text = "Password"
     requestProfiles()
 end sub
 
@@ -732,6 +947,76 @@ end sub
 function onKeyEvent(key as String, press as Boolean) as Boolean
     if not press
         return false
+    end if
+
+    ' Roku hardware reports OK; RokuLab reports the equivalent button as select.
+    if key = "select" or key = "enter"
+        key = "OK"
+    end if
+
+    if m.loginKeyboard <> invalid
+        return false
+    end if
+
+    if m.view = "deviceLogin"
+        if key = "left" and m.refreshDeviceButton.hasFocus()
+            m.useRemoteLoginButton.setFocus(true)
+            return true
+        else if key = "right" and m.useRemoteLoginButton.hasFocus()
+            m.refreshDeviceButton.setFocus(true)
+            return true
+        else if key = "OK"
+            if m.useRemoteLoginButton.hasFocus()
+                onUseRemoteLoginSelected()
+                return true
+            else if m.refreshDeviceButton.hasFocus()
+                onRefreshDeviceSelected()
+                return true
+            end if
+        else if key = "back"
+            onUseRemoteLoginSelected()
+            return true
+        end if
+    else if m.view = "login"
+        if key = "up"
+            if m.passwordInput.hasFocus()
+                m.usernameInput.setFocus(true)
+                return true
+            end if
+        else if key = "down"
+            if m.usernameInput.hasFocus()
+                m.passwordInput.setFocus(true)
+                return true
+            else if m.passwordInput.hasFocus()
+                m.loginButton.setFocus(true)
+                return true
+            end if
+        else if key = "OK"
+            if m.usernameInput.hasFocus()
+                openLoginKeyboard("username")
+                return true
+            else if m.passwordInput.hasFocus()
+                openLoginKeyboard("password")
+                return true
+            else if m.loginButton.hasFocus()
+                onLoginSelected()
+                return true
+            end if
+        end if
+    else if m.view = "catalog"
+        if key = "up" and m.catalogGrid.hasFocus()
+            m.allTitlesButton.setFocus(true)
+            return true
+        else if key = "down" and (m.allTitlesButton.hasFocus() or m.continueButton.hasFocus())
+            m.catalogGrid.setFocus(true)
+            return true
+        else if key = "left" and m.continueButton.hasFocus()
+            m.allTitlesButton.setFocus(true)
+            return true
+        else if key = "right" and m.allTitlesButton.hasFocus()
+            m.continueButton.setFocus(true)
+            return true
+        end if
     end if
 
     if key = "back"

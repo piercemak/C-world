@@ -123,7 +123,10 @@ def device_login_poll(request):
                 )
 
             if session.status == DeviceLoginSession.STATUS_PENDING:
-                return Response({"status": DeviceLoginSession.STATUS_PENDING}, status=status.HTTP_202_ACCEPTED)
+                # This endpoint is polled rather than long-polling. A normal
+                # JSON success response keeps Roku clients consistent across
+                # hardware and simulator HTTP implementations.
+                return Response({"status": DeviceLoginSession.STATUS_PENDING})
 
             if session.status != DeviceLoginSession.STATUS_APPROVED or session.user is None:
                 return Response(

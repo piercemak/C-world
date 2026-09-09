@@ -105,7 +105,7 @@ class CatalogApiTests(TestCase):
             {"pollToken": start.data["pollToken"]},
             format="json",
         )
-        self.assertEqual(pending.status_code, 202)
+        self.assertEqual(pending.status_code, 200)
         self.assertEqual(pending.data["status"], "pending")
 
         self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
