@@ -45,6 +45,10 @@ sub executeTask()
             errorPayload = ParseJson(payload)
             if errorPayload <> invalid and errorPayload.error <> invalid
                 detail = ": " + errorPayload.error
+            else if errorPayload <> invalid and errorPayload.message <> invalid
+                detail = ": " + errorPayload.message
+            else
+                detail = ": " + payload
             end if
         end if
         if responseCode = 410

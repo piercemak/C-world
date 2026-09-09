@@ -452,12 +452,16 @@ sub onCatalogLoaded()
         m.status.text = "Catalog response was not valid."
         return
     end if
-    if payload.items = invalid
-        m.status.text = "Catalog response was not valid."
-        return
+    if type(payload) = "roArray"
+        m.catalogItems = payload
+    else
+        if payload.items = invalid
+            m.status.text = "Catalog response was not valid."
+            return
+        end if
+        m.catalogItems = payload.items
     end if
 
-    m.catalogItems = payload.items
     showAllTitles()
     m.catalogLoaded = true
     maybeShowCatalog()
