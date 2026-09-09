@@ -532,6 +532,7 @@ sub maybeShowCatalog()
     m.catalogGrid.visible = true
     buildContinueSelections()
     showAllTitles()
+    m.allTitlesButton.setFocus(true)
 end sub
 
 sub onAllTitlesSelected()
