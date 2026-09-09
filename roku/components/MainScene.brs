@@ -146,6 +146,7 @@ sub startDeviceLogin(message as String)
     m.deviceTask.pollToken = ""
     m.deviceTask.errorMessage = ""
     m.deviceTask.resultJson = ""
+    m.deviceTask.control = "STOP"
     m.deviceTask.control = "RUN"
     m.refreshDeviceButton.setFocus(true)
 end sub
@@ -226,6 +227,8 @@ sub onDevicePollTimerFired()
     m.deviceTask.pollToken = m.devicePollToken
     m.deviceTask.errorMessage = ""
     m.deviceTask.resultJson = ""
+    ' Force a new Task run after the previous asynchronous request completes.
+    m.deviceTask.control = "STOP"
     m.deviceTask.control = "RUN"
 end sub
 
