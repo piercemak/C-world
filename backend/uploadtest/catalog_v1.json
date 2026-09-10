@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-09-10T19:08:46.661Z",
-  "generatedAt": "2026-09-10T19:08:46.661Z",
+  "catalogRevision": "2026-09-10T19:52:01.109Z",
+  "generatedAt": "2026-09-10T19:52:01.109Z",
   "items": [
     {
       "id": "steven-universe",
@@ -14,10 +14,7 @@
         "card": "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg",
         "poster": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverseIcon.jpg",
         "backdrop": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/stevenUniverseLogo1.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/stevenuniverse/covers/stevenuniverse_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/stevenuniverse/covers/stevenuniverse_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg"
       },
       "metadata": {
         "creator": "Rebecca Sugar",
@@ -2535,8 +2532,7 @@
         "card": "https://cearaworld.com/images/cardimages/adventuretimeLogo1.svg",
         "poster": "https://cearaworld.com/images/adventuretime/covers/adventuretimeIcon.jpg",
         "backdrop": "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/adventuretimeLogo1.png"
+        "mobileBackdrop": "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg"
       },
       "metadata": {
         "creator": "Pendleton Ward",
@@ -7063,10 +7059,7 @@
         "card": "https://cearaworld.com/images/cardimages/otgwLogo1.svg",
         "poster": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwallIcon.jpg",
         "backdrop": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/otgwLogo1.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/overthegardenwall/covers/overthegardenwall_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/overthegardenwall/covers/overthegardenwall_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg"
       },
       "metadata": {
         "creator": "Patrick McHale",
@@ -7260,10 +7253,7 @@
         "card": "https://cearaworld.com/images/cardimages/neongenesisLogo.svg",
         "poster": "https://cearaworld.com/images/neongenesis/covers/neongenesisIcon.svg",
         "backdrop": "https://cearaworld.com/images/neongenesis/covers/neongenesis_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/neongenesis/covers/neongenesis_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/neongenesisLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/neongenesis/covers/neongenesis_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/neongenesis/covers/neongenesis_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/neongenesis/covers/neongenesis_backdrop.svg"
       },
       "metadata": {
         "creator": "Hideaki Ano",
@@ -7817,10 +7807,7 @@
         "card": "https://cearaworld.com/images/cardimages/perfectblueLogo.svg",
         "poster": "https://cearaworld.com/images/perfectblue/covers/perfectblueIcon.jpg",
         "backdrop": "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/perfectblueLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/perfectblue/covers/perfectblue_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/perfectblue/covers/perfectblue_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg"
       },
       "metadata": {
         "creator": "Satoshi Kon",
@@ -7857,10 +7844,7 @@
         "card": "https://cearaworld.com/images/cardimages/paprikaLogo1.svg",
         "poster": "https://cearaworld.com/images/paprika/covers/paprikaIcon.jpeg",
         "backdrop": "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/paprikaLogo1.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/paprika/covers/paprika_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/paprika/covers/paprika_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg"
       },
       "metadata": {
         "creator": "Satoshi Kon",
@@ -7897,8 +7881,7 @@
         "card": "https://cearaworld.com/images/cardimages/princessLogo1.svg",
         "poster": "https://cearaworld.com/images/princessmononoke/covers/princessmononokeIcon.jpg",
         "backdrop": "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/princessLogo1.png"
+        "mobileBackdrop": "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg"
       },
       "metadata": {
         "creator": "Miyazaki",
@@ -7931,10 +7914,7 @@
         "card": "https://cearaworld.com/images/cardimages/aniaraLogo.jpg",
         "poster": "https://cearaworld.com/images/aniara/covers/aniaraLogomobile.jpg",
         "backdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/aniaraLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/aniara/covers/aniara_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/aniara/covers/aniara_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg"
       },
       "metadata": {
         "creator": "Arne Arnbom",
@@ -7967,10 +7947,7 @@
         "card": "https://cearaworld.com/images/cardimages/thevanishingLogo.svg",
         "poster": "https://cearaworld.com/images/thevanishing/covers/thevanishing_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/thevanishingLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/thevanishing/covers/thevanishing_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/thevanishing/covers/thevanishing_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg"
       },
       "metadata": {
         "creator": "George Sluizer",
@@ -8007,10 +7984,7 @@
         "card": "https://cearaworld.com/images/cardimages/thelighthouseLogo.svg",
         "poster": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_mobilelogo.jpg",
         "backdrop": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/thelighthouseLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/thelighthouse/covers/thelighthouse_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/thelighthouse/covers/thelighthouse_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg"
       },
       "metadata": {
         "creator": "Robert Eggers",
@@ -8043,10 +8017,7 @@
         "card": "https://cearaworld.com/images/cardimages/aghoststoryLogo.svg",
         "poster": "https://cearaworld.com/images/aghoststory/covers/aghoststory_mobilelogo.jpg",
         "backdrop": "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/aghoststoryLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/aghoststory/covers/aghoststory_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/aghoststory/covers/aghoststory_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg"
       },
       "metadata": {
         "creator": "David Lowery",
@@ -8079,10 +8050,7 @@
         "card": "https://cearaworld.com/images/cardimages/littlemisssunshineLogo.svg",
         "poster": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_mobilelogo.jpg",
         "backdrop": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/littlemisssunshineLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/littlemisssunshine/covers/littlemisssunshine_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/littlemisssunshine/covers/littlemisssunshine_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg"
       },
       "metadata": {
         "creator": "Jonathan Dayton",
@@ -8115,10 +8083,7 @@
         "card": "https://cearaworld.com/images/cardimages/ghostintheshellLogo.svg",
         "poster": "https://cearaworld.com/images/ghostintheshell/covers/ghostintheshell_mobilelogo.webp",
         "backdrop": "https://cearaworld.com/images/ghostintheshell/covers/ghostintheshell_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/ghostintheshell/covers/ghostintheshell_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/ghostintheshellLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/ghostintheshell/covers/ghostintheshell_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/ghostintheshell/covers/ghostintheshell_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/ghostintheshell/covers/ghostintheshell_backdrop.svg"
       },
       "metadata": {
         "creator": "Kôkaku Kidôtai",
@@ -8155,10 +8120,7 @@
         "card": "https://cearaworld.com/images/cardimages/mobpsychoLogo.svg",
         "poster": "https://cearaworld.com/images/mobpsycho/covers/mobpsycho_mobilelogo.jpg",
         "backdrop": "https://cearaworld.com/images/mobpsycho/covers/mobpsycho_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/mobpsycho/covers/mobpsycho_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/mobpsychoLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/mobpsycho/covers/mobpsycho_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/mobpsycho/covers/mobpsycho_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/mobpsycho/covers/mobpsycho_backdrop.svg"
       },
       "metadata": {
         "creator": "ONE",
@@ -8943,8 +8905,7 @@
         "card": "https://cearaworld.com/images/cardimages/fmabLogo.svg",
         "poster": "https://cearaworld.com/images/fmab/covers/fmab_mobilelogo.jpg",
         "backdrop": "https://cearaworld.com/images/fmab/covers/fmab_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/fmab/covers/fmab_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/fmabLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/fmab/covers/fmab_backdrop.svg"
       },
       "metadata": {
         "creator": "Bones",
@@ -10278,10 +10239,7 @@
         "card": "https://cearaworld.com/images/cardimages/jjkLogo2.svg",
         "poster": "https://cearaworld.com/images/jjk/covers/jjk_mobileLogo2.jpg",
         "backdrop": "https://cearaworld.com/images/jjk/covers/jjk_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/jjk/covers/jjk_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/jjkLogo2.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/jjk/covers/jjk_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/jjk/covers/jjk_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/jjk/covers/jjk_backdrop.svg"
       },
       "metadata": {
         "creator": "Gege Akutami",
@@ -11505,10 +11463,7 @@
         "card": "https://cearaworld.com/images/cardimages/weaponsLogo.svg",
         "poster": "https://cearaworld.com/images/weapons/covers/weapons_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/weaponsLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/weapons/covers/weapons_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/weapons/covers/weapons_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg"
       },
       "metadata": {
         "creator": "Zach Cregger",
@@ -11540,10 +11495,7 @@
         "card": "https://cearaworld.com/images/cardimages/tokyogodfathersLogo.svg",
         "poster": "https://cearaworld.com/images/tokyogodfathers/covers/tokyogodfathers_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/tokyogodfathers/covers/tokyogodfathers_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/tokyogodfathers/covers/tokyogodfathers_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/tokyogodfathersLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/tokyogodfathers/covers/tokyogodfathers_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/tokyogodfathers/covers/tokyogodfathers_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/tokyogodfathers/covers/tokyogodfathers_backdrop.svg"
       },
       "metadata": {
         "creator": "Satoshi Kon",
@@ -11580,10 +11532,7 @@
         "card": "https://cearaworld.com/images/cardimages/cyberpunkLogo.svg",
         "poster": "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/cyberpunkLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/cyberpunk/covers/cyberpunk_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/cyberpunk/covers/cyberpunk_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg"
       },
       "metadata": {
         "creator": "Rafal Jaki",
@@ -11817,10 +11766,7 @@
         "card": "https://cearaworld.com/images/cardimages/solarisLogo.svg",
         "poster": "https://cearaworld.com/images/solaris/covers/solaris_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/solaris/covers/solaris_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/solaris/covers/solaris_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/solarisLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/solaris/covers/solaris_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/solaris/covers/solaris_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/solaris/covers/solaris_backdrop.svg"
       },
       "metadata": {
         "creator": "Andrei Tarkovsky",
@@ -11857,8 +11803,7 @@
         "card": "https://cearaworld.com/images/cardimages/eventhorizonLogo.svg",
         "poster": "https://cearaworld.com/images/eventhorizon/covers/eventhorizon_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/eventhorizon/covers/eventhorizon_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/eventhorizon/covers/eventhorizon_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/eventhorizonLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/eventhorizon/covers/eventhorizon_backdrop.svg"
       },
       "metadata": {
         "creator": "Paul W.S. Anderson",
@@ -11891,10 +11836,7 @@
         "card": "https://cearaworld.com/images/cardimages/lovedeathandrobotsLogo.svg",
         "poster": "https://cearaworld.com/images/lovedeathandrobots/covers/lovedeathandrobots_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/lovedeathandrobotsLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/lovedeathandrobots/covers/lovedeathandrobots_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/lovedeathandrobots/covers/lovedeathandrobots_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.svg"
       },
       "metadata": {
         "creator": "David Fincher",
@@ -12663,10 +12605,7 @@
         "card": "https://cearaworld.com/images/cardimages/demonsLogo.svg",
         "poster": "https://cearaworld.com/images/demons/covers/demons_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/demons/covers/demons_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/demons/covers/demons_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/demonsLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/demons/covers/demons_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/demons/covers/demons_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/demons/covers/demons_backdrop.svg"
       },
       "metadata": {
         "creator": "Toshio Matsumoto",
@@ -12703,10 +12642,7 @@
         "card": "https://cearaworld.com/images/cardimages/blackmirrorLogo.svg",
         "poster": "https://cearaworld.com/images/blackmirror/covers/blackmirror_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/blackmirror/covers/blackmirror_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/blackmirror/covers/blackmirror_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/blackmirrorLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/blackmirror/covers/blackmirror_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/blackmirror/covers/blackmirror_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/blackmirror/covers/blackmirror_backdrop.svg"
       },
       "metadata": {
         "creator": "Charlie Brooker",
@@ -13298,9 +13234,7 @@
         "card": "https://cearaworld.com/images/cardimages/severanceLogo.svg",
         "poster": "https://cearaworld.com/images/severance/covers/severance_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/severance/covers/severance_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/severance/covers/severance_backdrop.svg",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/severance/covers/severance_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/severance/covers/severance_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/severance/covers/severance_backdrop.svg"
       },
       "metadata": {
         "creator": "Dan Erickson",
@@ -13719,10 +13653,7 @@
         "card": "https://cearaworld.com/images/cardimages/pluribusLogo.svg",
         "poster": "https://cearaworld.com/images/pluribus/covers/pluribus_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/pluribus/covers/pluribus_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/pluribus/covers/pluribus_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/pluribusLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/pluribus/covers/pluribus_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/pluribus/covers/pluribus_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/pluribus/covers/pluribus_backdrop.svg"
       },
       "metadata": {
         "creator": "Dan Erickson",
@@ -13936,10 +13867,7 @@
         "card": "https://cearaworld.com/images/cardimages/akiraLogo.svg",
         "poster": "https://cearaworld.com/images/akira/covers/akira_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/akira/covers/akira_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/akira/covers/akira_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/akiraLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/akira/covers/akira_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/akira/covers/akira_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/akira/covers/akira_backdrop.svg"
       },
       "metadata": {
         "creator": "Katsuhiro Ôtomo",
@@ -13976,10 +13904,7 @@
         "card": "https://cearaworld.com/images/cardimages/exmachinaLogo.svg",
         "poster": "https://cearaworld.com/images/exmachina/covers/exmachina_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/exmachina/covers/exmachina_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/exmachina/covers/exmachina_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/exmachinaLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/exmachina/covers/exmachina_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/exmachina/covers/exmachina_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/exmachina/covers/exmachina_backdrop.svg"
       },
       "metadata": {
         "creator": "Alex Garland",
@@ -14016,8 +13941,7 @@
         "card": "https://cearaworld.com/images/cardimages/annihilationLogo.svg",
         "poster": "https://cearaworld.com/images/annihilation/covers/annihilation_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/annihilationLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg"
       },
       "metadata": {
         "creator": "Alex Garland",
@@ -14053,10 +13977,7 @@
         "card": "https://cearaworld.com/images/cardimages/itsalwayssunnyLogo.svg",
         "poster": "https://cearaworld.com/images/itsalwayssunny/covers/itsalwayssunny_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/itsalwayssunnyLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/itsalwayssunny/covers/itsalwayssunny_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/itsalwayssunny/covers/itsalwayssunny_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg"
       },
       "metadata": {
         "creator": "Glenn Howerton",
@@ -17002,10 +16923,7 @@
         "card": "https://cearaworld.com/images/cardimages/thetwilightzoneLogo.svg",
         "poster": "https://cearaworld.com/images/thetwilightzone/covers/thetwilightzone_mobileLogo.png",
         "backdrop": "https://cearaworld.com/images/thetwilightzone/covers/thetwilightzone_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/thetwilightzone/covers/thetwilightzone_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/thetwilightzoneLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/thetwilightzone/covers/thetwilightzone_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/thetwilightzone/covers/thetwilightzone_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/thetwilightzone/covers/thetwilightzone_backdrop.svg"
       },
       "metadata": {
         "creator": "Rod Serling",
@@ -19555,8 +19473,7 @@
         "card": "https://cearaworld.com/images/cardimages/redlineLogo.svg",
         "poster": "https://cearaworld.com/images/redline/covers/redline_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/redline/covers/redline_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/redline/covers/redline_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/redlineLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/redline/covers/redline_backdrop.svg"
       },
       "metadata": {
         "creator": "Takeshi Koike",
@@ -19593,10 +19510,7 @@
         "card": "https://cearaworld.com/images/cardimages/bugoniaLogo.svg",
         "poster": "https://cearaworld.com/images/bugonia/covers/bugonia_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/bugonia/covers/bugonia_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/bugonia/covers/bugonia_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/bugoniaLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/bugonia/covers/bugonia_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/bugonia/covers/bugonia_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/bugonia/covers/bugonia_backdrop.svg"
       },
       "metadata": {
         "creator": "Yorgos Lanthimos",
@@ -19633,10 +19547,7 @@
         "card": "https://cearaworld.com/images/cardimages/frankensteinLogo.svg",
         "poster": "https://cearaworld.com/images/frankenstein/covers/frankenstein_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/frankenstein/covers/frankenstein_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/frankenstein/covers/frankenstein_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/frankensteinLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/frankenstein/covers/frankenstein_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/frankenstein/covers/frankenstein_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/frankenstein/covers/frankenstein_backdrop.svg"
       },
       "metadata": {
         "creator": "Guillermo del Toro",
@@ -19672,10 +19583,7 @@
         "card": "https://cearaworld.com/images/cardimages/truedetectiveLogo.svg",
         "poster": "https://cearaworld.com/images/truedetective/covers/truedetective_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/truedetective/covers/truedetective_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/truedetective/covers/truedetective_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/truedetectiveLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/truedetective/covers/truedetective_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/truedetective/covers/truedetective_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/truedetective/covers/truedetective_backdrop.svg"
       },
       "metadata": {
         "creator": "Nic Pizzolatto",
@@ -19869,10 +19777,7 @@
         "card": "https://cearaworld.com/images/cardimages/sunsetboulevardLogo.svg",
         "poster": "https://cearaworld.com/images/sunsetboulevard/covers/sunsetboulevard_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/sunsetboulevard/covers/sunsetboulevard_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/sunsetboulevard/covers/sunsetboulevard_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/sunsetboulevardLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/sunsetboulevard/covers/sunsetboulevard_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/sunsetboulevard/covers/sunsetboulevard_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/sunsetboulevard/covers/sunsetboulevard_backdrop.svg"
       },
       "metadata": {
         "creator": "Billy Wilder",
@@ -19908,9 +19813,7 @@
         "card": "https://cearaworld.com/images/cardimages/shikijitsuLogo.svg",
         "poster": "https://cearaworld.com/images/shikijitsu/covers/shikijitsu_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/shikijitsu/covers/shikijitsu_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/shikijitsu/covers/shikijitsu_backdrop.svg",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/shikijitsu/covers/shikijitsu_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/shikijitsu/covers/shikijitsu_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/shikijitsu/covers/shikijitsu_backdrop.svg"
       },
       "metadata": {
         "creator": "Hideaki Anno",
@@ -19946,8 +19849,7 @@
         "card": "https://cearaworld.com/images/cardimages/speaknoevilLogo.svg",
         "poster": "https://cearaworld.com/images/speaknoevil/covers/speaknoevil_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/speaknoevil/covers/speaknoevil_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/speaknoevil/covers/speaknoevil_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/speaknoevilLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/speaknoevil/covers/speaknoevil_backdrop.svg"
       },
       "metadata": {
         "creator": "Christian Tafdrup",
@@ -19983,10 +19885,7 @@
         "card": "https://cearaworld.com/images/cardimages/ikiruLogo.svg",
         "poster": "https://cearaworld.com/images/ikiru/covers/ikiru_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/ikiru/covers/ikiru_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/ikiru/covers/ikiru_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/ikiruLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/ikiru/covers/ikiru_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/ikiru/covers/ikiru_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/ikiru/covers/ikiru_backdrop.svg"
       },
       "metadata": {
         "creator": "Akira Kurosawa",
@@ -20022,10 +19921,7 @@
         "card": "https://cearaworld.com/images/cardimages/theericandreshowLogo.svg",
         "poster": "https://cearaworld.com/images/theericandreshow/covers/theericandreshow_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/theericandreshow/covers/theericandreshow_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/theericandreshow/covers/theericandreshow_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/theericandreshowLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/theericandreshow/covers/theericandreshow_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/theericandreshow/covers/theericandreshow_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/theericandreshow/covers/theericandreshow_backdrop.svg"
       },
       "metadata": {
         "creator": "Eric André",
@@ -20895,8 +20791,7 @@
         "card": "https://cearaworld.com/images/cardimages/pokemon2000Logo.svg",
         "poster": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/pokemon2000Logo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg"
       },
       "metadata": {
         "creator": "Kunihiko Yuyama",
@@ -20932,10 +20827,7 @@
         "card": "https://cearaworld.com/images/cardimages/coherenceLogo.svg",
         "poster": "https://cearaworld.com/images/coherence/covers/coherence_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/coherence/covers/coherence_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/coherence/covers/coherence_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/coherenceLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/coherence/covers/coherence_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/coherence/covers/coherence_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/coherence/covers/coherence_backdrop.svg"
       },
       "metadata": {
         "creator": "James Ward Byrkit",
@@ -20971,8 +20863,7 @@
         "card": "https://cearaworld.com/images/cardimages/exit8Logo.svg",
         "poster": "https://cearaworld.com/images/exit8/covers/exit8_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/exit8/covers/exit8_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/exit8/covers/exit8_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/exit8Logo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/exit8/covers/exit8_backdrop.svg"
       },
       "metadata": {
         "creator": "Genki Kawamura",
@@ -21008,10 +20899,7 @@
         "card": "https://cearaworld.com/images/cardimages/hokumLogo.svg",
         "poster": "https://cearaworld.com/images/hokum/covers/hokum_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/hokum/covers/hokum_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/hokum/covers/hokum_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/hokumLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/hokum/covers/hokum_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/hokum/covers/hokum_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/hokum/covers/hokum_backdrop.svg"
       },
       "metadata": {
         "creator": "Damian McCarthy",
@@ -21047,10 +20935,7 @@
         "card": "https://cearaworld.com/images/cardimages/obsessionLogo.svg",
         "poster": "https://cearaworld.com/images/obsession/covers/obsession_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/obsession/covers/obsession_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/obsession/covers/obsession_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/obsessionLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/obsession/covers/obsession_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/obsession/covers/obsession_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/obsession/covers/obsession_backdrop.svg"
       },
       "metadata": {
         "creator": "Curry Barker",
@@ -21082,8 +20967,7 @@
         "card": "https://cearaworld.com/images/cardimages/projecthailmaryLogo.svg",
         "poster": "https://cearaworld.com/images/projecthailmary/covers/projecthailmary_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/projecthailmary/covers/projecthailmary_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/projecthailmary/covers/projecthailmary_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/projecthailmaryLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/projecthailmary/covers/projecthailmary_backdrop.svg"
       },
       "metadata": {
         "creator": "Phil Lord",
@@ -21119,8 +21003,7 @@
         "card": "https://cearaworld.com/images/cardimages/bloodthelastvampireLogo.svg",
         "poster": "https://cearaworld.com/images/bloodthelastvampire/covers/bloodthelastvampire_mobileLogo.jpeg",
         "backdrop": "https://cearaworld.com/images/bloodthelastvampire/covers/bloodthelastvampire_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/bloodthelastvampire/covers/bloodthelastvampire_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/bloodthelastvampireLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/bloodthelastvampire/covers/bloodthelastvampire_backdrop.svg"
       },
       "metadata": {
         "creator": "Chris Nahon",
@@ -21156,8 +21039,7 @@
         "card": "https://cearaworld.com/images/cardimages/theanimatrixLogo.svg",
         "poster": "https://cearaworld.com/images/theanimatrix/covers/theanimatrix_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/theanimatrix/covers/theanimatrix_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/theanimatrix/covers/theanimatrix_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/theanimatrixLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/theanimatrix/covers/theanimatrix_backdrop.svg"
       },
       "metadata": {
         "creator": "Shin'ichirō Watanabe",
@@ -21193,10 +21075,7 @@
         "card": "https://cearaworld.com/images/cardimages/mongolianchopsquadLogo.svg",
         "poster": "https://cearaworld.com/images/mongolianchopsquad/covers/mongolianchopsquad_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/mongolianchopsquad/covers/mongolianchopsquad_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/mongolianchopsquad/covers/mongolianchopsquad_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/mongolianchopsquadLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/mongolianchopsquad/covers/mongolianchopsquad_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/mongolianchopsquad/covers/mongolianchopsquad_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/mongolianchopsquad/covers/mongolianchopsquad_backdrop.svg"
       },
       "metadata": {
         "creator": "Harold Sakuishi",
@@ -21750,10 +21629,7 @@
         "card": "https://cearaworld.com/images/cardimages/widowsbayLogo.svg",
         "poster": "https://cearaworld.com/images/widowsbay/covers/widowsbay_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/widowsbay/covers/widowsbay_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/widowsbay/covers/widowsbay_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/widowsbayLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/widowsbay/covers/widowsbay_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/widowsbay/covers/widowsbay_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/widowsbay/covers/widowsbay_backdrop.svg"
       },
       "metadata": {
         "creator": "Katie Dippold",
@@ -21947,8 +21823,7 @@
         "card": "https://cearaworld.com/images/cardimages/backroomsLogo.svg",
         "poster": "https://cearaworld.com/images/backrooms/covers/backrooms_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/backrooms/covers/backrooms_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/backrooms/covers/backrooms_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/backroomsLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/backrooms/covers/backrooms_backdrop.svg"
       },
       "metadata": {
         "creator": "Kane Parsons",
@@ -21984,10 +21859,7 @@
         "card": "https://cearaworld.com/images/cardimages/pokemondestinydeoxysLogo.svg",
         "poster": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/pokemondestinydeoxysLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg"
       },
       "metadata": {
         "creator": "Kunihiko Yuyama",
@@ -22023,9 +21895,7 @@
         "card": "https://cearaworld.com/images/cardimages/atlantaLogo.svg",
         "poster": "https://cearaworld.com/images/atlanta/covers/atlanta_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/atlanta/covers/atlanta_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/atlanta/covers/atlanta_backdrop.svg",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/atlanta/covers/atlanta_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/atlanta/covers/atlanta_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/atlanta/covers/atlanta_backdrop.svg"
       },
       "metadata": {
         "creator": "Donald Glover",
@@ -22894,10 +22764,7 @@
         "card": "https://cearaworld.com/images/cardimages/chronicleLogo.svg",
         "poster": "https://cearaworld.com/images/chronicle/covers/chronicle_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/chronicle/covers/chronicle_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/chronicle/covers/chronicle_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/chronicleLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/chronicle/covers/chronicle_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/chronicle/covers/chronicle_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/chronicle/covers/chronicle_backdrop.svg"
       },
       "metadata": {
         "creator": "Josh Trank",
@@ -22933,8 +22800,7 @@
         "card": "https://cearaworld.com/images/cardimages/jojosLogo.svg",
         "poster": "https://cearaworld.com/images/jojos/covers/jojos_mobileLogo.webp",
         "backdrop": "https://cearaworld.com/images/jojos/covers/jojos_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/jojos/covers/jojos_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/jojosLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/jojos/covers/jojos_backdrop.svg"
       },
       "metadata": {
         "creator": "Hirohiko Araki",
@@ -23728,10 +23594,7 @@
         "card": "https://cearaworld.com/images/cardimages/chernobylLogo.svg",
         "poster": "https://cearaworld.com/images/chernobyl/covers/chernobyl_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/chernobyl/covers/chernobyl_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/chernobyl/covers/chernobyl_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/chernobylLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/chernobyl/covers/chernobyl_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/chernobyl/covers/chernobyl_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/chernobyl/covers/chernobyl_backdrop.svg"
       },
       "metadata": {
         "creator": "Craig Mazin",
@@ -23865,10 +23728,7 @@
         "card": "https://cearaworld.com/images/cardimages/beingjohnmalkovichLogo.svg",
         "poster": "https://cearaworld.com/images/beingjohnmalkovich/covers/beingjohnmalkovich_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/beingjohnmalkovichLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.svg"
       },
       "metadata": {
         "creator": "Spike Jonze",
@@ -23904,10 +23764,7 @@
         "card": "https://cearaworld.com/images/cardimages/attackontitanLogo.svg",
         "poster": "https://cearaworld.com/images/attackontitan/covers/attackontitan_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/attackontitan/covers/attackontitan_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/attackontitan/covers/attackontitan_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/attackontitanLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/attackontitan/covers/attackontitan_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/attackontitan/covers/attackontitan_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/attackontitan/covers/attackontitan_backdrop.svg"
       },
       "metadata": {
         "creator": "Yasuko Kobayashi",
@@ -25716,8 +25573,7 @@
         "card": "https://cearaworld.com/images/cardimages/thedramaLogo.svg",
         "poster": "https://cearaworld.com/images/thedrama/covers/thedrama_mobileLogo.webp",
         "backdrop": "https://cearaworld.com/images/thedrama/covers/thedrama_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/thedrama/covers/thedrama_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/thedramaLogo.png"
+        "mobileBackdrop": "https://cearaworld.com/images/thedrama/covers/thedrama_backdrop.svg"
       },
       "metadata": {
         "creator": "Kristoffer Borgli",
@@ -25753,10 +25609,7 @@
         "card": "https://cearaworld.com/images/cardimages/thenightisshortLogo.svg",
         "poster": "https://cearaworld.com/images/thenightisshort/covers/thenightisshort_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/thenightisshort/covers/thenightisshort_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/thenightisshort/covers/thenightisshort_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/thenightisshortLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/thenightisshort/covers/thenightisshort_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/thenightisshort/covers/thenightisshort_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/thenightisshort/covers/thenightisshort_backdrop.svg"
       },
       "metadata": {
         "creator": "Masaaki Yuasa",
@@ -25792,10 +25645,7 @@
         "card": "https://cearaworld.com/images/cardimages/cureLogo.svg",
         "poster": "https://cearaworld.com/images/cure/covers/cure_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/cure/covers/cure_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/cure/covers/cure_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/cureLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/cure/covers/cure_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/cure/covers/cure_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/cure/covers/cure_backdrop.svg"
       },
       "metadata": {
         "creator": "Kiyoshi Kurosawa",
@@ -25831,10 +25681,7 @@
         "card": "https://cearaworld.com/images/cardimages/theinviteLogo.svg",
         "poster": "https://cearaworld.com/images/theinvite/covers/theinvite_mobileLogo.jpg",
         "backdrop": "https://cearaworld.com/images/theinvite/covers/theinvite_backdrop.svg",
-        "mobileBackdrop": "https://cearaworld.com/images/theinvite/covers/theinvite_backdrop.svg",
-        "cardIOS": "https://cearaworld.com/images/ios/cardimages/theinviteLogo.png",
-        "backdropIOS": "https://cearaworld.com/images/ios/backdrops/theinvite/covers/theinvite_backdrop.jpg",
-        "mobileBackdropIOS": "https://cearaworld.com/images/ios/backdrops/theinvite/covers/theinvite_backdrop.jpg"
+        "mobileBackdrop": "https://cearaworld.com/images/theinvite/covers/theinvite_backdrop.svg"
       },
       "metadata": {
         "creator": "Olivia Wilde",

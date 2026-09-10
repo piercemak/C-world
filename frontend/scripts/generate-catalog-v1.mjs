@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -42,22 +41,6 @@ const normalizePath = (value) => {
   const source = String(value || "");
   if (/^https?:\/\//i.test(source)) return source;
   return `${publicBaseUrl}/${source.replace(/^\/+/, "")}`;
-};
-
-const optimizedIOSArtworkPath = (value, folder, extension) => {
-  const source = String(value || "").trim();
-  if (!source || /^https?:\/\//i.test(source)) return null;
-
-  const relative = source
-    .replace(/^\/+/, "")
-    .replace(/^images\//, "")
-    .replace(/\.[^/.]+$/, "");
-  const outputRelative = folder === "cardimages"
-    ? relative.replace(/^cardimages\//, "")
-    : relative;
-  const localPath = path.join(frontendDir, "public", "images", "ios", folder, `${outputRelative}.${extension}`);
-  if (!existsSync(localPath)) return null;
-  return normalizePath(`/images/ios/${folder}/${outputRelative}.${extension}`);
 };
 
 const cleanAssetId = (value) => String(value || "").replace(/-/g, "");
@@ -150,17 +133,6 @@ const toMedia = ([id, desktop]) => {
   const mobile = mobileById.get(id) || {};
   const type = desktop.type === "movie" ? "movie" : "show";
   const titlesBySeason = episodeTitles[id] || {};
-  const cardIOS = optimizedIOSArtworkPath(mobile.card, "cardimages", "png");
-  const backdropIOS = optimizedIOSArtworkPath(
-    mobile.background || desktop.background,
-    "backdrops",
-    "jpg",
-  );
-  const mobileBackdropIOS = optimizedIOSArtworkPath(
-    mobile.mobilebackground || mobile.background || desktop.background,
-    "backdrops",
-    "jpg",
-  );
   const item = {
     id,
     assetId: cleanAssetId(id),
@@ -173,9 +145,6 @@ const toMedia = ([id, desktop]) => {
       poster: normalizePath(mobile.keyart),
       backdrop: normalizePath(mobile.background || desktop.background),
       mobileBackdrop: normalizePath(mobile.mobilebackground || mobile.background || desktop.background),
-      ...(cardIOS ? { cardIOS } : {}),
-      ...(backdropIOS ? { backdropIOS } : {}),
-      ...(mobileBackdropIOS ? { mobileBackdropIOS } : {}),
     },
     metadata: {
       creator: String(mobile.creator || ""),

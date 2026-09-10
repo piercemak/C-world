@@ -50,16 +50,13 @@ struct CWorldArtwork: Codable {
     let poster: URL?
     let backdrop: URL?
     let mobileBackdrop: URL?
-    let cardIOS: URL?
-    let backdropIOS: URL?
-    let mobileBackdropIOS: URL?
 
     var preferredCard: URL? {
-        cardIOS ?? card
+        card
     }
 
     var preferredBackdrop: URL? {
-        mobileBackdropIOS ?? mobileBackdrop ?? backdropIOS ?? backdrop
+        mobileBackdrop ?? backdrop
     }
 }
 

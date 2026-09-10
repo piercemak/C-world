@@ -29,10 +29,7 @@
         "card": { "$ref": "#/$defs/url" },
         "poster": { "$ref": "#/$defs/url" },
         "backdrop": { "$ref": "#/$defs/url" },
-        "mobileBackdrop": { "$ref": "#/$defs/url" },
-        "cardIOS": { "$ref": "#/$defs/url" },
-        "backdropIOS": { "$ref": "#/$defs/url" },
-        "mobileBackdropIOS": { "$ref": "#/$defs/url" }
+        "mobileBackdrop": { "$ref": "#/$defs/url" }
       },
       "additionalProperties": false
     },

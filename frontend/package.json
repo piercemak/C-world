@@ -7,7 +7,6 @@
     "dev": "node scripts/generate-offline-assets.mjs && node scripts/generate-roku-captions.mjs && node scripts/generate-catalog-v1.mjs && vite",
     "build": "node scripts/generate-offline-assets.mjs && node scripts/generate-roku-captions.mjs && node scripts/generate-catalog-v1.mjs && vite build",
     "catalog:generate": "node scripts/generate-catalog-v1.mjs",
-    "ios:artwork": "node scripts/generate-ios-artwork.mjs",
     "captions:generate": "node scripts/generate-roku-captions.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
