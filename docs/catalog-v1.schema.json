@@ -29,7 +29,10 @@
         "card": { "$ref": "#/$defs/url" },
         "poster": { "$ref": "#/$defs/url" },
         "backdrop": { "$ref": "#/$defs/url" },
-        "mobileBackdrop": { "$ref": "#/$defs/url" }
+        "mobileBackdrop": { "$ref": "#/$defs/url" },
+        "cardIOS": { "$ref": "#/$defs/url" },
+        "backdropIOS": { "$ref": "#/$defs/url" },
+        "mobileBackdropIOS": { "$ref": "#/$defs/url" }
       },
       "additionalProperties": false
     },
@@ -66,7 +69,10 @@
         "airDate": { "type": "string" },
         "duration": { "type": "string" },
         "playbackRef": { "$ref": "#/$defs/playbackRef" },
-        "subtitles": { "type": "array", "items": { "$ref": "#/$defs/url" } }
+        "subtitles": { "type": "array", "items": { "$ref": "#/$defs/url" } },
+        "rokuSubtitles": { "type": "array", "items": { "$ref": "#/$defs/url" } },
+        "skipIntroEnd": { "type": ["number", "null"], "minimum": 0 },
+        "skipOutroStart": { "type": ["number", "null"], "minimum": 0 }
       },
       "additionalProperties": false
     },
@@ -90,11 +96,16 @@
         },
         "type": { "enum": ["movie", "show"] },
         "title": { "type": "string", "minLength": 1 },
+        "dateAdded": { "type": "string" },
         "description": { "type": "string" },
         "artwork": { "$ref": "#/$defs/artwork" },
         "metadata": { "$ref": "#/$defs/metadata" },
         "subtitles": { "type": "boolean" },
         "subtitleTracks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/url" }
+        },
+        "rokuSubtitleTracks": {
           "type": "array",
           "items": { "$ref": "#/$defs/url" }
         },

@@ -21,7 +21,9 @@ The response must be JSON, served over HTTPS, and contain absolute HTTPS artwork
 - Episode display titles and descriptions are independent from playback object filenames.
 - Movies use `type: "movie"` and have `movieAsset`; shows use `type: "show"` and have `seasons`.
 - Public clients receive `playbackRef`, not an unsigned S3 URL or a private signing key.
-- `subtitleTracks` contains absolute, public caption URLs for movies; episode-level `subtitles` contains the URLs for that episode.
+- `subtitleTracks` contains absolute, public WebVTT caption URLs for desktop and iOS; episode-level `subtitles` contains WebVTT URLs for that episode.
+- `rokuSubtitleTracks` and episode-level `rokuSubtitles` contain absolute Roku-compatible SRT URLs.
+- `artwork.cardIOS`, `artwork.backdropIOS`, and `artwork.mobileBackdropIOS` are optional optimized raster variants for iOS. iOS should prefer them when present and fall back to the standard artwork fields when they are absent.
 
 ## Playback rules
 
@@ -74,6 +76,8 @@ The backend resolves the reference to the actual object key and returns a short-
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
       "seasons": [
         {
           "number": 1,
@@ -89,7 +93,8 @@ The backend resolves the reference to the actual object key and returns a short-
                 "season": 1,
                 "episode": 10
               },
-              "subtitles": []
+              "subtitles": [],
+              "rokuSubtitles": []
             }
           ]
         }
