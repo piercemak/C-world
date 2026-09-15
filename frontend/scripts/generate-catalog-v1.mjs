@@ -22,6 +22,18 @@ const publicBaseUrl = String(
   process.env.CATALOG_PUBLIC_BASE_URL || "https://cearaworld.com",
 ).replace(/\/+$/, "");
 
+// Single-title pilot. Remove this entry, or move it into a future media
+// registry, once the HLS path has been validated and a broader rollout is
+// intentionally approved.
+const HLS_PILOT = {
+  thedrama: {
+    type: "hls",
+    hlsPrefix: "thedrama/hls",
+    master: "master.m3u8",
+    ttlSeconds: 21600,
+  },
+};
+
 const episodeTitles = JSON.parse(await readFile(titlesPath, "utf8"));
 const episodeMetadata = JSON.parse(await readFile(metadataPath, "utf8"));
 const playerSource = await readFile(playerSourcePath, "utf8");
@@ -158,6 +170,8 @@ const toMedia = ([id, desktop]) => {
     subtitleTracks: [],
     rokuSubtitleTracks: [],
   };
+
+  if (HLS_PILOT[id]) item.playback = HLS_PILOT[id];
 
   if (type === "movie") {
     item.movieAsset = { mediaId: id, season: null, episode: null };

@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .catalog import CatalogError, find_episode, find_media, load_catalog
+from .hls import build_hls_playback_payload
 from .views import build_signed_cloudfront_url, resolve_episode_s3_key
 
 
@@ -75,6 +76,9 @@ def playback_session(request):
 
     if not media:
         return Response({"error": "Media not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    if (media.get("playback") or {}).get("type") == "hls":
+        return Response(build_hls_playback_payload(media))
 
     try:
         if media.get("type") == "movie":

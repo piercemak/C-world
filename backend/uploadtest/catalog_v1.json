@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-09-10T19:52:01.109Z",
-  "generatedAt": "2026-09-10T19:52:01.109Z",
+  "catalogRevision": "2026-09-14T17:21:55.861Z",
+  "generatedAt": "2026-09-14T17:21:55.861Z",
   "items": [
     {
       "id": "steven-universe",
@@ -25596,6 +25596,12 @@
         "mediaId": "thedrama",
         "season": null,
         "episode": null
+      },
+      "playback": {
+        "type": "hls",
+        "hlsPrefix": "thedrama/hls",
+        "master": "master.m3u8",
+        "ttlSeconds": 21600
       }
     },
     {
