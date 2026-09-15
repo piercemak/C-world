@@ -30,6 +30,10 @@ struct CWorldIntroView: View {
             player = introPlayer
             introPlayer.play()
         }
+        .onDisappear {
+            player?.pause()
+            player = nil
+        }
         .onReceive(NotificationCenter.default.publisher(for: .AVPlayerItemDidPlayToEndTime)) { notification in
             guard let player, notification.object as? AVPlayerItem === player.currentItem else { return }
             finish()
@@ -75,6 +79,8 @@ private enum MobileLibraryTab: String {
 
 struct CWorldHomeView: View {
     @EnvironmentObject private var appModel: AppModel
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @GestureState(resetTransaction: Transaction(animation: .spring(response: 0.32, dampingFraction: 0.85))) private var carouselDrag: CGFloat = 0
     @State private var activeTab: MobileLibraryTab = .shows
     @State private var currentIndex = 0
     @State private var activePage = 0
@@ -92,8 +98,9 @@ struct CWorldHomeView: View {
     }
 
     private var pages: [[CWorldMedia]] {
-        stride(from: 0, to: filteredItems.count, by: 2).map { start in
-            Array(filteredItems[start..<min(start + 2, filteredItems.count)])
+        let items = filteredItems
+        return stride(from: 0, to: items.count, by: 2).map { start in
+            Array(items[start..<min(start + 2, items.count)])
         }
     }
 
@@ -154,6 +161,19 @@ struct CWorldHomeView: View {
                                 .padding(.top, 12)
                                 .padding(.bottom, 8)
                             }
+                        } else if appModel.catalog.isEmpty && appModel.isRefreshingCatalog {
+                            ProgressView("Loading titles…")
+                                .tint(.white)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        } else if appModel.catalog.isEmpty, let error = appModel.errorMessage {
+                            ContentUnavailableView {
+                                Label("Titles couldn't load", systemImage: "wifi.exclamationmark")
+                            } description: {
+                                Text(error)
+                            } actions: {
+                                Button("Try Again") { Task { await appModel.retryConnection() } }
+                            }
                         } else {
                             ContentUnavailableView(
                                 "No results found.",
@@ -173,9 +193,6 @@ struct CWorldHomeView: View {
                 if let media = appModel.catalog.first(where: { $0.id == mediaID }) {
                     CWorldMediaLaunchDestination(media: media, onBack: {
                         selectedMediaID = nil
-                        DispatchQueue.main.async {
-                            showingArchive = true
-                        }
                     })
                 } else {
                     ContentUnavailableView("Title unavailable", systemImage: "film.stack")
@@ -184,30 +201,9 @@ struct CWorldHomeView: View {
             .sheet(isPresented: $showingProfiles) {
                 ProfilePickerView()
             }
-            .overlay(alignment: .top) {
-                if isSearchOpen {
-                    HStack {
-                        TextField("Search...", text: $searchText)
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            .foregroundStyle(.white)
-                            .tint(.white)
-                        Button {
-                            isSearchOpen = false
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(.white.opacity(0.6))
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    .padding(.horizontal, 16)
-                    .frame(height: 64)
-                    .background(.black.opacity(0.72), in: RoundedRectangle(cornerRadius: 18))
-                    .padding(.horizontal, 12)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .zIndex(10)
-                }
+            .sheet(isPresented: $isSearchOpen) {
+                CatalogSearchView()
+                    .presentationDragIndicator(.visible)
             }
             .animation(.easeInOut(duration: 0.25), value: isSearchOpen)
             .animation(.easeInOut(duration: 0.45), value: currentMedia?.id)
@@ -285,6 +281,7 @@ struct CWorldHomeView: View {
                         .foregroundStyle(.white)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel("Search titles and episodes")
             }
         }
         .padding(.horizontal, 10)
@@ -341,31 +338,44 @@ struct CWorldHomeView: View {
                     .contentShape(RoundedRectangle(cornerRadius: 24))
                     .scaleEffect(isCurrent ? 1.0 : 0.54)
                     .opacity(isCurrent ? 1 : 0.62)
-                    .offset(x: isCurrent ? 0 : (isNext ? 112 : -112))
+                    .offset(x: (isCurrent ? 0 : (isNext ? 112 : -112)) + (reduceMotion ? 0 : carouselDrag * 0.35))
                     .zIndex(isCurrent ? 3 : 2)
                     .rotation3DEffect(
                         .degrees(isCurrent ? 0 : (isNext ? -18 : 18)),
                         axis: (x: 0, y: 1, z: 0)
                     )
-                    .animation(.spring(response: 0.45, dampingFraction: 0.78), value: currentIndex)
+                    .animation(reduceMotion ? nil : .spring(response: 0.45, dampingFraction: 0.78), value: currentIndex)
                 }
             }
         }
         .frame(maxWidth: .infinity)
         .frame(height: 350)
         .contentShape(Rectangle())
-        .gesture(
-            DragGesture(minimumDistance: 20)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 12)
+                .updating($carouselDrag) { value, offset, _ in
+                    guard filteredItems.count > 1,
+                          abs(value.translation.width) > abs(value.translation.height) * 1.2 else { return }
+                    offset = min(220, max(-220, value.translation.width))
+                }
                 .onEnded { value in
-                    if value.translation.width < -60 {
-                        advanceCarousel(by: 1)
-                    } else if value.translation.width > 60 {
-                        advanceCarousel(by: -1)
-                    }
+                    guard filteredItems.count > 1,
+                          abs(value.translation.width) > abs(value.translation.height) * 1.2 else { return }
+                    let distance = value.translation.width
+                    // Short flicks use momentum; slower drags need only a modest distance.
+                    guard abs(distance) >= 32 || abs(value.predictedEndTranslation.width) >= 80 else { return }
+                    advanceCarousel(by: distance < 0 ? 1 : -1)
                 }
         )
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Featured title \(media.title)")
+        .accessibilityAdjustableAction { direction in
+            switch direction {
+            case .increment: advanceCarousel(by: 1)
+            case .decrement: advanceCarousel(by: -1)
+            @unknown default: break
+            }
+        }
     }
 
     private func mobileLibraryPages(geometry: GeometryProxy) -> some View {
@@ -417,7 +427,7 @@ struct CWorldHomeView: View {
 
     private func advanceCarousel(by amount: Int) {
         guard !filteredItems.isEmpty else { return }
-        withAnimation(.spring(response: 0.45, dampingFraction: 0.78)) {
+        withAnimation(reduceMotion ? nil : .spring(response: 0.45, dampingFraction: 0.78)) {
             currentIndex = (currentIndex + amount + filteredItems.count) % filteredItems.count
         }
     }
@@ -435,7 +445,7 @@ struct ProfileHeaderImage: View {
         Group {
             if let avatarURL = profile?.avatarURL,
                let url = URL(string: avatarURL),
-               avatarURL.hasPrefix("http") {
+               ["http", "https", "data"].contains(url.scheme?.lowercased() ?? "") {
                 CachedRemoteImage(url: url) {
                     placeholder
                 }

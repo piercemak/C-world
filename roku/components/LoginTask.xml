@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="LoginTask" extends="Task">
+    <interface>
+        <field id="apiBase" type="string" />
+        <field id="username" type="string" />
+        <field id="password" type="string" />
+        <field id="resultJson" type="string" alwaysNotify="true" />
+        <field id="errorMessage" type="string" alwaysNotify="true" />
+    </interface>
+    <script type="text/brightscript" uri="pkg:/components/LoginTask.brs" />
+</component>

@@ -1,0 +1,998 @@
+{
+  "version": 1,
+  "catalogRevision": "2026-09-10T19:52:01.109Z",
+  "assets": {
+    "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
+      "image": "964ab5dc6c99-23f200b96447.jpg",
+      "thumbnail": "964ab5dc6c99-23f200b96447-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "23f200b96447e0bff5e0dd5bb945afd938f6c5709f9c0adc3ae7afa67744cfbd"
+    },
+    "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg": {
+      "image": "5571df06187b-7b8158e5f43b.jpg",
+      "thumbnail": "5571df06187b-7b8158e5f43b-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7b8158e5f43b7d50b52ab0326fbb8382332bbfddb4e85db27286c3e90e9dde38"
+    },
+    "https://cearaworld.com/images/cardimages/adventuretimeLogo1.svg": {
+      "image": "4a56f4f2cd27-2f357397f950.jpg",
+      "thumbnail": "4a56f4f2cd27-2f357397f950-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "2f357397f950b3a04f6482c6e47d26e3442e9f60c014d3bec3fba02c4d3de334"
+    },
+    "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg": {
+      "image": "68b6373c4060-b96142dcfbe3.jpg",
+      "thumbnail": "68b6373c4060-b96142dcfbe3-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b96142dcfbe3eb744ce79c874740e9c7fa9db9298c3768b5748ea7e99f39336e"
+    },
+    "https://cearaworld.com/images/cardimages/otgwLogo1.svg": {
+      "image": "d0e6d3889757-f803ac19327d.jpg",
+      "thumbnail": "d0e6d3889757-f803ac19327d-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "f803ac19327d378491b5ee7b2ae4da7733778fbac80a578bd7d93f6a26b8e19d"
+    },
+    "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg": {
+      "image": "617fa911cdc0-ae2992384fdd.jpg",
+      "thumbnail": "617fa911cdc0-ae2992384fdd-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ae2992384fdd28d8f664d91227ba743ee0b16d83a8b24b1442f56ff35026b8cc"
+    },
+    "https://cearaworld.com/images/cardimages/neongenesisLogo.svg": {
+      "image": "1a32d0d258e5-df1350104269.jpg",
+      "thumbnail": "1a32d0d258e5-df1350104269-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "df135010426963642cee955582219faff5a432933d949ffca027d42743e2ae58"
+    },
+    "https://cearaworld.com/images/neongenesis/covers/neongenesisIcon.svg": {
+      "image": "ef1c600899c4-5c87950cbbad.png",
+      "thumbnail": "ef1c600899c4-5c87950cbbad-thumb.png",
+      "width": 1085,
+      "height": 1536,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5c87950cbbad468a061d6ba79b17a39be6347204a00a9d45c75eaf6785f9a93c"
+    },
+    "https://cearaworld.com/images/neongenesis/covers/neongenesis_backdrop.svg": {
+      "image": "d102852124b2-7197bfdb1ce1.jpg",
+      "thumbnail": "d102852124b2-7197bfdb1ce1-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7197bfdb1ce1c681a8f34d1d0de214da0999bbfd48ea44f2b579e4fdbc86bef7"
+    },
+    "https://cearaworld.com/images/cardimages/perfectblueLogo.svg": {
+      "image": "a6ceece554cf-b268c235aa7f.jpg",
+      "thumbnail": "a6ceece554cf-b268c235aa7f-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b268c235aa7f634b4e5001c9a333aa438c8282b175cab1978988560eeeb30682"
+    },
+    "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg": {
+      "image": "447f14582c8a-6666ba69b19a.jpg",
+      "thumbnail": "447f14582c8a-6666ba69b19a-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "6666ba69b19ad4fc158d45be75dfa8147d0913a1255840f03e3511bf0f7baeea"
+    },
+    "https://cearaworld.com/images/cardimages/paprikaLogo1.svg": {
+      "image": "e45b944e8a4a-f27ccf13060a.jpg",
+      "thumbnail": "e45b944e8a4a-f27ccf13060a-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "f27ccf13060a67fae58c4aa6ee094ba4c2f8d9b914d3fb31c34688ade8f73599"
+    },
+    "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg": {
+      "image": "28b7e0b008d5-395695566b22.jpg",
+      "thumbnail": "28b7e0b008d5-395695566b22-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "395695566b225862bf3362b447b673f0ffd1bc2bdb3061986f06fd83054ece9d"
+    },
+    "https://cearaworld.com/images/cardimages/princessLogo1.svg": {
+      "image": "5a5218c9df03-c2f0f976f99e.jpg",
+      "thumbnail": "5a5218c9df03-c2f0f976f99e-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c2f0f976f99e599fb9f227d20a0249522f5f537688612737c7dfb7d9b3df7f19"
+    },
+    "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg": {
+      "image": "8fdae1ef4062-51ca93c9b045.jpg",
+      "thumbnail": "8fdae1ef4062-51ca93c9b045-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "51ca93c9b04536dbd0b4ab7bf3877e717f3c06451ce6324cb8eae16f285e9e8a"
+    },
+    "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg": {
+      "image": "baee51aa3bb1-9852854f8639.jpg",
+      "thumbnail": "baee51aa3bb1-9852854f8639-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "9852854f8639b242310ceaea11abce65e5ab2965ebc5191092fb97fb9913dd19"
+    },
+    "https://cearaworld.com/images/cardimages/thevanishingLogo.svg": {
+      "image": "fbe867cfdec9-8d3d09db6ee1.jpg",
+      "thumbnail": "fbe867cfdec9-8d3d09db6ee1-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8d3d09db6ee1723290d2e2455184b5077334ee2fbdd0c79de7986258da523c2c"
+    },
+    "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg": {
+      "image": "d7557e7437b1-55e1eb08a9cf.jpg",
+      "thumbnail": "d7557e7437b1-55e1eb08a9cf-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "55e1eb08a9cfffc641f36dd574571c02b1b45782cbfd5b199cbd17477cfb7d4a"
+    },
+    "https://cearaworld.com/images/cardimages/thelighthouseLogo.svg": {
+      "image": "f455088fbd07-daae4db21c9c.jpg",
+      "thumbnail": "f455088fbd07-daae4db21c9c-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "daae4db21c9cf9169f4eb7c0d3c61c05550dd40ea68347478c1dcb5c7807b03e"
+    },
+    "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg": {
+      "image": "588751988fa3-10b880cef9ca.jpg",
+      "thumbnail": "588751988fa3-10b880cef9ca-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "10b880cef9ca09c3ddd0b90ceedf3a6e18a6e09d5f3cc9d2d2128d728a33cb88"
+    },
+    "https://cearaworld.com/images/cardimages/aghoststoryLogo.svg": {
+      "image": "dd82b0dc2c02-43edfeacbbb5.jpg",
+      "thumbnail": "dd82b0dc2c02-43edfeacbbb5-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "43edfeacbbb5b85d58f8ffa24d5905782efd8e1234f9943315a36b9fc096e96c"
+    },
+    "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg": {
+      "image": "3b5e327a9826-a29ed3608057.jpg",
+      "thumbnail": "3b5e327a9826-a29ed3608057-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a29ed36080576dc9cbefb93b8d20594916cf89dfc1a3034231eece7efcd091c7"
+    },
+    "https://cearaworld.com/images/cardimages/littlemisssunshineLogo.svg": {
+      "image": "0c4b3bdd0e80-00866a6edd83.jpg",
+      "thumbnail": "0c4b3bdd0e80-00866a6edd83-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "00866a6edd8302d5861935cd784630c87874fb563c8cf88cd2938d4ca95572a5"
+    },
+    "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg": {
+      "image": "3cbe0ef202c8-2d5a6ee38979.jpg",
+      "thumbnail": "3cbe0ef202c8-2d5a6ee38979-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "2d5a6ee389790d0ca5d1a716e8aa1d6ef19e5e202c23c9d6878ce6c7049f074c"
+    },
+    "https://cearaworld.com/images/cardimages/ghostintheshellLogo.svg": {
+      "image": "c94ddff7f21f-dbb375966c16.jpg",
+      "thumbnail": "c94ddff7f21f-dbb375966c16-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "dbb375966c165d7867b131d8c2c50bdd105685b5a521dd51ba852952713ac957"
+    },
+    "https://cearaworld.com/images/ghostintheshell/covers/ghostintheshell_backdrop.svg": {
+      "image": "6800e11dff0e-8ba650bbebe1.jpg",
+      "thumbnail": "6800e11dff0e-8ba650bbebe1-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8ba650bbebe159e922029adf537b71412bdb800bd876321ea4c0b427a6906b09"
+    },
+    "https://cearaworld.com/images/cardimages/mobpsychoLogo.svg": {
+      "image": "6d7980cc7cfe-a7f4b0321fef.jpg",
+      "thumbnail": "6d7980cc7cfe-a7f4b0321fef-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a7f4b0321fefd6067f43bf87d4392748cee495d728e0373543edf8e87d85084a"
+    },
+    "https://cearaworld.com/images/mobpsycho/covers/mobpsycho_backdrop.svg": {
+      "image": "76c10db70eb9-7523fdac9d00.jpg",
+      "thumbnail": "76c10db70eb9-7523fdac9d00-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7523fdac9d006e0139a2d51a5d9c3c08c4c9a3f6d024c3d6eae5c968f5cf6a11"
+    },
+    "https://cearaworld.com/images/cardimages/fmabLogo.svg": {
+      "image": "dadc0ca08229-418c7f0174cf.jpg",
+      "thumbnail": "dadc0ca08229-418c7f0174cf-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "418c7f0174cfd5c0edf3da0dcaa779cd03253b08fb3dcc5dd08bde7f42cffe7e"
+    },
+    "https://cearaworld.com/images/fmab/covers/fmab_backdrop.svg": {
+      "image": "134a0c8111fc-d9b007d8b378.jpg",
+      "thumbnail": "134a0c8111fc-d9b007d8b378-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "d9b007d8b3785a70278913cf2f582d0f5ba1db3768c375b379a42f8007a89a98"
+    },
+    "https://cearaworld.com/images/cardimages/jjkLogo2.svg": {
+      "image": "ad7ddd4c40f2-2194f2776f3a.jpg",
+      "thumbnail": "ad7ddd4c40f2-2194f2776f3a-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "2194f2776f3a6388013989f045ecd21c150388c4ab0ee7dbf3853ec03760a71e"
+    },
+    "https://cearaworld.com/images/jjk/covers/jjk_backdrop.svg": {
+      "image": "943befa88e8e-22e14152dedf.jpg",
+      "thumbnail": "943befa88e8e-22e14152dedf-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "22e14152dedf28643e9de73431edaf79f4ecf04490eebe7953aeb3889e46b671"
+    },
+    "https://cearaworld.com/images/cardimages/weaponsLogo.svg": {
+      "image": "24c40bf5e2d5-9b5fc1f716a0.jpg",
+      "thumbnail": "24c40bf5e2d5-9b5fc1f716a0-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "9b5fc1f716a0c01ed28e6e4dcb97e46ed760f447a16a36b81efc877aa6c85d93"
+    },
+    "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg": {
+      "image": "6fe700615855-83511d60c73c.jpg",
+      "thumbnail": "6fe700615855-83511d60c73c-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "83511d60c73c535c73713b82a35b7f024773a5b3804e472667449c8f14fdd1fb"
+    },
+    "https://cearaworld.com/images/cardimages/tokyogodfathersLogo.svg": {
+      "image": "0297d4fd740b-8acc3bcf58fc.jpg",
+      "thumbnail": "0297d4fd740b-8acc3bcf58fc-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8acc3bcf58fc5f9b4de9e1262e3b66ba8b54e606bed0d1c5c82e4a96b7ef2242"
+    },
+    "https://cearaworld.com/images/tokyogodfathers/covers/tokyogodfathers_backdrop.svg": {
+      "image": "b0956eb026c2-74809271938f.jpg",
+      "thumbnail": "b0956eb026c2-74809271938f-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "74809271938fb7ef15e731c2cd0e0bd9f3334b1fe55efc5d3bfd2601a7182e36"
+    },
+    "https://cearaworld.com/images/cardimages/cyberpunkLogo.svg": {
+      "image": "515ae9906200-3dea81c8aa14.jpg",
+      "thumbnail": "515ae9906200-3dea81c8aa14-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "3dea81c8aa1437806f6d166568add223a36a2362f6b492186a9b9d81b85ced3e"
+    },
+    "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg": {
+      "image": "915563d55712-85a63fcaaaf8.jpg",
+      "thumbnail": "915563d55712-85a63fcaaaf8-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "85a63fcaaaf85a0ae24fbceab6bb05577451dd122aad33af337d8d78deb5fb38"
+    },
+    "https://cearaworld.com/images/cardimages/solarisLogo.svg": {
+      "image": "bb92671d50dc-6b3d9e20dbd5.jpg",
+      "thumbnail": "bb92671d50dc-6b3d9e20dbd5-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "6b3d9e20dbd5fed0111131b2d4b4c83fffc62533748045da9542a0b8b0892c5e"
+    },
+    "https://cearaworld.com/images/solaris/covers/solaris_backdrop.svg": {
+      "image": "21761c30a0d1-c624f9ca0a18.jpg",
+      "thumbnail": "21761c30a0d1-c624f9ca0a18-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c624f9ca0a18d3a0e3538c5ff6be6820e46617f4aad6e47f32eedbbd7bd8a34f"
+    },
+    "https://cearaworld.com/images/cardimages/eventhorizonLogo.svg": {
+      "image": "3e588b2f6683-ef264c8ca2c1.jpg",
+      "thumbnail": "3e588b2f6683-ef264c8ca2c1-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ef264c8ca2c1385b74918cd5df68d8a0c133ae470741cc22d2b213235fed7c4c"
+    },
+    "https://cearaworld.com/images/eventhorizon/covers/eventhorizon_backdrop.svg": {
+      "image": "26fc370e4824-b825dce89deb.jpg",
+      "thumbnail": "26fc370e4824-b825dce89deb-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b825dce89deb52a00f5f461fcbc13dd483e400f86106f41a411ef5af1574925e"
+    },
+    "https://cearaworld.com/images/cardimages/lovedeathandrobotsLogo.svg": {
+      "image": "9c5b28734626-69df8fe18afd.jpg",
+      "thumbnail": "9c5b28734626-69df8fe18afd-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "69df8fe18afdcbb9555ee732f2fc4c86c240074ed85e0dbeebe1116969708ece"
+    },
+    "https://cearaworld.com/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.svg": {
+      "image": "e218e530b4b8-a1452a0e3f79.jpg",
+      "thumbnail": "e218e530b4b8-a1452a0e3f79-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a1452a0e3f790d0af155b4cadae8777ece4638057b8692b167873aa33d51ecba"
+    },
+    "https://cearaworld.com/images/cardimages/demonsLogo.svg": {
+      "image": "a3ed34240a0d-007aab939dae.jpg",
+      "thumbnail": "a3ed34240a0d-007aab939dae-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "007aab939daebd00a72794c77085cb0cc99af0a4541ce4f0f7c25948006d00a0"
+    },
+    "https://cearaworld.com/images/demons/covers/demons_backdrop.svg": {
+      "image": "5bf1f3b9fa0a-0defaea68e9a.jpg",
+      "thumbnail": "5bf1f3b9fa0a-0defaea68e9a-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "0defaea68e9ab92292e8300ee0ada7078385dfaccde296aaf1f7f5bc5845ad9d"
+    },
+    "https://cearaworld.com/images/cardimages/blackmirrorLogo.svg": {
+      "image": "1fe7f6e2c1ea-79b37d105cb0.jpg",
+      "thumbnail": "1fe7f6e2c1ea-79b37d105cb0-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "79b37d105cb074e47f60293241f82b4f15891a242fddd6987936e6f7c05336f9"
+    },
+    "https://cearaworld.com/images/blackmirror/covers/blackmirror_backdrop.svg": {
+      "image": "22ed037dd58f-14d062767621.jpg",
+      "thumbnail": "22ed037dd58f-14d062767621-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "14d06276762149c03e99c377b663d16415e43c0d88d82d515801f4351d5b10a6"
+    },
+    "https://cearaworld.com/images/cardimages/severanceLogo.svg": {
+      "image": "dfb791770e8a-fe3db5a04c23.jpg",
+      "thumbnail": "dfb791770e8a-fe3db5a04c23-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "fe3db5a04c23a3bbb8e9494a1fbd417158e7610af29bb0a52f0d99dc3b3eae7d"
+    },
+    "https://cearaworld.com/images/severance/covers/severance_backdrop.svg": {
+      "image": "23a4607deedd-b89dac7ddba4.jpg",
+      "thumbnail": "23a4607deedd-b89dac7ddba4-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b89dac7ddba4d3ef43460a3bc352d85a7e0b5b024c3c04ca1d7393945ec085e3"
+    },
+    "https://cearaworld.com/images/cardimages/pluribusLogo.svg": {
+      "image": "7dbedecb1941-732be04cf0a3.jpg",
+      "thumbnail": "7dbedecb1941-732be04cf0a3-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "732be04cf0a36f1ea78dc645baa7667a97c624432312ad67f2b7cbc1a9309258"
+    },
+    "https://cearaworld.com/images/pluribus/covers/pluribus_backdrop.svg": {
+      "image": "c87323d5239f-5b23589ab995.jpg",
+      "thumbnail": "c87323d5239f-5b23589ab995-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5b23589ab9957d23a6bff4e9d5c1a5b3faaf2d6a4295d0009566ad8a2a97c006"
+    },
+    "https://cearaworld.com/images/cardimages/akiraLogo.svg": {
+      "image": "52e2114b946b-10fb51f4e762.jpg",
+      "thumbnail": "52e2114b946b-10fb51f4e762-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "10fb51f4e762dbe6ed80bd6404fb1a7e88126aff9d824e80b692491d98025299"
+    },
+    "https://cearaworld.com/images/akira/covers/akira_backdrop.svg": {
+      "image": "ae7b6e81b018-70f83ba0de1f.jpg",
+      "thumbnail": "ae7b6e81b018-70f83ba0de1f-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "70f83ba0de1fee3995153abd4e55939ac552147c5940c0805b9ac8cb717148fa"
+    },
+    "https://cearaworld.com/images/cardimages/exmachinaLogo.svg": {
+      "image": "2b60ae5cbbb5-19920a204531.jpg",
+      "thumbnail": "2b60ae5cbbb5-19920a204531-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "19920a2045317407959dae7ffebc3bacfc015ee97c0bab6e5b3946d5faf0360c"
+    },
+    "https://cearaworld.com/images/exmachina/covers/exmachina_backdrop.svg": {
+      "image": "97e5e922c093-5e255b1922ee.jpg",
+      "thumbnail": "97e5e922c093-5e255b1922ee-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5e255b1922eef93aba994073ed0951347a4ca2db4e331eb70d1e34fa499b4edf"
+    },
+    "https://cearaworld.com/images/cardimages/annihilationLogo.svg": {
+      "image": "cd02939d1ce7-b4a164c93072.jpg",
+      "thumbnail": "cd02939d1ce7-b4a164c93072-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b4a164c93072e2493837878de771c2f966f38ba15fb5d64fdac9c2d2029de667"
+    },
+    "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg": {
+      "image": "0c6c2c183192-64d8017140a4.jpg",
+      "thumbnail": "0c6c2c183192-64d8017140a4-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "64d8017140a4d9ceb402970aec80360edb6ce057cd073e93ca1cc683871a4b51"
+    },
+    "https://cearaworld.com/images/cardimages/itsalwayssunnyLogo.svg": {
+      "image": "3a1c3831070f-eb45beb50cbe.jpg",
+      "thumbnail": "3a1c3831070f-eb45beb50cbe-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "eb45beb50cbe5be10f3281c8619835e22484557c08bc1e2c1d31599c7b97e11b"
+    },
+    "https://cearaworld.com/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg": {
+      "image": "8de18c476f4f-c00a853c7ada.jpg",
+      "thumbnail": "8de18c476f4f-c00a853c7ada-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c00a853c7ada6be7f575913422bf5fe2e9409e081786fa8607c097797c4c5543"
+    },
+    "https://cearaworld.com/images/cardimages/thetwilightzoneLogo.svg": {
+      "image": "9bb29e788296-7e3e32e49621.jpg",
+      "thumbnail": "9bb29e788296-7e3e32e49621-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7e3e32e49621399d2376a2aa4e71198c610d6d4ae29cab7227f113041101dc26"
+    },
+    "https://cearaworld.com/images/thetwilightzone/covers/thetwilightzone_backdrop.svg": {
+      "image": "e5f64f4d39da-67763dbb2cea.jpg",
+      "thumbnail": "e5f64f4d39da-67763dbb2cea-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "67763dbb2ceac63cfac7611f7fa8c221065fe838176ff80add8f52af7cd6ba21"
+    },
+    "https://cearaworld.com/images/cardimages/redlineLogo.svg": {
+      "image": "3d614c6ab858-3bcc65f9aef8.jpg",
+      "thumbnail": "3d614c6ab858-3bcc65f9aef8-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "3bcc65f9aef8f56b6a9436743d0f0cf60649b02d9bb67431a2d2df7a861a90f5"
+    },
+    "https://cearaworld.com/images/redline/covers/redline_backdrop.svg": {
+      "image": "fc1f465a675f-b28c713ae726.jpg",
+      "thumbnail": "fc1f465a675f-b28c713ae726-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b28c713ae726bae3269fcc5bbf43673cca27891c4a2bd3c07213ba0dee3d60e7"
+    },
+    "https://cearaworld.com/images/cardimages/bugoniaLogo.svg": {
+      "image": "eab43b9dcbc1-7b5427e969b8.jpg",
+      "thumbnail": "eab43b9dcbc1-7b5427e969b8-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7b5427e969b85dbc3a891864d338e2ed445bd6abc75d5daa81cb146efb25adfa"
+    },
+    "https://cearaworld.com/images/bugonia/covers/bugonia_backdrop.svg": {
+      "image": "7ed4fe6eb090-3fc39329fb68.jpg",
+      "thumbnail": "7ed4fe6eb090-3fc39329fb68-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "3fc39329fb684697930c6746219d94e2edfdba5317b9338fcb1edfdb72012f47"
+    },
+    "https://cearaworld.com/images/cardimages/frankensteinLogo.svg": {
+      "image": "c6558a59f995-6242e1bc16cd.jpg",
+      "thumbnail": "c6558a59f995-6242e1bc16cd-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "6242e1bc16cd8de01070f34251eedfa78fa81a544462ae6eda5692fad9ddd051"
+    },
+    "https://cearaworld.com/images/frankenstein/covers/frankenstein_backdrop.svg": {
+      "image": "25c5d787faff-c9ed32562035.jpg",
+      "thumbnail": "25c5d787faff-c9ed32562035-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c9ed32562035774034d637c8f044df525fcc3c9e657a2a2f2d6e6a603bd1f102"
+    },
+    "https://cearaworld.com/images/cardimages/truedetectiveLogo.svg": {
+      "image": "d6345335c053-9c8ef24733bd.jpg",
+      "thumbnail": "d6345335c053-9c8ef24733bd-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "9c8ef24733bd310a7ed812ead3a6820c971b56c7b2223a3554cebc393dffc328"
+    },
+    "https://cearaworld.com/images/truedetective/covers/truedetective_backdrop.svg": {
+      "image": "a24fb60899a2-6332924cc530.jpg",
+      "thumbnail": "a24fb60899a2-6332924cc530-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "6332924cc5306d07e360f624ebc9716e9b6e729f14ace84aa0b04a3e9111a6da"
+    },
+    "https://cearaworld.com/images/cardimages/sunsetboulevardLogo.svg": {
+      "image": "0e81a810d13b-7768c4108a1c.jpg",
+      "thumbnail": "0e81a810d13b-7768c4108a1c-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7768c4108a1c78de30e4a377364d6aaf8df98a8b46491c934872684743583d85"
+    },
+    "https://cearaworld.com/images/sunsetboulevard/covers/sunsetboulevard_backdrop.svg": {
+      "image": "d0d92e2c449b-328382ee2e45.jpg",
+      "thumbnail": "d0d92e2c449b-328382ee2e45-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "328382ee2e45c1429a78744dcd88394a9bd9a458cd9bb9c25c6306e35360bcc6"
+    },
+    "https://cearaworld.com/images/cardimages/shikijitsuLogo.svg": {
+      "image": "e96085bd85e6-4291f40f5524.jpg",
+      "thumbnail": "e96085bd85e6-4291f40f5524-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "4291f40f55247716d47847fc8dfec0acad3a9788554f48051e2164167127cd13"
+    },
+    "https://cearaworld.com/images/shikijitsu/covers/shikijitsu_backdrop.svg": {
+      "image": "c8152a01fed8-2ffea80d625c.jpg",
+      "thumbnail": "c8152a01fed8-2ffea80d625c-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "2ffea80d625c9a8cdf095daef4a9987ef99078b48074426a12b7443db7a734b0"
+    },
+    "https://cearaworld.com/images/cardimages/speaknoevilLogo.svg": {
+      "image": "da9b28d8c0da-48e094d5d27a.jpg",
+      "thumbnail": "da9b28d8c0da-48e094d5d27a-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "48e094d5d27aa7746d038e5b16be758857502346199e8ca910e4addb4944f2be"
+    },
+    "https://cearaworld.com/images/speaknoevil/covers/speaknoevil_backdrop.svg": {
+      "image": "902d99b7406e-dcc2a19530bb.jpg",
+      "thumbnail": "902d99b7406e-dcc2a19530bb-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "dcc2a19530bb6f2444fe7eb3e66696b261b0421262e902c2742cfbb1e7d311bd"
+    },
+    "https://cearaworld.com/images/cardimages/ikiruLogo.svg": {
+      "image": "5caf63a3d3a1-680fc6c06f33.jpg",
+      "thumbnail": "5caf63a3d3a1-680fc6c06f33-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "680fc6c06f33b4acc43881acf3c8e88bdf15e63fe71a1a972153529e8d75b8a4"
+    },
+    "https://cearaworld.com/images/ikiru/covers/ikiru_backdrop.svg": {
+      "image": "c574a2d6d964-16253a73fff4.jpg",
+      "thumbnail": "c574a2d6d964-16253a73fff4-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "16253a73fff44b71c91e02cfcf04c0509697e7c83cab082ce09e6942fd624e0c"
+    },
+    "https://cearaworld.com/images/cardimages/theericandreshowLogo.svg": {
+      "image": "ff70942267f4-d409663172d0.jpg",
+      "thumbnail": "ff70942267f4-d409663172d0-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "d409663172d0ca16b44133c66f1605051175cbb2a5c152a8d4984b3f3a98f642"
+    },
+    "https://cearaworld.com/images/theericandreshow/covers/theericandreshow_backdrop.svg": {
+      "image": "987b0e1f6900-950e961c0b91.jpg",
+      "thumbnail": "987b0e1f6900-950e961c0b91-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "950e961c0b91271b8c920574bb2f2a76cec438562661e1bf433c26886fd2578f"
+    },
+    "https://cearaworld.com/images/cardimages/pokemon2000Logo.svg": {
+      "image": "76b118d1bc60-53d5d5f0d51e.jpg",
+      "thumbnail": "76b118d1bc60-53d5d5f0d51e-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "53d5d5f0d51e14c7178d3ee5e9decee22ad9e9ea30b9d56536b039aecd3602b1"
+    },
+    "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg": {
+      "image": "848dad68872f-51725be513df.jpg",
+      "thumbnail": "848dad68872f-51725be513df-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "51725be513dfd2bfe6f6318eaaa6ffeb2275ee8357c72426419f74a988efaeef"
+    },
+    "https://cearaworld.com/images/cardimages/coherenceLogo.svg": {
+      "image": "800665fd43e4-c2420100414e.jpg",
+      "thumbnail": "800665fd43e4-c2420100414e-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c2420100414e06758f0aeb1f99c3ba8d6a94ab7eb49971ea1f6755976659c9db"
+    },
+    "https://cearaworld.com/images/coherence/covers/coherence_backdrop.svg": {
+      "image": "feaed8961675-ba9cf90b9f59.jpg",
+      "thumbnail": "feaed8961675-ba9cf90b9f59-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ba9cf90b9f59312ef40d9e8d2f494ce0750d9d927d7801493c8e2c3e06d61199"
+    },
+    "https://cearaworld.com/images/cardimages/exit8Logo.svg": {
+      "image": "1ff559ee1381-5f3373b801d0.jpg",
+      "thumbnail": "1ff559ee1381-5f3373b801d0-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5f3373b801d092d665c42a19d92ec15053bbe0340f35cafc27125641f8334c0d"
+    },
+    "https://cearaworld.com/images/exit8/covers/exit8_backdrop.svg": {
+      "image": "131b7248711c-b6f16b186eaf.jpg",
+      "thumbnail": "131b7248711c-b6f16b186eaf-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b6f16b186eafa0e26baf32796310cde67332af3ca9d69e6dbe9ea3ce152abf04"
+    },
+    "https://cearaworld.com/images/cardimages/hokumLogo.svg": {
+      "image": "73990f73a327-496e8af63234.jpg",
+      "thumbnail": "73990f73a327-496e8af63234-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "496e8af6323476179ec6da4bc693b8f67de830ac3f7e718496576bc6734beea2"
+    },
+    "https://cearaworld.com/images/hokum/covers/hokum_backdrop.svg": {
+      "image": "71f2eec90e4b-19aa8c1a7224.jpg",
+      "thumbnail": "71f2eec90e4b-19aa8c1a7224-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "19aa8c1a722466668bd00f44c81aa7378e0de327c0a8a006736324ff98049aad"
+    },
+    "https://cearaworld.com/images/cardimages/obsessionLogo.svg": {
+      "image": "953046083fd9-e685b4333770.jpg",
+      "thumbnail": "953046083fd9-e685b4333770-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "e685b4333770a8b46cef392aaaa2653c676247a79449c6e2d8daf708d81aa09a"
+    },
+    "https://cearaworld.com/images/obsession/covers/obsession_backdrop.svg": {
+      "image": "915b8b68c01a-37b9e2c3b9f9.jpg",
+      "thumbnail": "915b8b68c01a-37b9e2c3b9f9-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "37b9e2c3b9f99ffb9f6ec546efc1330322b3f96721138da6323d26cf6e6307af"
+    },
+    "https://cearaworld.com/images/cardimages/projecthailmaryLogo.svg": {
+      "image": "f8641e02f5b1-a786135f5952.jpg",
+      "thumbnail": "f8641e02f5b1-a786135f5952-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a786135f5952d1c3ba29009a6abff76ead38e60eea13e297cd85bcdeb553c1c4"
+    },
+    "https://cearaworld.com/images/projecthailmary/covers/projecthailmary_backdrop.svg": {
+      "image": "fae46b5f2861-e130686349e6.jpg",
+      "thumbnail": "fae46b5f2861-e130686349e6-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "e130686349e6197451f1bcd6861d504472d15d0beb267a1c36719f4b6c9f1c14"
+    },
+    "https://cearaworld.com/images/cardimages/bloodthelastvampireLogo.svg": {
+      "image": "c8246ae229bc-ad34260aef2d.jpg",
+      "thumbnail": "c8246ae229bc-ad34260aef2d-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ad34260aef2ddf313a56cdec584e598bfbddc47c5491f612af272012df2a6e81"
+    },
+    "https://cearaworld.com/images/bloodthelastvampire/covers/bloodthelastvampire_backdrop.svg": {
+      "image": "4f7af52e1ffa-1fc765cb702d.jpg",
+      "thumbnail": "4f7af52e1ffa-1fc765cb702d-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "1fc765cb702d05132a6ba9f12ec1d54f6e6e407b8faf42151f0083ba15e80ddb"
+    },
+    "https://cearaworld.com/images/cardimages/theanimatrixLogo.svg": {
+      "image": "86e9915b5f5d-8ac131c1710e.jpg",
+      "thumbnail": "86e9915b5f5d-8ac131c1710e-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8ac131c1710e49b2b0c2ee7acdff5b7f88b6cc76f782a1847f101941c6336dc2"
+    },
+    "https://cearaworld.com/images/theanimatrix/covers/theanimatrix_backdrop.svg": {
+      "image": "297be3ead4f1-c11154f8499b.jpg",
+      "thumbnail": "297be3ead4f1-c11154f8499b-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c11154f8499b9639da9ad504124a3428ad1525a36887b8f1c67dc630736bd111"
+    },
+    "https://cearaworld.com/images/cardimages/mongolianchopsquadLogo.svg": {
+      "image": "f01d6b9e10b5-9285b6293679.jpg",
+      "thumbnail": "f01d6b9e10b5-9285b6293679-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "9285b6293679ec9df3d91275ffa99330055436898d14c2f44767c32db8600cdd"
+    },
+    "https://cearaworld.com/images/mongolianchopsquad/covers/mongolianchopsquad_backdrop.svg": {
+      "image": "df0e4097ea03-012f3602d07d.jpg",
+      "thumbnail": "df0e4097ea03-012f3602d07d-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "012f3602d07d44d3f1a3f7b97832150e78ef69271642e00fdf90b36570c17430"
+    },
+    "https://cearaworld.com/images/cardimages/widowsbayLogo.svg": {
+      "image": "056a9d39b9a5-ca7a346a2b31.jpg",
+      "thumbnail": "056a9d39b9a5-ca7a346a2b31-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ca7a346a2b31422860a2c03ccaf64f12a34f46105d28e6281cb269f5ed3f0b86"
+    },
+    "https://cearaworld.com/images/widowsbay/covers/widowsbay_backdrop.svg": {
+      "image": "30e32f84a245-a929784467cf.jpg",
+      "thumbnail": "30e32f84a245-a929784467cf-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a929784467cfa57654c8de7251e3e5db316dff853aca875150c83186d76fd33f"
+    },
+    "https://cearaworld.com/images/cardimages/backroomsLogo.svg": {
+      "image": "fbe141fdc397-31f22aa51543.jpg",
+      "thumbnail": "fbe141fdc397-31f22aa51543-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "31f22aa51543c1c22911d9d57a931de1640f351c9d1f88f897dff98e43813c3a"
+    },
+    "https://cearaworld.com/images/backrooms/covers/backrooms_backdrop.svg": {
+      "image": "9d1a2ad210fb-7663246000fa.jpg",
+      "thumbnail": "9d1a2ad210fb-7663246000fa-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7663246000faf45bf8e094b9cd0f8120f09b28f938c66df4c1acb620374b580b"
+    },
+    "https://cearaworld.com/images/cardimages/pokemondestinydeoxysLogo.svg": {
+      "image": "890ddf576f0a-6893630f5864.jpg",
+      "thumbnail": "890ddf576f0a-6893630f5864-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "6893630f58648bfea0bc155216f6fe232c4b8513b54656807d5cf7f328be38d4"
+    },
+    "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg": {
+      "image": "cabe05ac1948-cd97bfa19858.jpg",
+      "thumbnail": "cabe05ac1948-cd97bfa19858-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "cd97bfa19858f65091fa0687e421e7c550c3b4b4c7e8d03f0a2002db9bfaaad3"
+    },
+    "https://cearaworld.com/images/cardimages/atlantaLogo.svg": {
+      "image": "fd713dba0fc7-ad217f362ab8.jpg",
+      "thumbnail": "fd713dba0fc7-ad217f362ab8-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ad217f362ab8251c80076098a40d730ede66891431e1728a506655d30d1d9c2e"
+    },
+    "https://cearaworld.com/images/atlanta/covers/atlanta_backdrop.svg": {
+      "image": "a170e5a448f1-487c5fe3fd31.jpg",
+      "thumbnail": "a170e5a448f1-487c5fe3fd31-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "487c5fe3fd31c8d6e19d03e5591dc193d2eaef878ded70b9a3ac7a57c31eb59c"
+    },
+    "https://cearaworld.com/images/cardimages/chronicleLogo.svg": {
+      "image": "9a288e8647ef-b3d2e91e5939.jpg",
+      "thumbnail": "9a288e8647ef-b3d2e91e5939-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b3d2e91e5939e3e94ba09c0e07a536d54715527ad729f725462e82a03e925d82"
+    },
+    "https://cearaworld.com/images/chronicle/covers/chronicle_backdrop.svg": {
+      "image": "af6de7373bc2-1d83a9850164.jpg",
+      "thumbnail": "af6de7373bc2-1d83a9850164-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "1d83a9850164c76e662a2ab38dd62de61282a3c2708a6728c2954290278e2a2f"
+    },
+    "https://cearaworld.com/images/cardimages/jojosLogo.svg": {
+      "image": "4754d5032c5f-82d6b093f0eb.jpg",
+      "thumbnail": "4754d5032c5f-82d6b093f0eb-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "82d6b093f0eb554bd0900365de0f7838e90e685931e98dd125452c2c2e9cf6e9"
+    },
+    "https://cearaworld.com/images/jojos/covers/jojos_backdrop.svg": {
+      "image": "214a394c64f8-142001c4dfa7.jpg",
+      "thumbnail": "214a394c64f8-142001c4dfa7-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "142001c4dfa77b47e95bef5fae6497e0cad950a332bb17ec8d0f0969f088428e"
+    },
+    "https://cearaworld.com/images/cardimages/chernobylLogo.svg": {
+      "image": "4d569f4e9347-0283a2faa277.jpg",
+      "thumbnail": "4d569f4e9347-0283a2faa277-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "0283a2faa277e1542fb5baca789f3c362614c234313f92665b1367367ae0f099"
+    },
+    "https://cearaworld.com/images/chernobyl/covers/chernobyl_backdrop.svg": {
+      "image": "aa25b3195e5b-5796a42d11ab.jpg",
+      "thumbnail": "aa25b3195e5b-5796a42d11ab-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5796a42d11aba929d87a0a4c7e9bf1905230309e8a955f9037969a6c44467b05"
+    },
+    "https://cearaworld.com/images/cardimages/beingjohnmalkovichLogo.svg": {
+      "image": "91e595773149-965385b22f3f.jpg",
+      "thumbnail": "91e595773149-965385b22f3f-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "965385b22f3f6bb47ef142ee87b3b5aa3bbbdf62c8ce3e223c2b255f61a82672"
+    },
+    "https://cearaworld.com/images/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.svg": {
+      "image": "b34321d2148a-8f1e14f5f6c1.jpg",
+      "thumbnail": "b34321d2148a-8f1e14f5f6c1-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8f1e14f5f6c1c4c5abd1aa6ae1ca71eb395cf2d130e17ebae1dd74443d629b1a"
+    },
+    "https://cearaworld.com/images/cardimages/attackontitanLogo.svg": {
+      "image": "e1b0b68cb0c3-b32d756f2a97.jpg",
+      "thumbnail": "e1b0b68cb0c3-b32d756f2a97-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b32d756f2a978c4cdd5c85844bd4c07bd236882320f092e76efa069bbb290c3f"
+    },
+    "https://cearaworld.com/images/attackontitan/covers/attackontitan_backdrop.svg": {
+      "image": "9877f12ba5a9-7d4611c71fc9.jpg",
+      "thumbnail": "9877f12ba5a9-7d4611c71fc9-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7d4611c71fc98f3c1e57886da9ca1936bae3155dfa9b96707c17747f07bacd4a"
+    },
+    "https://cearaworld.com/images/cardimages/thedramaLogo.svg": {
+      "image": "c363972f3c1f-cb89a7d73977.jpg",
+      "thumbnail": "c363972f3c1f-cb89a7d73977-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "cb89a7d73977fd87166d36ddf95c95632389accf15e5639a93fbeebb36e448ab"
+    },
+    "https://cearaworld.com/images/thedrama/covers/thedrama_backdrop.svg": {
+      "image": "4b1f8a141ad4-8f27bc0ea9f2.jpg",
+      "thumbnail": "4b1f8a141ad4-8f27bc0ea9f2-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8f27bc0ea9f23e4475ad0f5290cfae0591b0857ed154ac066594b18ca31783c9"
+    },
+    "https://cearaworld.com/images/cardimages/thenightisshortLogo.svg": {
+      "image": "7309877142f2-2cac06dd4d1c.jpg",
+      "thumbnail": "7309877142f2-2cac06dd4d1c-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "2cac06dd4d1cdaf1e0c9a2b115ef3b17997ab7aa364b2e84233276aec13af4c0"
+    },
+    "https://cearaworld.com/images/thenightisshort/covers/thenightisshort_backdrop.svg": {
+      "image": "4708e8e2da0e-87ad4ad8cdd6.jpg",
+      "thumbnail": "4708e8e2da0e-87ad4ad8cdd6-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "87ad4ad8cdd62bbff7b04c96edac197a0ebd9b9ecbc4fafa16047456fd36a54d"
+    },
+    "https://cearaworld.com/images/cardimages/cureLogo.svg": {
+      "image": "186cd38e7811-4b125bd6af25.jpg",
+      "thumbnail": "186cd38e7811-4b125bd6af25-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "4b125bd6af25c0a0c6c89116ffe38f588beb8e327a722eef19ec55da47a26bad"
+    },
+    "https://cearaworld.com/images/cure/covers/cure_backdrop.svg": {
+      "image": "b7bcd8ec7f4b-bd5dbbd81f42.jpg",
+      "thumbnail": "b7bcd8ec7f4b-bd5dbbd81f42-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "bd5dbbd81f421b94f145e9e805eedbb5ec9f3026c4c66625d8aa927367dac1be"
+    },
+    "https://cearaworld.com/images/cardimages/theinviteLogo.svg": {
+      "image": "33ce5939769a-fe0cba1b5f61.jpg",
+      "thumbnail": "33ce5939769a-fe0cba1b5f61-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "fe0cba1b5f617c6eddf2c0d9eb7115cdaa0b4652a98aaeeb94b9172dd22a7b60"
+    },
+    "https://cearaworld.com/images/theinvite/covers/theinvite_backdrop.svg": {
+      "image": "89a5cd02eb68-b7b4067822ce.jpg",
+      "thumbnail": "89a5cd02eb68-b7b4067822ce-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b7b4067822ce3237ef31e466e650b8dea5d440b51f8f289c14d3ebd147d4a78a"
+    }
+  }
+}

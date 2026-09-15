@@ -4,7 +4,7 @@ This is a standalone Roku SceneGraph client for the Phase 2 rollout. It reads th
 
 ## Local setup
 
-1. Leave `authToken` empty in `source/Config.brs` to use the Roku sign-in screen, or set it locally to a token from `POST /api/auth/login/` to skip sign-in. Do not commit that value.
+1. Leave `authToken` empty in `source/Config.brs` to use the QR-code sign-in screen, or set it locally to a token from `POST /api/auth/login/` to skip sign-in. Do not commit that value.
 2. `source/Config.local.brs.example` is a reference template for local configuration; it is not loaded automatically by Roku.
 3. Package the contents of this directory as a Roku channel, or sideload it from the Roku developer web page.
 
@@ -15,6 +15,7 @@ The default API host is `https://cearaworld.com`. For local testing, set `CWORLD
 ## Controls
 
 - Sign in with your CWorld account when prompted, then choose a profile.
+- Scan the QR code shown on the sign-in screen, sign in at the browser URL, and approve the Roku. Use `Use remote login` if phone approval is unavailable.
 - Use the directional pad to move through the catalog.
 - Select a title to open its detail view.
 - Select an episode or the movie play button to start playback.

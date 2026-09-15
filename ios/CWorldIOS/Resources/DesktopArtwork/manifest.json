@@ -1,0 +1,563 @@
+{
+  "version": 1,
+  "assets": {
+    "steven-universe": {
+      "image": "steven-universe-db02e008194d.jpg",
+      "thumbnail": "steven-universe-db02e008194d-thumb.jpg",
+      "source": "/images/stevenuniverse/covers/stevenuniverseCover.webp",
+      "sourceSHA256": "db02e008194dfe2d36b58171419cd14ec62e357bb2f38f90c92bdae8247b9146",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2013 • Adventure • 5 seasons"
+    },
+    "adventure-time": {
+      "image": "adventure-time-faf676e8b76b.jpg",
+      "thumbnail": "adventure-time-faf676e8b76b-thumb.jpg",
+      "source": "/images/adventuretime/covers/adventuretimeCover.jpg",
+      "sourceSHA256": "faf676e8b76bb1d07ff94860b37c0a745edacd3003e028386a3bddf2cadcc283",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2010 • Adventure • 10 seasons"
+    },
+    "over-the-garden-wall": {
+      "image": "over-the-garden-wall-2f9da840f944.jpg",
+      "thumbnail": "over-the-garden-wall-2f9da840f944-thumb.jpg",
+      "source": "/images/overthegardenwall/covers/overthegardenwallCover.png",
+      "sourceSHA256": "2f9da840f944614f56efff58201edf6abdb67bed3ddb260dda1179c88b2658e5",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2014 • Adventure • 1 season"
+    },
+    "neon-genesis": {
+      "image": "neon-genesis-8842479058a2.jpg",
+      "thumbnail": "neon-genesis-8842479058a2-thumb.jpg",
+      "source": "/images/neongenesis/covers/neongenesisCover.png",
+      "sourceSHA256": "8842479058a2232b8652bc76862bed18e2b81fa18f3f7b630c71ff2aa2faa154",
+      "width": 1154,
+      "height": 719,
+      "meta": "1997 • Apocalyptic • 1 season"
+    },
+    "perfect-blue": {
+      "image": "perfect-blue-966465372ce3.jpg",
+      "thumbnail": "perfect-blue-966465372ce3-thumb.jpg",
+      "source": "/images/perfectblue/covers/perfectblueCover.jpg",
+      "sourceSHA256": "966465372ce3d0a20f542732e40c7c69ddb8b1be12be45ef02177c091c596823",
+      "width": 1920,
+      "height": 1080,
+      "meta": "1997 • Horror/Mystery • 1h 21m"
+    },
+    "paprika": {
+      "image": "paprika-7ebb52ce234e.jpg",
+      "thumbnail": "paprika-7ebb52ce234e-thumb.jpg",
+      "source": "/images/paprika/covers/paprikaCover.webp",
+      "sourceSHA256": "7ebb52ce234e6383e0bf3805587540160742d26dae67fbe7715c1a368773db7b",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2006 • Thriller/Sci-fi • 1h 30m"
+    },
+    "princess-mononoke": {
+      "image": "princess-mononoke-5e951836de1b.jpg",
+      "thumbnail": "princess-mononoke-5e951836de1b-thumb.jpg",
+      "source": "/images/princessmononoke/covers/princessmononokeCover.jpg",
+      "sourceSHA256": "5e951836de1b2533d678278f11c1eac1e564f0eba0da793220901d0015e22a3a",
+      "width": 2400,
+      "height": 1460,
+      "meta": "1997 • Fantasy/Adventure • 2h 13m"
+    },
+    "aniara": {
+      "image": "aniara-d8fae4a1a295.jpg",
+      "thumbnail": "aniara-d8fae4a1a295-thumb.jpg",
+      "source": "/images/aniara/covers/aniaraCover.jpg",
+      "sourceSHA256": "d8fae4a1a295f1a06bfd81d365f551dfa335e7db41d00a2cb0c08e6c932279b5",
+      "width": 844,
+      "height": 512,
+      "meta": "1960 • SciFi/Adventure • 2h"
+    },
+    "the-vanishing": {
+      "image": "the-vanishing-39aa5429beb1.jpg",
+      "thumbnail": "the-vanishing-39aa5429beb1-thumb.jpg",
+      "source": "/images/thevanishing/covers/thevanishingCover.png",
+      "sourceSHA256": "39aa5429beb14ef8ff52b77ac44bcc7e183caeb5ac30b134cd0407f359be9427",
+      "width": 1298,
+      "height": 775,
+      "meta": "1988 • Horror/Crime • 1h 47m"
+    },
+    "the-lighthouse": {
+      "image": "the-lighthouse-fe5507f33a28.jpg",
+      "thumbnail": "the-lighthouse-fe5507f33a28-thumb.jpg",
+      "source": "/images/thelighthouse/covers/thelighthouseCover.jpg",
+      "sourceSHA256": "fe5507f33a28c98fbe160756708cafcf16ef38a446cd725950779879182102aa",
+      "width": 2048,
+      "height": 1153,
+      "meta": "2019 • Horror/Crime • 1h 49m"
+    },
+    "a-ghost-story": {
+      "image": "a-ghost-story-5cb6d9785d8c.jpg",
+      "thumbnail": "a-ghost-story-5cb6d9785d8c-thumb.jpg",
+      "source": "/images/aghoststory/covers/aghoststoryCover.webp",
+      "sourceSHA256": "5cb6d9785d8c6ae3ac2d20b6483a3c7585327718d8e9949a30cc32903bf2d2cc",
+      "width": 1200,
+      "height": 630,
+      "meta": "2017 • Fantasy/Romance • 1h 32m"
+    },
+    "little-miss-sunshine": {
+      "image": "little-miss-sunshine-4d02e30ee65e.jpg",
+      "thumbnail": "little-miss-sunshine-4d02e30ee65e-thumb.jpg",
+      "source": "/images/littlemisssunshine/covers/littlemisssunshineCover.jpg",
+      "sourceSHA256": "4d02e30ee65ecf883eeb4540137a9fca2ccf5dc8df196a71dca5fba7dc9bc338",
+      "width": 870,
+      "height": 489,
+      "meta": "2006 • Comedy/Drama • 1h 41m"
+    },
+    "ghost-in-the-shell": {
+      "image": "ghost-in-the-shell-c523a5ab2943.jpg",
+      "thumbnail": "ghost-in-the-shell-c523a5ab2943-thumb.jpg",
+      "source": "/images/ghostintheshell/covers/ghostintheshellCover.jpg",
+      "sourceSHA256": "c523a5ab2943ea7b2c8041993f821c3f146e88df3b9b59b9ef83e812cad21af1",
+      "width": 2000,
+      "height": 1125,
+      "meta": "1995 • Action/Sci-fi • 1h 23m"
+    },
+    "mob-psycho": {
+      "image": "mob-psycho-a04c7d9c99c1.jpg",
+      "thumbnail": "mob-psycho-a04c7d9c99c1-thumb.jpg",
+      "source": "/images/mobpsycho/covers/mobpsychoCover.jpeg",
+      "sourceSHA256": "a04c7d9c99c104fce7df5cb24fe22529950660b5b02a8a40b20c51f085d64536",
+      "width": 3072,
+      "height": 1728,
+      "meta": "2016 • Shonen manga/Comedy • 3 seasons"
+    },
+    "fmab": {
+      "image": "fmab-d4f2e5c20f41.jpg",
+      "thumbnail": "fmab-d4f2e5c20f41-thumb.jpg",
+      "source": "/images/fmab/covers/fmabCover.jpg",
+      "sourceSHA256": "d4f2e5c20f41c253ac9af2e31e0353524966e03c75864849adf95bee207ee13c",
+      "width": 1920,
+      "height": 1200,
+      "meta": "2009 • Adventure • 5 seasons"
+    },
+    "jjk": {
+      "image": "jjk-8263d5b455d2.jpg",
+      "thumbnail": "jjk-8263d5b455d2-thumb.jpg",
+      "source": "/images/jjk/covers/jjkCover2.svg",
+      "sourceSHA256": "8263d5b455d2ca78c780cc9d9e41e42dbae644f21e45845f24857115f8df6353",
+      "width": 1366,
+      "height": 768,
+      "meta": "2020 • Manga series • 3 seasons"
+    },
+    "weapons": {
+      "image": "weapons-7f20cb3fd562.jpg",
+      "thumbnail": "weapons-7f20cb3fd562-thumb.jpg",
+      "source": "/images/weapons/covers/weaponsCover.jpg",
+      "sourceSHA256": "7f20cb3fd56299d7c24c38246bea660bb722a505f12ac85f2d43ade8fb708543",
+      "width": 681,
+      "height": 383,
+      "meta": "2025 • Horror • 2h 8m"
+    },
+    "tokyo-godfathers": {
+      "image": "tokyo-godfathers-4a249e5582ca.jpg",
+      "thumbnail": "tokyo-godfathers-4a249e5582ca-thumb.jpg",
+      "source": "/images/tokyogodfathers/covers/tokyogodfathersCover.jpg",
+      "sourceSHA256": "4a249e5582ca4328198040f68fb245b38e13bc9b9b6acc256669441515f1126d",
+      "width": 1958,
+      "height": 1056,
+      "meta": "2003 • Adventure/Comedy • 1h 32m"
+    },
+    "cyberpunk": {
+      "image": "cyberpunk-60f9ce0b0703.jpg",
+      "thumbnail": "cyberpunk-60f9ce0b0703-thumb.jpg",
+      "source": "/images/cyberpunk/covers/cyberpunkCover.jpg",
+      "sourceSHA256": "60f9ce0b070366c91353a7130d2f27b9598331037137f6a98e6046dfdafadd18",
+      "width": 912,
+      "height": 513,
+      "meta": "2022 • Action • 1 season"
+    },
+    "solaris": {
+      "image": "solaris-5d94fd188562.jpg",
+      "thumbnail": "solaris-5d94fd188562-thumb.jpg",
+      "source": "/images/solaris/covers/solarisCover.jpg",
+      "sourceSHA256": "5d94fd188562e81adb28211c4dca9441433e38d15a20395b8266c7b479d239d8",
+      "width": 1200,
+      "height": 630,
+      "meta": "1972 • Sci-fi/Mystery • 2h 47m"
+    },
+    "event-horizon": {
+      "image": "event-horizon-8af2275a74a6.jpg",
+      "thumbnail": "event-horizon-8af2275a74a6-thumb.jpg",
+      "source": "/images/eventhorizon/covers/eventhorizonCover.jpg",
+      "sourceSHA256": "8af2275a74a6c2385121229b7b0f5e259585c95c5e9941534ec1eb89275d03e7",
+      "width": 1280,
+      "height": 720,
+      "meta": "1997 • Horror/Sci-fi • 1h 36m"
+    },
+    "lovedeathandrobots": {
+      "image": "lovedeathandrobots-8b771b9a23e3.jpg",
+      "thumbnail": "lovedeathandrobots-8b771b9a23e3-thumb.jpg",
+      "source": "/images/lovedeathandrobots/covers/lovedeathandrobotsCover.jpg",
+      "sourceSHA256": "8b771b9a23e32ff390907a26f88df0dde5d86ee7e9993c3cf468c87d9f6c22b3",
+      "width": 2000,
+      "height": 1000,
+      "meta": "2019 • Fantasy • 4 seasons"
+    },
+    "demons": {
+      "image": "demons-bf9f40c694bd.jpg",
+      "thumbnail": "demons-bf9f40c694bd-thumb.jpg",
+      "source": "/images/demons/covers/demonsCover.jpg",
+      "sourceSHA256": "bf9f40c694bdb7ba95d125e2659643e7f65694a7a8a55147a205fc32e0f3580a",
+      "width": 1707,
+      "height": 881,
+      "meta": "1971 • Horror/Action • 2h 15m"
+    },
+    "blackmirror": {
+      "image": "blackmirror-f00045f561f8.jpg",
+      "thumbnail": "blackmirror-f00045f561f8-thumb.jpg",
+      "source": "/images/blackmirror/covers/blackmirrorCover.jpg",
+      "sourceSHA256": "f00045f561f85510ecb653deb71d73f320af9ba420ef1caf933abd0b406dbe4d",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2011 • Fantasy • 4 seasons"
+    },
+    "severance": {
+      "image": "severance-1e3d9be90c85.jpg",
+      "thumbnail": "severance-1e3d9be90c85-thumb.jpg",
+      "source": "/images/severance/covers/severanceCover.jpg",
+      "sourceSHA256": "1e3d9be90c85e68e379d0383f5af74674f3ec91db817569a08502de8328c4422",
+      "width": 1793,
+      "height": 1009,
+      "meta": "2022 • Thriller • 2 seasons"
+    },
+    "pluribus": {
+      "image": "pluribus-9a3a59313f63.jpg",
+      "thumbnail": "pluribus-9a3a59313f63-thumb.jpg",
+      "source": "/images/pluribus/covers/pluribusCover.jpg",
+      "sourceSHA256": "9a3a59313f6340a0b5ab4866ca9bdc03f8faa64a032d691ea3c35cd1876305c0",
+      "width": 1080,
+      "height": 719,
+      "meta": "2025 • Drama • 1 season"
+    },
+    "akira": {
+      "image": "akira-341238d0cc0e.jpg",
+      "thumbnail": "akira-341238d0cc0e-thumb.jpg",
+      "source": "/images/akira/covers/akiraCover.jpg",
+      "sourceSHA256": "341238d0cc0e6df1450af12e17f52827aee92b26f0f9288f60aecacdf16a07ea",
+      "width": 2400,
+      "height": 1352,
+      "meta": "1988 • Cyberpunk/Action • 2h 4m"
+    },
+    "exmachina": {
+      "image": "exmachina-1becdae0b07e.jpg",
+      "thumbnail": "exmachina-1becdae0b07e-thumb.jpg",
+      "source": "/images/exmachina/covers/exmachinaCover.jpg",
+      "sourceSHA256": "1becdae0b07e405ac8d6a5ca18906e498f36d411c150a1ee178620edb36f6174",
+      "width": 1280,
+      "height": 720,
+      "meta": "2014 • Thriller/Sci-Fi • 1h 48m"
+    },
+    "annihilation": {
+      "image": "annihilation-5d7bb4297f60.jpg",
+      "thumbnail": "annihilation-5d7bb4297f60-thumb.jpg",
+      "source": "/images/annihilation/covers/annihilationCover.jpg",
+      "sourceSHA256": "5d7bb4297f6093ea763e6b62e811591762cba2d4ae68b16a8aadcf2f091d1f87",
+      "width": 2048,
+      "height": 858,
+      "meta": "2018 • Psychological Horror • 1h 55m"
+    },
+    "itsalwayssunny": {
+      "image": "itsalwayssunny-f890e2b22946.jpg",
+      "thumbnail": "itsalwayssunny-f890e2b22946-thumb.jpg",
+      "source": "/images/itsalwayssunny/covers/itsalwayssunnyCover.jpg",
+      "sourceSHA256": "f890e2b2294689423574b86513cb41df834fefd39128ae66f7b027bfde1453d7",
+      "width": 1581,
+      "height": 1054,
+      "meta": "2005 • Comedy • 16 seasons"
+    },
+    "thetwilightzone": {
+      "image": "thetwilightzone-b2d61160b398.jpg",
+      "thumbnail": "thetwilightzone-b2d61160b398-thumb.jpg",
+      "source": "/images/thetwilightzone/covers/thetwilightzoneCover.svg",
+      "sourceSHA256": "b2d61160b398b4524ca7ec055a81bd58f3673ee6f1dc0297b198d4306ae288ce",
+      "width": 1366,
+      "height": 768,
+      "meta": "1959 • Psychological Drama • 5 seasons"
+    },
+    "redline": {
+      "image": "redline-96859868fe2e.jpg",
+      "thumbnail": "redline-96859868fe2e-thumb.jpg",
+      "source": "/images/redline/covers/redlineCover.jpg",
+      "sourceSHA256": "96859868fe2ef45c4a72d08eb3e1a343d81929fd44f9e5afb6b056b60552a82a",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2009 • Action/Sci-Fi • 1h 42m"
+    },
+    "bugonia": {
+      "image": "bugonia-0eedae0a6798.jpg",
+      "thumbnail": "bugonia-0eedae0a6798-thumb.jpg",
+      "source": "/images/bugonia/covers/bugoniaCover.jpg",
+      "sourceSHA256": "0eedae0a6798681919120b54b80e2987a425818b309ae9a47b07f23d3e504121",
+      "width": 3000,
+      "height": 1687,
+      "meta": "2025 • Comedy/Sci-Fi • 1h 58m"
+    },
+    "frankenstein": {
+      "image": "frankenstein-2d88974dafdc.jpg",
+      "thumbnail": "frankenstein-2d88974dafdc-thumb.jpg",
+      "source": "/images/frankenstein/covers/frankensteinCover.webp",
+      "sourceSHA256": "2d88974dafdca79c3a1d542991b70967f3597ec76440244cc4711e59841fba9f",
+      "width": 1600,
+      "height": 900,
+      "meta": "2025 • Dark Fantasy • 2h 29m"
+    },
+    "truedetective": {
+      "image": "truedetective-064812b68ab9.jpg",
+      "thumbnail": "truedetective-064812b68ab9-thumb.jpg",
+      "source": "/images/truedetective/covers/truedetectiveCover.svg",
+      "sourceSHA256": "064812b68ab98f52a22134a1deb96003a930e6855b5b1e432ef61f396f75e456",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2014 • Psychological Drama • 1 season"
+    },
+    "sunsetboulevard": {
+      "image": "sunsetboulevard-7e74e37ee184.jpg",
+      "thumbnail": "sunsetboulevard-7e74e37ee184-thumb.jpg",
+      "source": "/images/sunsetboulevard/covers/sunsetboulevardCover.svg",
+      "sourceSHA256": "7e74e37ee184c1ec3958eb9265e8ccb1ac02a6f7487639df17244bb3255ec568",
+      "width": 1920,
+      "height": 1080,
+      "meta": "1950 • Psychological Drama • 1h 50m"
+    },
+    "shikijitsu": {
+      "image": "shikijitsu-6443ad83a9c2.jpg",
+      "thumbnail": "shikijitsu-6443ad83a9c2-thumb.jpg",
+      "source": "/images/shikijitsu/covers/shikijitsuCover.svg",
+      "sourceSHA256": "6443ad83a9c2e5acefe627309f6218414c55d57524fdad157a41a51e38ddd922",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2000 • Drama • 2h 8m"
+    },
+    "speaknoevil": {
+      "image": "speaknoevil-271f9906fb2f.jpg",
+      "thumbnail": "speaknoevil-271f9906fb2f-thumb.jpg",
+      "source": "/images/speaknoevil/covers/speaknoevilCover.svg",
+      "sourceSHA256": "271f9906fb2ffe7b05c863ac5582779294302f27ac449b854f1dfe2d27ca67d0",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2022 • Psychological Drama • 1h 37m"
+    },
+    "ikiru": {
+      "image": "ikiru-627cdee1555c.jpg",
+      "thumbnail": "ikiru-627cdee1555c-thumb.jpg",
+      "source": "/images/ikiru/covers/ikiruCover.jpg",
+      "sourceSHA256": "627cdee1555cf152e918dae1f22cbaea94408ef9baa97de10e365bc8aeca5154",
+      "width": 705,
+      "height": 397,
+      "meta": "1952 • Psychological Drama • 2h 23m"
+    },
+    "theericandreshow": {
+      "image": "theericandreshow-55fcd25d90ac.jpg",
+      "thumbnail": "theericandreshow-55fcd25d90ac-thumb.jpg",
+      "source": "/images/theericandreshow/covers/theericandreshowCover.svg",
+      "sourceSHA256": "55fcd25d90ac2ba7ec064f59af0868cd738fc25ed583d1e09b0330c87fec129b",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2012 • Sketch Comedy • 5 seasons"
+    },
+    "pokemon2000": {
+      "image": "pokemon2000-1e5c951c8884.jpg",
+      "thumbnail": "pokemon2000-1e5c951c8884-thumb.jpg",
+      "source": "/images/pokemon2000/covers/pokemon2000Cover.svg",
+      "sourceSHA256": "1e5c951c88840ffb7912476b9659b7123b9ebbc6be3de554e2079762b2aef30e",
+      "width": 1920,
+      "height": 1080,
+      "meta": "1999 • Adventure • 1h 39m"
+    },
+    "coherence": {
+      "image": "coherence-0c8a8f588f19.jpg",
+      "thumbnail": "coherence-0c8a8f588f19-thumb.jpg",
+      "source": "/images/coherence/covers/coherenceCover.svg",
+      "sourceSHA256": "0c8a8f588f19a5a91c9c4b924022c937780ed204454fd411b4df7b74d3d8742a",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2013 • Psychological Thriller • 1h 29m"
+    },
+    "exit8": {
+      "image": "exit8-f260a83320a7.jpg",
+      "thumbnail": "exit8-f260a83320a7-thumb.jpg",
+      "source": "/images/exit8/covers/exit8Cover.svg",
+      "sourceSHA256": "f260a83320a7fd1c2e376b6f3ef971dca0c99ff66c49b980105f98848d9cf1a7",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Psychological Horror • 1h 35m"
+    },
+    "hokum": {
+      "image": "hokum-2e0ffaf06060.jpg",
+      "thumbnail": "hokum-2e0ffaf06060-thumb.jpg",
+      "source": "/images/hokum/covers/hokumCover.svg",
+      "sourceSHA256": "2e0ffaf060605c1f2fa0c60b0672a1533be747a94e6d3038c4dc9b8a1bf89205",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Psychological Horror • 1h 47m"
+    },
+    "obsession": {
+      "image": "obsession-b390cec74d12.jpg",
+      "thumbnail": "obsession-b390cec74d12-thumb.jpg",
+      "source": "/images/obsession/covers/obsessionCover.svg",
+      "sourceSHA256": "b390cec74d120e10c78567323bcb8655ce5b0fc78bb20640d96235bfc659b4ff",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Psychological Horror • 1h 48m"
+    },
+    "projecthailmary": {
+      "image": "projecthailmary-42f22f99fbe9.jpg",
+      "thumbnail": "projecthailmary-42f22f99fbe9-thumb.jpg",
+      "source": "/images/projecthailmary/covers/projecthailmaryCover.svg",
+      "sourceSHA256": "42f22f99fbe91829c2bf529a0759d2295ba90b4701815a81d093693c98e20069",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Adventure Epic • 2h 36m"
+    },
+    "bloodthelastvampire": {
+      "image": "bloodthelastvampire-00d606fde692.jpg",
+      "thumbnail": "bloodthelastvampire-00d606fde692-thumb.jpg",
+      "source": "/images/bloodthelastvampire/covers/bloodthelastvampireCover.svg",
+      "sourceSHA256": "00d606fde692f7157988136e09862a8769b27287e52053311acdedee0d968442",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2009 • Action • 1h 31m"
+    },
+    "theanimatrix": {
+      "image": "theanimatrix-0b8213bcda95.jpg",
+      "thumbnail": "theanimatrix-0b8213bcda95-thumb.jpg",
+      "source": "/images/theanimatrix/covers/theanimatrixCover.svg",
+      "sourceSHA256": "0b8213bcda95fa2c12d27e233fc7fbfdfbfdc1089ed3303aea34bfb64723b68e",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2003 • Animation • 1hr 42m"
+    },
+    "mongolianchopsquad": {
+      "image": "mongolianchopsquad-75b60adac7ea.jpg",
+      "thumbnail": "mongolianchopsquad-75b60adac7ea-thumb.jpg",
+      "source": "/images/mongolianchopsquad/covers/mongolianchopsquadCover.svg",
+      "sourceSHA256": "75b60adac7ea502ffca8a5b0b31eb4f57e4196c6e90201a33e65aa8704d01617",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2004 • Music • 1 season"
+    },
+    "widowsbay": {
+      "image": "widowsbay-efc7eb6f5249.jpg",
+      "thumbnail": "widowsbay-efc7eb6f5249-thumb.jpg",
+      "source": "/images/widowsbay/covers/widowsbayCover.svg",
+      "sourceSHA256": "efc7eb6f5249df0ec6e35218ade0b35bd5fac2babc6f5453aa14f0007e37575c",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Folk Horror • 1 season"
+    },
+    "backrooms": {
+      "image": "backrooms-de79017aa791.jpg",
+      "thumbnail": "backrooms-de79017aa791-thumb.jpg",
+      "source": "/images/backrooms/covers/backroomsCover.svg",
+      "sourceSHA256": "de79017aa791d3a5e442bc3e42350767e8634c387aa4250f67b528598c53305d",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Horror • 1h 50m"
+    },
+    "pokemondestinydeoxys": {
+      "image": "pokemondestinydeoxys-b668aee5ab81.jpg",
+      "thumbnail": "pokemondestinydeoxys-b668aee5ab81-thumb.jpg",
+      "source": "/images/pokemondestinydeoxys/covers/pokemondestinydeoxysCover.svg",
+      "sourceSHA256": "b668aee5ab8156bd22a54b1c201af79930cee5acddcc4cf1f8ace24596975cbd",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2004 • Adventure • 1h 38m"
+    },
+    "atlanta": {
+      "image": "atlanta-49e03dea66e8.jpg",
+      "thumbnail": "atlanta-49e03dea66e8-thumb.jpg",
+      "source": "/images/atlanta/covers/atlantaCover.svg",
+      "sourceSHA256": "49e03dea66e85cd95d8016a8bd0bca4b48cce48bd2c2d2554c049f9884fc357e",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2016 • Comedy • 4 seasons"
+    },
+    "chronicle": {
+      "image": "chronicle-db457d646b47.jpg",
+      "thumbnail": "chronicle-db457d646b47-thumb.jpg",
+      "source": "/images/chronicle/covers/chronicleCover.svg",
+      "sourceSHA256": "db457d646b478493e8b4d2d49974ec52f61ddc16400e48f5c76877ca7fece6e2",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2012 • Drama • 1h 24m"
+    },
+    "jojos": {
+      "image": "jojos-557a9b76a88b.jpg",
+      "thumbnail": "jojos-557a9b76a88b-thumb.jpg",
+      "source": "/images/jojos/covers/jojosCover.svg",
+      "sourceSHA256": "557a9b76a88bfed9a2b765e704a2674924233f9ad76a8103c3624568b9d95dcf",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2012 • Animation • 1 season"
+    },
+    "chernobyl": {
+      "image": "chernobyl-5e93224f33b7.jpg",
+      "thumbnail": "chernobyl-5e93224f33b7-thumb.jpg",
+      "source": "/images/chernobyl/covers/chernobylCover.svg",
+      "sourceSHA256": "5e93224f33b7b0afd51195c73c06724d9ae2607820901967bf673cdc8b4876c3",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2019 • Drama • 1 season"
+    },
+    "beingjohnmalkovich": {
+      "image": "beingjohnmalkovich-10af453108b0.jpg",
+      "thumbnail": "beingjohnmalkovich-10af453108b0-thumb.jpg",
+      "source": "/images/beingjohnmalkovich/covers/beingjohnmalkovichCover.svg",
+      "sourceSHA256": "10af453108b0cab93c72fa307df3c275f3c0f8abfb6d19a375e9deabac5758e2",
+      "width": 1920,
+      "height": 1080,
+      "meta": "1999 • Comedy • 1h 53m"
+    },
+    "attackontitan": {
+      "image": "attackontitan-350593178c1e.jpg",
+      "thumbnail": "attackontitan-350593178c1e-thumb.jpg",
+      "source": "/images/attackontitan/covers/attackontitanCover.svg",
+      "sourceSHA256": "350593178c1e9fa8fc9d8d8a0badc9c009653e6d1071d0bc42b639b012073ae8",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2013 • Animation • 4 seasons"
+    },
+    "thedrama": {
+      "image": "thedrama-7fff53c9e8b6.jpg",
+      "thumbnail": "thedrama-7fff53c9e8b6-thumb.jpg",
+      "source": "/images/thedrama/covers/thedramaCover.svg",
+      "sourceSHA256": "7fff53c9e8b6f858946cfc29c9e872597f4236f5cf2f7fc34c301a47f54af0e5",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Dark Comedy • 1h 45m"
+    },
+    "thenightisshort": {
+      "image": "thenightisshort-5ef4b5a2b8ee.jpg",
+      "thumbnail": "thenightisshort-5ef4b5a2b8ee-thumb.jpg",
+      "source": "/images/thenightisshort/covers/thenightisshortCover.svg",
+      "sourceSHA256": "5ef4b5a2b8ee74055a775d540823891effb963ccbadfa6d4294c0ba443fab2e4",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2017 • Animation • 1h 32m"
+    },
+    "cure": {
+      "image": "cure-154be45bc1dc.jpg",
+      "thumbnail": "cure-154be45bc1dc-thumb.jpg",
+      "source": "/images/cure/covers/cureCover.svg",
+      "sourceSHA256": "154be45bc1dcb148d89af7852240d4413705ec99e3c5a1541b02346e5e83a9fb",
+      "width": 1920,
+      "height": 1080,
+      "meta": "1997 • Crime • 1h 51m"
+    },
+    "theinvite": {
+      "image": "theinvite-efc1004016be.jpg",
+      "thumbnail": "theinvite-efc1004016be-thumb.jpg",
+      "source": "/images/theinvite/covers/theinviteCover.svg",
+      "sourceSHA256": "efc1004016beeb00114790a3c1786d177057eb24752949b372b63bda6b52e6df",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Comedy • 1h 47m"
+    }
+  }
+}

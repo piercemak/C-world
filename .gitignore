@@ -51,4 +51,5 @@ roku/source/Config.local.brs
 
 # Build-generated Roku caption files
 frontend/public/roku-captions/
+frontend/public/catalog-v1.json
 roku/dist/

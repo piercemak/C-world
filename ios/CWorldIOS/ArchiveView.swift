@@ -2,7 +2,7 @@ import PhotosUI
 import SwiftUI
 import UIKit
 
-private enum ArchiveTypeFilter: String, CaseIterable, Identifiable {
+enum ArchiveTypeFilter: String, CaseIterable, Identifiable {
     case all = "All"
     case shows = "Shows"
     case movies = "Movies"
@@ -17,7 +17,7 @@ private enum ArchiveTypeFilter: String, CaseIterable, Identifiable {
     }
 }
 
-private enum ArchiveSortMode: String, CaseIterable, Identifiable {
+enum ArchiveSortMode: String, CaseIterable, Identifiable {
     case newest = "Newest"
     case oldest = "Oldest"
     case highestRated = "Highest Rated"
@@ -27,9 +27,72 @@ private enum ArchiveSortMode: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
+/// Built only when catalog/filter inputs change, never while paging or rendering rows.
+struct ArchiveCatalogSnapshot {
+    let items: [CWorldMedia]
+    let pages: [[CWorldMedia]]
+    let latest: [CWorldMedia]
+
+    init(catalog: [CWorldMedia] = [], query: String = "", type: ArchiveTypeFilter = .all,
+         sort: ArchiveSortMode = .newest, pageSize: Int = 6) {
+        let dated = catalog.enumerated().map { (offset: $0.offset, media: $0.element, date: Self.parseAddedDate($0.element.dateAdded)) }
+        let newest = dated.filter { $0.date != nil }.sorted {
+            if $0.date != $1.date { return $0.date! > $1.date! }
+            return $0.offset < $1.offset
+        }.prefix(3).map(\.media)
+        latest = newest.isEmpty ? Array(catalog.suffix(3).reversed()) : Array(newest)
+
+        let query = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        var matches = dated.filter {
+            (type.mediaType == nil || $0.media.type == type.mediaType)
+                && (query.isEmpty || $0.media.title.localizedCaseInsensitiveContains(query)
+                    || $0.media.metadata.creator.localizedCaseInsensitiveContains(query))
+        }
+        let hasDates = matches.contains { $0.date != nil }
+        matches.sort { lhs, rhs in
+            switch sort {
+            case .newest, .oldest:
+                if !hasDates { return sort == .newest ? lhs.offset > rhs.offset : lhs.offset < rhs.offset }
+                let left = lhs.date ?? .distantPast
+                let right = rhs.date ?? .distantPast
+                if left != right { return sort == .newest ? left > right : left < right }
+            case .highestRated, .lowestRated:
+                let left = Double(lhs.media.metadata.rating) ?? 0
+                let right = Double(rhs.media.metadata.rating) ?? 0
+                if left != right { return sort == .highestRated ? left > right : left < right }
+            case .alphabetical:
+                let order = lhs.media.title.localizedCaseInsensitiveCompare(rhs.media.title)
+                if order != .orderedSame { return order == .orderedAscending }
+            }
+            return lhs.offset < rhs.offset
+        }
+        let items = matches.map(\.media)
+        self.items = items
+        let pageSize = max(pageSize, 1)
+        pages = stride(from: 0, to: items.count, by: pageSize).map {
+            Array(items[$0..<min($0 + pageSize, items.count)])
+        }
+    }
+
+    private static func parseAddedDate(_ value: String?) -> Date? {
+        guard let value else { return nil }
+        let parts = value.split { $0 == "-" || $0 == "/" }.compactMap { Int($0) }
+        guard parts.count == 3 else { return nil }
+        let components: DateComponents
+        if parts[0] > 31 {
+            components = DateComponents(year: parts[0], month: parts[1], day: parts[2])
+        } else {
+            let year = parts[2] < 100 ? 2000 + parts[2] : parts[2]
+            components = DateComponents(year: year, month: parts[0], day: parts[1])
+        }
+        return Calendar(identifier: .gregorian).date(from: components)
+    }
+}
+
 struct ArchiveView: View {
     @EnvironmentObject private var appModel: AppModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.displayScale) private var displayScale
     @State private var searchText = ""
     @State private var isSearchOpen = false
     @State private var typeFilter: ArchiveTypeFilter = .all
@@ -38,34 +101,13 @@ struct ArchiveView: View {
     @State private var showingBackdropPicker = false
     @State private var profileExpanded = false
     @State private var selectedMediaID: String?
+    @State private var resumeItem: ContinueWatchingItem?
     @State private var allMediaPage = 0
+    @State private var catalogSnapshot = ArchiveCatalogSnapshot()
 
     private let allMediaPerPage = 6
 
-    private var filteredItems: [CWorldMedia] {
-        var items = appModel.catalog.filter { media in
-            let matchesType = typeFilter.mediaType == nil || media.type == typeFilter.mediaType
-            let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-            let matchesSearch = query.isEmpty
-                || media.title.localizedCaseInsensitiveContains(query)
-                || media.metadata.creator.localizedCaseInsensitiveContains(query)
-            return matchesType && matchesSearch
-        }
-
-        switch sortMode {
-        case .newest:
-            items = sortByAddedDate(items, newestFirst: true)
-        case .oldest:
-            items = sortByAddedDate(items, newestFirst: false)
-        case .highestRated:
-            items.sort { (Double($0.metadata.rating) ?? 0) > (Double($1.metadata.rating) ?? 0) }
-        case .lowestRated:
-            items.sort { (Double($0.metadata.rating) ?? 0) < (Double($1.metadata.rating) ?? 0) }
-        case .alphabetical:
-            items.sort { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
-        }
-        return items
-    }
+    private var filteredItems: [CWorldMedia] { catalogSnapshot.items }
 
     private var currentBackdrop: CWorldMedia? {
         appModel.catalog.first
@@ -80,83 +122,17 @@ struct ArchiveView: View {
         return currentBackdrop?.artwork.preferredBackdrop
     }
 
-    private var latestItems: [CWorldMedia] {
-        let datedItems = appModel.catalog.enumerated()
-            .filter { parseAddedDate($0.element.dateAdded) != nil }
-            .sorted { left, right in
-                let leftDate = parseAddedDate(left.element.dateAdded) ?? .distantPast
-                let rightDate = parseAddedDate(right.element.dateAdded) ?? .distantPast
-                if leftDate != rightDate {
-                    return leftDate > rightDate
-                }
-                return left.offset < right.offset
-            }
-            .prefix(3)
-            .map(\.element)
+    private var latestItems: [CWorldMedia] { catalogSnapshot.latest }
+    private var allMediaPages: [[CWorldMedia]] { catalogSnapshot.pages }
 
-        // Keep New Media visible when an older cached or remote catalog has not
-        // received the new dateAdded field yet. The generated catalog uses the
-        // date-sorted path above once it is deployed.
-        // Older catalogs do not include dateAdded. Catalog entries are appended
-        // as media is added to the project, so use the newest tail entries until
-        // the date-aware catalog is available from the API.
-        return datedItems.isEmpty ? Array(appModel.catalog.suffix(3).reversed()) : Array(datedItems)
+    private func updateCatalogSnapshot(_ catalog: [CWorldMedia]) {
+        catalogSnapshot = ArchiveCatalogSnapshot(catalog: catalog, query: searchText,
+                                                type: typeFilter, sort: sortMode, pageSize: allMediaPerPage)
+        allMediaPage = min(allMediaPage, max(catalogSnapshot.pages.count - 1, 0))
     }
 
-    private func sortByAddedDate(_ items: [CWorldMedia], newestFirst: Bool) -> [CWorldMedia] {
-        let hasUsableDate = items.contains { parseAddedDate($0.dateAdded) != nil }
-        guard hasUsableDate else {
-            // Older cached catalogs omit dateAdded but retain catalog insertion order.
-            return newestFirst ? Array(items.reversed()) : items
-        }
-
-        return items.enumerated()
-            .sorted { left, right in
-                let leftDate = parseAddedDate(left.element.dateAdded) ?? .distantPast
-                let rightDate = parseAddedDate(right.element.dateAdded) ?? .distantPast
-                if leftDate != rightDate {
-                    return newestFirst ? leftDate > rightDate : leftDate < rightDate
-                }
-                return left.offset < right.offset
-            }
-            .map(\.element)
-    }
-
-    private func parseAddedDate(_ value: String?) -> Date? {
-        guard let value else { return nil }
-        let parts = value.split { $0 == "-" || $0 == "/" }.compactMap { Int($0) }
-        guard parts.count == 3 else { return nil }
-
-        let components: DateComponents
-        if parts[0] > 31 {
-            components = DateComponents(year: parts[0], month: parts[1], day: parts[2])
-        } else {
-            let year = parts[2] < 100 ? 2000 + parts[2] : parts[2]
-            components = DateComponents(year: year, month: parts[0], day: parts[1])
-        }
-        return Calendar(identifier: .gregorian).date(from: components)
-    }
-
-    private var allMediaPages: [[CWorldMedia]] {
-        stride(from: 0, to: filteredItems.count, by: allMediaPerPage).map { start in
-            Array(filteredItems[start..<min(start + allMediaPerPage, filteredItems.count)])
-        }
-    }
-
-    private var continueWatching: [CWorldMedia] {
-        let records = appModel.watchProgress.values
-            .filter { $0.duration > 0 && $0.currentTime > 5 && $0.currentTime < $0.duration - 30 }
-            .sorted { $0.updatedAt > $1.updatedAt }
-
-        var seenMediaIDs = Set<String>()
-        var mediaItems: [CWorldMedia] = []
-        for record in records {
-            guard let media = appModel.media(for: record.showID), seenMediaIDs.insert(media.id).inserted else {
-                continue
-            }
-            mediaItems.append(media)
-        }
-        return Array(mediaItems.prefix(10))
+    private var continueWatching: [ContinueWatchingItem] {
+        Array(ContinueWatchingItem.make(catalog: appModel.catalog, records: Array(appModel.watchProgress.values)).prefix(10))
     }
 
     var body: some View {
@@ -206,55 +182,50 @@ struct ArchiveView: View {
             .sheet(isPresented: $showingProfiles) {
                 ProfilePickerView()
             }
+            .navigationDestination(item: $resumeItem) { item in
+                NativeVideoPlayerView(
+                    mediaID: item.playbackID,
+                    season: item.progress.season,
+                    episode: item.progress.episode,
+                    title: item.episode.map { "S\(item.progress.season ?? 1)E\($0.number) · \($0.title)" } ?? item.media.title,
+                    subtitleURL: item.episode?.subtitles.first ?? item.media.subtitleTracks.first,
+                    skipIntroEnd: item.episode?.skipIntroEnd,
+                    skipOutroStart: item.episode?.skipOutroStart
+                )
+            }
             .sheet(isPresented: $showingBackdropPicker) {
                 ArchiveBackdropPickerView()
             }
-            .overlay(alignment: .top) {
-                if isSearchOpen {
-                    HStack(spacing: 12) {
-                        TextField("Search...", text: $searchText)
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            .foregroundStyle(.white)
-                            .tint(.white)
-
-                        Button {
-                            withAnimation { isSearchOpen = false }
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(.white.opacity(0.7))
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    .padding(.horizontal, 16)
-                    .frame(height: 58)
-                    .background(.black.opacity(0.72), in: RoundedRectangle(cornerRadius: 18))
-                    .padding(.horizontal, 12)
-                    .padding(.top, 6)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .zIndex(5)
-                }
+            .sheet(isPresented: $isSearchOpen) {
+                CatalogSearchView()
+                    .presentationDragIndicator(.visible)
             }
             .animation(.easeInOut(duration: 0.25), value: isSearchOpen)
-            .onChange(of: searchText) { _, _ in allMediaPage = 0 }
-            .onChange(of: typeFilter) { _, _ in allMediaPage = 0 }
-            .onChange(of: sortMode) { _, _ in allMediaPage = 0 }
-            .onChange(of: filteredItems.count) { _, _ in
-                allMediaPage = min(allMediaPage, max(allMediaPages.count - 1, 0))
+            .onReceive(appModel.$catalog) { updateCatalogSnapshot($0) }
+            .onChange(of: searchText) { _, _ in
+                allMediaPage = 0
+                updateCatalogSnapshot(appModel.catalog)
+            }
+            .onChange(of: typeFilter) { _, _ in
+                allMediaPage = 0
+                updateCatalogSnapshot(appModel.catalog)
+            }
+            .onChange(of: sortMode) { _, _ in
+                allMediaPage = 0
+                updateCatalogSnapshot(appModel.catalog)
             }
         }
     }
 
     private var archivePrefetchKey: String {
-        "\(sortMode.rawValue):\(typeFilter.rawValue):\(searchText):\(allMediaPage)"
+        "\(appModel.catalogRevision):\(filteredItems.map(\.id).joined(separator: ",")):\(sortMode.rawValue):\(typeFilter.rawValue):\(searchText):\(allMediaPage)"
     }
 
     private var archivePrefetchURLs: [URL] {
         let currentPageItems = allMediaPages.indices.contains(allMediaPage)
             ? allMediaPages[allMediaPage]
             : []
-        let visibleItems = latestItems + continueWatching + currentPageItems
+        let visibleItems = latestItems + continueWatching.map(\.media) + currentPageItems
 
         var urls = visibleItems.flatMap { media in
             [
@@ -295,6 +266,7 @@ struct ArchiveView: View {
                     .foregroundStyle(.white)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Search titles and episodes")
         }
         .padding(.horizontal, 10)
         .padding(.top, 6)
@@ -392,9 +364,10 @@ struct ArchiveView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(continueWatching) { media in
+                    ForEach(continueWatching) { item in
+                        let media = item.media
                         Button {
-                            selectedMediaID = media.id
+                            resumeItem = item
                         } label: {
                             ZStack(alignment: .bottomLeading) {
                                 CatalogImage(url: placeholderURL(for: media))
@@ -435,8 +408,21 @@ struct ArchiveView: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(.white.opacity(0.15), lineWidth: 1)
                             }
+                            .overlay {
+                                CWorldTVPlaybackHighlight(mediaID: item.playbackID, season: item.progress.season, episode: item.progress.episode)
+                            }
                         }
                         .buttonStyle(.plain)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                Task { await appModel.removeFromContinueWatching(media) }
+                            } label: {
+                                Label("Remove from Continue Watching", systemImage: "xmark.circle")
+                            }
+                        }
+                        .accessibilityAction(named: "Remove from Continue Watching") {
+                            Task { await appModel.removeFromContinueWatching(media) }
+                        }
                     }
                 }
             }
@@ -528,13 +514,19 @@ struct ArchiveView: View {
         }
     }
 
+    static func artworkPixelSize(width: CGFloat, height: CGFloat, displayScale: CGFloat) -> Int {
+        // SwiftUI layout uses points; the image decoder requires physical pixels.
+        // A 240-point card needs 720 pixels on a 3x display, not a thumbnail.
+        Int(ceil(max(width, height) * displayScale))
+    }
+
     private func archiveImage(_ media: CWorldMedia, width: CGFloat, height: CGFloat) -> some View {
         Button {
             selectedMediaID = media.id
         } label: {
             CatalogImage(
                 url: media.artwork.preferredCard ?? media.artwork.poster,
-                maxPixelSize: 240
+                maxPixelSize: Self.artworkPixelSize(width: width, height: height, displayScale: displayScale)
             )
                 .frame(width: width, height: height)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -564,7 +556,7 @@ struct ArchiveView: View {
 
     private func latestProgress(for media: CWorldMedia) -> WatchProgressRecord? {
         appModel.watchProgress.values
-            .filter { $0.showID == media.id }
+            .filter { appModel.media(for: $0.showID)?.id == media.id }
             .sorted { $0.updatedAt > $1.updatedAt }
             .first
     }
@@ -645,8 +637,9 @@ private struct ArchiveBackdropPickerView: View {
     }
 
     private var pages: [[CWorldMedia]] {
-        stride(from: 0, to: backdropOptions.count, by: backdropsPerPage).map { start in
-            Array(backdropOptions[start..<min(start + backdropsPerPage, backdropOptions.count)])
+        let options = backdropOptions
+        return stride(from: 0, to: options.count, by: backdropsPerPage).map { start in
+            Array(options[start..<min(start + backdropsPerPage, options.count)])
         }
     }
 

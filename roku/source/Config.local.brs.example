@@ -2,7 +2,7 @@
 ' Config.local.brs is ignored by git so credentials stay on the developer machine.
 function CWorldLocalConfig() as Object
     return {
-        apiBase: "https://cearaworld.com",
+        apiBase: "https://c-world.onrender.com",
         authToken: "PASTE_CWORLD_TOKEN_HERE"
     }
 end function

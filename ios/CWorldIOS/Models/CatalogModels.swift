@@ -159,6 +159,44 @@ struct WatchProgressRecord: Decodable, Identifiable {
     }
 }
 
+struct ContinueWatchingItem: Identifiable, Hashable {
+    let media: CWorldMedia
+    let progress: WatchProgressRecord
+    var id: String { media.id }
+    var episode: CWorldEpisode? {
+        media.seasons?.first(where: { $0.number == progress.season })?.episodes.first(where: { $0.number == progress.episode })
+    }
+    var playbackID: String { episode?.playbackRef.mediaId ?? media.movieAsset?.mediaId ?? progress.showID }
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id && lhs.progress.season == rhs.progress.season && lhs.progress.episode == rhs.progress.episode
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id); hasher.combine(progress.season); hasher.combine(progress.episode)
+    }
+
+    static func make(catalog: [CWorldMedia], records: [WatchProgressRecord]) -> [Self] {
+        var mediaByPlaybackID: [String: CWorldMedia] = [:]
+        for media in catalog {
+            mediaByPlaybackID[media.id] = media
+            if let movieID = media.movieAsset?.mediaId { mediaByPlaybackID[movieID] = media }
+            for season in media.seasons ?? [] {
+                for episode in season.episodes { mediaByPlaybackID[episode.playbackRef.mediaId] = media }
+            }
+        }
+        var seen = Set<String>()
+        return records.sorted { $0.updatedAt == $1.updatedAt ? $0.id > $1.id : $0.updatedAt > $1.updatedAt }.compactMap { record in
+            guard let media = mediaByPlaybackID[record.showID], seen.insert(media.id).inserted else { return nil }
+            // Check the latest record before deciding whether it is resumable.
+            // A newer reset/completion must not reveal an older partial episode.
+            guard record.duration > 0, record.currentTime > 5, record.currentTime < record.duration - 30 else { return nil }
+            let item = Self(media: media, progress: record)
+            guard media.type == "movie" || item.episode != nil else { return nil }
+            return item
+        }
+    }
+}
+
 struct WatchHistoryRecord: Decodable, Identifiable {
     let id: Int
     let showID: String

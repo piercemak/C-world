@@ -5,7 +5,7 @@
     </interface>
     <children>
         <Poster id="poster" width="250" height="375" />
-        <Rectangle id="focusFrame" width="250" height="375" color="#ffffff" opacity="0.0" />
+        <Rectangle id="focusFrame" width="250" height="375" color="0x5ED8FFFF" opacity="0.0" />
         <Label id="title" translation="[0,390]" width="250" height="48" horizAlign="center" ellipsisText="..." />
     </children>
     <script type="text/brightscript" uri="pkg:/components/CatalogGridItem.brs" />

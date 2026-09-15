@@ -22,5 +22,5 @@ sub onFocusChanged()
     else
         m.focusFrame.opacity = 0.0
     end if
-    m.focusFrame.color = "#5ed8ff"
+    m.focusFrame.color = "0x5ED8FFFF"
 end sub

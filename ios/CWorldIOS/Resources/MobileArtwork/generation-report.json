@@ -1,0 +1,1649 @@
+{
+  "renderer": {
+    "aom": "3.9.1",
+    "archive": "3.7.4",
+    "cairo": "1.18.0",
+    "cgif": "0.4.1",
+    "exif": "0.6.24",
+    "expat": "2.6.2",
+    "ffi": "3.4.6",
+    "fontconfig": "2.15.0",
+    "freetype": "2.13.2",
+    "fribidi": "1.0.15",
+    "glib": "2.81.1",
+    "harfbuzz": "9.0.0",
+    "heif": "1.18.2",
+    "highway": "1.2.0",
+    "imagequant": "2.4.1",
+    "lcms": "2.16",
+    "mozjpeg": "4.1.5",
+    "pango": "1.54.0",
+    "pixman": "0.43.4",
+    "png": "1.6.43",
+    "proxy-libintl": "0.4",
+    "rsvg": "2.58.93",
+    "spng": "0.7.4",
+    "tiff": "4.6.0",
+    "vips": "8.15.3",
+    "webp": "1.4.0",
+    "xml": "2.13.3",
+    "zlib-ng": "2.2.1",
+    "sharp": "0.33.5"
+  },
+  "assets": [
+    {
+      "url": "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg",
+      "titles": [
+        "Steven Universe"
+      ],
+      "sourceBytes": 1419721,
+      "outputBytes": 311309,
+      "thumbnailBytes": 63226,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.12105020193655
+    },
+    {
+      "url": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg",
+      "titles": [
+        "Steven Universe"
+      ],
+      "sourceBytes": 1291802,
+      "outputBytes": 492859,
+      "thumbnailBytes": 25382,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.32909516502408
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/adventuretimeLogo1.svg",
+      "titles": [
+        "Adventure Time"
+      ],
+      "sourceBytes": 1828840,
+      "outputBytes": 310671,
+      "thumbnailBytes": 55395,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.91703649571663
+    },
+    {
+      "url": "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg",
+      "titles": [
+        "Adventure Time"
+      ],
+      "sourceBytes": 11374021,
+      "outputBytes": 741568,
+      "thumbnailBytes": 31631,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.240924065807384
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/otgwLogo1.svg",
+      "titles": [
+        "Over the Garden Wall"
+      ],
+      "sourceBytes": 2335819,
+      "outputBytes": 339629,
+      "thumbnailBytes": 60608,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.88280946914991
+    },
+    {
+      "url": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg",
+      "titles": [
+        "Over the Garden Wall"
+      ],
+      "sourceBytes": 4600859,
+      "outputBytes": 893921,
+      "thumbnailBytes": 31817,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.46571956490358
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/neongenesisLogo.svg",
+      "titles": [
+        "Neon Genesis Evangelion"
+      ],
+      "sourceBytes": 3077858,
+      "outputBytes": 347300,
+      "thumbnailBytes": 61221,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.818290644747144
+    },
+    {
+      "url": "https://cearaworld.com/images/neongenesis/covers/neongenesisIcon.svg",
+      "titles": [
+        "Neon Genesis Evangelion"
+      ],
+      "sourceBytes": 1289137,
+      "outputBytes": 3429465,
+      "thumbnailBytes": 194828,
+      "width": 1085,
+      "height": 1536,
+      "format": "png",
+      "psnr": null
+    },
+    {
+      "url": "https://cearaworld.com/images/neongenesis/covers/neongenesis_backdrop.svg",
+      "titles": [
+        "Neon Genesis Evangelion"
+      ],
+      "sourceBytes": 5705509,
+      "outputBytes": 883288,
+      "thumbnailBytes": 22062,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 46.896308088882854
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/perfectblueLogo.svg",
+      "titles": [
+        "Perfect Blue"
+      ],
+      "sourceBytes": 1685732,
+      "outputBytes": 353806,
+      "thumbnailBytes": 56242,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.83689663360648
+    },
+    {
+      "url": "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg",
+      "titles": [
+        "Perfect Blue"
+      ],
+      "sourceBytes": 1058461,
+      "outputBytes": 1317377,
+      "thumbnailBytes": 35205,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.575812895757686
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/paprikaLogo1.svg",
+      "titles": [
+        "Paprika"
+      ],
+      "sourceBytes": 1142551,
+      "outputBytes": 345163,
+      "thumbnailBytes": 69055,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.997944258820375
+    },
+    {
+      "url": "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg",
+      "titles": [
+        "Paprika"
+      ],
+      "sourceBytes": 3104109,
+      "outputBytes": 1010093,
+      "thumbnailBytes": 32829,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.411398787038124
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/princessLogo1.svg",
+      "titles": [
+        "Princess Mononoke"
+      ],
+      "sourceBytes": 1084812,
+      "outputBytes": 304722,
+      "thumbnailBytes": 55937,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.678068991536094
+    },
+    {
+      "url": "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg",
+      "titles": [
+        "Princess Mononoke"
+      ],
+      "sourceBytes": 11187781,
+      "outputBytes": 782353,
+      "thumbnailBytes": 30868,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.657923969460725
+    },
+    {
+      "url": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg",
+      "titles": [
+        "Aniara"
+      ],
+      "sourceBytes": 2457508,
+      "outputBytes": 417680,
+      "thumbnailBytes": 13323,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.849180611505275
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/thevanishingLogo.svg",
+      "titles": [
+        "The Vanishing"
+      ],
+      "sourceBytes": 195402,
+      "outputBytes": 81058,
+      "thumbnailBytes": 17035,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 53.49541841975356
+    },
+    {
+      "url": "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg",
+      "titles": [
+        "The Vanishing"
+      ],
+      "sourceBytes": 687051,
+      "outputBytes": 706548,
+      "thumbnailBytes": 24537,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.906731392694
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/thelighthouseLogo.svg",
+      "titles": [
+        "The Lighthouse"
+      ],
+      "sourceBytes": 4320883,
+      "outputBytes": 213847,
+      "thumbnailBytes": 23136,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.878975642774414
+    },
+    {
+      "url": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg",
+      "titles": [
+        "The Lighthouse"
+      ],
+      "sourceBytes": 2927843,
+      "outputBytes": 429621,
+      "thumbnailBytes": 11442,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.51576906204006
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/aghoststoryLogo.svg",
+      "titles": [
+        "A Ghost Story"
+      ],
+      "sourceBytes": 6565155,
+      "outputBytes": 155261,
+      "thumbnailBytes": 32203,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 48.46505773059992
+    },
+    {
+      "url": "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg",
+      "titles": [
+        "A Ghost Story"
+      ],
+      "sourceBytes": 1149995,
+      "outputBytes": 529640,
+      "thumbnailBytes": 16437,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.764957137190805
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/littlemisssunshineLogo.svg",
+      "titles": [
+        "Little Miss Sunshine"
+      ],
+      "sourceBytes": 1707411,
+      "outputBytes": 218046,
+      "thumbnailBytes": 38535,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.85018081340303
+    },
+    {
+      "url": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg",
+      "titles": [
+        "Little Miss Sunshine"
+      ],
+      "sourceBytes": 2072786,
+      "outputBytes": 509089,
+      "thumbnailBytes": 21261,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 52.16412778323119
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/ghostintheshellLogo.svg",
+      "titles": [
+        "Ghost In The Shell"
+      ],
+      "sourceBytes": 2494024,
+      "outputBytes": 294489,
+      "thumbnailBytes": 56135,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.99259163330046
+    },
+    {
+      "url": "https://cearaworld.com/images/ghostintheshell/covers/ghostintheshell_backdrop.svg",
+      "titles": [
+        "Ghost In The Shell"
+      ],
+      "sourceBytes": 2600271,
+      "outputBytes": 2207417,
+      "thumbnailBytes": 55553,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 44.988089644083615
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/mobpsychoLogo.svg",
+      "titles": [
+        "Mob Psycho 100"
+      ],
+      "sourceBytes": 7244913,
+      "outputBytes": 428176,
+      "thumbnailBytes": 76939,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 40.373575253371705
+    },
+    {
+      "url": "https://cearaworld.com/images/mobpsycho/covers/mobpsycho_backdrop.svg",
+      "titles": [
+        "Mob Psycho 100"
+      ],
+      "sourceBytes": 3838993,
+      "outputBytes": 513122,
+      "thumbnailBytes": 23617,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.103235084712885
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/fmabLogo.svg",
+      "titles": [
+        "Fullmetal Alchemist: Brotherhood"
+      ],
+      "sourceBytes": 4085283,
+      "outputBytes": 388586,
+      "thumbnailBytes": 69294,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.40295357295225
+    },
+    {
+      "url": "https://cearaworld.com/images/fmab/covers/fmab_backdrop.svg",
+      "titles": [
+        "Fullmetal Alchemist: Brotherhood"
+      ],
+      "sourceBytes": 11311965,
+      "outputBytes": 999349,
+      "thumbnailBytes": 38695,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 45.58619502304292
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/jjkLogo2.svg",
+      "titles": [
+        "Jujutsu Kaisen"
+      ],
+      "sourceBytes": 6760053,
+      "outputBytes": 298508,
+      "thumbnailBytes": 56880,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.56223134997284
+    },
+    {
+      "url": "https://cearaworld.com/images/jjk/covers/jjk_backdrop.svg",
+      "titles": [
+        "Jujutsu Kaisen"
+      ],
+      "sourceBytes": 2722963,
+      "outputBytes": 910039,
+      "thumbnailBytes": 31959,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 46.99753249918527
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/weaponsLogo.svg",
+      "titles": [
+        "Weapons"
+      ],
+      "sourceBytes": 8368271,
+      "outputBytes": 255365,
+      "thumbnailBytes": 37194,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.314646885058735
+    },
+    {
+      "url": "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg",
+      "titles": [
+        "Weapons"
+      ],
+      "sourceBytes": 1337126,
+      "outputBytes": 1125225,
+      "thumbnailBytes": 40333,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.094855914100165
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/tokyogodfathersLogo.svg",
+      "titles": [
+        "Tokyo Godfathers"
+      ],
+      "sourceBytes": 3775254,
+      "outputBytes": 507280,
+      "thumbnailBytes": 81410,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 40.347754325499864
+    },
+    {
+      "url": "https://cearaworld.com/images/tokyogodfathers/covers/tokyogodfathers_backdrop.svg",
+      "titles": [
+        "Tokyo Godfathers"
+      ],
+      "sourceBytes": 1674913,
+      "outputBytes": 1457813,
+      "thumbnailBytes": 55879,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.38348050661229
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/cyberpunkLogo.svg",
+      "titles": [
+        "Cyberpunk: Edgerunners"
+      ],
+      "sourceBytes": 1187170,
+      "outputBytes": 252239,
+      "thumbnailBytes": 50922,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.55918835178638
+    },
+    {
+      "url": "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg",
+      "titles": [
+        "Cyberpunk: Edgerunners"
+      ],
+      "sourceBytes": 497972,
+      "outputBytes": 465840,
+      "thumbnailBytes": 21401,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.14505253781565
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/solarisLogo.svg",
+      "titles": [
+        "Solaris"
+      ],
+      "sourceBytes": 1761679,
+      "outputBytes": 386615,
+      "thumbnailBytes": 60472,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.25301847331431
+    },
+    {
+      "url": "https://cearaworld.com/images/solaris/covers/solaris_backdrop.svg",
+      "titles": [
+        "Solaris"
+      ],
+      "sourceBytes": 1746340,
+      "outputBytes": 884995,
+      "thumbnailBytes": 40683,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.289621826997504
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/eventhorizonLogo.svg",
+      "titles": [
+        "Event Horizon"
+      ],
+      "sourceBytes": 6361292,
+      "outputBytes": 373423,
+      "thumbnailBytes": 59605,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.297243455720576
+    },
+    {
+      "url": "https://cearaworld.com/images/eventhorizon/covers/eventhorizon_backdrop.svg",
+      "titles": [
+        "Event Horizon"
+      ],
+      "sourceBytes": 21201500,
+      "outputBytes": 2053276,
+      "thumbnailBytes": 39998,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 42.70461338779398
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/lovedeathandrobotsLogo.svg",
+      "titles": [
+        "Love Death + Robots"
+      ],
+      "sourceBytes": 4640252,
+      "outputBytes": 370611,
+      "thumbnailBytes": 62483,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.8852454785889
+    },
+    {
+      "url": "https://cearaworld.com/images/lovedeathandrobots/covers/lovedeathandrobots_backdrop.svg",
+      "titles": [
+        "Love Death + Robots"
+      ],
+      "sourceBytes": 849688,
+      "outputBytes": 619168,
+      "thumbnailBytes": 22620,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.323891312318445
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/demonsLogo.svg",
+      "titles": [
+        "Demons"
+      ],
+      "sourceBytes": 9995623,
+      "outputBytes": 196235,
+      "thumbnailBytes": 38596,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.411116128904894
+    },
+    {
+      "url": "https://cearaworld.com/images/demons/covers/demons_backdrop.svg",
+      "titles": [
+        "Demons"
+      ],
+      "sourceBytes": 196448,
+      "outputBytes": 213729,
+      "thumbnailBytes": 7216,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 57.67297100152251
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/blackmirrorLogo.svg",
+      "titles": [
+        "Black Mirror"
+      ],
+      "sourceBytes": 503778,
+      "outputBytes": 197182,
+      "thumbnailBytes": 35878,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 49.06075715342895
+    },
+    {
+      "url": "https://cearaworld.com/images/blackmirror/covers/blackmirror_backdrop.svg",
+      "titles": [
+        "Black Mirror"
+      ],
+      "sourceBytes": 1039367,
+      "outputBytes": 970520,
+      "thumbnailBytes": 22703,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.32701637846835
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/severanceLogo.svg",
+      "titles": [
+        "Severance"
+      ],
+      "sourceBytes": 14049202,
+      "outputBytes": 270231,
+      "thumbnailBytes": 33479,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 40.005894987508796
+    },
+    {
+      "url": "https://cearaworld.com/images/severance/covers/severance_backdrop.svg",
+      "titles": [
+        "Severance"
+      ],
+      "sourceBytes": 1707374,
+      "outputBytes": 655579,
+      "thumbnailBytes": 27651,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.78565943752123
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/pluribusLogo.svg",
+      "titles": [
+        "Pluribus"
+      ],
+      "sourceBytes": 2691421,
+      "outputBytes": 230172,
+      "thumbnailBytes": 43025,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.86486164847112
+    },
+    {
+      "url": "https://cearaworld.com/images/pluribus/covers/pluribus_backdrop.svg",
+      "titles": [
+        "Pluribus"
+      ],
+      "sourceBytes": 1346172,
+      "outputBytes": 420371,
+      "thumbnailBytes": 12647,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.036159395199704
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/akiraLogo.svg",
+      "titles": [
+        "Akira"
+      ],
+      "sourceBytes": 4039205,
+      "outputBytes": 279176,
+      "thumbnailBytes": 48626,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.53418247078492
+    },
+    {
+      "url": "https://cearaworld.com/images/akira/covers/akira_backdrop.svg",
+      "titles": [
+        "Akira"
+      ],
+      "sourceBytes": 7954911,
+      "outputBytes": 2912001,
+      "thumbnailBytes": 49120,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 41.48586149552132
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/exmachinaLogo.svg",
+      "titles": [
+        "Ex Machina"
+      ],
+      "sourceBytes": 1036213,
+      "outputBytes": 167269,
+      "thumbnailBytes": 28642,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.34184727584489
+    },
+    {
+      "url": "https://cearaworld.com/images/exmachina/covers/exmachina_backdrop.svg",
+      "titles": [
+        "Ex Machina"
+      ],
+      "sourceBytes": 1822996,
+      "outputBytes": 831557,
+      "thumbnailBytes": 29395,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.68322232602943
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/annihilationLogo.svg",
+      "titles": [
+        "Annihilation"
+      ],
+      "sourceBytes": 2369120,
+      "outputBytes": 297103,
+      "thumbnailBytes": 52312,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.431244818123616
+    },
+    {
+      "url": "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg",
+      "titles": [
+        "Annihilation"
+      ],
+      "sourceBytes": 21726434,
+      "outputBytes": 1112713,
+      "thumbnailBytes": 40298,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.940373596762754
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/itsalwayssunnyLogo.svg",
+      "titles": [
+        "It's Always Sunny In Philadelphia"
+      ],
+      "sourceBytes": 1587429,
+      "outputBytes": 351269,
+      "thumbnailBytes": 63651,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.476841321469735
+    },
+    {
+      "url": "https://cearaworld.com/images/itsalwayssunny/covers/itsalwayssunny_backdrop.svg",
+      "titles": [
+        "It's Always Sunny In Philadelphia"
+      ],
+      "sourceBytes": 575902,
+      "outputBytes": 361634,
+      "thumbnailBytes": 14485,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.03651145000508
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/thetwilightzoneLogo.svg",
+      "titles": [
+        "The Twilight Zone"
+      ],
+      "sourceBytes": 1063978,
+      "outputBytes": 164267,
+      "thumbnailBytes": 30351,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.79796740829843
+    },
+    {
+      "url": "https://cearaworld.com/images/thetwilightzone/covers/thetwilightzone_backdrop.svg",
+      "titles": [
+        "The Twilight Zone"
+      ],
+      "sourceBytes": 506053,
+      "outputBytes": 553300,
+      "thumbnailBytes": 26769,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 52.47517145905702
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/redlineLogo.svg",
+      "titles": [
+        "Redline"
+      ],
+      "sourceBytes": 4813472,
+      "outputBytes": 561690,
+      "thumbnailBytes": 78939,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 38.99429121325052
+    },
+    {
+      "url": "https://cearaworld.com/images/redline/covers/redline_backdrop.svg",
+      "titles": [
+        "Redline"
+      ],
+      "sourceBytes": 11127785,
+      "outputBytes": 994152,
+      "thumbnailBytes": 38187,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 46.0456912467469
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/bugoniaLogo.svg",
+      "titles": [
+        "Bugonia"
+      ],
+      "sourceBytes": 1800562,
+      "outputBytes": 317185,
+      "thumbnailBytes": 44524,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.56875654876515
+    },
+    {
+      "url": "https://cearaworld.com/images/bugonia/covers/bugonia_backdrop.svg",
+      "titles": [
+        "Bugonia"
+      ],
+      "sourceBytes": 1679415,
+      "outputBytes": 1026646,
+      "thumbnailBytes": 43091,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.76470557232338
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/frankensteinLogo.svg",
+      "titles": [
+        "Frankenstein"
+      ],
+      "sourceBytes": 5692130,
+      "outputBytes": 262720,
+      "thumbnailBytes": 39302,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.08046954078126
+    },
+    {
+      "url": "https://cearaworld.com/images/frankenstein/covers/frankenstein_backdrop.svg",
+      "titles": [
+        "Frankenstein"
+      ],
+      "sourceBytes": 9054877,
+      "outputBytes": 877322,
+      "thumbnailBytes": 24992,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 46.91744494072786
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/truedetectiveLogo.svg",
+      "titles": [
+        "True Detective"
+      ],
+      "sourceBytes": 5151788,
+      "outputBytes": 447989,
+      "thumbnailBytes": 56196,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.19435313507998
+    },
+    {
+      "url": "https://cearaworld.com/images/truedetective/covers/truedetective_backdrop.svg",
+      "titles": [
+        "True Detective"
+      ],
+      "sourceBytes": 3480554,
+      "outputBytes": 380334,
+      "thumbnailBytes": 11382,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.404546272516086
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/sunsetboulevardLogo.svg",
+      "titles": [
+        "Sunset Boulevard"
+      ],
+      "sourceBytes": 1761383,
+      "outputBytes": 235440,
+      "thumbnailBytes": 36311,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.05204239495274
+    },
+    {
+      "url": "https://cearaworld.com/images/sunsetboulevard/covers/sunsetboulevard_backdrop.svg",
+      "titles": [
+        "Sunset Boulevard"
+      ],
+      "sourceBytes": 2065719,
+      "outputBytes": 711555,
+      "thumbnailBytes": 19226,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.46587241874086
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/shikijitsuLogo.svg",
+      "titles": [
+        "Shiki-Jitsu"
+      ],
+      "sourceBytes": 11426663,
+      "outputBytes": 297488,
+      "thumbnailBytes": 49441,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.54084955506386
+    },
+    {
+      "url": "https://cearaworld.com/images/shikijitsu/covers/shikijitsu_backdrop.svg",
+      "titles": [
+        "Shiki-Jitsu"
+      ],
+      "sourceBytes": 1274241,
+      "outputBytes": 752437,
+      "thumbnailBytes": 30543,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.89939822376066
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/speaknoevilLogo.svg",
+      "titles": [
+        "Speak No Evil"
+      ],
+      "sourceBytes": 5360566,
+      "outputBytes": 172328,
+      "thumbnailBytes": 28607,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.67113508808855
+    },
+    {
+      "url": "https://cearaworld.com/images/speaknoevil/covers/speaknoevil_backdrop.svg",
+      "titles": [
+        "Speak No Evil"
+      ],
+      "sourceBytes": 27640605,
+      "outputBytes": 504284,
+      "thumbnailBytes": 8167,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 45.675934690767804
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/ikiruLogo.svg",
+      "titles": [
+        "Ikiru"
+      ],
+      "sourceBytes": 7577599,
+      "outputBytes": 182661,
+      "thumbnailBytes": 32059,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.7964755488647
+    },
+    {
+      "url": "https://cearaworld.com/images/ikiru/covers/ikiru_backdrop.svg",
+      "titles": [
+        "Ikiru"
+      ],
+      "sourceBytes": 6625763,
+      "outputBytes": 1253762,
+      "thumbnailBytes": 39449,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 45.871812394548044
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/theericandreshowLogo.svg",
+      "titles": [
+        "The Eric Andre Show"
+      ],
+      "sourceBytes": 1787375,
+      "outputBytes": 269781,
+      "thumbnailBytes": 51007,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.125517473572295
+    },
+    {
+      "url": "https://cearaworld.com/images/theericandreshow/covers/theericandreshow_backdrop.svg",
+      "titles": [
+        "The Eric Andre Show"
+      ],
+      "sourceBytes": 8706424,
+      "outputBytes": 1049375,
+      "thumbnailBytes": 35135,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.39482936711158
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/pokemon2000Logo.svg",
+      "titles": [
+        "Pokémon 2000"
+      ],
+      "sourceBytes": 5473135,
+      "outputBytes": 604019,
+      "thumbnailBytes": 93541,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 39.71705022330838
+    },
+    {
+      "url": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg",
+      "titles": [
+        "Pokémon 2000"
+      ],
+      "sourceBytes": 40090101,
+      "outputBytes": 781344,
+      "thumbnailBytes": 25863,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.03385630324511
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/coherenceLogo.svg",
+      "titles": [
+        "Coherence"
+      ],
+      "sourceBytes": 6151368,
+      "outputBytes": 122042,
+      "thumbnailBytes": 25799,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 50.19762076675506
+    },
+    {
+      "url": "https://cearaworld.com/images/coherence/covers/coherence_backdrop.svg",
+      "titles": [
+        "Coherence"
+      ],
+      "sourceBytes": 7964005,
+      "outputBytes": 643767,
+      "thumbnailBytes": 29066,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.216335537008725
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/exit8Logo.svg",
+      "titles": [
+        "Exit 8"
+      ],
+      "sourceBytes": 5573119,
+      "outputBytes": 81404,
+      "thumbnailBytes": 20578,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 48.01718958294238
+    },
+    {
+      "url": "https://cearaworld.com/images/exit8/covers/exit8_backdrop.svg",
+      "titles": [
+        "Exit 8"
+      ],
+      "sourceBytes": 14998628,
+      "outputBytes": 647253,
+      "thumbnailBytes": 16167,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.13616357462442
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/hokumLogo.svg",
+      "titles": [
+        "Hokum"
+      ],
+      "sourceBytes": 9459398,
+      "outputBytes": 315521,
+      "thumbnailBytes": 41187,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.98126998866874
+    },
+    {
+      "url": "https://cearaworld.com/images/hokum/covers/hokum_backdrop.svg",
+      "titles": [
+        "Hokum"
+      ],
+      "sourceBytes": 2074000,
+      "outputBytes": 476206,
+      "thumbnailBytes": 12756,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.976503427221864
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/obsessionLogo.svg",
+      "titles": [
+        "Obsession"
+      ],
+      "sourceBytes": 3453831,
+      "outputBytes": 299326,
+      "thumbnailBytes": 37306,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.73039878506904
+    },
+    {
+      "url": "https://cearaworld.com/images/obsession/covers/obsession_backdrop.svg",
+      "titles": [
+        "Obsession"
+      ],
+      "sourceBytes": 290698,
+      "outputBytes": 164677,
+      "thumbnailBytes": 9295,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.406853852065844
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/projecthailmaryLogo.svg",
+      "titles": [
+        "Project Hail Mary"
+      ],
+      "sourceBytes": 7500174,
+      "outputBytes": 504364,
+      "thumbnailBytes": 72163,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 40.72554868169685
+    },
+    {
+      "url": "https://cearaworld.com/images/projecthailmary/covers/projecthailmary_backdrop.svg",
+      "titles": [
+        "Project Hail Mary"
+      ],
+      "sourceBytes": 11366122,
+      "outputBytes": 1737863,
+      "thumbnailBytes": 40005,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 44.489370301102724
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/bloodthelastvampireLogo.svg",
+      "titles": [
+        "Blood: The Last Vampire"
+      ],
+      "sourceBytes": 2775697,
+      "outputBytes": 352607,
+      "thumbnailBytes": 53062,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.99052190877923
+    },
+    {
+      "url": "https://cearaworld.com/images/bloodthelastvampire/covers/bloodthelastvampire_backdrop.svg",
+      "titles": [
+        "Blood: The Last Vampire"
+      ],
+      "sourceBytes": 26474224,
+      "outputBytes": 817159,
+      "thumbnailBytes": 20440,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.876578868499166
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/theanimatrixLogo.svg",
+      "titles": [
+        "The Animatrix"
+      ],
+      "sourceBytes": 7086593,
+      "outputBytes": 169739,
+      "thumbnailBytes": 34574,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 47.652386128236586
+    },
+    {
+      "url": "https://cearaworld.com/images/theanimatrix/covers/theanimatrix_backdrop.svg",
+      "titles": [
+        "The Animatrix"
+      ],
+      "sourceBytes": 19998981,
+      "outputBytes": 967492,
+      "thumbnailBytes": 32202,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.60994884489025
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/mongolianchopsquadLogo.svg",
+      "titles": [
+        "Beck: Mongolian Chop Squad"
+      ],
+      "sourceBytes": 1734549,
+      "outputBytes": 349401,
+      "thumbnailBytes": 53084,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.469757682257764
+    },
+    {
+      "url": "https://cearaworld.com/images/mongolianchopsquad/covers/mongolianchopsquad_backdrop.svg",
+      "titles": [
+        "Beck: Mongolian Chop Squad"
+      ],
+      "sourceBytes": 7104521,
+      "outputBytes": 1484539,
+      "thumbnailBytes": 50107,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 45.97553512526744
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/widowsbayLogo.svg",
+      "titles": [
+        "Widow's Bay"
+      ],
+      "sourceBytes": 4178494,
+      "outputBytes": 361440,
+      "thumbnailBytes": 52923,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.48856977444231
+    },
+    {
+      "url": "https://cearaworld.com/images/widowsbay/covers/widowsbay_backdrop.svg",
+      "titles": [
+        "Widow's Bay"
+      ],
+      "sourceBytes": 2973521,
+      "outputBytes": 791062,
+      "thumbnailBytes": 30754,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.103824801572
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/backroomsLogo.svg",
+      "titles": [
+        "Backrooms"
+      ],
+      "sourceBytes": 1555258,
+      "outputBytes": 153084,
+      "thumbnailBytes": 24996,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 47.7547271729808
+    },
+    {
+      "url": "https://cearaworld.com/images/backrooms/covers/backrooms_backdrop.svg",
+      "titles": [
+        "Backrooms"
+      ],
+      "sourceBytes": 17125755,
+      "outputBytes": 1491922,
+      "thumbnailBytes": 13857,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 42.893572244564346
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/pokemondestinydeoxysLogo.svg",
+      "titles": [
+        "Pokémon: Destiny Deoxys"
+      ],
+      "sourceBytes": 8063042,
+      "outputBytes": 296440,
+      "thumbnailBytes": 52923,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.670420159062964
+    },
+    {
+      "url": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg",
+      "titles": [
+        "Pokémon: Destiny Deoxys"
+      ],
+      "sourceBytes": 1388174,
+      "outputBytes": 826819,
+      "thumbnailBytes": 24223,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.90904957540891
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/atlantaLogo.svg",
+      "titles": [
+        "Atlanta"
+      ],
+      "sourceBytes": 10940247,
+      "outputBytes": 610623,
+      "thumbnailBytes": 79509,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 39.2664741971016
+    },
+    {
+      "url": "https://cearaworld.com/images/atlanta/covers/atlanta_backdrop.svg",
+      "titles": [
+        "Atlanta"
+      ],
+      "sourceBytes": 10426763,
+      "outputBytes": 639264,
+      "thumbnailBytes": 12513,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.39128959193283
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/chronicleLogo.svg",
+      "titles": [
+        "Chronicle"
+      ],
+      "sourceBytes": 7907689,
+      "outputBytes": 205398,
+      "thumbnailBytes": 31663,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.0713264571084
+    },
+    {
+      "url": "https://cearaworld.com/images/chronicle/covers/chronicle_backdrop.svg",
+      "titles": [
+        "Chronicle"
+      ],
+      "sourceBytes": 926762,
+      "outputBytes": 1026046,
+      "thumbnailBytes": 22070,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.21427100282331
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/jojosLogo.svg",
+      "titles": [
+        "JoJo's Bizarre Adventure"
+      ],
+      "sourceBytes": 4528417,
+      "outputBytes": 588645,
+      "thumbnailBytes": 92808,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 39.90206322930249
+    },
+    {
+      "url": "https://cearaworld.com/images/jojos/covers/jojos_backdrop.svg",
+      "titles": [
+        "JoJo's Bizarre Adventure"
+      ],
+      "sourceBytes": 18001135,
+      "outputBytes": 4144221,
+      "thumbnailBytes": 50642,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 39.05067231176184
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/chernobylLogo.svg",
+      "titles": [
+        "Chernobyl"
+      ],
+      "sourceBytes": 1778820,
+      "outputBytes": 201044,
+      "thumbnailBytes": 31386,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.39971556816843
+    },
+    {
+      "url": "https://cearaworld.com/images/chernobyl/covers/chernobyl_backdrop.svg",
+      "titles": [
+        "Chernobyl"
+      ],
+      "sourceBytes": 1396359,
+      "outputBytes": 393264,
+      "thumbnailBytes": 11247,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.65915164417993
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/beingjohnmalkovichLogo.svg",
+      "titles": [
+        "Being John Malkovich"
+      ],
+      "sourceBytes": 4044820,
+      "outputBytes": 424569,
+      "thumbnailBytes": 72980,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.69240734513213
+    },
+    {
+      "url": "https://cearaworld.com/images/beingjohnmalkovich/covers/beingjohnmalkovich_backdrop.svg",
+      "titles": [
+        "Being John Malkovich"
+      ],
+      "sourceBytes": 1141553,
+      "outputBytes": 682581,
+      "thumbnailBytes": 22395,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.94131943758558
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/attackontitanLogo.svg",
+      "titles": [
+        "Attack on Titan"
+      ],
+      "sourceBytes": 8693589,
+      "outputBytes": 435457,
+      "thumbnailBytes": 67877,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.01336176487112
+    },
+    {
+      "url": "https://cearaworld.com/images/attackontitan/covers/attackontitan_backdrop.svg",
+      "titles": [
+        "Attack on Titan"
+      ],
+      "sourceBytes": 1132097,
+      "outputBytes": 986321,
+      "thumbnailBytes": 40227,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.10204327531894
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/thedramaLogo.svg",
+      "titles": [
+        "The Drama"
+      ],
+      "sourceBytes": 2108594,
+      "outputBytes": 286287,
+      "thumbnailBytes": 52610,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.01797569883837
+    },
+    {
+      "url": "https://cearaworld.com/images/thedrama/covers/thedrama_backdrop.svg",
+      "titles": [
+        "The Drama"
+      ],
+      "sourceBytes": 12807061,
+      "outputBytes": 1828678,
+      "thumbnailBytes": 28560,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 42.70355265524647
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/thenightisshortLogo.svg",
+      "titles": [
+        "The Night Is Short, Walk on Girl"
+      ],
+      "sourceBytes": 1982769,
+      "outputBytes": 259404,
+      "thumbnailBytes": 53342,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.01912349413139
+    },
+    {
+      "url": "https://cearaworld.com/images/thenightisshort/covers/thenightisshort_backdrop.svg",
+      "titles": [
+        "The Night Is Short, Walk on Girl"
+      ],
+      "sourceBytes": 1778100,
+      "outputBytes": 1126752,
+      "thumbnailBytes": 43213,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.017688622506824
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/cureLogo.svg",
+      "titles": [
+        "Cure"
+      ],
+      "sourceBytes": 2148054,
+      "outputBytes": 113003,
+      "thumbnailBytes": 22992,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 47.7270859991199
+    },
+    {
+      "url": "https://cearaworld.com/images/cure/covers/cure_backdrop.svg",
+      "titles": [
+        "Cure"
+      ],
+      "sourceBytes": 2087471,
+      "outputBytes": 860843,
+      "thumbnailBytes": 29786,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.319973619361136
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/theinviteLogo.svg",
+      "titles": [
+        "The Invite"
+      ],
+      "sourceBytes": 8164270,
+      "outputBytes": 321089,
+      "thumbnailBytes": 55947,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.051266204054436
+    },
+    {
+      "url": "https://cearaworld.com/images/theinvite/covers/theinvite_backdrop.svg",
+      "titles": [
+        "The Invite"
+      ],
+      "sourceBytes": 4865915,
+      "outputBytes": 654857,
+      "thumbnailBytes": 23366,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.935212163098825
+    }
+  ],
+  "sourceBytes": 681683388,
+  "outputBytes": 85614836
+}

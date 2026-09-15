@@ -799,7 +799,9 @@ sub requestSelectedPlayback(season as Integer, episode as Integer)
     m.resumePosition = resumePositionFor(m.selectedItem.id, season, episode)
     m.playbackSubtitleUrls = []
     if m.selectedItem.type = "movie"
-        if m.selectedItem.subtitleTracks <> invalid
+        if m.selectedItem.rokuSubtitleTracks <> invalid
+            m.playbackSubtitleUrls = m.selectedItem.rokuSubtitleTracks
+        else if m.selectedItem.subtitleTracks <> invalid
             m.playbackSubtitleUrls = m.selectedItem.subtitleTracks
         end if
     else
@@ -807,7 +809,11 @@ sub requestSelectedPlayback(season as Integer, episode as Integer)
             if showSeason.number = season
                 for each showEpisode in showSeason.episodes
                     if showEpisode.number = episode
-                        m.playbackSubtitleUrls = showEpisode.subtitles
+                        if showEpisode.rokuSubtitles <> invalid
+                            m.playbackSubtitleUrls = showEpisode.rokuSubtitles
+                        else
+                            m.playbackSubtitleUrls = showEpisode.subtitles
+                        end if
                     end if
                 end for
             end if

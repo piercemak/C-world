@@ -29,11 +29,6 @@ struct LibraryView: View {
 
     private var continueWatching: [ContinueWatchingEntry] {
         let records = appModel.watchProgress.values
-            .filter { record in
-                record.duration > 0
-                    && record.currentTime > 5
-                    && record.currentTime < record.duration - 30
-            }
             .sorted { $0.updatedAt > $1.updatedAt }
 
         var seenMediaIDs = Set<String>()
@@ -43,6 +38,7 @@ struct LibraryView: View {
             guard let media = appModel.media(for: record.showID), seenMediaIDs.insert(media.id).inserted else {
                 continue
             }
+            guard record.duration > 0, record.currentTime > 5, record.currentTime < record.duration - 30 else { continue }
                 let episodeTitle = media.seasons?
                     .first(where: { $0.number == record.season })?
                     .episodes
@@ -295,7 +291,9 @@ struct CatalogImage: View {
     var body: some View {
         Group {
             if let url {
-                if let image = dataImage(from: url) {
+                if let nativeURL = MobileArtwork.bundledURL(for: url, maxPixelSize: maxPixelSize) {
+                    CachedCatalogImage(url: nativeURL, maxPixelSize: maxPixelSize)
+                } else if let image = dataImage(from: url) {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()

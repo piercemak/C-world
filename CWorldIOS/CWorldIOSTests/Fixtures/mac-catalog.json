@@ -1,0 +1,742 @@
+[
+  {
+    "id": "steven-universe",
+    "assetId": "stevenuniverse",
+    "type": "show",
+    "title": "Steven Universe",
+    "dateAdded": "1-1-25",
+    "description": "Steven Universe is a coming-of-age story told from the perspective of Steven, a chubby and happy-go-lucky boy and the youngest member of an intergalactic team of warriors called the Crystal Gems. Together, the Crystal Gems fight and protect the Universe, while Steven strums up a cheesy tune on his ukulele.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg",
+      "poster": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverseIcon.jpg",
+      "backdrop": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/stevenuniverse/covers/stevenuniverse_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Rebecca Sugar",
+      "rating": "8.2",
+      "year": "2013",
+      "genres": [
+        "Adventure"
+      ],
+      "duration": "22m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "seasons": [
+      {
+        "number": 1,
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Gem Glow",
+            "description": "Steven gets depressed when his favorite ice-cream sandwich brand, Cookie Cat, has been taken off the market. He soon cheers up when the Gems manage to get a hold of some of the last remaining Cookie Cats, which Steven believes may hold the key to activating his gem.",
+            "airDate": "2013-11-04",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 1,
+              "episode": 1
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 2,
+            "title": "Laser Light Cannon",
+            "description": "When a menacing red eye is about to hit Beach City, the only thing that can destroy it is a Laser Light Cannon which once belonged to Steven's mother, Rose Quartz. Thus, Steven enlists the help of his father, Greg, and they search through his storage for the cannon.",
+            "airDate": "2013-11-04",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 1,
+              "episode": 2
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 3,
+            "title": "Cheeseburger Backpack",
+            "description": "The Gems go on a mission to place a Moon Goddess statue on top of the ruined Lunar Sea Spire, and Steven tries to prove he can be useful with the help of his new novelty cheeseburger backpack.",
+            "airDate": "2013-11-11",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 1,
+              "episode": 3
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 4,
+            "title": "Together Breakfast",
+            "description": "Steven's attempt to get the Gems to share his special breakfast tradition lands him on a journey through their ancient Gem temple.",
+            "airDate": "2013-11-11",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 1,
+              "episode": 4
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Full Disclosure",
+            "description": "Steven tries to avoid Connie so he won't have to tell her about his ordeal with the Homeworld Gems from the previous episodes.",
+            "airDate": "2015-03-13",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 2,
+              "episode": 1
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 2,
+            "title": "Open Book",
+            "description": "When Connie is upset by the ending of her favorite book series, Steven takes her to Rose Quartz's room, where they remake the ending.",
+            "airDate": "2015-03-19",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 2,
+              "episode": 2
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 3,
+            "title": "Joy Ride",
+            "description": "Buck, Jenny and Sour Cream take Steven out on a late-night joyride to lift his spirits and teach him how to have fun, until they end up discovering Peridot's escape pod.",
+            "airDate": "2015-03-26",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 2,
+              "episode": 3
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 4,
+            "title": "Say Uncle",
+            "description": "In this non-canon episode, Uncle Grandpa arrives to aid Steven in unlocking the power of his gem.",
+            "airDate": "2015-04-02",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "steven-universe",
+              "season": 2,
+              "episode": 4
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "adventure-time",
+    "assetId": "adventuretime",
+    "type": "show",
+    "title": "Adventure Time",
+    "dateAdded": "1-2-25",
+    "description": "Twelve-year-old Finn battles evil in the Land of Ooo. Assisted by his magical dog, Jake, Finn roams the Land of Ooo righting wrongs and battling evil. Usually that evil comes in the form of the Ice King, who is in search of a wife.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/adventuretimeLogo1.svg",
+      "poster": "https://cearaworld.com/images/adventuretime/covers/adventuretimeIcon.jpg",
+      "backdrop": "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/adventuretime/covers/adventuretime_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Pendleton Ward",
+      "rating": "8.6",
+      "year": "2010",
+      "genres": [
+        "Adventure"
+      ],
+      "duration": "22m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "seasons": [
+      {
+        "number": 1,
+        "episodes": [
+          {
+            "number": 1,
+            "title": "Slumber Party Panic",
+            "description": "Finn and Princess Bubblegum must protect the Candy Kingdom from a horde of candy zombies they accidentally created.",
+            "airDate": "2010-04-05",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 1,
+              "episode": 1
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 2,
+            "title": "Trouble in Lumpy Space",
+            "description": "Finn must travel to Lumpy Space to find a cure that will save Jake, who was accidentally bitten by Lumpy Space Princess at a tea party.",
+            "airDate": "2010-04-05",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 1,
+              "episode": 2
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 3,
+            "title": "Prisoners of Love",
+            "description": "When the Ice King kidnaps a number of princesses he sees as potential brides, Finn and Jake team with the prisoners to set everybody free.",
+            "airDate": "2010-04-12",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 1,
+              "episode": 3
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 4,
+            "title": "Tree Trunks",
+            "description": "Finn and Jake join Tree Trunks in search for the rare Crystal Gem Apple, but question whether Tree Trunks has what it takes to adventure.",
+            "airDate": "2010-04-12",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 1,
+              "episode": 4
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "episodes": [
+          {
+            "number": 1,
+            "title": "It Came from the Nightosphere",
+            "description": "Marceline's evil father goes on a soul-sucking rampage after Finn and Marceline accidentally release him from the Nightosphere.",
+            "airDate": "2010-10-11",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 2,
+              "episode": 1
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 2,
+            "title": "The Eyes",
+            "description": "Finn and Jake try to rid themselves of a weird horse that creeps them out.",
+            "airDate": "2010-10-18",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 2,
+              "episode": 2
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 3,
+            "title": "Loyalty to the King",
+            "description": "Finn and Jake are excited to meet the Nice King who has come to Ooo. They soon realize that he looks suspiciously like someone else they know; the Ice King.",
+            "airDate": "2010-10-25",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 2,
+              "episode": 3
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 4,
+            "title": "Blood Under the Skin",
+            "description": "When Finn gets a splinter on his finger, he wants to get the best armor. In order to receive it, he must go on a quest to get the Magical Armor of Zelderon and survive one embarrassing situation after another.",
+            "airDate": "2010-11-01",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "adventure-time",
+              "season": 2,
+              "episode": 4
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "over-the-garden-wall",
+    "assetId": "overthegardenwall",
+    "type": "show",
+    "title": "Over the Garden Wall",
+    "dateAdded": "1-3-25",
+    "description": "On an adventure, brothers Wirt and Greg get lost in the Unknown, a strange forest adrift in time; as they attempt to find a way out of the Unknown, they cross paths with a mysterious old woodsman and a bluebird named Beatrice.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/otgwLogo1.svg",
+      "poster": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwallIcon.jpg",
+      "backdrop": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/overthegardenwall/covers/overthegardenwall_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Patrick McHale",
+      "rating": "8.7",
+      "year": "2014",
+      "genres": [
+        "Adventure"
+      ],
+      "duration": "22m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "seasons": [
+      {
+        "number": 1,
+        "episodes": [
+          {
+            "number": 1,
+            "title": "The Old Grist Mill",
+            "description": "Lost in the mysterious woods of the Unknown, two brothers named Wirt and Gregory run into a jaded old woodsman who warns them to beware the terrifying Beast that roams the dark forest.",
+            "airDate": "2014-11-03",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "over-the-garden-wall",
+              "season": 1,
+              "episode": 1
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 2,
+            "title": "Hard Times at the Huskin' Bee",
+            "description": "A bluebird named Beatrice offers to guide Wirt and Greg to Adelaide of the Pasture (the good woman of the woods) and help them get home.",
+            "airDate": "2014-11-03",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "over-the-garden-wall",
+              "season": 1,
+              "episode": 2
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 3,
+            "title": "Schooltown Follies",
+            "description": "Wirt, Greg, and Beatrice get all mixed up in the musical antics of a schoolhouse of animals, a lovelorn teacher, a grouchy old benefactor, and an escaped gorilla.",
+            "airDate": "2014-11-04",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "over-the-garden-wall",
+              "season": 1,
+              "episode": 3
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          },
+          {
+            "number": 4,
+            "title": "Songs of the Dark Lantern",
+            "description": "Beatrice is left out in the rain with a brainless horse while Wirt and Greg must ask for directions in a lively colonial tavern called \"The Dark Lantern\" where some surprising secrets are revealed about the Unknown.",
+            "airDate": "2014-11-04",
+            "duration": "22m",
+            "playbackRef": {
+              "mediaId": "over-the-garden-wall",
+              "season": 1,
+              "episode": 4
+            },
+            "subtitles": [],
+            "rokuSubtitles": [],
+            "skipIntroEnd": null,
+            "skipOutroStart": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "perfect-blue",
+    "assetId": "perfectblue",
+    "type": "movie",
+    "title": "Perfect Blue",
+    "dateAdded": "1-4-25",
+    "description": "A young Japanese singer is encouraged by her agent to quit singing and pursue an acting career, beginning with a role in a murder mystery TV show.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/perfectblueLogo.svg",
+      "poster": "https://cearaworld.com/images/perfectblue/covers/perfectblueIcon.jpg",
+      "backdrop": "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/perfectblue/covers/perfectblue_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Satoshi Kon",
+      "rating": "8.0",
+      "year": "1997",
+      "genres": [
+        "Horror",
+        "Mystery"
+      ],
+      "duration": "1h 21m",
+      "ageRating": ""
+    },
+    "subtitles": true,
+    "subtitleTracks": [
+      "https://cearaworld.com/videos/perfectblue/perfectblue.vtt"
+    ],
+    "rokuSubtitleTracks": [
+      "https://cearaworld.com/roku-captions/videos/perfectblue/perfectblue.srt"
+    ],
+    "movieAsset": {
+      "mediaId": "perfect-blue",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "paprika",
+    "assetId": "paprika",
+    "type": "movie",
+    "title": "Paprika",
+    "dateAdded": "1-5-25",
+    "description": "Dr. Atsuko Chiba works as a scientist by day and, under the code name 'Paprika', is a dream detective at night. Atsuko and her colleagues are working on a device called the DC Mini, which is intended to help psychiatric patients, but in the wrong hands it could destroy people's minds. When a prototype is stolen, Atsuko/Paprika springs into action to recover it before damage is done.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/paprikaLogo1.svg",
+      "poster": "https://cearaworld.com/images/paprika/covers/paprikaIcon.jpeg",
+      "backdrop": "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/paprika/covers/paprika_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Satoshi Kon",
+      "rating": "7.7",
+      "year": "2006",
+      "genres": [
+        "Thriller",
+        "Sci-fi"
+      ],
+      "duration": "1h 30m",
+      "ageRating": ""
+    },
+    "subtitles": true,
+    "subtitleTracks": [
+      "https://cearaworld.com/videos/paprika/paprikaSub.vtt"
+    ],
+    "rokuSubtitleTracks": [
+      "https://cearaworld.com/roku-captions/videos/paprika/paprikaSub.srt"
+    ],
+    "movieAsset": {
+      "mediaId": "paprika",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "princess-mononoke",
+    "assetId": "princessmononoke",
+    "type": "movie",
+    "title": "Princess Mononoke",
+    "dateAdded": "1-6-25",
+    "description": "In the 14th century, the harmony that humans, animals and gods have enjoyed begins to crumble. The protagonist, young Ashitaka - infected by an animal attack, seeks a cure from the deer-like god Shishigami. In his travels, he sees humans ravaging the earth, bringing down the wrath of wolf god Moro and his human companion Princess Mononoke. Hiskattempts to broker peace between her and the humans brings only conflict.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/princessLogo1.svg",
+      "poster": "https://cearaworld.com/images/princessmononoke/covers/princessmononokeIcon.jpg",
+      "backdrop": "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/princessmononoke/covers/princessmononoke_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Miyazaki",
+      "rating": "8.3",
+      "year": "1997",
+      "genres": [
+        "Fantasy",
+        "Adventure"
+      ],
+      "duration": "2h 13m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "movieAsset": {
+      "mediaId": "princess-mononoke",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "aniara",
+    "assetId": "aniara",
+    "type": "movie",
+    "title": "Aniara",
+    "dateAdded": "1-7-25",
+    "description": "Aniara is one of the spaceships used for transporting Earth's population to their new home-planet Mars. But just as Aniara leaves the ruined Earth, she collides with an asteroid and is knocked off her course.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/aniaraLogo.jpg",
+      "poster": "https://cearaworld.com/images/aniara/covers/aniaraLogomobile.jpg",
+      "backdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Arne Arnbom",
+      "rating": "5.8",
+      "year": "1960",
+      "genres": [
+        "SciFi",
+        "Adventure"
+      ],
+      "duration": "2h",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "movieAsset": {
+      "mediaId": "aniara",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "the-vanishing",
+    "assetId": "thevanishing",
+    "type": "movie",
+    "title": "The Vanishing",
+    "dateAdded": "1-9-25",
+    "description": "Rex and Saskia, a young couple in love, are on vacation. They stop at a busy service station and Saskia is abducted. After three years and no sign of Saskia, Rex begins receiving letters from the abductor.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/thevanishingLogo.svg",
+      "poster": "https://cearaworld.com/images/thevanishing/covers/thevanishing_mobileLogo.jpg",
+      "backdrop": "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/thevanishing/covers/thevanishing_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "George Sluizer",
+      "rating": "7.7",
+      "year": "1988",
+      "genres": [
+        "Horror",
+        "Crime"
+      ],
+      "duration": "1h 47m",
+      "ageRating": ""
+    },
+    "subtitles": true,
+    "subtitleTracks": [
+      "https://cearaworld.com/videos/thevanishing/thevanishing_subtitles.vtt"
+    ],
+    "rokuSubtitleTracks": [
+      "https://cearaworld.com/roku-captions/videos/thevanishing/thevanishing_subtitles.srt"
+    ],
+    "movieAsset": {
+      "mediaId": "the-vanishing",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "the-lighthouse",
+    "assetId": "thelighthouse",
+    "type": "movie",
+    "title": "The Lighthouse",
+    "dateAdded": "1-10-25",
+    "description": "Two lighthouse keepers try to maintain their sanity while living on a remote and mysterious New England island in the 1890s.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/thelighthouseLogo.svg",
+      "poster": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_mobilelogo.jpg",
+      "backdrop": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/thelighthouse/covers/thelighthouse_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Robert Eggers",
+      "rating": "7.4",
+      "year": "2019",
+      "genres": [
+        "Horror",
+        "Crime"
+      ],
+      "duration": "1h 49m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "movieAsset": {
+      "mediaId": "the-lighthouse",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "a-ghost-story",
+    "assetId": "aghoststory",
+    "type": "movie",
+    "title": "A Ghost Story",
+    "dateAdded": "1-11-25",
+    "description": "In this singular exploration of legacy, love, loss, and the enormity of existence, a recently deceased, white-sheeted ghost returns to his suburban home to try to reconnect with his bereft wife.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/aghoststoryLogo.svg",
+      "poster": "https://cearaworld.com/images/aghoststory/covers/aghoststory_mobilelogo.jpg",
+      "backdrop": "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/aghoststory/covers/aghoststory_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "David Lowery",
+      "rating": "6.8",
+      "year": "2017",
+      "genres": [
+        "Fantasy",
+        "Romance"
+      ],
+      "duration": "1h 32m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "movieAsset": {
+      "mediaId": "a-ghost-story",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "little-miss-sunshine",
+    "assetId": "littlemisssunshine",
+    "type": "movie",
+    "title": "Little Miss Sunshine",
+    "dateAdded": "1-12-25",
+    "description": "A family determined to get their young daughter into the finals of a beauty pageant take a cross-country trip in their VW bus.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/littlemisssunshineLogo.svg",
+      "poster": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_mobilelogo.jpg",
+      "backdrop": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/littlemisssunshine/covers/littlemisssunshine_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Jonathan Dayton",
+      "rating": "7.8",
+      "year": "2006",
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "duration": "1h 41m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "movieAsset": {
+      "mediaId": "little-miss-sunshine",
+      "season": null,
+      "episode": null
+    }
+  },
+  {
+    "id": "weapons",
+    "assetId": "weapons",
+    "type": "movie",
+    "title": "Weapons",
+    "dateAdded": "1-8-25",
+    "description": "When all but one child from the same classroom mysteriously vanish on the same night at exactly the same time, a community is left questioning who or what is behind their disappearance.",
+    "artwork": {
+      "card": "https://cearaworld.com/images/cardimages/weaponsLogo.svg",
+      "poster": "https://cearaworld.com/images/weapons/covers/weapons_mobileLogo.jpg",
+      "backdrop": "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg",
+      "mobileBackdrop": "https://cearaworld.com/images/weapons/covers/weapons_backdrop.svg"
+    },
+    "metadata": {
+      "creator": "Zach Cregger",
+      "rating": "7.6",
+      "year": "2025",
+      "genres": [
+        "Horror"
+      ],
+      "duration": "2h 8m",
+      "ageRating": ""
+    },
+    "subtitles": false,
+    "subtitleTracks": [],
+    "rokuSubtitleTracks": [],
+    "movieAsset": {
+      "mediaId": "weapons",
+      "season": null,
+      "episode": null
+    }
+  }
+]

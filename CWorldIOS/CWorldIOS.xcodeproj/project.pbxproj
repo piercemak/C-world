@@ -1,0 +1,1012 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8692F5063051D26E00E0ACAE /* CatalogCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5003051D26E00E0ACAE /* CatalogCache.swift */; };
+		8692F5073051D26E00E0ACAE /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F93051D26E00E0ACAE /* MediaDetailView.swift */; };
+		8692F5083051D26E00E0ACAE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5033051D26E00E0ACAE /* AppModel.swift */; };
+		8692F5093051D26E00E0ACAE /* AuthModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4FC3051D26E00E0ACAE /* AuthModels.swift */; };
+		8692F50A3051D26E00E0ACAE /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F83051D26E00E0ACAE /* LibraryView.swift */; };
+		8692F50B3051D26E00E0ACAE /* CatalogPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F73051D26E00E0ACAE /* CatalogPreviewView.swift */; };
+		8692F50C3051D26E00E0ACAE /* ProfilePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F43051D26E00E0ACAE /* ProfilePickerView.swift */; };
+		8692F50D3051D26E00E0ACAE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4FF3051D26E00E0ACAE /* APIClient.swift */; };
+		8692F50E3051D26E00E0ACAE /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5013051D26E00E0ACAE /* KeychainStore.swift */; };
+		8692F50F3051D26E00E0ACAE /* ProfileManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F33051D26E00E0ACAE /* ProfileManagementView.swift */; };
+		8692F5103051D26E00E0ACAE /* CWorldIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5043051D26E00E0ACAE /* CWorldIOSApp.swift */; };
+		8692F5113051D26E00E0ACAE /* CatalogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4FD3051D26E00E0ACAE /* CatalogModels.swift */; };
+		8692F5123051D26E00E0ACAE /* DeviceLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F23051D26E00E0ACAE /* DeviceLoginView.swift */; };
+		8692F5133051D26E00E0ACAE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F53051D26E00E0ACAE /* RootView.swift */; };
+		8692F5143051D26E00E0ACAE /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5153051D26E00E0ACAE /* HistoryView.swift */; };
+		8692F5163051D26E00E0ACAE /* CWorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5173051D26E00E0ACAE /* CWorldTheme.swift */; };
+		8692F5183051D26E00E0ACAE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5193051D26E00E0ACAE /* HomeView.swift */; };
+		8692F51A3051D26E00E0ACAE /* ../frontend/public/videos/Intro/CworldIntro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8692F51B3051D26E00E0ACAE /* ../frontend/public/videos/Intro/CworldIntro.mp4 */; };
+		8692F51C3051D26E00E0ACAE /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F51D3051D26E00E0ACAE /* ArchiveView.swift */; };
+		A71000000000000000000001 /* Resources/MobileArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A71000000000000000000002 /* Resources/MobileArtwork */; };
+		A71100000000000000000001 /* Features/Library/CatalogSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71100000000000000000002 /* Features/Library/CatalogSearchView.swift */; };
+		A71100000000000000000003 /* Features/Library/EpisodeSkipCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71100000000000000000004 /* Features/Library/EpisodeSkipCatalog.swift */; };
+		A71100000000000000000005 /* Resources/episode-markers.json in Resources */ = {isa = PBXBuildFile; fileRef = A71100000000000000000006 /* Resources/episode-markers.json */; };
+		A71200000000000000000001 /* Features/Library/SubtitleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71200000000000000000002 /* Features/Library/SubtitleParser.swift */; };
+		A71300000000000000000001 /* Features/Library/ExternalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71300000000000000000002 /* Features/Library/ExternalDisplay.swift */; };
+		A71400000000000000000001 /* Features/Mac/MacDesktopModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000011 /* Features/Mac/MacDesktopModels.swift */; };
+		A71400000000000000000002 /* Features/Mac/MacDesktopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000012 /* Features/Mac/MacDesktopView.swift */; };
+		A71400000000000000000003 /* Features/Mac/MacTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000013 /* Features/Mac/MacTitleView.swift */; };
+		A71400000000000000000004 /* Features/Mac/MacDesktopSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000014 /* Features/Mac/MacDesktopSettings.swift */; };
+		A71400000000000000000005 /* Features/Mac/MacPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000015 /* Features/Mac/MacPlatform.swift */; };
+		A71400000000000000000006 /* Resources/desktop-reference.json in Resources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000016 /* Resources/desktop-reference.json */; };
+		A71400000000000000000007 /* Features/Mac/MacArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71400000000000000000017 /* Features/Mac/MacArchiveView.swift */; };
+		A71500000000000000000001 /* Features/Mac/MacDesktopAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71500000000000000000011 /* Features/Mac/MacDesktopAppearance.swift */; };
+		A71500000000000000000002 /* Resources/DesktopArtwork in Resources */ = {isa = PBXBuildFile; fileRef = A71500000000000000000012 /* Resources/DesktopArtwork */; platformFilter = maccatalyst; };
+		A71500000000000000000003 /* Features/Mac/MacReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71500000000000000000013 /* Features/Mac/MacReviewsView.swift */; };
+		A72000000000000000000001 /* ../ios/CWorldIOS/Features/Library/TVCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72000000000000000000011 /* ../ios/CWorldIOS/Features/Library/TVCompanion.swift */; };
+		A72000000000000000000002 /* ../ios/CWorldIOS/Features/Library/WatchingLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72000000000000000000012 /* ../ios/CWorldIOS/Features/Library/WatchingLiveActivity.swift */; };
+		A72000000000000000000003 /* ../ios/Shared/CWorldWatchingAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72000000000000000000013 /* ../ios/Shared/CWorldWatchingAttributes.swift */; };
+		A72000000000000000000004 /* ../ios/Shared/CWorldWatchingAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72000000000000000000013 /* ../ios/Shared/CWorldWatchingAttributes.swift */; };
+		A72000000000000000000005 /* ../ios/CWorldWatchingWidget/CWorldWatchingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72000000000000000000014 /* ../ios/CWorldWatchingWidget/CWorldWatchingWidget.swift */; };
+		A72000000000000000000006 /* CWorldWatchingWidget.appex in Embed Live Activity */ = {isa = PBXBuildFile; fileRef = A72000000000000000000015 /* CWorldWatchingWidget.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F00000000000000000000001 /* Alexandria-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* Alexandria-Regular.ttf */; };
+		F00000000000000000000002 /* Alexandria-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* Alexandria-Medium.ttf */; };
+		F00000000000000000000003 /* Alexandria-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* Alexandria-Semibold.ttf */; };
+		F00000000000000000000004 /* Alexandria-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000004 /* Alexandria-Bold.ttf */; };
+		F00000000000000000000005 /* ElmsSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000005 /* ElmsSans-Regular.ttf */; };
+		F00000000000000000000006 /* ElmsSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000006 /* ElmsSans-Medium.ttf */; };
+		F00000000000000000000007 /* ElmsSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000007 /* ElmsSans-Semibold.ttf */; };
+		F00000000000000000000008 /* ElmsSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000008 /* ElmsSans-Bold.ttf */; };
+		F00000000000000000000009 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000009 /* Nunito-Regular.ttf */; };
+		F0000000000000000000000A /* Nunito-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000A /* Nunito-Semibold.ttf */; };
+		F0000000000000000000000B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000B /* Poppins-Regular.ttf */; };
+		F0000000000000000000000C /* Poppins-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000C /* Poppins-Semibold.ttf */; };
+		F0000000000000000000000D /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000D /* Poppins-Bold.ttf */; };
+		F0000000000000000000000E /* ../../frontend/src/data/episodeTitles.json in Resources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000E /* ../../frontend/src/data/episodeTitles.json */; };
+		F0000000000000000000000F /* Features/Library/EpisodeTitleCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000F /* Features/Library/EpisodeTitleCatalog.swift */; };
+		F00000000000000000000010 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000010 /* ImageCache.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8692F4D63051CF5100E0ACAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8692F4C03051CF5000E0ACAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8692F4C73051CF5000E0ACAE;
+			remoteInfo = CWorldIOS;
+		};
+		8692F4E03051CF5100E0ACAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8692F4C03051CF5000E0ACAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8692F4C73051CF5000E0ACAE;
+			remoteInfo = CWorldIOS;
+		};
+		A72000000000000000000021 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8692F4C03051CF5000E0ACAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A72000000000000000000030;
+			remoteInfo = CWorldWatchingWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A72000000000000000000032 /* Embed Live Activity */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A72000000000000000000006 /* CWorldWatchingWidget.appex in Embed Live Activity */,
+			);
+			name = "Embed Live Activity";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8692F4C83051CF5000E0ACAE /* CWorldIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWorldIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8692F4D53051CF5100E0ACAE /* CWorldIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWorldIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8692F4DF3051CF5100E0ACAE /* CWorldIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWorldIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8692F4F23051D26E00E0ACAE /* DeviceLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLoginView.swift; sourceTree = "<group>"; };
+		8692F4F33051D26E00E0ACAE /* ProfileManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagementView.swift; sourceTree = "<group>"; };
+		8692F4F43051D26E00E0ACAE /* ProfilePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePickerView.swift; sourceTree = "<group>"; };
+		8692F4F53051D26E00E0ACAE /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8692F4F73051D26E00E0ACAE /* CatalogPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPreviewView.swift; sourceTree = "<group>"; };
+		8692F4F83051D26E00E0ACAE /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		8692F4F93051D26E00E0ACAE /* MediaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailView.swift; sourceTree = "<group>"; };
+		8692F4FC3051D26E00E0ACAE /* AuthModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModels.swift; sourceTree = "<group>"; };
+		8692F4FD3051D26E00E0ACAE /* CatalogModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogModels.swift; sourceTree = "<group>"; };
+		8692F4FF3051D26E00E0ACAE /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		8692F5003051D26E00E0ACAE /* CatalogCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCache.swift; sourceTree = "<group>"; };
+		8692F5013051D26E00E0ACAE /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		8692F5033051D26E00E0ACAE /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		8692F5043051D26E00E0ACAE /* CWorldIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWorldIOSApp.swift; sourceTree = "<group>"; };
+		8692F5153051D26E00E0ACAE /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		8692F5173051D26E00E0ACAE /* CWorldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWorldTheme.swift; sourceTree = "<group>"; };
+		8692F5193051D26E00E0ACAE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8692F51B3051D26E00E0ACAE /* ../frontend/public/videos/Intro/CworldIntro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = video.mp4; path = ../frontend/public/videos/Intro/CworldIntro.mp4; sourceTree = "<group>"; };
+		8692F51D3051D26E00E0ACAE /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		A71000000000000000000002 /* Resources/MobileArtwork */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources/MobileArtwork; sourceTree = "<group>"; };
+		A71100000000000000000002 /* Features/Library/CatalogSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Library/CatalogSearchView.swift; sourceTree = "<group>"; };
+		A71100000000000000000004 /* Features/Library/EpisodeSkipCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Library/EpisodeSkipCatalog.swift; sourceTree = "<group>"; };
+		A71100000000000000000006 /* Resources/episode-markers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/episode-markers.json"; sourceTree = "<group>"; };
+		A71200000000000000000002 /* Features/Library/SubtitleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Library/SubtitleParser.swift; sourceTree = "<group>"; };
+		A71300000000000000000002 /* Features/Library/ExternalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Library/ExternalDisplay.swift; sourceTree = "<group>"; };
+		A71400000000000000000011 /* Features/Mac/MacDesktopModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacDesktopModels.swift; sourceTree = "<group>"; };
+		A71400000000000000000012 /* Features/Mac/MacDesktopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacDesktopView.swift; sourceTree = "<group>"; };
+		A71400000000000000000013 /* Features/Mac/MacTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacTitleView.swift; sourceTree = "<group>"; };
+		A71400000000000000000014 /* Features/Mac/MacDesktopSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacDesktopSettings.swift; sourceTree = "<group>"; };
+		A71400000000000000000015 /* Features/Mac/MacPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacPlatform.swift; sourceTree = "<group>"; };
+		A71400000000000000000016 /* Resources/desktop-reference.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "Resources/desktop-reference.json"; sourceTree = "<group>"; };
+		A71400000000000000000017 /* Features/Mac/MacArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacArchiveView.swift; sourceTree = "<group>"; };
+		A71500000000000000000011 /* Features/Mac/MacDesktopAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacDesktopAppearance.swift; sourceTree = "<group>"; };
+		A71500000000000000000012 /* Resources/DesktopArtwork */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources/DesktopArtwork; sourceTree = "<group>"; };
+		A71500000000000000000013 /* Features/Mac/MacReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Mac/MacReviewsView.swift; sourceTree = "<group>"; };
+		A72000000000000000000011 /* ../ios/CWorldIOS/Features/Library/TVCompanion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ../ios/CWorldIOS/Features/Library/TVCompanion.swift; sourceTree = SOURCE_ROOT; };
+		A72000000000000000000012 /* ../ios/CWorldIOS/Features/Library/WatchingLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ../ios/CWorldIOS/Features/Library/WatchingLiveActivity.swift; sourceTree = SOURCE_ROOT; };
+		A72000000000000000000013 /* ../ios/Shared/CWorldWatchingAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ../ios/Shared/CWorldWatchingAttributes.swift; sourceTree = SOURCE_ROOT; };
+		A72000000000000000000014 /* ../ios/CWorldWatchingWidget/CWorldWatchingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ../ios/CWorldWatchingWidget/CWorldWatchingWidget.swift; sourceTree = SOURCE_ROOT; };
+		A72000000000000000000015 /* CWorldWatchingWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; path = CWorldWatchingWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10000000000000000000001 /* Alexandria-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alexandria-Regular.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000002 /* Alexandria-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alexandria-Medium.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000003 /* Alexandria-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alexandria-Semibold.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000004 /* Alexandria-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Alexandria-Bold.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000005 /* ElmsSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ElmsSans-Regular.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000006 /* ElmsSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ElmsSans-Medium.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000007 /* ElmsSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ElmsSans-Semibold.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000008 /* ElmsSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ElmsSans-Bold.ttf"; sourceTree = "<group>"; };
+		F10000000000000000000009 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		F1000000000000000000000A /* Nunito-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Semibold.ttf"; sourceTree = "<group>"; };
+		F1000000000000000000000B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		F1000000000000000000000C /* Poppins-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Semibold.ttf"; sourceTree = "<group>"; };
+		F1000000000000000000000D /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		F1000000000000000000000E /* ../../frontend/src/data/episodeTitles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../../frontend/src/data/episodeTitles.json; sourceTree = "<group>"; };
+		F1000000000000000000000F /* Features/Library/EpisodeTitleCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features/Library/EpisodeTitleCatalog.swift; sourceTree = "<group>"; };
+		F10000000000000000000010 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8692F4CA3051CF5000E0ACAE /* CWorldIOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CWorldIOS;
+			sourceTree = "<group>";
+		};
+		8692F4D83051CF5100E0ACAE /* CWorldIOSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CWorldIOSTests;
+			sourceTree = "<group>";
+		};
+		8692F4E23051CF5100E0ACAE /* CWorldIOSUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CWorldIOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8692F4C53051CF5000E0ACAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8692F4D23051CF5100E0ACAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8692F4DC3051CF5100E0ACAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8692F4BF3051CF5000E0ACAE = {
+			isa = PBXGroup;
+			children = (
+				A72000000000000000000016 /* TV Companion and Live Activity */,
+				8692F5053051D26E00E0ACAE /* CWorld iOS Sources */,
+				8692F51B3051D26E00E0ACAE /* ../frontend/public/videos/Intro/CworldIntro.mp4 */,
+				8692F4CA3051CF5000E0ACAE /* CWorldIOS */,
+				8692F4D83051CF5100E0ACAE /* CWorldIOSTests */,
+				8692F4E23051CF5100E0ACAE /* CWorldIOSUITests */,
+				8692F4C93051CF5000E0ACAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8692F4C93051CF5000E0ACAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A72000000000000000000015 /* CWorldWatchingWidget.appex */,
+				8692F4C83051CF5000E0ACAE /* CWorldIOS.app */,
+				8692F4D53051CF5100E0ACAE /* CWorldIOSTests.xctest */,
+				8692F4DF3051CF5100E0ACAE /* CWorldIOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8692F4F63051D26E00E0ACAE /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				8692F4F23051D26E00E0ACAE /* DeviceLoginView.swift */,
+				8692F4F33051D26E00E0ACAE /* ProfileManagementView.swift */,
+				8692F4F43051D26E00E0ACAE /* ProfilePickerView.swift */,
+				8692F4F53051D26E00E0ACAE /* RootView.swift */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		8692F4FA3051D26E00E0ACAE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8692F4F73051D26E00E0ACAE /* CatalogPreviewView.swift */,
+				8692F4F83051D26E00E0ACAE /* LibraryView.swift */,
+				8692F4F93051D26E00E0ACAE /* MediaDetailView.swift */,
+				8692F5153051D26E00E0ACAE /* HistoryView.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8692F4FB3051D26E00E0ACAE /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				8692F4F63051D26E00E0ACAE /* Connection */,
+				8692F4FA3051D26E00E0ACAE /* Library */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		8692F4FE3051D26E00E0ACAE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8692F4FC3051D26E00E0ACAE /* AuthModels.swift */,
+				8692F4FD3051D26E00E0ACAE /* CatalogModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8692F5023051D26E00E0ACAE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8692F4FF3051D26E00E0ACAE /* APIClient.swift */,
+				8692F5003051D26E00E0ACAE /* CatalogCache.swift */,
+				8692F5013051D26E00E0ACAE /* KeychainStore.swift */,
+				F10000000000000000000010 /* ImageCache.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8692F5053051D26E00E0ACAE /* CWorld iOS Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8692F4FB3051D26E00E0ACAE /* Features */,
+				8692F4FE3051D26E00E0ACAE /* Models */,
+				8692F5023051D26E00E0ACAE /* Networking */,
+				F20000000000000000000001 /* Fonts */,
+				8692F5173051D26E00E0ACAE /* CWorldTheme.swift */,
+				8692F5193051D26E00E0ACAE /* HomeView.swift */,
+				8692F51D3051D26E00E0ACAE /* ArchiveView.swift */,
+				F1000000000000000000000E /* ../../frontend/src/data/episodeTitles.json */,
+				F1000000000000000000000F /* Features/Library/EpisodeTitleCatalog.swift */,
+				A71100000000000000000002 /* Features/Library/CatalogSearchView.swift */,
+				A71200000000000000000002 /* Features/Library/SubtitleParser.swift */,
+				A71300000000000000000002 /* Features/Library/ExternalDisplay.swift */,
+				A71400000000000000000011 /* Features/Mac/MacDesktopModels.swift */,
+				A71500000000000000000011 /* Features/Mac/MacDesktopAppearance.swift */,
+				A71500000000000000000013 /* Features/Mac/MacReviewsView.swift */,
+				A71500000000000000000012 /* Resources/DesktopArtwork */,
+				A71400000000000000000012 /* Features/Mac/MacDesktopView.swift */,
+				A71400000000000000000013 /* Features/Mac/MacTitleView.swift */,
+				A71400000000000000000014 /* Features/Mac/MacDesktopSettings.swift */,
+				A71400000000000000000015 /* Features/Mac/MacPlatform.swift */,
+				A71400000000000000000017 /* Features/Mac/MacArchiveView.swift */,
+				A71400000000000000000016 /* Resources/desktop-reference.json */,
+				A71100000000000000000004 /* Features/Library/EpisodeSkipCatalog.swift */,
+				A71100000000000000000006 /* Resources/episode-markers.json */,
+				A71000000000000000000002 /* Resources/MobileArtwork */,
+				8692F5033051D26E00E0ACAE /* AppModel.swift */,
+				8692F5043051D26E00E0ACAE /* CWorldIOSApp.swift */,
+			);
+			name = "CWorld iOS Sources";
+			path = ../ios/CWorldIOS;
+			sourceTree = "<group>";
+		};
+		A72000000000000000000016 /* TV Companion and Live Activity */ = {
+			isa = PBXGroup;
+			children = (
+				A72000000000000000000011 /* ../ios/CWorldIOS/Features/Library/TVCompanion.swift */,
+				A72000000000000000000012 /* ../ios/CWorldIOS/Features/Library/WatchingLiveActivity.swift */,
+				A72000000000000000000013 /* ../ios/Shared/CWorldWatchingAttributes.swift */,
+				A72000000000000000000014 /* ../ios/CWorldWatchingWidget/CWorldWatchingWidget.swift */,
+			);
+			name = "TV Companion and Live Activity";
+			sourceTree = "<group>";
+		};
+		F20000000000000000000001 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F10000000000000000000001 /* Alexandria-Regular.ttf */,
+				F10000000000000000000002 /* Alexandria-Medium.ttf */,
+				F10000000000000000000003 /* Alexandria-Semibold.ttf */,
+				F10000000000000000000004 /* Alexandria-Bold.ttf */,
+				F10000000000000000000005 /* ElmsSans-Regular.ttf */,
+				F10000000000000000000006 /* ElmsSans-Medium.ttf */,
+				F10000000000000000000007 /* ElmsSans-Semibold.ttf */,
+				F10000000000000000000008 /* ElmsSans-Bold.ttf */,
+				F10000000000000000000009 /* Nunito-Regular.ttf */,
+				F1000000000000000000000A /* Nunito-Semibold.ttf */,
+				F1000000000000000000000B /* Poppins-Regular.ttf */,
+				F1000000000000000000000C /* Poppins-Semibold.ttf */,
+				F1000000000000000000000D /* Poppins-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8692F4C73051CF5000E0ACAE /* CWorldIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8692F4E93051CF5100E0ACAE /* Build configuration list for PBXNativeTarget "CWorldIOS" */;
+			buildPhases = (
+				8692F4C43051CF5000E0ACAE /* Sources */,
+				8692F4C53051CF5000E0ACAE /* Frameworks */,
+				8692F4C63051CF5000E0ACAE /* Resources */,
+				A72000000000000000000032 /* Embed Live Activity */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A72000000000000000000022 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8692F4CA3051CF5000E0ACAE /* CWorldIOS */,
+			);
+			name = CWorldIOS;
+			packageProductDependencies = (
+			);
+			productName = CWorldIOS;
+			productReference = 8692F4C83051CF5000E0ACAE /* CWorldIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8692F4D43051CF5100E0ACAE /* CWorldIOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8692F4EC3051CF5100E0ACAE /* Build configuration list for PBXNativeTarget "CWorldIOSTests" */;
+			buildPhases = (
+				8692F4D13051CF5100E0ACAE /* Sources */,
+				8692F4D23051CF5100E0ACAE /* Frameworks */,
+				8692F4D33051CF5100E0ACAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8692F4D73051CF5100E0ACAE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8692F4D83051CF5100E0ACAE /* CWorldIOSTests */,
+			);
+			name = CWorldIOSTests;
+			packageProductDependencies = (
+			);
+			productName = CWorldIOSTests;
+			productReference = 8692F4D53051CF5100E0ACAE /* CWorldIOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8692F4DE3051CF5100E0ACAE /* CWorldIOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8692F4EF3051CF5100E0ACAE /* Build configuration list for PBXNativeTarget "CWorldIOSUITests" */;
+			buildPhases = (
+				8692F4DB3051CF5100E0ACAE /* Sources */,
+				8692F4DC3051CF5100E0ACAE /* Frameworks */,
+				8692F4DD3051CF5100E0ACAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8692F4E13051CF5100E0ACAE /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8692F4E23051CF5100E0ACAE /* CWorldIOSUITests */,
+			);
+			name = CWorldIOSUITests;
+			packageProductDependencies = (
+			);
+			productName = CWorldIOSUITests;
+			productReference = 8692F4DF3051CF5100E0ACAE /* CWorldIOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A72000000000000000000030 /* CWorldWatchingWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A72000000000000000000040 /* Build configuration list for PBXNativeTarget "CWorldWatchingWidget" */;
+			buildPhases = (
+				A72000000000000000000031 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CWorldWatchingWidget;
+			productName = CWorldWatchingWidget;
+			productReference = A72000000000000000000015 /* CWorldWatchingWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8692F4C03051CF5000E0ACAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					8692F4C73051CF5000E0ACAE = {
+						CreatedOnToolsVersion = 26.6;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					8692F4D43051CF5100E0ACAE = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 8692F4C73051CF5000E0ACAE;
+					};
+					8692F4DE3051CF5100E0ACAE = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 8692F4C73051CF5000E0ACAE;
+					};
+				};
+			};
+			buildConfigurationList = 8692F4C33051CF5000E0ACAE /* Build configuration list for PBXProject "CWorldIOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8692F4BF3051CF5000E0ACAE;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 8692F4C93051CF5000E0ACAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A72000000000000000000030 /* CWorldWatchingWidget */,
+				8692F4C73051CF5000E0ACAE /* CWorldIOS */,
+				8692F4D43051CF5100E0ACAE /* CWorldIOSTests */,
+				8692F4DE3051CF5100E0ACAE /* CWorldIOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8692F4C63051CF5000E0ACAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71000000000000000000001 /* Resources/MobileArtwork in Resources */,
+				A71500000000000000000002 /* Resources/DesktopArtwork in Resources */,
+				A71100000000000000000005 /* Resources/episode-markers.json in Resources */,
+				A71400000000000000000006 /* Resources/desktop-reference.json in Resources */,
+				8692F51A3051D26E00E0ACAE /* ../frontend/public/videos/Intro/CworldIntro.mp4 in Resources */,
+				F00000000000000000000001 /* Alexandria-Regular.ttf in Resources */,
+				F00000000000000000000002 /* Alexandria-Medium.ttf in Resources */,
+				F00000000000000000000003 /* Alexandria-Semibold.ttf in Resources */,
+				F00000000000000000000004 /* Alexandria-Bold.ttf in Resources */,
+				F00000000000000000000005 /* ElmsSans-Regular.ttf in Resources */,
+				F00000000000000000000006 /* ElmsSans-Medium.ttf in Resources */,
+				F00000000000000000000007 /* ElmsSans-Semibold.ttf in Resources */,
+				F00000000000000000000008 /* ElmsSans-Bold.ttf in Resources */,
+				F00000000000000000000009 /* Nunito-Regular.ttf in Resources */,
+				F0000000000000000000000A /* Nunito-Semibold.ttf in Resources */,
+				F0000000000000000000000B /* Poppins-Regular.ttf in Resources */,
+				F0000000000000000000000C /* Poppins-Semibold.ttf in Resources */,
+				F0000000000000000000000D /* Poppins-Bold.ttf in Resources */,
+				F0000000000000000000000E /* ../../frontend/src/data/episodeTitles.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8692F4D33051CF5100E0ACAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8692F4DD3051CF5100E0ACAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8692F4C43051CF5000E0ACAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A72000000000000000000001 /* ../ios/CWorldIOS/Features/Library/TVCompanion.swift in Sources */,
+				A72000000000000000000002 /* ../ios/CWorldIOS/Features/Library/WatchingLiveActivity.swift in Sources */,
+				A72000000000000000000003 /* ../ios/Shared/CWorldWatchingAttributes.swift in Sources */,
+				8692F5063051D26E00E0ACAE /* CatalogCache.swift in Sources */,
+				8692F5073051D26E00E0ACAE /* MediaDetailView.swift in Sources */,
+				8692F5083051D26E00E0ACAE /* AppModel.swift in Sources */,
+				8692F5093051D26E00E0ACAE /* AuthModels.swift in Sources */,
+				8692F50A3051D26E00E0ACAE /* LibraryView.swift in Sources */,
+				8692F50B3051D26E00E0ACAE /* CatalogPreviewView.swift in Sources */,
+				8692F50C3051D26E00E0ACAE /* ProfilePickerView.swift in Sources */,
+				8692F50D3051D26E00E0ACAE /* APIClient.swift in Sources */,
+				8692F50E3051D26E00E0ACAE /* KeychainStore.swift in Sources */,
+				8692F50F3051D26E00E0ACAE /* ProfileManagementView.swift in Sources */,
+				8692F5103051D26E00E0ACAE /* CWorldIOSApp.swift in Sources */,
+				8692F5113051D26E00E0ACAE /* CatalogModels.swift in Sources */,
+				8692F5123051D26E00E0ACAE /* DeviceLoginView.swift in Sources */,
+				8692F5133051D26E00E0ACAE /* RootView.swift in Sources */,
+				8692F5143051D26E00E0ACAE /* HistoryView.swift in Sources */,
+				8692F5163051D26E00E0ACAE /* CWorldTheme.swift in Sources */,
+				8692F5183051D26E00E0ACAE /* HomeView.swift in Sources */,
+				8692F51C3051D26E00E0ACAE /* ArchiveView.swift in Sources */,
+				F0000000000000000000000F /* Features/Library/EpisodeTitleCatalog.swift in Sources */,
+				A71100000000000000000001 /* Features/Library/CatalogSearchView.swift in Sources */,
+				A71200000000000000000001 /* Features/Library/SubtitleParser.swift in Sources */,
+				A71300000000000000000001 /* Features/Library/ExternalDisplay.swift in Sources */,
+				A71400000000000000000001 /* Features/Mac/MacDesktopModels.swift in Sources */,
+				A71500000000000000000001 /* Features/Mac/MacDesktopAppearance.swift in Sources */,
+				A71500000000000000000003 /* Features/Mac/MacReviewsView.swift in Sources */,
+				A71400000000000000000002 /* Features/Mac/MacDesktopView.swift in Sources */,
+				A71400000000000000000003 /* Features/Mac/MacTitleView.swift in Sources */,
+				A71400000000000000000004 /* Features/Mac/MacDesktopSettings.swift in Sources */,
+				A71400000000000000000005 /* Features/Mac/MacPlatform.swift in Sources */,
+				A71400000000000000000007 /* Features/Mac/MacArchiveView.swift in Sources */,
+				A71100000000000000000003 /* Features/Library/EpisodeSkipCatalog.swift in Sources */,
+				F00000000000000000000010 /* ImageCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8692F4D13051CF5100E0ACAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8692F4DB3051CF5100E0ACAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A72000000000000000000031 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A72000000000000000000004 /* ../ios/Shared/CWorldWatchingAttributes.swift in Sources */,
+				A72000000000000000000005 /* ../ios/CWorldWatchingWidget/CWorldWatchingWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8692F4D73051CF5100E0ACAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8692F4C73051CF5000E0ACAE /* CWorldIOS */;
+			targetProxy = 8692F4D63051CF5100E0ACAE /* PBXContainerItemProxy */;
+		};
+		8692F4E13051CF5100E0ACAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8692F4C73051CF5000E0ACAE /* CWorldIOS */;
+			targetProxy = 8692F4E03051CF5100E0ACAE /* PBXContainerItemProxy */;
+		};
+		A72000000000000000000022 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = A72000000000000000000030 /* CWorldWatchingWidget */;
+			targetProxy = A72000000000000000000021 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8692F4E73051CF5100E0ACAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8692F4E83051CF5100E0ACAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8692F4EA3051CF5100E0ACAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphone*]" = CWorldWatching.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = CWorldMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28Y3ZD6ZXL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				"INFOPLIST_KEY_LSApplicationCategoryType[sdk=macosx*]" = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIAppFonts = "Alexandria-Regular.ttf Alexandria-Medium.ttf Alexandria-Semibold.ttf Alexandria-Bold.ttf ElmsSans-Regular.ttf ElmsSans-Medium.ttf ElmsSans-Semibold.ttf ElmsSans-Bold.ttf Nunito-Regular.ttf Nunito-Semibold.ttf Poppins-Regular.ttf Poppins-Semibold.ttf Poppins-Bold.ttf";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIDesignRequiresCompatibility = NO;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.cworld;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.cearaworld.cworld.mac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_UIKITFORMAC = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				"TARGETED_DEVICE_FAMILY[sdk=macosx*]" = 6;
+			};
+			name = Debug;
+		};
+		8692F4EB3051CF5100E0ACAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphone*]" = CWorldWatching.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = CWorldMac.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28Y3ZD6ZXL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				"INFOPLIST_KEY_LSApplicationCategoryType[sdk=macosx*]" = "public.app-category.entertainment";
+				INFOPLIST_KEY_UIAppFonts = "Alexandria-Regular.ttf Alexandria-Medium.ttf Alexandria-Semibold.ttf Alexandria-Bold.ttf ElmsSans-Regular.ttf ElmsSans-Medium.ttf ElmsSans-Semibold.ttf ElmsSans-Bold.ttf Nunito-Regular.ttf Nunito-Semibold.ttf Poppins-Regular.ttf Poppins-Semibold.ttf Poppins-Bold.ttf";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIDesignRequiresCompatibility = NO;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.cworld;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.cearaworld.cworld.mac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_UIKITFORMAC = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				"TARGETED_DEVICE_FAMILY[sdk=macosx*]" = 6;
+			};
+			name = Release;
+		};
+		8692F4ED3051CF5100E0ACAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.CWorldIOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CWorldIOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CWorldIOS";
+			};
+			name = Debug;
+		};
+		8692F4EE3051CF5100E0ACAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.CWorldIOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CWorldIOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CWorldIOS";
+			};
+			name = Release;
+		};
+		8692F4F03051CF5100E0ACAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.CWorldIOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CWorldIOS;
+			};
+			name = Debug;
+		};
+		8692F4F13051CF5100E0ACAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.CWorldIOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CWorldIOS;
+			};
+			name = Release;
+		};
+		A72000000000000000000041 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = CWorldWatching.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28Y3ZD6ZXL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ../ios/CWorldWatchingWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.cworld.watching;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) CWORLD_WIDGET_EXTENSION";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A72000000000000000000042 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = CWorldWatching.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28Y3ZD6ZXL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ../ios/CWorldWatchingWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cearaworld.cworld.watching;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) CWORLD_WIDGET_EXTENSION";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8692F4C33051CF5000E0ACAE /* Build configuration list for PBXProject "CWorldIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8692F4E73051CF5100E0ACAE /* Debug */,
+				8692F4E83051CF5100E0ACAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8692F4E93051CF5100E0ACAE /* Build configuration list for PBXNativeTarget "CWorldIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8692F4EA3051CF5100E0ACAE /* Debug */,
+				8692F4EB3051CF5100E0ACAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8692F4EC3051CF5100E0ACAE /* Build configuration list for PBXNativeTarget "CWorldIOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8692F4ED3051CF5100E0ACAE /* Debug */,
+				8692F4EE3051CF5100E0ACAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8692F4EF3051CF5100E0ACAE /* Build configuration list for PBXNativeTarget "CWorldIOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8692F4F03051CF5100E0ACAE /* Debug */,
+				8692F4F13051CF5100E0ACAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A72000000000000000000040 /* Build configuration list for PBXNativeTarget "CWorldWatchingWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A72000000000000000000041 /* Debug */,
+				A72000000000000000000042 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8692F4C03051CF5000E0ACAE /* Project object */;
+}

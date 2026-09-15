@@ -1,0 +1,6267 @@
+{
+  "version": 1,
+  "source": "frontend/src/components/Show.jsx",
+  "sourceSHA256": "78ecee6e9354bc9759f0bd01ad5ee9cca61acf6fd08b9e9a337ed8ce6e701752",
+  "episodes": {
+    "stevenuniverse:1:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:27": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:28": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:29": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:30": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:31": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:32": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:33": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:34": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:35": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:36": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:37": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:38": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:39": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:40": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:41": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:42": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:43": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:44": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:45": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:46": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:47": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:48": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:1:49": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 670
+    },
+    "stevenuniverse:2:9": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:10": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:11": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:12": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:13": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:14": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:15": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:16": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:17": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:18": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:19": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:20": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:21": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:22": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:23": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:24": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:25": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:26": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:27": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:28": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:2:29": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:1": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:2": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:3": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:4": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:5": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:6": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:7": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:8": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:9": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:10": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:11": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:12": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:13": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:14": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:15": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:16": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:17": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:18": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:19": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:20": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:21": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:22": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:23": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:3:24": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:1": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:2": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:3": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:4": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:5": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:6": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:7": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:8": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:9": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:10": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:11": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:12": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:13": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:14": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:15": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:16": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:17": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:18": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:19": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:20": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:21": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:22": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:23": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:4:24": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:1": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:2": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:3": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:4": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:5": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:6": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:7": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:8": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:9": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:10": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:11": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:12": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:13": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:14": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:15": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:16": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:17": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:18": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:19": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:20": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:21": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:22": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:23": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:24": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:25": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:26": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:27": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "stevenuniverse:5:28": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 667
+    },
+    "adventuretime:1:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:1:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:2:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:3:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:4:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:27": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:28": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:29": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:30": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:31": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:32": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:33": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:34": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:35": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:36": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:37": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:38": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:39": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:40": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:41": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:42": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:43": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:44": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:45": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:46": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:47": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:48": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:49": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:50": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:51": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:5:52": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:27": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:28": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:29": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:30": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:31": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:32": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:33": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:34": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:35": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:36": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:37": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:38": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:39": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:40": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:41": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:42": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:6:43": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:7:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:15": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:16": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:17": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:18": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:19": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:20": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:21": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:22": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:23": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:24": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:25": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:26": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:8:27": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:9:14": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:1": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:2": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:3": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:4": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:5": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:6": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:7": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:8": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:9": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:10": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:11": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:12": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "adventuretime:10:13": {
+      "introStart": 0,
+      "introEnd": 25,
+      "outroStart": 675
+    },
+    "overthegardenwall:1:1": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:2": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:3": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:4": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:5": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:6": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:7": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:8": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:9": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "overthegardenwall:1:10": {
+      "introStart": 0,
+      "introEnd": 12,
+      "outroStart": 657
+    },
+    "neongenesis:1:1": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:2": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:3": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:5": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:6": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:7": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:8": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:9": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:10": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:11": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:12": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:13": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:14": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:15": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:16": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:17": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:18": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:19": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:20": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:21": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:22": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:23": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:24": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:25": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "neongenesis:1:26": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "mobpsycho:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1429
+    },
+    "mobpsycho:1:2": {
+      "introStart": 61,
+      "introEnd": 154,
+      "outroStart": 1331
+    },
+    "mobpsycho:1:3": {
+      "introStart": 40,
+      "introEnd": 130,
+      "outroStart": 1434
+    },
+    "mobpsycho:1:4": {
+      "introStart": 56,
+      "introEnd": 146,
+      "outroStart": 1345
+    },
+    "mobpsycho:1:5": {
+      "introStart": 42,
+      "introEnd": 133,
+      "outroStart": 1341
+    },
+    "mobpsycho:1:6": {
+      "introStart": 35,
+      "introEnd": 126,
+      "outroStart": 1345
+    },
+    "mobpsycho:1:7": {
+      "introStart": 57,
+      "introEnd": 147,
+      "outroStart": 1345
+    },
+    "mobpsycho:1:8": {
+      "introStart": 54,
+      "introEnd": 144,
+      "outroStart": 1435
+    },
+    "mobpsycho:1:9": {
+      "introStart": 63,
+      "introEnd": 153,
+      "outroStart": 1345
+    },
+    "mobpsycho:1:10": {
+      "introStart": 32,
+      "introEnd": 122,
+      "outroStart": 1302
+    },
+    "mobpsycho:1:11": {
+      "introStart": 33,
+      "introEnd": 123,
+      "outroStart": 1345
+    },
+    "mobpsycho:1:12": {
+      "introStart": 45,
+      "introEnd": 135,
+      "outroStart": 1451
+    },
+    "mobpsycho:2:1": {
+      "introStart": 395,
+      "introEnd": 485,
+      "outroStart": 1432
+    },
+    "mobpsycho:2:2": {
+      "introStart": 19,
+      "introEnd": 109,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:3": {
+      "introStart": 24,
+      "introEnd": 114,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:4": {
+      "introStart": 27,
+      "introEnd": 117,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:5": {
+      "introStart": 10,
+      "introEnd": 100,
+      "outroStart": 1431
+    },
+    "mobpsycho:2:6": {
+      "introStart": 57,
+      "introEnd": 147,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:7": {
+      "introStart": 20,
+      "introEnd": 110,
+      "outroStart": 1434
+    },
+    "mobpsycho:2:8": {
+      "introStart": 43,
+      "introEnd": 133,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:9": {
+      "introStart": 83,
+      "introEnd": 173,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:10": {
+      "introStart": 52,
+      "introEnd": 142,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:11": {
+      "introStart": 63,
+      "introEnd": 153,
+      "outroStart": 1313
+    },
+    "mobpsycho:2:12": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "mobpsycho:2:13": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1446
+    },
+    "mobpsycho:3:1": {
+      "introStart": 32,
+      "introEnd": 122,
+      "outroStart": 1380
+    },
+    "mobpsycho:3:2": {
+      "introStart": 47,
+      "introEnd": 137,
+      "outroStart": 1299
+    },
+    "mobpsycho:3:3": {
+      "introStart": 275,
+      "introEnd": 365,
+      "outroStart": 1316
+    },
+    "mobpsycho:3:4": {
+      "introStart": 43,
+      "introEnd": 133,
+      "outroStart": 1404
+    },
+    "mobpsycho:3:5": {
+      "introStart": 149,
+      "introEnd": 239,
+      "outroStart": 1315
+    },
+    "mobpsycho:3:6": {
+      "introStart": 83,
+      "introEnd": 173,
+      "outroStart": 1405
+    },
+    "mobpsycho:3:7": {
+      "introStart": 177,
+      "introEnd": 267,
+      "outroStart": 1315
+    },
+    "mobpsycho:3:8": {
+      "introStart": 104,
+      "introEnd": 194,
+      "outroStart": 1397
+    },
+    "mobpsycho:3:9": {
+      "introStart": 39,
+      "introEnd": 129,
+      "outroStart": 1315
+    },
+    "mobpsycho:3:10": {
+      "introStart": 123,
+      "introEnd": 213,
+      "outroStart": 1315
+    },
+    "mobpsycho:3:11": {
+      "introStart": 81,
+      "introEnd": 171,
+      "outroStart": 1315
+    },
+    "mobpsycho:3:12": {
+      "introStart": 110,
+      "introEnd": 200,
+      "outroStart": 1410
+    },
+    "fmab:1:1": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:2": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:3": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:4": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:5": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:6": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:7": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:8": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:9": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:10": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:11": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:12": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:1:13": {
+      "introStart": 0,
+      "introEnd": 118,
+      "outroStart": 1345
+    },
+    "fmab:2:1": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:2": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:3": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:5": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:6": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:7": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:8": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:9": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:10": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:11": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:12": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:2:13": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:1": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:2": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:3": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:5": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:6": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:7": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:8": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:9": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:10": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:11": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:12": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:3:13": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:1": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:2": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:3": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:5": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:6": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:7": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:8": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:9": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:10": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:11": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:12": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:4:13": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:1": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:2": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:3": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:5": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:6": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:7": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:8": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:9": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:10": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:11": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "fmab:5:12": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1345
+    },
+    "jjk:1:1": {
+      "introStart": 56,
+      "introEnd": 145,
+      "outroStart": 1425
+    },
+    "jjk:1:2": {
+      "introStart": 346,
+      "introEnd": 435,
+      "outroStart": 1336
+    },
+    "jjk:1:3": {
+      "introStart": 193,
+      "introEnd": 282,
+      "outroStart": 1275
+    },
+    "jjk:1:4": {
+      "introStart": 176,
+      "introEnd": 266,
+      "outroStart": 1275
+    },
+    "jjk:1:5": {
+      "introStart": 144,
+      "introEnd": 233,
+      "outroStart": 1275
+    },
+    "jjk:1:6": {
+      "introStart": 35,
+      "introEnd": 124,
+      "outroStart": 1305
+    },
+    "jjk:1:7": {
+      "introStart": 131,
+      "introEnd": 220,
+      "outroStart": 1275
+    },
+    "jjk:1:8": {
+      "introStart": 200,
+      "introEnd": 289,
+      "outroStart": 1220
+    },
+    "jjk:1:9": {
+      "introStart": 277,
+      "introEnd": 366,
+      "outroStart": 1306
+    },
+    "jjk:1:10": {
+      "introStart": 171,
+      "introEnd": 260,
+      "outroStart": 1276
+    },
+    "jjk:1:11": {
+      "introStart": 137,
+      "introEnd": 226,
+      "outroStart": 1320
+    },
+    "jjk:1:12": {
+      "introStart": 118,
+      "introEnd": 207,
+      "outroStart": 1276
+    },
+    "jjk:1:13": {
+      "introStart": 290,
+      "introEnd": 379,
+      "outroStart": 1245
+    },
+    "jjk:1:14": {
+      "introStart": 205,
+      "introEnd": 294,
+      "outroStart": 1247
+    },
+    "jjk:1:15": {
+      "introStart": 149,
+      "introEnd": 238,
+      "outroStart": 1246
+    },
+    "jjk:1:16": {
+      "introStart": 234,
+      "introEnd": 323,
+      "outroStart": 1246
+    },
+    "jjk:1:17": {
+      "introStart": 0,
+      "introEnd": 89,
+      "outroStart": 1246
+    },
+    "jjk:1:18": {
+      "introStart": 159,
+      "introEnd": 248,
+      "outroStart": 1246
+    },
+    "jjk:1:19": {
+      "introStart": 485,
+      "introEnd": 574,
+      "outroStart": 1246
+    },
+    "jjk:1:20": {
+      "introStart": 67,
+      "introEnd": 156,
+      "outroStart": 1286
+    },
+    "jjk:1:21": {
+      "introStart": 314,
+      "introEnd": 403,
+      "outroStart": 1286
+    },
+    "jjk:1:22": {
+      "introStart": 31,
+      "introEnd": 120,
+      "outroStart": 1246
+    },
+    "jjk:1:23": {
+      "introStart": 348,
+      "introEnd": 437,
+      "outroStart": 1246
+    },
+    "jjk:1:24": {
+      "introStart": 133,
+      "introEnd": 222,
+      "outroStart": 1414
+    },
+    "jjk:2:1": {
+      "introStart": 649,
+      "introEnd": 738,
+      "outroStart": 1330
+    },
+    "jjk:2:2": {
+      "introStart": 192,
+      "introEnd": 281,
+      "outroStart": 1330
+    },
+    "jjk:2:3": {
+      "introStart": 174,
+      "introEnd": 263,
+      "outroStart": 1330
+    },
+    "jjk:2:4": {
+      "introStart": 76,
+      "introEnd": 165,
+      "outroStart": 1509
+    },
+    "jjk:2:5": {
+      "introStart": 0,
+      "introEnd": 89,
+      "outroStart": 1330
+    },
+    "jjk:2:6": {
+      "introStart": 299,
+      "introEnd": 388,
+      "outroStart": 1330
+    },
+    "jjk:2:7": {
+      "introStart": 125,
+      "introEnd": 214,
+      "outroStart": 1330
+    },
+    "jjk:2:8": {
+      "introStart": 161,
+      "introEnd": 250,
+      "outroStart": 1330
+    },
+    "jjk:2:9": {
+      "introStart": 56,
+      "introEnd": 145,
+      "outroStart": 1330
+    },
+    "jjk:2:10": {
+      "introStart": 183,
+      "introEnd": 272,
+      "outroStart": 1300
+    },
+    "jjk:2:11": {
+      "introStart": 285,
+      "introEnd": 374,
+      "outroStart": 1330
+    },
+    "jjk:2:12": {
+      "introStart": 47,
+      "introEnd": 136,
+      "outroStart": 1330
+    },
+    "jjk:2:13": {
+      "introStart": 66,
+      "introEnd": 155,
+      "outroStart": 1304
+    },
+    "jjk:2:14": {
+      "introStart": 324,
+      "introEnd": 413,
+      "outroStart": 1330
+    },
+    "jjk:2:15": {
+      "introStart": 271,
+      "introEnd": 360,
+      "outroStart": 1330
+    },
+    "jjk:2:16": {
+      "introStart": 13,
+      "introEnd": 102,
+      "outroStart": 1330
+    },
+    "jjk:2:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1430
+    },
+    "jjk:2:18": {
+      "introStart": 102,
+      "introEnd": 191,
+      "outroStart": 1315
+    },
+    "jjk:2:19": {
+      "introStart": 59,
+      "introEnd": 148,
+      "outroStart": 1315
+    },
+    "jjk:2:20": {
+      "introStart": 306,
+      "introEnd": 395,
+      "outroStart": 1405
+    },
+    "jjk:2:21": {
+      "introStart": 219,
+      "introEnd": 308,
+      "outroStart": 1315
+    },
+    "jjk:2:22": {
+      "introStart": 406,
+      "introEnd": 495,
+      "outroStart": 1315
+    },
+    "jjk:2:23": {
+      "introStart": 0,
+      "introEnd": 89,
+      "outroStart": 1327
+    },
+    "jjk:3:1": {
+      "introStart": 222,
+      "introEnd": 313,
+      "outroStart": 1329
+    },
+    "jjk:3:2": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1325
+    },
+    "jjk:3:3": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1328
+    },
+    "jjk:3:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1585
+    },
+    "jjk:3:5": {
+      "introStart": 380,
+      "introEnd": 470,
+      "outroStart": 1330
+    },
+    "jjk:3:6": {
+      "introStart": 198,
+      "introEnd": 288,
+      "outroStart": 1330
+    },
+    "jjk:3:7": {
+      "introStart": 183,
+      "introEnd": 273,
+      "outroStart": 1328
+    },
+    "jjk:3:8": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1330
+    },
+    "jjk:3:9": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1229
+    },
+    "jjk:3:10": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1313
+    },
+    "jjk:3:11": {
+      "introStart": 270,
+      "introEnd": 360,
+      "outroStart": 1316
+    },
+    "jjk:3:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1618
+    },
+    "cyberpunk:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1345
+    },
+    "cyberpunk:1:2": {
+      "introStart": 75,
+      "introEnd": 165,
+      "outroStart": 1350
+    },
+    "cyberpunk:1:3": {
+      "introStart": 0,
+      "introEnd": 100,
+      "outroStart": 1353
+    },
+    "cyberpunk:1:4": {
+      "introStart": 30,
+      "introEnd": 120,
+      "outroStart": 1350
+    },
+    "cyberpunk:1:5": {
+      "introStart": 0,
+      "introEnd": 100,
+      "outroStart": 1305
+    },
+    "cyberpunk:1:6": {
+      "introStart": 0,
+      "introEnd": 100,
+      "outroStart": 1444
+    },
+    "cyberpunk:1:7": {
+      "introStart": 86,
+      "introEnd": 176,
+      "outroStart": 1350
+    },
+    "cyberpunk:1:8": {
+      "introStart": 90,
+      "introEnd": 180,
+      "outroStart": 1350
+    },
+    "cyberpunk:1:9": {
+      "introStart": 0,
+      "introEnd": 100,
+      "outroStart": 1414
+    },
+    "cyberpunk:1:10": {
+      "introStart": 0,
+      "introEnd": 100,
+      "outroStart": 1525
+    },
+    "severance:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2840
+    },
+    "severance:1:2": {
+      "introStart": 327,
+      "introEnd": 407,
+      "outroStart": 3137
+    },
+    "severance:1:3": {
+      "introStart": 131,
+      "introEnd": 211,
+      "outroStart": 3137
+    },
+    "severance:1:4": {
+      "introStart": 235,
+      "introEnd": 315,
+      "outroStart": 2730
+    },
+    "severance:1:5": {
+      "introStart": 170,
+      "introEnd": 350,
+      "outroStart": 2528
+    },
+    "severance:1:6": {
+      "introStart": 60,
+      "introEnd": 140,
+      "outroStart": 2328
+    },
+    "severance:1:7": {
+      "introStart": 349,
+      "introEnd": 429,
+      "outroStart": 2925
+    },
+    "severance:1:8": {
+      "introStart": 196,
+      "introEnd": 276,
+      "outroStart": 2732
+    },
+    "severance:1:9": {
+      "introStart": 153,
+      "introEnd": 233,
+      "outroStart": 2322
+    },
+    "severance:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 3337
+    },
+    "severance:2:2": {
+      "introStart": 718,
+      "introEnd": 798,
+      "outroStart": 2686
+    },
+    "severance:2:3": {
+      "introStart": 190,
+      "introEnd": 270,
+      "outroStart": 3139
+    },
+    "severance:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2962
+    },
+    "severance:2:5": {
+      "introStart": 142,
+      "introEnd": 222,
+      "outroStart": 2716
+    },
+    "severance:2:6": {
+      "introStart": 212,
+      "introEnd": 292,
+      "outroStart": 2805
+    },
+    "severance:2:7": {
+      "introStart": 300,
+      "introEnd": 380,
+      "outroStart": 2904
+    },
+    "severance:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2149
+    },
+    "severance:2:9": {
+      "introStart": 0,
+      "introEnd": 80,
+      "outroStart": 4400
+    },
+    "pluribus:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 3291
+    },
+    "pluribus:1:2": {
+      "introStart": 455,
+      "introEnd": 477,
+      "outroStart": 3630
+    },
+    "pluribus:1:3": {
+      "introStart": 384,
+      "introEnd": 406,
+      "outroStart": 2490
+    },
+    "pluribus:1:4": {
+      "introStart": 610,
+      "introEnd": 636,
+      "outroStart": 2623
+    },
+    "pluribus:1:5": {
+      "introStart": 472,
+      "introEnd": 495,
+      "outroStart": 2669
+    },
+    "pluribus:1:6": {
+      "introStart": 329,
+      "introEnd": 350,
+      "outroStart": 2865
+    },
+    "pluribus:1:7": {
+      "introStart": 298,
+      "introEnd": 323,
+      "outroStart": 2645
+    },
+    "pluribus:1:8": {
+      "introStart": 183,
+      "introEnd": 205,
+      "outroStart": 2488
+    },
+    "pluribus:1:9": {
+      "introStart": 533,
+      "introEnd": 555,
+      "outroStart": 3322
+    },
+    "itsalwayssunny:1:1": {
+      "introStart": 105,
+      "introEnd": 133,
+      "outroStart": 1294
+    },
+    "itsalwayssunny:1:2": {
+      "introStart": 81,
+      "introEnd": 109,
+      "outroStart": 1308
+    },
+    "itsalwayssunny:1:3": {
+      "introStart": 84,
+      "introEnd": 112,
+      "outroStart": 1302
+    },
+    "itsalwayssunny:1:4": {
+      "introStart": 155,
+      "introEnd": 183,
+      "outroStart": 1310
+    },
+    "itsalwayssunny:1:5": {
+      "introStart": 80,
+      "introEnd": 108,
+      "outroStart": 1244
+    },
+    "itsalwayssunny:1:6": {
+      "introStart": 67,
+      "introEnd": 95,
+      "outroStart": 1309
+    },
+    "itsalwayssunny:1:7": {
+      "introStart": 69,
+      "introEnd": 97,
+      "outroStart": 1105
+    },
+    "itsalwayssunny:2:1": {
+      "introStart": 69,
+      "introEnd": 97,
+      "outroStart": 1327
+    },
+    "itsalwayssunny:2:2": {
+      "introStart": 149,
+      "introEnd": 177,
+      "outroStart": 1326
+    },
+    "itsalwayssunny:2:3": {
+      "introStart": 56,
+      "introEnd": 84,
+      "outroStart": 1276
+    },
+    "itsalwayssunny:2:4": {
+      "introStart": 66,
+      "introEnd": 94,
+      "outroStart": 1367
+    },
+    "itsalwayssunny:2:5": {
+      "introStart": 62,
+      "introEnd": 90,
+      "outroStart": 1350
+    },
+    "itsalwayssunny:2:6": {
+      "introStart": 71,
+      "introEnd": 99,
+      "outroStart": 1329
+    },
+    "itsalwayssunny:2:7": {
+      "introStart": 89,
+      "introEnd": 117,
+      "outroStart": 1311
+    },
+    "itsalwayssunny:2:8": {
+      "introStart": 99,
+      "introEnd": 127,
+      "outroStart": 1337
+    },
+    "itsalwayssunny:2:9": {
+      "introStart": 115,
+      "introEnd": 143,
+      "outroStart": 1224
+    },
+    "itsalwayssunny:2:10": {
+      "introStart": 83,
+      "introEnd": 111,
+      "outroStart": 1389
+    },
+    "itsalwayssunny:3:1": {
+      "introStart": 56,
+      "introEnd": 84,
+      "outroStart": 1332
+    },
+    "itsalwayssunny:3:2": {
+      "introStart": 116,
+      "introEnd": 144,
+      "outroStart": 1273
+    },
+    "itsalwayssunny:3:3": {
+      "introStart": 46,
+      "introEnd": 74,
+      "outroStart": 1334
+    },
+    "itsalwayssunny:3:4": {
+      "introStart": 121,
+      "introEnd": 149,
+      "outroStart": 1342
+    },
+    "itsalwayssunny:3:5": {
+      "introStart": 194,
+      "introEnd": 222,
+      "outroStart": 1309
+    },
+    "itsalwayssunny:3:6": {
+      "introStart": 132,
+      "introEnd": 160,
+      "outroStart": 1295
+    },
+    "itsalwayssunny:3:7": {
+      "introStart": 102,
+      "introEnd": 130,
+      "outroStart": 1295
+    },
+    "itsalwayssunny:3:8": {
+      "introStart": 135,
+      "introEnd": 163,
+      "outroStart": 1292
+    },
+    "itsalwayssunny:3:9": {
+      "introStart": 101,
+      "introEnd": 129,
+      "outroStart": 1194
+    },
+    "itsalwayssunny:3:10": {
+      "introStart": 104,
+      "introEnd": 132,
+      "outroStart": 1311
+    },
+    "itsalwayssunny:3:11": {
+      "introStart": 92,
+      "introEnd": 120,
+      "outroStart": 1299
+    },
+    "itsalwayssunny:3:12": {
+      "introStart": 116,
+      "introEnd": 144,
+      "outroStart": 1223
+    },
+    "itsalwayssunny:3:13": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1285
+    },
+    "itsalwayssunny:3:14": {
+      "introStart": 30,
+      "introEnd": 60,
+      "outroStart": 1185
+    },
+    "itsalwayssunny:3:15": {
+      "introStart": 116,
+      "introEnd": 146,
+      "outroStart": 1276
+    },
+    "itsalwayssunny:4:1": {
+      "introStart": 112,
+      "introEnd": 142,
+      "outroStart": 1228
+    },
+    "itsalwayssunny:4:2": {
+      "introStart": 100,
+      "introEnd": 130,
+      "outroStart": 1202
+    },
+    "itsalwayssunny:4:3": {
+      "introStart": 70,
+      "introEnd": 100,
+      "outroStart": 1228
+    },
+    "itsalwayssunny:4:4": {
+      "introStart": 151,
+      "introEnd": 181,
+      "outroStart": 1230
+    },
+    "itsalwayssunny:4:5": {
+      "introStart": 96,
+      "introEnd": 126,
+      "outroStart": 1197
+    },
+    "itsalwayssunny:4:6": {
+      "introStart": 32,
+      "introEnd": 62,
+      "outroStart": 1200
+    },
+    "itsalwayssunny:4:7": {
+      "introStart": 85,
+      "introEnd": 115,
+      "outroStart": 1218
+    },
+    "itsalwayssunny:4:8": {
+      "introStart": 89,
+      "introEnd": 119,
+      "outroStart": 1228
+    },
+    "itsalwayssunny:4:9": {
+      "introStart": 105,
+      "introEnd": 135,
+      "outroStart": 1347
+    },
+    "itsalwayssunny:4:10": {
+      "introStart": 56,
+      "introEnd": 86,
+      "outroStart": 1228
+    },
+    "itsalwayssunny:4:11": {
+      "introStart": 106,
+      "introEnd": 136,
+      "outroStart": 1228
+    },
+    "itsalwayssunny:4:12": {
+      "introStart": 118,
+      "introEnd": 148,
+      "outroStart": 1213
+    },
+    "itsalwayssunny:4:13": {
+      "introStart": 76,
+      "introEnd": 106,
+      "outroStart": 1233
+    },
+    "itsalwayssunny:5:1": {
+      "introStart": 165,
+      "introEnd": 195,
+      "outroStart": 1264
+    },
+    "itsalwayssunny:5:2": {
+      "introStart": 97,
+      "introEnd": 127,
+      "outroStart": 1228
+    },
+    "itsalwayssunny:5:3": {
+      "introStart": 98,
+      "introEnd": 128,
+      "outroStart": 1223
+    },
+    "itsalwayssunny:5:4": {
+      "introStart": 85,
+      "introEnd": 115,
+      "outroStart": 1187
+    },
+    "itsalwayssunny:5:5": {
+      "introStart": 135,
+      "introEnd": 165,
+      "outroStart": 1218
+    },
+    "itsalwayssunny:5:6": {
+      "introStart": 45,
+      "introEnd": 75,
+      "outroStart": 1195
+    },
+    "itsalwayssunny:5:7": {
+      "introStart": 150,
+      "introEnd": 180,
+      "outroStart": 1224
+    },
+    "itsalwayssunny:5:8": {
+      "introStart": 73,
+      "introEnd": 103,
+      "outroStart": 1226
+    },
+    "itsalwayssunny:5:9": {
+      "introStart": 144,
+      "introEnd": 174,
+      "outroStart": 1256
+    },
+    "itsalwayssunny:5:10": {
+      "introStart": 53,
+      "introEnd": 83,
+      "outroStart": 1237
+    },
+    "itsalwayssunny:5:11": {
+      "introStart": 146,
+      "introEnd": 176,
+      "outroStart": 1226
+    },
+    "itsalwayssunny:5:12": {
+      "introStart": 100,
+      "introEnd": 130,
+      "outroStart": 1226
+    },
+    "itsalwayssunny:6:1": {
+      "introStart": 79,
+      "introEnd": 109,
+      "outroStart": 1223
+    },
+    "itsalwayssunny:6:2": {
+      "introStart": 90,
+      "introEnd": 120,
+      "outroStart": 1226
+    },
+    "itsalwayssunny:6:3": {
+      "introStart": 140,
+      "introEnd": 170,
+      "outroStart": 1232
+    },
+    "itsalwayssunny:6:4": {
+      "introStart": 96,
+      "introEnd": 126,
+      "outroStart": 1230
+    },
+    "itsalwayssunny:6:5": {
+      "introStart": 140,
+      "introEnd": 170,
+      "outroStart": 1230
+    },
+    "itsalwayssunny:6:6": {
+      "introStart": 134,
+      "introEnd": 164,
+      "outroStart": 1224
+    },
+    "itsalwayssunny:6:7": {
+      "introStart": 100,
+      "introEnd": 130,
+      "outroStart": 1230
+    },
+    "itsalwayssunny:6:8": {
+      "introStart": 140,
+      "introEnd": 170,
+      "outroStart": 1263
+    },
+    "itsalwayssunny:6:9": {
+      "introStart": 110,
+      "introEnd": 140,
+      "outroStart": 1219
+    },
+    "itsalwayssunny:6:10": {
+      "introStart": 108,
+      "introEnd": 138,
+      "outroStart": 1227
+    },
+    "itsalwayssunny:6:11": {
+      "introStart": 70,
+      "introEnd": 100,
+      "outroStart": 1340
+    },
+    "itsalwayssunny:6:12": {
+      "introStart": 66,
+      "introEnd": 96,
+      "outroStart": 1230
+    },
+    "itsalwayssunny:6:13": {
+      "introStart": 168,
+      "introEnd": 198,
+      "outroStart": 2533
+    },
+    "itsalwayssunny:7:1": {
+      "introStart": 82,
+      "introEnd": 101,
+      "outroStart": 1284
+    },
+    "itsalwayssunny:7:2": {
+      "introStart": 97,
+      "introEnd": 116,
+      "outroStart": 1245
+    },
+    "itsalwayssunny:7:3": {
+      "introStart": 96,
+      "introEnd": 115,
+      "outroStart": 1260
+    },
+    "itsalwayssunny:7:4": {
+      "introStart": 93,
+      "introEnd": 112,
+      "outroStart": 1291
+    },
+    "itsalwayssunny:7:5": {
+      "introStart": 87,
+      "introEnd": 106,
+      "outroStart": 1247
+    },
+    "itsalwayssunny:7:6": {
+      "introStart": 107,
+      "introEnd": 126,
+      "outroStart": 1184
+    },
+    "itsalwayssunny:7:7": {
+      "introStart": 94,
+      "introEnd": 113,
+      "outroStart": 1167
+    },
+    "itsalwayssunny:7:8": {
+      "introStart": 123,
+      "introEnd": 142,
+      "outroStart": 1229
+    },
+    "itsalwayssunny:7:9": {
+      "introStart": 77,
+      "introEnd": 96,
+      "outroStart": 1161
+    },
+    "itsalwayssunny:7:10": {
+      "introStart": 18,
+      "introEnd": 37,
+      "outroStart": 1222
+    },
+    "itsalwayssunny:7:11": {
+      "introStart": 89,
+      "introEnd": 108,
+      "outroStart": 1165
+    },
+    "itsalwayssunny:7:12": {
+      "introStart": 77,
+      "introEnd": 96,
+      "outroStart": 1180
+    },
+    "itsalwayssunny:7:13": {
+      "introStart": 37,
+      "introEnd": 56,
+      "outroStart": 1268
+    },
+    "itsalwayssunny:8:1": {
+      "introStart": 132,
+      "introEnd": 151,
+      "outroStart": 1242
+    },
+    "itsalwayssunny:8:2": {
+      "introStart": 96,
+      "introEnd": 115,
+      "outroStart": 1166
+    },
+    "itsalwayssunny:8:3": {
+      "introStart": 40,
+      "introEnd": 59,
+      "outroStart": 1337
+    },
+    "itsalwayssunny:8:4": {
+      "introStart": 149,
+      "introEnd": 168,
+      "outroStart": 1268
+    },
+    "itsalwayssunny:8:5": {
+      "introStart": 83,
+      "introEnd": 102,
+      "outroStart": 1285
+    },
+    "itsalwayssunny:8:6": {
+      "introStart": 55,
+      "introEnd": 74,
+      "outroStart": 1259
+    },
+    "itsalwayssunny:8:7": {
+      "introStart": 73,
+      "introEnd": 92,
+      "outroStart": 1267
+    },
+    "itsalwayssunny:8:8": {
+      "introStart": 120,
+      "introEnd": 139,
+      "outroStart": 1268
+    },
+    "itsalwayssunny:8:9": {
+      "introStart": 122,
+      "introEnd": 141,
+      "outroStart": 1126
+    },
+    "itsalwayssunny:8:10": {
+      "introStart": 180,
+      "introEnd": 199,
+      "outroStart": 1227
+    },
+    "itsalwayssunny:9:1": {
+      "introStart": 103,
+      "introEnd": 123,
+      "outroStart": 1245
+    },
+    "itsalwayssunny:9:2": {
+      "introStart": 130,
+      "introEnd": 150,
+      "outroStart": 1259
+    },
+    "itsalwayssunny:9:3": {
+      "introStart": 108,
+      "introEnd": 128,
+      "outroStart": 1266
+    },
+    "itsalwayssunny:9:4": {
+      "introStart": 128,
+      "introEnd": 148,
+      "outroStart": 1268
+    },
+    "itsalwayssunny:9:5": {
+      "introStart": 86,
+      "introEnd": 106,
+      "outroStart": 1247
+    },
+    "itsalwayssunny:9:6": {
+      "introStart": 42,
+      "introEnd": 62,
+      "outroStart": 1283
+    },
+    "itsalwayssunny:9:7": {
+      "introStart": 103,
+      "introEnd": 123,
+      "outroStart": 1242
+    },
+    "itsalwayssunny:9:8": {
+      "introStart": 150,
+      "introEnd": 170,
+      "outroStart": 1177
+    },
+    "itsalwayssunny:9:9": {
+      "introStart": 62,
+      "introEnd": 82,
+      "outroStart": 1126
+    },
+    "itsalwayssunny:9:10": {
+      "introStart": 174,
+      "introEnd": 194,
+      "outroStart": 1136
+    },
+    "itsalwayssunny:10:1": {
+      "introStart": 67,
+      "introEnd": 87,
+      "outroStart": 1180
+    },
+    "itsalwayssunny:10:2": {
+      "introStart": 72,
+      "introEnd": 92,
+      "outroStart": 1375
+    },
+    "itsalwayssunny:10:3": {
+      "introStart": 61,
+      "introEnd": 81,
+      "outroStart": 1261
+    },
+    "itsalwayssunny:10:4": {
+      "introStart": 30,
+      "introEnd": 50,
+      "outroStart": 1205
+    },
+    "itsalwayssunny:10:5": {
+      "introStart": 157,
+      "introEnd": 177,
+      "outroStart": 1221
+    },
+    "itsalwayssunny:10:6": {
+      "introStart": 62,
+      "introEnd": 82,
+      "outroStart": 1243
+    },
+    "itsalwayssunny:10:7": {
+      "introStart": 80,
+      "introEnd": 100,
+      "outroStart": 1168
+    },
+    "itsalwayssunny:10:8": {
+      "introStart": 115,
+      "introEnd": 135,
+      "outroStart": 1168
+    },
+    "itsalwayssunny:10:9": {
+      "introStart": 87,
+      "introEnd": 107,
+      "outroStart": 1182
+    },
+    "itsalwayssunny:10:10": {
+      "introStart": 65,
+      "introEnd": 85,
+      "outroStart": 1224
+    },
+    "itsalwayssunny:11:1": {
+      "introStart": 105,
+      "introEnd": 125,
+      "outroStart": 1194
+    },
+    "itsalwayssunny:11:2": {
+      "introStart": 49,
+      "introEnd": 69,
+      "outroStart": 1273
+    },
+    "itsalwayssunny:11:3": {
+      "introStart": 115,
+      "introEnd": 135,
+      "outroStart": 1299
+    },
+    "itsalwayssunny:11:4": {
+      "introStart": 135,
+      "introEnd": 155,
+      "outroStart": 1235
+    },
+    "itsalwayssunny:11:5": {
+      "introStart": 60,
+      "introEnd": 80,
+      "outroStart": 1271
+    },
+    "itsalwayssunny:11:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1024
+    },
+    "itsalwayssunny:11:7": {
+      "introStart": 107,
+      "introEnd": 127,
+      "outroStart": 1267
+    },
+    "itsalwayssunny:11:8": {
+      "introStart": 175,
+      "introEnd": 195,
+      "outroStart": 1291
+    },
+    "itsalwayssunny:11:9": {
+      "introStart": 60,
+      "introEnd": 80,
+      "outroStart": 1272
+    },
+    "itsalwayssunny:11:10": {
+      "introStart": 65,
+      "introEnd": 85,
+      "outroStart": 1350
+    },
+    "itsalwayssunny:12:1": {
+      "introStart": 147,
+      "introEnd": 167,
+      "outroStart": 1301
+    },
+    "itsalwayssunny:12:2": {
+      "introStart": 106,
+      "introEnd": 126,
+      "outroStart": 1078
+    },
+    "itsalwayssunny:12:3": {
+      "introStart": 98,
+      "introEnd": 118,
+      "outroStart": 1221
+    },
+    "itsalwayssunny:12:4": {
+      "introStart": 117,
+      "introEnd": 137,
+      "outroStart": 1140
+    },
+    "itsalwayssunny:12:5": {
+      "introStart": 62,
+      "introEnd": 82,
+      "outroStart": 1286
+    },
+    "itsalwayssunny:12:6": {
+      "introStart": 120,
+      "introEnd": 140,
+      "outroStart": 1265
+    },
+    "itsalwayssunny:12:7": {
+      "introStart": 215,
+      "introEnd": 235,
+      "outroStart": 1290
+    },
+    "itsalwayssunny:12:8": {
+      "introStart": 209,
+      "introEnd": 229,
+      "outroStart": 1280
+    },
+    "itsalwayssunny:12:9": {
+      "introStart": 108,
+      "introEnd": 128,
+      "outroStart": 1051
+    },
+    "itsalwayssunny:12:10": {
+      "introStart": 115,
+      "introEnd": 135,
+      "outroStart": 1281
+    },
+    "itsalwayssunny:13:1": {
+      "introStart": 98,
+      "introEnd": 118,
+      "outroStart": 1258
+    },
+    "itsalwayssunny:13:2": {
+      "introStart": 105,
+      "introEnd": 125,
+      "outroStart": 1271
+    },
+    "itsalwayssunny:13:3": {
+      "introStart": 76,
+      "introEnd": 96,
+      "outroStart": 1150
+    },
+    "itsalwayssunny:13:4": {
+      "introStart": 78,
+      "introEnd": 98,
+      "outroStart": 1208
+    },
+    "itsalwayssunny:13:5": {
+      "introStart": 109,
+      "introEnd": 129,
+      "outroStart": 1369
+    },
+    "itsalwayssunny:13:6": {
+      "introStart": 112,
+      "introEnd": 132,
+      "outroStart": 1266
+    },
+    "itsalwayssunny:13:7": {
+      "introStart": 74,
+      "introEnd": 94,
+      "outroStart": 1183
+    },
+    "itsalwayssunny:13:8": {
+      "introStart": 176,
+      "introEnd": 196,
+      "outroStart": 1066
+    },
+    "itsalwayssunny:13:9": {
+      "introStart": 158,
+      "introEnd": 178,
+      "outroStart": 1112
+    },
+    "itsalwayssunny:13:10": {
+      "introStart": 86,
+      "introEnd": 106,
+      "outroStart": 1220
+    },
+    "itsalwayssunny:14:1": {
+      "introStart": 96,
+      "introEnd": 116,
+      "outroStart": 1380
+    },
+    "itsalwayssunny:14:2": {
+      "introStart": 118,
+      "introEnd": 138,
+      "outroStart": 1292
+    },
+    "itsalwayssunny:14:3": {
+      "introStart": 177,
+      "introEnd": 197,
+      "outroStart": 1380
+    },
+    "itsalwayssunny:14:4": {
+      "introStart": 137,
+      "introEnd": 157,
+      "outroStart": 1344
+    },
+    "itsalwayssunny:14:5": {
+      "introStart": 133,
+      "introEnd": 153,
+      "outroStart": 1302
+    },
+    "itsalwayssunny:14:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1288
+    },
+    "itsalwayssunny:14:7": {
+      "introStart": 99,
+      "introEnd": 119,
+      "outroStart": 1080
+    },
+    "itsalwayssunny:14:8": {
+      "introStart": 116,
+      "introEnd": 136,
+      "outroStart": 1195
+    },
+    "itsalwayssunny:14:9": {
+      "introStart": 129,
+      "introEnd": 149,
+      "outroStart": 1192
+    },
+    "itsalwayssunny:14:10": {
+      "introStart": 110,
+      "introEnd": 130,
+      "outroStart": 1219
+    },
+    "itsalwayssunny:15:1": {
+      "introStart": 137,
+      "introEnd": 157,
+      "outroStart": 1303
+    },
+    "itsalwayssunny:15:2": {
+      "introStart": 116,
+      "introEnd": 136,
+      "outroStart": 1276
+    },
+    "itsalwayssunny:15:3": {
+      "introStart": 60,
+      "introEnd": 80,
+      "outroStart": 1270
+    },
+    "itsalwayssunny:15:4": {
+      "introStart": 118,
+      "introEnd": 138,
+      "outroStart": 1239
+    },
+    "itsalwayssunny:15:5": {
+      "introStart": 100,
+      "introEnd": 120,
+      "outroStart": 1238
+    },
+    "itsalwayssunny:15:6": {
+      "introStart": 67,
+      "introEnd": 87,
+      "outroStart": 1274
+    },
+    "itsalwayssunny:15:7": {
+      "introStart": 108,
+      "introEnd": 128,
+      "outroStart": 1319
+    },
+    "itsalwayssunny:15:8": {
+      "introStart": 104,
+      "introEnd": 124,
+      "outroStart": 1270
+    },
+    "itsalwayssunny:16:1": {
+      "introStart": 194,
+      "introEnd": 214,
+      "outroStart": 1318
+    },
+    "itsalwayssunny:16:2": {
+      "introStart": 119,
+      "introEnd": 139,
+      "outroStart": 1282
+    },
+    "itsalwayssunny:16:3": {
+      "introStart": 75,
+      "introEnd": 95,
+      "outroStart": 1258
+    },
+    "itsalwayssunny:16:4": {
+      "introStart": 52,
+      "introEnd": 72,
+      "outroStart": 1185
+    },
+    "itsalwayssunny:16:5": {
+      "introStart": 69,
+      "introEnd": 89,
+      "outroStart": 1232
+    },
+    "itsalwayssunny:16:6": {
+      "introStart": 99,
+      "introEnd": 119,
+      "outroStart": 1226
+    },
+    "itsalwayssunny:16:7": {
+      "introStart": 139,
+      "introEnd": 159,
+      "outroStart": 1316
+    },
+    "itsalwayssunny:16:8": {
+      "introStart": 63,
+      "introEnd": 83,
+      "outroStart": 1341
+    },
+    "thetwilightzone:1:1": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1486
+    },
+    "thetwilightzone:1:2": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1486
+    },
+    "thetwilightzone:1:3": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1486
+    },
+    "thetwilightzone:1:4": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1486
+    },
+    "thetwilightzone:1:5": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:6": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:7": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:8": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:9": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:10": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:11": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:12": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:13": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:14": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:15": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:16": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:17": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:18": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:19": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:20": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:21": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:22": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:23": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:24": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:25": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:26": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:27": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:28": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:29": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:30": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:31": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:32": {
+      "introStart": 0,
+      "introEnd": 36,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:33": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:34": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:35": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1488
+    },
+    "thetwilightzone:1:36": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1488
+    },
+    "thetwilightzone:2:1": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:2": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:3": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:4": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:5": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:6": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1489
+    },
+    "thetwilightzone:2:7": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1458
+    },
+    "thetwilightzone:2:8": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:9": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:10": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:11": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1500
+    },
+    "thetwilightzone:2:12": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:13": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:14": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:15": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:16": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:17": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1480
+    },
+    "thetwilightzone:2:18": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:19": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1476
+    },
+    "thetwilightzone:2:20": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1470
+    },
+    "thetwilightzone:2:21": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:22": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:23": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1505
+    },
+    "thetwilightzone:2:24": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1498
+    },
+    "thetwilightzone:2:25": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:26": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1500
+    },
+    "thetwilightzone:2:27": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1486
+    },
+    "thetwilightzone:2:28": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1480
+    },
+    "thetwilightzone:2:29": {
+      "introStart": 0,
+      "introEnd": 21,
+      "outroStart": 1500
+    },
+    "thetwilightzone:3:1": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1497
+    },
+    "thetwilightzone:3:2": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:3": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1491
+    },
+    "thetwilightzone:3:4": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1491
+    },
+    "thetwilightzone:3:5": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:6": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1488
+    },
+    "thetwilightzone:3:7": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:8": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:9": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1489
+    },
+    "thetwilightzone:3:10": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1489
+    },
+    "thetwilightzone:3:11": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1488
+    },
+    "thetwilightzone:3:12": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:13": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1487
+    },
+    "thetwilightzone:3:14": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1489
+    },
+    "thetwilightzone:3:15": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1488
+    },
+    "thetwilightzone:3:16": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:17": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:18": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1494
+    },
+    "thetwilightzone:3:19": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:20": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1500
+    },
+    "thetwilightzone:3:21": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1489
+    },
+    "thetwilightzone:3:22": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1502
+    },
+    "thetwilightzone:3:23": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1487
+    },
+    "thetwilightzone:3:24": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:25": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1484
+    },
+    "thetwilightzone:3:26": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1498
+    },
+    "thetwilightzone:3:27": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1487
+    },
+    "thetwilightzone:3:28": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1508
+    },
+    "thetwilightzone:3:29": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1485
+    },
+    "thetwilightzone:3:30": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1501
+    },
+    "thetwilightzone:3:31": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1488
+    },
+    "thetwilightzone:3:32": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1501
+    },
+    "thetwilightzone:3:33": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1478
+    },
+    "thetwilightzone:3:34": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1490
+    },
+    "thetwilightzone:3:35": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1486
+    },
+    "thetwilightzone:3:36": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1461
+    },
+    "thetwilightzone:3:37": {
+      "introStart": 0,
+      "introEnd": 22,
+      "outroStart": 1453
+    },
+    "thetwilightzone:4:1": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3018
+    },
+    "thetwilightzone:4:2": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3018
+    },
+    "thetwilightzone:4:3": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:4": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3026
+    },
+    "thetwilightzone:4:5": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3020
+    },
+    "thetwilightzone:4:6": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3013
+    },
+    "thetwilightzone:4:7": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:8": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:9": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:10": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:11": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:12": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:13": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:14": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:15": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:16": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3022
+    },
+    "thetwilightzone:4:17": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3019
+    },
+    "thetwilightzone:4:18": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 3020
+    },
+    "thetwilightzone:5:1": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:2": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1495
+    },
+    "thetwilightzone:5:3": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1497
+    },
+    "thetwilightzone:5:4": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:5": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1493
+    },
+    "thetwilightzone:5:6": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:7": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:8": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1495
+    },
+    "thetwilightzone:5:9": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1492
+    },
+    "thetwilightzone:5:10": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:11": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:12": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:13": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:14": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1493
+    },
+    "thetwilightzone:5:15": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1493
+    },
+    "thetwilightzone:5:16": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1495
+    },
+    "thetwilightzone:5:17": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:18": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:19": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1470
+    },
+    "thetwilightzone:5:20": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1494
+    },
+    "thetwilightzone:5:21": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1470
+    },
+    "thetwilightzone:5:22": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1500
+    },
+    "thetwilightzone:5:23": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:24": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1492
+    },
+    "thetwilightzone:5:25": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:26": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1495
+    },
+    "thetwilightzone:5:27": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1486
+    },
+    "thetwilightzone:5:28": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1494
+    },
+    "thetwilightzone:5:29": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:30": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1468
+    },
+    "thetwilightzone:5:31": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1495
+    },
+    "thetwilightzone:5:32": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1493
+    },
+    "thetwilightzone:5:33": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1493
+    },
+    "thetwilightzone:5:34": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1496
+    },
+    "thetwilightzone:5:35": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1494
+    },
+    "thetwilightzone:5:36": {
+      "introStart": 0,
+      "introEnd": 29,
+      "outroStart": 1468
+    },
+    "truedetective:1:1": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3513
+    },
+    "truedetective:1:2": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3413
+    },
+    "truedetective:1:3": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3431
+    },
+    "truedetective:1:4": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3362
+    },
+    "truedetective:1:5": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3375
+    },
+    "truedetective:1:6": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3452
+    },
+    "truedetective:1:7": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3147
+    },
+    "truedetective:1:8": {
+      "introStart": 0,
+      "introEnd": 97,
+      "outroStart": 3223
+    },
+    "theericandreshow:1:1": {
+      "introStart": 0,
+      "introEnd": 44,
+      "outroStart": 630
+    },
+    "theericandreshow:1:2": {
+      "introStart": 0,
+      "introEnd": 44,
+      "outroStart": 651
+    },
+    "theericandreshow:1:3": {
+      "introStart": 0,
+      "introEnd": 44,
+      "outroStart": 649
+    },
+    "theericandreshow:1:4": {
+      "introStart": 0,
+      "introEnd": 41,
+      "outroStart": 660
+    },
+    "theericandreshow:1:5": {
+      "introStart": 0,
+      "introEnd": 44,
+      "outroStart": 658
+    },
+    "theericandreshow:1:6": {
+      "introStart": 0,
+      "introEnd": 33,
+      "outroStart": 636
+    },
+    "theericandreshow:1:7": {
+      "introStart": 0,
+      "introEnd": 44,
+      "outroStart": 641
+    },
+    "theericandreshow:1:8": {
+      "introStart": 0,
+      "introEnd": 66,
+      "outroStart": 658
+    },
+    "theericandreshow:1:9": {
+      "introStart": 0,
+      "introEnd": 66,
+      "outroStart": 635
+    },
+    "theericandreshow:1:10": {
+      "introStart": 0,
+      "introEnd": 44,
+      "outroStart": 625
+    },
+    "theericandreshow:1:11": {
+      "introStart": 0,
+      "introEnd": 54,
+      "outroStart": 1616
+    },
+    "theericandreshow:2:1": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 657
+    },
+    "theericandreshow:2:2": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 660
+    },
+    "theericandreshow:2:3": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 645
+    },
+    "theericandreshow:2:4": {
+      "introStart": 0,
+      "introEnd": 55,
+      "outroStart": 660
+    },
+    "theericandreshow:2:5": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 660
+    },
+    "theericandreshow:2:6": {
+      "introStart": 0,
+      "introEnd": 52,
+      "outroStart": 660
+    },
+    "theericandreshow:2:7": {
+      "introStart": 0,
+      "introEnd": 54,
+      "outroStart": 654
+    },
+    "theericandreshow:2:8": {
+      "introStart": 0,
+      "introEnd": 51,
+      "outroStart": 661
+    },
+    "theericandreshow:2:9": {
+      "introStart": 0,
+      "introEnd": 54,
+      "outroStart": 649
+    },
+    "theericandreshow:2:10": {
+      "introStart": 0,
+      "introEnd": 61,
+      "outroStart": 618
+    },
+    "theericandreshow:3:1": {
+      "introStart": 0,
+      "introEnd": 57,
+      "outroStart": 660
+    },
+    "theericandreshow:3:2": {
+      "introStart": 0,
+      "introEnd": 45,
+      "outroStart": 660
+    },
+    "theericandreshow:3:3": {
+      "introStart": 0,
+      "introEnd": 50,
+      "outroStart": 645
+    },
+    "theericandreshow:3:4": {
+      "introStart": 0,
+      "introEnd": 45,
+      "outroStart": 640
+    },
+    "theericandreshow:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 638
+    },
+    "theericandreshow:3:6": {
+      "introStart": 0,
+      "introEnd": 53,
+      "outroStart": 652
+    },
+    "theericandreshow:3:7": {
+      "introStart": 0,
+      "introEnd": 54,
+      "outroStart": 635
+    },
+    "theericandreshow:3:8": {
+      "introStart": 0,
+      "introEnd": 54,
+      "outroStart": 635
+    },
+    "theericandreshow:3:9": {
+      "introStart": 0,
+      "introEnd": 45,
+      "outroStart": 635
+    },
+    "theericandreshow:3:10": {
+      "introStart": 0,
+      "introEnd": 45,
+      "outroStart": 650
+    },
+    "theericandreshow:4:1": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 645
+    },
+    "theericandreshow:4:2": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 665
+    },
+    "theericandreshow:4:3": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 660
+    },
+    "theericandreshow:4:4": {
+      "introStart": 0,
+      "introEnd": 48,
+      "outroStart": 665
+    },
+    "theericandreshow:4:5": {
+      "introStart": 0,
+      "introEnd": 62,
+      "outroStart": 665
+    },
+    "theericandreshow:4:6": {
+      "introStart": 0,
+      "introEnd": 71,
+      "outroStart": 630
+    },
+    "theericandreshow:4:7": {
+      "introStart": 0,
+      "introEnd": 52,
+      "outroStart": 635
+    },
+    "theericandreshow:4:8": {
+      "introStart": 0,
+      "introEnd": 53,
+      "outroStart": 660
+    },
+    "theericandreshow:4:9": {
+      "introStart": 0,
+      "introEnd": 64,
+      "outroStart": 667
+    },
+    "theericandreshow:4:10": {
+      "introStart": 0,
+      "introEnd": 56,
+      "outroStart": 665
+    },
+    "theericandreshow:5:1": {
+      "introStart": 0,
+      "introEnd": 40,
+      "outroStart": 665
+    },
+    "theericandreshow:5:2": {
+      "introStart": 0,
+      "introEnd": 55,
+      "outroStart": 660
+    },
+    "theericandreshow:5:3": {
+      "introStart": 0,
+      "introEnd": 53,
+      "outroStart": 660
+    },
+    "theericandreshow:5:4": {
+      "introStart": 0,
+      "introEnd": 47,
+      "outroStart": 657
+    },
+    "theericandreshow:5:5": {
+      "introStart": 0,
+      "introEnd": 52,
+      "outroStart": 657
+    },
+    "theericandreshow:5:6": {
+      "introStart": 0,
+      "introEnd": 52,
+      "outroStart": 652
+    },
+    "theericandreshow:5:7": {
+      "introStart": 0,
+      "introEnd": 46,
+      "outroStart": 657
+    },
+    "theericandreshow:5:8": {
+      "introStart": 0,
+      "introEnd": 43,
+      "outroStart": 655
+    },
+    "theericandreshow:5:9": {
+      "introStart": 0,
+      "introEnd": 63,
+      "outroStart": 653
+    },
+    "theericandreshow:5:10": {
+      "introStart": 0,
+      "introEnd": 51,
+      "outroStart": 860
+    },
+    "mongolianchopsquad:1:1": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1362
+    },
+    "mongolianchopsquad:1:2": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1365
+    },
+    "mongolianchopsquad:1:3": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1365
+    },
+    "mongolianchopsquad:1:4": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1365
+    },
+    "mongolianchopsquad:1:5": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:6": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1365
+    },
+    "mongolianchopsquad:1:7": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1363
+    },
+    "mongolianchopsquad:1:8": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:9": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:10": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:11": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:12": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:13": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:14": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:15": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:16": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:17": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:18": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:19": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:20": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:21": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:22": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:23": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:24": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:25": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": 1364
+    },
+    "mongolianchopsquad:1:26": {
+      "introStart": 0,
+      "introEnd": 96,
+      "outroStart": null
+    },
+    "widowsbay:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2385.5
+    },
+    "widowsbay:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2116.27
+    },
+    "widowsbay:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2169.85
+    },
+    "widowsbay:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2036.05
+    },
+    "widowsbay:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2113.2
+    },
+    "widowsbay:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2147.65
+    },
+    "widowsbay:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2443.55
+    },
+    "widowsbay:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1922.7
+    },
+    "widowsbay:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1783.95
+    },
+    "widowsbay:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2789
+    },
+    "atlanta:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1467.75
+    },
+    "atlanta:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1311.3
+    },
+    "atlanta:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1446.99
+    },
+    "atlanta:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1329.2
+    },
+    "atlanta:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1250.6
+    },
+    "atlanta:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1443.67
+    },
+    "atlanta:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1236.3
+    },
+    "atlanta:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1485.7
+    },
+    "atlanta:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1394.75
+    },
+    "atlanta:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1505
+    },
+    "atlanta:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1743.3
+    },
+    "atlanta:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1525.45
+    },
+    "atlanta:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1532.93
+    },
+    "atlanta:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1501.1
+    },
+    "atlanta:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1315.75
+    },
+    "atlanta:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2046.8
+    },
+    "atlanta:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1584.25
+    },
+    "atlanta:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1568.25
+    },
+    "atlanta:2:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1830.95
+    },
+    "atlanta:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1386.6
+    },
+    "atlanta:2:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1745.05
+    },
+    "atlanta:3:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2152.65
+    },
+    "atlanta:3:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1931.5
+    },
+    "atlanta:3:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2067.6
+    },
+    "atlanta:3:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2095.9
+    },
+    "atlanta:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1845.05
+    },
+    "atlanta:3:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1868.1
+    },
+    "atlanta:3:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1920.55
+    },
+    "atlanta:3:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1842.85
+    },
+    "atlanta:3:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1664.9
+    },
+    "atlanta:3:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2160.9
+    },
+    "atlanta:4:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1587.4
+    },
+    "atlanta:4:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1916.2
+    },
+    "atlanta:4:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1851.3
+    },
+    "atlanta:4:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1522.6
+    },
+    "atlanta:4:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1707.7
+    },
+    "atlanta:4:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1609.9
+    },
+    "atlanta:4:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1858.25
+    },
+    "atlanta:4:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2164.4
+    },
+    "atlanta:4:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1935
+    },
+    "atlanta:4:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 2051
+    },
+    "jojos:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1428.05
+    },
+    "jojos:1:2": {
+      "introStart": 0,
+      "introEnd": 101.3,
+      "outroStart": 1338.5
+    },
+    "jojos:1:3": {
+      "introStart": 42,
+      "introEnd": 132.75,
+      "outroStart": 1338.25
+    },
+    "jojos:1:4": {
+      "introStart": 180,
+      "introEnd": 268.85,
+      "outroStart": 1338.1
+    },
+    "jojos:1:5": {
+      "introStart": 0,
+      "introEnd": 101.75,
+      "outroStart": 1428.8
+    },
+    "jojos:1:6": {
+      "introStart": 93,
+      "introEnd": 180.8,
+      "outroStart": 1338.27
+    },
+    "jojos:1:7": {
+      "introStart": 189,
+      "introEnd": 276.8,
+      "outroStart": 1338.06
+    },
+    "jojos:1:8": {
+      "introStart": 234,
+      "introEnd": 318.8,
+      "outroStart": 1338.06
+    },
+    "jojos:1:9": {
+      "introStart": 129,
+      "introEnd": 217.8,
+      "outroStart": 1338.07
+    },
+    "jojos:1:10": {
+      "introStart": 66,
+      "introEnd": 154.8,
+      "outroStart": 1339.47
+    },
+    "jojos:1:11": {
+      "introStart": 49,
+      "introEnd": 137.8,
+      "outroStart": 1338.07
+    },
+    "jojos:1:12": {
+      "introStart": 252,
+      "introEnd": 340.8,
+      "outroStart": 1310.07
+    },
+    "jojos:1:13": {
+      "introStart": 258,
+      "introEnd": 346.8,
+      "outroStart": 1338.13
+    },
+    "jojos:1:14": {
+      "introStart": 96,
+      "introEnd": 184.8,
+      "outroStart": 1303.26
+    },
+    "jojos:1:15": {
+      "introStart": 0,
+      "introEnd": 101.8,
+      "outroStart": 1338.08
+    },
+    "jojos:1:16": {
+      "introStart": 64,
+      "introEnd": 152.8,
+      "outroStart": 1338.13
+    },
+    "jojos:1:17": {
+      "introStart": 229,
+      "introEnd": 316.8,
+      "outroStart": 1338.16
+    },
+    "jojos:1:18": {
+      "introStart": 178,
+      "introEnd": 266.8,
+      "outroStart": 1296.94
+    },
+    "jojos:1:19": {
+      "introStart": 198,
+      "introEnd": 286.8,
+      "outroStart": 1338.13
+    },
+    "jojos:1:20": {
+      "introStart": 75,
+      "introEnd": 163.8,
+      "outroStart": 1338.13
+    },
+    "jojos:1:21": {
+      "introStart": 50,
+      "introEnd": 138.8,
+      "outroStart": 1338.16
+    },
+    "jojos:1:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1338.16
+    },
+    "jojos:1:23": {
+      "introStart": 177,
+      "introEnd": 265.8,
+      "outroStart": 1338.13
+    },
+    "jojos:1:24": {
+      "introStart": 180,
+      "introEnd": 268.8,
+      "outroStart": 1338.13
+    },
+    "jojos:1:25": {
+      "introStart": 100,
+      "introEnd": 187.45,
+      "outroStart": 1338.22
+    },
+    "jojos:1:26": {
+      "introStart": 66,
+      "introEnd": 155.7,
+      "outroStart": 1315.8
+    },
+    "jojos:1:27": {
+      "introStart": 93,
+      "introEnd": 182.2,
+      "outroStart": 1428.15
+    },
+    "jojos:1:28": {
+      "introStart": 107,
+      "introEnd": 194.5,
+      "outroStart": 1338.22
+    },
+    "jojos:1:29": {
+      "introStart": 189,
+      "introEnd": 277.3,
+      "outroStart": 1338.1
+    },
+    "jojos:1:30": {
+      "introStart": 132,
+      "introEnd": 220,
+      "outroStart": 1338.1
+    },
+    "jojos:1:31": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1338.1
+    },
+    "jojos:1:32": {
+      "introStart": 52,
+      "introEnd": 140.9,
+      "outroStart": 1428.55
+    },
+    "jojos:1:33": {
+      "introStart": 192,
+      "introEnd": 280.6,
+      "outroStart": 1338.1
+    },
+    "jojos:1:34": {
+      "introStart": 161,
+      "introEnd": 249.3,
+      "outroStart": 1338.22
+    },
+    "jojos:1:35": {
+      "introStart": 181,
+      "introEnd": 270.3,
+      "outroStart": 1338.05
+    },
+    "jojos:1:36": {
+      "introStart": 152,
+      "introEnd": 240.6,
+      "outroStart": 1338.22
+    },
+    "jojos:1:37": {
+      "introStart": 118,
+      "introEnd": 204.45,
+      "outroStart": 1338.22
+    },
+    "jojos:1:38": {
+      "introStart": 185,
+      "introEnd": 278.5,
+      "outroStart": 1343.2
+    },
+    "attackontitan:1:1": {
+      "introStart": 123,
+      "introEnd": 214.3,
+      "outroStart": 1432.6
+    },
+    "attackontitan:1:2": {
+      "introStart": 0,
+      "introEnd": 134.4,
+      "outroStart": 1342.63
+    },
+    "attackontitan:1:3": {
+      "introStart": 0,
+      "introEnd": 91.4,
+      "outroStart": 1342.63
+    },
+    "attackontitan:1:4": {
+      "introStart": 0,
+      "introEnd": 129.4,
+      "outroStart": 1342.63
+    },
+    "attackontitan:1:5": {
+      "introStart": 0,
+      "introEnd": 143.4,
+      "outroStart": 1339.55
+    },
+    "attackontitan:1:6": {
+      "introStart": 0,
+      "introEnd": 91.4,
+      "outroStart": 1339.63
+    },
+    "attackontitan:1:7": {
+      "introStart": 0,
+      "introEnd": 204.4,
+      "outroStart": 1339.59
+    },
+    "attackontitan:1:8": {
+      "introStart": 0,
+      "introEnd": 151.4,
+      "outroStart": 1339.63
+    },
+    "attackontitan:1:9": {
+      "introStart": 0,
+      "introEnd": 124.4,
+      "outroStart": 1339.59
+    },
+    "attackontitan:1:10": {
+      "introStart": 0,
+      "introEnd": 140.4,
+      "outroStart": 1339.63
+    },
+    "attackontitan:1:11": {
+      "introStart": 0,
+      "introEnd": 147.4,
+      "outroStart": 1339.59
+    },
+    "attackontitan:1:12": {
+      "introStart": 0,
+      "introEnd": 207.4,
+      "outroStart": 1340.19
+    },
+    "attackontitan:1:13": {
+      "introStart": 0,
+      "introEnd": 279.2,
+      "outroStart": 1339.79
+    },
+    "attackontitan:1:14": {
+      "introStart": 50,
+      "introEnd": 140.34,
+      "outroStart": 1339.47
+    },
+    "attackontitan:1:15": {
+      "introStart": 32,
+      "introEnd": 122.4,
+      "outroStart": 1339.43
+    },
+    "attackontitan:1:16": {
+      "introStart": 0,
+      "introEnd": 90.4,
+      "outroStart": 1339.43
+    },
+    "attackontitan:1:17": {
+      "introStart": 0,
+      "introEnd": 171.4,
+      "outroStart": 1339.52
+    },
+    "attackontitan:1:18": {
+      "introStart": 0,
+      "introEnd": 217.4,
+      "outroStart": 1339.43
+    },
+    "attackontitan:1:19": {
+      "introStart": 0,
+      "introEnd": 192.4,
+      "outroStart": 1339.43
+    },
+    "attackontitan:1:20": {
+      "introStart": 0,
+      "introEnd": 211.4,
+      "outroStart": 1339.43
+    },
+    "attackontitan:1:21": {
+      "introStart": 0,
+      "introEnd": 282.4,
+      "outroStart": 1339.39
+    },
+    "attackontitan:1:22": {
+      "introStart": 0,
+      "introEnd": 190.4,
+      "outroStart": 1339.39
+    },
+    "attackontitan:1:23": {
+      "introStart": 0,
+      "introEnd": 90.4,
+      "outroStart": 1339.39
+    },
+    "attackontitan:1:24": {
+      "introStart": 0,
+      "introEnd": 140.4,
+      "outroStart": 1339.79
+    },
+    "attackontitan:1:25": {
+      "introStart": 0,
+      "introEnd": 156.4,
+      "outroStart": 1347.25
+    },
+    "attackontitan:2:1": {
+      "introStart": 162.95,
+      "introEnd": 251.8,
+      "outroStart": 1327.1
+    },
+    "attackontitan:2:2": {
+      "introStart": 85.8,
+      "introEnd": 174.9,
+      "outroStart": 1327.65
+    },
+    "attackontitan:2:3": {
+      "introStart": 177.9,
+      "introEnd": 267,
+      "outroStart": 1327.68
+    },
+    "attackontitan:2:4": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1327.63
+    },
+    "attackontitan:2:5": {
+      "introStart": 0,
+      "introEnd": 90,
+      "outroStart": 1327.63
+    },
+    "attackontitan:2:6": {
+      "introStart": 0,
+      "introEnd": 210,
+      "outroStart": 1327.63
+    },
+    "attackontitan:2:7": {
+      "introStart": 98.9,
+      "introEnd": 188,
+      "outroStart": 1327.68
+    },
+    "attackontitan:2:8": {
+      "introStart": 108.9,
+      "introEnd": 198,
+      "outroStart": 1327.55
+    },
+    "attackontitan:2:9": {
+      "introStart": 80.7,
+      "introEnd": 169.8,
+      "outroStart": 1327.59
+    },
+    "attackontitan:2:10": {
+      "introStart": 82.9,
+      "introEnd": 172,
+      "outroStart": 1327.76
+    },
+    "attackontitan:2:11": {
+      "introStart": 65.7,
+      "introEnd": 154.8,
+      "outroStart": 1327.63
+    },
+    "attackontitan:2:12": {
+      "introStart": 37.9,
+      "introEnd": 127,
+      "outroStart": 1327.65
+    },
+    "attackontitan:3:1": {
+      "introStart": 34.95,
+      "introEnd": 125.65,
+      "outroStart": 1417.25
+    },
+    "attackontitan:3:2": {
+      "introStart": 33.6,
+      "introEnd": 123.25,
+      "outroStart": 1328
+    },
+    "attackontitan:3:3": {
+      "introStart": 1.55,
+      "introEnd": 91.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:4": {
+      "introStart": 113.55,
+      "introEnd": 203.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:5": {
+      "introStart": 34.55,
+      "introEnd": 124.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:6": {
+      "introStart": 193.55,
+      "introEnd": 283.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:7": {
+      "introStart": 1.55,
+      "introEnd": 91.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:8": {
+      "introStart": 65.55,
+      "introEnd": 155.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:9": {
+      "introStart": 94.55,
+      "introEnd": 184.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:10": {
+      "introStart": 46.55,
+      "introEnd": 136.2,
+      "outroStart": 1328.06
+    },
+    "attackontitan:3:11": {
+      "introStart": 1.55,
+      "introEnd": 91.2,
+      "outroStart": 1417.5
+    },
+    "attackontitan:3:12": {
+      "introStart": 180.55,
+      "introEnd": 270.2,
+      "outroStart": 1279.84
+    },
+    "attackontitan:3:13": {
+      "introStart": 100.25,
+      "introEnd": 189.85,
+      "outroStart": 1327.3
+    },
+    "attackontitan:3:14": {
+      "introStart": 0.2,
+      "introEnd": 89.8,
+      "outroStart": 1327.26
+    },
+    "attackontitan:3:15": {
+      "introStart": 0.2,
+      "introEnd": 89.8,
+      "outroStart": 1327.26
+    },
+    "attackontitan:3:16": {
+      "introStart": 130.2,
+      "introEnd": 219.8,
+      "outroStart": 1327.26
+    },
+    "attackontitan:3:17": {
+      "introStart": 39.8,
+      "introEnd": 129.4,
+      "outroStart": 1327.26
+    },
+    "attackontitan:3:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1327.26
+    },
+    "attackontitan:3:19": {
+      "introStart": 0.2,
+      "introEnd": 89.8,
+      "outroStart": null
+    },
+    "attackontitan:3:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1327.26
+    },
+    "attackontitan:3:21": {
+      "introStart": 35.35,
+      "introEnd": 125.4,
+      "outroStart": 1374.7
+    },
+    "attackontitan:3:22": {
+      "introStart": 100.8,
+      "introEnd": 190.4,
+      "outroStart": 1313.1
+    },
+    "attackontitan:4:1": {
+      "introStart": 208.75,
+      "introEnd": 297.9,
+      "outroStart": 1374.75
+    },
+    "attackontitan:4:2": {
+      "introStart": 174.85,
+      "introEnd": 264,
+      "outroStart": 1327.3
+    },
+    "attackontitan:4:3": {
+      "introStart": 210.85,
+      "introEnd": 300,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:4": {
+      "introStart": 52.85,
+      "introEnd": 142,
+      "outroStart": 1288.4
+    },
+    "attackontitan:4:5": {
+      "introStart": 73.85,
+      "introEnd": 163,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:6": {
+      "introStart": 317.05,
+      "introEnd": 406.2,
+      "outroStart": 1327.25
+    },
+    "attackontitan:4:7": {
+      "introStart": 154.85,
+      "introEnd": 244,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:8": {
+      "introStart": 112.85,
+      "introEnd": 202,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:9": {
+      "introStart": 173.85,
+      "introEnd": 263,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:10": {
+      "introStart": 81.85,
+      "introEnd": 171,
+      "outroStart": 1327.44
+    },
+    "attackontitan:4:11": {
+      "introStart": 71.85,
+      "introEnd": 161,
+      "outroStart": 1417.95
+    },
+    "attackontitan:4:12": {
+      "introStart": 58.85,
+      "introEnd": 148,
+      "outroStart": 1327.2
+    },
+    "attackontitan:4:13": {
+      "introStart": 131.85,
+      "introEnd": 221,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:14": {
+      "introStart": 40.85,
+      "introEnd": 130,
+      "outroStart": 1327.24
+    },
+    "attackontitan:4:15": {
+      "introStart": 80.85,
+      "introEnd": 170,
+      "outroStart": 1327.35
+    },
+    "attackontitan:4:16": {
+      "introStart": 88.85,
+      "introEnd": 178,
+      "outroStart": 1327.25
+    },
+    "attackontitan:4:17": {
+      "introStart": 220.66,
+      "introEnd": 310.15,
+      "outroStart": 1328.1
+    },
+    "attackontitan:4:18": {
+      "introStart": 409.71,
+      "introEnd": 499.2,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:19": {
+      "introStart": 1.71,
+      "introEnd": 90.4,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:20": {
+      "introStart": 333.71,
+      "introEnd": 423.2,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:21": {
+      "introStart": 332.71,
+      "introEnd": 422.2,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:22": {
+      "introStart": 87.71,
+      "introEnd": 177.2,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:23": {
+      "introStart": 219.71,
+      "introEnd": 309.2,
+      "outroStart": 1417.2
+    },
+    "attackontitan:4:24": {
+      "introStart": 253.71,
+      "introEnd": 343.2,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:25": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:26": {
+      "introStart": 97.71,
+      "introEnd": 187.2,
+      "outroStart": 1328.04
+    },
+    "attackontitan:4:27": {
+      "introStart": 274.71,
+      "introEnd": 364.2,
+      "outroStart": 1211.05
+    },
+    "attackontitan:4:28": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1419.2
+    },
+    "attackontitan:4:29": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    }
+  }
+}

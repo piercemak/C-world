@@ -1,6 +1,6 @@
 function CWorldConfig() as Object
     return {
-        apiBase: "https://cearaworld.com",
+        apiBase: "https://c-world.onrender.com",
         authToken: ""
     }
 end function

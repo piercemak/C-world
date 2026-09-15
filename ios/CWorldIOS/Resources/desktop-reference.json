@@ -1,0 +1,93 @@
+{
+  "order": [
+    "steven-universe",
+    "adventure-time",
+    "over-the-garden-wall",
+    "perfect-blue",
+    "paprika",
+    "princess-mononoke",
+    "aniara",
+    "weapons",
+    "the-vanishing",
+    "the-lighthouse",
+    "a-ghost-story",
+    "little-miss-sunshine",
+    "ghost-in-the-shell",
+    "mob-psycho",
+    "fmab",
+    "jjk",
+    "neon-genesis",
+    "cyberpunk",
+    "solaris",
+    "event-horizon",
+    "tokyo-godfathers",
+    "lovedeathandrobots",
+    "demons",
+    "blackmirror",
+    "severance",
+    "pluribus",
+    "akira",
+    "exmachina",
+    "annihilation",
+    "itsalwayssunny",
+    "thetwilightzone",
+    "redline",
+    "bugonia",
+    "frankenstein",
+    "truedetective",
+    "sunsetboulevard",
+    "shikijitsu",
+    "speaknoevil",
+    "ikiru",
+    "theericandreshow",
+    "pokemon2000",
+    "coherence",
+    "exit8",
+    "hokum",
+    "obsession",
+    "projecthailmary",
+    "bloodthelastvampire",
+    "theanimatrix",
+    "mongolianchopsquad",
+    "widowsbay",
+    "backrooms",
+    "pokemondestinydeoxys",
+    "atlanta",
+    "chronicle",
+    "jojos",
+    "chernobyl",
+    "beingjohnmalkovich",
+    "attackontitan",
+    "thedrama",
+    "thenightisshort",
+    "cure",
+    "theinvite"
+  ],
+  "newMedia": [
+    {
+      "id": "theinvite"
+    },
+    {
+      "id": "cure"
+    },
+    {
+      "id": "thenightisshort"
+    },
+    {
+      "id": "thedrama"
+    },
+    {
+      "id": "attackontitan",
+      "season": 1,
+      "episode": 1
+    },
+    {
+      "id": "beingjohnmalkovich"
+    },
+    {
+      "id": "chernobyl",
+      "season": 1,
+      "episode": 1
+    }
+  ]
+}

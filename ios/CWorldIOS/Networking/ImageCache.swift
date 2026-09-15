@@ -4,6 +4,40 @@ import ImageIO
 import SwiftUI
 import UIKit
 
+/// Maps existing catalog SVG URLs to versioned, Retina-sized bundled exports.
+/// Keeping this at the image boundary also covers cached catalogs and custom
+/// profile backdrops without requiring a backend deployment.
+enum MobileArtwork {
+    struct Asset: Decodable {
+        let image: String
+        let thumbnail: String
+        let width: Int
+        let height: Int
+        let thumbnailMaxPixelSize: Int
+        let sourceSHA256: String
+    }
+
+    private struct Manifest: Decodable {
+        let version: Int
+        let assets: [String: Asset]
+    }
+
+    static let assets: [String: Asset] = {
+        guard let url = Bundle.main.url(forResource: "manifest", withExtension: "json", subdirectory: "MobileArtwork"),
+              let data = try? Data(contentsOf: url),
+              let manifest = try? JSONDecoder().decode(Manifest.self, from: data),
+              manifest.version == 1 else { return [:] }
+        return manifest.assets
+    }()
+
+    static func bundledURL(for original: URL, maxPixelSize: Int? = nil) -> URL? {
+        guard let asset = assets[original.absoluteString] else { return nil }
+        let filename = maxPixelSize.map { $0 <= asset.thumbnailMaxPixelSize } == true
+            ? asset.thumbnail : asset.image
+        return Bundle.main.url(forResource: filename, withExtension: nil, subdirectory: "MobileArtwork")
+    }
+}
+
 actor ImageCache {
     static let shared = ImageCache()
 
@@ -13,6 +47,7 @@ actor ImageCache {
     private var inFlight: [URL: Task<Data?, Never>] = [:]
 
     private let maximumDiskBytes = 250 * 1024 * 1024
+    private let maximumMemoryBytes = 128 * 1024 * 1024
 
     init(fileManager: FileManager = .default) {
         self.fileManager = fileManager
@@ -23,7 +58,7 @@ actor ImageCache {
 
         try? fileManager.createDirectory(at: self.directoryURL, withIntermediateDirectories: true)
         memoryCache.countLimit = 300
-        memoryCache.totalCostLimit = 128 * 1024 * 1024
+        memoryCache.totalCostLimit = maximumMemoryBytes
     }
 
     func image(for url: URL, maxPixelSize: Int? = nil) async -> UIImage? {
@@ -35,11 +70,15 @@ actor ImageCache {
 
         guard let data = await data(for: url),
               let image = decodeImage(data: data, maxPixelSize: maxPixelSize) else { return nil }
-        storeInMemory(image, for: key, dataSize: data.count)
+        storeInMemory(image, for: key)
         return image
     }
 
     func data(for url: URL) async -> Data? {
+        if url.scheme == "data" { return Self.inlineImageData(from: url) }
+        // Bundled exports already live on disk: avoid HTTP and a duplicate cache
+        // copy. Decoding and file reads remain on this image actor.
+        if url.isFileURL { return try? Data(contentsOf: url) }
         let diskURL = cacheURL(for: url)
         if let data = try? Data(contentsOf: diskURL) {
             touch(diskURL)
@@ -62,11 +101,27 @@ actor ImageCache {
     }
 
     func prefetchImages(_ urls: [URL]) async {
-        let uniqueURLs = Array(Set(urls.filter { $0.pathExtension.lowercased() != "svg" }))
+        let uniqueURLs = Array(Set(urls.filter {
+            $0.pathExtension.lowercased() != "svg" && ["http", "https"].contains($0.scheme ?? "")
+        }))
+        // Warm encoded disk data only. Visible views choose their own decode size;
+        // prefetch must not retain an extra full-resolution bitmap for each URL.
         await withTaskGroup(of: Void.self) { group in
-            for url in uniqueURLs {
-                group.addTask {
-                    _ = await self.image(for: url)
+            var nextIndex = 0
+            for _ in 0..<min(4, uniqueURLs.count) {
+                let url = uniqueURLs[nextIndex]
+                nextIndex += 1
+                group.addTask { _ = await self.data(for: url) }
+            }
+            while await group.next() != nil {
+                guard !Task.isCancelled else {
+                    group.cancelAll()
+                    return
+                }
+                if nextIndex < uniqueURLs.count {
+                    let url = uniqueURLs[nextIndex]
+                    nextIndex += 1
+                    group.addTask { _ = await self.data(for: url) }
                 }
             }
         }
@@ -98,8 +153,29 @@ actor ImageCache {
         }
     }
 
-    private func storeInMemory(_ image: UIImage, for key: NSString, dataSize: Int) {
-        memoryCache.setObject(image, forKey: key, cost: max(dataSize, 1))
+    private func storeInMemory(_ image: UIImage, for key: NSString) {
+        let cost = Self.decodedMemoryCost(image)
+        guard cost <= maximumMemoryBytes else { return }
+        memoryCache.setObject(image, forKey: key, cost: cost)
+    }
+
+    nonisolated static func decodedMemoryCost(_ image: UIImage) -> Int {
+        if let frames = image.images, !frames.isEmpty {
+            return frames.reduce(0) { $0 + decodedMemoryCost($1) }
+        }
+        if let bitmap = image.cgImage {
+            return max(bitmap.bytesPerRow * bitmap.height, 1)
+        }
+        let width = Int(ceil(image.size.width * image.scale))
+        let height = Int(ceil(image.size.height * image.scale))
+        return max(width * height * 4, 1)
+    }
+
+    nonisolated static func inlineImageData(from url: URL) -> Data? {
+        let parts = url.absoluteString.split(separator: ",", maxSplits: 1)
+        guard parts.count == 2, parts[0].lowercased().hasPrefix("data:image/"),
+              parts[0].lowercased().hasSuffix(";base64") else { return nil }
+        return Data(base64Encoded: String(parts[1]))
     }
 
     private func memoryKey(for url: URL, maxPixelSize: Int?) -> NSString {
@@ -192,7 +268,7 @@ struct CachedCatalogImage: View {
                 CatalogImageSkeleton()
             }
         }
-        .task(id: url.absoluteString) {
+        .task(id: "\(url.absoluteString)|\(maxPixelSize.map(String.init) ?? "original")") {
             image = nil
             didFail = false
             let loadedImage = await ImageCache.shared.image(for: url, maxPixelSize: maxPixelSize)
