@@ -18,6 +18,7 @@ final class CWorldPlaybackHost: ObservableObject {
         didSet { publishLockScreen() }
     }
     @Published var remotePresented = false
+    @Published var playerControlsVisible = true
     @Published var connectionLost = false
     @Published var isIntermission = false
     @Published var artworkImage: UIImage?
@@ -235,6 +236,7 @@ final class CWorldPlaybackHost: ObservableObject {
         connectionLost = false
         isIntermission = false
         remotePresented = false
+        playerControlsVisible = true
         artworkImage = nil
         title = ""
         showTitle = ""
@@ -308,16 +310,9 @@ struct CWorldPlaybackOverlay: View {
                         Button { host.stop() } label: { Image(systemName: "xmark") }.accessibilityLabel("Stop playback")
                     }.padding().background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14)).padding()
                 } else {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Button { host.remotePresented = true } label: { Image(systemName: "appletvremote.gen4.fill").padding(12) }.accessibilityLabel("TV remote and Up Next")
-                            CWorldAirPlayPicker().frame(width: 44, height: 44)
-                            Button { host.minimized = true } label: { Image(systemName: "chevron.down").padding(12) }
-                                .accessibilityLabel("Minimize player and browse")
-                        }.padding(.top, 60).padding(.horizontal)
-                        Spacer()
-                    }.allowsHitTesting(true)
+#if !targetEnvironment(macCatalyst)
+                    playbackOverlayControls
+#endif
                 }
             }
         }.foregroundStyle(.white)
@@ -330,6 +325,28 @@ struct CWorldPlaybackOverlay: View {
                     }.padding(.top, 12).foregroundStyle(.orange)
                 }
             }
+    }
+
+    @ViewBuilder
+    private var playbackOverlayControls: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button { host.remotePresented = true } label: {
+                    Image(systemName: "appletvremote.gen4.fill").padding(12)
+                }
+                .accessibilityLabel("TV remote and Up Next")
+                CWorldAirPlayPicker().frame(width: 44, height: 44)
+                Button { host.minimized = true } label: {
+                    Image(systemName: "chevron.down").padding(12)
+                }
+                .accessibilityLabel("Minimize player and browse")
+            }
+            .padding(.top, 60)
+            .padding(.horizontal)
+            Spacer()
+        }
+        .allowsHitTesting(true)
     }
 }
 
@@ -1067,6 +1084,61 @@ private struct ReferenceCard: View {
     }
 }
 
+// Shared by iPhone and Catalyst controls. The HLS package keeps stereo and
+// original surround separate; selecting an option never changes the source file.
+struct CWorldAudioTrackMenu: View {
+    let player: AVPlayer?
+    @ObservedObject private var host = CWorldPlaybackHost.shared
+    @State private var group: AVMediaSelectionGroup?
+    @State private var options: [AVMediaSelectionOption] = []
+    @State private var selected: AVMediaSelectionOption?
+    @State private var preferred: AVMediaSelectionOption?
+    @State private var loadedItem: AVPlayerItem?
+
+    var body: some View {
+        Menu {
+            if options.isEmpty { Text("No alternate audio tracks") }
+            ForEach(Array(options.enumerated()), id: \.offset) { _, option in
+                Button {
+                    preferred = option
+                    select(option)
+                } label: {
+                    if selected == option { Label(option.displayName, systemImage: "checkmark") }
+                    else { Text(option.displayName) }
+                }
+            }
+            if host.isAirPlay { Text("AAC Stereo is the compatibility default for AirPlay.") }
+        } label: {
+            Image(systemName: "waveform")
+        }
+        .accessibilityLabel("Audio track")
+        .help("Choose stereo or surround audio")
+        .task(id: player?.currentItem) {
+            group = nil; options = []; selected = nil; preferred = nil
+            guard let item = player?.currentItem else { return }
+            loadedItem = item
+            do {
+                let audioGroup = try await item.asset.loadMediaSelectionGroup(for: .audible)
+                guard !Task.isCancelled, player?.currentItem === item else { return }
+                group = audioGroup
+                options = audioGroup.map { AVMediaSelectionGroup.playableMediaSelectionOptions(from: $0.options) } ?? []
+                if let audioGroup { selected = item.currentMediaSelection.selectedMediaOption(in: audioGroup) }
+                if let stereo = options.first(where: { $0.displayName == "AAC Stereo" }) { select(stereo) }
+            } catch { options = [] }
+        }
+        .onChange(of: host.isAirPlay) { _, active in
+            if active, let stereo = options.first(where: { $0.displayName == "AAC Stereo" }) { select(stereo) }
+            else if !active, let preferred { select(preferred) }
+        }
+    }
+
+    private func select(_ option: AVMediaSelectionOption) {
+        guard let group, let item = player?.currentItem, item === loadedItem else { return }
+        item.select(option, in: group)
+        selected = option
+    }
+}
+
 struct PlayerSelection: Equatable {
     let mediaID: String
     let season: Int?
@@ -1141,6 +1213,8 @@ enum PlaybackDisplayState: Equatable {
 }
 
 struct PersistentVideoPlayerView: View {
+    @Environment(\.accessibilityReduceMotion) private var reducePlayerMotion
+    @State private var closingPlayer = false
     private let onClose: (() -> Void)?
     @ObservedObject private var externalDisplay = ExternalDisplaySession.shared
     @EnvironmentObject private var appModel: AppModel
@@ -1165,6 +1239,7 @@ struct PersistentVideoPlayerView: View {
     @State private var volume: Float = 1
     @State private var volumeControlVisible = false
     @State private var subtitlesEnabled = true
+    @State private var subtitleSettingsPresented = false
     @State private var subtitleCues: [SubtitleCue] = []
     @State private var activeSubtitle = ""
     @State private var subtitleError: String?
@@ -1179,6 +1254,7 @@ struct PersistentVideoPlayerView: View {
     @State private var waitingTimeoutTask: Task<Void, Never>?
     @State private var tvHelpVisible = false
     @State private var outroCountdown: Int?
+    @State private var outroCancelled = false
     @State private var preparedNext: (key: String, url: URL, date: Date)?
     @State private var prefetchTask: Task<Void, Never>?
     @ObservedObject private var playbackHost = CWorldPlaybackHost.shared
@@ -1225,7 +1301,7 @@ struct PersistentVideoPlayerView: View {
               subtitle: subtitlesEnabled ? activeSubtitle : "",
               state: playbackState,
               message: subtitleError == nil ? nil : "Subtitles unavailable · Retry on your iPhone",
-              nextTitle: canSkipOutro ? nextSelection.map { "\($0.title) · starting in \(outroCountdown ?? 5)s" } : nil)
+              nextTitle: canSkipOutro && !outroCancelled ? nextSelection.map { "\($0.title) · starting in \(outroCountdown ?? 5)s" } : nil)
     }
 
     var body: some View {
@@ -1259,15 +1335,22 @@ struct PersistentVideoPlayerView: View {
                 if !externalDisplay.isConnected && !activeSubtitle.isEmpty && subtitlesEnabled {
                     VStack {
                         Spacer()
-                        Text(activeSubtitle)
-                            .cworldRoundedFont(17, weight: .semibold)
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(.black.opacity(0.68), in: RoundedRectangle(cornerRadius: 6))
+                        #if targetEnvironment(macCatalyst)
+                        MacSubtitleText(text: activeSubtitle)
                             .padding(.horizontal, 24)
                             .padding(.bottom, controlsVisible ? 128 : (canSkipIntro || canSkipOutro ? 96 : 34))
+                        #else
+                        Text(activeSubtitle)
+                            .font(.custom("Helvetica Neue", size: 30).weight(.bold))
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                            .shadow(color: .black.opacity(0.75), radius: 4, x: 2, y: 2)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(.black.opacity(0.0), in: RoundedRectangle(cornerRadius: 6))
+                            .padding(.horizontal, 24)
+                            .padding(.bottom, controlsVisible ? 128 : (canSkipIntro || canSkipOutro ? 96 : 34))
+                        #endif
                     }
                     .allowsHitTesting(false)
                 }
@@ -1297,6 +1380,29 @@ struct PersistentVideoPlayerView: View {
         }
         .overlay(alignment: .bottomTrailing) {
             if player != nil && !isLoading && playbackState != .failed && (canSkipIntro || canSkipOutro) {
+                #if targetEnvironment(macCatalyst)
+                HStack(spacing: 8) {
+                    if canSkipIntro {
+                        Button("Skip Intro", action: skipIntro).buttonStyle(MacSkipButtonStyle())
+                    }
+                    if canSkipOutro && !outroCancelled {
+                        if let next = nextSelection {
+                            MacOutroCard(artwork: appModel.media(for: next.mediaID).flatMap {
+                                MacDesktopCatalog.placeholder($0, season: next.season, episode: next.episode)
+                            }, player: player, countdownStart: skipMarkers.outroStart,
+                               duration: duration, play: skipOutro, cancel: {
+                                outroCancelled = true; outroCountdown = nil
+                            })
+                        } else {
+                            Button("Skip Outro", action: skipOutro).buttonStyle(MacSkipButtonStyle())
+                        }
+                    }
+                }
+                .padding(.trailing, 16).padding(.bottom, 168)
+                .transition(.opacity.combined(with: .offset(y: reducePlayerMotion ? 0 : 18)))
+                .animation(reducePlayerMotion ? nil : .easeOut(duration: 0.25), value: canSkipIntro)
+                .animation(reducePlayerMotion ? nil : .easeOut(duration: 0.25), value: canSkipOutro && !outroCancelled)
+                #else
                 HStack(spacing: 10) {
                     if canSkipIntro {
                         Button("Skip Intro", systemImage: "forward.end.fill") { skipIntro() }
@@ -1310,6 +1416,7 @@ struct PersistentVideoPlayerView: View {
                 }
                 .padding(.horizontal, 18)
                 .padding(.bottom, controlsVisible ? 172 : 38)
+                #endif
             }
         }
         .overlay(alignment: .topTrailing) {
@@ -1328,6 +1435,21 @@ struct PersistentVideoPlayerView: View {
             }
         }
         .overlay(alignment: .topLeading) {
+            #if targetEnvironment(macCatalyst)
+            if controlsVisible || isLoading || playbackState == .failed {
+                Button(action: closePlayer) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 34, height: 34)
+                        .cworldLiquidGlass(in: Circle(), fallback: .white.opacity(0.07), interactive: true)
+                }
+                .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.06, pressedScale: 0.94))
+                .help("Back to media details · Escape")
+                .accessibilityLabel("Back to media details")
+                .padding(.leading, 36).padding(.top, 30)
+            }
+            #else
             if isLoading || playbackState == .failed {
                 Button { closePlayer() } label: {
                     Image(systemName: "xmark")
@@ -1338,10 +1460,12 @@ struct PersistentVideoPlayerView: View {
                 .accessibilityLabel("Close player")
                 .padding(18)
             }
+            #endif
         }
         .statusBarHidden(true)
         #if targetEnvironment(macCatalyst)
         .modifier(MacPlayerInput(toggle: togglePlayback, seek: { seek(by: $0) }, close: closePlayer,
+                                 controlsVisible: controlsVisible,
                                  showControls: { controlsVisible = true; scheduleControlsHide() }))
         #endif
         .alert("Watch on your TV", isPresented: $tvHelpVisible) {
@@ -1362,14 +1486,19 @@ struct PersistentVideoPlayerView: View {
             externalDisplay.update(tvPresentation, for: player)
             if connected { scheduleWaitingTimeout(attempt: activeAttempt) }
         }
+        .onChange(of: controlsVisible) { _, visible in
+            playbackHost.playerControlsVisible = visible
+        }
         .persistentSystemOverlays(.hidden)
         .toolbar(.hidden, for: .navigationBar)
         .task(id: retryID) {
             isVisible = true
+            playbackHost.playerControlsVisible = true
             await loadPlayback()
         }
         .onDisappear {
             isVisible = false
+            playbackHost.playerControlsVisible = true
             activeAttempt = UUID()
             waitingTimeoutTask?.cancel()
             progressTask?.cancel()
@@ -1389,13 +1518,30 @@ struct PersistentVideoPlayerView: View {
             prefetchTask?.cancel(); prefetchTask = nil; preparedNext = nil
         }
         .onChange(of: subtitlesEnabled) { _, enabled in playbackHost.subtitlesOn = enabled }
+        .onChange(of: subtitleSettingsPresented) { _, presented in
+            if presented { controlsVisible = true; hideControlsTask?.cancel() }
+            else { scheduleControlsHide() }
+        }
+        .onChange(of: playbackHost.isAirPlay) { _, active in
+            // Direct AirPlay needs stream captions; local playback uses our VTT overlay.
+            for output in player?.currentItem?.outputs ?? [] {
+                if let legibleOutput = output as? AVPlayerItemLegibleOutput {
+                    legibleOutput.suppressesPlayerRendering = !active
+                }
+            }
+        }
         .overlay(alignment: .top) {
+            #if !targetEnvironment(macCatalyst)
             if let outroCountdown {
                 Text("Up next in \(outroCountdown)…")
                     .padding(12).background(.black.opacity(0.75), in: Capsule()).padding(.top, 110)
                     .foregroundStyle(.white).allowsHitTesting(false)
             }
+            #endif
         }
+        .opacity(closingPlayer ? 0 : 1)
+        .scaleEffect(closingPlayer && !reducePlayerMotion ? 0.985 : 1)
+        .allowsHitTesting(!closingPlayer)
     }
 
     private var playerControls: some View {
@@ -1403,6 +1549,7 @@ struct PersistentVideoPlayerView: View {
         MacPlaybackControls(player: player, title: playerDisplayMediaTitle, episodeLabel: playerEpisodeLabel, isPlaying: isPlaying,
                             currentTime: $currentTime, duration: duration,
                             subtitlesEnabled: $subtitlesEnabled, hasSubtitles: selection.subtitleURL != nil,
+                            subtitleSettingsPresented: $subtitleSettingsPresented,
                             volume: $volume, isMuted: $isMuted, close: closePlayer, toggle: togglePlayback,
                             seek: { seek(by: $0) }, editing: { editing in
                                 isScrubbing = editing
@@ -1525,6 +1672,7 @@ struct PersistentVideoPlayerView: View {
 
                         Spacer()
 
+                        CWorldAudioTrackMenu(player: player)
                         if selection.subtitleURL != nil || !subtitleCues.isEmpty {
                             Button { subtitlesEnabled.toggle() } label: {
                                 Image(systemName: subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble")
@@ -1577,7 +1725,20 @@ struct PersistentVideoPlayerView: View {
     }
 
     private func closePlayer() {
+        #if targetEnvironment(macCatalyst)
+        guard !closingPlayer else { return }
+        // Route underneath the persistent overlay before revealing the detail page.
+        NotificationCenter.default.post(name: .cworldMacPlayerBack, object: selection)
+        hideControlsTask?.cancel()
+        player?.pause()
+        withAnimation(.easeInOut(duration: reducePlayerMotion ? 0.15 : 0.32)) {
+            closingPlayer = true
+        } completion: {
+            if let onClose { onClose() } else { dismiss() }
+        }
+        #else
         if let onClose { onClose() } else { dismiss() }
+        #endif
     }
 
     private var playbackError: some View {
@@ -1627,6 +1788,7 @@ struct PersistentVideoPlayerView: View {
         duration = 0
         hasReachedOutro = false
         outroCountdown = nil
+        outroCancelled = false
         playbackHost.title = requestedSelection.title
         playbackHost.mediaID = requestedSelection.mediaID
         playbackHost.season = requestedSelection.season
@@ -1658,7 +1820,16 @@ struct PersistentVideoPlayerView: View {
             guard !Task.isCancelled, activeAttempt == attempt, playbackState != .failed else { return }
 
             let newPlayer = playbackHost.player ?? AVPlayer()
-            newPlayer.replaceCurrentItem(with: AVPlayerItem(url: url))
+            let item = AVPlayerItem(url: url)
+            if requestedSelection.subtitleURL != nil {
+                // Install before attaching the item. Unlike selecting nil before asset
+                // loading completes, this also suppresses later-discovered HLS/MP4
+                // captions and automatic subtitle selection by AVKit.
+                let legibleOutput = AVPlayerItemLegibleOutput()
+                legibleOutput.suppressesPlayerRendering = !newPlayer.isExternalPlaybackActive
+                item.add(legibleOutput)
+            }
+            newPlayer.replaceCurrentItem(with: item)
             // Video AirPlay is distinct from the custom mirrored display.
             newPlayer.allowsExternalPlayback = true
             newPlayer.audiovisualBackgroundPlaybackPolicy = .continuesIfPossible
@@ -1858,7 +2029,7 @@ struct PersistentVideoPlayerView: View {
             hasReachedOutro = true
             scheduleProgressSave()
         }
-        if nextSelection != nil, let countdown = skipMarkers.nextEpisodeCountdown(at: seconds, duration: duration) {
+        if !outroCancelled, nextSelection != nil, let countdown = skipMarkers.nextEpisodeCountdown(at: seconds, duration: duration) {
             outroCountdown = countdown
             if outroCountdown == 0, let nextSelection {
                 switchTo(nextSelection, completingEpisode: true)
@@ -1874,8 +2045,14 @@ struct PersistentVideoPlayerView: View {
         }
         playbackState = .paused
         waitingTimeoutTask?.cancel()
-        if let nextSelection {
+        // Canceling the outro also cancels automatic advancement at the actual end.
+        // loadPlayback resets this choice for the next episode; manual Next still works.
+        if !outroCancelled, let nextSelection {
             switchTo(nextSelection, completingEpisode: true)
+        } else {
+            outroCountdown = nil
+            hideControlsTask?.cancel()
+            controlsVisible = true
         }
     }
 
@@ -1948,6 +2125,7 @@ struct PersistentVideoPlayerView: View {
         }
         updatePlaybackState(for: player)
         controlsVisible = true
+        scheduleControlsHide()
     }
 
     @MainActor
@@ -2003,10 +2181,10 @@ struct PersistentVideoPlayerView: View {
     @MainActor
     private func scheduleControlsHide() {
         hideControlsTask?.cancel()
-        guard isPlaying, !externalDisplay.isConnected else { return }
+        guard isPlaying, !externalDisplay.isConnected, !subtitleSettingsPresented else { return }
         hideControlsTask = Task { @MainActor in
             try? await Task.sleep(nanoseconds: 4_000_000_000)
-            guard !Task.isCancelled else { return }
+            guard !Task.isCancelled, !subtitleSettingsPresented else { return }
             withAnimation(.easeInOut(duration: 0.25)) { controlsVisible = false }
         }
     }

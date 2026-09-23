@@ -14,6 +14,7 @@ final class MacDesktopPreferences: ObservableObject {
     struct Settings: Codable {
         var palette = "Sky"
         var background: MacBackground?
+        var progressColor: String?
         var favoriteBackgrounds: [MacBackground]?
         var profileBio = ""
         var reviews: [String: Review] = [:]
@@ -22,7 +23,9 @@ final class MacDesktopPreferences: ObservableObject {
         var snowEnabled: Bool?
         var visualBackground: MacBackground { background ?? .legacy(palette) }
     }
-    @Published private(set) var settings = Settings()
+    @Published private(set) var settings = Settings() {
+        didSet { MacProgressTheme.shared.colorHex = settings.progressColor.flatMap(MacBackground.hex) }
+    }
     private var key: String?
     private let defaults: UserDefaults
     init(defaults: UserDefaults = .standard) { self.defaults = defaults }
@@ -38,6 +41,12 @@ final class MacDesktopPreferences: ObservableObject {
         change(&settings)
         if let data = try? JSONEncoder().encode(settings) { defaults.set(data, forKey: key) }
     }
+}
+
+@MainActor
+final class MacProgressTheme: ObservableObject {
+    static let shared = MacProgressTheme()
+    @Published var colorHex: String?
 }
 
 /// The modes, swatches, and six-favorite limit mirror ColorPicker.jsx.
@@ -131,6 +140,12 @@ enum MacDesktopCatalog {
     static let order: [String] = reference?.order ?? []
     static let newMedia: [NewMedia] = reference?.newMedia ?? []
     static func normalizedID(_ id: String) -> String { id.lowercased().filter { $0.isLetter || $0.isNumber } }
+    static func sidebarTitle(_ media: CWorldMedia) -> String {
+        switch normalizedID(media.id) {
+        case "fmab", "fullmetalalchemistbrotherhood": return "Fullmetal Alchemist"
+        default: return media.title
+        }
+    }
     static func ordered(_ catalog: [CWorldMedia], reference: [String] = order) -> [CWorldMedia] {
         let ranks = Dictionary(reference.enumerated().map { (normalizedID($0.element), $0.offset) }, uniquingKeysWith: min)
         return catalog.enumerated().sorted {
@@ -147,7 +162,7 @@ enum MacDesktopCatalog {
     static func placeholder(_ media: CWorldMedia, season: Int? = nil, episode: Int? = nil) -> URL? {
         let id = normalizedID(media.assetId.isEmpty ? media.id : media.assetId)
         if let season, let episode {
-            let prefix = id == "itsalwayssunny" ? String(format: "S%02d", season) : "S\(season)"
+            let prefix = "S\(season)"
             return URL(string: "https://d20honz3pkzrs8.cloudfront.net/\(id)/placeholders/season\(season)/\(prefix)E\(episode)_\(id)_placeholder.png")
         }
         return URL(string: "https://cearaworld.com/images/\(id)/placeholders/\(id)_placeholder.png")

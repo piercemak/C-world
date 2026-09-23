@@ -25,6 +25,13 @@ struct MacTitleView: View {
     private var meta: String { MacDesktopCatalog.desktopMeta(media) }
     private var context: String { heroEpisode.map { "\(media.title) • Season \(seasonNumber) • \(code($0))" } ?? "\(media.type == "movie" ? "Movie" : "Series") • \(meta)" }
     private var fraction: Double { min(1, max(0, (progress?.currentTime ?? 0) / max(1, progress?.duration ?? 1))) }
+    private var previewFraction: Double { heroEpisode == nil && media.type != "movie" ? 0 : fraction }
+    private var previewStatus: String {
+        if previewFraction >= 0.95 { return "Watched" }
+        if previewFraction > 0 { return "Continue" }
+        return "Unwatched"
+    }
+    private var previewRuntime: String { heroEpisode?.duration ?? media.metadata.duration }
     private var animation: Animation? { reduceMotion ? nil : .easeInOut(duration: 0.32) }
 
     var body: some View {
@@ -52,11 +59,18 @@ struct MacTitleView: View {
                                             hoverTask?.cancel()
                                             withAnimation(animation) { seasonNumber = season.number; selectedEpisode = nil; hoveredEpisode = nil }
                                         } label: {
-                                            Text("Season \(season.number)").font(.custom(CWorldFonts.poppins(.bold), size: 13))
-                                                .foregroundStyle(seasonNumber == season.number ? .black : .white.opacity(0.6))
-                                                .padding(.horizontal, 16).frame(height: 40)
-                                                .background(seasonNumber == season.number ? .white : .white.opacity(0.08), in: RoundedRectangle(cornerRadius: 6))
-                                                .overlay { RoundedRectangle(cornerRadius: 6).stroke(.white.opacity(0.12)) }
+                                            if #available(iOS 26.0, *) {
+                                                Text("Season \(season.number)").font(.custom(CWorldFonts.poppins(.bold), size: 13))
+                                                    .foregroundStyle(.white.opacity(seasonNumber == season.number ? 1 : 0.6))
+                                                    .padding(.horizontal, 16).frame(height: 40)
+                                                    .cworldLiquidGlass(in: RoundedRectangle(cornerRadius: 6))
+                                            } else {
+                                                Text("Season \(season.number)").font(.custom(CWorldFonts.poppins(.bold), size: 13))
+                                                    .foregroundStyle(seasonNumber == season.number ? .black : .white.opacity(0.6))
+                                                    .padding(.horizontal, 16).frame(height: 40)
+                                                    .background(seasonNumber == season.number ? .white : .white.opacity(0.08), in: RoundedRectangle(cornerRadius: 6))
+                                                    .overlay { RoundedRectangle(cornerRadius: 6).stroke(.white.opacity(0.12)) }
+                                            }
                                         }
                                     }
                                 }.padding(10)
@@ -80,9 +94,16 @@ struct MacTitleView: View {
                 }.padding(.horizontal, 32).padding(.top, 16).padding(.bottom, compact ? 10 : 24)
                     .frame(maxWidth: 1280).frame(maxWidth: .infinity)
                 Button(action: onBack) {
-                    Image(systemName: "chevron.left").font(.system(size: 15)).frame(width: 40, height: 40)
-                        .background(.black.opacity(0.30), in: Circle()).overlay { Circle().stroke(.white.opacity(0.15)) }
-                }.keyboardShortcut(.escape, modifiers: []).help("Back").padding(.leading, 32).padding(.top, 16)
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 14, weight: .semibold))
+                        .frame(width: 34, height: 34)
+                        .cworldLiquidGlass(in: Circle(), fallback: .white.opacity(0.07), interactive: true)
+                }
+                .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.06, pressedScale: 0.94))
+                .keyboardShortcut(.escape, modifiers: [])
+                .help("Back to Library")
+                .accessibilityLabel("Back to Library")
+                .padding(.leading, 32).padding(.top, 16)
             }.onAppear { compact = geometry.size.height < 820 }.onChange(of: geometry.size.height) { _, value in compact = value < 820 }
         }
         .foregroundStyle(.white).font(.custom(CWorldFonts.poppins(), size: 14))
@@ -112,8 +133,8 @@ struct MacTitleView: View {
                 }.disabled(media.type != "movie" && playEpisode == nil).accessibilityIdentifier("mac.title.play")
                 Button { if let resume { onPlay(.resume(resume)) } } label: {
                     Label("Continue", systemImage: "play.fill").font(.custom(CWorldFonts.poppins(.semibold), size: 13))
-                        .padding(.horizontal, 20).frame(height: 48).background(.white.opacity(0.10), in: RoundedRectangle(cornerRadius: 6))
-                        .overlay { RoundedRectangle(cornerRadius: 6).stroke(.white.opacity(0.15)) }
+                        .padding(.horizontal, 20).frame(height: 48)
+                        .cworldLiquidGlass(in: RoundedRectangle(cornerRadius: 6), fallback: .white.opacity(0.10), interactive: true)
                 }.disabled(resume == nil).opacity(resume == nil ? 0.45 : 1).help("Continue the last unfinished episode")
             }.padding(.top, 22).padding(.bottom, 8)
         }
@@ -139,17 +160,32 @@ struct MacTitleView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         previewText(heroEpisode.map(code) ?? media.title, height: 18)
                             .font(.custom(CWorldFonts.poppins(.bold), size: 12))
-                        previewText(heroEpisode.map { "\(Int(fraction * 100))% watched • \($0.duration)" } ?? meta, height: 16)
+                        previewText(heroEpisode.map { "\(previewStatus) • \($0.duration)" } ?? meta, height: 16)
                             .font(.system(size: 12)).foregroundStyle(.white.opacity(0.65))
-                    }.padding(12).frame(maxWidth: .infinity, alignment: .leading)
-                }.clipShape(RoundedRectangle(cornerRadius: 4))
+                    }
+                    .padding(12)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .shadow(color: .black.opacity(0.85), radius: 5, y: 2)
+                }
+                .overlay(alignment: .bottom) {
+                    if previewFraction > 0 {
+                        GeometryReader { bounds in
+                            MacProgressFill()
+                                .frame(width: bounds.size.width * previewFraction, height: 4)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                        }
+                        .frame(height: 4)
+                        .allowsHitTesting(false)
+                    }
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 4))
             HStack(spacing: 8) {
-                statistic("Resume", fraction > 0 ? "\(Int(fraction * 100))%" : "Start", "watch progress")
-                statistic("Runtime", playEpisode?.duration ?? media.metadata.duration, "media length")
-                statistic("Offline", "None", "cache status")
+                statistic("Resume", previewFraction > 0 ? "\(Int((previewFraction * 100).rounded()))%" : "Start", "watch progress")
+                statistic("Runtime", previewRuntime, "media length")
+                statistic("Offline", previewFraction > 0 ? "Ready" : "None", "cache status")
             }.transaction { $0.animation = nil }
-        }.padding(16).background(.black.opacity(0.38), in: RoundedRectangle(cornerRadius: 8))
-            .overlay { RoundedRectangle(cornerRadius: 8).stroke(.white.opacity(0.12)) }
+        }.padding(16)
+            .cworldLiquidGlass(in: RoundedRectangle(cornerRadius: 8), fallback: .black.opacity(0.38))
             .transaction { $0.animation = nil }
     }
     private func previewText(_ value: String, height: CGFloat) -> some View {
@@ -167,7 +203,7 @@ struct MacTitleView: View {
             Text(value.isEmpty ? "—" : value).foregroundStyle(.white)
             Text(caption).font(.system(size: 11)).foregroundStyle(.white.opacity(0.45))
         }.font(.custom(CWorldFonts.poppins(.semibold), size: 12)).frame(maxWidth: .infinity).frame(height: compact ? 64 : 88)
-            .background(.white.opacity(0.06), in: RoundedRectangle(cornerRadius: 5)).overlay { RoundedRectangle(cornerRadius: 5).stroke(.white.opacity(0.12)) }
+            .cworldLiquidGlass(in: RoundedRectangle(cornerRadius: 5), fallback: .white.opacity(0.06))
     }
     private func episodeTitle(_ episode: CWorldEpisode) -> String { EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: seasonNumber, episode: episode.number) ?? episode.title }
     private func code(_ episode: CWorldEpisode) -> String { String(format: "S%02dE%02d", seasonNumber, episode.number) }
@@ -195,20 +231,7 @@ struct MacTitleView: View {
             }
     }
     private func episodeTile(title: String, subtitle: String, image: URL?, code: String, selected: Bool, fraction: Double) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            CatalogImage(url: image, showsBorder: false, maxPixelSize: 800).frame(width: 320, height: 180).clipped()
-                .overlay(Color.black.opacity(0.20))
-                .overlay(alignment: .topLeading) {
-                    Text(code).font(.custom(CWorldFonts.poppins(.bold), size: 11)).foregroundStyle(selected ? .black : .white)
-                        .padding(.horizontal, 8).padding(.vertical, 5).background(selected ? .white.opacity(0.90) : .black.opacity(0.65), in: Capsule()).padding(12)
-                }
-                .overlay(alignment: .bottomLeading) { if fraction > 0 { Rectangle().fill(Color.mint).frame(width: 320 * fraction, height: 4) } }
-            VStack(alignment: .leading, spacing: 6) {
-                Text(title).font(.custom(CWorldFonts.poppins(.bold), size: 13)).lineLimit(1)
-                Text(subtitle).font(.custom(CWorldFonts.poppins(), size: 12).weight(.medium)).foregroundStyle(.white.opacity(0.5)).lineLimit(1)
-            }.padding(12).frame(maxWidth: .infinity, alignment: .leading)
-        }.frame(width: 320).background(.white.opacity(selected ? 0.14 : 0.06), in: RoundedRectangle(cornerRadius: 8))
-            .clipShape(RoundedRectangle(cornerRadius: 8)).overlay { RoundedRectangle(cornerRadius: 8).stroke(.white.opacity(selected ? 0.45 : 0.10)) }
+        MacEpisodeTile(title: title, subtitle: subtitle, image: image, code: code, selected: selected, fraction: fraction)
     }
 }
 #endif

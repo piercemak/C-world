@@ -36,6 +36,7 @@
     "colorthief": "^2.6.0",
     "framer-motion": "^12.7.4",
     "gl-matrix": "^3.4.3",
+    "hls.js": "1.6.15",
     "node-vibrant": "^4.0.3",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",

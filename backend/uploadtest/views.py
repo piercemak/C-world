@@ -336,6 +336,18 @@ def get_signed_url(request):
     key = request.query_params.get('key')
     if not key:
         return Response({'error': 'Missing key parameter'}, status=400)
+    from .catalog import load_catalog
+    from .hls import resolve_hls_media, build_hls_playback_payload
+    try:
+        media = next((item for item in load_catalog()["items"]
+                      if item.get("type") == "movie" and
+                      key == f"{item.get('assetId')}/{item.get('assetId')}.mp4"), None)
+        if media:
+            hls = resolve_hls_media(media)
+            if hls:
+                return Response(build_hls_playback_payload(hls))
+    except Exception as exc:
+        return Response({"error": f"Playback lookup failed: {exc}"}, status=502)
     return Response({'url': build_signed_cloudfront_url(key)})
 
 
@@ -359,6 +371,14 @@ def get_signed_episode_url(request):
         return Response({'error': 'season and episode must be integers'}, status=400)
 
     try:
+        from .catalog import load_catalog, find_episode
+        from .hls import resolve_hls_media, build_hls_playback_payload
+        media = next((item for item in load_catalog()["items"]
+                      if item["id"].replace("-", "") == show_id.replace("-", "")), None)
+        if media and find_episode(media, season, episode):
+            hls = resolve_hls_media(media, season, episode)
+            if hls:
+                return Response(build_hls_playback_payload(hls))
         key = resolve_episode_s3_key(show_id, season, episode, bucket_name)
     except Exception as exc:
         return Response(

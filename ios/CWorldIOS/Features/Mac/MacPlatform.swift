@@ -3,10 +3,12 @@ import SwiftUI
 import UIKit
 import AVFoundation
 import Combine
+import CoreGraphics
 
 extension Notification.Name {
     static let cworldMacSearch = Notification.Name("cworld.mac.search")
     static let cworldMacRefresh = Notification.Name("cworld.mac.refresh")
+    static let cworldMacPlayerBack = Notification.Name("cworld.mac.playerBack")
 }
 
 struct CWorldMacCommands: Commands {
@@ -38,20 +40,45 @@ struct MacPlayerInput: ViewModifier {
     let toggle: () -> Void
     let seek: (Double) -> Void
     let close: () -> Void
+    let controlsVisible: Bool
     let showControls: () -> Void
     @FocusState private var focused: Bool
     @State private var lastPointerUpdate = Date.distantPast
+    @State private var cursorIsHidden = false
+
+    private func setCursorHidden(_ hidden: Bool) {
+        guard cursorIsHidden != hidden else { return }
+        cursorIsHidden = hidden
+        if hidden {
+            CGDisplayHideCursor(CGMainDisplayID())
+        } else {
+            CGDisplayShowCursor(CGMainDisplayID())
+        }
+    }
+
     func body(content: Content) -> some View {
         content.focusable().focused($focused)
-            .onAppear { focused = true }
+            .onAppear {
+                focused = true
+                setCursorHidden(!controlsVisible)
+            }
             .onKeyPress(.space) { toggle(); return .handled }
             .onKeyPress(.leftArrow) { seek(-15); return .handled }
             .onKeyPress(.rightArrow) { seek(15); return .handled }
             .onKeyPress(.escape) { close(); return .handled }
             .onContinuousHover { phase in
                 if case .active = phase, Date().timeIntervalSince(lastPointerUpdate) > 0.15 {
-                    lastPointerUpdate = Date(); showControls()
+                    lastPointerUpdate = Date()
+                    focused = true
+                    setCursorHidden(false)
+                    showControls()
                 }
+            }
+            .onChange(of: controlsVisible) { _, visible in
+                setCursorHidden(!visible)
+            }
+            .onDisappear {
+                setCursorHidden(false)
             }
     }
 }
@@ -108,6 +135,7 @@ struct MacPlaybackControls: View {
     let duration: Double
     @Binding var subtitlesEnabled: Bool
     let hasSubtitles: Bool
+    @Binding var subtitleSettingsPresented: Bool
     @Binding var volume: Float
     @Binding var isMuted: Bool
     let close: () -> Void
@@ -129,7 +157,7 @@ struct MacPlaybackControls: View {
                 .allowsHitTesting(false)
             VStack {
                 HStack(alignment: .top) {
-                    Button(action: close) { Image(systemName: "chevron.left").font(.title2).frame(width: 44, height: 44) }.help("Back · Escape")
+                    Color.clear.frame(width: 34, height: 34)
                     Spacer()
                     VStack(alignment: .trailing, spacing: 3) {
                         Text(title.uppercased()).font(.custom(CWorldFonts.elmsSans(.semibold), size: 23)).lineLimit(1)
@@ -148,14 +176,24 @@ struct MacPlaybackControls: View {
                     Spacer()
                     if let previous { Button(action: previous) { Image(systemName: "backward.end.fill") }.help("Previous episode") }
                     Button { seek(-15) } label: { Image(systemName: "gobackward.15") }.help("Back 15 seconds · ←")
-                    Button(action: toggle) { Image(systemName: isPlaying ? "pause.fill" : "play.fill").contentTransition(.symbolEffect(.replace)).font(.system(size: 28)).frame(width: 52, height: 52) }.help("Play / Pause · Space")
+                    Button(action: toggle) { Image(systemName: isPlaying ? "pause.fill" : "play.fill").contentTransition(.symbolEffect(.replace)).font(.system(size: 28)).frame(width: 52, height: 52) }
+                        .keyboardShortcut(.space, modifiers: [])
+                        .help("Play / Pause · Space")
                     Button { seek(15) } label: { Image(systemName: "goforward.15") }.help("Forward 15 seconds · →")
                     if let next { Button(action: next) { Image(systemName: "forward.end.fill") }.help("Next episode") }
                     Spacer()
                     HStack(spacing: 14) {
                         if hasSubtitles {
-                            Button { subtitlesEnabled.toggle() } label: { Image(systemName: subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble") }.help("Toggle subtitles")
+                            Button { subtitleSettingsPresented.toggle() } label: {
+                                Image(systemName: subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble")
+                            }.help("Subtitle settings").accessibilityLabel("Subtitle settings")
+                                .popover(isPresented: $subtitleSettingsPresented, arrowEdge: .bottom) {
+                                    MacSubtitleSettings(enabled: $subtitlesEnabled)
+                                }
                         }
+                        CWorldAudioTrackMenu(player: player)
+                        CWorldAirPlayPicker().frame(width: 32, height: 32)
+                            .help("AirPlay").accessibilityLabel("AirPlay")
                         HStack(spacing: 10) {
                             Button(action: mute) { Image(systemName: isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill").contentTransition(.symbolEffect(.replace)) }.help("Mute")
                             if volumeHovered { Slider(value: Binding(get: { Double(volume) }, set: { volume = Float($0) }), in: 0...1).frame(width: 90).transition(.opacity.combined(with: .scale(scale: 0.9))) }
@@ -173,6 +211,7 @@ struct MacPlaybackControls: View {
     private var timeline: some View {
         GeometryReader { geometry in
             Slider(value: $currentTime, in: 0...max(1, duration), onEditingChanged: editing)
+                .modifier(MacProgressTint())
                 .onContinuousHover { phase in
                     switch phase {
                     case .active(let location):
@@ -202,6 +241,161 @@ struct MacPlaybackControls: View {
         guard seconds.isFinite else { return "0:00" }
         let value = max(0, Int(seconds))
         return value >= 3600 ? String(format: "%d:%02d:%02d", value / 3600, value / 60 % 60, value % 60) : String(format: "%d:%02d", value / 60, value % 60)
+    }
+}
+struct MacSkipButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.system(size: 14, weight: .semibold)).tracking(0.35)
+            .foregroundStyle(.white.opacity(0.9))
+            .padding(.horizontal, 20).padding(.vertical, 12)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
+            .overlay { RoundedRectangle(cornerRadius: 8).fill(.black.opacity(0.2)) }
+            .overlay { RoundedRectangle(cornerRadius: 8).stroke(.white.opacity(0.1), lineWidth: 1) }
+            .overlay(alignment: .top) { Capsule().fill(.white.opacity(0.2)).frame(height: 1).padding(.horizontal, 8) }
+            .modifier(MacSkipHover(pressed: configuration.isPressed))
+    }
+}
+
+private struct MacSkipHover: ViewModifier {
+    let pressed: Bool
+    @State private var hovering = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    func body(content: Content) -> some View {
+        content.scaleEffect(reduceMotion ? 1 : pressed ? 0.9 : hovering ? 1.1 : 1)
+            .opacity(hovering ? 0.85 : 1)
+            .animation(reduceMotion ? nil : .easeOut(duration: 0.18), value: hovering)
+            .animation(reduceMotion ? nil : .easeOut(duration: 0.18), value: pressed)
+            .onHover { hovering = $0 }
+            .background(MacPointerView())
+    }
+}
+
+struct MacOutroCard: View {
+    let artwork: URL?
+    let player: AVPlayer?
+    let countdownStart: Double?
+    let duration: Double
+    let play: () -> Void
+    let cancel: () -> Void
+    var body: some View {
+        VStack(spacing: 8) {
+            Button(action: play) {
+                CatalogImage(url: artwork, showsBorder: false, maxPixelSize: 500)
+                    .frame(width: 192, height: 96).clipped().clipShape(RoundedRectangle(cornerRadius: 8))
+            }.accessibilityLabel("Play next episode")
+            HStack(spacing: 8) {
+                Button(action: play) {
+                    Text("Next Episode").font(.system(size: 14, weight: .semibold)).tracking(0.6)
+                }
+                Spacer(minLength: 0)
+                Button(action: cancel) { Image(systemName: "xmark").font(.system(size: 12, weight: .semibold)).frame(width: 24, height: 28) }
+                    .accessibilityLabel("Cancel automatic next episode")
+            }.padding(.horizontal, 8).frame(height: 30)
+                .background(alignment: .leading) {
+                    MacOutroSweep(player: player, start: countdownStart, duration: duration)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 6))
+        }.frame(width: 192).padding(8)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
+            .overlay { RoundedRectangle(cornerRadius: 8).stroke(.white.opacity(0.1), lineWidth: 1) }
+            .foregroundStyle(.white)
+            .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.03, pressedScale: 0.9))
+    }
+}
+
+private struct MacOutroSweep: View {
+    let player: AVPlayer?
+    let start: Double?
+    let duration: Double
+
+    private var fraction: Double {
+        guard let start, let time = player?.currentTime().seconds,
+              start.isFinite, time.isFinite, duration.isFinite else { return 0 }
+        let end = min(duration, start + 5)
+        guard end > start else { return 0 }
+        return min(1, max(0, (time - start) / (end - start)))
+    }
+
+    var body: some View {
+        // Sample playback time directly, so pausing, seeking and buffering also
+        // stop or reposition the sweep instead of letting a wall-clock animation run.
+        TimelineView(.animation(minimumInterval: 1.0 / 60)) { _ in
+            MacProgressFill(fallback: .white)
+                .frame(width: 192 * fraction)
+                .opacity(0.5)
+        }
+        .transaction { $0.animation = nil }
+    }
+}
+
+struct MacSubtitleText: View {
+    let text: String
+    @AppStorage("cworld.mac.captions.font") private var fontName = "Helvetica Neue"
+    @AppStorage("cworld.mac.captions.size") private var size = 30.0
+    @AppStorage("cworld.mac.captions.bold") private var bold = true
+    @AppStorage("cworld.mac.captions.background") private var background = 0.0
+    @AppStorage("cworld.mac.captions.color") private var color = "White"
+    @AppStorage("cworld.mac.captions.shadow") private var shadow = true
+
+    var body: some View {
+        Text(text)
+            .font(.custom(fontName, fixedSize: min(48, max(18, size))).weight(bold ? .bold : .regular))
+            .foregroundStyle(color == "Yellow" ? Color.yellow : color == "Warm White" ? Color(red: 1, green: 0.95, blue: 0.83) : .white)
+            .multilineTextAlignment(.center)
+            .shadow(color: .black.opacity(shadow ? 0.75 : 0), radius: 4, x: 2, y: 2)
+            .padding(.horizontal, 8).padding(.vertical, 4)
+            .background(.black.opacity(min(0.85, max(0, background))), in: RoundedRectangle(cornerRadius: 6))
+    }
+}
+
+private struct MacSubtitleSettings: View {
+    @Binding var enabled: Bool
+    @AppStorage("cworld.mac.captions.font") private var fontName = "Helvetica Neue"
+    @AppStorage("cworld.mac.captions.size") private var size = 30.0
+    @AppStorage("cworld.mac.captions.bold") private var bold = true
+    @AppStorage("cworld.mac.captions.background") private var background = 0.0
+    @AppStorage("cworld.mac.captions.color") private var color = "White"
+    @AppStorage("cworld.mac.captions.shadow") private var shadow = true
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Subtitles").font(.headline)
+            Toggle("Show subtitles", isOn: $enabled)
+            MacSubtitleText(text: "Your subtitle preview")
+                .frame(maxWidth: .infinity, minHeight: 100)
+                .background(LinearGradient(colors: [Color(white: 0.22), .black], startPoint: .topLeading, endPoint: .bottomTrailing), in: RoundedRectangle(cornerRadius: 12))
+            Picker("Font", selection: $fontName) {
+                Text("Helvetica Neue · Default").tag("Helvetica Neue")
+                Text("Arial").tag("Arial")
+                Text("Avenir Next").tag("Avenir Next")
+                Text("Georgia").tag("Georgia")
+                Text("Menlo").tag("Menlo")
+            }
+            HStack {
+                Text("Size")
+                Slider(value: $size, in: 18...48, step: 2)
+                Text("\(Int(size))").monospacedDigit().frame(width: 28)
+            }
+            Picker("Text color", selection: $color) {
+                ForEach(["White", "Warm White", "Yellow"], id: \.self) { Text($0).tag($0) }
+            }
+            Toggle("Bold text", isOn: $bold)
+            Toggle("Text shadow", isOn: $shadow)
+            HStack {
+                Text("Background")
+                Slider(value: $background, in: 0...0.85)
+                Text("\(Int((background * 100).rounded()))%").monospacedDigit().frame(width: 40)
+            }
+            Button("Restore browser defaults") {
+                fontName = "Helvetica Neue"; size = 30; bold = true
+                background = 0; color = "White"; shadow = true
+            }
+            Text("Appearance saves automatically for this Mac. Direct AirPlay uses the TV’s subtitle styling.")
+                .font(.caption).foregroundStyle(.secondary)
+        }
+        .font(.system(size: 13)).buttonStyle(.plain).tint(.white)
+        .padding(22).frame(width: 390).preferredColorScheme(.dark)
     }
 }
 #endif

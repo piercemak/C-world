@@ -19,6 +19,7 @@ struct MacDesktopView: View {
     @State private var catalog: [CWorldMedia] = []
     @State private var searchIndex = CatalogSearchIndex()
     @State private var searchResults: [CatalogSearchResult] = []
+    @State private var resolvedSearch = ""
     @State private var query = ""
     @State private var scope: CatalogSearchScope = .titles
     @State private var searchOpen = false
@@ -34,7 +35,12 @@ struct MacDesktopView: View {
     @State private var type: ArchiveTypeFilter = .all
     @State private var sort: ArchiveSortMode = .newest
     @State private var archive = ArchiveCatalogSnapshot()
+    @State private var hoveredContinueID: String?
+    @State private var hoveredNewID: String?
+    @State private var hoveredRecentArtwork: URL?
     @State private var showResume = false
+    @State private var resumeSnapshotIDs: [String] = []
+    @State private var resumeSnapshotInitialized = false
     @State private var showingUsers = false
     @State private var showingColors = false
     @State private var showingRequest = false
@@ -45,17 +51,28 @@ struct MacDesktopView: View {
     @State private var bioDraft = ""
     @State private var windowWidth: CGFloat = 1440
     @Namespace private var pageUnderline
+    @Namespace private var searchSelection
     private enum DesktopSheet: String, Identifiable {
         case profiles, editProfile
         var id: String { rawValue }
     }
 
     private var searching: Bool { searchOpen && !query.trimmingCharacters(in: .whitespaces).isEmpty }
+    private var searchRequest: String { "\(query)|\(scope.rawValue)|\(appModel.catalogRevision)" }
+    private var searchPending: Bool { resolvedSearch != searchRequest }
     private var identity: String { "\(appModel.apiBaseURL)|\(appModel.user?.id ?? 0)|\(appModel.activeProfile?.id ?? 0)" }
     private var items: [CWorldMedia] { section == .archive ? archive.items : catalog }
     private var searchPageSize: Int { scope == .episodes ? 9 : 6 }
     private var totalPages: Int { max(1, Int(ceil(Double(searching ? searchResults.count : items.count) / Double(searching ? searchPageSize : 6)))) }
     private var resumeItems: [ContinueWatchingItem] { ContinueWatchingItem.make(catalog: catalog, records: Array(appModel.watchProgress.values)) }
+    private var newShelfItems: [MacDesktopCatalog.NewMedia] {
+        MacDesktopCatalog.newMedia.filter { item in
+            catalog.contains { MacDesktopCatalog.normalizedID($0.id) == MacDesktopCatalog.normalizedID(item.id) }
+        }
+    }
+    private var displayedResumeItems: [ContinueWatchingItem] {
+        resumeSnapshotIDs.compactMap { id in resumeItems.first(where: { $0.id == id }) }
+    }
     private let initialExpandedID: String?
     init(initialSection: MacSection = .library, initialExpandedID: String? = nil, presentsColorPicker: Bool = false, presentsRecent: Bool = false) {
         _section = State(initialValue: initialSection); self.initialExpandedID = initialExpandedID
@@ -65,14 +82,26 @@ struct MacDesktopView: View {
     var body: some View {
         ZStack {
             MacBackgroundFill(value: preferences.settings.visualBackground).ignoresSafeArea()
+            MacArtworkHoverBackground(url: showResume && detail == nil && playback == nil && !showingUsers && !showingColors && section == .library ? hoveredRecentArtwork : nil)
             if showingUsers {
-                MacProfilePicker(isSwitching: true, onContinue: { showingUsers = false }).environmentObject(appModel).transition(.opacity)
+                MacProfilePicker(isSwitching: true, onContinue: {
+                    withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.38)) {
+                        showingUsers = false
+                    }
+                }).environmentObject(appModel)
+                    .transition(.asymmetric(
+                        insertion: .opacity.combined(with: .scale(scale: 0.97)),
+                        removal: .opacity.combined(with: .move(edge: .trailing)).combined(with: .scale(scale: 1.02))
+                    ))
             } else if let playback {
                 NativeVideoPlayerView(mediaID: playback.playbackID, season: playback.season,
                                       episode: playback.episode?.number, title: playback.title,
                                       subtitleURL: playback.subtitleURL, skipIntroEnd: playback.episode?.skipIntroEnd,
                                       skipOutroStart: playback.episode?.skipOutroStart,
-                                      onClose: { withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.32)) { self.playback = nil } })
+                                      onClose: {
+                                          resumeSnapshotInitialized = false
+                                          withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.32)) { self.playback = nil }
+                                      })
                     .id(playback.id)
                     .transition(.opacity.combined(with: .scale(scale: 0.94)))
             } else if let detail {
@@ -88,22 +117,43 @@ struct MacDesktopView: View {
             } else {
                 GeometryReader { geometry in
                     let panelHeight = min(900, max(620, geometry.size.height * 0.92))
-                    HStack(spacing: 0) {
+                    ZStack(alignment: .topLeading) {
                         sidebar
-                            .frame(width: 284)
+                            .frame(width: 284, height: panelHeight)
+                            .offset(x: showResume ? -340 : 0)
+                            .opacity(showResume ? 0 : 1)
+                            .allowsHitTesting(!showResume)
+                            .accessibilityHidden(showResume)
                         VStack(spacing: 0) {
                             header
-                            if searching { pageNavigation; searchGrid }
-                            else if section == .history { historyContent }
-                            else if showResume { continueContent }
-                            else {
-                                if section == .archive { archiveFilters }
-                                pageNavigation
-                                cardGrid
+                                .padding(.leading, showResume ? 30 : 304)
+                            ZStack(alignment: .topLeading) {
+                                VStack(spacing: 0) {
+                                    if searchOpen { searchToolbar; if searching { searchGrid } else { searchPrompt } }
+                                    else if section == .history { historyContent }
+                                    else {
+                                        pageNavigation
+                                            .offset(y: showResume ? -100 : 0)
+                                            .opacity(showResume ? 0 : 1)
+                                        cardGrid
+                                            .offset(x: showResume ? geometry.size.width : 0)
+                                            .opacity(showResume ? 0 : 1)
+                                    }
+                                }
+                                .padding(.leading, 304)
+                                .allowsHitTesting(!showResume)
+                                .accessibilityHidden(showResume)
+                                if showResume {
+                                    continueContent
+                                        .padding(.leading, 30)
+                                        .transition(.opacity)
+                                }
                             }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                         }
-                        .padding(.leading, 20).padding(.trailing, 50).padding(.top, 50)
+                        .padding(.trailing, 50).padding(.top, 50)
                     }
+                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.55), value: showResume)
                     .frame(maxWidth: 1400).frame(height: panelHeight)
                     .background(.black.opacity(0.20), in: RoundedRectangle(cornerRadius: 20))
                     .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -119,30 +169,49 @@ struct MacDesktopView: View {
         .buttonStyle(MacInteractiveButtonStyle())
         .background(MacWindowConfiguration())
         .focusable().focused($desktopFocused)
-        .onAppear { rebuild(); loadPreferences(); expandedID = initialExpandedID; desktopFocused = true }
+        .onAppear {
+            rebuild(); loadPreferences(); expandedID = initialExpandedID; desktopFocused = true
+            if showResume { captureResumeSnapshot() }
+        }
         .onChange(of: appModel.catalogRevision) { _, _ in rebuild() }
         .onChange(of: appModel.catalog.count) { _, _ in rebuild() }
         .onChange(of: identity) { _, _ in
             playback = nil; detail = nil; sheet = nil; query = ""; page = 0
+            resumeSnapshotIDs = []; resumeSnapshotInitialized = false
             showingColors = false; showingRequest = false; editingName = false; editingBio = false
             loadPreferences()
         }
         .onChange(of: type) { _, _ in rebuildArchive() }
         .onChange(of: sort) { _, _ in rebuildArchive() }
-        .task(id: "\(query)|\(scope.rawValue)|\(appModel.catalogRevision)") {
+        .task(id: searchRequest) {
             do { try await Task.sleep(for: .milliseconds(160)) } catch { return }
             guard !Task.isCancelled else { return }
-            searchResults = searchIndex.search(query, scope: scope)
-            page = 0
+            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.24)) {
+                searchResults = searchIndex.search(query, scope: scope)
+                resolvedSearch = searchRequest
+                page = 0
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: .cworldMacSearch)) { _ in
             guard playback == nil else { return }
-            detail = nil; section = .library; searchOpen = true; searchFocused = true
+            detail = nil; openSearch()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .cworldMacPlayerBack)) { notification in
+            guard let selection = notification.object as? PlayerSelection,
+                  let media = appModel.media(for: selection.mediaID) else { return }
+            var transaction = Transaction()
+            transaction.disablesAnimations = true
+            withTransaction(transaction) {
+                playback = nil
+                showingUsers = false; showingColors = false
+                initialSeason = selection.season; initialEpisode = selection.episode
+                detail = media
+                resumeSnapshotInitialized = false
+            }
         }
         .onKeyPress("/") {
             guard !searchFocused, !editingName, !editingBio, playback == nil, !showingColors, !showingUsers else { return .ignored }
-            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.26)) { searchOpen = true; expandedID = nil }
-            searchFocused = true; return .handled
+            openSearch(); return .handled
         }
         .onKeyPress(.escape) {
             if showingColors { showingColors = false; return .handled }
@@ -211,25 +280,42 @@ struct MacDesktopView: View {
                   if searching && scope == .episodes {
                     ForEach(MacDesktopCatalog.page(searchResults, index: page, size: searchPageSize)) { result in
                         Button { closeSearch(); open(result.media, season: result.season, episode: result.episode) } label: {
-                            VStack(alignment: .leading, spacing: 3) { Text(result.media.title).font(.system(size: 13, weight: .semibold)); Text("S\(result.season ?? 1)E\(result.episode ?? 1) — \(result.title)").font(.system(size: 12)).foregroundStyle(.white.opacity(0.6)) }.lineLimit(2)
+                            VStack(alignment: .leading, spacing: 3) { Text(result.media.title).font(.system(size: 13, weight: .semibold)); Text("S\(result.season ?? 1)E\(result.episode ?? 1) — \(result.title)").font(.system(size: 12)).foregroundStyle(.white.opacity(0.6)) }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .lineLimit(2)
                         }.buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.01))
                     }
                   } else {
                     ForEach(MacDesktopCatalog.page(searching ? searchResults.map(\.media) : items, index: page).enumerated().map { IndexedMedia(index: $0.offset, media: $0.element) }) { entry in
                         Button { selectCard(entry.media) } label: {
-                            Text(entry.media.title).font(.custom(CWorldFonts.poppins(), size: windowWidth <= 1280 ? 19 : 20))
+                            Text(MacDesktopCatalog.sidebarTitle(entry.media)).font(.custom(CWorldFonts.poppins(), size: windowWidth <= 1280 ? 21 : 22))
                                 .foregroundStyle(expandedID == entry.media.id || sidebarHover == entry.media.id ? .white : Color(white: 0.36))
-                                .multilineTextAlignment(.leading).lineLimit(2)
-                        }.onHover { sidebarHover = $0 ? entry.media.id : nil }.buttonStyle(.plain)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(2)
+                                .frame(width: 204, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .onHover { hovering in
+                            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.22)) {
+                                if hovering { sidebarHover = entry.media.id }
+                                else if sidebarHover == entry.media.id { sidebarHover = nil }
+                            }
+                        }
+                        .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1, pressedScale: 1))
                     }
                   }
-                }.padding(.top, windowWidth <= 1280 ? 18 : windowWidth < 1536 ? 16 : 64)
-                    .id("\(page):\(searching):\(scope.rawValue)").transition(.opacity)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, windowWidth <= 1280 ? 18 : windowWidth < 1536 ? 16 : 64)
+                .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: page)
+                .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: searching)
+                .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: scope)
             }
-            Button { withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.25)) { section = .library; showResume.toggle(); expandedID = nil; page = 0; closeSearch() } } label: {
-                Label("Recently Watched", systemImage: "forward.end.fill").font(.system(size: 13, weight: .semibold))
-                    .padding(.horizontal, 10).padding(.vertical, 7).background(.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 9))
-                    .overlay { RoundedRectangle(cornerRadius: 9).stroke(.white.opacity(0.10)) }.shadow(radius: 6, y: 4)
+            MacRecentLauncher(items: resumeItems) {
+                if !showResume { captureResumeSnapshot() }
+                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.55)) {
+                    section = .library; showResume.toggle(); expandedID = nil; page = 0; closeSearch()
+                }
             }
         }
         .padding(.leading, 30).padding(.trailing, 50).padding(.vertical, 50)
@@ -257,22 +343,31 @@ struct MacDesktopView: View {
             HStack(spacing: 10) {
                 Button {
                     if searchOpen { closeSearch() }
-                    else { withAnimation(reduceMotion ? nil : .spring(response: 0.42, dampingFraction: 0.95)) { searchOpen = true; showResume = false; expandedID = nil }; searchFocused = true }
-                } label: { Image(systemName: searchOpen ? "xmark" : "magnifyingglass").frame(width: 22, height: 28) }
+                    else { openSearch() }
+                } label: { Image(systemName: searchOpen ? "xmark" : "magnifyingglass").font(.system(size: 14, weight: .medium)).frame(width: 28, height: 28) }
+                .help(searchOpen ? "Close search (Esc)" : "Search library (/)")
+                .accessibilityLabel(searchOpen ? "Close search" : "Search library")
                 if searchOpen {
-                    TextField("What are you looking for?", text: $query)
+                    TextField(scope == .titles ? "Search movies & shows" : "Search episodes", text: $query)
                         .textFieldStyle(.plain).focused($searchFocused).frame(minWidth: 100)
-                    ForEach([CatalogSearchScope.titles, .episodes], id: \.self) { target in
-                        Button(target == .titles ? "Media" : "Episodes") { scope = target }
-                            .font(.system(size: 12, weight: .semibold)).padding(.horizontal, 10).padding(.vertical, 6)
-                            .background(.white.opacity(scope == target ? 0.15 : 0.05), in: RoundedRectangle(cornerRadius: 8))
-                            .overlay { RoundedRectangle(cornerRadius: 8).stroke(.white.opacity(scope == target ? 0.25 : 0.10)) }
+                        .onSubmit {
+                            if let result = searchIndex.search(query, scope: scope).first {
+                                searchFocused = false
+                                open(result.media, season: result.season, episode: result.episode)
+                            }
+                        }
+                    if !query.isEmpty {
+                        Button { query = ""; searchFocused = true } label: {
+                            Image(systemName: "xmark.circle.fill").foregroundStyle(.white.opacity(0.45))
+                        }.help("Clear search").accessibilityLabel("Clear search")
                     }
                 }
             }
-            .padding(6).frame(width: searchOpen ? min(440, max(290, windowWidth - 940)) : 40)
-            .background(.white.opacity(0.09), in: RoundedRectangle(cornerRadius: 12))
-            .overlay { RoundedRectangle(cornerRadius: 12).stroke(.white.opacity(0.13)) }
+            .padding(6).frame(width: searchOpen ? min(360, max(240, windowWidth - 940)) : 40)
+            .cworldLiquidGlass(in: RoundedRectangle(cornerRadius: 14), fallback: .white.opacity(0.07), interactive: true)
+            .overlay { RoundedRectangle(cornerRadius: 14).stroke(.white.opacity(searchFocused ? 0.24 : 0.07)) }
+            .animation(reduceMotion ? nil : .spring(response: 0.4, dampingFraction: 0.88), value: searchOpen)
+            .animation(reduceMotion ? nil : .easeInOut(duration: 0.22), value: searchFocused)
             Button { withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.3)) { showingColors = true } } label: {
                 Image(systemName: "paintpalette.fill").frame(width: 36, height: 36)
                     .background { MacBackgroundFill(value: preferences.settings.visualBackground).clipShape(RoundedRectangle(cornerRadius: 10)) }
@@ -330,24 +425,80 @@ struct MacDesktopView: View {
         }
     }
 
+    private var searchToolbar: some View {
+        HStack(spacing: 6) {
+            ForEach([CatalogSearchScope.titles, .episodes], id: \.self) { target in
+                Button {
+                    withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) { scope = target; page = 0 }
+                } label: {
+                    Text(target == .titles ? "Movies & Shows" : "Episodes")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(.white.opacity(scope == target ? 1 : 0.5))
+                        .padding(.horizontal, 14).padding(.vertical, 9)
+                        .background {
+                            if scope == target {
+                                Capsule().fill(.white.opacity(0.12))
+                                    .matchedGeometryEffect(id: "scope", in: searchSelection)
+                            }
+                        }
+                }
+                .buttonStyle(.plain)
+            }
+            Spacer(minLength: 8)
+            if searching {
+                Text(searchPending ? "Searching…" : "\(searchResults.count) \(searchResults.count == 1 ? "match" : "matches")")
+                    .font(.system(size: 12)).foregroundStyle(.white.opacity(0.45))
+                if totalPages > 1 {
+                    Button { changeSearchPage(by: -1) } label: { Image(systemName: "chevron.left").frame(width: 30, height: 30).background(.white.opacity(0.06), in: Circle()) }
+                        .disabled(page == 0).accessibilityLabel("Previous results")
+                    Text("\(page + 1) / \(totalPages)").font(.system(size: 11)).monospacedDigit().foregroundStyle(.white.opacity(0.6))
+                    Button { changeSearchPage(by: 1) } label: { Image(systemName: "chevron.right").frame(width: 30, height: 30).background(.white.opacity(0.06), in: Circle()) }
+                        .disabled(page >= totalPages - 1).accessibilityLabel("Next results")
+                }
+            }
+        }.padding(.vertical, 20).padding(.horizontal, 8)
+    }
+
+    private var searchPrompt: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "magnifyingglass").font(.system(size: 28, weight: .light)).foregroundStyle(.white.opacity(0.4))
+            Text(scope == .titles ? "Find your next watch" : "Find an episode").font(.custom(CWorldFonts.poppins(.semibold), size: 20))
+            Text(scope == .titles ? "Search your library by title." : "Search by episode name or series.")
+                .font(.system(size: 13)).foregroundStyle(.white.opacity(0.45))
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
     private var searchGrid: some View {
         ScrollView {
             if searchResults.isEmpty {
-                ContentUnavailableView.search(text: query).padding(.top, 80)
+                VStack(spacing: 12) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 28, weight: .light)).foregroundStyle(.white.opacity(0.4))
+                    Text(searchPending ? "Searching your library" : "No matches yet")
+                        .font(.custom(CWorldFonts.poppins(.semibold), size: 20))
+                    Text(searchPending ? " " : "Try another title, series, or episode name.")
+                        .font(.system(size: 13)).foregroundStyle(.white.opacity(0.5))
+                }.frame(maxWidth: .infinity).padding(.top, 80)
             } else {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 24), count: 3), spacing: 24) {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 18), count: 3), spacing: 20) {
                     ForEach(MacDesktopCatalog.page(searchResults, index: page, size: searchPageSize)) { result in
                         Button { open(result.media, season: result.season, episode: result.episode) } label: {
-                            VStack(alignment: .leading, spacing: 10) {
-                                CatalogImage(url: result.episode == nil ? result.media.artwork.card : MacDesktopCatalog.placeholder(result.media, season: result.season, episode: result.episode), showsBorder: false, maxPixelSize: 800)
-                                    .frame(height: scope == .episodes ? 125 : 200).clipped().clipShape(RoundedRectangle(cornerRadius: 16))
-                                Text(result.title).font(.headline).lineLimit(2)
-                                Text(result.subtitle).font(.caption).foregroundStyle(.white.opacity(0.55)).lineLimit(2)
-                            }
-                        }.padding(10).macPanel()
+                            MacSearchResultCard(result: result)
+                        }.buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.025, pressedScale: 0.98, lift: 3))
+                            .transition(reduceMotion ? .opacity : .opacity.combined(with: .offset(y: 10)))
                     }
-                }
+                }.padding(.horizontal, 12).padding(.top, 10).padding(.bottom, 24)
+                    .opacity(searchPending ? 0.55 : 1)
+                    .allowsHitTesting(!searchPending)
             }
+        }
+        .scrollIndicators(.hidden)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: searchPending)
+    }
+
+    private func changeSearchPage(by offset: Int) {
+        withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.28)) {
+            page = min(totalPages - 1, max(0, page + offset))
         }
     }
 
@@ -362,37 +513,68 @@ struct MacDesktopView: View {
 
     private var continueContent: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 12) {
-                MacCoverCarousel(catalog: catalog).frame(height: windowWidth <= 1280 ? 220 : 280)
+            VStack(alignment: .leading, spacing: 18) {
                 HStack {
-                    Text("Recently Watched ›").font(.custom(CWorldFonts.poppins(.semibold), size: 20)); Spacer()
-                    Button("Back") { withAnimation(reduceMotion ? nil : .easeOut(duration: 0.25)) { showResume = false; page = 0 } }
-                        .padding(.horizontal, 12).padding(.vertical, 5).macPanel()
+                    Text("Continue Watching").font(.custom(CWorldFonts.poppins(.semibold), size: 20))
+                    Spacer()
+                    Button {
+                        withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.55)) { showResume = false }
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 14, weight: .semibold))
+                            .frame(width: 34, height: 34)
+                            .cworldLiquidGlass(in: Circle(), fallback: .white.opacity(0.07), interactive: true)
+                    }
+                    .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.06, pressedScale: 0.94))
+                    .help("Back to Library")
+                    .accessibilityLabel("Back to Library")
+                    .padding(.trailing, 8)
                 }
-                if appModel.watchHistory.isEmpty { Text("No recently watched items yet.").foregroundStyle(.white.opacity(0.6)).padding(.vertical, 18) }
+                .modifier(MacRecentEntrance(delay: 0.32))
+                if displayedResumeItems.isEmpty {
+                    Text("Your unfinished movies and episodes will appear here.")
+                        .foregroundStyle(.white.opacity(0.6)).padding(.vertical, 18)
+                        .modifier(MacRecentEntrance(delay: 0.38))
+                }
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
-                        ForEach(appModel.watchHistory) { record in
-                            if let media = appModel.media(for: record.showID) {
-                                MacHistoryCard(media: media, season: record.season, episode: record.episode,
-                                               onOpen: { open(media, season: record.season, episode: record.episode) },
-                                               onRemove: { Task { await appModel.removeWatchHistory(record) } }, overlaysMetadata: true)
-                            }
+                        ForEach(Array(displayedResumeItems.enumerated()), id: \.element.id) { index, item in
+                            MacHistoryCard(media: item.media, season: item.progress.season, episode: item.progress.episode,
+                                           onOpen: { resumeFromShelf(item) },
+                                           onRemove: { removeFromResumeSnapshot(item, index: index) }, onArtworkHover: { url, hovering in
+                                               if hovering { hoveredContinueID = item.id }
+                                               else if hoveredContinueID == item.id { hoveredContinueID = nil }
+                                               updateRecentArtworkHover(url, hovering)
+                                           })
+                                .modifier(MacRecentEntrance(delay: 0.40 + Double(index) * 0.065))
                         }
-                    }.padding(.vertical, 4)
+                    }.padding(.horizontal, 10).padding(.vertical, 8)
                 }
-                Text("New on CearaWorld").font(.custom(CWorldFonts.poppins(.semibold), size: 20)).padding(.top, 4)
+                MacShelfHoverDots(ids: displayedResumeItems.map(\.id), activeID: hoveredContinueID,
+                                  artworkURL: hoveredContinueID == nil ? nil : hoveredRecentArtwork)
+                    .modifier(MacRecentEntrance(delay: 0.48))
+                Text("New on CearaWorld").font(.custom(CWorldFonts.poppins(.semibold), size: 20))
+                    .padding(.top, 12)
+                    .modifier(MacRecentEntrance(delay: 0.52))
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
-                        ForEach(MacDesktopCatalog.newMedia) { item in
+                        ForEach(Array(newShelfItems.enumerated()), id: \.element.id) { index, item in
                             if let media = catalog.first(where: { MacDesktopCatalog.normalizedID($0.id) == MacDesktopCatalog.normalizedID(item.id) }) {
                                 MacHistoryCard(media: media, season: item.season, episode: item.episode,
-                                               onOpen: { open(media, season: item.season, episode: item.episode) }, onRemove: nil, overlaysMetadata: true)
+                                               onOpen: { open(media, season: item.season, episode: item.episode) }, onRemove: nil, isNew: true, onArtworkHover: { url, hovering in
+                                                   if hovering { hoveredNewID = item.id }
+                                                   else if hoveredNewID == item.id { hoveredNewID = nil }
+                                                   updateRecentArtworkHover(url, hovering)
+                                               })
+                                    .modifier(MacRecentEntrance(delay: 0.60 + Double(index) * 0.065))
                             }
                         }
-                    }.padding(.vertical, 4)
+                    }.padding(.horizontal, 10).padding(.vertical, 8)
                 }
-            }.padding(.top, 14).padding(.bottom, 18)
+                MacShelfHoverDots(ids: newShelfItems.map(\.id), activeID: hoveredNewID,
+                                  artworkURL: hoveredNewID == nil ? nil : hoveredRecentArtwork)
+                    .modifier(MacRecentEntrance(delay: 0.68))
+            }.padding(.top, 24).padding(.bottom, 18)
         }
     }
 
@@ -431,8 +613,47 @@ struct MacDesktopView: View {
         withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.26)) { searchOpen = false; query = ""; scope = .titles; page = 0; searchFocused = false }
         desktopFocused = true
     }
+    private func openSearch() {
+        withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.3)) {
+            section = .library; showResume = false; searchOpen = true; expandedID = nil; page = 0
+        }
+        searchFocused = true
+    }
+    private func resumeFromShelf(_ item: ContinueWatchingItem) {
+        hoveredRecentArtwork = nil; hoveredContinueID = nil
+        withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.35)) {
+            initialSeason = item.progress.season
+            initialEpisode = item.progress.episode
+            detail = item.media
+            playback = .resume(item)
+        }
+    }
     private func saveName() { Task { if await appModel.updateProfileName(nameDraft) { editingName = false } } }
     private func saveBio() { preferences.update { $0.profileBio = bioDraft }; editingBio = false }
+    private func updateRecentArtworkHover(_ url: URL?, _ hovering: Bool) {
+        if hovering { hoveredRecentArtwork = url }
+        else if hoveredRecentArtwork == url { hoveredRecentArtwork = nil }
+    }
+
+    private func captureResumeSnapshot() {
+        guard !resumeSnapshotInitialized else { return }
+        resumeSnapshotIDs = Array(resumeItems.prefix(10).map(\.id))
+        resumeSnapshotInitialized = true
+    }
+    private func removeFromResumeSnapshot(_ item: ContinueWatchingItem, index: Int) {
+        withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.28)) {
+            resumeSnapshotIDs.removeAll { $0 == item.id }
+        }
+        Task {
+            guard !Task.isCancelled else { return }
+            if !(await appModel.removeFromContinueWatching(item.media)) {
+                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.28)) {
+                    guard !resumeSnapshotIDs.contains(item.id) else { return }
+                    resumeSnapshotIDs.insert(item.id, at: min(index, resumeSnapshotIDs.count))
+                }
+            }
+        }
+    }
     private func rebuild() {
         catalog = MacDesktopCatalog.ordered(appModel.catalog)
         searchIndex = CatalogSearchIndex(catalog: catalog)
@@ -446,7 +667,27 @@ struct MacDesktopView: View {
     private func loadPreferences() {
         preferences.load(server: appModel.apiBaseURL, userID: appModel.user?.id, profileID: appModel.activeProfile?.id)
     }
-    private struct IndexedMedia: Identifiable { let index: Int; let media: CWorldMedia; var id: Int { index } }
+    private struct IndexedMedia: Identifiable { let index: Int; let media: CWorldMedia; var id: String { media.id } }
+}
+
+/// Animate only presentation, keeping each tile's measured size stable.
+private struct MacRecentEntrance: ViewModifier {
+    let delay: Double
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var visible = false
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(visible || reduceMotion ? 1 : 0)
+            .offset(x: visible || reduceMotion ? 0 : -32)
+            .task {
+                guard !visible else { return }
+                guard !reduceMotion else { visible = true; return }
+                do { try await Task.sleep(for: .seconds(delay)) } catch { return }
+                guard !Task.isCancelled else { return }
+                withAnimation(.easeOut(duration: 0.42)) { visible = true }
+            }
+    }
 }
 
 private struct MacSwipeCapture: UIViewRepresentable {
@@ -501,6 +742,54 @@ private final class SwipeCaptureView: UIView {
         }
     }
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool { false }
+}
+
+private struct MacSearchResultCard: View {
+    let result: CatalogSearchResult
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var hovered = false
+
+    private var badge: String {
+        if let season = result.season, let episode = result.episode {
+            return String(format: "S%02dE%02d", season, episode)
+        }
+        return result.media.type == "movie" ? "Movie" : "Series"
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Color.clear
+                .frame(height: result.episode == nil ? 190 : 155)
+                .overlay {
+                    CatalogImage(url: result.episode == nil ? result.media.artwork.card : MacDesktopCatalog.placeholder(result.media, season: result.season, episode: result.episode), showsBorder: false, maxPixelSize: 800)
+                        .scaleEffect(hovered && !reduceMotion ? 1.035 : 1)
+                }
+                .clipped()
+                .overlay(alignment: .topLeading) {
+                    Text(badge).font(.system(size: 10, weight: .semibold)).tracking(0.5)
+                        .padding(.horizontal, 9).padding(.vertical, 5)
+                        .background(.black.opacity(0.6), in: Capsule()).padding(12)
+                }
+            HStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(result.title).font(.custom(CWorldFonts.poppins(.semibold), size: 13))
+                        .lineLimit(2).frame(height: 38, alignment: .topLeading)
+                    Text(result.subtitle).font(.system(size: 11)).foregroundStyle(.white.opacity(0.5)).lineLimit(1)
+                }.frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(.white.opacity(0.65)).opacity(hovered ? 1 : 0)
+                    .offset(x: hovered ? 0 : -4)
+            }.padding(14)
+        }
+        .foregroundStyle(.white)
+        .background(.white.opacity(hovered ? 0.09 : 0.045))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay { RoundedRectangle(cornerRadius: 12).stroke(.white.opacity(hovered ? 0.22 : 0.08)) }
+        .shadow(color: .black.opacity(hovered ? 0.3 : 0.15), radius: hovered ? 16 : 8, y: 6)
+        .contentShape(RoundedRectangle(cornerRadius: 12))
+        .onHover { hovered = $0 }
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: hovered)
+    }
 }
 
 struct MacArtworkCard: View {

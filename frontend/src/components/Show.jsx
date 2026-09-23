@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { attachHls, isHlsSource } from "../lib/hlsPlayback.js";
 import { motion, AnimatePresence } from "framer-motion";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -53,12 +54,22 @@ const Show = ({
   const previewFrameCacheRef = useRef(new Map());
   const previewQueueRef = useRef(Promise.resolve());
   const previewSourceRef = useRef("");
+  const previewHlsCleanupRef = useRef(null);
   const previewSessionRef = useRef(0);
   const previewRequestedFrameKeyRef = useRef("");
   const previewTargetRef = useRef(null);
   const previewRequestIdRef = useRef(0);
   const previewHideTimeoutRef = useRef(null);
   const [playbackSrc, setPlaybackSrc] = useState(src);
+  useEffect(() => {
+    if (videoRef.current && isHlsSource(playbackSrc)) {
+      return attachHls(videoRef.current, playbackSrc);
+    }
+  }, [playbackSrc]);
+  useEffect(() => () => {
+    previewHlsCleanupRef.current?.();
+    previewHlsCleanupRef.current = null;
+  }, [playbackSrc]);
   const [mediaNotFound, setMediaNotFound] = useState(false);
   const intendedResumeTimeRef = useRef(null);
   const startupResumeTimeRef = useRef(null);
@@ -1453,7 +1464,7 @@ const readProgressRawWithMigration = useCallback(() => (
 
     const startPlayback = async () => {
       try {
-        vid.load();           
+        if (!isHlsSource(playbackSrc)) vid.load();
         vid.volume = volumeRef.current;
         vid.muted = toggleMuteRef.current;
         const shouldStartFromBeginning = savedProgress >= (outro?.start ?? Infinity);
@@ -1963,8 +1974,14 @@ const handleSkipToPrevious = async () => {
       if (previewRequestedFrameKeyRef.current !== cacheKey) return null;
       if (previewSourceRef.current !== playbackSrc) {
         previewSourceRef.current = playbackSrc;
-        previewVideo.src = playbackSrc;
-        previewVideo.load();
+        previewHlsCleanupRef.current?.();
+        previewHlsCleanupRef.current = null;
+        if (isHlsSource(playbackSrc)) {
+          previewHlsCleanupRef.current = attachHls(previewVideo, playbackSrc);
+        } else {
+          previewVideo.src = playbackSrc;
+          previewVideo.load();
+        }
       }
 
       if (previewVideo.readyState < 1 || !Number.isFinite(previewVideo.duration)) {
@@ -2392,7 +2409,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
       onPlaying={handleMediaCanPlay}
       onError={handleMediaError}
     >
-      <source src={playbackSrc} type="video/mp4" />
+      {!isHlsSource(playbackSrc) && <source src={playbackSrc} type="video/mp4" />}
 
       {subtitleTrackSrc && (
         <track

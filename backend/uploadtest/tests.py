@@ -1,6 +1,9 @@
 import json
 from pathlib import Path
 from unittest.mock import patch
+from botocore.exceptions import ClientError
+from io import BytesIO
+from urllib.parse import urlsplit, parse_qs, urlencode
 
 from django.contrib.auth.models import User
 from django.test import TestCase, override_settings
@@ -61,6 +64,77 @@ class CatalogApiTests(TestCase):
         self.user = User.objects.create_user(username="catalog-user", password="password123")
         self.token = Token.objects.create(user=self.user)
         self.client = APIClient()
+        self.hls_s3 = patch("uploadtest.hls.get_s3_client").start().return_value
+        self.addCleanup(patch.stopall)
+        self.hls_s3.head_object.side_effect = ClientError({"Error": {"Code": "404"}}, "HeadObject")
+
+    def test_episode_hls_discovery_and_manifest_signing(self):
+        self.hls_s3.head_object.side_effect = None
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
+        response = self.client.post("/api/playback/session/", {"mediaId": "test-show", "season": 1, "episode": 1}, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["playbackType"], "hls")
+        self.assertEqual((response.data["season"], response.data["episode"]), (1, 1))
+        self.assertEqual(self.hls_s3.head_object.call_args.kwargs["Key"], "hls/testshow/season-1/s01e01/master.m3u8")
+        url = urlsplit(response.data["url"])
+        self.hls_s3.get_object.return_value = {"Body": BytesIO(b'#EXTM3U\n#EXT-X-MAP:URI="init.mp4"\nseg_00001.m4s\n')}
+        with override_settings(CLOUDFRONT_DOMAIN="cdn.example.com", CLOUDFRONT_KEY_PAIR_ID="test"), patch("uploadtest.hls.rsa_signer", return_value=b"signature"):
+            manifest = self.client.get(url.path + "?" + url.query)
+        self.assertEqual(manifest.status_code, 200)
+        text = manifest.content.decode()
+        self.assertIn("hls/testshow/season-1/s01e01/init.mp4?Policy=", text)
+        self.assertIn("hls/testshow/season-1/s01e01/seg_00001.m4s?Policy=", text)
+        self.assertEqual(self.hls_s3.get_object.call_args.kwargs["Key"], "hls/testshow/season-1/s01e01/master.m3u8")
+
+    def test_hls_token_cannot_be_reused_for_another_episode(self):
+        from .hls import hls_media, build_hls_playback_payload
+        media = json.loads(json.dumps(CATALOG["items"][0]))
+        media["seasons"][0]["episodes"].append({"number": 2})
+        url = urlsplit(build_hls_playback_payload(hls_media(media, 1, 1))["url"])
+        query = {key: values[0] for key, values in parse_qs(url.query).items()}
+        query["episode"] = "2"
+        with patch("uploadtest.hls.find_media", return_value=media):
+            response = self.client.get(url.path + "?" + urlencode(query))
+        self.assertEqual(response.status_code, 403)
+        self.hls_s3.get_object.assert_not_called()
+
+    def test_child_playlists_keep_episode_context_and_block_traversal(self):
+        from .hls import hls_media, _rewrite_manifest, _make_token, _hls_key
+        media = hls_media(CATALOG["items"][0], 1, 1)
+        token = _make_token("test-show:hls/testshow/season-1/s01e01", 9999999999)
+        rewritten = _rewrite_manifest('#EXTM3U\n#EXT-X-MEDIA:TYPE=AUDIO,URI="audio/aac/index.m3u8"\nvideo/index.m3u8\n', media, "master.m3u8", token, 9999999999)
+        self.assertIn("audio/aac/index.m3u8?token=", rewritten)
+        self.assertIn("video/index.m3u8?token=", rewritten)
+        self.assertEqual(rewritten.count("season=1&episode=1"), 2)
+        with self.assertRaises(ValueError):
+            _hls_key(media, "../s01e02/master.m3u8")
+
+    def test_existing_movie_pilot_is_preserved(self):
+        from .hls import resolve_hls_media, build_hls_playback_payload
+        media = {**CATALOG["items"][1], "playback": {"type": "hls", "hlsPrefix": "testmovie/hls"}}
+        context = resolve_hls_media(media)
+        self.assertEqual(context["playback"]["hlsPrefix"], "testmovie/hls")
+        self.assertIn("layout=legacy", build_hls_playback_payload(context)["url"])
+
+    def test_movie_hls_discovery(self):
+        self.hls_s3.head_object.side_effect = None
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
+        response = self.client.post("/api/playback/session/", {"mediaId": "test-movie"}, format="json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["playbackType"], "hls")
+        self.assertEqual(self.hls_s3.head_object.call_args.kwargs["Key"], "hls/testmovie/master.m3u8")
+
+    def test_hls_permission_error_is_not_treated_as_missing(self):
+        self.hls_s3.head_object.side_effect = ClientError({"Error": {"Code": "403"}}, "HeadObject")
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
+        response = self.client.post("/api/playback/session/", {"mediaId": "test-movie"}, format="json")
+        self.assertEqual(response.status_code, 502)
+
+    def test_browser_episode_endpoint_uses_same_hls_convention(self):
+        self.hls_s3.head_object.side_effect = None
+        response = self.client.get("/api/signed-episode-url/", {"show_id": "testshow", "season": 1, "episode": 1})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["playbackType"], "hls")
 
     def tearDown(self):
         self.catalog_path.unlink(missing_ok=True)

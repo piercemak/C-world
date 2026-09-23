@@ -23,6 +23,21 @@ enum MacGalleryGeometry {
     }
 }
 
+struct MacProgressFill: View {
+    var fallback: Color = .mint
+    @ObservedObject private var theme = MacProgressTheme.shared
+    var body: some View {
+        Rectangle().fill(theme.colorHex.map { Color(macHex: $0) } ?? fallback)
+    }
+}
+
+struct MacProgressTint: ViewModifier {
+    @ObservedObject private var theme = MacProgressTheme.shared
+    func body(content: Content) -> some View {
+        content.tint(theme.colorHex.map { Color(macHex: $0) } ?? .white)
+    }
+}
+
 struct MacBackgroundFill: View {
     let value: MacBackground
     var body: some View {
@@ -145,6 +160,8 @@ struct MacColorPicker: View {
     @State private var gradientDraft = MacBackground(mode: .linear, start: "#ff3131", end: "#004aad")
     @State private var editingGradient = false
     @State private var solidHex = "#add8e6"
+    @State private var customProgress = false
+    @State private var progressHex = "#63e6be"
     private var favorites: [MacBackground] { preferences.settings.favoriteBackgrounds ?? [] }
     var body: some View {
         MacDialog(close: close) {
@@ -202,20 +219,57 @@ struct MacColorPicker: View {
                         }
                     }
                 }.padding(.vertical, 4)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 16) {
+                        Toggle("Custom progress bar color", isOn: $customProgress).fixedSize()
+                        if customProgress {
+                            ColorPicker("Color", selection: Binding(
+                                get: { Color(macHex: progressHex) },
+                                set: { progressHex = $0.macHex }
+                            ), supportsOpacity: false).fixedSize()
+                            TextField("#RRGGBB", text: $progressHex)
+                                .textFieldStyle(.roundedBorder).frame(width: 100)
+                            if MacBackground.hex(progressHex) == nil {
+                                Text("Enter a valid hex color").font(.caption).foregroundStyle(.red)
+                            }
+                        }
+                        Spacer()
+                        Button("Use defaults") { customProgress = false }
+                    }
+                    HStack(spacing: 12) {
+                        ZStack(alignment: .leading) {
+                            Capsule().fill(.black.opacity(0.10))
+                            Capsule().fill(customProgress ? Color(macHex: progressHex) : .mint).frame(width: 100)
+                        }.frame(width: 160, height: 5)
+                        Text(customProgress ? "Independent of your background. Saved when you apply." : "Default: mint on media tiles, white in the player.")
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
+                }.padding(12).background(.black.opacity(0.035), in: RoundedRectangle(cornerRadius: 10))
                 HStack {
                     Button("Reset") {
                         draft = .init(mode: .solid, start: "#add8e6", end: "#add8e6"); solidHex = draft.start
                         preferences.update { $0.background = draft }
                     }.padding(.horizontal, 16).padding(.vertical, 9).background(.black.opacity(0.05), in: Capsule())
                     Spacer()
-                    Button("Apply") { preferences.update { $0.background = draft }; close() }
+                    Button("Apply") {
+                        preferences.update {
+                            $0.background = draft
+                            $0.progressColor = customProgress ? MacBackground.hex(progressHex) : nil
+                        }
+                        close()
+                    }
+                        .disabled(customProgress && MacBackground.hex(progressHex) == nil)
                         .keyboardShortcut(.defaultAction).foregroundStyle(.white).padding(.horizontal, 16).padding(.vertical, 9).background(.blue, in: Capsule())
                     Button("Cancel", action: close).keyboardShortcut(.cancelAction)
                         .padding(.horizontal, 16).padding(.vertical, 9).background(.black.opacity(0.12), in: Capsule())
                 }.padding(.top, 6)
             }.font(.system(size: 13))
         }
-        .onAppear { draft = preferences.settings.visualBackground; solidHex = draft.start }
+        .onAppear {
+            draft = preferences.settings.visualBackground; solidHex = draft.start
+            customProgress = preferences.settings.progressColor != nil
+            progressHex = preferences.settings.progressColor ?? "#63e6be"
+        }
         .overlay {
             if editingGradient {
                 MacDialog(width: 340, close: { editingGradient = false }) {
@@ -294,46 +348,325 @@ struct MacCoverCarousel: View {
     }
 }
 
+
+/// Transient artwork colors; never writes to the user's background preferences.
+struct MacArtworkHoverBackground: View {
+    let url: URL?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var palette: MacArtworkPalette?
+
+    var body: some View {
+        ZStack {
+            if let palette {
+                LinearGradient(colors: palette.colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .id(palette.id)
+                    .transition(.opacity)
+            }
+        }
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+        .task(id: url) {
+            // Avoid flashes while crossing gaps between adjacent cards.
+            do { try await Task.sleep(for: .milliseconds(120)) } catch { return }
+            let next: MacArtworkPalette?
+            if let url {
+                let resolved = MobileArtwork.bundledURL(for: url, maxPixelSize: 800) ?? url
+                next = await MacArtworkPaletteCache.shared.palette(for: resolved)
+            } else {
+                next = nil
+            }
+            guard !Task.isCancelled else { return }
+            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.65)) { palette = next }
+        }
+    }
+}
+
+/// Decorative hover indicators: one per tile, with no navigation behavior.
+struct MacShelfHoverDots: View {
+    let ids: [String]
+    let activeID: String?
+    let artworkURL: URL?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var accent = Color.white.opacity(0.75)
+
+    var body: some View {
+        HStack(spacing: 7) {
+            ForEach(ids, id: \.self) { id in
+                Capsule()
+                    .fill(activeID == id ? accent : .white.opacity(0.24))
+                    .frame(width: activeID == id ? 26 : 6, height: 6)
+                    .overlay { Capsule().stroke(.white.opacity(activeID == id ? 0.18 : 0), lineWidth: 0.5) }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: ids.isEmpty ? 0 : 12)
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.26), value: activeID)
+        .task(id: artworkURL) {
+            guard let artworkURL else { return }
+            let resolved = MobileArtwork.bundledURL(for: artworkURL, maxPixelSize: 800) ?? artworkURL
+            let palette = await MacArtworkPaletteCache.shared.palette(for: resolved)
+            guard !Task.isCancelled else { return }
+            let color = palette?.samples.first.map { Color(red: $0[0], green: $0[1], blue: $0[2]) }
+                ?? .white.opacity(0.75)
+            withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.3)) { accent = color }
+        }
+    }
+}
+
+private struct MacArtworkPalette: Sendable {
+    let id: URL
+    let samples: [[Double]]
+    var colors: [Color] {
+        samples.map { Color(red: $0[0] * 0.58, green: $0[1] * 0.58, blue: $0[2] * 0.58) }
+    }
+}
+
+private actor MacArtworkPaletteCache {
+    static let shared = MacArtworkPaletteCache()
+    private var cached: [URL: MacArtworkPalette] = [:]
+
+    func palette(for url: URL) async -> MacArtworkPalette? {
+        if let result = cached[url] { return result }
+        guard let image = await ImageCache.shared.image(for: url, maxPixelSize: 64),
+              let cgImage = image.cgImage else { return nil }
+        let size = 32
+        var pixels = [UInt8](repeating: 0, count: size * size * 4)
+        let drawn = pixels.withUnsafeMutableBytes { bytes -> Bool in
+            guard let context = CGContext(data: bytes.baseAddress, width: size, height: size,
+                                          bitsPerComponent: 8, bytesPerRow: size * 4,
+                                          space: CGColorSpaceCreateDeviceRGB(),
+                                          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue |
+                                            CGBitmapInfo.byteOrder32Big.rawValue) else { return false }
+            context.draw(cgImage, in: CGRect(x: 0, y: 0, width: size, height: size))
+            return true
+        }
+        guard drawn else { return nil }
+        var bins: [Int: (count: Int, r: Double, g: Double, b: Double)] = [:]
+        for i in stride(from: 0, to: pixels.count, by: 4) {
+            guard pixels[i + 3] > 200 else { continue }
+            let r = Double(pixels[i]) / 255, g = Double(pixels[i + 1]) / 255, b = Double(pixels[i + 2]) / 255
+            let brightest = max(r, max(g, b)), darkest = min(r, min(g, b))
+            // Ignore black bars and white lettering.
+            guard brightest > 0.10, darkest < 0.90 else { continue }
+            let key = Int(r * 7) * 64 + Int(g * 7) * 8 + Int(b * 7)
+            let old = bins[key] ?? (0, 0, 0, 0)
+            bins[key] = (old.count + 1, old.r + r, old.g + g, old.b + b)
+        }
+        let ranked = bins.sorted { lhs, rhs in
+            if lhs.value.count == rhs.value.count { return lhs.key < rhs.key }
+            return lhs.value.count > rhs.value.count
+        }.map { bin in
+            [bin.value.r, bin.value.g, bin.value.b].map { $0 / Double(bin.value.count) }
+        }
+        guard let first = ranked.first else { return nil }
+        let second = ranked.dropFirst().first { sample in
+            zip(first, sample).reduce(0.0) { $0 + abs($1.0 - $1.1) } > 0.35
+        } ?? first.map { $0 * 0.65 }
+        let result = MacArtworkPalette(id: url, samples: [first, second])
+        if cached.count >= 100 { cached.removeAll(keepingCapacity: true) }
+        cached[url] = result
+        return result
+    }
+}
+
+struct MacEpisodeTile: View {
+    let title: String
+    let subtitle: String
+    let image: URL?
+    let code: String
+    let selected: Bool
+    let fraction: Double
+    var showsNewBadge = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            CatalogImage(url: image, showsBorder: false, maxPixelSize: 800).frame(width: 320, height: 180).clipped()
+                .overlay(Color.black.opacity(0.20))
+                .overlay(alignment: .topLeading) {
+                    Group {
+                        if showsNewBadge {
+                            MacNewBadge()
+                        } else {
+                            Text(code).font(.custom(CWorldFonts.poppins(.bold), size: 11)).foregroundStyle(selected ? .black : .white)
+                                .padding(.horizontal, 8).padding(.vertical, 5)
+                                .background(selected ? .white.opacity(0.90) : .black.opacity(0.65), in: Capsule())
+                        }
+                    }.padding(12)
+                }
+                .overlay(alignment: .bottomLeading) {
+                    if fraction > 0 { MacProgressFill().frame(width: 320 * min(1, max(0, fraction)), height: 4) }
+                }
+            VStack(alignment: .leading, spacing: 6) {
+                Text(title).font(.custom(CWorldFonts.poppins(.bold), size: 13)).lineLimit(1)
+                Text(subtitle).font(.custom(CWorldFonts.poppins(), size: 12).weight(.medium)).foregroundStyle(.white.opacity(0.5)).lineLimit(1)
+            }.padding(12).frame(maxWidth: .infinity, alignment: .leading)
+        }.frame(width: 320).background(.white.opacity(selected ? 0.14 : 0.06), in: RoundedRectangle(cornerRadius: 8))
+            .clipShape(RoundedRectangle(cornerRadius: 8)).overlay { RoundedRectangle(cornerRadius: 8).stroke(.white.opacity(selected ? 0.45 : 0.10)) }
+    }
+}
+
+private struct MacNewBadge: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var pulsing = false
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Text("New").font(.custom(CWorldFonts.poppins(.bold), size: 11))
+            Circle().fill(Color.green)
+                .frame(width: 7, height: 7)
+                .scaleEffect(reduceMotion ? 1 : (pulsing ? 1.28 : 0.82))
+                .opacity(reduceMotion ? 1 : (pulsing ? 1 : 0.58))
+                .shadow(color: .green.opacity(0.65), radius: pulsing ? 4 : 1)
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 8).padding(.vertical, 5)
+        .background(.black.opacity(0.65), in: Capsule())
+        .onAppear {
+            guard !reduceMotion else { return }
+            withAnimation(.easeInOut(duration: 0.85).repeatForever(autoreverses: true)) { pulsing = true }
+        }
+    }
+}
+
 struct MacHistoryCard: View {
+    @EnvironmentObject private var appModel: AppModel
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let media: CWorldMedia
     let season: Int?
     let episode: Int?
     let onOpen: () -> Void
     let onRemove: (() -> Void)?
-    var overlaysMetadata = false
+    var isNew = false
+    var onArtworkHover: ((URL?, Bool) -> Void)? = nil
     @State private var hovering = false
+    private var episodeData: CWorldEpisode? {
+        guard let season, let episode else { return nil }
+        return media.seasons?.first(where: { $0.number == season })?.episodes.first(where: { $0.number == episode })
+    }
+    private var playbackID: String { episodeData?.playbackRef.mediaId ?? media.movieAsset?.mediaId ?? media.id }
+    private var progressFraction: Double {
+        let saved = appModel.progress(for: playbackID, season: season, episode: episode)
+        return min(1, max(0, (saved?.currentTime ?? 0) / max(1, saved?.duration ?? 1)))
+    }
+    private var tileTitle: String {
+        guard let episodeData else { return media.title }
+        return EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season ?? 1, episode: episodeData.number) ?? episodeData.title
+    }
+    private var tileSubtitle: String {
+        guard let episodeData else { return "Movie · \(media.metadata.duration)" }
+        return "Episode \(episodeData.number) · \(episodeData.duration)"
+    }
+    private var tileCode: String {
+        guard let season, let episode else { return "Movie" }
+        return String(format: "S%02dE%02d", season, episode)
+    }
+    private var tileImage: URL? {
+        episodeData == nil ? MacDesktopCatalog.placeholder(media) : MacDesktopCatalog.placeholder(media, season: season, episode: episode)
+    }
     var body: some View {
         Button(action: onOpen) {
-            VStack(alignment: .leading, spacing: 5) {
-                CatalogImage(url: MacDesktopCatalog.placeholder(media, season: season, episode: episode), showsBorder: false, maxPixelSize: 640)
-                    .frame(width: 208, height: 112).clipped()
-                    .overlay(alignment: .bottomLeading) {
-                        if overlaysMetadata {
-                            LinearGradient(stops: [.init(color: .clear, location: 0), .init(color: .black.opacity(0.4), location: 0.5), .init(color: .black.opacity(0.85), location: 1)], startPoint: .top, endPoint: .bottom)
-                                .frame(height: 64)
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(media.title).font(.custom(CWorldFonts.poppins(.semibold), size: 14)).foregroundStyle(.white).lineLimit(1)
-                                Text(episode.map { "S\(season ?? 1)E\($0) — \(EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season ?? 1, episode: $0) ?? "Episode \($0)")" } ?? "Movie")
-                                    .font(.system(size: 12)).foregroundStyle(.white.opacity(0.7)).lineLimit(1)
-                            }.padding(.horizontal, 8).padding(.bottom, 8)
-                        }
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: overlaysMetadata ? 16 : 8))
-                    .overlay { if overlaysMetadata { RoundedRectangle(cornerRadius: 16).stroke(.white.opacity(0.1)) } }
-                if !overlaysMetadata {
-                Text(media.title).font(.custom(CWorldFonts.poppins(.semibold), size: 12)).lineLimit(1)
-                Text(episode.map { "S\(season ?? 1)E\($0) — \(EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season ?? 1, episode: $0) ?? "Episode \($0)")" } ?? "Movie")
-                    .font(.system(size: 11)).foregroundStyle(.white.opacity(0.6)).lineLimit(1)
-                }
-            }.frame(width: 208, alignment: .leading)
-        }.buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.015, pressedScale: 0.98, lift: 2))
+            MacEpisodeTile(title: tileTitle, subtitle: tileSubtitle, image: tileImage, code: tileCode,
+                           selected: false, fraction: progressFraction, showsNewBadge: isNew)
+        }.buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.025, pressedScale: 0.97, lift: 5))
             .overlay(alignment: .topTrailing) {
                 if let onRemove {
                     Button(action: onRemove) { Image(systemName: "xmark").font(.system(size: 10, weight: .bold)).frame(width: 24, height: 24).background(.black.opacity(0.7), in: Circle()) }
-                        .padding(5).opacity(hovering ? 1 : 0).help("Remove from recently watched")
+                        .padding(5)
+                        .opacity(hovering ? 1 : 0)
+                        .scaleEffect(hovering ? 1 : 0.82)
+                        .allowsHitTesting(hovering)
+                        .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: hovering)
+                        .help("Remove from recently watched")
                 }
-            }.onHover { hovering = $0 }.padding(.horizontal, 12)
+            }.onHover { hovering = $0; onArtworkHover?(tileImage, $0) }
+            .onDisappear { if hovering { onArtworkHover?(tileImage, false) } }
             .contextMenu { if let onRemove { Button("Remove from Recently Watched", role: .destructive, action: onRemove) } }
+    }
+}
+
+struct MacRecentLauncher: View {
+    let items: [ContinueWatchingItem]
+    let action: () -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var hovering = false
+
+    private var visibleItems: [ContinueWatchingItem] { Array(items.prefix(3)) }
+    private var count: Int { min(items.count, 10) }
+
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 12) {
+                ZStack {
+                    if visibleItems.isEmpty {
+                        Image(systemName: "clock.arrow.circlepath")
+                            .font(.system(size: 30, weight: .light))
+                            .foregroundStyle(.white.opacity(0.65))
+                            .shadow(color: .black.opacity(0.3), radius: 8, y: 4)
+                    } else {
+                        ForEach(Array(visibleItems.enumerated()), id: \.element.id) { index, item in
+                            let side: CGFloat = index == 0 ? 0 : (index == 1 ? -1 : 1)
+                            CatalogImage(url: artwork(for: item), showsBorder: false, maxPixelSize: 320)
+                                .frame(width: 112, height: 63)
+                                .clipped()
+                                .overlay(alignment: .bottom) {
+                                    LinearGradient(colors: [.clear, .black.opacity(0.28)],
+                                                   startPoint: .center, endPoint: .bottom)
+                                }
+                                .clipShape(RoundedRectangle(cornerRadius: 7))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 7)
+                                        .stroke(.white.opacity(index == 0 ? 0.22 : 0.10), lineWidth: 0.7)
+                                }
+                                .shadow(color: .black.opacity(index == 0 ? 0.48 : 0.3),
+                                        radius: index == 0 ? 10 : 6, x: side * 2, y: 7)
+                                .brightness(hovering ? 0.025 : (index == 0 ? 0 : -0.12))
+                                .scaleEffect(index == 0 ? 1 : 0.9)
+                                .rotationEffect(.degrees(Double(side) * (hovering && !reduceMotion ? 12 : 8)))
+                                .offset(x: side * (hovering && !reduceMotion ? 34 : 26),
+                                        y: index == 0 ? (hovering && !reduceMotion ? -4 : 0) : 5)
+                                .zIndex(index == 0 ? 3 : Double(3 - index))
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 88)
+                VStack(spacing: 4) {
+                    HStack(spacing: 7) {
+                        Text("Recently Watched")
+                            .font(.custom(CWorldFonts.poppins(.semibold), size: 12))
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 10, weight: .semibold))
+                            .offset(x: hovering && !reduceMotion ? 2 : 0)
+                    }
+                    .foregroundStyle(.white.opacity(hovering ? 1 : 0.8))
+                    Text(count > 0 ? "\(count) titles to continue" : "Explore recently watched")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.white.opacity(0.45))
+                }
+                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(.top, 10).padding(.bottom, 4)
+            .frame(maxWidth: .infinity)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1, pressedScale: 0.98))
+        .onHover { hovering = $0 }
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.28), value: hovering)
+        .help("Open Recently Watched")
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Open Recently Watched")
+        .accessibilityValue("\(count) unfinished titles")
+    }
+
+    private func artwork(for item: ContinueWatchingItem) -> URL? {
+        if let episode = item.episode {
+            return MacDesktopCatalog.placeholder(item.media, season: item.progress.season, episode: episode.number)
+        }
+        return MacDesktopCatalog.placeholder(item.media)
     }
 }
 #endif

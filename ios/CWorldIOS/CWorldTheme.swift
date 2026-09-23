@@ -60,9 +60,40 @@ struct CWorldGlassModifier: ViewModifier {
     }
 }
 
+struct CWorldLiquidGlassModifier<S: Shape>: ViewModifier {
+    let shape: S
+    let fallback: Color
+    let interactive: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 26.0, *) {
+            if interactive {
+                content.glassEffect(.clear.interactive(), in: shape)
+            } else {
+                content.glassEffect(.clear, in: shape)
+            }
+        } else {
+            content
+                .background(fallback, in: shape)
+                .overlay {
+                    shape.stroke(CWorldTheme.glassBorder, lineWidth: 1)
+                }
+        }
+    }
+}
+
 extension View {
     func cworldGlass(cornerRadius: CGFloat = 20, fill: Color = CWorldTheme.glass) -> some View {
         modifier(CWorldGlassModifier(cornerRadius: cornerRadius, fill: fill))
+    }
+
+    func cworldLiquidGlass<S: Shape>(
+        in shape: S,
+        fallback: Color = CWorldTheme.glass,
+        interactive: Bool = false
+    ) -> some View {
+        modifier(CWorldLiquidGlassModifier(shape: shape, fallback: fallback, interactive: interactive))
     }
 
     func cworldRoundedFont(_ size: CGFloat, weight: Font.Weight = .regular) -> some View {

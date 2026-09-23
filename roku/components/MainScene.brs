@@ -841,6 +841,9 @@ sub onPlaybackReady()
     mediaContent = CreateObject("roSGNode", "ContentNode")
     mediaContent.url = payload.url
     mediaContent.streamFormat = "mp4"
+    if payload.playbackType = "hls"
+        mediaContent.streamFormat = "hls"
+    end if
     mediaContent.title = m.selectedItem.title
     mediaContent.VideoDisableUI = false
     if m.playbackSubtitleUrls.Count() > 0

@@ -58,7 +58,7 @@ struct MacArchiveView: View {
                                                         .frame(width: 230, height: 130).clipped().clipShape(RoundedRectangle(cornerRadius: 12))
                                                         .overlay { CWorldTVPlaybackHighlight(mediaID: item.playbackID, season: item.progress.season, episode: item.progress.episode, cornerRadius: 12) }
                                                     Text(item.media.title).font(.headline).lineLimit(1)
-                                                    ProgressView(value: min(1, item.progress.currentTime / max(1, item.progress.duration))).tint(.white)
+                                                    ProgressView(value: min(1, item.progress.currentTime / max(1, item.progress.duration))).modifier(MacProgressTint())
                                                 }.frame(width: 230)
                                             }.contextMenu {
                                                 Button("Remove from Continue Watching", role: .destructive) { Task { await appModel.removeFromContinueWatching(item.media) } }
