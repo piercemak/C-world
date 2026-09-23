@@ -18,6 +18,7 @@ from botocore.exceptions import ClientError
 
 from django.conf import settings
 from django.http import HttpResponse
+from django.views.decorators.gzip import gzip_page
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
@@ -214,6 +215,7 @@ def hls_playback_session(request):
         return Response({"error": "Invalid episode"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+@gzip_page
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def hls_manifest(request, media_id, manifest_path):

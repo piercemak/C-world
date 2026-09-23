@@ -13,9 +13,23 @@ export function attachHls(video, url) {
     video.dispatchEvent(new Event("error"));
     return () => {};
   }
-  const hls = new Hls({ maxBufferLength: 30 });
+  const playlistPolicy = (defaults) => ({
+    default: {
+      ...defaults.default,
+      maxTimeToFirstByteMs: 30000,
+      maxLoadTimeMs: 60000,
+    },
+  });
+  const hls = new Hls({
+    maxBufferLength: 30,
+    manifestLoadPolicy: playlistPolicy(Hls.DefaultConfig.manifestLoadPolicy),
+    playlistLoadPolicy: playlistPolicy(Hls.DefaultConfig.playlistLoadPolicy),
+  });
   hls.on(Hls.Events.ERROR, (_, data) => {
-    if (data.fatal) video.dispatchEvent(new Event("error"));
+    if (data.fatal) {
+      console.error("HLS playback failed", { type: data.type, details: data.details, status: data.response?.code });
+      video.dispatchEvent(new Event("error"));
+    }
   });
   hls.loadSource(url);
   hls.attachMedia(video);
