@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { attachHls, isHlsSource } from "../lib/hlsPlayback.js";
+import { attachHls, isHlsSource, waitForHlsReady } from "../lib/hlsPlayback.js";
 import { motion, AnimatePresence } from "framer-motion";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -201,7 +201,7 @@ const Show = ({
     if (!vid) return;
   
     if (vid.paused || vid.ended) {
-      vid.play();
+      waitForHlsReady(vid).then(() => vid.play()).catch((err) => console.warn("HLS playback failed:", err));
     } else {
       vid.pause();
     }
@@ -1481,6 +1481,7 @@ const readProgressRawWithMigration = useCallback(() => (
 
         vid.currentTime = startTime;
 
+        await waitForHlsReady(vid);
         await vid.play();
 
         if (shouldAutoSkipIntro) {
@@ -1499,6 +1500,7 @@ const readProgressRawWithMigration = useCallback(() => (
 
     const handleResumeReady = async () => {
       try {
+        await waitForHlsReady(vid);
         vid.currentTime = Math.max(0, Number(resumeAt) || 0);
         await vid.play();
       } catch (err) {

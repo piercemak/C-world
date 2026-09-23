@@ -2,12 +2,27 @@ import Hls from "hls.js";
 
 export const isHlsSource = (url = "") => /\.m3u8(?:[?#]|$)/i.test(url);
 
+export const waitForHlsReady = async (video) => {
+  await video?.__cworldHlsReady;
+};
+
 // Keep native HLS on Safari for AirPlay; use MediaSource on other browsers.
 export function attachHls(video, url) {
   if (video.canPlayType("application/vnd.apple.mpegurl")) {
+    const ready = new Promise((resolve, reject) => {
+      const onReady = () => { video.removeEventListener("error", onError); resolve(); };
+      const onError = () => { video.removeEventListener("loadedmetadata", onReady); reject(new Error("Native HLS source failed to load")); };
+      video.addEventListener("loadedmetadata", onReady, { once: true });
+      video.addEventListener("error", onError, { once: true });
+    });
+    video.__cworldHlsReady = ready;
     video.src = url;
     video.load();
-    return () => { video.removeAttribute("src"); video.load(); };
+    return () => {
+      delete video.__cworldHlsReady;
+      video.removeAttribute("src");
+      video.load();
+    };
   }
   if (!Hls.isSupported()) {
     video.dispatchEvent(new Event("error"));
@@ -25,13 +40,22 @@ export function attachHls(video, url) {
     manifestLoadPolicy: playlistPolicy(Hls.DefaultConfig.manifestLoadPolicy),
     playlistLoadPolicy: playlistPolicy(Hls.DefaultConfig.playlistLoadPolicy),
   });
+  let resolveReady;
+  let rejectReady;
+  const ready = new Promise((resolve, reject) => { resolveReady = resolve; rejectReady = reject; });
+  video.__cworldHlsReady = ready;
+  hls.once(Hls.Events.MANIFEST_PARSED, resolveReady);
   hls.on(Hls.Events.ERROR, (_, data) => {
     if (data.fatal) {
+      rejectReady(new Error(data.details || "HLS source failed to load"));
       console.error("HLS playback failed", { type: data.type, details: data.details, status: data.response?.code });
       video.dispatchEvent(new Event("error"));
     }
   });
   hls.loadSource(url);
   hls.attachMedia(video);
-  return () => hls.destroy();
+  return () => {
+    delete video.__cworldHlsReady;
+    hls.destroy();
+  };
 }
