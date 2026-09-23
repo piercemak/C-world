@@ -156,7 +156,7 @@ def build_hls_playback_payload(media):
     }
 
 
-def _rewrite_uri(uri, media, manifest_path, token, expires):
+def _rewrite_uri(uri, media, manifest_path, token, expires, policy_queries=None):
     raw = str(uri or "").strip()
     if not raw or raw.startswith("#") or raw.startswith("data:"):
         return raw
@@ -169,18 +169,25 @@ def _rewrite_uri(uri, media, manifest_path, token, expires):
     if resolved.lower().endswith(".m3u8"):
         return _manifest_url(media, resolved, token)
     resource_path = f"{_hls_prefix(media)}/*"
+    if policy_queries is not None:
+        # Every segment in this playlist shares the same package-scoped policy.
+        # Loading the RSA key and signing for every segment can time out long VODs.
+        if resource_path not in policy_queries:
+            policy_queries[resource_path] = _cloudfront_policy_query(resource_path, expires)
+        return f"https://{settings.CLOUDFRONT_DOMAIN}/{key.lstrip('/')}?{policy_queries[resource_path]}"
     return _cloudfront_url(key, resource_path, expires)
 
 
 def _rewrite_manifest(text, media, manifest_path, token, expires):
     lines = []
+    policy_queries = {}
     for line in str(text).splitlines():
         stripped = line.strip()
         if stripped.startswith("#") and 'URI="' in line:
-            line = re.sub(r'URI="([^"]+)"', lambda match: 'URI="' + _rewrite_uri(match.group(1), media, manifest_path, token, expires) + '"', line)
+            line = re.sub(r'URI="([^"]+)"', lambda match: 'URI="' + _rewrite_uri(match.group(1), media, manifest_path, token, expires, policy_queries) + '"', line)
         elif stripped and not stripped.startswith("#"):
             indent = line[: len(line) - len(line.lstrip())]
-            line = f"{indent}{_rewrite_uri(stripped, media, manifest_path, token, expires)}"
+            line = f"{indent}{_rewrite_uri(stripped, media, manifest_path, token, expires, policy_queries)}"
         lines.append(line)
     return "\n".join(lines) + "\n"
 

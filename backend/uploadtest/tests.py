@@ -86,6 +86,21 @@ class CatalogApiTests(TestCase):
         self.assertIn("hls/testshow/season-1/s01e01/seg_00001.m4s?Policy=", text)
         self.assertEqual(self.hls_s3.get_object.call_args.kwargs["Key"], "hls/testshow/season-1/s01e01/master.m3u8")
 
+    def test_long_hls_playlist_signs_policy_once_per_request(self):
+        from .hls import hls_media, _rewrite_manifest
+        media = hls_media(CATALOG["items"][1])
+        playlist = '#EXTM3U\n#EXT-X-MAP:URI="init.mp4"\n' + ''.join(
+            f'#EXTINF:6,\nseg_{i:05d}.m4s\n' for i in range(1500)
+        )
+        with override_settings(CLOUDFRONT_DOMAIN="cdn.example.com", CLOUDFRONT_KEY_PAIR_ID="test"), patch("uploadtest.hls.rsa_signer", return_value=b"signature") as signer:
+            rewritten = _rewrite_manifest(playlist, media, "video/index.m3u8", "token", 9999999999)
+            signer.assert_called_once()
+            self.assertEqual(rewritten.count('?Policy='), 1501)
+            policy = json.loads(signer.call_args.args[0])
+            self.assertEqual(policy["Statement"][0]["Resource"], "https://cdn.example.com/hls/testmovie/*")
+            _rewrite_manifest(playlist, media, "video/index.m3u8", "other-token", 9999999998)
+            self.assertEqual(signer.call_count, 2)
+
     def test_hls_token_cannot_be_reused_for_another_episode(self):
         from .hls import hls_media, build_hls_playback_payload
         media = json.loads(json.dumps(CATALOG["items"][0]))
