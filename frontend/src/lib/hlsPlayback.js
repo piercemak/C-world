@@ -6,9 +6,17 @@ export const waitForHlsReady = async (video) => {
   await video?.__cworldHlsReady;
 };
 
+const prefersNativeHls = () => {
+  if (typeof navigator === "undefined") return false;
+  const userAgent = navigator.userAgent || "";
+  // Chrome and Chromium browsers may report partial HLS support while still
+  // requiring MediaSource for this kind of alternate-audio playlist.
+  return /Safari|iPhone|iPad|iPod/i.test(userAgent) && !/Chrome|Chromium|CriOS|Edg/i.test(userAgent);
+};
+
 // Keep native HLS on Safari for AirPlay; use MediaSource on other browsers.
 export function attachHls(video, url) {
-  if (video.canPlayType("application/vnd.apple.mpegurl")) {
+  if (prefersNativeHls() && video.canPlayType("application/vnd.apple.mpegurl")) {
     const ready = new Promise((resolve, reject) => {
       const onReady = () => { video.removeEventListener("error", onError); resolve(); };
       const onError = () => { video.removeEventListener("loadedmetadata", onReady); reject(new Error("Native HLS source failed to load")); };
