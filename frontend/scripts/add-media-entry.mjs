@@ -645,7 +645,8 @@ function updateRandomCoverCarousel(content, entry) {
   const line = `    { id: ${quote(entry.id)}, src: ${quote(entry.cover)}, title: ${quote(entry.title)} },`;
   // Covers can be a plain array or the current useMemo(() => [...], []) array.
   // Preserve the existing wrapper and anchor to the next declaration.
-  return replaceInFile(FILES.carousel, content, /(\r?\n[ \t]*\](?:[ \t]*,[ \t]*\[[ \t]*\][ \t]*\))?;[ \t]*\r?\n\s*const showsById)/, `\n${line}$1`);
+  const newline = content.includes("\r\n") ? "\r\n" : "\n";
+  return replaceInFile(FILES.carousel, content, /(\r?\n[ \t]*\](?:[ \t]*,[ \t]*\[[ \t]*\][ \t]*\))?;[ \t]*\r?\n\s*const showsById)/, (match) => `${newline}${line}${match}`);
 }
 
 function updateVideoLibraryStyles(content, entry) {
