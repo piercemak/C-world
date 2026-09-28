@@ -715,6 +715,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "theinvite", "movie"),
         }, 
+        "alienearth": {
+          type: "show",  
+          title: "Alien: Earth",
+          agerating: "18+",
+          release_year: "2025",
+          genre: "Horror",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "When a mysterious space vessel crash-lands on Earth, a young woman and a ragtag group of tactical soldiers make a fateful discovery that puts them face-to-face with the planet's greatest threat.",
+          background: "/images/alienearth/covers/alienearthCover.svg",
+          subtitles: "yes",
+          videos: videoDataByShow["alienearth"],
+        }, 
         
       };
 

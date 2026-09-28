@@ -558,6 +558,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2026 • Comedy • 1h 47m"
+    },
+    "alienearth": {
+      "image": "alienearth-4f33aa54a91e.jpg",
+      "thumbnail": "alienearth-4f33aa54a91e-thumb.jpg",
+      "source": "/images/alienearth/covers/alienearthCover.svg",
+      "sourceSHA256": "4f33aa54a91e020e6927eb570ae42be4d634faa9fdd5d412300f1d03ce95ba23",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2025 • Horror • 1 season"
     }
   }
 }

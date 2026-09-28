@@ -1,0 +1,6441 @@
+1
+00:00:01,582 --> 00:00:03,184
+PIKACHU:
+ Pika!
+
+2
+00:00:04,552 --> 00:00:09,657
+( trumpets playing )
+
+3
+00:00:09,690 --> 00:00:11,325
+ANNOUNCER:
+ The Poké Ball,
+
+4
+00:00:11,358 --> 00:00:13,561
+ an invention that's captured
+the imagination
+
+5
+00:00:13,594 --> 00:00:14,796
+ of people everywhere.
+
+6
+00:00:14,829 --> 00:00:16,431
+ Thanks to its ability
+
+7
+00:00:16,464 --> 00:00:19,100
+ to capture the most marvelous
+of creatures,
+
+8
+00:00:19,133 --> 00:00:20,501
+ Pokémon.
+
+9
+00:00:20,534 --> 00:00:21,602
+ And to catch one
+
+10
+00:00:21,635 --> 00:00:23,471
+ is an experience
+like none other.
+
+11
+00:00:23,504 --> 00:00:25,506
+ Each of these
+spectacular species
+
+12
+00:00:25,539 --> 00:00:27,542
+ has amazing powers
+and attributes
+
+13
+00:00:27,575 --> 00:00:29,410
+ that set them apart
+from one another
+
+14
+00:00:29,443 --> 00:00:32,180
+ in ways too numerous to list.
+
+15
+00:00:32,213 --> 00:00:34,182
+ But unique as they are
+individually,
+
+16
+00:00:34,215 --> 00:00:35,450
+ together they make up
+
+17
+00:00:35,483 --> 00:00:38,453
+ the incredible world
+of Pokémon.
+
+18
+00:01:08,716 --> 00:01:10,351
+( growling )
+
+19
+00:01:12,753 --> 00:01:16,224
+Golem. Golem.
+
+20
+00:01:17,925 --> 00:01:19,460
+Geodude.
+Geodude.
+
+21
+00:01:19,493 --> 00:01:21,262
+Geo. Geodude.
+
+22
+00:01:21,295 --> 00:01:23,631
+Haunter. Haunter. Haunter.
+
+23
+00:01:25,499 --> 00:01:29,504
+( growls )
+
+24
+00:01:33,440 --> 00:01:35,243
+Primeape.
+
+25
+00:01:44,785 --> 00:01:49,357
+Wingull.
+
+26
+00:01:56,197 --> 00:01:58,199
+Tentacool.
+
+27
+00:01:58,232 --> 00:02:00,168
+Magikarp. Magikarp.
+
+28
+00:02:00,201 --> 00:02:01,936
+Sharpedo!
+
+29
+00:02:01,969 --> 00:02:04,472
+ Pokémon and people
+like Ash Ketchum
+
+30
+00:02:04,505 --> 00:02:06,474
+ can come together as a team.
+
+31
+00:02:06,507 --> 00:02:08,543
+ For once they're captured
+in a Poké Ball,
+
+32
+00:02:08,576 --> 00:02:10,845
+ Pokémon bond with their human
+trainers
+
+33
+00:02:10,878 --> 00:02:13,514
+ as friends, partners, family.
+
+34
+00:02:13,547 --> 00:02:15,850
+ On their journey of discovery,
+
+35
+00:02:15,883 --> 00:02:17,385
+ trainers and their Pokémon
+
+36
+00:02:17,418 --> 00:02:20,655
+ learn as much about themselves
+as each other.
+
+37
+00:02:20,688 --> 00:02:22,223
+ And they also realize
+
+38
+00:02:22,256 --> 00:02:23,624
+ that there will always be
+more Pokémon
+
+39
+00:02:23,657 --> 00:02:25,493
+ than they could have
+ever imagined.
+
+40
+00:02:25,526 --> 00:02:27,795
+ You see, for each Pokémon
+that's discovered,
+
+41
+00:02:27,828 --> 00:02:29,830
+ there are dozens,
+perhaps hundreds more
+
+42
+00:02:29,863 --> 00:02:31,699
+ we have yet to meet.
+
+43
+00:02:31,732 --> 00:02:33,367
+ One thing's for sure,
+
+44
+00:02:33,400 --> 00:02:36,437
+ with each of these new Pokémon
+come new possibilities,
+
+45
+00:02:36,470 --> 00:02:40,542
+ new stories, new friendships,
+and new adventures.
+
+46
+00:02:43,377 --> 00:02:46,781
+( upbeat theme playing )
+
+47
+00:03:01,662 --> 00:03:02,763
+Venusaur.
+
+48
+00:03:02,797 --> 00:03:05,967
+ Perhaps Pokémon trainers
+aren't the only ones
+
+49
+00:03:06,000 --> 00:03:07,902
+ to seek out new species.
+
+50
+00:03:07,935 --> 00:03:10,938
+ The Pokémon themselves seem
+to have an innate curiosity
+
+51
+00:03:10,971 --> 00:03:14,542
+ for the creatures of this world
+and of worlds beyond.
+
+52
+00:03:14,575 --> 00:03:15,676
+ After all,
+
+53
+00:03:15,709 --> 00:03:17,778
+ we may live
+on a Pokémon planet,
+
+54
+00:03:17,811 --> 00:03:21,249
+ but nobody ever said
+that it's the only one.
+
+55
+00:03:23,017 --> 00:03:25,353
+( dramatic theme playing )
+
+56
+00:03:39,900 --> 00:03:41,769
+( majestic theme playing )
+
+57
+00:04:12,366 --> 00:04:15,737
+( mellow theme playing )
+
+58
+00:04:35,122 --> 00:04:37,458
+( indistinct chattering )
+
+59
+00:04:48,635 --> 00:04:51,939
+Professor,
+have you seen Tory?
+
+60
+00:04:51,972 --> 00:04:53,508
+Take a look.
+
+61
+00:04:55,909 --> 00:04:57,345
+YUKO:
+Uh-huh.
+
+62
+00:04:57,378 --> 00:04:58,813
+Impossible keeping up
+with him.
+
+63
+00:05:07,054 --> 00:05:09,056
+( laughing ):
+Spheal.
+
+64
+00:05:09,089 --> 00:05:11,092
+Wow, it's a Spheal.
+
+65
+00:05:11,125 --> 00:05:13,728
+Spheal, Spheal.
+Hi.
+
+66
+00:05:14,595 --> 00:05:16,831
+Spheal, Spheal, Spheal.
+
+67
+00:05:16,864 --> 00:05:18,733
+Spheal.
+
+68
+00:05:18,766 --> 00:05:22,703
+Spheal, Spheal.
+Spheal, Spheal.
+
+69
+00:05:22,736 --> 00:05:24,739
+( laughs )
+
+70
+00:05:27,608 --> 00:05:29,544
+Ah.
+
+71
+00:05:35,048 --> 00:05:36,784
+( ominous theme playing )
+
+72
+00:05:47,895 --> 00:05:49,630
+( roars )
+
+73
+00:06:00,841 --> 00:06:01,976
+( panting )
+
+74
+00:06:02,009 --> 00:06:03,478
+( both gasp )
+
+75
+00:06:07,114 --> 00:06:08,849
+( explosion )
+
+76
+00:06:08,882 --> 00:06:10,985
+( screaming )
+
+77
+00:06:15,022 --> 00:06:16,924
+( creatures murmuring )
+
+78
+00:06:25,098 --> 00:06:26,734
+( whimpering )
+
+79
+00:06:35,943 --> 00:06:37,445
+ASH:
+Tory?
+
+80
+00:06:41,782 --> 00:06:43,885
+You're okay.
+I've got you.
+
+81
+00:06:45,919 --> 00:06:48,456
+Thank you, Daddy.
+
+82
+00:06:58,265 --> 00:07:01,202
+( dramatic theme playing )
+
+83
+00:07:01,235 --> 00:07:02,703
+( gasps )
+
+84
+00:07:23,891 --> 00:07:26,927
+It's some kind of Pokémon,
+isn't it?
+
+85
+00:07:26,960 --> 00:07:28,762
+Yes. Hmm.
+
+86
+00:07:28,795 --> 00:07:31,833
+It's a Pokémon from outer space.
+
+87
+00:07:57,124 --> 00:07:58,893
+( roars )
+
+88
+00:08:20,881 --> 00:08:23,083
+Rayquaza never leaves
+the ozone layer.
+
+89
+00:08:23,116 --> 00:08:24,585
+Why now?
+
+90
+00:08:33,093 --> 00:08:34,695
+It regenerated.
+
+91
+00:08:34,728 --> 00:08:36,797
+But how's that possible?
+
+92
+00:08:45,372 --> 00:08:47,141
+Let's go.
+It's too dangerous.
+
+93
+00:08:47,174 --> 00:08:48,643
+Yeah.
+
+94
+00:08:59,052 --> 00:09:00,855
+( roaring )
+
+95
+00:09:25,846 --> 00:09:27,781
+Ah!
+Are you okay?
+
+96
+00:09:27,814 --> 00:09:29,149
+Huh?
+
+97
+00:09:29,182 --> 00:09:30,851
+( electricity crackling )
+
+98
+00:09:46,333 --> 00:09:48,869
+( roars )
+
+99
+00:09:50,871 --> 00:09:53,908
+Quick, follow me.
+I'm right behind you.
+
+100
+00:10:13,293 --> 00:10:14,996
+Whoa!
+
+101
+00:10:17,330 --> 00:10:19,100
+Ah!
+
+102
+00:10:26,006 --> 00:10:27,675
+( roaring )
+
+103
+00:10:32,779 --> 00:10:35,916
+SPHEAL:
+Spheal, Spheal, Spheal, Spheal!
+
+104
+00:10:44,424 --> 00:10:47,861
+( wailing )
+
+105
+00:10:47,894 --> 00:10:50,798
+MAN 1: Oh, what is it?
+MAN 2: Look at that.
+
+106
+00:10:50,831 --> 00:10:53,200
+( both sigh )
+
+107
+00:11:03,276 --> 00:11:05,980
+( roars )
+
+108
+00:11:21,828 --> 00:11:23,964
+( dramatic theme playing )
+
+109
+00:11:35,542 --> 00:11:37,912
+( wailing )
+
+110
+00:12:05,872 --> 00:12:08,008
+LUND:
+Rayquaza is furious.
+
+111
+00:12:09,242 --> 00:12:12,079
+Another Pokémon crossing
+into its territory
+
+112
+00:12:12,112 --> 00:12:14,081
+has obviously threatened it.
+
+113
+00:12:37,504 --> 00:12:39,840
+Huh?
+
+114
+00:12:45,078 --> 00:12:46,814
+LUND:
+Fire the laser.
+
+115
+00:12:59,559 --> 00:13:02,229
+Raise our trajectory
+by 0.5.
+
+116
+00:13:02,262 --> 00:13:04,098
+Right.
+
+117
+00:13:10,237 --> 00:13:13,307
+That's the frequency.
+Finally, in sync.
+
+118
+00:13:13,340 --> 00:13:14,575
+That means...?
+Yes.
+
+119
+00:13:14,608 --> 00:13:19,113
+The crystal should regenerate
+if we keep the laser on target.
+
+120
+00:13:21,181 --> 00:13:24,351
+We will succeed.
+We have to.
+
+121
+00:13:43,937 --> 00:13:45,973
+( alarm beeping )
+
+122
+00:13:49,576 --> 00:13:51,879
+We overloaded the regulator.
+
+123
+00:13:59,953 --> 00:14:01,355
+YUKO:
+It was just one small component
+
+124
+00:14:01,388 --> 00:14:02,522
+that malfunctioned.
+
+125
+00:14:02,555 --> 00:14:04,091
+A simple replacement.
+
+126
+00:14:04,124 --> 00:14:05,659
+LUND:
+Good. We'll try again
+
+127
+00:14:05,692 --> 00:14:07,027
+after it's fixed.
+
+128
+00:14:07,060 --> 00:14:08,362
+YUKO:
+Yes, sir.
+
+129
+00:14:08,395 --> 00:14:09,496
+Huh?
+
+130
+00:14:09,529 --> 00:14:10,998
+( laughs )
+
+131
+00:14:12,165 --> 00:14:14,101
+Guess what?
+I'm gonna tell you
+
+132
+00:14:14,134 --> 00:14:15,402
+all about this book
+I'm reading.
+
+133
+00:14:15,435 --> 00:14:16,637
+It's so good.
+
+134
+00:14:16,670 --> 00:14:18,005
+MAN 1:
+Once that part's replaced,
+
+135
+00:14:18,038 --> 00:14:19,172
+we're almost home.
+
+136
+00:14:19,205 --> 00:14:21,408
+MAN 2:
+Yeah, we're so close.
+
+137
+00:14:27,681 --> 00:14:30,951
+I was right.
+I did see it glow.
+
+138
+00:14:35,088 --> 00:14:37,424
+( dramatic theme playing )
+
+139
+00:15:12,459 --> 00:15:14,728
+BOTH:
+Wow!
+
+140
+00:15:14,761 --> 00:15:17,097
+WINGULL:
+Wingull, Wingull, Wingull,
+
+141
+00:15:17,130 --> 00:15:21,201
+Wingull, Wingull,
+Wingull!
+
+142
+00:15:21,234 --> 00:15:24,037
+PELIPPER:
+Pelipper.
+
+143
+00:15:24,070 --> 00:15:26,340
+ On his journey
+to become a Pokémon master,
+
+144
+00:15:26,373 --> 00:15:29,242
+ Ash Ketchum and his friends
+arrive in Larousse City,
+
+145
+00:15:29,275 --> 00:15:32,512
+ the headquarters for anything
+and everything high-tech.
+
+146
+00:15:32,545 --> 00:15:35,282
+ But he's not here
+for the gadgets and gizmos.
+
+147
+00:15:35,315 --> 00:15:37,317
+ Ash is itching for action
+
+148
+00:15:37,350 --> 00:15:40,087
+ at the town's
+famous Battle Tower.
+
+149
+00:15:41,087 --> 00:15:43,223
+Pelipper.
+Pelipper.
+
+150
+00:15:44,591 --> 00:15:46,160
+Huh?
+
+151
+00:15:47,494 --> 00:15:49,330
+( whimpering )
+
+152
+00:15:52,732 --> 00:15:54,501
+( all panting )
+
+153
+00:15:57,370 --> 00:15:59,106
+( panting )
+
+154
+00:16:02,642 --> 00:16:04,445
+( squeals )
+
+155
+00:16:07,380 --> 00:16:09,316
+( chattering )
+
+156
+00:16:21,694 --> 00:16:24,431
+( both laughing )
+
+157
+00:16:24,464 --> 00:16:26,133
+Yay!
+
+158
+00:16:31,805 --> 00:16:35,142
+Munch. Munch.
+Munch.
+
+159
+00:16:37,744 --> 00:16:39,380
+( laughs )
+
+160
+00:16:48,621 --> 00:16:50,324
+Munch.
+
+161
+00:16:53,827 --> 00:16:56,196
+Munch.
+
+162
+00:16:57,664 --> 00:16:59,166
+Munch.
+
+163
+00:17:04,337 --> 00:17:05,439
+Munch.
+
+164
+00:17:07,440 --> 00:17:09,343
+Munch.
+
+165
+00:17:10,777 --> 00:17:12,579
+Munch.
+
+166
+00:17:25,859 --> 00:17:29,463
+Munch. Munch.
+
+167
+00:17:38,872 --> 00:17:40,307
+ Welcome.
+
+168
+00:17:40,340 --> 00:17:41,875
+ You are now
+in Larousse City.
+
+169
+00:17:41,908 --> 00:17:43,243
+ Welcome again.
+
+170
+00:17:43,276 --> 00:17:45,112
+Cool.
+It's so cute.
+
+171
+00:17:45,145 --> 00:17:46,313
+A robot.
+
+172
+00:17:46,346 --> 00:17:48,849
+What could be better than that?
+Pika.
+
+173
+00:17:48,882 --> 00:17:50,851
+Being greeted by a real live
+beautiful girl
+
+174
+00:17:50,884 --> 00:17:52,352
+could be one thing.
+
+175
+00:17:53,820 --> 00:17:55,489
+ Smile.
+
+176
+00:18:03,696 --> 00:18:05,699
+ Visitor data confirmed.
+
+177
+00:18:05,732 --> 00:18:08,568
+ Citizenship and point of origin
+recorded.
+
+178
+00:18:08,601 --> 00:18:11,605
+ These will serve
+as your passports.
+
+179
+00:18:12,705 --> 00:18:13,840
+Our passports?
+
+180
+00:18:13,873 --> 00:18:15,308
+ While in Larousse City,
+
+181
+00:18:15,341 --> 00:18:16,877
+ keep them with you
+at all times.
+
+182
+00:18:16,910 --> 00:18:21,248
+ Your passports can be used
+for shopping and other needs.
+
+183
+00:18:24,817 --> 00:18:27,621
+Don't think I'll be sending
+this one home.
+
+184
+00:18:27,654 --> 00:18:30,624
+So I wonder which way to go
+for the Battle Tower.
+
+185
+00:18:30,657 --> 00:18:32,126
+Pika.
+
+186
+00:18:33,259 --> 00:18:35,629
+Help!
+Pika!
+
+187
+00:18:37,664 --> 00:18:40,500
+Hey, Ash,
+quit messing around.
+
+188
+00:18:40,533 --> 00:18:42,469
+A moving sidewalk.
+
+189
+00:18:46,206 --> 00:18:47,908
+SID:
+Dude, you're swimming upstream.
+
+190
+00:18:47,941 --> 00:18:50,377
+There is an easier way.
+
+191
+00:18:50,410 --> 00:18:52,479
+Well, if I ever get off
+of this thing,
+
+192
+00:18:52,512 --> 00:18:53,880
+then maybe you could show it
+to me!
+
+193
+00:18:53,913 --> 00:18:55,615
+Pika!
+
+194
+00:18:55,648 --> 00:18:56,883
+Nice fall.
+
+195
+00:18:56,916 --> 00:18:58,619
+Nice fall.
+
+196
+00:19:01,688 --> 00:19:02,856
+Blaze.
+
+197
+00:19:02,889 --> 00:19:05,959
+Help him out, Blaziken, okay?
+
+198
+00:19:05,992 --> 00:19:08,262
+Blaze.
+
+199
+00:19:11,631 --> 00:19:14,535
+Blaze. Blaze.
+
+200
+00:19:15,868 --> 00:19:17,804
+Hey, thanks a lot.
+Pikachu.
+
+201
+00:19:17,837 --> 00:19:19,539
+Sure, no need to thank me.
+
+202
+00:19:19,572 --> 00:19:22,742
+I just couldn't continue
+watching you look like a fool.
+
+203
+00:19:22,775 --> 00:19:24,511
+What?
+
+204
+00:19:24,544 --> 00:19:26,846
+SID:
+So I guess you're all new
+in town, huh?
+
+205
+00:19:26,879 --> 00:19:29,349
+RAFE:
+Well, if you're heading
+for the Battle Tower,
+
+206
+00:19:29,382 --> 00:19:30,784
+you should try
+going this way.
+
+207
+00:19:30,817 --> 00:19:34,254
+AUDREY: Be careful.
+KATHRYN: Don't fall.
+
+208
+00:19:34,287 --> 00:19:36,489
+My name's Ash
+from Pallet Town.
+
+209
+00:19:36,522 --> 00:19:38,225
+How'd you like to battle
+with me?
+
+210
+00:19:38,258 --> 00:19:40,827
+Watch out,
+my brother Rafe's really strong.
+
+211
+00:19:40,860 --> 00:19:43,296
+Blaziken too.
+Blaze.
+
+212
+00:19:43,329 --> 00:19:45,565
+Yeah, I'd love to have
+a battle with you, Ash.
+
+213
+00:19:45,598 --> 00:19:47,667
+Let's get together
+at the Battle Tower, okay?
+
+214
+00:19:47,700 --> 00:19:50,971
+So we're finally gonna
+settle this today, right, Rafe?
+
+215
+00:19:51,004 --> 00:19:53,306
+Hello, my bespectacled beauty.
+
+216
+00:19:53,339 --> 00:19:55,242
+I'm Brock.
+Stop!
+
+217
+00:19:56,276 --> 00:19:58,011
+Well, I guess you could say
+that your friend here
+
+218
+00:19:58,044 --> 00:19:59,879
+has really fallen
+for Rebecca, huh?
+
+219
+00:19:59,912 --> 00:20:01,548
+She's a good Metagross trainer,
+
+220
+00:20:01,581 --> 00:20:03,350
+likes to use her laptop
+for strategy.
+
+221
+00:20:03,383 --> 00:20:06,820
+So my name is Sid.
+Blastoise is my partner.
+
+222
+00:20:06,853 --> 00:20:08,321
+Hi, I'm May.
+
+223
+00:20:08,354 --> 00:20:11,358
+And this is my brother, Max.
+
+224
+00:20:11,391 --> 00:20:14,228
+Hey, you're kind of cute.
+Kind of?
+
+225
+00:20:15,528 --> 00:20:17,397
+And kind of crazy too.
+
+226
+00:20:17,430 --> 00:20:19,666
+Look, the Battle Tower.
+
+227
+00:20:21,367 --> 00:20:23,637
+Look, Pikachu,
+it's right there.
+
+228
+00:20:24,637 --> 00:20:27,541
+I can't wait.
+Pika.
+
+229
+00:20:31,344 --> 00:20:34,014
+ASH:
+I'll be back as soon
+as I'm registered.
+
+230
+00:20:34,047 --> 00:20:36,416
+MAX:
+Okay, then we'll head
+to the stands.
+
+231
+00:20:36,449 --> 00:20:37,718
+ASH:
+See you.
+
+232
+00:20:38,885 --> 00:20:40,554
+There, let's hurry.
+
+233
+00:20:41,688 --> 00:20:42,789
+( computer beeps )
+
+234
+00:20:44,023 --> 00:20:45,358
+Ah.
+
+235
+00:20:45,391 --> 00:20:46,760
+( laughs )
+
+236
+00:20:48,995 --> 00:20:51,665
+Hmm. Uh-oh.
+
+237
+00:20:51,698 --> 00:20:53,267
+Now where are we?
+
+238
+00:20:56,469 --> 00:20:59,473
+Oh, wow, there's a library too.
+Pika.
+
+239
+00:21:06,079 --> 00:21:08,548
+Excuse me.
+Pika!
+
+240
+00:21:09,849 --> 00:21:12,752
+Hold on,
+what do you running away for?
+
+241
+00:21:12,785 --> 00:21:13,920
+Pika.
+
+242
+00:21:13,953 --> 00:21:16,556
+Wait! Hold up!
+
+243
+00:21:19,926 --> 00:21:21,594
+Hi. Let me start that again.
+
+244
+00:21:21,627 --> 00:21:22,862
+We're on our way to a battle
+
+245
+00:21:22,895 --> 00:21:24,531
+but we don't know
+how to get there.
+
+246
+00:21:24,564 --> 00:21:27,701
+So we're kind of lost.
+Pika, Pika.
+
+247
+00:21:30,636 --> 00:21:33,373
+Wait, we just wanna-- Hi.
+
+248
+00:21:33,406 --> 00:21:35,008
+Are you ready for your battle?
+
+249
+00:21:35,041 --> 00:21:37,644
+Right this way, gentlemen.
+
+250
+00:21:37,677 --> 00:21:39,412
+But you don't understand.
+
+251
+00:21:39,445 --> 00:21:41,681
+If you hurry up,
+you two might just make it.
+
+252
+00:21:41,714 --> 00:21:43,583
+But I haven't registered yet.
+
+253
+00:21:43,616 --> 00:21:45,919
+That will all happen
+automatically.
+
+254
+00:21:45,952 --> 00:21:47,688
+Now, good luck, you two.
+
+255
+00:21:51,457 --> 00:21:52,959
+COMPUTER:
+ Passports confirmed.
+
+256
+00:21:52,992 --> 00:21:55,995
+ Two youth-level participants
+entered successfully.
+
+257
+00:21:56,028 --> 00:21:58,899
+Great, and just in time.
+Pika.
+
+258
+00:22:00,867 --> 00:22:04,437
+ Entry for participants
+in the first round is closed.
+
+259
+00:22:04,470 --> 00:22:06,106
+ Please try again next time.
+
+260
+00:22:06,139 --> 00:22:07,607
+What?
+
+261
+00:22:08,741 --> 00:22:11,611
+ Now introducing
+our first entry.
+
+262
+00:22:15,114 --> 00:22:16,750
+Pika.
+
+263
+00:22:19,886 --> 00:22:22,756
+Here we go.
+Pikachu.
+
+264
+00:22:26,692 --> 00:22:29,028
+ANNOUNCER:
+ Our first match will be
+an official
+
+265
+00:22:29,061 --> 00:22:30,697
+ Battle Tower tag team event.
+
+266
+00:22:30,730 --> 00:22:32,999
+ Remember to cheer
+for your favorites.
+
+267
+00:22:33,032 --> 00:22:35,435
+Tag team, huh? Yeah.
+
+268
+00:22:35,468 --> 00:22:37,704
+ We have Ash Ketchum
+in the blue corner,
+
+269
+00:22:37,737 --> 00:22:39,939
+ a trainer all the way
+from Pallet Town.
+
+270
+00:22:39,972 --> 00:22:43,076
+ And his tag partner Tory,
+a local trainer.
+
+271
+00:22:43,109 --> 00:22:44,778
+All right, Tory, good luck.
+
+272
+00:22:44,811 --> 00:22:48,148
+I wonder how Ash
+got entered so quickly.
+
+273
+00:22:48,181 --> 00:22:50,016
+By cutting in front of me.
+
+274
+00:22:50,049 --> 00:22:51,618
+Rebecca,
+
+275
+00:22:51,651 --> 00:22:53,052
+there comes a time
+in a man's life
+
+276
+00:22:53,085 --> 00:22:55,755
+when he's presented with
+the gift of love at first sight.
+
+277
+00:22:55,788 --> 00:22:59,693
+How about pain at first pull?
+Not the ear.
+
+278
+00:23:01,227 --> 00:23:05,165
+Professor Lund,
+take a look at this.
+
+279
+00:23:05,198 --> 00:23:07,834
+Tory?
+In a Pokémon battle?
+
+280
+00:23:09,168 --> 00:23:10,670
+ And in the red corner,
+
+281
+00:23:10,703 --> 00:23:12,906
+ we have two trainers
+from South City,
+
+282
+00:23:12,939 --> 00:23:14,607
+ Rafe and Sid.
+
+283
+00:23:14,640 --> 00:23:17,477
+Hey, Ash,
+you sure didn't waste any time.
+
+284
+00:23:19,645 --> 00:23:21,881
+Of course not,
+I couldn't wait to beat you.
+
+285
+00:23:21,914 --> 00:23:23,550
+Hey! May!
+
+286
+00:23:23,583 --> 00:23:24,918
+Make sure you watch.
+
+287
+00:23:24,951 --> 00:23:27,487
+I'm dedicating this battle
+to you.
+
+288
+00:23:29,956 --> 00:23:32,926
+ The basic rule in all tag team
+battles is teamwork.
+
+289
+00:23:32,959 --> 00:23:35,228
+ Each trainer uses a single
+Pokémon
+
+290
+00:23:35,261 --> 00:23:36,796
+ and works with his teammate.
+
+291
+00:23:36,829 --> 00:23:40,900
+ And now, trainers,
+bring out your Pokémon.
+
+292
+00:23:40,933 --> 00:23:43,737
+All right. Here goes.
+Here goes.
+
+293
+00:23:46,272 --> 00:23:48,942
+Blaze.
+Blastoise.
+
+294
+00:23:48,975 --> 00:23:50,977
+Pikachu, I choose you.
+
+295
+00:23:51,010 --> 00:23:53,012
+Pika. Pikachu.
+
+296
+00:23:53,045 --> 00:23:55,515
+Tory, what Pokémon
+are you gonna use?
+
+297
+00:23:55,548 --> 00:23:57,550
+No, Ash,
+I don't have any Pokémon.
+
+298
+00:23:57,583 --> 00:23:58,785
+But...
+Pika.
+
+299
+00:23:58,818 --> 00:24:00,687
+ There seems to be a problem.
+
+300
+00:24:00,720 --> 00:24:02,689
+ We've seen only one Pokémon
+from the blue corner.
+
+301
+00:24:02,722 --> 00:24:04,858
+See, I was trying
+to tell you.
+
+302
+00:24:04,891 --> 00:24:07,560
+I'm not a trainer.
+I can't battle.
+
+303
+00:24:07,593 --> 00:24:08,795
+But this could end up
+
+304
+00:24:08,828 --> 00:24:10,797
+being my only chance
+to battle Rafe.
+
+305
+00:24:10,830 --> 00:24:13,867
+Hey, I know what,
+I'll loan you one of my Pokémon.
+
+306
+00:24:13,900 --> 00:24:14,901
+What do you say?
+
+307
+00:24:14,934 --> 00:24:16,870
+Come on, that'll work.
+But...
+
+308
+00:24:18,170 --> 00:24:20,106
+ Will the blue corner forfeit?
+
+309
+00:24:20,139 --> 00:24:22,675
+Don't let me down, Tory.
+
+310
+00:24:22,708 --> 00:24:25,011
+Well, if I have to.
+
+311
+00:24:27,146 --> 00:24:29,949
+Torkoal.
+
+312
+00:24:29,982 --> 00:24:32,719
+ So looks like
+we have our Pokémon.
+
+313
+00:24:32,752 --> 00:24:35,088
+ Ready for a battle,
+because here we go!
+
+314
+00:24:35,121 --> 00:24:38,258
+Let's do it.
+Blaziken, use Blaze Kick now.
+
+315
+00:24:38,291 --> 00:24:42,161
+Blaziken.
+
+316
+00:24:42,194 --> 00:24:44,130
+Dodge, Pikachu.
+
+317
+00:24:44,163 --> 00:24:45,765
+Pika.
+
+318
+00:24:47,166 --> 00:24:48,801
+Go, Blastoise, Hydro Pump.
+
+319
+00:24:48,834 --> 00:24:51,771
+Blastoise.
+Pika!
+
+320
+00:24:51,804 --> 00:24:54,741
+ It's a dazzling combination
+from the red corner.
+
+321
+00:24:54,774 --> 00:24:57,811
+Blastoise, Bubble Attack.
+Blastoise.
+
+322
+00:24:59,979 --> 00:25:03,650
+Torkoal. Tory, you have to tell
+Torkoal to do something.
+
+323
+00:25:03,683 --> 00:25:05,585
+But I don't know
+what to tell it.
+
+324
+00:25:05,618 --> 00:25:09,155
+Blastoise, Rapid Spin.
+Blastoise.
+
+325
+00:25:09,188 --> 00:25:12,058
+Blastoise!
+
+326
+00:25:14,860 --> 00:25:17,731
+Torkoal!
+
+327
+00:25:18,831 --> 00:25:21,034
+Blast.
+
+328
+00:25:22,168 --> 00:25:23,737
+( breathing heavily )
+
+329
+00:25:32,244 --> 00:25:34,014
+Blastoise.
+
+330
+00:25:35,214 --> 00:25:37,350
+Blastoise.
+
+331
+00:25:37,383 --> 00:25:40,887
+Pikachu, use Thunderbolt.
+Cover Torkoal.
+
+332
+00:25:40,920 --> 00:25:42,889
+Pikachu!
+
+333
+00:25:42,922 --> 00:25:47,360
+Blastoise.
+Blaziken.
+
+334
+00:25:47,393 --> 00:25:49,329
+Blastoise, Skull Bash, go.
+
+335
+00:25:49,362 --> 00:25:50,930
+Blastoise.
+
+336
+00:25:50,963 --> 00:25:53,066
+Torkoal.
+
+337
+00:25:53,099 --> 00:25:55,001
+Torkoal.
+ Looks like the blue corner
+
+338
+00:25:55,034 --> 00:25:57,804
+ just can't seem to get it
+together as a team.
+
+339
+00:25:57,837 --> 00:26:00,006
+Man, Ash's partner
+isn't doing anything
+
+340
+00:26:00,039 --> 00:26:01,007
+to help him out at all.
+
+341
+00:26:01,040 --> 00:26:03,343
+I don't see how he could win.
+
+342
+00:26:03,376 --> 00:26:05,812
+Come on, do something.
+
+343
+00:26:07,079 --> 00:26:09,215
+Tory, don't worry,
+I'll take care of it.
+
+344
+00:26:09,248 --> 00:26:11,117
+Flamethrower, Torkoal, go.
+
+345
+00:26:11,150 --> 00:26:12,285
+Torkoal.
+Pika.
+
+346
+00:26:12,318 --> 00:26:15,121
+Torkoal!
+
+347
+00:26:15,154 --> 00:26:17,757
+ Oh, a Flamethrower
+from Torkoal,
+
+348
+00:26:17,790 --> 00:26:19,225
+ but it hit Pikachu.
+
+349
+00:26:19,258 --> 00:26:22,028
+Torkoal, Torkoal.
+
+350
+00:26:22,061 --> 00:26:22,895
+How embarrassing.
+
+351
+00:26:22,929 --> 00:26:25,832
+So, Rafe,
+wanna finish this one up?
+
+352
+00:26:25,865 --> 00:26:28,668
+Let's go. Blaziken, Overheat.
+
+353
+00:26:28,701 --> 00:26:30,737
+Blaziken!
+
+354
+00:26:30,770 --> 00:26:35,241
+Pika! Pika!
+
+355
+00:26:35,274 --> 00:26:37,010
+Pikachu, Torkoal.
+
+356
+00:26:37,043 --> 00:26:38,711
+ And that's it.
+
+357
+00:26:38,744 --> 00:26:40,913
+ Pikachu and Torkoal
+are unable to battle.
+
+358
+00:26:40,946 --> 00:26:45,652
+ Rafe and Sid are the winners.
+Congratulations.
+
+359
+00:26:47,153 --> 00:26:50,189
+Blaze.
+Blastoise.
+
+360
+00:26:50,222 --> 00:26:52,258
+( laughs )
+
+361
+00:26:52,291 --> 00:26:53,994
+( elevator dings )
+
+362
+00:26:58,431 --> 00:27:00,900
+Tory.
+Daddy.
+
+363
+00:27:00,933 --> 00:27:02,802
+We just watched
+your Pokémon battle.
+
+364
+00:27:02,835 --> 00:27:04,070
+I'm incredibly proud.
+
+365
+00:27:04,103 --> 00:27:06,673
+Don't be.
+It was all an accident,
+
+366
+00:27:06,706 --> 00:27:09,042
+wasn't even supposed to happen.
+
+367
+00:27:11,043 --> 00:27:12,178
+ALL:
+Huh?
+
+368
+00:27:17,416 --> 00:27:20,820
+Yuko, meeting you reminds me
+of a time in my life
+
+369
+00:27:20,853 --> 00:27:22,455
+when I too spent long hours
+
+370
+00:27:22,488 --> 00:27:24,157
+toiling as a professor's
+assistant.
+
+371
+00:27:24,190 --> 00:27:26,392
+I'm sure Professor Ivy
+would be happy
+
+372
+00:27:26,425 --> 00:27:28,161
+to vouch for my work.
+
+373
+00:27:28,194 --> 00:27:31,197
+And I'll be happy to vouch
+for his insanity.
+
+374
+00:27:32,765 --> 00:27:35,201
+We apologize for the mix-up
+with your battle.
+
+375
+00:27:35,234 --> 00:27:36,402
+The truth is,
+
+376
+00:27:36,435 --> 00:27:38,905
+Tory is completely afraid
+of Pokémon.
+
+377
+00:27:38,938 --> 00:27:40,973
+How could he be afraid
+of Pokémon?
+
+378
+00:27:41,006 --> 00:27:43,409
+Well, about four years ago,
+
+379
+00:27:43,442 --> 00:27:45,778
+he had a very traumatic
+experience
+
+380
+00:27:45,811 --> 00:27:48,081
+and it left him terrified
+of them.
+
+381
+00:27:48,114 --> 00:27:52,218
+Sadly, he still hasn't managed
+to get over those fears.
+
+382
+00:28:23,516 --> 00:28:26,185
+Wow, I shouldn't have pushed him
+so hard.
+
+383
+00:28:26,218 --> 00:28:29,155
+But underneath it all,
+I think he loves them.
+
+384
+00:28:29,188 --> 00:28:31,224
+All he really needs
+is the chance
+
+385
+00:28:31,257 --> 00:28:33,226
+to get to know them,
+that's all.
+
+386
+00:28:33,259 --> 00:28:35,495
+I'm sure that's all it'll take.
+
+387
+00:28:35,528 --> 00:28:38,831
+Fine. Then I'll give him
+that chance.
+
+388
+00:28:38,864 --> 00:28:40,800
+All he needs now
+is to become friends
+
+389
+00:28:40,833 --> 00:28:41,968
+with me and Pikachu.
+
+390
+00:28:42,001 --> 00:28:44,937
+Right, pal?
+Pika.
+
+391
+00:28:44,970 --> 00:28:46,939
+I wanna help too.
+So do I.
+
+392
+00:28:46,972 --> 00:28:48,341
+Me too.
+Cool.
+
+393
+00:28:48,374 --> 00:28:50,910
+So, what do you say we all go
+and look for Tory, okay?
+
+394
+00:28:50,943 --> 00:28:52,078
+ALL:
+Yeah!
+
+395
+00:28:52,111 --> 00:28:54,847
+You're awful kind.
+Thank you.
+
+396
+00:28:54,880 --> 00:28:56,883
+( whimpering )
+
+397
+00:28:58,384 --> 00:28:59,919
+( grunts )
+
+398
+00:29:06,125 --> 00:29:09,062
+ASH: Tory?
+PIKACHU: Pika?
+
+399
+00:29:13,933 --> 00:29:15,802
+( both chattering )
+
+400
+00:29:17,570 --> 00:29:19,105
+( both squeal )
+
+401
+00:29:21,106 --> 00:29:22,308
+( laughs )
+
+402
+00:29:28,180 --> 00:29:29,348
+Later.
+
+403
+00:29:29,381 --> 00:29:31,785
+Pika.
+
+404
+00:29:33,352 --> 00:29:35,321
+( both chattering )
+
+405
+00:29:40,860 --> 00:29:44,998
+Munch. Munch.
+
+406
+00:29:52,338 --> 00:29:54,874
+Munch. Munch.
+
+407
+00:30:00,246 --> 00:30:01,881
+Munch.
+
+408
+00:30:07,386 --> 00:30:09,088
+Munch.
+
+409
+00:30:22,501 --> 00:30:25,004
+TORY:
+Hey, come on out.
+
+410
+00:30:25,037 --> 00:30:26,205
+Where are you?
+
+411
+00:30:26,238 --> 00:30:29,108
+I wanna tell you
+something important.
+
+412
+00:30:35,514 --> 00:30:37,016
+( laughs )
+
+413
+00:30:43,255 --> 00:30:45,024
+You'll never guess
+what I just did.
+
+414
+00:30:45,057 --> 00:30:46,559
+I helped out a Pokémon.
+
+415
+00:30:46,592 --> 00:30:48,895
+Because it had its head stuck
+inside a garbage can
+
+416
+00:30:48,928 --> 00:30:50,496
+and so I helped to get it out.
+
+417
+00:30:50,529 --> 00:30:52,231
+Isn't that cool?
+
+418
+00:30:52,264 --> 00:30:54,434
+( laughing )
+
+419
+00:30:58,637 --> 00:31:01,207
+( dramatic theme playing )
+
+420
+00:31:28,033 --> 00:31:30,169
+( both panting )
+
+421
+00:31:35,341 --> 00:31:37,076
+( all gasp )
+
+422
+00:31:41,146 --> 00:31:44,350
+Hey, what are those lights?
+
+423
+00:31:44,383 --> 00:31:47,253
+And I was even part
+of a Pokémon battle too.
+
+424
+00:31:47,286 --> 00:31:50,556
+Of course, I wasn't very good,
+so that part kind of stunk.
+
+425
+00:31:50,589 --> 00:31:53,693
+ASH:
+Hey, who are you talking to?
+
+426
+00:31:53,726 --> 00:31:55,295
+Pika.
+
+427
+00:32:06,472 --> 00:32:09,075
+Hey, it's gone.
+
+428
+00:32:11,076 --> 00:32:14,347
+Come on, who was it?
+None of your business.
+
+429
+00:32:14,380 --> 00:32:15,681
+Why, would it hurt
+to tell me?
+
+430
+00:32:15,714 --> 00:32:19,118
+Stop.
+Leave me alone, okay?
+
+431
+00:32:19,151 --> 00:32:20,586
+( grunting )
+Wait a minute.
+
+432
+00:32:20,619 --> 00:32:22,455
+If this town
+is so high-tech,
+
+433
+00:32:22,488 --> 00:32:24,423
+why don't they
+have moving sidewalks?
+
+434
+00:32:24,456 --> 00:32:26,726
+Or robots
+that serve hamburgers?
+
+435
+00:32:26,759 --> 00:32:28,561
+Yeah, keep dreaming.
+
+436
+00:32:28,594 --> 00:32:32,365
+( all groaning )
+
+437
+00:32:32,398 --> 00:32:34,333
+BOY:
+I'll take a hamburger, please.
+
+438
+00:32:34,366 --> 00:32:36,302
+ Hamburger.
+
+439
+00:32:41,240 --> 00:32:42,508
+Yum.
+
+440
+00:32:43,642 --> 00:32:45,311
+( all laugh )
+
+441
+00:32:45,344 --> 00:32:47,279
+ALL:
+Hamburgers, please.
+
+442
+00:32:47,312 --> 00:32:49,582
+ Passport. Passport.
+Passport.
+
+443
+00:32:49,615 --> 00:32:51,083
+What's a passport?
+
+444
+00:32:51,116 --> 00:32:52,718
+Well, I have no idea
+what kind of pass
+
+445
+00:32:52,751 --> 00:32:54,186
+he's talking about.
+
+446
+00:32:54,219 --> 00:32:56,522
+But, Meowth,
+please stop calling me sport.
+
+447
+00:32:56,555 --> 00:32:58,524
+You idiot. Hamburger!
+
+448
+00:32:58,557 --> 00:33:02,161
+Hey, that ain't right.
+Cheeseburger!
+
+449
+00:33:02,194 --> 00:33:04,330
+ Alert. Alert. Alert.
+Now, now, now!
+
+450
+00:33:07,533 --> 00:33:09,502
+( Meowth grunting )
+JESSIE: Come on! Come on!
+
+451
+00:33:09,535 --> 00:33:12,071
+ Come on, come on.
+( Jessie screaming )
+
+452
+00:33:12,104 --> 00:33:14,473
+That was rude.
+Maybe she takes our order?
+
+453
+00:33:14,506 --> 00:33:18,244
+Yeah? Well, I'm pretty good
+at giving orders.
+
+454
+00:33:18,277 --> 00:33:21,447
+So I'm gonna have
+five hamburgers well-done
+
+455
+00:33:21,480 --> 00:33:23,449
+and don't forget
+the french fries.
+
+456
+00:33:23,482 --> 00:33:24,784
+ Well done, it is.
+
+457
+00:33:24,817 --> 00:33:27,253
+( screaming )
+
+458
+00:33:27,286 --> 00:33:28,821
+Jessie got fried!
+
+459
+00:33:28,854 --> 00:33:31,090
+Without the burgers.
+
+460
+00:33:31,123 --> 00:33:34,160
+I think we should battle
+together again.
+
+461
+00:33:34,193 --> 00:33:36,095
+Bet we'll get it right
+next time.
+
+462
+00:33:36,128 --> 00:33:38,697
+Why do you keep following me?
+
+463
+00:33:38,730 --> 00:33:40,533
+WINGULL:
+Gull. Gull. Wingull.
+
+464
+00:33:40,566 --> 00:33:42,135
+Ah!
+
+465
+00:33:43,335 --> 00:33:46,105
+Are you okay?
+Pikachu?
+
+466
+00:33:46,138 --> 00:33:48,207
+Ah!
+Pika.
+
+467
+00:33:49,408 --> 00:33:51,143
+Gee, thanks.
+
+468
+00:33:51,176 --> 00:33:52,845
+Why'd you have to go
+and push me?
+
+469
+00:33:52,878 --> 00:33:56,082
+MAY:
+Ash, stop.
+
+470
+00:33:56,115 --> 00:33:58,584
+Don't start something.
+Okay.
+
+471
+00:34:00,586 --> 00:34:02,621
+Oh! Oh!
+
+472
+00:34:02,654 --> 00:34:04,723
+Hey, I know.
+
+473
+00:34:04,756 --> 00:34:06,358
+Pika.
+
+474
+00:34:06,391 --> 00:34:08,494
+( upbeat theme playing )
+
+475
+00:34:13,699 --> 00:34:16,435
+Hmm. Perfect. Dig in.
+
+476
+00:34:16,468 --> 00:34:17,770
+I'll go first.
+
+477
+00:34:17,803 --> 00:34:20,806
+Second.
+Hold on.
+
+478
+00:34:20,839 --> 00:34:23,342
+Whoa, it's hot.
+
+479
+00:34:23,375 --> 00:34:24,343
+Yum.
+
+480
+00:34:24,376 --> 00:34:26,779
+There's nothing that can stop
+an argument
+
+481
+00:34:26,812 --> 00:34:28,581
+better than a bunch
+of full mouths.
+
+482
+00:34:28,614 --> 00:34:32,085
+Try some, Tory,
+it's really good.
+
+483
+00:34:39,758 --> 00:34:41,694
+You're right.
+Told you so.
+
+484
+00:34:41,727 --> 00:34:43,662
+( all laughing )
+
+485
+00:34:43,695 --> 00:34:46,232
+ASH:
+Guys, look at
+all those Pokémon.
+
+486
+00:34:46,265 --> 00:34:47,633
+SEEDOT:
+Seedot.
+
+487
+00:34:47,666 --> 00:34:49,268
+Well, hi.
+
+488
+00:34:49,301 --> 00:34:52,338
+There's plenty of Pokémon food
+so don't be shy.
+
+489
+00:34:52,371 --> 00:34:54,640
+There. Dig in, guys.
+Seedot.
+
+490
+00:34:54,673 --> 00:34:57,443
+Seedot. Seedot. Seedot.
+
+491
+00:34:57,476 --> 00:35:00,679
+Tory, don't you think
+they're the cutest?
+
+492
+00:35:00,712 --> 00:35:02,248
+Yeah.
+Hey,
+
+493
+00:35:02,281 --> 00:35:03,749
+I bet they'd
+let you pet them.
+
+494
+00:35:03,782 --> 00:35:05,384
+Pika.
+( gasps )
+
+495
+00:35:05,417 --> 00:35:07,120
+Pika.
+
+496
+00:35:09,788 --> 00:35:11,357
+( grunts )
+
+497
+00:35:11,390 --> 00:35:12,658
+( gasping )
+Pika?
+
+498
+00:35:15,460 --> 00:35:18,264
+Thanks, guys. I'm sorry.
+
+499
+00:35:19,198 --> 00:35:21,500
+Well, we tried.
+Pika.
+
+500
+00:35:21,533 --> 00:35:24,303
+I'm sure we'll get through
+to him eventually.
+
+501
+00:35:24,336 --> 00:35:25,905
+Seedot. Seedot.
+Oh, guys!
+
+502
+00:35:25,938 --> 00:35:27,406
+Munch. Munch. Munch.
+
+503
+00:35:28,574 --> 00:35:29,609
+( all gasp )
+
+504
+00:35:29,642 --> 00:35:32,378
+Oh, no, it's a Munchlax,
+and they love to eat.
+
+505
+00:35:32,411 --> 00:35:35,447
+Well, guess
+it's doing what it loves.
+
+506
+00:35:35,480 --> 00:35:38,551
+Hey, you,
+that was our lunch.
+
+507
+00:35:43,589 --> 00:35:44,690
+Munch!
+
+508
+00:35:45,958 --> 00:35:48,794
+Munch. Munch. Munch.
+
+509
+00:35:48,827 --> 00:35:50,296
+Munch.
+
+510
+00:35:51,230 --> 00:35:52,531
+ALL:
+Wow.
+
+511
+00:35:52,564 --> 00:35:55,267
+Hey, it's a Plusle
+and Minun.
+
+512
+00:35:55,300 --> 00:35:56,602
+Hi, cuties.
+
+513
+00:35:56,635 --> 00:35:58,370
+Pika. Pika.
+
+514
+00:35:58,403 --> 00:36:01,574
+( both chattering )
+
+515
+00:36:01,607 --> 00:36:03,542
+Pika. Pika.
+
+516
+00:36:03,575 --> 00:36:06,479
+PELIPPERS:
+Pelipper. Pelipper.
+
+517
+00:36:11,416 --> 00:36:13,919
+MURKROWS:
+Murkrow. Murkrow. Murkrow.
+
+518
+00:36:13,952 --> 00:36:16,489
+( suspenseful theme playing )
+
+519
+00:36:17,990 --> 00:36:20,626
+Murkrow. Murkrow. Murkrow.
+
+520
+00:36:23,528 --> 00:36:27,466
+( explosion )
+( Murkrows shouting )
+
+521
+00:36:43,482 --> 00:36:45,351
+( dramatic theme playing )
+
+522
+00:37:10,442 --> 00:37:12,511
+MAX:
+There's that light
+in the sky again.
+
+523
+00:37:12,544 --> 00:37:13,545
+Awesome.
+
+524
+00:37:13,578 --> 00:37:15,614
+Pika.
+It's beautiful.
+
+525
+00:37:15,647 --> 00:37:18,384
+Well, but that's impossible.
+
+526
+00:37:18,417 --> 00:37:21,353
+What is?
+That's called an aurora,
+
+527
+00:37:21,386 --> 00:37:22,588
+but it can only be seen
+
+528
+00:37:22,621 --> 00:37:24,757
+at the north
+and the south poles.
+
+529
+00:37:24,790 --> 00:37:26,425
+Strange.
+
+530
+00:37:26,458 --> 00:37:27,826
+Well, then I guess,
+
+531
+00:37:27,859 --> 00:37:30,062
+we're lucky to be able
+to see it here, right?
+
+532
+00:37:30,095 --> 00:37:31,563
+The same kind of luck
+
+533
+00:37:31,596 --> 00:37:34,500
+that brought you
+and me together, right, babe?
+
+534
+00:37:34,533 --> 00:37:36,869
+Not sure what kind of luck
+that was.
+
+535
+00:37:36,902 --> 00:37:38,337
+Hi, beautiful.
+
+536
+00:37:38,370 --> 00:37:40,773
+If you're looking
+for a real phenomenon,
+
+537
+00:37:40,806 --> 00:37:44,076
+stop looking in your computer
+and spend some time with me.
+
+538
+00:37:44,109 --> 00:37:49,782
+Okay, you leaving her alone,
+that's a phenomenon.
+
+539
+00:37:49,815 --> 00:37:52,651
+Well, look who's still in town.
+So?
+
+540
+00:37:52,684 --> 00:37:54,553
+Well, after
+that devastating defeat
+
+541
+00:37:54,586 --> 00:37:55,854
+in front
+of thousands of people,
+
+542
+00:37:55,887 --> 00:37:57,656
+I thought you might be
+a little embarrassed
+
+543
+00:37:57,689 --> 00:37:59,558
+to show your face.
+Oh, yeah?
+
+544
+00:37:59,591 --> 00:38:02,661
+How about a rematch tomorrow
+in the Battle Tower?
+
+545
+00:38:02,694 --> 00:38:03,495
+No problem.
+
+546
+00:38:03,528 --> 00:38:06,732
+I'll beat you anytime
+and anywhere.
+
+547
+00:38:06,765 --> 00:38:09,769
+I wouldn't count on that.
+Pika.
+
+548
+00:38:11,136 --> 00:38:14,707
+Hey, I know you.
+Tory.
+
+549
+00:38:16,541 --> 00:38:21,347
+Hey, you guys.
+Yuko and I made these for you.
+
+550
+00:38:21,380 --> 00:38:23,115
+MAX:
+Cool. Pokémon cookies.
+
+551
+00:38:23,148 --> 00:38:24,717
+KATHRYN: Cute.
+AUDREY: Yummy.
+
+552
+00:38:24,750 --> 00:38:26,618
+ASH:
+Come on out, everyone.
+
+553
+00:38:26,651 --> 00:38:28,787
+( Bree Sharp's "The Side
+of Paradise" playing )
+
+554
+00:38:28,820 --> 00:38:31,357
+ ♪ La, la, la, la, la ♪
+
+555
+00:38:31,390 --> 00:38:32,958
+ ♪ La, la, la, la
+La, la, la ♪
+
+556
+00:38:32,991 --> 00:38:36,028
+ ♪ La, la, la, la, la ♪
+
+557
+00:38:36,061 --> 00:38:37,563
+ ♪ La, la, la, la, la, la ♪
+
+558
+00:38:38,730 --> 00:38:40,032
+( grunting )
+
+559
+00:38:40,065 --> 00:38:42,034
+ ♪ There's a place I know ♪
+
+560
+00:38:42,067 --> 00:38:44,036
+ ♪ It's always jumping ♪
+
+561
+00:38:44,069 --> 00:38:45,437
+ ♪ I'm thinking
+We should go ♪
+
+562
+00:38:45,470 --> 00:38:48,607
+ ♪ And leave our worries ♪
+
+563
+00:38:48,640 --> 00:38:50,409
+ ♪ You got a friend in me ♪
+
+564
+00:38:50,442 --> 00:38:52,578
+ ♪ And I'll tell you
+Something ♪
+
+565
+00:38:52,611 --> 00:38:56,648
+ ♪ This time
+Could be extraordinary ♪
+
+566
+00:38:56,681 --> 00:39:00,853
+ ♪ When shadows fall
+You're feeling small ♪
+
+567
+00:39:00,886 --> 00:39:05,124
+ ♪ It looks like walls
+Are closing in ♪
+
+568
+00:39:05,157 --> 00:39:06,458
+ ♪ Don't be afraid ♪
+
+569
+00:39:06,491 --> 00:39:08,093
+ ♪ The dark will fade ♪
+
+570
+00:39:08,126 --> 00:39:10,095
+ ♪ Just take my hand ♪
+
+571
+00:39:10,128 --> 00:39:12,431
+ ♪ And look again ♪
+
+572
+00:39:12,464 --> 00:39:14,733
+ ♪ This side of paradise ♪
+
+573
+00:39:14,766 --> 00:39:16,468
+ ♪ Is where I want to be ♪
+
+574
+00:39:16,501 --> 00:39:18,937
+ ♪ This side of paradise ♪
+
+575
+00:39:18,970 --> 00:39:20,639
+ ♪ For you and me ♪
+
+576
+00:39:20,672 --> 00:39:22,841
+ ♪ This side of paradise ♪
+
+577
+00:39:22,874 --> 00:39:24,777
+ ♪ What you get
+Is what you see ♪
+
+578
+00:39:24,810 --> 00:39:28,947
+ ♪ And I never thought
+I'd see a place as nice ♪
+
+579
+00:39:28,980 --> 00:39:30,616
+ ♪ This side of paradise ♪
+
+580
+00:39:30,649 --> 00:39:32,151
+ ♪ La, la, la, la, la ♪
+
+581
+00:39:32,184 --> 00:39:34,052
+ ♪ La, la, la, la, la, la ♪
+
+582
+00:39:34,085 --> 00:39:36,588
+ ♪ La, la, la, la, la ♪
+
+583
+00:39:36,621 --> 00:39:38,757
+ ♪ La, la, la, la, la ♪
+
+584
+00:39:38,790 --> 00:39:43,028
+ ♪ Forget about the pain
+And doubt ♪
+
+585
+00:39:43,061 --> 00:39:47,633
+ ♪ Your happiness is overdue ♪
+
+586
+00:39:47,666 --> 00:39:49,168
+ ♪ I've been dreaming of ♪
+
+587
+00:39:49,201 --> 00:39:50,903
+ ♪ Dream ♪
+ ♪ The skies above ♪
+
+588
+00:39:50,936 --> 00:39:54,039
+ ♪ Dancing through the stars
+With you ♪
+
+589
+00:39:54,072 --> 00:39:58,444
+ ♪ Oh, take me to ♪
+
+590
+00:39:58,477 --> 00:40:01,046
+ ♪ This side of paradise ♪
+
+591
+00:40:01,079 --> 00:40:02,681
+ ♪ Is where I want to be ♪
+
+592
+00:40:02,714 --> 00:40:05,050
+ ♪ This side of paradise ♪
+
+593
+00:40:05,083 --> 00:40:06,452
+ ♪ For you and me ♪
+
+594
+00:40:06,485 --> 00:40:09,455
+ ♪ This side of paradise ♪
+
+595
+00:40:09,488 --> 00:40:11,123
+ ♪ What you get
+Is what you see ♪
+
+596
+00:40:11,156 --> 00:40:14,760
+ ♪ This side of paradise ♪
+
+597
+00:40:16,695 --> 00:40:19,164
+When is a sandwich
+more than a sandwich?
+
+598
+00:40:19,197 --> 00:40:23,101
+When the sandwich is a meal--
+For Team Rocket to steal.
+
+599
+00:40:23,134 --> 00:40:24,837
+Dinner.
+Dinner.
+
+600
+00:40:26,972 --> 00:40:28,941
+ALL:
+Ah!
+
+601
+00:40:28,974 --> 00:40:30,843
+Huh?
+
+602
+00:40:30,876 --> 00:40:32,678
+Munch. Munch.
+
+603
+00:40:32,711 --> 00:40:34,980
+Did that just happen?
+Munch. Munch. Munch.
+
+604
+00:40:36,114 --> 00:40:37,649
+Munch. Munch. Munch.
+
+605
+00:40:37,682 --> 00:40:39,685
+It's stealing the food
+we were stealing.
+
+606
+00:40:39,718 --> 00:40:40,986
+Oh, no, it's not.
+
+607
+00:40:41,019 --> 00:40:42,821
+( growls )
+
+608
+00:40:42,854 --> 00:40:44,823
+Munch. Munch. Munch.
+JESSIE: Carry all--
+
+609
+00:40:44,856 --> 00:40:47,593
+( all grumbling indistinctly )
+
+610
+00:40:52,664 --> 00:40:54,767
+It's gone.
+
+611
+00:40:55,834 --> 00:40:57,503
+( ominous theme playing )
+
+612
+00:41:12,050 --> 00:41:14,019
+( roars )
+
+613
+00:41:23,895 --> 00:41:26,198
+TORY:
+You know, I've never
+done that before.
+
+614
+00:41:26,231 --> 00:41:27,733
+What?
+
+615
+00:41:27,766 --> 00:41:30,569
+Just playing together
+with a big bunch of friends.
+
+616
+00:41:30,602 --> 00:41:32,137
+Really?
+Yeah.
+
+617
+00:41:32,170 --> 00:41:34,006
+I guess it's because
+I've always been
+
+618
+00:41:34,039 --> 00:41:36,909
+so afraid of Pokémon.
+
+619
+00:41:36,942 --> 00:41:40,712
+So I'm afraid to get close
+to Pokémon trainers too.
+
+620
+00:41:40,745 --> 00:41:43,615
+Guess I've missed out on a lot.
+Hmm.
+
+621
+00:41:43,648 --> 00:41:45,784
+That means
+you're always alone.
+
+622
+00:41:45,817 --> 00:41:47,019
+Pika.
+
+623
+00:41:48,186 --> 00:41:49,688
+Pikachu.
+
+624
+00:41:49,721 --> 00:41:51,323
+But that's all
+in the past, right?
+
+625
+00:41:51,356 --> 00:41:52,958
+Pika.
+
+626
+00:41:57,062 --> 00:41:58,531
+Hmm.
+
+627
+00:42:04,736 --> 00:42:06,672
+Corphish!
+( screams )
+
+628
+00:42:06,705 --> 00:42:08,106
+Corphish!
+Corphish!
+
+629
+00:42:08,139 --> 00:42:09,274
+Corphish!
+
+630
+00:42:09,307 --> 00:42:11,810
+It's okay.
+
+631
+00:42:11,843 --> 00:42:14,780
+There's no rush.
+Okay.
+
+632
+00:42:14,813 --> 00:42:16,915
+That's Corphish.
+
+633
+00:42:16,948 --> 00:42:18,317
+Cor...
+
+634
+00:42:18,350 --> 00:42:20,920
+Pika.
+...phish.
+
+635
+00:42:23,388 --> 00:42:26,191
+TORY:
+Come on, guys, there's someone
+I want you to meet.
+
+636
+00:42:26,224 --> 00:42:27,759
+We are we going?
+
+637
+00:42:27,792 --> 00:42:29,661
+Wherever it is,
+I hope there's a kitchen.
+
+638
+00:42:29,694 --> 00:42:30,963
+( chuckles ):
+I'm starving.
+
+639
+00:42:37,702 --> 00:42:40,673
+ Your passports, please.
+
+640
+00:42:42,974 --> 00:42:44,076
+ Verified.
+
+641
+00:42:45,910 --> 00:42:48,046
+My dad's lab
+is right over there
+
+642
+00:42:48,079 --> 00:42:51,116
+so that's why there are so many
+security robots all over.
+
+643
+00:42:59,658 --> 00:43:00,959
+Come on out.
+
+644
+00:43:00,992 --> 00:43:05,598
+I'm with my new friends.
+Come and meet them.
+
+645
+00:43:10,001 --> 00:43:13,405
+Pika.
+So this is your friend, Tory?
+
+646
+00:43:13,438 --> 00:43:14,973
+But what is it?
+
+647
+00:43:15,006 --> 00:43:17,242
+It's gorgeous.
+And weird.
+
+648
+00:43:17,275 --> 00:43:20,379
+It's always here for me
+whenever I call for it.
+
+649
+00:43:20,412 --> 00:43:22,648
+Yesterday,
+I played with all these guys
+
+650
+00:43:22,681 --> 00:43:24,082
+and their Pokémon too.
+
+651
+00:43:24,115 --> 00:43:25,350
+ALL:
+Wow!
+
+652
+00:43:25,383 --> 00:43:27,319
+Wow, Tory, that's so cool.
+
+653
+00:43:27,352 --> 00:43:29,221
+And it even understands
+what I say.
+
+654
+00:43:29,254 --> 00:43:30,889
+MAY:
+Is it a Pokémon?
+
+655
+00:43:30,922 --> 00:43:32,658
+MAX:
+Not one that I've ever seen.
+
+656
+00:43:32,691 --> 00:43:34,760
+This is just fascinating.
+
+657
+00:43:34,793 --> 00:43:37,262
+What do you say
+I introduce my Pokémon to it?
+
+658
+00:43:37,295 --> 00:43:39,198
+Go!
+
+659
+00:43:41,266 --> 00:43:42,401
+Blaze.
+
+660
+00:43:42,434 --> 00:43:44,002
+Yeah, mine too.
+
+661
+00:43:44,035 --> 00:43:45,671
+BOTH:
+Don't forget ours.
+
+662
+00:43:47,439 --> 00:43:49,274
+Masquerain.
+Blastoise.
+
+663
+00:43:49,307 --> 00:43:51,877
+Now, let me introduce mine.
+
+664
+00:43:53,311 --> 00:43:54,746
+Metagross.
+
+665
+00:43:54,779 --> 00:43:57,015
+A Metagross. Awesome.
+
+666
+00:43:57,048 --> 00:43:58,183
+Meta.
+
+667
+00:43:58,216 --> 00:44:00,185
+Pika.
+( giggles )
+
+668
+00:44:02,487 --> 00:44:04,189
+Blast.
+Blaze.
+
+669
+00:44:06,891 --> 00:44:08,694
+Whoa.
+( all chuckling )
+
+670
+00:44:12,063 --> 00:44:14,166
+I got you!
+
+671
+00:44:14,199 --> 00:44:16,868
+Missed it.
+
+672
+00:44:16,901 --> 00:44:18,403
+Pika.
+
+673
+00:44:18,436 --> 00:44:20,305
+Pi--
+Whoa!
+
+674
+00:44:20,338 --> 00:44:21,907
+Oh!
+Pi--
+
+675
+00:44:23,508 --> 00:44:25,811
+( wind roaring )
+
+676
+00:44:30,482 --> 00:44:32,918
+( howls )
+
+677
+00:44:36,221 --> 00:44:37,189
+( emergency alarm beeps )
+
+678
+00:44:37,222 --> 00:44:39,758
+Unidentified object
+approaching the building.
+
+679
+00:44:39,791 --> 00:44:42,094
+Can you
+analyze it, please?
+
+680
+00:44:43,361 --> 00:44:45,163
+It appears to be a Rayquaza.
+
+681
+00:44:45,196 --> 00:44:46,097
+Rayquaza?
+
+682
+00:44:46,131 --> 00:44:49,234
+Contact Professor Lund now.
+MAN: Right.
+
+683
+00:44:53,071 --> 00:44:56,208
+Professor, how could a Rayquaza
+be coming here?
+
+684
+00:44:56,241 --> 00:44:57,743
+I don't know.
+
+685
+00:44:57,776 --> 00:44:59,811
+But for it to leave
+the ozone layer again,
+
+686
+00:44:59,844 --> 00:45:02,247
+there must be
+a powerful reason.
+
+687
+00:45:03,882 --> 00:45:05,718
+( computers beeping )
+
+688
+00:45:09,220 --> 00:45:11,323
+Do you see that?
+
+689
+00:45:11,356 --> 00:45:12,491
+I'll magnify it.
+
+690
+00:45:12,524 --> 00:45:14,827
+( suspenseful theme playing )
+
+691
+00:45:15,994 --> 00:45:17,362
+That's what I thought.
+
+692
+00:45:17,395 --> 00:45:19,364
+It's Deoxys.
+
+693
+00:45:19,397 --> 00:45:21,734
+( ominous theme playing )
+
+694
+00:45:31,476 --> 00:45:33,044
+COMPUTER:
+ System malfunction.
+
+695
+00:45:33,077 --> 00:45:35,814
+ Losing regulatory control.
+
+696
+00:45:38,950 --> 00:45:40,352
+LUND:
+ Rayquaza must have come here
+
+697
+00:45:40,385 --> 00:45:43,121
+ after sensing that Deoxys
+was here as well.
+
+698
+00:45:43,154 --> 00:45:45,791
+ If those two battle it out
+in our city,
+
+699
+00:45:45,824 --> 00:45:47,292
+ the result
+will be catastrophic.
+
+700
+00:45:47,325 --> 00:45:50,395
+ Evacuate Larousse City
+immediately.
+
+701
+00:45:50,428 --> 00:45:53,098
+Right away, sir.
+
+702
+00:45:53,131 --> 00:45:56,034
+Initiating
+emergency evacuation.
+
+703
+00:45:59,070 --> 00:46:00,338
+JENNY ( over P.A. ):
+ Fellow citizens,
+
+704
+00:46:00,371 --> 00:46:02,974
+ we are facing
+an emergency situation.
+
+705
+00:46:03,007 --> 00:46:05,010
+ Please evacuate immediately.
+
+706
+00:46:05,043 --> 00:46:07,546
+( indistinct chattering )
+
+707
+00:46:07,579 --> 00:46:08,947
+MAN:
+It's party time.
+
+708
+00:46:08,980 --> 00:46:11,082
+ Please be patient.
+
+709
+00:46:11,115 --> 00:46:13,952
+ The next ferry
+will arrive shortly.
+
+710
+00:46:18,356 --> 00:46:20,359
+( indistinct chattering )
+
+711
+00:46:24,062 --> 00:46:26,331
+( alarm blaring )
+
+712
+00:46:29,934 --> 00:46:33,305
+What's that?
+It sounds like the police.
+
+713
+00:46:33,338 --> 00:46:34,940
+ALL:
+Huh?
+
+714
+00:46:38,076 --> 00:46:39,578
+Tory's out in the garden.
+
+715
+00:46:39,611 --> 00:46:42,080
+I have to go out
+and get him.
+
+716
+00:46:42,113 --> 00:46:44,249
+Everyone,
+evacuate immediately.
+
+717
+00:46:44,282 --> 00:46:45,384
+Right.
+
+718
+00:46:52,891 --> 00:46:54,593
+Why won't your
+passport work?
+
+719
+00:46:54,626 --> 00:46:56,161
+This never happens.
+
+720
+00:46:56,194 --> 00:46:57,929
+Maybe, the system
+is shutting down.
+
+721
+00:46:57,962 --> 00:47:00,098
+( all gasp )
+
+722
+00:47:01,466 --> 00:47:03,201
+Huh?
+
+723
+00:47:03,234 --> 00:47:05,270
+It stopped.
+
+724
+00:47:05,303 --> 00:47:06,471
+ Rebooting.
+
+725
+00:47:06,504 --> 00:47:08,207
+( grunts )
+
+726
+00:47:14,345 --> 00:47:16,147
+( grunts )
+
+727
+00:47:16,180 --> 00:47:17,148
+MAN:
+Hey!
+
+728
+00:47:17,181 --> 00:47:18,851
+( speaking indistinctly )
+
+729
+00:47:34,599 --> 00:47:37,302
+WOMAN 1: It's moving.
+WOMAN 2: Where are we going?
+
+730
+00:47:37,335 --> 00:47:38,904
+( girl gasps )
+
+731
+00:47:38,937 --> 00:47:41,973
+WOMAN 3: Excuse me.
+MAN: Watch it.
+
+732
+00:47:42,006 --> 00:47:44,409
+( screams )
+
+733
+00:47:47,312 --> 00:47:49,247
+Professor Lund.
+
+734
+00:47:49,280 --> 00:47:51,249
+Ah.
+
+735
+00:47:51,282 --> 00:47:52,918
+MEOWTH:
+Oh, some vacation
+
+736
+00:47:52,951 --> 00:47:54,119
+this turned out to be.
+
+737
+00:47:54,152 --> 00:47:56,221
+JESSIE:
+Whose bad idea was this?
+
+738
+00:47:56,254 --> 00:47:58,189
+JAMES:
+Let's just say Meowth and I
+were overruled.
+
+739
+00:47:58,222 --> 00:47:59,491
+JESSIE AND MEOWTH:
+Huh?
+
+740
+00:48:11,436 --> 00:48:13,272
+Hey!
+
+741
+00:48:14,706 --> 00:48:17,042
+( suspenseful theme playing )
+
+742
+00:48:20,979 --> 00:48:22,380
+What's happening here?
+
+743
+00:48:22,413 --> 00:48:25,317
+Those things
+are carrying people away.
+
+744
+00:48:25,350 --> 00:48:28,586
+Deoxys, why are you doing
+this to us?
+
+745
+00:48:28,619 --> 00:48:30,422
+( Raybuaza howls )
+Huh?
+
+746
+00:48:30,455 --> 00:48:32,424
+( roars )
+
+747
+00:48:51,743 --> 00:48:53,311
+The force field.
+
+748
+00:48:53,344 --> 00:48:55,480
+( dramatic theme playing )
+
+749
+00:49:08,159 --> 00:49:09,461
+COMPUTER:
+ Losing power.
+
+750
+00:49:09,494 --> 00:49:12,497
+ All systems
+will now shut down.
+
+751
+00:49:22,106 --> 00:49:23,508
+( roars )
+
+752
+00:49:40,091 --> 00:49:42,627
+( roaring )
+
+753
+00:49:42,660 --> 00:49:44,997
+( grunts )
+
+754
+00:49:47,665 --> 00:49:51,302
+Blastoise. Blas--
+
+755
+00:49:51,335 --> 00:49:54,306
+Blastoise.
+
+756
+00:49:55,406 --> 00:49:57,342
+Blastoise.
+
+757
+00:49:57,375 --> 00:49:58,610
+( grunts )
+
+758
+00:49:58,643 --> 00:50:01,112
+BOTH:
+You got it.
+
+759
+00:50:01,145 --> 00:50:03,015
+Hold on a sec.
+
+760
+00:50:07,552 --> 00:50:08,787
+It's multiplying.
+
+761
+00:50:08,820 --> 00:50:11,623
+What is that thing?
+Deoxys.
+
+762
+00:50:11,656 --> 00:50:12,791
+You know its name?
+
+763
+00:50:12,824 --> 00:50:14,125
+You guys, come back.
+
+764
+00:50:14,158 --> 00:50:15,660
+ALL:
+Huh?
+
+765
+00:50:15,693 --> 00:50:17,562
+( all gasp )
+
+766
+00:50:17,595 --> 00:50:19,264
+No, May, look out.
+
+767
+00:50:19,297 --> 00:50:20,832
+Hey, what do you want?
+
+768
+00:50:20,865 --> 00:50:23,368
+Blastoise,
+use Hydro Pump. Go!
+
+769
+00:50:23,401 --> 00:50:25,237
+Blastoise!
+
+770
+00:50:30,408 --> 00:50:33,445
+Blastoise.
+Put me down.
+
+771
+00:50:33,478 --> 00:50:36,281
+Blastoise! Blast!
+
+772
+00:50:36,314 --> 00:50:39,418
+Sid, no!
+May, get in here.
+
+773
+00:50:40,318 --> 00:50:43,421
+Blaziken, use Flamethrower.
+
+774
+00:50:43,454 --> 00:50:46,424
+Blaze.
+
+775
+00:50:46,457 --> 00:50:48,460
+ASH:
+Pikachu, Thunderbolt.
+
+776
+00:50:48,493 --> 00:50:50,562
+PIKACHU:
+Pikachu!
+
+777
+00:50:53,131 --> 00:50:54,866
+Tory, is there
+another way out?
+
+778
+00:50:54,899 --> 00:50:57,368
+Yeah, there is
+an underground exit.
+
+779
+00:50:57,401 --> 00:50:59,704
+Can you show us?
+Yes, follow me.
+
+780
+00:50:59,737 --> 00:51:01,840
+Everyone, let's go.
+
+781
+00:51:01,873 --> 00:51:04,609
+( suspenseful theme playing )
+
+782
+00:51:04,642 --> 00:51:07,212
+Blaze!
+
+783
+00:51:08,379 --> 00:51:10,115
+( screams )
+
+784
+00:51:10,915 --> 00:51:12,450
+Blaze!
+
+785
+00:51:12,483 --> 00:51:15,120
+Way to go, Rafe.
+All in a day's work.
+
+786
+00:51:19,223 --> 00:51:20,492
+What do they want?
+
+787
+00:51:28,533 --> 00:51:29,567
+Let's hurry.
+
+788
+00:51:29,600 --> 00:51:32,604
+Come on, Brock, it's open.
+Okay.
+
+789
+00:51:32,637 --> 00:51:35,474
+All right, Ash, Rafe,
+we gotta go.
+
+790
+00:51:36,941 --> 00:51:39,477
+Pikachu.
+Pika.
+
+791
+00:51:39,510 --> 00:51:41,313
+( grunts )
+
+792
+00:51:42,613 --> 00:51:44,616
+Blaze.
+
+793
+00:51:44,649 --> 00:51:46,351
+Guys, this way.
+
+794
+00:51:51,355 --> 00:51:53,592
+( panting )
+Pika?
+
+795
+00:51:55,359 --> 00:51:56,528
+Pika!
+( all grunt )
+
+796
+00:51:56,561 --> 00:51:58,930
+Pikachu,
+use Thunderbolt now.
+
+797
+00:51:58,963 --> 00:52:01,533
+Pikachu!
+
+798
+00:52:03,401 --> 00:52:07,505
+Thanks, Pikachu.
+Good Thunderbolt.
+
+799
+00:52:07,538 --> 00:52:09,474
+Ash, what are you doing?
+Let's go.
+
+800
+00:52:09,507 --> 00:52:11,443
+This is the way
+to get out of here.
+
+801
+00:52:19,917 --> 00:52:21,819
+Wonder where we are now.
+
+802
+00:52:21,852 --> 00:52:23,922
+It seems to be safe.
+
+803
+00:52:23,955 --> 00:52:25,256
+There you are.
+
+804
+00:52:25,289 --> 00:52:27,559
+TORY:
+It's Yuko.
+
+805
+00:52:29,293 --> 00:52:32,297
+( Pokémon chattering )
+
+806
+00:52:33,531 --> 00:52:35,467
+( panting )
+
+807
+00:52:40,004 --> 00:52:41,673
+Munch.
+
+808
+00:52:44,942 --> 00:52:46,478
+Munch?
+
+809
+00:52:47,645 --> 00:52:49,948
+Munch. Munch.
+
+810
+00:52:49,981 --> 00:52:51,683
+Munch.
+
+811
+00:52:51,716 --> 00:52:53,818
+( wind gusting )
+
+812
+00:52:53,851 --> 00:52:55,587
+( Rayquaza howls )
+
+813
+00:52:55,620 --> 00:52:57,789
+( Rayquaza roars )
+
+814
+00:53:01,592 --> 00:53:02,961
+POLICEWOMAN:
+Professor, take a look
+
+815
+00:53:02,994 --> 00:53:05,230
+at all of these people
+shown here.
+
+816
+00:53:05,263 --> 00:53:07,332
+Their evacuation
+hasn't been confirmed
+
+817
+00:53:07,365 --> 00:53:09,968
+at any
+of the passport checkpoints.
+
+818
+00:53:10,001 --> 00:53:11,469
+I'm afraid that could mean
+
+819
+00:53:11,502 --> 00:53:13,004
+they're still stuck
+in Larousse.
+
+820
+00:53:13,037 --> 00:53:14,806
+( grunts )
+
+821
+00:53:19,477 --> 00:53:21,613
+The entire town is enclosed
+within a force field.
+
+822
+00:53:21,646 --> 00:53:25,250
+It's impossible for anyone
+to come in or to leave.
+
+823
+00:53:25,283 --> 00:53:26,851
+All communication
+with the outside
+
+824
+00:53:26,884 --> 00:53:28,353
+is jammed as well.
+
+825
+00:53:28,386 --> 00:53:30,321
+They've switched
+to backup generators,
+
+826
+00:53:30,354 --> 00:53:32,457
+but all systems
+are still down.
+
+827
+00:53:32,490 --> 00:53:34,692
+Even the Poké Ball
+Management System
+
+828
+00:53:34,725 --> 00:53:35,893
+isn't functioning.
+
+829
+00:53:35,926 --> 00:53:37,528
+Yeah, it won't work.
+
+830
+00:53:37,561 --> 00:53:39,697
+How can we call out
+our Pokémon?
+
+831
+00:53:39,730 --> 00:53:41,032
+Guess we can't.
+
+832
+00:53:41,065 --> 00:53:44,402
+Hey, Tory,
+what did you call that thing?
+
+833
+00:53:44,435 --> 00:53:46,004
+Was it Deoxys?
+Hmm-mm.
+
+834
+00:53:46,037 --> 00:53:47,372
+That's right.
+
+835
+00:53:47,405 --> 00:53:49,774
+A Pokémon from outer space.
+
+836
+00:53:49,807 --> 00:53:51,309
+What?
+
+837
+00:53:51,342 --> 00:53:53,845
+Four years ago,
+a meteorite came down
+
+838
+00:53:53,878 --> 00:53:55,313
+and struck the North Pole.
+
+839
+00:53:55,346 --> 00:53:57,282
+And located inside of it
+
+840
+00:53:57,315 --> 00:53:58,883
+was a completely
+unknown Pokémon.
+
+841
+00:53:58,916 --> 00:54:01,819
+ It was Professor Lund
+who gave that Pokémon
+
+842
+00:54:01,852 --> 00:54:03,354
+ the name Deoxys.
+
+843
+00:54:03,387 --> 00:54:04,622
+( roaring )
+
+844
+00:54:04,655 --> 00:54:06,357
+ But then almost
+immediately,
+
+845
+00:54:06,390 --> 00:54:08,026
+ Rayquaza appeared
+from the ozone
+
+846
+00:54:08,059 --> 00:54:09,527
+ and attacked Deoxys.
+
+847
+00:54:11,762 --> 00:54:14,632
+( roars )
+
+848
+00:54:14,665 --> 00:54:16,801
+ Apparently,
+Rayquaza was threatened
+
+849
+00:54:16,834 --> 00:54:19,671
+ and thought Deoxys
+was invading its territory.
+
+850
+00:54:19,704 --> 00:54:23,708
+ Deoxys vanished deep
+into the sea.
+
+851
+00:54:25,943 --> 00:54:29,013
+BROCK:
+I don't get it. How could it be
+the same Deoxys?
+
+852
+00:54:29,046 --> 00:54:30,782
+After getting beaten
+by Rayquaza,
+
+853
+00:54:30,815 --> 00:54:33,751
+Deoxys must have slowly
+been regenerating.
+
+854
+00:54:33,784 --> 00:54:34,919
+Regenerating?
+
+855
+00:54:34,952 --> 00:54:36,387
+That's right,
+
+856
+00:54:36,420 --> 00:54:38,389
+it has astounding
+regenerative powers.
+
+857
+00:54:38,422 --> 00:54:40,391
+And that's
+what Professor Lund and I
+
+858
+00:54:40,424 --> 00:54:41,826
+have been studying
+all these years.
+
+859
+00:54:47,598 --> 00:54:50,535
+REBECCA:
+It sounds more
+like science fiction.
+
+860
+00:54:50,568 --> 00:54:52,804
+This is something
+I'd love to research.
+
+861
+00:54:52,837 --> 00:54:55,606
+But I wonder if
+it could somehow get in
+
+862
+00:54:55,639 --> 00:54:57,375
+through a crack in the wall.
+
+863
+00:54:58,109 --> 00:54:59,577
+Knock it off, Max.
+
+864
+00:54:59,610 --> 00:55:01,412
+Yeah, stop scaring us
+right now.
+
+865
+00:55:01,445 --> 00:55:02,914
+( laughing ):
+Just kidding.
+
+866
+00:55:02,947 --> 00:55:05,416
+There's no way it's coming in
+through a crack.
+
+867
+00:55:05,449 --> 00:55:07,352
+( door opens )
+What was that?
+
+868
+00:55:07,385 --> 00:55:09,420
+Come on, Blaziken.
+
+869
+00:55:09,453 --> 00:55:10,655
+Blaze. Blaze.
+
+870
+00:55:10,688 --> 00:55:13,524
+( suspenseful theme playing )
+
+871
+00:55:13,557 --> 00:55:15,694
+( clanging and rumbling )
+
+872
+00:55:19,830 --> 00:55:22,367
+Blaze.
+Pika.
+
+873
+00:55:25,069 --> 00:55:27,004
+( both chattering )
+
+874
+00:55:27,037 --> 00:55:28,740
+Oh!
+Pika!
+
+875
+00:55:34,078 --> 00:55:35,580
+Munch.
+
+876
+00:55:36,480 --> 00:55:37,648
+Hey, that's the Pokémon
+
+877
+00:55:37,681 --> 00:55:39,651
+that ate every bite
+of our food.
+
+878
+00:55:40,751 --> 00:55:42,887
+Are you stuck in there,
+Munchlax?
+
+879
+00:55:42,920 --> 00:55:44,889
+Let's see.
+
+880
+00:55:44,922 --> 00:55:46,891
+( grunting )
+
+881
+00:55:50,194 --> 00:55:51,596
+Our sandwiches.
+
+882
+00:55:51,629 --> 00:55:53,898
+Everything
+but the peanut butter. Hmm.
+
+883
+00:55:53,931 --> 00:55:56,968
+And, of course,
+that one was mine.
+
+884
+00:55:59,904 --> 00:56:01,539
+Hold on. Hold on.
+
+885
+00:56:05,009 --> 00:56:09,381
+Okay, please just don't come
+any closer, you two.
+
+886
+00:56:10,915 --> 00:56:13,418
+Pika. Pikachu.
+
+887
+00:56:15,085 --> 00:56:17,121
+Munch.
+( sighs )
+
+888
+00:56:17,154 --> 00:56:19,924
+I'm so hungry.
+So am I.
+
+889
+00:56:19,957 --> 00:56:21,726
+Me too.
+Mu--
+
+890
+00:56:21,759 --> 00:56:22,894
+Mu--?
+
+891
+00:56:22,927 --> 00:56:24,028
+Munchlax.
+
+892
+00:56:24,061 --> 00:56:25,563
+Really? I can have it?
+
+893
+00:56:25,596 --> 00:56:27,966
+Munch. Munch. Munch.
+
+894
+00:56:31,135 --> 00:56:33,871
+ALL: No, thanks.
+Munch.
+
+895
+00:56:33,904 --> 00:56:36,941
+( all gasp and sigh )
+
+896
+00:56:45,149 --> 00:56:47,518
+BROCK:
+We have to find food and water
+right away.
+
+897
+00:56:47,551 --> 00:56:51,489
+Great. And I'll try and find out
+where those people were taken.
+
+898
+00:56:51,522 --> 00:56:54,091
+Yuko, take care
+of my sisters, please.
+
+899
+00:56:54,124 --> 00:56:56,694
+Of course,
+but don't you worry about us.
+
+900
+00:56:56,727 --> 00:56:58,062
+You take care of yourselves.
+
+901
+00:56:58,095 --> 00:56:59,530
+RAFE:
+We will.
+
+902
+00:56:59,563 --> 00:57:01,633
+ASH:
+All right, let's go.
+
+903
+00:57:05,970 --> 00:57:09,207
+Munchlax.
+
+904
+00:57:09,240 --> 00:57:11,742
+Munchlax.
+
+905
+00:57:11,775 --> 00:57:14,045
+( indistinct chattering )
+
+906
+00:57:14,078 --> 00:57:16,014
+( sighs )
+
+907
+00:57:17,615 --> 00:57:19,217
+I'm worried, Max.
+
+908
+00:57:19,250 --> 00:57:22,153
+I really hope
+they're all okay.
+
+909
+00:57:22,186 --> 00:57:23,554
+Yeah, me too.
+
+910
+00:57:23,587 --> 00:57:25,556
+I wish they'd hurry
+and come back.
+
+911
+00:57:25,589 --> 00:57:27,625
+( speaks indistinctly
+)
+
+912
+00:57:34,031 --> 00:57:36,634
+Still no good.
+Nothing's happening.
+
+913
+00:57:36,667 --> 00:57:38,970
+Yeah. It must be tied
+into the town's system.
+
+914
+00:57:39,003 --> 00:57:40,705
+I can see the food
+in there too.
+
+915
+00:57:40,738 --> 00:57:43,274
+We just need to figure out
+a way to break in.
+
+916
+00:57:43,307 --> 00:57:45,109
+Pika. Pika.
+Hmm?            Hmm?
+
+917
+00:57:45,142 --> 00:57:48,012
+Pikachu!
+
+918
+00:57:54,051 --> 00:57:55,186
+It worked.
+
+919
+00:57:55,219 --> 00:57:57,755
+Pikachu, great idea.
+Pikachu.
+
+920
+00:57:58,856 --> 00:58:01,926
+Whoa, gotta catch them all.
+
+921
+00:58:01,959 --> 00:58:04,896
+Pika.
+
+922
+00:58:04,929 --> 00:58:08,132
+Pikachu. Pika?
+
+923
+00:58:08,165 --> 00:58:10,601
+Huh? What is it, Pikachu?
+
+924
+00:58:10,634 --> 00:58:11,903
+( all gasp )
+
+925
+00:58:14,572 --> 00:58:16,007
+Look out!
+Run!
+
+926
+00:58:16,040 --> 00:58:17,509
+Pika!
+
+927
+00:58:21,178 --> 00:58:23,548
+Pika!
+Look out!
+
+928
+00:58:27,151 --> 00:58:28,286
+Plusle. Minun.
+
+929
+00:58:28,319 --> 00:58:30,054
+( both screaming )
+
+930
+00:58:31,822 --> 00:58:33,157
+ASH: Put me down!
+BROCK: Let go!
+
+931
+00:58:33,190 --> 00:58:36,060
+( grunts )
+
+932
+00:58:38,095 --> 00:58:40,565
+Pikachu!
+
+933
+00:58:40,598 --> 00:58:42,099
+( all grunts )
+
+934
+00:58:42,132 --> 00:58:45,036
+No!
+( whimpers )
+
+935
+00:58:45,069 --> 00:58:47,838
+( screaming )
+
+936
+00:58:47,871 --> 00:58:50,575
+Pika.
+( gasps )
+
+937
+00:58:53,077 --> 00:58:55,713
+Here they all come, guys.
+Pika.
+
+938
+00:58:55,746 --> 00:58:57,815
+Come on, Tory,
+let's go.
+
+939
+00:59:03,020 --> 00:59:05,156
+( suspenseful theme playing )
+
+940
+00:59:18,702 --> 00:59:20,304
+Looks like they're all gone.
+
+941
+00:59:20,337 --> 00:59:22,574
+That was close.
+
+942
+00:59:23,707 --> 00:59:25,776
+Oh, Plusle.
+
+943
+00:59:25,809 --> 00:59:27,678
+It's all my fault.
+
+944
+00:59:27,711 --> 00:59:30,047
+I should've.
+
+945
+00:59:30,080 --> 00:59:32,016
+( sighs )
+
+946
+00:59:35,152 --> 00:59:36,621
+I'm sorry.
+
+947
+00:59:36,654 --> 00:59:38,823
+Pika. Pika. Pika.
+
+948
+00:59:38,856 --> 00:59:40,658
+Pikachu.
+
+949
+00:59:42,359 --> 00:59:44,061
+BROCK:
+Ash,
+
+950
+00:59:44,094 --> 00:59:46,697
+look what I just found.
+
+951
+00:59:46,730 --> 00:59:49,934
+Precious water.
+ASH: All right!
+
+952
+00:59:57,875 --> 00:59:59,343
+RAFE:
+Okay, so that's where
+
+953
+00:59:59,376 --> 01:00:01,779
+they're holding everyone
+captive.
+
+954
+01:00:01,812 --> 01:00:04,415
+I guess,
+but what in the world for?
+
+955
+01:00:04,448 --> 01:00:06,183
+ROBOT:
+ Release immediately.
+
+956
+01:00:06,216 --> 01:00:08,719
+ Release immediately.
+
+957
+01:00:08,752 --> 01:00:11,288
+( weakened ):
+ Release immediately.
+
+958
+01:00:11,321 --> 01:00:15,026
+ Release immediate--
+
+959
+01:00:20,431 --> 01:00:22,867
+It let go.
+
+960
+01:00:22,900 --> 01:00:24,636
+But why?
+
+961
+01:00:30,774 --> 01:00:33,745
+( Rayquaza howls )
+
+962
+01:00:40,350 --> 01:00:42,654
+( all snoring )
+
+963
+01:00:51,729 --> 01:00:53,230
+Hmm, go back.
+
+964
+01:00:53,263 --> 01:00:55,266
+Let me just take
+another look at that.
+
+965
+01:00:55,299 --> 01:00:56,768
+Sure.
+
+966
+01:01:01,338 --> 01:01:02,873
+Surskit. Surskit.
+
+967
+01:01:02,906 --> 01:01:05,910
+What is it? What's wrong?
+
+968
+01:01:08,512 --> 01:01:10,815
+Pika.
+
+969
+01:01:10,848 --> 01:01:12,216
+( object clatters )
+Blaze?
+
+970
+01:01:22,960 --> 01:01:25,329
+( both scream )
+Let's get out of here.
+
+971
+01:01:25,362 --> 01:01:27,965
+YOKU:
+Yes, there's an underground
+laboratory.
+
+972
+01:01:27,998 --> 01:01:30,334
+Let's go. Follow me.
+
+973
+01:01:30,367 --> 01:01:32,203
+MAX: Munchlax.
+Munch?
+
+974
+01:01:32,236 --> 01:01:33,871
+Munch. Munch. Munch.
+
+975
+01:01:38,008 --> 01:01:40,478
+Try and stay calm.
+Now go.
+
+976
+01:01:40,511 --> 01:01:42,814
+( dramatic theme playing )
+
+977
+01:02:01,131 --> 01:02:03,834
+We should be safe down here
+for the time being.
+
+978
+01:02:03,867 --> 01:02:06,204
+RAFE: That's good.
+BLAZE: Blaze. Blaze.
+
+979
+01:02:08,238 --> 01:02:09,874
+Pika.
+
+980
+01:02:13,010 --> 01:02:14,178
+ASH:
+What's this?
+
+981
+01:02:14,211 --> 01:02:15,946
+YOKU:
+The lab where we studied Deoxys
+
+982
+01:02:15,979 --> 01:02:17,448
+and its regeneration.
+
+983
+01:02:17,481 --> 01:02:20,017
+There were actually two
+of them before.
+
+984
+01:02:20,050 --> 01:02:21,886
+Rayquaza defeated one
+
+985
+01:02:21,919 --> 01:02:24,321
+while the other Deoxys
+was still dormant
+
+986
+01:02:24,354 --> 01:02:25,990
+inside of this meteorite.
+
+987
+01:02:26,023 --> 01:02:27,391
+TERESA:
+So then you're saying that--
+
+988
+01:02:27,424 --> 01:02:29,393
+YOKU:
+Yes. That crystal,
+
+989
+01:02:29,426 --> 01:02:31,095
+it's a part of Deoxys.
+
+990
+01:02:31,128 --> 01:02:32,530
+Part of--
+
+991
+01:02:32,563 --> 01:02:34,999
+What do you mean?
+Pika.
+
+992
+01:02:38,268 --> 01:02:39,370
+( all gasp )
+
+993
+01:02:44,441 --> 01:02:45,943
+Pika.
+
+994
+01:02:48,078 --> 01:02:50,447
+What?
+Hey, Tory, it's your friend.
+
+995
+01:02:50,480 --> 01:02:52,283
+Pika.
+
+996
+01:02:52,316 --> 01:02:55,419
+Wait a second.
+Then Tory's friend is--
+
+997
+01:02:55,452 --> 01:02:57,421
+Right. It's Deoxys.
+
+998
+01:02:57,454 --> 01:02:58,923
+( all gasp )
+
+999
+01:03:14,404 --> 01:03:15,973
+Huh?
+
+1000
+01:03:16,006 --> 01:03:18,810
+That's it.
+It all makes sense.
+
+1001
+01:03:20,978 --> 01:03:23,881
+This is Tory's friend's
+light pattern.
+
+1002
+01:03:25,215 --> 01:03:27,518
+And this is the pattern
+of the aurora
+
+1003
+01:03:27,551 --> 01:03:29,920
+that covered Larousse.
+
+1004
+01:03:29,953 --> 01:03:31,322
+It's the same.
+
+1005
+01:03:31,355 --> 01:03:33,924
+Yeah, I think it might be
+how they communicate.
+
+1006
+01:03:33,957 --> 01:03:37,561
+Oh, I see.
+So can you tell what it says?
+
+1007
+01:03:37,594 --> 01:03:40,965
+TERESA:
+Well, let's start
+with the green pattern.
+
+1008
+01:03:42,332 --> 01:03:45,069
+This one means friend.
+
+1009
+01:03:45,102 --> 01:03:47,304
+And this one seems
+to be asking,
+
+1010
+01:03:47,337 --> 01:03:49,240
+"Where are you?"
+
+1011
+01:03:49,273 --> 01:03:51,342
+So it's just looking
+for its friend?
+
+1012
+01:03:51,375 --> 01:03:52,209
+Pika.
+
+1013
+01:03:52,243 --> 01:03:54,478
+YOKU:
+Of course. Deoxys carried off
+
+1014
+01:03:54,511 --> 01:03:57,615
+all those people and Pokémon
+because they were interfering
+
+1015
+01:03:57,648 --> 01:03:59,550
+while it searched
+for its friend.
+
+1016
+01:03:59,583 --> 01:04:01,352
+What?
+Deoxys sees certain types
+
+1017
+01:04:01,385 --> 01:04:02,486
+of electrical fields.
+
+1018
+01:04:02,519 --> 01:04:04,588
+But it's not only
+electrical devices
+
+1019
+01:04:04,621 --> 01:04:07,358
+that give off those fields,
+so do people and Pokémon,
+
+1020
+01:04:07,391 --> 01:04:11,262
+and they were blocking
+its vision.
+
+1021
+01:04:11,295 --> 01:04:13,898
+That's why it's moving them
+out of the way,
+
+1022
+01:04:13,931 --> 01:04:15,333
+to find it.
+
+1023
+01:04:18,168 --> 01:04:21,138
+( dramatic theme playing )
+
+1024
+01:04:42,059 --> 01:04:44,362
+( gasps and sighs )
+
+1025
+01:04:52,703 --> 01:04:58,542
+Please, Yuko, you've got
+to help this Deoxys regenerate.
+
+1026
+01:04:58,575 --> 01:05:00,277
+It's so sad.
+
+1027
+01:05:00,310 --> 01:05:02,346
+It's been alone
+all of this time.
+
+1028
+01:05:02,379 --> 01:05:06,984
+You're right. Once Deoxys finds
+its friend, it'll go back home.
+
+1029
+01:05:07,017 --> 01:05:08,319
+Pikachu.
+But the problem is,
+
+1030
+01:05:08,352 --> 01:05:10,220
+the emergency power
+we're running on now
+
+1031
+01:05:10,253 --> 01:05:13,157
+isn't nearly enough necessary
+to operate this device.
+
+1032
+01:05:13,190 --> 01:05:16,160
+If it's electricity you want,
+then I'm your guy.
+
+1033
+01:05:16,193 --> 01:05:18,228
+I can get
+the wind generators going.
+
+1034
+01:05:18,261 --> 01:05:19,596
+Can we help?
+Can we help?
+
+1035
+01:05:19,629 --> 01:05:21,265
+Yes, we'll need everyone's help
+
+1036
+01:05:21,298 --> 01:05:23,033
+to save those people
+and Pokémon.
+
+1037
+01:05:23,066 --> 01:05:24,468
+Let's start working
+on a plan,
+
+1038
+01:05:24,501 --> 01:05:26,670
+and then we'll go out
+to where they're being held.
+
+1039
+01:05:26,703 --> 01:05:28,539
+I'll zero in on it.
+
+1040
+01:05:29,639 --> 01:05:31,041
+That's where they all are.
+
+1041
+01:05:31,074 --> 01:05:33,110
+ASH:
+Great. Let's go get them, guys.
+
+1042
+01:05:33,143 --> 01:05:34,378
+ALL:
+All right!
+
+1043
+01:05:34,411 --> 01:05:38,549
+( suspenseful theme playing )
+
+1044
+01:05:42,519 --> 01:05:44,488
+( all chattering )
+
+1045
+01:05:53,530 --> 01:05:55,532
+( panting )
+
+1046
+01:05:55,565 --> 01:05:59,403
+I'll never take an escalator
+for granted again.
+
+1047
+01:06:14,117 --> 01:06:16,087
+( grunts )
+
+1048
+01:06:18,555 --> 01:06:22,526
+Deoxys, we're not your enemies.
+We're your friends.
+
+1049
+01:06:25,062 --> 01:06:26,330
+If you'll just trust us,
+
+1050
+01:06:26,363 --> 01:06:28,599
+we can help you
+find your friend. I promise.
+
+1051
+01:06:33,103 --> 01:06:35,439
+Blaziken, use Flamethrower now.
+
+1052
+01:06:40,343 --> 01:06:44,048
+Pikachu, Thunderbolt him.
+Pikachu!
+
+1053
+01:06:47,317 --> 01:06:51,088
+Metagross, use Reflector.
+
+1054
+01:06:51,121 --> 01:06:52,389
+Meta!
+
+1055
+01:06:52,422 --> 01:06:54,191
+TERESA:
+Quick, now's our chance.
+
+1056
+01:06:54,224 --> 01:06:56,027
+TORY:
+This way.
+
+1057
+01:06:59,162 --> 01:07:01,331
+Now, Overheat.
+
+1058
+01:07:01,364 --> 01:07:02,466
+Blaze!
+
+1059
+01:07:04,868 --> 01:07:06,770
+You okay?
+
+1060
+01:07:06,803 --> 01:07:09,473
+We're fine, Ash.
+Just go on.
+
+1061
+01:07:09,506 --> 01:07:11,675
+Rafe can handle it.
+
+1062
+01:07:11,708 --> 01:07:15,145
+Just don't let anything happen
+to my sisters, Ash.
+
+1063
+01:07:15,178 --> 01:07:18,082
+You can count on that.
+
+1064
+01:07:19,449 --> 01:07:22,420
+Blaziken, Overheat!
+Blaze.
+
+1065
+01:07:27,791 --> 01:07:30,327
+( roars )
+
+1066
+01:07:46,910 --> 01:07:49,880
+Rayquaza has broken through.
+
+1067
+01:07:49,913 --> 01:07:51,382
+What have I done?
+
+1068
+01:07:59,489 --> 01:08:02,392
+Blaze....
+
+1069
+01:08:02,425 --> 01:08:04,528
+Relax, Blaziken.
+Blaze.
+
+1070
+01:08:12,469 --> 01:08:14,438
+( roars )
+
+1071
+01:08:39,663 --> 01:08:41,599
+( all chattering )
+
+1072
+01:08:42,699 --> 01:08:44,668
+( roars )
+
+1073
+01:08:45,869 --> 01:08:47,638
+Rayquaza.
+Now what's that?
+
+1074
+01:08:47,671 --> 01:08:49,673
+( roaring )
+
+1075
+01:09:01,918 --> 01:09:05,389
+All right, now let's do it
+just like we planned. Okay guys?
+
+1076
+01:09:05,422 --> 01:09:06,523
+BROCK:
+Got you.
+
+1077
+01:09:06,556 --> 01:09:08,559
+TERESA:
+We're with you, Ash.
+
+1078
+01:09:10,994 --> 01:09:12,930
+Munch. Munch. Munch.
+
+1079
+01:09:12,963 --> 01:09:14,665
+Munchlax.
+
+1080
+01:09:14,698 --> 01:09:17,201
+Come on, there's no time for you
+to go back for it.
+
+1081
+01:09:17,234 --> 01:09:19,203
+Oh, Munchlax!
+
+1082
+01:09:26,743 --> 01:09:28,912
+You ready?
+Just about.
+
+1083
+01:09:28,945 --> 01:09:30,547
+All we need
+is the electricity.
+
+1084
+01:09:30,580 --> 01:09:33,817
+But if we had that,
+we wouldn't need to fix it.
+
+1085
+01:09:33,850 --> 01:09:36,353
+What are they doing over there?
+
+1086
+01:09:36,386 --> 01:09:39,323
+I'm hoping he pulls a sandwich
+out of that box.
+
+1087
+01:09:39,356 --> 01:09:42,292
+From your lips,
+to my stomach.
+
+1088
+01:09:42,325 --> 01:09:43,694
+ASH:
+You guys,
+
+1089
+01:09:43,727 --> 01:09:45,729
+we've come to help you.
+
+1090
+01:09:45,762 --> 01:09:47,965
+Hey, Ash, we're up here.
+
+1091
+01:09:47,998 --> 01:09:50,000
+You got Pikachu
+and Plusle, right?
+
+1092
+01:09:50,033 --> 01:09:52,436
+Yeah. We're all set.
+
+1093
+01:09:52,469 --> 01:09:53,604
+Pika.
+
+1094
+01:09:54,738 --> 01:09:56,707
+( Rayquaza roars )
+
+1095
+01:10:00,910 --> 01:10:03,714
+( suspenseful theme playing )
+
+1096
+01:10:20,664 --> 01:10:22,633
+( roars )
+
+1097
+01:10:34,644 --> 01:10:36,614
+( growls )
+
+1098
+01:10:40,650 --> 01:10:42,619
+ASH: Pikachu.
+TORY: Plusle.
+
+1099
+01:10:42,652 --> 01:10:44,388
+BOTH:
+Thunderbolt, now.
+
+1100
+01:10:48,058 --> 01:10:49,893
+SID:
+There's your electricity.
+
+1101
+01:10:49,926 --> 01:10:52,029
+( Pikachu screams )
+
+1102
+01:10:52,062 --> 01:10:53,631
+That's good. Stop.
+
+1103
+01:10:54,731 --> 01:10:57,268
+All right.
+We're recharged.
+
+1104
+01:10:59,936 --> 01:11:01,371
+Yeah!
+
+1105
+01:11:01,404 --> 01:11:03,407
+All right.
+
+1106
+01:11:05,942 --> 01:11:08,378
+( grunting ):
+Ouch.
+
+1107
+01:11:08,411 --> 01:11:10,314
+( both chattering )
+
+1108
+01:11:13,683 --> 01:11:15,319
+( both scream )
+
+1109
+01:11:22,092 --> 01:11:24,428
+You were great, Tory.
+
+1110
+01:11:25,162 --> 01:11:27,698
+( heroic theme playing )
+
+1111
+01:11:33,002 --> 01:11:34,471
+( laughs )
+
+1112
+01:11:38,842 --> 01:11:40,844
+( roars )
+
+1113
+01:11:52,756 --> 01:11:54,725
+( all panting )
+
+1114
+01:11:57,694 --> 01:11:59,730
+( roars )
+
+1115
+01:12:06,403 --> 01:12:07,905
+Let's go.
+Yeah.
+
+1116
+01:12:11,141 --> 01:12:13,877
+( grunts )
+
+1117
+01:12:13,910 --> 01:12:15,879
+That should do it.
+
+1118
+01:12:15,912 --> 01:12:18,382
+Coming down!
+
+1119
+01:12:18,415 --> 01:12:19,716
+( grunts )
+
+1120
+01:12:19,749 --> 01:12:21,685
+( groans )
+
+1121
+01:12:28,892 --> 01:12:31,895
+SID:
+Hey, May, I'm coming for you.
+
+1122
+01:12:31,928 --> 01:12:33,397
+Was that Sid?
+
+1123
+01:12:33,430 --> 01:12:35,866
+BOTH:
+Uh, and Rafe!
+
+1124
+01:12:35,899 --> 01:12:38,101
+May!
+
+1125
+01:12:38,134 --> 01:12:39,970
+( grunts )
+
+1126
+01:12:40,003 --> 01:12:41,671
+Gross.
+
+1127
+01:12:41,704 --> 01:12:42,840
+Metagross.
+
+1128
+01:12:44,174 --> 01:12:45,876
+Audrey, Kathryn,
+you okay?
+
+1129
+01:12:45,909 --> 01:12:47,611
+KATHRYN: Uh-huh.
+AUDREY: We're fine.
+
+1130
+01:12:47,644 --> 01:12:49,146
+Where's Ash and the others?
+
+1131
+01:12:49,179 --> 01:12:50,814
+They went back
+to the laboratory.
+
+1132
+01:12:50,847 --> 01:12:53,917
+Okay, are you ready
+to get started on this?
+
+1133
+01:12:53,950 --> 01:12:55,919
+( switches clicking )
+
+1134
+01:13:06,796 --> 01:13:08,665
+Perfect, the power's
+back on.
+
+1135
+01:13:08,698 --> 01:13:10,434
+Yeah, those guys
+pulled it off.
+
+1136
+01:13:10,467 --> 01:13:11,735
+Mm-hmm.
+
+1137
+01:13:19,008 --> 01:13:20,978
+( all grunting )
+
+1138
+01:13:35,658 --> 01:13:37,828
+( all chattering )
+
+1139
+01:13:43,032 --> 01:13:45,235
+Blaziken. Blaziken.
+
+1140
+01:13:45,268 --> 01:13:48,539
+Metagross.
+
+1141
+01:14:01,284 --> 01:14:03,520
+( all groaning )
+
+1142
+01:14:03,553 --> 01:14:05,655
+My cramp's
+getting a cramp.
+
+1143
+01:14:05,688 --> 01:14:07,691
+We're always spinning
+our wheels
+
+1144
+01:14:07,724 --> 01:14:10,126
+but this is ridiculous.
+
+1145
+01:14:10,159 --> 01:14:11,895
+Just pedal!
+
+1146
+01:14:23,239 --> 01:14:26,243
+I'm set. Are you both ready
+to use the laser?
+
+1147
+01:14:26,276 --> 01:14:29,613
+Yes. I think
+you should turn it on, Tory.
+
+1148
+01:14:29,646 --> 01:14:31,848
+It is your friend after all,
+
+1149
+01:14:31,881 --> 01:14:33,750
+so you should do it.
+
+1150
+01:14:38,154 --> 01:14:39,623
+Hmm.
+
+1151
+01:14:46,029 --> 01:14:47,531
+Here goes.
+
+1152
+01:14:50,667 --> 01:14:53,704
+( dramatic theme playing )
+
+1153
+01:15:07,216 --> 01:15:09,786
+Pika.
+
+1154
+01:15:17,594 --> 01:15:19,663
+TORY:
+Still no good.
+
+1155
+01:15:23,066 --> 01:15:24,334
+Oh, no,
+
+1156
+01:15:24,367 --> 01:15:26,336
+we're still 20 percent short
+on energy.
+
+1157
+01:15:26,369 --> 01:15:28,305
+Wow, we're so close.
+
+1158
+01:15:28,338 --> 01:15:29,973
+Okay, Pikachu,
+
+1159
+01:15:30,006 --> 01:15:32,175
+Plusle, Minun,
+you know what to do.
+
+1160
+01:15:32,208 --> 01:15:33,910
+Pika.
+
+1161
+01:15:33,943 --> 01:15:37,748
+Pikachu!
+( both shouting )
+
+1162
+01:15:43,086 --> 01:15:45,822
+( upbeat theme playing )
+
+1163
+01:15:58,001 --> 01:16:00,670
+Great idea,
+we got just what we need.
+
+1164
+01:16:00,703 --> 01:16:02,939
+It works.
+All right.
+
+1165
+01:16:02,972 --> 01:16:05,142
+( all shouting )
+
+1166
+01:16:16,152 --> 01:16:19,089
+( glass shattering )
+
+1167
+01:16:19,122 --> 01:16:20,991
+( all gasp )
+
+1168
+01:16:34,203 --> 01:16:36,206
+( dramatic theme playing )
+
+1169
+01:16:41,144 --> 01:16:43,380
+We did it!
+
+1170
+01:16:43,413 --> 01:16:46,717
+Oh, Deoxys,
+it's really you.
+
+1171
+01:16:52,288 --> 01:16:54,224
+( chuckles )
+
+1172
+01:17:00,163 --> 01:17:01,765
+Pika!
+
+1173
+01:17:17,947 --> 01:17:20,984
+Deoxys, do you wanna go
+find your friend now?
+
+1174
+01:17:29,292 --> 01:17:31,662
+( both laugh )
+Pika.
+
+1175
+01:17:33,963 --> 01:17:35,065
+Pika.
+
+1176
+01:17:41,504 --> 01:17:43,073
+Pika!
+
+1177
+01:17:48,778 --> 01:17:50,681
+ASH & TORY:
+Whoa!
+
+1178
+01:17:57,253 --> 01:17:59,222
+( roars )
+
+1179
+01:18:13,169 --> 01:18:15,172
+( all gasping )
+
+1180
+01:18:33,523 --> 01:18:36,960
+The force field's gone.
+Just like that?
+
+1181
+01:18:43,332 --> 01:18:44,835
+( roars )
+
+1182
+01:18:56,946 --> 01:18:58,949
+( heroic theme playing )
+
+1183
+01:19:00,883 --> 01:19:02,986
+( roaring )
+
+1184
+01:19:29,312 --> 01:19:31,314
+( whimpers )
+Pika.
+
+1185
+01:19:44,627 --> 01:19:47,163
+( Rayquaza roars )
+
+1186
+01:19:47,196 --> 01:19:49,065
+( both gasp )
+Pika.
+
+1187
+01:20:18,928 --> 01:20:23,033
+( mellow theme playing )
+
+1188
+01:20:52,662 --> 01:20:54,397
+( both gasp )
+Pika.
+
+1189
+01:21:03,072 --> 01:21:04,875
+( both chattering )
+
+1190
+01:21:24,527 --> 01:21:27,097
+( laughing ):
+Pika.
+
+1191
+01:21:39,008 --> 01:21:40,277
+( both gasp )
+Pika!
+
+1192
+01:21:43,212 --> 01:21:45,348
+( suspenseful theme playing )
+
+1193
+01:21:58,728 --> 01:22:00,063
+Hey, knock it off!
+
+1194
+01:22:00,096 --> 01:22:02,198
+Stop, Rayquaza.
+Pika.
+
+1195
+01:22:04,734 --> 01:22:06,202
+( roaring )
+
+1196
+01:22:31,360 --> 01:22:33,296
+( roars )
+
+1197
+01:22:37,466 --> 01:22:40,737
+ Warning! Warning!
+Warning!
+
+1198
+01:22:40,770 --> 01:22:44,407
+ Danger! Danger! Danger!
+
+1199
+01:22:46,409 --> 01:22:49,412
+ Evacuate! Evacuate!
+
+1200
+01:22:49,445 --> 01:22:50,680
+What happened?
+
+1201
+01:22:50,713 --> 01:22:53,483
+Security somehow started up.
+
+1202
+01:23:11,500 --> 01:23:14,170
+ Warning! Evacuate!
+
+1203
+01:23:14,203 --> 01:23:17,106
+ Warning! Evacuate!
+
+1204
+01:23:17,139 --> 01:23:18,341
+ Warning!
+
+1205
+01:23:18,374 --> 01:23:21,110
+( weakening ):
+ Evacuate.
+
+1206
+01:23:21,143 --> 01:23:25,081
+ Warning. E-vac-u-ate.
+
+1207
+01:23:44,433 --> 01:23:47,103
+Somehow security
+has gone on overdrive.
+
+1208
+01:23:47,136 --> 01:23:48,671
+It won't shut down.
+
+1209
+01:23:48,704 --> 01:23:49,806
+Yuko.
+
+1210
+01:23:49,839 --> 01:23:51,441
+Professor Lund.
+
+1211
+01:23:51,474 --> 01:23:53,309
+( roaring )
+
+1212
+01:24:26,275 --> 01:24:28,478
+Everything's
+totally out of control.
+
+1213
+01:24:28,511 --> 01:24:29,612
+Ash, I'm scared.
+
+1214
+01:24:37,620 --> 01:24:39,889
+Rayquaza. Deoxys.
+
+1215
+01:24:39,922 --> 01:24:41,557
+Pika!
+
+1216
+01:24:41,590 --> 01:24:43,159
+Whoa!
+
+1217
+01:24:44,293 --> 01:24:47,130
+Plusle. Minun.
+Pikachu.
+
+1218
+01:24:47,163 --> 01:24:48,297
+Pika.
+
+1219
+01:24:48,330 --> 01:24:50,133
+They almost hit us that time.
+
+1220
+01:24:50,166 --> 01:24:51,734
+Let's try and get back
+to Yuko.
+
+1221
+01:24:51,767 --> 01:24:54,403
+ Tory, can you hear me? Tory?
+
+1222
+01:24:54,436 --> 01:24:55,337
+Daddy.
+
+1223
+01:24:55,371 --> 01:24:57,707
+ You must listen
+to me very carefully.
+
+1224
+01:24:57,740 --> 01:25:01,244
+ As you can see, all the block
+robots are malfunctioning.
+
+1225
+01:25:01,277 --> 01:25:02,478
+The chief robot,
+
+1226
+01:25:02,511 --> 01:25:04,247
+which controls
+all other block robots,
+
+1227
+01:25:04,280 --> 01:25:05,648
+should be near you.
+
+1228
+01:25:05,681 --> 01:25:09,218
+We no longer have power
+over that robot from the booth.
+
+1229
+01:25:09,251 --> 01:25:12,255
+Understand?
+So here's what you have to do.
+
+1230
+01:25:12,288 --> 01:25:14,323
+And I need for you to be brave.
+
+1231
+01:25:14,356 --> 01:25:16,759
+ Tory, do you have
+your passport?
+
+1232
+01:25:16,792 --> 01:25:19,862
+ You must present your passport
+to the chief robot.
+
+1233
+01:25:19,895 --> 01:25:21,597
+ Then everything should unlock
+
+1234
+01:25:21,630 --> 01:25:24,233
+ but only
+for a very brief moment.
+
+1235
+01:25:24,266 --> 01:25:25,501
+ That should allow us
+
+1236
+01:25:25,534 --> 01:25:27,503
+ just enough time
+to regain control.
+
+1237
+01:25:27,536 --> 01:25:30,373
+ And shut down
+the security system.
+
+1238
+01:25:30,406 --> 01:25:32,575
+ Block robots are surrounding
+the battle tower
+
+1239
+01:25:32,608 --> 01:25:35,311
+ making any approach by us
+impossible.
+
+1240
+01:25:35,344 --> 01:25:37,847
+ Son, the fate of our town
+is in your hands.
+
+1241
+01:25:37,880 --> 01:25:40,283
+ I know we can count on you--
+
+1242
+01:25:46,555 --> 01:25:49,692
+ROBOT:
+ Warning! Evacuate!
+
+1243
+01:25:49,725 --> 01:25:50,893
+ Warning!
+
+1244
+01:25:50,926 --> 01:25:53,896
+( weakening ):
+ Eva--
+
+1245
+01:25:53,929 --> 01:25:55,565
+( suspenseful theme playing )
+
+1246
+01:26:02,805 --> 01:26:04,373
+Don't you worry, sir.
+
+1247
+01:26:04,406 --> 01:26:06,209
+Pikachu and I
+are gonna help Tory
+
+1248
+01:26:06,242 --> 01:26:07,777
+save this town together.
+
+1249
+01:26:07,810 --> 01:26:09,279
+Pika.
+
+1250
+01:26:10,546 --> 01:26:12,448
+ASH:
+We've gotta get to that tower.
+
+1251
+01:26:15,284 --> 01:26:18,388
+Look at that.
+Quick, let's go.
+
+1252
+01:26:28,030 --> 01:26:29,899
+Okay. Just a little more.
+
+1253
+01:26:29,932 --> 01:26:31,434
+ALL:
+Whoa!
+
+1254
+01:26:31,467 --> 01:26:33,970
+Munch, Munch, Munch.
+
+1255
+01:26:34,003 --> 01:26:36,472
+Munchlax?
+( all scream )
+
+1256
+01:26:46,715 --> 01:26:48,317
+Snorlax.
+
+1257
+01:26:48,350 --> 01:26:51,354
+A Snorlax. That's it.
+
+1258
+01:26:53,689 --> 01:26:55,291
+Sorry.
+
+1259
+01:27:00,729 --> 01:27:01,864
+Pika.
+
+1260
+01:27:01,897 --> 01:27:03,366
+TORY:
+Hey, Ash.
+
+1261
+01:27:04,933 --> 01:27:07,470
+Tory, don't worry.
+I'm okay.
+
+1262
+01:27:07,503 --> 01:27:09,739
+I'll take care of this.
+
+1263
+01:27:13,709 --> 01:27:15,544
+Pika.
+
+1264
+01:27:15,577 --> 01:27:16,679
+Pikachu.
+
+1265
+01:27:20,582 --> 01:27:21,450
+Pika!
+
+1266
+01:27:21,483 --> 01:27:25,054
+Oh, wow, cool.
+I'm right behind you.
+
+1267
+01:27:25,087 --> 01:27:27,390
+( grunting )
+
+1268
+01:27:35,864 --> 01:27:38,434
+Pika! Pika!
+
+1269
+01:27:47,676 --> 01:27:48,778
+No!
+
+1270
+01:27:51,080 --> 01:27:53,382
+Oh, no.
+Pikachu.
+
+1271
+01:27:53,415 --> 01:27:54,984
+TORY:
+Ash!
+
+1272
+01:27:55,017 --> 01:27:57,653
+Use my passport!
+Throw it.
+
+1273
+01:27:57,686 --> 01:27:58,821
+( grunts )
+
+1274
+01:28:05,394 --> 01:28:06,663
+Pika.
+
+1275
+01:28:09,365 --> 01:28:11,667
+Pika.
+
+1276
+01:28:11,700 --> 01:28:12,835
+Pikachu!
+
+1277
+01:28:12,868 --> 01:28:17,373
+Pika, Pika. Pikachu.
+
+1278
+01:28:35,991 --> 01:28:38,861
+This better work.
+
+1279
+01:28:40,729 --> 01:28:43,366
+COMPUTER:
+ Passport has been verified.
+
+1280
+01:28:43,399 --> 01:28:45,835
+ Disengaging all locks.
+
+1281
+01:28:45,868 --> 01:28:46,969
+I'm almost there.
+
+1282
+01:28:47,002 --> 01:28:48,905
+Disengage.
+
+1283
+01:28:52,775 --> 01:28:53,876
+( chimes )
+
+1284
+01:29:18,167 --> 01:29:20,503
+It worked, guys.
+
+1285
+01:29:25,507 --> 01:29:27,643
+( grunts )
+
+1286
+01:29:29,778 --> 01:29:31,647
+Oh, no, Tory.
+
+1287
+01:29:37,052 --> 01:29:39,455
+( heroic theme playing )
+
+1288
+01:29:40,989 --> 01:29:42,124
+Deoxys.
+
+1289
+01:29:42,157 --> 01:29:43,626
+( laughs )
+
+1290
+01:29:47,729 --> 01:29:48,831
+Pika.
+
+1291
+01:29:50,732 --> 01:29:51,934
+Pikachu.
+
+1292
+01:29:58,674 --> 01:29:59,776
+Pika.
+
+1293
+01:30:02,845 --> 01:30:04,814
+( chuckles )
+
+1294
+01:30:06,982 --> 01:30:09,585
+Pika! Pika!
+
+1295
+01:30:11,220 --> 01:30:13,556
+( chuckling )
+
+1296
+01:30:17,092 --> 01:30:19,662
+Pika. Pika.
+( laughs )
+
+1297
+01:30:19,695 --> 01:30:21,731
+Pika!
+
+1298
+01:30:31,240 --> 01:30:33,543
+( roars )
+
+1299
+01:30:41,049 --> 01:30:44,554
+SNORLAX:
+Snorlax.
+
+1300
+01:30:47,990 --> 01:30:49,959
+( all chuckling )
+
+1301
+01:30:59,234 --> 01:31:01,070
+Tory.
+Daddy.
+
+1302
+01:31:01,103 --> 01:31:03,239
+( Tory laughs )
+
+1303
+01:31:03,272 --> 01:31:05,608
+Tory.
+Hi, Dad.
+
+1304
+01:31:05,641 --> 01:31:08,043
+I'm so happy
+you're safe.
+
+1305
+01:31:08,076 --> 01:31:12,615
+But I'm only okay
+because of my friends.
+
+1306
+01:31:25,627 --> 01:31:27,897
+TORY:
+Come on, guys. That tickles.
+
+1307
+01:31:41,310 --> 01:31:42,878
+PIKACHU:
+Pika.
+
+1308
+01:31:42,911 --> 01:31:45,081
+( majestic theme playing )
+
+1309
+01:31:53,055 --> 01:31:55,925
+Goodbye. I'll miss you.
+
+1310
+01:32:00,796 --> 01:32:03,065
+I wonder where
+they're going.
+
+1311
+01:32:03,098 --> 01:32:04,767
+Yeah.
+
+1312
+01:32:04,800 --> 01:32:08,170
+But now, wherever they go,
+they'll always have each other.
+
+1313
+01:32:08,203 --> 01:32:10,072
+Pikachu.
+
+1314
+01:32:23,051 --> 01:32:24,152
+Hey, Pikachu?
+
+1315
+01:32:24,186 --> 01:32:27,590
+I'm glad that you and I
+will always have each other.
+
+1316
+01:32:27,623 --> 01:32:30,759
+Pika. Pikachu.
+
+1317
+01:32:30,792 --> 01:32:32,662
+( Bree Sharp's
+"This Side of Paradise" plays )
+
+1318
+01:32:35,297 --> 01:32:37,933
+I must have lost
+20 pounds so far.
+
+1319
+01:32:37,966 --> 01:32:39,702
+And you already lost
+your mind.
+
+1320
+01:32:39,735 --> 01:32:41,604
+And I'm losing
+my patience,
+
+1321
+01:32:41,637 --> 01:32:44,139
+so just shut up
+and keep pedaling!
+
+1322
+01:32:44,172 --> 01:32:45,908
+ ♪ La, la, la, la, la ♪
+
+1323
+01:32:45,941 --> 01:32:50,680
+ ♪ La, la, la, la, la
+La, la, la, la, la ♪
+
+1324
+01:32:52,848 --> 01:32:54,850
+ ♪ There's a place I know ♪
+
+1325
+01:32:54,883 --> 01:32:56,852
+ ♪ It's always jumping ♪
+
+1326
+01:32:56,885 --> 01:33:00,990
+ ♪ I'm thinking we should go
+And leave our worries ♪
+
+1327
+01:33:01,023 --> 01:33:03,225
+ ♪ You've got a friend in me ♪
+
+1328
+01:33:03,258 --> 01:33:05,194
+ ♪ And I'll tell you something ♪
+
+1329
+01:33:05,227 --> 01:33:09,331
+ ♪ This time
+Could be extraordinary ♪
+
+1330
+01:33:09,364 --> 01:33:13,836
+ ♪ When shadows fall
+You're feeling small ♪
+
+1331
+01:33:13,869 --> 01:33:17,973
+ ♪ It looks like walls
+Are closing in ♪
+
+1332
+01:33:18,006 --> 01:33:20,943
+ ♪ Don't be afraid
+The dark will fade ♪
+
+1333
+01:33:20,976 --> 01:33:24,880
+ ♪ Just take my hand
+And look again ♪
+
+1334
+01:33:24,913 --> 01:33:27,750
+ ♪ This side of paradise ♪
+
+1335
+01:33:27,783 --> 01:33:28,984
+ ♪ Is where I want to be ♪
+
+1336
+01:33:29,017 --> 01:33:31,820
+ ♪ This side of paradise ♪
+
+1337
+01:33:31,853 --> 01:33:33,288
+ ♪ For you and me ♪
+
+1338
+01:33:33,321 --> 01:33:35,724
+ ♪ This side of paradise ♪
+
+1339
+01:33:35,757 --> 01:33:37,660
+ ♪ What you get
+Is what you see ♪
+
+1340
+01:33:37,693 --> 01:33:41,797
+ ♪ And I never thought
+I'd see a place as nice ♪
+
+1341
+01:33:41,830 --> 01:33:43,132
+ ♪ This side of paradise ♪
+
+1342
+01:33:43,165 --> 01:33:45,034
+ ♪ La, la, la, la, la ♪
+
+1343
+01:33:45,067 --> 01:33:49,338
+ ♪ La, la, la, la, la
+La, la, la, la, la ♪
+
+1344
+01:33:49,371 --> 01:33:51,740
+ ♪ La, la, la, la, la ♪
+
+1345
+01:33:51,773 --> 01:33:53,776
+ ♪ We're gonna take a ride ♪
+
+1346
+01:33:53,809 --> 01:33:55,944
+ ♪ We're gonna
+Catch that train ♪
+
+1347
+01:33:55,977 --> 01:34:00,182
+ ♪ When your at my side
+The world has hope ♪
+
+1348
+01:34:00,215 --> 01:34:02,251
+ ♪ And as we pass on by ♪
+
+1349
+01:34:02,284 --> 01:34:04,153
+ ♪ We all look the same ♪
+
+1350
+01:34:04,186 --> 01:34:08,691
+ ♪ The clouds are high
+The world is open ♪
+
+1351
+01:34:08,724 --> 01:34:12,828
+ ♪ Forget about
+The pain and doubt ♪
+
+1352
+01:34:12,861 --> 01:34:16,832
+ ♪ Your happiness is overdue ♪
+
+1353
+01:34:16,865 --> 01:34:18,901
+ ♪ I've been dreaming of ♪
+
+1354
+01:34:18,934 --> 01:34:20,335
+ ♪ The skies above ♪
+
+1355
+01:34:20,368 --> 01:34:24,206
+ ♪ Dancing through
+The stars with you ♪
+
+1356
+01:34:24,239 --> 01:34:27,976
+ ♪ Oh, take me to ♪
+
+1357
+01:34:28,009 --> 01:34:30,779
+ ♪ This side of paradise ♪
+
+1358
+01:34:30,812 --> 01:34:32,314
+ ♪ Is where I want to be ♪
+
+1359
+01:34:32,347 --> 01:34:34,917
+ ♪ This side of paradise ♪
+
+1360
+01:34:34,950 --> 01:34:36,452
+ ♪ For you and me ♪
+
+1361
+01:34:36,485 --> 01:34:38,887
+ ♪ This side of paradise ♪
+
+1362
+01:34:38,920 --> 01:34:40,923
+ ♪ What you get
+Is what you see ♪
+
+1363
+01:34:40,956 --> 01:34:44,727
+ ♪ And I never thought
+I'll see a place as nice ♪
+
+1364
+01:34:44,760 --> 01:34:46,228
+ ♪ This side of paradise ♪
+
+1365
+01:34:46,261 --> 01:34:49,364
+ ♪ La, la, la, la, la
+La, la, la, la, la ♪
+
+1366
+01:34:49,397 --> 01:34:51,934
+ ♪ This side of paradise ♪
+
+1367
+01:34:51,967 --> 01:34:53,335
+ ♪ For you and me ♪
+
+1368
+01:34:53,368 --> 01:34:56,805
+ ♪ This side of paradise ♪
+
+1369
+01:34:56,838 --> 01:34:58,340
+ ♪ La, la, la, la, la ♪
+
+1370
+01:34:58,373 --> 01:35:00,375
+ ♪ I've been ♪
+
+1371
+01:35:00,408 --> 01:35:01,910
+ ♪ Dreaming ♪
+
+1372
+01:35:01,943 --> 01:35:04,346
+ ♪ This side of paradise ♪
+
+1373
+01:35:04,379 --> 01:35:06,815
+ ♪ For you and me ♪
+
+1374
+01:35:06,848 --> 01:35:08,817
+ ♪ I've been ♪
+
+1375
+01:35:08,850 --> 01:35:10,319
+ ♪ Dreaming ♪
+
+1376
+01:35:10,352 --> 01:35:13,222
+ ♪ This side of paradise ♪
+
+1377
+01:35:13,255 --> 01:35:14,823
+ ♪ For you and me ♪
+
+1378
+01:35:14,856 --> 01:35:17,126
+ ♪ This side of paradise ♪
+
+1379
+01:35:17,159 --> 01:35:19,495
+ ♪ Dreaming ♪
+ ♪ This side of paradise ♪
+
+1380
+01:35:19,528 --> 01:35:22,998
+ ♪ La, la, la, la, la ♪
+
+1381
+01:35:23,031 --> 01:35:25,467
+ ♪ This side of paradise ♪
+
+1382
+01:35:25,500 --> 01:35:28,804
+ ♪ For you and me ♪
+
+1383
+01:35:30,839 --> 01:35:32,841
+ ♪ There's a place I know ♪
+
+1384
+01:35:32,874 --> 01:35:34,843
+ ♪ It's always jumping ♪
+
+1385
+01:35:34,876 --> 01:35:35,978
+ ♪ I'm thinking we should go ♪
+
+1386
+01:35:36,011 --> 01:35:38,981
+ ♪ And leave our worry ♪
+
+1387
+01:35:39,014 --> 01:35:41,083
+ ♪ You've got a friend in me ♪
+
+1388
+01:35:41,116 --> 01:35:43,285
+ ♪ And I'll tell you something ♪
+
+1389
+01:35:43,318 --> 01:35:44,453
+ ♪ This time could be ♪
+
+1390
+01:35:44,486 --> 01:35:47,322
+ ♪ Extraordinary ♪
+
+1391
+01:35:47,355 --> 01:35:51,860
+ ♪ When shadow fall
+You're feeling small ♪
+
+1392
+01:35:51,893 --> 01:35:55,964
+ ♪ It looks like walls
+Are closing in ♪
+
+1393
+01:35:55,997 --> 01:35:58,901
+ ♪ Don't be afraid
+The dark will fade ♪
+
+1394
+01:35:58,934 --> 01:36:00,936
+ ♪ Just take my hand ♪
+
+1395
+01:36:00,969 --> 01:36:02,871
+ ♪ And look again ♪
+
+1396
+01:36:02,904 --> 01:36:05,507
+ ♪ This side of paradise ♪
+
+1397
+01:36:05,540 --> 01:36:07,009
+ ♪ Is where I want to be ♪
+
+1398
+01:36:07,042 --> 01:36:09,578
+ ♪ This side of paradise ♪
+
+1399
+01:36:09,611 --> 01:36:11,146
+ ♪ For you and me ♪
+
+1400
+01:36:11,179 --> 01:36:13,549
+ ♪ This side of paradise ♪
+
+1401
+01:36:13,582 --> 01:36:15,417
+ ♪ What you get
+Is what you see ♪
+
+1402
+01:36:15,450 --> 01:36:19,421
+ ♪ And I never thought
+I'd see a place as nice ♪
+
+1403
+01:36:19,454 --> 01:36:22,057
+ ♪ This side of paradise ♪
+ ♪ La, la, la, la, la ♪
+
+1404
+01:36:22,090 --> 01:36:24,827
+ ♪ La, la, la, la, la ♪
+
+1405
+01:36:24,860 --> 01:36:27,329
+ ♪ La, la, la, la, la ♪
+
+1406
+01:36:27,362 --> 01:36:29,565
+ ♪ La, la, la, la, la ♪
+
+1407
+01:36:29,598 --> 01:36:31,433
+ ♪ We're gonna take a ride ♪
+
+1408
+01:36:31,466 --> 01:36:33,468
+ ♪ We're gonna
+Catch that train ♪
+
+1409
+01:36:33,501 --> 01:36:34,970
+ ♪ When you're at my side ♪
+
+1410
+01:36:35,003 --> 01:36:38,040
+ ♪ The world has opened ♪
+
+1411
+01:36:38,073 --> 01:36:40,075
+ ♪ As we pass on by ♪
+
+1412
+01:36:40,108 --> 01:36:42,077
+ ♪ We all look the same ♪
+
+1413
+01:36:42,110 --> 01:36:43,412
+ ♪ The clouds are high ♪
+
+1414
+01:36:43,445 --> 01:36:46,315
+ ♪ The world is open ♪
+
+1415
+01:36:46,348 --> 01:36:50,586
+ ♪ Forget about
+The pain and doubt ♪
+
+1416
+01:36:50,619 --> 01:36:54,489
+ ♪ Your happiness is overdue ♪
+
+1417
+01:36:54,522 --> 01:36:58,393
+ ♪ I've been dreaming of
+Skies above ♪
+
+1418
+01:36:58,426 --> 01:37:00,362
+ ♪ Dancing through ♪
+
+1419
+01:37:00,395 --> 01:37:01,997
+ ♪ The stars with you ♪
+
+1420
+01:37:02,030 --> 01:37:06,001
+ ♪ Oh, take me to ♪
+
+1421
+01:37:06,034 --> 01:37:08,637
+ ♪ This side of paradise ♪
+
+1422
+01:37:08,670 --> 01:37:10,105
+ ♪ Is where I want to be ♪
+
+1423
+01:37:10,138 --> 01:37:12,908
+ ♪ This side of paradise ♪
+
+1424
+01:37:12,941 --> 01:37:14,476
+ ♪ For you and me ♪
+
+1425
+01:37:14,509 --> 01:37:16,645
+ ♪ This side of paradise ♪
+
+1426
+01:37:16,678 --> 01:37:18,547
+ ♪ What you get
+Is what you see ♪
+
+1427
+01:37:18,580 --> 01:37:22,918
+ ♪ And I never thought
+I'll see a place as nice ♪
+
+1428
+01:37:22,951 --> 01:37:26,355
+ ♪ This side of paradise ♪
+
+1429
+01:37:26,388 --> 01:37:28,090
+ ♪ La, la, la, la, la ♪
+
+1430
+01:37:28,123 --> 01:37:29,658
+ ♪ This side of paradise ♪
+
+1431
+01:37:29,691 --> 01:37:31,460
+ ♪ For you and me ♪
+
+1432
+01:37:31,493 --> 01:37:34,596
+ ♪ This side of paradise ♪
+
+1433
+01:37:34,629 --> 01:37:36,331
+ ♪ La, la, la, la, la ♪
+
+1434
+01:37:36,364 --> 01:37:38,367
+ ♪ I've been ♪
+
+1435
+01:37:38,400 --> 01:37:39,635
+ ♪ Dreaming ♪
+
+1436
+01:37:39,668 --> 01:37:42,337
+ ♪ This side of paradise ♪
+
+1437
+01:37:42,370 --> 01:37:43,972
+ ♪ For you and me ♪
+
+1438
+01:37:44,005 --> 01:37:46,642
+ ♪ This side of paradise
+I've been ♪
+
+1439
+01:37:46,675 --> 01:37:49,111
+ ♪ Dreaming ♪
+
+1440
+01:37:49,144 --> 01:37:52,514
+ ♪ La, la, la, la, la
+La, la, la, la, la ♪
+
+1441
+01:37:52,547 --> 01:37:54,983
+ ♪ This side of paradise ♪
+
+1442
+01:37:55,016 --> 01:37:56,585
+ ♪ For you and me ♪
+
+1443
+01:37:56,618 --> 01:37:59,988
+ ♪ This side of paradise ♪
+
+1444
+01:38:00,021 --> 01:38:02,057
+ ♪ La, la, la, la, la ♪

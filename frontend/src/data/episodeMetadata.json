@@ -8272,5 +8272,57 @@
         "tmdbId": 949406
       }
     ]
+  },
+  "alienearth": {
+    "1": [
+      {
+        "title": "Neverland",
+        "description": "When a spaceship crash-lands on Earth, a sister searches for her brother amidst an unexpected alien threat.",
+        "airDate": "2025-08-12",
+        "tmdbId": 5324625
+      },
+      {
+        "title": "Mr. October",
+        "description": "Tensions rise between rival corporations, a reunion takes place, and a secret is revealed.",
+        "airDate": "2025-08-12",
+        "tmdbId": 6231083
+      },
+      {
+        "title": "Metamorphosis",
+        "description": "The team returns home with unexpected cargo. An unsettling experiment occurs, and a new talent is discovered.",
+        "airDate": "2025-08-19",
+        "tmdbId": 6231084
+      },
+      {
+        "title": "Observation",
+        "description": "An unexpected connection is formed while a covert plot puts everyone in danger.",
+        "airDate": "2025-08-26",
+        "tmdbId": 6231085
+      },
+      {
+        "title": "In Space, No One...",
+        "description": "An outer-space vessel in peril leads to a dangerous reckoning.",
+        "airDate": "2025-09-02",
+        "tmdbId": 6231086
+      },
+      {
+        "title": "The Fly",
+        "description": "Tensions rise as powerful enemies confront each other, a dangerous plan unfolds, and curiosity leads to deadly consequences.",
+        "airDate": "2025-09-09",
+        "tmdbId": 6231388
+      },
+      {
+        "title": "Emergence",
+        "description": "An escape plan is hatched leading to a breaking of factions, betrayals, and a shocking confrontation.",
+        "airDate": "2025-09-16",
+        "tmdbId": 6231389
+      },
+      {
+        "title": "The Real Monsters",
+        "description": "A new power dynamic emerges.",
+        "airDate": "2025-09-23",
+        "tmdbId": 6231390
+      }
+    ]
   }
 }

@@ -1,0 +1,3605 @@
+1
+00:02:34,030 --> 00:02:36,240
+I hear they might promote Bryukhanov.
+
+2
+00:02:37,408 --> 00:02:40,578
+This little problem we have
+with the safety test,
+
+3
+00:02:41,412 --> 00:02:43,914
+if it's completed successfully...
+
+4
+00:02:45,249 --> 00:02:48,002
+Yes, I think promotion's very likely.
+
+5
+00:02:49,045 --> 00:02:51,047
+Who knows, maybe Moscow.
+
+6
+00:02:53,049 --> 00:02:55,426
+Naturally, they'll put me in charge
+once he's gone,
+
+7
+00:02:55,509 --> 00:02:58,262
+and then I'll need someone
+to take my old job.
+
+8
+00:03:00,222 --> 00:03:02,308
+I could pick Sitnikov.
+
+9
+00:03:11,150 --> 00:03:12,943
+I would like to be considered.
+
+10
+00:03:16,489 --> 00:03:17,865
+We'll keep that in mind.
+
+11
+00:03:19,784 --> 00:03:23,913
+Viktor Petrovich, preparations
+for the test have gone smoothly.
+
+12
+00:03:23,996 --> 00:03:27,291
+Comrade Dyatlov's been working
+per my instructions,
+
+13
+00:03:27,375 --> 00:03:30,836
+and Reactor 4 output's been
+reduced to 1,600 megawatts.
+
+14
+00:03:31,712 --> 00:03:35,007
+With your approval, we're ready
+to continue lowering power to...
+
+15
+00:03:35,091 --> 00:03:36,258
+We have to wait.
+
+16
+00:03:37,927 --> 00:03:38,928
+Is, uh...
+
+17
+00:03:39,512 --> 00:03:41,972
+Are you going to ask me
+if there's a problem, Nikolai?
+
+18
+00:03:42,431 --> 00:03:44,266
+You can't read a fucking face?
+
+19
+00:03:44,850 --> 00:03:47,228
+Three years,
+I've tried to finish this test.
+
+20
+00:03:47,311 --> 00:03:48,437
+Three years.
+
+21
+00:03:55,903 --> 00:03:58,114
+I've just had a call from
+the grid controller in Kiev.
+
+22
+00:03:58,197 --> 00:04:00,366
+He says we can't
+lower power any further,
+
+23
+00:04:00,449 --> 00:04:01,742
+not for another 10 hours.
+
+24
+00:04:01,826 --> 00:04:03,661
+A grid controller?
+Where does he get off...
+
+25
+00:04:03,744 --> 00:04:06,372
+It's not the grid controller's
+decision, Dyatlov.
+
+26
+00:04:07,540 --> 00:04:08,874
+It's the end of the month.
+
+27
+00:04:09,667 --> 00:04:12,420
+All the productivity quotas.
+
+28
+00:04:12,503 --> 00:04:15,214
+Everyone's working overtime.
+The factories need power.
+
+29
+00:04:15,297 --> 00:04:17,049
+Someone's pushing down from above.
+
+30
+00:04:17,133 --> 00:04:18,676
+Not that we'll never know who.
+
+31
+00:04:27,351 --> 00:04:29,603
+So, do we have to scrap it or what?
+
+32
+00:04:29,687 --> 00:04:31,480
+No, I don't think so.
+
+33
+00:04:32,148 --> 00:04:34,733
+If we need to wait 10 hours, we wait.
+
+34
+00:04:34,817 --> 00:04:38,237
+Running at half power, we're not
+going to have stability issues?
+
+35
+00:04:38,320 --> 00:04:40,948
+- No, I should think...
+- I'm not asking you.
+
+36
+00:04:44,076 --> 00:04:45,327
+It's safe.
+
+37
+00:04:45,786 --> 00:04:47,204
+We'll maintain at 1,600.
+
+38
+00:04:47,288 --> 00:04:49,707
+I'll go home, get some sleep,
+come back tonight.
+
+39
+00:04:49,790 --> 00:04:51,041
+We'll proceed then.
+
+40
+00:04:51,917 --> 00:04:54,003
+I'll personally supervise the test.
+
+41
+00:04:54,753 --> 00:04:56,547
+And it will be completed.
+
+42
+00:05:00,426 --> 00:05:01,886
+Well, I'm not waiting around, then.
+
+43
+00:05:03,220 --> 00:05:04,555
+Call me when it's done.
+
+44
+00:06:42,152 --> 00:06:43,237
+How do you feel?
+
+45
+00:06:45,614 --> 00:06:48,200
+You went to the doctor yesterday.
+How is your health?
+
+46
+00:06:49,326 --> 00:06:50,411
+You don't know?
+
+47
+00:06:52,621 --> 00:06:53,956
+From Vienna.
+
+48
+00:06:54,248 --> 00:06:55,666
+Do you read German?
+
+49
+00:06:57,459 --> 00:07:02,298
+It says, "At last a Soviet
+scientist who tells the truth."
+
+50
+00:07:02,965 --> 00:07:04,967
+Obviously, I resent the insinuation,
+
+51
+00:07:05,050 --> 00:07:06,176
+but I think it's fair to say
+
+52
+00:07:06,260 --> 00:07:08,554
+you made an excellent impression
+at the conference.
+
+53
+00:07:09,013 --> 00:07:11,056
+Turns out, you're quite good at this.
+
+54
+00:07:11,599 --> 00:07:13,517
+At what? Lying?
+
+55
+00:07:13,601 --> 00:07:16,562
+Statecraft, Legasov. Statecraft.
+
+56
+00:07:16,687 --> 00:07:19,231
+The West is now satisfied
+
+57
+00:07:19,315 --> 00:07:22,151
+that Chernobyl was solely
+the result of operator error,
+
+58
+00:07:22,234 --> 00:07:23,652
+which it essentially was.
+
+59
+00:07:24,445 --> 00:07:26,155
+We have you to thank for that,
+
+60
+00:07:26,238 --> 00:07:27,698
+and we intend to.
+
+61
+00:07:32,036 --> 00:07:34,079
+"Hero of the Soviet Union."
+
+62
+00:07:34,538 --> 00:07:36,290
+Our highest honor.
+
+63
+00:07:36,665 --> 00:07:39,043
+They haven't even given it to me.
+
+64
+00:07:39,627 --> 00:07:42,838
+"Promotion to director
+of the Kurchatov Institute."
+
+65
+00:07:46,258 --> 00:07:47,593
+I'm humbled.
+
+66
+00:07:48,218 --> 00:07:52,222
+I don't think there's anything humble
+about you, Valery Alexeyevich.
+
+67
+00:07:52,306 --> 00:07:54,183
+These rewards are not yours yet.
+
+68
+00:07:54,850 --> 00:07:56,644
+First, your testimony at the trial.
+
+69
+00:07:56,727 --> 00:08:00,648
+Comrade Charkov,
+I understand my duty to the State.
+
+70
+00:08:01,940 --> 00:08:03,901
+But you gave us assurances.
+
+71
+00:08:04,693 --> 00:08:07,154
+The reactors would be made safe.
+
+72
+00:08:07,237 --> 00:08:09,698
+It's been months.
+No changes have been made.
+
+73
+00:08:09,782 --> 00:08:13,118
+- No changes even discussed.
+- First, the trial.
+
+74
+00:08:14,620 --> 00:08:16,914
+Once it's over,
+we will have our villains,
+
+75
+00:08:16,997 --> 00:08:20,167
+we will have our hero,
+we will have our truth.
+
+76
+00:08:21,085 --> 00:08:24,129
+After that,
+we can deal with the reactors.
+
+77
+00:09:49,047 --> 00:09:50,424
+Did you take a train?
+
+78
+00:09:51,049 --> 00:09:53,010
+Yes, I took a train.
+
+79
+00:09:53,927 --> 00:09:55,763
+Now let's talk about Vienna.
+
+80
+00:09:56,847 --> 00:09:58,474
+I'm not here to scold you.
+
+81
+00:09:59,141 --> 00:10:02,478
+I know how the world works
+despite what Shcherbina says.
+
+82
+00:10:03,812 --> 00:10:06,690
+So, why are you here?
+
+83
+00:10:07,900 --> 00:10:09,693
+Because I'm brutally stubborn.
+
+84
+00:10:10,319 --> 00:10:12,070
+Which you were hoping for.
+
+85
+00:10:16,533 --> 00:10:20,287
+Charkov is saying they're going to fix
+the reactors after the trial.
+
+86
+00:10:22,331 --> 00:10:24,458
+Do you believe him?
+
+87
+00:10:27,002 --> 00:10:29,171
+The State will never
+willingly fix the reactors
+
+88
+00:10:29,254 --> 00:10:32,591
+because acknowledging the problem
+means admitting that they lied.
+
+89
+00:10:32,674 --> 00:10:34,384
+They will have to be forced.
+
+90
+00:10:41,683 --> 00:10:44,812
+At the trial,
+you're going to tell the truth.
+
+91
+00:10:46,730 --> 00:10:48,857
+You're going to convince the jury.
+
+92
+00:10:48,941 --> 00:10:50,609
+It's a show trial.
+
+93
+00:10:51,485 --> 00:10:53,278
+The jury's already been
+handed their verdict.
+
+94
+00:10:53,362 --> 00:10:54,696
+I'm not talking about them.
+
+95
+00:10:57,074 --> 00:11:00,953
+The Central Committee have invited
+members of the scientific community
+
+96
+00:11:01,036 --> 00:11:02,454
+to observe the trial.
+
+97
+00:11:02,996 --> 00:11:05,874
+Our colleagues, from Kurchatov,
+
+98
+00:11:06,291 --> 00:11:08,377
+from Sredmash, from Minenergo,
+
+99
+00:11:08,460 --> 00:11:12,047
+they will be sitting in the crowd
+listening to every word you say.
+
+100
+00:11:12,130 --> 00:11:14,341
+A jury that only we know is there.
+
+101
+00:11:14,424 --> 00:11:17,928
+And when your testimony arrives
+at the moment of the explosion?
+
+102
+00:11:19,972 --> 00:11:23,016
+That is when our jury
+will finally hear the truth.
+
+103
+00:11:23,684 --> 00:11:26,728
+- And do what with it?
+- Insist on reform.
+
+104
+00:11:28,272 --> 00:11:30,649
+Not just to the RBMK,
+but the entire industry.
+
+105
+00:11:30,732 --> 00:11:31,733
+No, no, no.
+
+106
+00:11:31,817 --> 00:11:33,318
+- They can't function without us.
+- No, no, no.
+
+107
+00:11:33,402 --> 00:11:34,403
+If we...
+
+108
+00:11:34,486 --> 00:11:38,532
+Do you know what happened to Volkov,
+the man whose report you found?
+
+109
+00:11:39,241 --> 00:11:42,995
+They just removed him
+from his position at the Institute.
+
+110
+00:11:43,912 --> 00:11:46,206
+Sacked for the crime of knowing.
+
+111
+00:11:47,207 --> 00:11:52,212
+And you think that these scientists,
+handpicked to witness a show trial,
+
+112
+00:11:52,296 --> 00:11:55,507
+will somehow be stirred
+into action by me?
+
+113
+00:11:56,300 --> 00:11:59,803
+Because of some heroic stance
+I take in defiance of the State?
+
+114
+00:11:59,887 --> 00:12:01,138
+Yes.
+
+115
+00:12:01,221 --> 00:12:02,264
+Why?
+
+116
+00:12:02,347 --> 00:12:05,767
+Because you're Valery Legasov,
+and you mean something.
+
+117
+00:12:07,936 --> 00:12:10,606
+I'd like to think that if I spoke out,
+it would be enough.
+
+118
+00:12:11,899 --> 00:12:13,734
+But I know how the world works.
+
+119
+00:12:17,112 --> 00:12:19,781
+They will shoot me, Khomyuk.
+
+120
+00:12:23,327 --> 00:12:26,496
+You told me to find out what happened.
+
+121
+00:12:26,580 --> 00:12:28,707
+I spoke to dozens of people.
+
+122
+00:12:28,790 --> 00:12:32,002
+Every word they said, I wrote down.
+
+123
+00:12:33,253 --> 00:12:34,588
+All in these books.
+
+124
+00:12:35,839 --> 00:12:37,507
+These are the ones
+who are still alive.
+
+125
+00:12:37,591 --> 00:12:39,217
+These are the ones who are dead.
+
+126
+00:12:39,301 --> 00:12:40,928
+They died rescuing each other.
+
+127
+00:12:41,428 --> 00:12:44,264
+Putting out fires,
+tending to the wounded.
+
+128
+00:12:44,348 --> 00:12:46,099
+They didn't hesitate.
+They didn't waiver.
+
+129
+00:12:46,183 --> 00:12:48,268
+They simply did what had to be done.
+
+130
+00:12:48,352 --> 00:12:49,353
+So have I.
+
+131
+00:12:50,646 --> 00:12:51,647
+So have I.
+
+132
+00:12:52,689 --> 00:12:54,816
+I went willingly to an open reactor.
+
+133
+00:12:55,651 --> 00:12:58,153
+So I've already given my life.
+
+134
+00:12:59,529 --> 00:13:00,697
+Isn't that enough?
+
+135
+00:13:02,658 --> 00:13:04,993
+No, I'm sorry, but it is not.
+
+136
+00:14:14,479 --> 00:14:17,357
+"The Central Committee of the
+Communist Party of the Soviet Union
+
+137
+00:14:17,441 --> 00:14:20,402
+and the Presidium of the
+Supreme Soviet of the U.S.S.R.
+
+138
+00:14:20,485 --> 00:14:23,780
+has determined that justice
+be carried out on behalf of the People
+
+139
+00:14:23,864 --> 00:14:26,491
+in accordance with the
+general goal of our Party
+
+140
+00:14:26,575 --> 00:14:30,162
+as determined by its 20th,
+21st and 22nd Congresses,
+
+141
+00:14:30,245 --> 00:14:32,164
+which is a Leninist goal.
+
+142
+00:14:32,247 --> 00:14:36,209
+It was, is, and will be the only
+immutable goal in the Soviet state.
+
+143
+00:14:36,293 --> 00:14:37,711
+The path of Leninist principles
+
+144
+00:14:37,794 --> 00:14:40,464
+shall be consistently
+and undeviatingly followed,
+
+145
+00:14:40,547 --> 00:14:43,383
+as it expresses the vital
+interests of the Soviet people,
+
+146
+00:14:43,759 --> 00:14:45,093
+its hopes and aspirations
+
+147
+00:14:45,177 --> 00:14:47,345
+as we guide the life of
+the Party and the State.
+
+148
+00:14:47,596 --> 00:14:49,639
+This session of court is now open,
+
+149
+00:14:49,723 --> 00:14:52,559
+Comrade Judge
+Milan Kadnikov presiding."
+
+150
+00:14:54,186 --> 00:14:55,395
+Indictments.
+
+151
+00:14:55,479 --> 00:14:57,522
+Viktor Bryukhanov,
+
+152
+00:14:57,606 --> 00:14:59,816
+Anatoly Dyatlov,
+
+153
+00:14:59,900 --> 00:15:01,943
+Nikolai Fomin,
+
+154
+00:15:02,027 --> 00:15:05,030
+are accused of violating
+Article 220 Section 2
+
+155
+00:15:05,113 --> 00:15:07,199
+of the Criminal Code
+of the Soviet Union,
+
+156
+00:15:07,282 --> 00:15:11,244
+resulting in a nuclear disaster
+on April 26, 1986.
+
+157
+00:15:12,329 --> 00:15:14,790
+The State calls witnesses
+Comrade Khomyuk
+
+158
+00:15:14,873 --> 00:15:17,292
+of the Byelorussian Nuclear Institute,
+
+159
+00:15:17,375 --> 00:15:21,379
+Comrade Legasov of the Kurchatov
+Institute of Atomic Energy,
+
+160
+00:15:22,172 --> 00:15:25,467
+and Comrade Boris
+Evdokimovich Shcherbina,
+
+161
+00:15:26,134 --> 00:15:28,637
+Deputy Chairman of
+the Council of Ministers
+
+162
+00:15:28,720 --> 00:15:31,515
+and head of the Bureau
+for Fuel and Energy.
+
+163
+00:16:06,341 --> 00:16:10,554
+It began with,
+of all things, a safety test.
+
+164
+00:16:11,763 --> 00:16:14,516
+Why was there need
+for a safety test at all?
+
+165
+00:16:15,225 --> 00:16:18,395
+Reactor number 4 was not new
+when the accident occurred.
+
+166
+00:16:19,146 --> 00:16:23,817
+In fact, it went into operation
+on December 20th, 1983.
+
+167
+00:16:24,734 --> 00:16:27,863
+Eleven days later,
+on the last day of the year,
+
+168
+00:16:28,780 --> 00:16:33,201
+plant director Viktor Bryukhanov
+signed this document,
+
+169
+00:16:34,619 --> 00:16:39,624
+certifying the completion
+of the construction of the reactor.
+
+170
+00:16:41,626 --> 00:16:44,671
+As a result of finishing the work
+before the end of the year,
+
+171
+00:16:46,089 --> 00:16:49,801
+Comrade Bryukhanov was awarded
+Hero of Socialist Labor.
+
+172
+00:16:50,760 --> 00:16:54,264
+Comrade Fomin was awarded
+for Valorous Labor.
+
+173
+00:16:54,681 --> 00:16:58,727
+Comrade Dyatlov was given
+an Order of the Red Banner.
+
+174
+00:17:01,146 --> 00:17:03,607
+But their work was not finished.
+
+175
+00:17:05,317 --> 00:17:08,528
+And this document was a lie.
+
+176
+00:17:10,155 --> 00:17:12,490
+In order to sign this certificate,
+
+177
+00:17:12,741 --> 00:17:16,953
+all safety tests had to have
+been successfully completed,
+
+178
+00:17:17,037 --> 00:17:18,830
+and yet, one remained.
+
+179
+00:17:22,292 --> 00:17:26,504
+A nuclear reactor generates
+heat in the core here.
+
+180
+00:17:27,464 --> 00:17:29,716
+A series of pumps, here and here,
+
+181
+00:17:29,799 --> 00:17:32,844
+send a constant flow of cooling water
+through the core.
+
+182
+00:17:33,345 --> 00:17:35,847
+The core's heat
+turns the water to steam,
+
+183
+00:17:35,931 --> 00:17:38,225
+and the steam spins the turbine here,
+
+184
+00:17:38,308 --> 00:17:39,935
+and the result is electricity.
+
+185
+00:17:40,727 --> 00:17:43,563
+But what if a power plant
+has no power?
+
+186
+00:17:45,357 --> 00:17:48,193
+What if the power feeding
+the plant itself is disrupted?
+
+187
+00:17:48,985 --> 00:17:53,365
+A blackout, equipment failure,
+or an attack by a foreign enemy?
+
+188
+00:17:54,449 --> 00:17:56,326
+If there's no power,
+
+189
+00:17:56,409 --> 00:17:59,162
+the pumps cannot move
+water through the core.
+
+190
+00:17:59,579 --> 00:18:01,998
+And without water, the core overheats,
+
+191
+00:18:02,082 --> 00:18:03,625
+the fuel melts down.
+
+192
+00:18:03,708 --> 00:18:06,211
+In short, a nuclear disaster.
+
+193
+00:18:06,294 --> 00:18:07,420
+The solution?
+
+194
+00:18:08,004 --> 00:18:11,341
+Three diesel fuel
+backup generators here.
+
+195
+00:18:11,925 --> 00:18:13,718
+So, problem solved?
+
+196
+00:18:14,094 --> 00:18:15,470
+No.
+
+197
+00:18:16,054 --> 00:18:18,598
+Bryukhanov knew that the problem
+was not solved at all.
+
+198
+00:18:19,140 --> 00:18:22,060
+The backup generators took
+approximately one minute
+
+199
+00:18:22,143 --> 00:18:24,521
+to reach the speed required
+
+200
+00:18:24,604 --> 00:18:26,815
+to power the pumps
+and prevent a meltdown,
+
+201
+00:18:26,898 --> 00:18:29,901
+and by that time,
+it would be too late.
+
+202
+00:18:31,319 --> 00:18:33,196
+So we arrive at the safety test.
+
+203
+00:18:35,407 --> 00:18:36,783
+The theory was this,
+
+204
+00:18:36,866 --> 00:18:39,077
+if the facility lost power,
+
+205
+00:18:39,160 --> 00:18:41,037
+the turbine, which had been spinning,
+
+206
+00:18:41,121 --> 00:18:43,999
+would take some time
+to slow down and stop.
+
+207
+00:18:44,082 --> 00:18:47,877
+What if you could take the electricity
+it was still generating
+
+208
+00:18:47,961 --> 00:18:49,421
+and transfer it to the pumps?
+
+209
+00:18:49,504 --> 00:18:53,341
+What if the dying turbine could keep
+the pumps working long enough
+
+210
+00:18:53,425 --> 00:18:57,512
+to bridge the 60-second gap
+until the generators came on?
+
+211
+00:19:02,684 --> 00:19:04,019
+Any questions?
+
+212
+00:19:05,603 --> 00:19:08,815
+No. Continue, please.
+
+213
+00:19:10,692 --> 00:19:12,986
+To test this theory,
+
+214
+00:19:13,069 --> 00:19:17,490
+the reactor is placed in a reduced
+power mode, 700 megawatts,
+
+215
+00:19:17,574 --> 00:19:19,326
+to simulate a blackout condition.
+
+216
+00:19:20,410 --> 00:19:22,329
+Then the turbines are turned off,
+
+217
+00:19:22,579 --> 00:19:24,372
+and as they slowly spin down,
+
+218
+00:19:24,456 --> 00:19:26,291
+their electrical output is measured
+
+219
+00:19:26,374 --> 00:19:29,336
+to see if it's enough
+to power the pumps.
+
+220
+00:19:30,003 --> 00:19:31,504
+The science is strong,
+
+221
+00:19:32,505 --> 00:19:37,260
+but a test is only as good
+as the men carrying it out.
+
+222
+00:19:38,678 --> 00:19:41,598
+Now, the first time they tried,
+they failed.
+
+223
+00:19:42,307 --> 00:19:44,601
+The second time they tried,
+they failed.
+
+224
+00:19:45,101 --> 00:19:47,395
+The third time they tried,
+they failed.
+
+225
+00:19:48,104 --> 00:19:50,815
+The fourth time they tried
+
+226
+00:19:50,899 --> 00:19:54,527
+was April 26th, 1986.
+
+227
+00:20:06,706 --> 00:20:08,416
+Comrade Khomyuk.
+
+228
+00:20:32,524 --> 00:20:34,275
+To understand
+what happened that night,
+
+229
+00:20:34,359 --> 00:20:36,403
+we have to go back 10 hours earlier,
+
+230
+00:20:36,486 --> 00:20:39,864
+April 25th, the day the test
+was meant to take place.
+
+231
+00:20:39,948 --> 00:20:43,410
+By 2:00 in the afternoon,
+the reactor has been lowered by half
+
+232
+00:20:43,493 --> 00:20:46,621
+from its normal output level
+of 3,200 megawatts
+
+233
+00:20:46,704 --> 00:20:48,957
+to 1,600 megawatts and is stable
+
+234
+00:20:49,040 --> 00:20:51,960
+and ready to be reduced to its
+final output level for the test,
+
+235
+00:20:52,043 --> 00:20:53,586
+700 megawatts.
+
+236
+00:20:54,254 --> 00:20:57,882
+But before they can proceed,
+there is a phone call.
+
+237
+00:20:59,300 --> 00:21:02,303
+Power grid officials in Kiev
+say that they cannot afford
+
+238
+00:21:02,387 --> 00:21:05,682
+a further reduction in the electricity
+until after midnight.
+
+239
+00:21:05,765 --> 00:21:08,101
+They are asking for a 10-hour delay.
+
+240
+00:21:09,394 --> 00:21:11,229
+This is the first critical moment,
+
+241
+00:21:11,312 --> 00:21:13,940
+the first link
+in the chain of disaster.
+
+242
+00:21:14,023 --> 00:21:17,402
+Competent management would have
+insisted on canceling the test.
+
+243
+00:21:18,611 --> 00:21:21,364
+These three men allowed it to proceed.
+
+244
+00:21:23,283 --> 00:21:25,201
+Why was this delay so dangerous?
+
+245
+00:21:25,535 --> 00:21:27,454
+It created two problems.
+
+246
+00:21:28,121 --> 00:21:30,290
+One of them is scientific in nature,
+
+247
+00:21:32,000 --> 00:21:33,668
+and the other is very human.
+
+248
+00:21:34,919 --> 00:21:36,754
+This is the one
+we will consider first.
+
+249
+00:21:37,797 --> 00:21:41,759
+At midnight, there is a shift change.
+
+250
+00:21:55,273 --> 00:21:56,274
+Hey.
+
+251
+00:21:57,108 --> 00:21:59,694
+- Khodemchuk...
+- Forget it. Find another fool.
+
+252
+00:22:00,445 --> 00:22:02,739
+Toptunov, want to buy a motorcycle?
+
+253
+00:22:02,822 --> 00:22:05,200
+Toptunov?
+He's just a little boy.
+
+254
+00:22:05,283 --> 00:22:07,160
+He's got more hair on his face
+than on his balls.
+
+255
+00:22:07,243 --> 00:22:09,496
+Hair? Is that what's on his lip?
+
+256
+00:22:11,581 --> 00:22:12,665
+Leonid Fedorovych.
+
+257
+00:22:13,291 --> 00:22:15,877
+Akimov says to come to the
+control room as soon as you can.
+
+258
+00:22:15,960 --> 00:22:17,587
+- Is he already here?
+- He came in early.
+
+259
+00:22:18,129 --> 00:22:19,380
+Something about a test.
+
+260
+00:22:21,216 --> 00:22:23,426
+You see? Desperate.
+
+261
+00:22:33,061 --> 00:22:34,229
+Sasha?
+
+262
+00:22:35,897 --> 00:22:38,274
+You know the test
+they were supposed to run?
+
+263
+00:22:39,317 --> 00:22:41,986
+The turbine rundown,
+they tried it last year.
+
+264
+00:22:42,070 --> 00:22:45,240
+They couldn't do it on the day shift,
+so they've given it to us.
+
+265
+00:22:45,323 --> 00:22:46,491
+To us?
+
+266
+00:22:46,574 --> 00:22:47,951
+- We don't know what...
+- Shh...
+
+267
+00:22:49,869 --> 00:22:51,871
+- We don't know what it is.
+- It's fine.
+
+268
+00:22:51,955 --> 00:22:54,082
+We take it down to 700, hold it there,
+
+269
+00:22:54,165 --> 00:22:56,584
+the rest is Stolyarchuk
+and Kirschenbaum, but...
+
+270
+00:22:56,918 --> 00:22:59,254
+Dyatlov is gonna be supervising.
+
+271
+00:22:59,963 --> 00:23:01,798
+I have to do something
+I've never done before
+
+272
+00:23:01,881 --> 00:23:03,216
+with Dyatlov looking over my shoulder?
+
+273
+00:23:03,299 --> 00:23:06,135
+Yeah, well, don't worry,
+we'll do it together.
+
+274
+00:23:06,219 --> 00:23:07,762
+I'm just looking
+at the instructions now.
+
+275
+00:23:09,472 --> 00:23:11,349
+Are we supposed to do those or not?
+
+276
+00:23:20,316 --> 00:23:22,277
+Yes, this is Akimov in 4.
+
+277
+00:23:23,444 --> 00:23:26,406
+I have the manual
+for the rundown test.
+
+278
+00:23:27,073 --> 00:23:28,866
+You did it last year.
+
+279
+00:23:29,659 --> 00:23:32,036
+Yes, in the program,
+there's instructions of what to do,
+
+280
+00:23:32,120 --> 00:23:34,414
+and then, well,
+there's a lot of things crossed out.
+
+281
+00:23:34,497 --> 00:23:35,498
+What should I...
+
+282
+00:23:37,625 --> 00:23:38,751
+Well, what should I...
+
+283
+00:23:41,254 --> 00:23:42,297
+Are you sure?
+
+284
+00:23:43,798 --> 00:23:45,633
+Right. Thank you.
+
+285
+00:23:47,302 --> 00:23:49,554
+He says to follow
+the crossed-out instructions.
+
+286
+00:23:50,096 --> 00:23:51,681
+So then why are they crossed out?
+
+287
+00:23:58,896 --> 00:24:00,398
+We've been cleared to run the test.
+
+288
+00:24:01,399 --> 00:24:02,984
+1,600. Good.
+
+289
+00:24:03,860 --> 00:24:06,487
+Now, is it too much to ask that
+you all know what you're doing?
+
+290
+00:24:06,571 --> 00:24:08,406
+- Well...
+- Yes. Absolutely.
+
+291
+00:24:09,991 --> 00:24:11,451
+- Stolyarchuk?
+- Yes.
+
+292
+00:24:11,534 --> 00:24:14,537
+- Kirschenbaum?
+- Uh, I haven't reviewed.
+
+293
+00:24:14,621 --> 00:24:16,414
+We only just found out really...
+
+294
+00:24:16,497 --> 00:24:17,707
+There, review it.
+
+295
+00:24:17,790 --> 00:24:19,876
+Or you can just do what I tell you.
+
+296
+00:24:19,959 --> 00:24:22,587
+I think even you, stupid as you are,
+can manage that.
+
+297
+00:24:23,755 --> 00:24:24,756
+Well, let's go.
+
+298
+00:24:28,718 --> 00:24:31,638
+I'm supposed to switch the turbine off
+while the reactor's still running?
+
+299
+00:24:31,721 --> 00:24:35,141
+- This is not good...
+- Shut the fuck up and do your job!
+
+300
+00:24:36,225 --> 00:24:39,646
+Toptunov, reduce power to 700.
+
+301
+00:24:41,481 --> 00:24:43,524
+I've never done this
+with the power so low before.
+
+302
+00:24:43,608 --> 00:24:44,984
+It's okay. I'm with you.
+
+303
+00:24:50,823 --> 00:24:52,367
+Reducing power to 700.
+
+304
+00:24:53,993 --> 00:24:56,245
+I want you
+to think of Yuri Gagarin.
+
+305
+00:24:58,414 --> 00:25:01,042
+I want you to imagine
+that he has been told nothing
+
+306
+00:25:01,125 --> 00:25:02,377
+of his mission into space
+
+307
+00:25:02,460 --> 00:25:04,629
+until the moment
+that he is on the launch pad.
+
+308
+00:25:04,921 --> 00:25:06,964
+I want you to imagine that all he has
+
+309
+00:25:07,048 --> 00:25:09,634
+is a list of instructions
+that he has never seen before,
+
+310
+00:25:09,717 --> 00:25:11,761
+some of which have been crossed out.
+
+311
+00:25:12,261 --> 00:25:16,015
+This is exactly what was happening
+in the control room of Reactor 4.
+
+312
+00:25:16,766 --> 00:25:19,394
+The night shift had not been trained
+to perform the experiment.
+
+313
+00:25:19,477 --> 00:25:22,063
+They hadn't even been
+warned it was happening.
+
+314
+00:25:22,146 --> 00:25:24,065
+Leonid Toptunov,
+
+315
+00:25:24,148 --> 00:25:26,734
+the operator
+responsible for controlling
+
+316
+00:25:26,818 --> 00:25:29,278
+and stabilizing the reactor
+that night was
+
+317
+00:25:30,738 --> 00:25:32,699
+all of 25 years old.
+
+318
+00:25:34,158 --> 00:25:36,035
+And his total experience on the job?
+
+319
+00:25:37,286 --> 00:25:38,371
+Four months.
+
+320
+00:25:40,248 --> 00:25:42,875
+This is the human problem
+created by the delay.
+
+321
+00:25:44,001 --> 00:25:46,879
+But inside the reactor core,
+
+322
+00:25:46,963 --> 00:25:49,090
+in the space
+between the atoms themselves,
+
+323
+00:25:49,590 --> 00:25:52,260
+something far more dangerous
+is forming.
+
+324
+00:25:52,343 --> 00:25:53,761
+A poison.
+
+325
+00:25:55,555 --> 00:25:57,348
+The time is 28 past midnight.
+
+326
+00:26:16,159 --> 00:26:17,744
+Comrade Legasov.
+
+327
+00:26:55,406 --> 00:26:57,825
+I'm pleased to see some
+of my colleagues here
+
+328
+00:26:57,909 --> 00:27:00,578
+from the Kurchatov Institute
+and Minenergo.
+
+329
+00:27:02,038 --> 00:27:04,081
+But you don't
+need to be a nuclear scientist
+
+330
+00:27:04,165 --> 00:27:06,167
+to understand what
+happened at Chernobyl.
+
+331
+00:27:07,210 --> 00:27:09,295
+You only need to know this.
+
+332
+00:27:09,378 --> 00:27:14,050
+There are essentially two things
+that happen inside a nuclear reactor.
+
+333
+00:27:14,717 --> 00:27:20,515
+The reactivity, which generates power,
+either goes up or it goes down.
+
+334
+00:27:21,182 --> 00:27:22,183
+That's it.
+
+335
+00:27:22,850 --> 00:27:25,895
+All the operators do
+is maintain balance.
+
+336
+00:27:28,898 --> 00:27:30,066
+Uranium fuel.
+
+337
+00:27:32,693 --> 00:27:37,406
+As uranium atoms split apart
+and collide, reactivity goes up.
+
+338
+00:27:37,490 --> 00:27:39,450
+But if you don't balance
+the reactivity,
+
+339
+00:27:39,534 --> 00:27:41,536
+it never stops rising. So...
+
+340
+00:27:43,788 --> 00:27:46,207
+Boron control rods.
+
+341
+00:27:46,290 --> 00:27:50,962
+They reduce reactivity
+like brakes on a car.
+
+342
+00:27:52,463 --> 00:27:56,175
+But there's a third factor
+to consider, water.
+
+343
+00:27:57,844 --> 00:28:00,388
+Cool water takes heat
+out of the system.
+
+344
+00:28:00,471 --> 00:28:03,808
+As it does, it turns to steam,
+or what we call a "void."
+
+345
+00:28:03,891 --> 00:28:07,311
+In an RBMK reactor
+of the type used at Chernobyl,
+
+346
+00:28:07,395 --> 00:28:11,232
+there's something called
+a "positive void coefficient."
+
+347
+00:28:11,315 --> 00:28:12,483
+What does that mean?
+
+348
+00:28:13,359 --> 00:28:17,697
+It means that the more steam
+present within the system,
+
+349
+00:28:17,780 --> 00:28:19,866
+the higher the reactivity,
+
+350
+00:28:19,949 --> 00:28:22,869
+which means more heat,
+which means more steam,
+
+351
+00:28:22,952 --> 00:28:23,953
+which means...
+
+352
+00:28:24,912 --> 00:28:28,291
+It would appear we have
+a vicious cycle on our hands.
+
+353
+00:28:28,666 --> 00:28:31,419
+And we would, were it not for this...
+
+354
+00:28:37,550 --> 00:28:42,930
+And we would, were it not for this,
+
+355
+00:28:43,014 --> 00:28:45,308
+the negative temperature coefficient.
+
+356
+00:28:46,642 --> 00:28:52,315
+When nuclear fuel gets hotter,
+it gets less reactive,
+
+357
+00:28:53,608 --> 00:28:55,526
+so fuel increases reactivity.
+
+358
+00:28:56,235 --> 00:28:59,113
+Control rods and water reduce it.
+
+359
+00:28:59,196 --> 00:29:01,574
+Steam increases it,
+
+360
+00:29:01,657 --> 00:29:04,118
+and the rise in temperature
+reduces it.
+
+361
+00:29:05,870 --> 00:29:08,706
+This is the invisible dance
+
+362
+00:29:08,789 --> 00:29:12,460
+that powers entire cities
+without smoke or flame.
+
+363
+00:29:12,543 --> 00:29:14,879
+And it is beautiful,
+
+364
+00:29:15,963 --> 00:29:17,465
+when things are normal.
+
+365
+00:29:19,300 --> 00:29:22,219
+As uranium splits apart
+to release energy,
+
+366
+00:29:22,303 --> 00:29:25,723
+it breaks down
+into a new element, xenon.
+
+367
+00:29:25,806 --> 00:29:28,726
+Xenon reduces reactivity.
+
+368
+00:29:28,809 --> 00:29:31,354
+This is the poison
+Comrade Khomyuk mentioned.
+
+369
+00:29:32,313 --> 00:29:34,357
+When the core
+is running at full power,
+
+370
+00:29:34,440 --> 00:29:37,318
+it burns the xenon away
+before it can cause a problem.
+
+371
+00:29:37,401 --> 00:29:39,612
+But because of the delay,
+
+372
+00:29:39,695 --> 00:29:44,533
+Chernobyl Reactor 4 has been held
+at half power for 10 hours.
+
+373
+00:29:45,242 --> 00:29:47,495
+The xenon did not burn away.
+
+374
+00:29:49,330 --> 00:29:52,291
+It built up, poisoning the core.
+
+375
+00:29:53,751 --> 00:29:55,503
+We're starting to lose balance.
+
+376
+00:29:55,586 --> 00:29:59,382
+At 28 minutes past midnight,
+
+377
+00:29:59,465 --> 00:30:02,468
+the reactor is now primed
+to slow down.
+
+378
+00:30:03,302 --> 00:30:06,514
+And yet, in less than an hour,
+it will explode.
+
+379
+00:30:07,556 --> 00:30:10,643
+If you can't understand
+how a stalled nuclear reactor
+
+380
+00:30:10,726 --> 00:30:13,437
+could lead to an explosion,
+I don't blame you.
+
+381
+00:30:13,521 --> 00:30:17,274
+After all, you don't work in the
+control room of a nuclear power plant.
+
+382
+00:30:18,192 --> 00:30:20,569
+But as it turned out,
+
+383
+00:30:20,653 --> 00:30:24,657
+the men who did
+didn't understand it either.
+
+384
+00:30:31,038 --> 00:30:32,081
+Easy now.
+
+385
+00:30:32,581 --> 00:30:33,708
+Take it down.
+
+386
+00:30:34,625 --> 00:30:36,836
+Good. Like that.
+
+387
+00:30:36,919 --> 00:30:38,421
+You should have
+finished by now.
+
+388
+00:30:38,504 --> 00:30:40,464
+We're following protocol
+for reduction rate.
+
+389
+00:30:40,548 --> 00:30:42,383
+You're procrastinating.
+
+390
+00:30:42,466 --> 00:30:44,927
+There are 10 other men in this plant
+who would've done it already.
+
+391
+00:30:45,011 --> 00:30:47,346
+Keep working.
+You're doing fine.
+
+392
+00:30:56,856 --> 00:31:00,234
+Kirschenbaum, come get me
+when these old women are ready.
+
+393
+00:31:00,317 --> 00:31:01,610
+Yes, Comrade Dyatlov.
+
+394
+00:31:21,047 --> 00:31:25,468
+Okay, very slow now.
+Let's ease it down to 700.
+
+395
+00:31:28,804 --> 00:31:32,141
+- Whoa, whoa, whoa, slow.
+- I didn't move any rods there.
+
+396
+00:31:41,734 --> 00:31:45,154
+- What is this?
+- I'm not even touching it.
+
+397
+00:32:10,179 --> 00:32:11,305
+We did everything right.
+
+398
+00:32:11,388 --> 00:32:12,765
+I think that
+maybe the core is poisoned.
+
+399
+00:32:12,848 --> 00:32:14,266
+Well, if you thought
+the core was poisoned,
+
+400
+00:32:14,350 --> 00:32:16,894
+then you didn't do everything right,
+because you're choking my reactor!
+
+401
+00:32:16,977 --> 00:32:18,020
+Get it back up!
+
+402
+00:32:18,104 --> 00:32:20,314
+I think if we turn off LAC,
+
+403
+00:32:20,397 --> 00:32:22,316
+it may be possible
+to get more control.
+
+404
+00:32:22,399 --> 00:32:25,111
+- Do it. Go.
+- Switch off local automatic control.
+
+405
+00:32:25,194 --> 00:32:27,279
+Go to global. Leonid.
+
+406
+00:32:28,155 --> 00:32:30,574
+LAC disabled.
+Global control activated.
+
+407
+00:32:36,747 --> 00:32:38,207
+What did you do?
+
+408
+00:32:39,208 --> 00:32:41,836
+- I did what you said. I switched...
+- Look at it!
+
+409
+00:32:43,212 --> 00:32:45,464
+- I don't understand.
+- Fucking amateurs.
+
+410
+00:32:45,548 --> 00:32:47,383
+You've stalled the reactor.
+
+411
+00:32:47,466 --> 00:32:49,301
+How the fuck
+did you get this job?
+
+412
+00:32:49,385 --> 00:32:50,469
+Comrade Dyatlov...
+
+413
+00:32:50,553 --> 00:32:52,179
+You're gonna tell me
+you did everything right again,
+
+414
+00:32:52,263 --> 00:32:53,639
+you incompetent asshole?
+
+415
+00:32:53,722 --> 00:32:56,433
+I apologize for this
+unsatisfactory result.
+
+416
+00:33:02,314 --> 00:33:03,399
+What are you doing?
+
+417
+00:33:03,732 --> 00:33:05,568
+We have to shut all the way down.
+
+418
+00:33:05,651 --> 00:33:08,112
+- No.
+- We could be in a xenon pit.
+
+419
+00:33:08,195 --> 00:33:09,655
+We have to shut down
+and wait 24 hours.
+
+420
+00:33:09,738 --> 00:33:11,782
+No. We're doing the test tonight.
+Raise power to 700.
+
+421
+00:33:11,866 --> 00:33:13,242
+We can't raise
+the power from here.
+
+422
+00:33:13,325 --> 00:33:14,910
+- The rules...
+- Don't talk to me about rules.
+
+423
+00:33:14,994 --> 00:33:17,163
+- If we fall from 80%...
+- No, no. We fell from 50%.
+
+424
+00:33:17,246 --> 00:33:19,415
+- 50% is even worse.
+- The rules don't say 50.
+
+425
+00:33:19,498 --> 00:33:20,791
+There is no rule!
+
+426
+00:33:20,875 --> 00:33:24,753
+Comrade Dyatlov, I apologize,
+but what you're saying makes no sense.
+
+427
+00:33:24,837 --> 00:33:26,755
+- Raise the power.
+- No.
+
+428
+00:33:28,132 --> 00:33:29,967
+I won't do it. It isn't safe.
+
+429
+00:33:39,310 --> 00:33:42,062
+Safety first. Always.
+
+430
+00:33:42,938 --> 00:33:45,399
+I've been saying that for 25 years.
+
+431
+00:33:45,482 --> 00:33:47,484
+That's how long
+I've done this job, 25 years.
+
+432
+00:33:47,568 --> 00:33:48,861
+Is that longer than you, Akimov?
+
+433
+00:33:48,944 --> 00:33:50,029
+Yes.
+
+434
+00:33:50,112 --> 00:33:52,323
+- Is it much longer?
+- Yes.
+
+435
+00:33:52,406 --> 00:33:54,950
+And you with your mother's tit
+barely out of your mouth?
+
+436
+00:33:57,536 --> 00:33:59,705
+So if I say it's safe, it's safe.
+
+437
+00:33:59,788 --> 00:34:01,081
+And if the two of you disagree,
+
+438
+00:34:01,165 --> 00:34:03,125
+then you don't have to work here
+and you won't.
+
+439
+00:34:03,209 --> 00:34:04,210
+But not just here.
+
+440
+00:34:04,293 --> 00:34:07,755
+You won't work at Kursk or Ignalina
+or Leningrad or Novovoronezh.
+
+441
+00:34:07,838 --> 00:34:10,883
+You won't work anywhere ever again.
+I'll see to it.
+
+442
+00:34:11,258 --> 00:34:13,677
+I think you know I will see to it.
+
+443
+00:34:15,346 --> 00:34:16,597
+Raise the power.
+
+444
+00:34:20,226 --> 00:34:21,936
+I would like you
+to record your command.
+
+445
+00:34:23,229 --> 00:34:24,313
+Raise the power.
+
+446
+00:34:40,162 --> 00:34:41,372
+Together, then.
+
+447
+00:34:45,167 --> 00:34:46,752
+I wasn't even there.
+
+448
+00:34:47,544 --> 00:34:48,963
+What?
+
+449
+00:34:51,006 --> 00:34:53,425
+I wasn't in the room
+when they raised the power.
+
+450
+00:34:54,176 --> 00:34:55,636
+If you weren't there,
+then where were you?
+
+451
+00:34:55,719 --> 00:34:58,639
+Comrade Legasov,
+you are a witness, not a prosecutor.
+
+452
+00:34:58,722 --> 00:35:00,557
+I will ask the questions here.
+
+453
+00:35:01,809 --> 00:35:03,852
+If you weren't in the room,
+then where were you?
+
+454
+00:35:06,563 --> 00:35:07,648
+The toilet.
+
+455
+00:35:08,565 --> 00:35:10,901
+The toilet?
+
+456
+00:35:12,695 --> 00:35:14,488
+Comrade Khomyuk interviewed everyone
+
+457
+00:35:14,571 --> 00:35:15,990
+who was in the control room
+that night.
+
+458
+00:35:16,073 --> 00:35:17,866
+They all told the same story.
+
+459
+00:35:21,453 --> 00:35:23,706
+"I knew what Dyatlov
+ordered was wrong,
+
+460
+00:35:24,164 --> 00:35:26,500
+"but if I didn't do what he said,
+I would be fired."
+
+461
+00:35:27,084 --> 00:35:28,585
+Leonid Toptunov.
+
+462
+00:35:30,254 --> 00:35:31,880
+One day before he died.
+
+463
+00:35:32,923 --> 00:35:34,800
+No, Comrade Dyatlov,
+you were in the room.
+
+464
+00:35:35,175 --> 00:35:37,636
+You ordered them to raise the power.
+This is a fact.
+
+465
+00:35:47,896 --> 00:35:50,607
+Court is now in recess.
+Thirty minutes.
+
+466
+00:36:34,526 --> 00:36:37,363
+Do you know anything
+about this town, Chernobyl?
+
+467
+00:36:38,989 --> 00:36:40,407
+Not really, no.
+
+468
+00:36:41,784 --> 00:36:44,244
+It was mostly Jews and Poles.
+
+469
+00:36:45,788 --> 00:36:49,458
+The Jews were killed in pogroms,
+and Stalin forced the Poles out.
+
+470
+00:36:50,292 --> 00:36:53,379
+And then the Nazis came
+and killed whoever was left.
+
+471
+00:36:54,463 --> 00:36:55,631
+But after the war,
+
+472
+00:36:57,091 --> 00:36:59,051
+people came to live here anyway.
+
+473
+00:37:00,427 --> 00:37:04,014
+They knew the ground under
+their feet was soaked in blood,
+
+474
+00:37:04,098 --> 00:37:05,307
+but they didn't care.
+
+475
+00:37:07,017 --> 00:37:09,103
+Dead Jews, dead Poles.
+
+476
+00:37:10,312 --> 00:37:11,355
+But not them.
+
+477
+00:37:15,025 --> 00:37:17,194
+No one ever thinks
+it's going to happen to them.
+
+478
+00:37:19,363 --> 00:37:20,406
+And here we are.
+
+479
+00:37:30,374 --> 00:37:31,375
+How much time?
+
+480
+00:37:32,501 --> 00:37:33,752
+Maybe a year.
+
+481
+00:37:34,628 --> 00:37:37,423
+They call it a...
+
+482
+00:37:37,506 --> 00:37:39,675
+They call it a "long illness."
+
+483
+00:37:39,758 --> 00:37:41,468
+It doesn't seem very long to me.
+
+484
+00:37:42,678 --> 00:37:44,763
+I know you told me,
+and I believed you.
+
+485
+00:37:46,265 --> 00:37:47,933
+But time passed, and I thought
+
+486
+00:37:48,851 --> 00:37:50,519
+it wouldn't happen to me.
+
+487
+00:37:51,645 --> 00:37:53,021
+I wasted it.
+
+488
+00:37:53,730 --> 00:37:55,816
+I wasted it all for nothing.
+
+489
+00:37:58,110 --> 00:37:59,361
+For nothing?
+
+490
+00:38:00,821 --> 00:38:03,615
+Do you remember that morning
+when I first called you,
+
+491
+00:38:03,699 --> 00:38:05,617
+how unconcerned I was?
+
+492
+00:38:05,701 --> 00:38:07,578
+I don't believe much that
+comes out of the Kremlin,
+
+493
+00:38:07,661 --> 00:38:11,957
+but when they told me they were
+putting me in charge of the cleanup
+
+494
+00:38:12,916 --> 00:38:15,419
+and they said it wasn't serious,
+I believed them.
+
+495
+00:38:17,337 --> 00:38:18,422
+You know why?
+
+496
+00:38:20,132 --> 00:38:21,884
+Because they put you in charge.
+
+497
+00:38:22,843 --> 00:38:23,886
+Yeah.
+
+498
+00:38:27,014 --> 00:38:29,391
+I'm an inconsequential man, Valery.
+
+499
+00:38:30,142 --> 00:38:31,852
+That's all I've ever been.
+
+500
+00:38:33,187 --> 00:38:35,981
+I hoped that one day
+I would matter, but I didn't.
+
+501
+00:38:38,275 --> 00:38:41,195
+I just stood next to people who did.
+
+502
+00:38:43,697 --> 00:38:46,116
+There are other scientists like me.
+
+503
+00:38:46,200 --> 00:38:48,577
+Any one of them could
+have done what I did.
+
+504
+00:38:48,660 --> 00:38:49,870
+But you...
+
+505
+00:38:51,038 --> 00:38:54,791
+Everything we asked for,
+everything we needed.
+
+506
+00:38:56,210 --> 00:38:59,630
+Men, material, lunar rovers.
+
+507
+00:39:02,466 --> 00:39:04,384
+Who else could have done these things?
+
+508
+00:39:06,720 --> 00:39:09,264
+They heard me,
+but they listened to you.
+
+509
+00:39:10,474 --> 00:39:14,102
+Of all the ministers
+and all the deputies,
+
+510
+00:39:14,186 --> 00:39:17,814
+entire congregation of obedient fools,
+
+511
+00:39:18,774 --> 00:39:21,735
+they mistakenly sent the one good man.
+
+512
+00:39:22,819 --> 00:39:24,821
+For God's sakes, Boris,
+
+513
+00:39:25,822 --> 00:39:28,242
+you were the one who mattered most.
+
+514
+00:39:51,390 --> 00:39:53,058
+Ah, it's beautiful.
+
+515
+00:40:35,100 --> 00:40:36,935
+Comrade Legasov.
+
+516
+00:40:49,531 --> 00:40:51,575
+The time is 38 past midnight.
+
+517
+00:40:52,576 --> 00:40:54,411
+The reactor is nearly shut down.
+
+518
+00:40:55,078 --> 00:40:56,872
+The operators of Reactor 4 are locked
+
+519
+00:40:56,955 --> 00:40:59,124
+on a path that leads
+directly to disaster.
+
+520
+00:40:59,708 --> 00:41:01,335
+There's no way to turn back.
+
+521
+00:41:01,752 --> 00:41:04,212
+They do not yet know it,
+but the die is cast.
+
+522
+00:41:05,047 --> 00:41:08,675
+At 30 megawatts,
+xenon is still being created,
+
+523
+00:41:08,759 --> 00:41:10,510
+but none of it is burning away.
+
+524
+00:41:12,763 --> 00:41:14,681
+The reactor is drowning in poison.
+
+525
+00:41:15,432 --> 00:41:19,102
+To make matters worse,
+the reactor isn't hot enough
+
+526
+00:41:19,186 --> 00:41:21,772
+to produce sufficient steam.
+
+527
+00:41:23,732 --> 00:41:26,485
+The only way to safely raise
+power from this state
+
+528
+00:41:26,568 --> 00:41:30,906
+is to do it very, very slowly
+over the course of 24 hours.
+
+529
+00:41:31,698 --> 00:41:33,992
+But Dyatlov wants it done now.
+
+530
+00:41:34,534 --> 00:41:37,996
+Akimov and Toptunov have
+only one course of action.
+
+531
+00:41:38,914 --> 00:41:41,249
+They begin pulling control rods out.
+
+532
+00:41:41,917 --> 00:41:42,918
+Dozens at a time.
+
+533
+00:41:43,418 --> 00:41:46,004
+Halfway out,
+three-quarters of the way out,
+
+534
+00:41:46,088 --> 00:41:48,882
+still, the power does not budge.
+
+535
+00:41:48,965 --> 00:41:51,677
+So they begin pulling
+them all the way out.
+
+536
+00:41:51,760 --> 00:41:55,555
+There were 211 control rods
+in Reactor 4.
+
+537
+00:41:55,639 --> 00:42:00,310
+Akimov and Toptunov
+completely withdrew 205.
+
+538
+00:42:00,394 --> 00:42:04,398
+Remember, control rods
+are the brakes on this car.
+
+539
+00:42:05,107 --> 00:42:11,613
+Of 211 rods, only six
+now remain in the reactor.
+
+540
+00:42:13,115 --> 00:42:15,909
+As for the fuel, it's gone cold,
+
+541
+00:42:15,992 --> 00:42:17,994
+so the negative
+temperature coefficient
+
+542
+00:42:18,078 --> 00:42:20,664
+is no longer
+weighing down the reactivity.
+
+543
+00:42:20,747 --> 00:42:24,626
+But even still,
+the xenon poisoning is so strong,
+
+544
+00:42:24,710 --> 00:42:28,296
+the best they can do is raise
+the power to 200 megawatts.
+
+545
+00:42:29,715 --> 00:42:31,508
+The control rods are out.
+
+546
+00:42:31,967 --> 00:42:34,428
+The emergency system
+has been disconnected.
+
+547
+00:42:34,511 --> 00:42:36,680
+The only thing keeping
+the reactor in check
+
+548
+00:42:36,763 --> 00:42:39,349
+is water and xenon.
+
+549
+00:42:39,433 --> 00:42:43,353
+It's 1:00 in the morning.
+The test is minutes away.
+
+550
+00:43:17,888 --> 00:43:20,015
+I'm sorry, this is all we can get.
+
+551
+00:43:20,515 --> 00:43:22,934
+It's 200 megawatts.
+We've pulled almost everything out.
+
+552
+00:43:23,518 --> 00:43:24,978
+If that's all we have,
+that's all we have.
+
+553
+00:43:25,437 --> 00:43:28,982
+- But the test requires 700.
+- Stolyarchuk, let's get ready.
+
+554
+00:43:29,065 --> 00:43:30,734
+- Switch on pump four.
+- No, wait a second.
+
+555
+00:43:30,817 --> 00:43:32,778
+- Stolyarchuk...
+- We have barely enough steam as it is.
+
+556
+00:43:32,861 --> 00:43:35,280
+The turbine is going too slow for
+the test to deliver any valid results.
+
+557
+00:43:35,363 --> 00:43:36,740
+- It's enough.
+- And if we add more water,
+
+558
+00:43:36,823 --> 00:43:38,492
+- there will be even less...
+- I said it's enough.
+
+559
+00:43:38,575 --> 00:43:39,743
+I know what I'm doing. Stolyarchuk.
+
+560
+00:43:46,082 --> 00:43:47,459
+Main pump four, connected.
+
+561
+00:43:47,834 --> 00:43:49,544
+We should warn Khodemchuk.
+The pipes are gonna be...
+
+562
+00:43:49,628 --> 00:43:51,129
+Never mind him. Kirschenbaum?
+
+563
+00:43:54,508 --> 00:43:57,219
+The steam in the separator drum
+is too low, five atmospheres.
+
+564
+00:43:57,302 --> 00:44:00,013
+All right, let's all help him.
+Get it up as best you can.
+
+565
+00:44:04,309 --> 00:44:05,393
+We should stop.
+
+566
+00:44:06,061 --> 00:44:07,729
+Turn that fucking thing off.
+
+567
+00:44:08,897 --> 00:44:10,524
+You have 15 minutes.
+
+568
+00:44:12,400 --> 00:44:13,568
+Fifteen minutes.
+
+569
+00:44:14,820 --> 00:44:17,239
+They may as well have had 15 days.
+
+570
+00:44:17,572 --> 00:44:20,325
+The problem they were facing
+was not solvable.
+
+571
+00:44:20,408 --> 00:44:23,036
+The power was too low.
+The water was too high.
+
+572
+00:44:23,119 --> 00:44:24,746
+The test was already ruined.
+
+573
+00:44:24,830 --> 00:44:27,791
+The results would have been useless,
+but Dyatlov didn't care.
+
+574
+00:44:28,208 --> 00:44:30,919
+All he wanted to do was
+report a completed test.
+
+575
+00:44:32,379 --> 00:44:34,506
+1:22 a.m.
+
+576
+00:44:35,215 --> 00:44:37,092
+Less than two minutes remain.
+
+577
+00:44:38,343 --> 00:44:42,305
+Yuvchenko, a mechanical engineer,
+is in his office.
+
+578
+00:44:46,518 --> 00:44:48,895
+Perevozchenko,
+reactor section foreman,
+
+579
+00:44:48,979 --> 00:44:50,146
+is in the refueling hall,
+
+580
+00:44:50,730 --> 00:44:54,317
+high above the 1, 000-ton
+steel reactor cover.
+
+581
+00:44:56,736 --> 00:44:58,738
+Degtaryenko, Khodemchuk,
+
+582
+00:44:58,822 --> 00:45:01,616
+circulation operators,
+are in the pump room.
+
+583
+00:45:03,869 --> 00:45:07,122
+None of them
+have been told about the test.
+
+584
+00:45:07,205 --> 00:45:09,040
+None of them know
+what is about to happen.
+
+585
+00:45:09,833 --> 00:45:14,880
+At 1:22 and 30 seconds,
+Toptunov sees a report
+
+586
+00:45:15,755 --> 00:45:18,592
+from the reactor's
+SKALA computer system.
+
+587
+00:45:19,801 --> 00:45:23,138
+Based on the absence
+of sufficient control rods,
+
+588
+00:45:23,221 --> 00:45:26,391
+the computer is recommending
+that the reactor be shut down.
+
+589
+00:45:32,314 --> 00:45:34,774
+Well, of course it's saying that.
+It doesn't know we're running a test.
+
+590
+00:45:36,943 --> 00:45:38,028
+All right, comrades.
+
+591
+00:45:39,863 --> 00:45:42,365
+Another few minutes,
+it will all be over.
+
+592
+00:45:42,449 --> 00:45:43,825
+Kirschenbaum, when you're ready.
+
+593
+00:45:45,160 --> 00:45:46,244
+We did everything right.
+
+594
+00:45:48,747 --> 00:45:50,248
+Oscillograph on.
+
+595
+00:45:52,292 --> 00:45:53,960
+Closing number eight throttle valve.
+
+596
+00:45:55,086 --> 00:45:56,630
+Generator rotor
+beginning rundown.
+
+597
+00:45:57,088 --> 00:45:59,799
+1:23 and four seconds.
+
+598
+00:46:00,634 --> 00:46:04,512
+With every decision, they have pulled
+this reactor back like a slingshot,
+
+599
+00:46:04,596 --> 00:46:06,640
+further than anyone has ever pulled.
+
+600
+00:46:07,223 --> 00:46:08,808
+Now the test begins.
+
+601
+00:46:09,351 --> 00:46:12,312
+The pumps are shut down,
+and they've let go.
+
+602
+00:46:15,440 --> 00:46:18,193
+The pumps stop moving water
+through the reactor.
+
+603
+00:46:18,860 --> 00:46:21,947
+Uranium fuel is now
+unchecked by fresh coolant,
+
+604
+00:46:22,030 --> 00:46:23,990
+unchecked by control rods.
+
+605
+00:46:24,074 --> 00:46:27,077
+The balance immediately swings
+in the opposite direction.
+
+606
+00:46:27,160 --> 00:46:30,288
+In less than a second,
+reactivity increases.
+
+607
+00:46:31,623 --> 00:46:33,041
+Inside the core,
+
+608
+00:46:33,124 --> 00:46:35,460
+the remaining water is
+quickly converting to steam.
+
+609
+00:46:35,543 --> 00:46:37,712
+A void is being created.
+
+610
+00:46:37,796 --> 00:46:40,340
+There is no fresh water to replace it.
+
+611
+00:46:40,423 --> 00:46:43,343
+Steam increases reactivity,
+
+612
+00:46:43,426 --> 00:46:46,721
+increases heat, increases steam,
+
+613
+00:46:46,805 --> 00:46:48,431
+increases reactivity.
+
+614
+00:46:49,724 --> 00:46:52,769
+The remaining xenon decays away.
+
+615
+00:46:54,187 --> 00:46:55,689
+The power is rising.
+
+616
+00:46:57,983 --> 00:46:59,484
+There's nothing left to stop it.
+
+617
+00:47:00,860 --> 00:47:04,280
+1:23 and 35 seconds.
+
+618
+00:47:07,617 --> 00:47:09,703
+We have a power surge! Sasha!
+
+619
+00:47:15,208 --> 00:47:16,334
+What did you do?
+
+620
+00:47:16,918 --> 00:47:20,130
+23 and 40 seconds.
+
+621
+00:47:28,346 --> 00:47:30,849
+In every control room
+of every nuclear reactor in the world,
+
+622
+00:47:30,932 --> 00:47:34,102
+there is a button
+with one single purpose,
+
+623
+00:47:34,185 --> 00:47:37,605
+to "scram," or instantly
+shut down the reaction.
+
+624
+00:47:37,689 --> 00:47:40,942
+In Soviet reactors,
+that button is called AZ-5.
+
+625
+00:47:41,860 --> 00:47:43,903
+You press AZ-5,
+
+626
+00:47:43,987 --> 00:47:46,197
+all of the control rods
+insert at once,
+
+627
+00:47:46,281 --> 00:47:49,826
+and the reaction is stopped dead.
+
+628
+00:47:50,910 --> 00:47:52,078
+But...
+
+629
+00:47:58,626 --> 00:47:59,919
+What are you waiting for, Legasov?
+
+630
+00:48:00,003 --> 00:48:01,921
+Tell your lies.
+
+631
+00:48:02,005 --> 00:48:04,215
+Comrade Dyatlov,
+you will not be warned again.
+
+632
+00:48:04,299 --> 00:48:06,509
+- Or what?
+- For God's sake, Dyatlov.
+
+633
+00:48:06,593 --> 00:48:08,595
+- Legasov's already given it away.
+- That's enough.
+
+634
+00:48:08,678 --> 00:48:11,723
+He said before there was no way
+to avoid what was coming.
+
+635
+00:48:11,806 --> 00:48:13,433
+- He knows something.
+- Comrade Dyatlov.
+
+636
+00:48:13,516 --> 00:48:15,101
+She knows something.
+
+637
+00:48:16,394 --> 00:48:18,438
+I know what you are,
+Valery Alexeyevich.
+
+638
+00:48:18,521 --> 00:48:21,524
+- You're a liar.
+- We've heard enough for today.
+
+639
+00:48:22,692 --> 00:48:25,403
+The defendants will be
+remanded in custody.
+
+640
+00:48:25,487 --> 00:48:28,490
+- Court will...
+- I haven't finished.
+
+641
+00:48:28,573 --> 00:48:30,700
+I still have more evidence to give.
+
+642
+00:48:30,784 --> 00:48:34,079
+It's not necessary.
+Your testimony is concluded.
+
+643
+00:48:34,162 --> 00:48:37,332
+- Your Honor.
+- Court is now adjourned.
+
+644
+00:48:37,415 --> 00:48:39,626
+- We will resume tomorrow with...
+- Let him finish.
+
+645
+00:48:42,337 --> 00:48:43,671
+Comrade Shcherbina...
+
+646
+00:48:46,424 --> 00:48:47,467
+Let him finish.
+
+647
+00:49:12,742 --> 00:49:15,078
+Dyatlov broke every rule we have.
+
+648
+00:49:18,790 --> 00:49:21,918
+He pushed a reactor
+to the brink of destruction.
+
+649
+00:49:26,464 --> 00:49:29,050
+He did these things believing
+there was a failsafe.
+
+650
+00:49:29,134 --> 00:49:32,595
+AZ-5, a simple button
+to shut it all down.
+
+651
+00:49:32,679 --> 00:49:37,225
+But in the circumstances he created,
+there wasn't.
+
+652
+00:49:37,308 --> 00:49:40,520
+The shutdown system had a fatal flaw.
+
+653
+00:49:42,647 --> 00:49:47,902
+At 1:23:40, Akimov engages AZ-5.
+
+654
+00:49:55,952 --> 00:49:59,747
+The fully withdrawn control rods
+begin moving back into the reactor.
+
+655
+00:49:59,831 --> 00:50:02,500
+These rods are made of boron,
+which reduces reactivity,
+
+656
+00:50:02,584 --> 00:50:03,668
+but not their tips.
+
+657
+00:50:04,502 --> 00:50:08,798
+The tips are made of graphite,
+which accelerates reactivity.
+
+658
+00:50:09,299 --> 00:50:10,300
+Why?
+
+659
+00:50:14,971 --> 00:50:16,097
+Why?
+
+660
+00:50:18,725 --> 00:50:21,019
+For the same reason our reactors
+
+661
+00:50:21,102 --> 00:50:23,188
+do not have containment
+buildings around them,
+
+662
+00:50:24,147 --> 00:50:25,273
+like those in the West.
+
+663
+00:50:25,356 --> 00:50:30,069
+For the same reason we don't use
+properly enriched fuel in our cores.
+
+664
+00:50:30,320 --> 00:50:32,655
+For the same reason
+we are the only nation
+
+665
+00:50:32,739 --> 00:50:37,076
+that builds water-cooled,
+graphite-moderated reactors
+
+666
+00:50:37,160 --> 00:50:39,621
+with a positive void coefficient.
+
+667
+00:50:41,497 --> 00:50:42,540
+It's cheaper.
+
+668
+00:50:48,755 --> 00:50:50,006
+The first part
+
+669
+00:50:50,089 --> 00:50:51,883
+of the rods that enter the core
+
+670
+00:50:51,966 --> 00:50:53,301
+are the graphite tips.
+
+671
+00:50:53,384 --> 00:50:55,720
+And when they do,
+the reaction in the core,
+
+672
+00:50:55,803 --> 00:50:58,681
+which had been rising, skyrockets.
+
+673
+00:50:58,765 --> 00:51:03,770
+Every last molecule of liquid water
+instantly converts to steam,
+
+674
+00:51:03,853 --> 00:51:07,148
+which expands and ruptures
+a series of fuel rod channels.
+
+675
+00:51:07,232 --> 00:51:11,319
+The control rods in those
+channels can move no further.
+
+676
+00:51:11,402 --> 00:51:13,863
+The graphite tips
+are fixed in position,
+
+677
+00:51:13,947 --> 00:51:16,824
+endlessly accelerating the reaction.
+
+678
+00:51:16,908 --> 00:51:20,745
+Chernobyl Reactor 4
+is now a nuclear bomb.
+
+679
+00:51:21,287 --> 00:51:23,831
+1:23:42.
+
+680
+00:51:23,915 --> 00:51:27,877
+Perevozchenko looks down on
+the enormous steel lid of the reactor
+
+681
+00:51:27,961 --> 00:51:29,963
+and sees the impossible.
+
+682
+00:51:30,046 --> 00:51:31,839
+The control rod and fuel channel caps,
+
+683
+00:51:31,923 --> 00:51:34,008
+which each weigh 350 kilograms,
+
+684
+00:51:34,092 --> 00:51:35,760
+are jumping up and down.
+
+685
+00:51:36,302 --> 00:51:38,513
+He runs to warn the control room.
+
+686
+00:51:38,596 --> 00:51:41,516
+But there's nothing he can do
+to stop what is coming.
+
+687
+00:51:41,599 --> 00:51:44,602
+1:23 and 44 seconds.
+
+688
+00:51:45,228 --> 00:51:48,648
+The steam blows
+more fuel channels apart.
+
+689
+00:51:48,731 --> 00:51:50,775
+We do not know
+how high the power went.
+
+690
+00:51:50,858 --> 00:51:52,068
+We only know the final reading.
+
+691
+00:51:54,654 --> 00:51:59,200
+Reactor 4, designed to operate
+at 3,200 megawatts,
+
+692
+00:51:59,951 --> 00:52:02,495
+went beyond 33,000.
+
+693
+00:52:08,251 --> 00:52:12,046
+The pressure inside the core
+can no longer be held back.
+
+694
+00:52:12,130 --> 00:52:18,428
+At long last, we have arrived.
+23:45, explosion.
+
+695
+00:52:20,054 --> 00:52:23,016
+In the instant the lid is
+thrown off the reactor,
+
+696
+00:52:23,099 --> 00:52:24,142
+oxygen rushes in.
+
+697
+00:52:24,225 --> 00:52:28,313
+It combines with hydrogen
+and super-heated graphite.
+
+698
+00:52:30,356 --> 00:52:33,192
+The chain of disaster is now complete.
+
+699
+00:52:55,340 --> 00:52:56,758
+Comrade Dyatlov!
+
+700
+00:53:02,013 --> 00:53:03,348
+Comrade Dyatlov!
+
+701
+00:53:14,859 --> 00:53:17,737
+No one in the room
+that night knew
+
+702
+00:53:17,820 --> 00:53:20,990
+the shutdown button
+could act as a detonator.
+
+703
+00:53:22,617 --> 00:53:23,951
+They didn't know it,
+
+704
+00:53:25,620 --> 00:53:27,622
+because it was kept from them.
+
+705
+00:53:27,705 --> 00:53:32,460
+Comrade Legasov, you're contradicting
+your own testimony in Vienna.
+
+706
+00:53:32,877 --> 00:53:34,837
+My testimony in Vienna was a lie.
+
+707
+00:53:36,339 --> 00:53:38,633
+I lied to the world.
+
+708
+00:53:39,467 --> 00:53:41,302
+I'm not the only one
+who kept this secret.
+
+709
+00:53:41,386 --> 00:53:42,387
+There are many.
+
+710
+00:53:43,971 --> 00:53:45,390
+We were following orders,
+
+711
+00:53:46,974 --> 00:53:48,601
+from the KGB,
+from the Central Committee.
+
+712
+00:53:48,684 --> 00:53:51,229
+And right now, there are
+16 reactors in the Soviet Union
+
+713
+00:53:51,312 --> 00:53:53,773
+with the same fatal flaw.
+
+714
+00:53:53,856 --> 00:53:55,733
+Three of them are still running
+
+715
+00:53:55,817 --> 00:53:58,236
+less than 20 kilometers away
+at Chernobyl.
+
+716
+00:53:58,319 --> 00:54:02,240
+Professor Legasov, if you mean
+to suggest the Soviet state
+
+717
+00:54:02,323 --> 00:54:04,158
+is somehow responsible
+for what happened,
+
+718
+00:54:04,242 --> 00:54:06,953
+then I must warn you, you are
+treading on dangerous ground.
+
+719
+00:54:07,662 --> 00:54:09,330
+I've already trod on dangerous ground.
+
+720
+00:54:09,414 --> 00:54:11,457
+We're on dangerous ground right now,
+
+721
+00:54:11,541 --> 00:54:14,293
+because of our secrets and our lies.
+
+722
+00:54:14,377 --> 00:54:17,422
+They're practically what define us.
+
+723
+00:54:17,505 --> 00:54:20,716
+When the truth offends, we lie and lie
+
+724
+00:54:20,800 --> 00:54:23,052
+until we can no longer
+remember it is even there.
+
+725
+00:54:23,136 --> 00:54:24,720
+But it is still there.
+
+726
+00:54:28,391 --> 00:54:32,437
+Every lie we tell incurs
+a debt to the truth.
+
+727
+00:54:34,814 --> 00:54:36,983
+Sooner or later, that debt is paid.
+
+728
+00:54:41,904 --> 00:54:46,826
+That is how an RBMK
+reactor core explodes.
+
+729
+00:54:50,872 --> 00:54:51,873
+Lies.
+
+730
+00:56:56,539 --> 00:56:58,833
+Valery Alexeyevich Legasov,
+
+731
+00:57:00,418 --> 00:57:02,628
+son of Alexei Legasov,
+
+732
+00:57:02,837 --> 00:57:05,298
+Head of Ideological Compliance,
+Central Committee.
+
+733
+00:57:06,340 --> 00:57:07,842
+Do you know
+what your father did there?
+
+734
+00:57:08,175 --> 00:57:09,176
+Yes.
+
+735
+00:57:10,553 --> 00:57:13,889
+As a student, you had a
+leadership position in Komsomol.
+
+736
+00:57:13,973 --> 00:57:16,017
+Communist Youth, correct?
+
+737
+00:57:17,393 --> 00:57:19,312
+- You already know.
+- Answer the question.
+
+738
+00:57:19,729 --> 00:57:20,771
+Yes.
+
+739
+00:57:22,773 --> 00:57:24,775
+At the Kurchatov Institute,
+
+740
+00:57:24,859 --> 00:57:27,028
+you were the
+Communist Party secretary.
+
+741
+00:57:27,737 --> 00:57:31,407
+In the position, you limited
+the promotion of Jewish scientists.
+
+742
+00:57:36,370 --> 00:57:37,955
+Yes.
+
+743
+00:57:38,039 --> 00:57:40,666
+To curry favor with Kremlin officials.
+
+744
+00:57:46,297 --> 00:57:48,174
+You're one of us, Legasov.
+
+745
+00:57:50,009 --> 00:57:51,886
+I can do anything I want with you.
+
+746
+00:57:53,638 --> 00:57:56,515
+But what I want the most is
+for you to know that I know.
+
+747
+00:57:57,808 --> 00:57:59,310
+You're not brave.
+
+748
+00:58:00,853 --> 00:58:02,313
+You're not heroic.
+
+749
+00:58:03,981 --> 00:58:07,360
+You're just a dying man
+who forgot himself.
+
+750
+00:58:07,443 --> 00:58:10,905
+I know who I am,
+and I know what I've done.
+
+751
+00:58:13,699 --> 00:58:16,077
+In a just world,
+I'd be shot for my lies,
+
+752
+00:58:16,160 --> 00:58:18,371
+but not for this, not for the truth.
+
+753
+00:58:19,330 --> 00:58:21,499
+Scientists,
+
+754
+00:58:21,582 --> 00:58:25,294
+and your idiot obsession
+with reasons.
+
+755
+00:58:25,378 --> 00:58:29,799
+When the bullet hits
+your skull, what will it matter why?
+
+756
+00:58:37,473 --> 00:58:39,809
+No one's getting shot, Legasov.
+
+757
+00:58:41,519 --> 00:58:43,187
+The whole world saw you in Vienna.
+
+758
+00:58:44,021 --> 00:58:46,107
+It would be embarrassing
+to kill you now.
+
+759
+00:58:46,190 --> 00:58:47,233
+And for what?
+
+760
+00:58:48,609 --> 00:58:51,654
+Your testimony today
+will not be accepted by the State.
+
+761
+00:58:51,737 --> 00:58:54,073
+It will not be disseminated
+in the press.
+
+762
+00:58:54,740 --> 00:58:56,575
+It never happened.
+
+763
+00:58:57,952 --> 00:59:02,206
+No, you will live,
+however long you have,
+
+764
+00:59:02,998 --> 00:59:05,751
+but not as a scientist, not anymore.
+
+765
+00:59:06,752 --> 00:59:10,715
+You'll keep your title
+and your office,
+
+766
+00:59:11,924 --> 00:59:16,262
+but no duties,
+no authority, no friends.
+
+767
+00:59:16,345 --> 00:59:17,680
+No one will talk to you.
+
+768
+00:59:18,514 --> 00:59:19,890
+No one will listen to you.
+
+769
+00:59:22,351 --> 00:59:25,771
+Other men, lesser men,
+
+770
+00:59:26,897 --> 00:59:29,608
+will receive credit
+for the things you have done.
+
+771
+00:59:30,568 --> 00:59:32,862
+Your legacy is now their legacy.
+
+772
+00:59:32,945 --> 00:59:35,156
+You'll live long enough to see that.
+
+773
+00:59:39,118 --> 00:59:40,953
+What role did Shcherbina play in this?
+
+774
+00:59:41,704 --> 00:59:42,788
+None.
+
+775
+00:59:42,872 --> 00:59:44,707
+He didn't know what I was gonna say.
+
+776
+00:59:46,625 --> 00:59:48,711
+What role did Khomyuk play in this?
+
+777
+00:59:49,378 --> 00:59:50,379
+None.
+
+778
+00:59:51,255 --> 00:59:52,673
+She didn't know either.
+
+779
+00:59:55,217 --> 00:59:57,678
+After all you've said and done today,
+
+780
+00:59:57,762 --> 01:00:03,392
+it would be curious
+if you chose this moment to lie.
+
+781
+01:00:06,604 --> 01:00:10,608
+I would think a man of your experience
+would know a lie when he hears one.
+
+782
+01:00:14,945 --> 01:00:17,948
+You will not meet or communicate
+with either one of them ever again.
+
+783
+01:00:19,450 --> 01:00:22,912
+You will not communicate with anyone
+about Chernobyl ever again.
+
+784
+01:00:24,413 --> 01:00:26,665
+You will remain so immaterial
+to the world around you
+
+785
+01:00:26,749 --> 01:00:28,626
+that when you finally do die,
+
+786
+01:00:29,251 --> 01:00:32,838
+it will be exceedingly hard
+to know that you ever lived at all.
+
+787
+01:00:37,301 --> 01:00:39,011
+And if I refuse?
+
+788
+01:00:42,389 --> 01:00:45,309
+Why worry about something
+that isn't going to happen?
+
+789
+01:00:46,727 --> 01:00:49,939
+"Why worry about something
+that isn't going to happen?"
+
+790
+01:00:50,898 --> 01:00:52,441
+Oh, that's perfect.
+
+791
+01:00:53,317 --> 01:00:55,152
+They should put that on our money.
+
+792
+01:02:05,598 --> 01:02:08,350
+To be a scientist is to be naive.
+
+793
+01:02:09,685 --> 01:02:12,021
+We are so focused
+on our search for truth,
+
+794
+01:02:12,104 --> 01:02:16,275
+we fail to consider how few
+actually want us to find it.
+
+795
+01:02:16,817 --> 01:02:21,030
+But it is always there,
+whether we see it or not,
+
+796
+01:02:21,113 --> 01:02:23,073
+whether we choose to or not.
+
+797
+01:02:23,157 --> 01:02:25,868
+The truth doesn't care
+about our needs or wants.
+
+798
+01:02:25,951 --> 01:02:27,620
+It doesn't care about our governments,
+
+799
+01:02:27,703 --> 01:02:30,039
+our ideologies, our religions.
+
+800
+01:02:31,498 --> 01:02:33,959
+It will lie in wait for all time.
+
+801
+01:02:35,252 --> 01:02:39,173
+And this, at last,
+is the gift of Chernobyl.
+
+802
+01:02:39,256 --> 01:02:41,717
+Where I once would fear
+the cost of truth,
+
+803
+01:02:41,800 --> 01:02:43,427
+now I only ask,
+
+804
+01:02:45,596 --> 01:02:47,556
+"What is the cost of lies?"

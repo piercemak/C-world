@@ -47,6 +47,7 @@ const SERIES_SUBTITLE_PATTERNS = {
   jojos: "/subtitles/jojos/season{season}/S{season}E{episode2}_subtitles.vtt",
   chernobyl: "/subtitles/chernobyl/season{season}/S{season}E{episode2}_subtitles.vtt",
   attackontitan: "/subtitles/attackontitan/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "alienearth": "/subtitles/alienearth/season{season}/S{season}E{episode2}_subtitles.vtt",
 };
 
 const fillPattern = (pattern, season, episode) => {

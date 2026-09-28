@@ -1642,8 +1642,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 48.935212163098825
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/alienearthLogo.svg",
+      "titles": [
+        "Alien: Earth"
+      ],
+      "sourceBytes": 1944765,
+      "outputBytes": 169554,
+      "thumbnailBytes": 28885,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.46694666676893
+    },
+    {
+      "url": "https://cearaworld.com/images/alienearth/covers/alienearth_backdrop.svg",
+      "titles": [
+        "Alien: Earth"
+      ],
+      "sourceBytes": 5029346,
+      "outputBytes": 1149978,
+      "thumbnailBytes": 25271,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.23616463383842
     }
   ],
-  "sourceBytes": 681683388,
-  "outputBytes": 85614836
+  "sourceBytes": 688657499,
+  "outputBytes": 86988524
 }

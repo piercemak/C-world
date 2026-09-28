@@ -68,6 +68,7 @@ const RandomCoverCarousel = () => {
     { id: "thenightisshort", src: "/images/thenightisshort/covers/thenightisshortCover.svg", title: "The Night Is Short, Walk on Girl" },
     { id: "cure", src: "/images/cure/covers/cureCover.svg", title: "Cure" },
     { id: "theinvite", src: "/images/theinvite/covers/theinviteCover.svg", title: "The Invite" },
+    { id: "alienearth", src: "/images/alienearth/covers/alienearthCover.svg", title: "Alien: Earth" },
   ], []);
 
   const showsById = useMemo(() => {

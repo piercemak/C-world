@@ -3,6 +3,16 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "episode",
+        showSlug: "alienearth",
+        showTitle: "Alien: Earth",
+        season: 1,
+        episode: 1,
+        episodeTitle: "Neverland",
+        placeholder: `${cloudFrontDomain}/${clean("alienearth")}/placeholders/season1/S1E1_${clean("alienearth")}_placeholder.png`,
+        to: `/video-library/alienearth?season=1&episode=1`,
+      }, 
+      {
         kind: "movie",
         showSlug: "theinvite",
         showTitle: "The Invite",

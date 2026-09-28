@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-09-10T19:52:01.109Z",
+  "catalogRevision": "2026-09-28T16:38:25.971Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -993,6 +993,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "b7b4067822ce3237ef31e466e650b8dea5d440b51f8f289c14d3ebd147d4a78a"
+    },
+    "https://cearaworld.com/images/cardimages/alienearthLogo.svg": {
+      "image": "559b0299df19-c8eee44ce176.jpg",
+      "thumbnail": "559b0299df19-c8eee44ce176-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c8eee44ce176d301d60d535b7550acb6bec5e207a37e234c58a39eb597d1dfef"
+    },
+    "https://cearaworld.com/images/alienearth/covers/alienearth_backdrop.svg": {
+      "image": "be878bc0638d-74d700ab5ee7.jpg",
+      "thumbnail": "be878bc0638d-74d700ab5ee7-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "74d700ab5ee7bb655bd145e56dea1f28fa4e1fea5f2ff1f8f0fea145490e0565"
     }
   }
 }

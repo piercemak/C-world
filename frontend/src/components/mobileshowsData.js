@@ -731,4 +731,15 @@ export const SHOWS = [
         card: "/images/cardimages/theinviteLogo.svg", 
         dateadded: "8-19-26",
     }, 
+    {
+        id: "alienearth",
+        title: "Alien: Earth",
+        creator: "Noah Hawley", 
+        background: "/images/alienearth/covers/alienearth_backdrop.svg",
+        ratings: "7.1",
+        type: "TV",
+        keyart: "/images/alienearth/covers/alienearth_mobileLogo.jpg", 
+        card: "/images/cardimages/alienearthLogo.svg", 
+        dateadded: "9-28-26",
+    }, 
 ];

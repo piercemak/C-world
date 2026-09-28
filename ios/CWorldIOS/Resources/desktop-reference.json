@@ -61,9 +61,15 @@
     "thedrama",
     "thenightisshort",
     "cure",
-    "theinvite"
+    "theinvite",
+    "alienearth"
   ],
   "newMedia": [
+    {
+      "id": "alienearth",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "theinvite"
     },
