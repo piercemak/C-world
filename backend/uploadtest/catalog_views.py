@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from .catalog import CatalogError, find_episode, find_media, load_catalog
 from .hls import build_hls_playback_payload, resolve_hls_media
 from .views import build_signed_cloudfront_url, resolve_episode_s3_key
+from .availability import season_availability
 
 
 def _catalog_envelope(catalog, items):
@@ -59,6 +60,26 @@ def _positive_int(value, field):
     if parsed < 1:
         raise ValueError(f"{field} must be a positive integer")
     return parsed
+
+
+@api_view(["GET"])
+def episode_availability(request, media_id):
+    try:
+        media = find_media(media_id)
+        if not media:
+            media = next((item for item in load_catalog()["items"]
+                          if item["id"].replace("-", "") == media_id.replace("-", "")), None)
+        number = _positive_int(request.query_params.get("season"), "season")
+        season = next((s for s in (media or {}).get("seasons", []) if s["number"] == number), None)
+        if not season:
+            return Response({"error": "Season not found"}, status=404)
+        response = Response(season_availability(media, season))
+        response["Cache-Control"] = "no-store"
+        return response
+    except ValueError as exc:
+        return Response({"error": str(exc)}, status=400)
+    except Exception:
+        return Response({"error": "Availability could not be checked. Please try again."}, status=503)
 
 
 @api_view(["POST"])

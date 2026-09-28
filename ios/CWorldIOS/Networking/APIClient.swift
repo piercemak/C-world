@@ -105,6 +105,11 @@ final class CWorldAPIClient {
         try await request(path: "/api/catalog/v1/", authenticated: false)
     }
 
+    func episodeAvailability(mediaID: String, season: Int) async throws -> EpisodeAvailability {
+        let id = mediaID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? mediaID
+        return try await request(path: "/api/catalog/v1/media/\(id)/availability/?season=\(season)", authenticated: false)
+    }
+
     func signedURL(key: String, bucket: String = "all-shows") async throws -> URL {
         let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? key
         let encodedBucket = bucket.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? bucket

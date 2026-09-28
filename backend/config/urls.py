@@ -15,7 +15,7 @@ from uploadtest.views import (
     device_login_approve,
     device_login_qr,
 )
-from uploadtest.catalog_views import catalog_media_v1, catalog_v1, playback_session
+from uploadtest.catalog_views import catalog_media_v1, catalog_v1, playback_session, episode_availability
 from uploadtest.hls import hls_manifest
 from django.urls import path
 from django.contrib import admin
@@ -39,6 +39,7 @@ urlpatterns = [
     path("api/history/", history),
     path("api/catalog/v1/", catalog_v1),
     path("api/catalog/v1/media/<str:media_id>/", catalog_media_v1),
+    path("api/catalog/v1/media/<str:media_id>/availability/", episode_availability),
     path("api/playback/session/", playback_session),
     path("api/playback/hls/<str:media_id>/<path:manifest_path>", hls_manifest),
 ]

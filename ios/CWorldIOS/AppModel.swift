@@ -3,6 +3,36 @@ import Combine
 
 @MainActor
 final class AppModel: ObservableObject {
+    @Published private var episodeAvailability: [String: EpisodeAvailability] = [:]
+
+    private func availabilityKey(_ mediaID: String, _ season: Int) -> String {
+        "\(client?.baseURL.absoluteString ?? ""):\(mediaID.replacingOccurrences(of: "-", with: "")):\(season)"
+    }
+
+    func episodeIsAvailable(mediaID: String, season: Int?, episode: Int?) -> Bool? {
+        guard let season, let episode else { return nil }
+        return episodeAvailability[availabilityKey(mediaID, season)]?.episodes[String(episode)]
+    }
+
+    func refreshEpisodeAvailability(mediaID: String, season: Int) async {
+        guard let client else { return }
+        let key = availabilityKey(mediaID, season)
+        do {
+            let result = try await client.episodeAvailability(mediaID: mediaID, season: season)
+            guard !Task.isCancelled, self.client === client else { return }
+            episodeAvailability[key] = result
+        } catch {
+            guard !Task.isCancelled, self.client === client else { return }
+            episodeAvailability.removeValue(forKey: key)
+        }
+    }
+
+    func monitorEpisodeAvailability(mediaID: String, season: Int) async {
+        while !Task.isCancelled {
+            await refreshEpisodeAvailability(mediaID: mediaID, season: season)
+            do { try await Task.sleep(for: .seconds(65)) } catch { return }
+        }
+    }
     private let keychain: any TokenStore
     private let catalogCache: CatalogCache
     private let defaults: UserDefaults
@@ -373,6 +403,14 @@ final class AppModel: ObservableObject {
         }
         guard let client else { throw CWorldAPIError.invalidBaseURL }
         guard client === requestingClient else { throw CancellationError() }
+        if let season, let episode {
+            await refreshEpisodeAvailability(mediaID: mediaID, season: season)
+            try Task.checkCancellation()
+            guard self.client === client else { throw CancellationError() }
+            if episodeIsAvailable(mediaID: mediaID, season: season, episode: episode) == false {
+                throw CWorldAPIError.httpStatus(404, "This episode has not been uploaded yet.")
+            }
+        }
         let profileID = activeProfile?.id
         // Browsing can begin before watch data arrives, but resume playback must
         // wait for progress (not unrelated history) before choosing its position.

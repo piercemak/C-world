@@ -21,7 +21,11 @@ struct MacTitleView: View {
     private var heroTitle: String { heroEpisode.map { episodeTitle($0) } ?? media.title }
     private var heroKey: String { "\(seasonNumber):\(heroEpisode?.number ?? 0)" }
     private var progress: WatchProgressRecord? { appModel.progress(for: selection.playbackID, season: selection.season, episode: selection.episode?.number) }
-    private var resume: ContinueWatchingItem? { ContinueWatchingItem.make(catalog: [media], records: Array(appModel.watchProgress.values)).first }
+    private var resume: ContinueWatchingItem? {
+        ContinueWatchingItem.make(catalog: [media], records: Array(appModel.watchProgress.values)).first {
+            appModel.episodeIsAvailable(mediaID: media.id, season: $0.progress.season, episode: $0.progress.episode) != false
+        }
+    }
     private var meta: String { MacDesktopCatalog.desktopMeta(media) }
     private var context: String { heroEpisode.map { "\(media.title) • Season \(seasonNumber) • \(code($0))" } ?? "\(media.type == "movie" ? "Movie" : "Series") • \(meta)" }
     private var fraction: Double { min(1, max(0, (progress?.currentTime ?? 0) / max(1, progress?.duration ?? 1))) }
@@ -110,6 +114,9 @@ struct MacTitleView: View {
         .buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.04, pressedScale: 0.96, lift: 2))
         .onAppear { seasonNumber = initialSeason ?? media.seasons?.first?.number ?? 1; selectedEpisode = initialEpisode }
         .onDisappear { hoverTask?.cancel() }
+        .task(id: "\(media.id):\(seasonNumber)") {
+            if media.type != "movie" { await appModel.monitorEpisodeAvailability(mediaID: media.id, season: seasonNumber) }
+        }
     }
     private var hero: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -130,7 +137,7 @@ struct MacTitleView: View {
                 Button { onPlay(selection) } label: {
                     Label(fraction > 0 ? "Resume" : "Play", systemImage: "play.fill").font(.custom(CWorldFonts.poppins(.bold), size: 13))
                         .foregroundStyle(.black).padding(.horizontal, 20).frame(height: 48).background(.white, in: RoundedRectangle(cornerRadius: 6))
-                }.disabled(media.type != "movie" && playEpisode == nil).accessibilityIdentifier("mac.title.play")
+                }.disabled(media.type != "movie" && (playEpisode == nil || appModel.episodeIsAvailable(mediaID: media.id, season: seasonNumber, episode: playEpisode?.number) == false)).accessibilityIdentifier("mac.title.play")
                 Button { if let resume { onPlay(.resume(resume)) } } label: {
                     Label("Continue", systemImage: "play.fill").font(.custom(CWorldFonts.poppins(.semibold), size: 13))
                         .padding(.horizontal, 20).frame(height: 48)
@@ -208,19 +215,22 @@ struct MacTitleView: View {
     private func episodeTitle(_ episode: CWorldEpisode) -> String { EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: seasonNumber, episode: episode.number) ?? episode.title }
     private func code(_ episode: CWorldEpisode) -> String { String(format: "S%02dE%02d", seasonNumber, episode.number) }
     private func episodeCard(_ episode: CWorldEpisode) -> some View {
+        let missing = appModel.episodeIsAvailable(mediaID: media.id, season: seasonNumber, episode: episode.number) == false
         let active = selectedEpisode == episode.number || hoveredEpisode == episode.number
         let saved = appModel.progress(for: episode.playbackRef.mediaId, season: seasonNumber, episode: episode.number)
         return Button {
             hoverTask?.cancel()
             withAnimation(animation) { hoveredEpisode = nil; selectedEpisode = episode.number }
         } label: {
-            episodeTile(title: episodeTitle(episode), subtitle: "Episode \(episode.number) · \(episode.duration)",
+            episodeTile(title: episodeTitle(episode), subtitle: missing ? "Not uploaded yet" : "Episode \(episode.number) · \(episode.duration)",
                         image: MacDesktopCatalog.placeholder(media, season: seasonNumber, episode: episode.number), code: code(episode), selected: active,
                         fraction: min(1, (saved?.currentTime ?? 0) / max(1, saved?.duration ?? 1)))
         }.buttonStyle(MacInteractiveButtonStyle(hoverScale: 1.025, pressedScale: 0.97, lift: 5))
+            .disabled(missing).opacity(missing ? 0.5 : 1)
             .accessibilityIdentifier("mac.episode.\(episode.number)")
             .onHover { hovering in
                 hoverTask?.cancel()
+                guard !missing else { return }
                 if hovering {
                     hoverTask = Task { @MainActor in
                         do { try await Task.sleep(for: .milliseconds(1500)) } catch { return }

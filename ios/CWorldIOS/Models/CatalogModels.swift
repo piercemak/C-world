@@ -1,5 +1,11 @@
 import Foundation
 
+struct EpisodeAvailability: Decodable {
+    let mediaId: String
+    let season: Int
+    let episodes: [String: Bool]
+}
+
 struct CatalogEnvelope: Codable {
     let schemaVersion: Int
     let catalogRevision: String

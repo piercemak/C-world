@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useRef, useEffect, useMemo } from "react";
+import useEpisodeAvailability from "../lib/useEpisodeAvailability.js";
 import { useParams } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
@@ -99,6 +100,7 @@ const MobileShows = () => {
   {/* Episode/Season Handling */}
   const episodeListRef = useRef(null);
   const [selectedSeason, setSelectedSeason] = useState(1);
+  const episodeAvailability = useEpisodeAvailability(showId, selectedSeason);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [seasonDropdownOpen, setSeasonDropdownOpen] = useState(false);
 
@@ -1362,10 +1364,13 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                         return (
                             <motion.div 
                                 key={index}
+                                aria-disabled={show?.type === "show" && episodeAvailability[index + 1] === false}
+                                style={{ opacity: show?.type === "show" && episodeAvailability[index + 1] === false ? 0.5 : 1 }}
                                 className={`flex flex-col w-full items-center cursor-pointer flex-shrink-0 snap-center ${
                                     show?.type !== "movie" ? "gap-4" : ""
                                 }`}
                                 onClick={ async () => {
+                                if (show?.type === "show" && episodeAvailability[index + 1] === false) return;
                                 let videoPath = videoUrl.path;
                             
                                 if (awsHostedShows.includes(showId)) {
@@ -1475,6 +1480,7 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                                       } text-wrap text-center whitespace-normal break-words overflow-hidden text-ellipsis`}
                                   >
                                       {episodeTitle}
+                                      {episodeAvailability[index + 1] === false && <div className="mt-2 text-sm font-normal text-white/60">Not uploaded yet</div>}
                                   </div>
                               )}
                               <div className="w-full h-[1px] bg-white/10"></div>

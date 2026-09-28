@@ -496,6 +496,9 @@ struct MediaDetailView: View {
         .task(id: detailPrefetchKey) {
             await ImageCache.shared.prefetchImages(detailPrefetchURLs)
         }
+        .task(id: "availability:\(detailPrefetchKey)") {
+            if media.type != "movie" { await appModel.monitorEpisodeAvailability(mediaID: media.id, season: selectedSeason) }
+        }
     }
 
     private var detailPrefetchKey: String {
@@ -825,6 +828,7 @@ struct MediaDetailView: View {
                 ZStack(alignment: .top) {
                     VStack(spacing: 0) {
                         ForEach(season.episodes) { episode in
+                            let missing = appModel.episodeIsAvailable(mediaID: media.id, season: selectedSeason, episode: episode.number) == false
                             NavigationLink {
                                 NativeVideoPlayerView(
                                     mediaID: episode.playbackRef.mediaId,
@@ -851,10 +855,18 @@ struct MediaDetailView: View {
                             }
                             .buttonStyle(.plain)
                             .id("episode-\(episode.number)")
+                            .disabled(missing).opacity(missing ? 0.5 : 1)
+                            .overlay(alignment: .bottomLeading) {
+                                if missing {
+                                    Text("Not uploaded yet").font(.caption).padding(8)
+                                        .background(.black.opacity(0.85), in: RoundedRectangle(cornerRadius: 8))
+                                }
+                            }
                             .contextMenu {
                                 Button("Add to Up Next", systemImage: "text.badge.plus") {
                                     CWorldPlaybackHost.shared.enqueue(CWorldQueueEntry(media: media, season: selectedSeason, episode: episode))
                                 }
+                                .disabled(missing)
                             }
                         }
                     }
@@ -2231,8 +2243,9 @@ struct PersistentVideoPlayerView: View {
         return makeSelection(media: media, season: seasons[seasonIndex - 1], episode: previousEpisode)
     }
 
-    private func makeSelection(media: CWorldMedia, season: CWorldSeason, episode: CWorldEpisode) -> PlayerSelection {
-        PlayerSelection(
+    private func makeSelection(media: CWorldMedia, season: CWorldSeason, episode: CWorldEpisode) -> PlayerSelection? {
+        guard appModel.episodeIsAvailable(mediaID: media.id, season: season.number, episode: episode.number) != false else { return nil }
+        return PlayerSelection(
             mediaID: episode.playbackRef.mediaId,
             season: season.number,
             episode: episode.number,

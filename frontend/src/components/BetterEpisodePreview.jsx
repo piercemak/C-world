@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import useEpisodeAvailability from "../lib/useEpisodeAvailability.js";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { buildLibraryShows } from "../data/libraryShowsData.js";
@@ -94,6 +95,7 @@ const getProgress = (mediaId, seasonNumber, episodeNumber) => {
 const formatProgress = (value) => `${Math.round(value)}%`;
 
 const getPrimaryActionLabel = (episode) => {
+  if (episode?.available === false) return "Not uploaded yet";
   if (!episode) return "Play";
   if (episode.progress >= 95) return "Play Again";
   if (episode.progress > 0) return "Resume";
@@ -173,6 +175,8 @@ const EpisodePlaceholderCard = ({
   return (
     <motion.button
       type="button"
+      disabled={episode.available === false}
+      style={{ opacity: episode.available === false ? 0.5 : 1 }}
       onClick={() => onSelect(episode)}
       onMouseEnter={() => onHoverStart(episode)}
       onMouseLeave={() => onHoverEnd(episode)}
@@ -237,7 +241,7 @@ const EpisodePlaceholderCard = ({
           <div className="min-w-0">
             <div className="truncate pb-0.5 text-sm font-bold leading-5 transition group-hover:text-white">{episode.title}</div>
             <div className="mt-1 text-xs leading-5 text-white/50">
-              {selectedMedia.type === "movie" ? "Movie" : `Episode ${episode.number}`} • {episode.runtime}
+              {episode.available === false ? "Not uploaded yet" : `${selectedMedia.type === "movie" ? "Movie" : `Episode ${episode.number}`} • ${episode.runtime}`}
             </div>
           </div>
         </div>
@@ -549,9 +553,10 @@ const BetterEpisodePreview = () => {
       ? getWatchProgressPercent(media.id, seasonNumber, episodeNumber)
       : getProgress(media.id, seasonNumber || 1, episodeNumber || 1)
   ), [getWatchProgressPercent, isProductionRoute]);
+  const availability = useEpisodeAvailability(selectedMedia.id, selectedSeason, isProductionRoute && selectedMedia.type === "show");
   const episodes = useMemo(
-    () => getEpisodesForSeason(selectedMedia, selectedSeason, progressResolver),
-    [progressResolver, selectedMedia, selectedSeason, watchProgressVersion],
+    () => getEpisodesForSeason(selectedMedia, selectedSeason, progressResolver).map(episode => ({ ...episode, available: availability[episode.number] })),
+    [progressResolver, selectedMedia, selectedSeason, watchProgressVersion, availability],
   );
 
   const selectedEpisodeId = selectedEpisodeIdByMedia[selectedMedia.id];
@@ -705,6 +710,7 @@ const BetterEpisodePreview = () => {
   const startProductionPlayback = useCallback(async (episode, options = {}) => {
     const activeEpisode = episode || episodes[0];
     if (!activeEpisode || !selectedShow) return;
+    if (activeEpisode.available === false) return;
 
     const isMovie = selectedMedia.type === "movie";
     const season = isMovie ? null : (options.season ?? selectedSeason);
@@ -1476,6 +1482,7 @@ const BetterEpisodePreview = () => {
                 <motion.button
                   type="button"
                   onClick={handlePreviewPlay}
+                  disabled={(sideEpisode || selectedEpisode || episodes[0])?.available === false}
                   className="inline-flex h-12 origin-left transform-gpu cursor-pointer items-center gap-2 rounded-md bg-white px-5 text-sm font-bold text-black transition-colors hover:bg-white/85 will-change-transform"
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}
@@ -1484,12 +1491,12 @@ const BetterEpisodePreview = () => {
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
                     <path d="M8 5.14v13.72c0 .78.86 1.25 1.52.83l10.7-6.86a.98.98 0 0 0 0-1.66L9.52 4.31A.98.98 0 0 0 8 5.14Z" />
                   </svg>
-                  {getPrimaryActionLabel(sideEpisode)}
+                  {getPrimaryActionLabel(sideEpisode || selectedEpisode || episodes[0])}
                 </motion.button>
                 <motion.button
                   type="button"
                   onClick={isProductionRoute ? handleContinuePlayback : undefined}
-                  disabled={isProductionRoute && !resumeTarget}
+                  disabled={isProductionRoute && (!resumeTarget || (resumeTarget.season === selectedSeason && availability[resumeTarget.episode] === false))}
                   className={`inline-flex h-12 origin-left transform-gpu items-center gap-2 rounded-md border border-white/15 bg-white/10 px-5 text-sm font-semibold text-white transition-colors hover:bg-white/16 will-change-transform ${
                     isProductionRoute && !resumeTarget
                       ? "cursor-not-allowed opacity-45"

@@ -1784,7 +1784,7 @@ const handleSkipOutro = useCallback(async () => {
     const opts = { source: "outro" };
     if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
       const signedUrl = await resolveSignedEpisodeUrl(nextSeason, nextEpisode);
-
+      if (!signedUrl) return;
       onSkipToNext?.(nextSeason, nextEpisode, signedUrl, opts);
     } else {
       onSkipToNext?.(nextSeason, nextEpisode, undefined, opts);
@@ -1826,6 +1826,7 @@ const handleNextEpisode = async () => {
   try {
     if (typeof getSignedEpisodeUrl === "function" || typeof getSignedUrl === "function") {
       const signedUrl = await resolveSignedEpisodeUrl(targetS, targetE);
+      if (!signedUrl) return;
       onSkipToNext?.(targetS, targetE, signedUrl);
     } else {
       onSkipToNext?.(targetS, targetE);
