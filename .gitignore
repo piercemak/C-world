@@ -53,3 +53,8 @@ roku/source/Config.local.brs
 frontend/public/roku-captions/
 frontend/public/catalog-v1.json
 roku/dist/
+
+# Xcode per-user state and unused legacy source copy
+xcuserdata/
+*.xcuserstate
+/CWorldIOS/CWorldIOS 2/

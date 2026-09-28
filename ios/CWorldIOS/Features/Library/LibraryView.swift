@@ -162,6 +162,7 @@ struct LibraryView: View {
             .searchable(text: $searchText, prompt: "Search movies and shows")
             .refreshable {
                 await appModel.refreshCatalog()
+                await appModel.refreshSharedWatchData()
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

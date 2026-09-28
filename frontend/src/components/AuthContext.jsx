@@ -30,6 +30,23 @@ export const AuthProvider = ({ children }) => {
   const [profiles, setProfiles] = useState([]);
   const [activeProfile, setActiveProfile] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
+  useEffect(() => {
+    if (!token || !activeProfile?.id) return;
+    let running = false;
+    const refresh = async () => {
+      if (running || document.visibilityState !== "visible") return;
+      running = true;
+      try { await hydrateWatchDataFromServer(activeProfile.id); }
+      catch (error) { console.warn("Watch data refresh failed", error); }
+      finally { running = false; }
+    };
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", refresh);
+    };
+  }, [token, activeProfile?.id]);
 
   const syncProfilePreferences = useCallback((profile) => {
     localStorage.removeItem("profileImage");

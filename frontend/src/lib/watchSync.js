@@ -18,17 +18,24 @@ const clearLocalWatchState = () => {
   keys.forEach((key) => localStorage.removeItem(key));
 };
 
+let hydrationRevision = 0;
 export const hydrateWatchDataFromServer = async (profileId = null) => {
+  const revision = ++hydrationRevision;
+  const selectedProfile = localStorage.getItem("activeProfileId");
+  const stillCurrent = () => revision === hydrationRevision && selectedProfile === localStorage.getItem("activeProfileId");
+  const sameProfile = localStorage.getItem("watchDataProfileId") === String(profileId ?? selectedProfile);
   const localProgressSnapshot = new Map(
     Object.keys(localStorage)
-      .filter((key) => key.startsWith("watchProgress-"))
+      .filter((key) => sameProfile && key.startsWith("watchProgress-"))
       .map((key) => [key, parseWatchProgressPayload(localStorage.getItem(key))])
   );
-  clearLocalWatchState();
 
   const progressRes = await authedFetch("/api/progress/", { method: "GET" }, profileId);
   if (progressRes?.ok) {
     const progressItems = await progressRes.json();
+    if (!stillCurrent()) return;
+    localStorage.setItem("watchDataProfileId", String(profileId ?? selectedProfile));
+    Object.keys(localStorage).filter(key => key.startsWith("watchProgress-")).forEach(key => localStorage.removeItem(key));
     const now = Date.now();
     const recentLocalWindowMs = 15 * 60 * 1000;
 
@@ -87,6 +94,7 @@ export const hydrateWatchDataFromServer = async (profileId = null) => {
   const historyRes = await authedFetch("/api/history/", { method: "GET" }, profileId);
   if (historyRes?.ok) {
     const historyItems = await historyRes.json();
+    if (!stillCurrent()) return;
     const normalized = historyItems
       .map((item) => ({
         showId: item.show_id,
@@ -99,6 +107,33 @@ export const hydrateWatchDataFromServer = async (profileId = null) => {
     localStorage.setItem("lastWatched", JSON.stringify(normalized.slice(0, 50)));
     localStorage.setItem("lastWatchedMobile", JSON.stringify(normalized.slice(0, 50)));
   }
+  window.dispatchEvent(new Event("watchprogress:update"));
+};
+
+export const continueWatchingEntries = () => {
+  const latest = new Map();
+  for (const key of Object.keys(localStorage).filter(key => key.startsWith("watchProgress-"))) {
+    const match = key.slice("watchProgress-".length).match(/^(.*?)(?:-S(\d+)-E(\d+))?$/);
+    if (!match) continue;
+    const progress = parseWatchProgressPayload(localStorage.getItem(key));
+    const entry = { showId: match[1], lastSeason: match[2] ? Number(match[2]) : null, lastEpisode: match[3] ? Number(match[3]) : null, watchedAt: progress.updatedAt, ...progress };
+    const id = entry.showId.replace(/-/g, "");
+    if (!latest.has(id) || latest.get(id).watchedAt < entry.watchedAt) latest.set(id, entry);
+  }
+  return [...latest.values()].filter(item => item.d > 0 && item.t > 5 && item.t < item.d - 30).sort((a, b) => b.watchedAt - a.watchedAt);
+};
+
+export const removeContinueWatching = async (showId) => {
+  const response = await authedFetch("/api/progress/", { method: "GET" });
+  if (!response?.ok) throw new Error("Could not load watch progress.");
+  const records = await response.json();
+  for (const record of records.filter(item => item.show_id.replace(/-/g, "") === showId.replace(/-/g, ""))) {
+    const saved = await authedFetch("/api/progress/", { method: "POST", body: JSON.stringify({ show_id: record.show_id, season: record.season, episode: record.episode, current_time: 0, duration: record.duration }) });
+    if (!saved?.ok) throw new Error("Could not remove title. Please retry.");
+    const value = await saved.json();
+    localStorage.setItem(toWatchProgressStorageKey({ showId: record.show_id, season: record.season, episode: record.episode }), JSON.stringify({ t: 0, d: record.duration, updatedAt: Date.parse(value.updated_at) }));
+  }
+  await hydrateWatchDataFromServer();
 };
 
 const progressDebounce = new Map();

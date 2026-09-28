@@ -81,7 +81,7 @@ struct MacTitleView: View {
                             ScrollView(.horizontal, showsIndicators: true) {
                                 HStack(alignment: .top, spacing: 12) {
                                     if media.type == "movie" {
-                                        Button { onPlay(selection) } label: { episodeTile(title: media.title, subtitle: "Movie · \(media.metadata.duration)", image: MacDesktopCatalog.cover(media, thumbnail: true), code: "Movie", selected: false, fraction: fraction) }
+                                        Button { onPlay(selection) } label: { episodeTile(title: media.title, subtitle: "Movie · \(media.metadata.duration)", image: MacDesktopCatalog.placeholder(media), code: "Movie", selected: false, fraction: fraction) }
                                     } else {
                                         ForEach(season?.episodes ?? []) { episode in episodeCard(episode).id(episode.number) }
                                     }
@@ -143,7 +143,7 @@ struct MacTitleView: View {
         VStack(spacing: 16) {
             GeometryReader { bounds in
               ZStack {
-                CatalogImage(url: heroEpisode == nil ? MacDesktopCatalog.cover(media, thumbnail: true) : MacDesktopCatalog.placeholder(media, season: seasonNumber, episode: heroEpisode?.number), showsBorder: false, maxPixelSize: 1000)
+                CatalogImage(url: heroEpisode == nil ? MacDesktopCatalog.placeholder(media) : MacDesktopCatalog.placeholder(media, season: seasonNumber, episode: heroEpisode?.number), showsBorder: false, maxPixelSize: 1000)
                     .frame(width: bounds.size.width, height: bounds.size.height)
                     .clipped()
                     .id(heroKey)

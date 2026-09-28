@@ -220,10 +220,20 @@ struct MacDesktopView: View {
             return .ignored
         }
         .onReceive(NotificationCenter.default.publisher(for: .cworldMacRefresh)) { _ in
-            Task { await appModel.refreshCatalog(); await appModel.refreshSharedWatchData() }
+            Task {
+                await appModel.refreshCatalog(); await appModel.refreshSharedWatchData()
+                resumeSnapshotInitialized = false
+                if showResume { captureResumeSnapshot() }
+            }
         }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active && playback == nil { Task { await appModel.refreshSharedWatchData() } }
+            if phase == .active && playback == nil {
+                Task {
+                    await appModel.refreshSharedWatchData()
+                    resumeSnapshotInitialized = false
+                    if showResume { captureResumeSnapshot() }
+                }
+            }
         }
         .sheet(item: $sheet) { sheet in
             switch sheet {

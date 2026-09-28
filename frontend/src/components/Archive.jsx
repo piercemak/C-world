@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SHOWS } from './mobileshowsData';
 import { allEpisodeTitles } from "./episodeTitles";
 import { useAuth } from "./AuthContext.jsx";
+import { continueWatchingEntries } from "../lib/watchSync.js";
 
 const chunkArray = (arr, size) => {
   const chunks = [];
@@ -448,6 +449,12 @@ const getPlaceholderPath = (media) => {
 
 {/* Continue Watching Data */}
 const [recentlyWatched, setRecentlyWatched] = useState([]);
+const [watchRevision, setWatchRevision] = useState(0);
+useEffect(() => {
+  const refresh = () => setWatchRevision(value => value + 1);
+  window.addEventListener("watchprogress:update", refresh);
+  return () => window.removeEventListener("watchprogress:update", refresh);
+}, []);
 useEffect(() => {
   const getProgressForEntry = (showId, season, episode) => {
     const key =
@@ -473,7 +480,7 @@ useEffect(() => {
   };
 
   try {
-    const raw = localStorage.getItem("lastWatchedMobile");
+    const raw = JSON.stringify(continueWatchingEntries());
     if (!raw) return;
 
     const history = JSON.parse(raw);
@@ -539,11 +546,11 @@ const merged = Array.from(byShow.values())
   .filter(Boolean)
   .sort((a, b) => b.watchedAt - a.watchedAt);
 
-setRecentlyWatched(merged);
+setRecentlyWatched(merged.slice(0, 10));
   } catch (err) {
     console.error("Failed to load recently watched", err);
   }
-}, [videos]);
+}, [videos, watchRevision]);
 
 
 

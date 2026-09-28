@@ -13,7 +13,7 @@ import {
   VIDEO_PLAYER_CARD_ID_TO_SLUG,
   VIDEO_PLAYER_SIDEBAR_ITEMS,
 } from "../data/videoPlayerCatalogData.js";
-import { removeWatchHistory } from "../lib/watchSync.js";
+import { continueWatchingEntries, removeContinueWatching } from "../lib/watchSync.js";
 import { useAuth } from "./AuthContext.jsx";
 import { apiFetch } from "../lib/apiClient.js";
 import { readWatchProgress } from "../lib/watchProgressStorage.js";
@@ -477,45 +477,30 @@ const VideoPlayer = () => {
   };
   const [loadedContinueThumbs, setLoadedContinueThumbs] = useState({});
   const [recentlyWatchedRev, setRecentlyWatchedRev] = useState(0);
+  const continueLimit = useRef(null);
+  useEffect(() => {
+    continueLimit.current = null;
+    setRecentlyWatchedRev(value => value + 1);
+  }, [activeProfile?.id]);
+  useEffect(() => {
+    const refresh = () => setRecentlyWatchedRev(value => value + 1);
+    const resume = () => { continueLimit.current = null; refresh(); };
+    window.addEventListener("watchprogress:update", refresh);
+    window.addEventListener("focus", resume);
+    return () => {
+      window.removeEventListener("watchprogress:update", refresh);
+      window.removeEventListener("focus", resume);
+    };
+  }, []);
   const removeRecentlyWatched = async (target) => {
     if (!target?.showSlug) return;
 
-    const matchesTarget = (entry) => {
-      if (!entry?.showId) return false;
-      const sameShow = cleanShowId(entry.showId) === cleanShowId(target.showSlug);
-      if (!sameShow) return false;
-
-      const targetSeason = target.season == null ? null : Number(target.season);
-      const targetEpisode = target.episode == null ? null : Number(target.episode);
-      const entrySeason = entry.lastSeason == null ? null : Number(entry.lastSeason);
-      const entryEpisode = entry.lastEpisode == null ? null : Number(entry.lastEpisode);
-
-      return entrySeason === targetSeason && entryEpisode === targetEpisode;
-    };
-
-    const pruneList = (storageKey) => {
-      const raw = localStorage.getItem(storageKey);
-      if (!raw) return;
-      try {
-        const parsed = JSON.parse(raw);
-        if (!Array.isArray(parsed)) return;
-        const next = parsed.filter((entry) => !matchesTarget(entry));
-        localStorage.setItem(storageKey, JSON.stringify(next));
-      } catch {
-        // Ignore malformed cache payloads and leave untouched.
-      }
-    };
-
-    pruneList("lastWatched");
-    pruneList("lastWatchedMobile");
     try {
-      await removeWatchHistory({
-        showId: target.showSlug,
-        season: target.season,
-        episode: target.episode,
-      });
-    } catch {
-      // Keep local removal even if network/delete fails.
+      const visibleIDs = continueItems.map(item => item.showSlug);
+      await removeContinueWatching(target.showSlug);
+      continueLimit.current = visibleIDs.filter(id => id !== target.showSlug);
+    } catch (error) {
+      window.alert(error.message);
     }
     setRecentlyWatchedRev((v) => v + 1);
   };
@@ -570,7 +555,7 @@ const continueItems = useMemo(() => {
   void recentlyWatchedRev;
   if (typeof window === "undefined") return [];
 
-  const rawHistory = localStorage.getItem("lastWatched");
+  const rawHistory = JSON.stringify(continueWatchingEntries());
 
   if (!rawHistory) return [];
 
@@ -706,7 +691,7 @@ const continueItems = useMemo(() => {
     .filter(Boolean)
     .sort((a, b) => (b.watchedAt || 0) - (a.watchedAt || 0));
 
-    return merged.slice(0, 10);
+    return continueLimit.current ? merged.filter(item => continueLimit.current.includes(item.showSlug)).slice(0, 10) : merged.slice(0, 10);
   }, [slugToTitle, buildPlaceholderCandidates, cleanShowId, cloudFrontDomain, recentlyWatchedRev]);
 
 

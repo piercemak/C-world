@@ -1245,6 +1245,8 @@ struct PersistentVideoPlayerView: View {
     @State private var subtitleError: String?
     @State private var progressTask: Task<Void, Never>?
     @State private var subtitleTask: Task<Void, Never>?
+    @State private var nativeSubtitleTask: Task<Void, Never>?
+    @State private var nativeSubtitlesAvailable = false
     @State private var hideControlsTask: Task<Void, Never>?
     @State private var timeObserver: Any?
     @State private var endObserver: NSObjectProtocol?
@@ -1332,7 +1334,7 @@ struct PersistentVideoPlayerView: View {
                     .contentShape(Rectangle())
                     .onTapGesture { toggleControls() }
 
-                if !externalDisplay.isConnected && !activeSubtitle.isEmpty && subtitlesEnabled {
+                if !externalDisplay.isConnected && !playbackHost.isAirPlay && !activeSubtitle.isEmpty && subtitlesEnabled {
                     VStack {
                         Spacer()
                         #if targetEnvironment(macCatalyst)
@@ -1503,6 +1505,7 @@ struct PersistentVideoPlayerView: View {
             waitingTimeoutTask?.cancel()
             progressTask?.cancel()
             subtitleTask?.cancel()
+            nativeSubtitleTask?.cancel()
             prefetchTask?.cancel()
             hideControlsTask?.cancel()
             removePlayerObservers()
@@ -1517,18 +1520,16 @@ struct PersistentVideoPlayerView: View {
         .onChange(of: playbackHost.queue.map(\.id)) { _, _ in
             prefetchTask?.cancel(); prefetchTask = nil; preparedNext = nil
         }
-        .onChange(of: subtitlesEnabled) { _, enabled in playbackHost.subtitlesOn = enabled }
+        .onChange(of: subtitlesEnabled) { _, enabled in
+            playbackHost.subtitlesOn = enabled
+            updateNativeSubtitles()
+        }
         .onChange(of: subtitleSettingsPresented) { _, presented in
             if presented { controlsVisible = true; hideControlsTask?.cancel() }
             else { scheduleControlsHide() }
         }
         .onChange(of: playbackHost.isAirPlay) { _, active in
-            // Direct AirPlay needs stream captions; local playback uses our VTT overlay.
-            for output in player?.currentItem?.outputs ?? [] {
-                if let legibleOutput = output as? AVPlayerItemLegibleOutput {
-                    legibleOutput.suppressesPlayerRendering = !active
-                }
-            }
+            updateNativeSubtitles()
         }
         .overlay(alignment: .top) {
             #if !targetEnvironment(macCatalyst)
@@ -1548,7 +1549,7 @@ struct PersistentVideoPlayerView: View {
         #if targetEnvironment(macCatalyst)
         MacPlaybackControls(player: player, title: playerDisplayMediaTitle, episodeLabel: playerEpisodeLabel, isPlaying: isPlaying,
                             currentTime: $currentTime, duration: duration,
-                            subtitlesEnabled: $subtitlesEnabled, hasSubtitles: selection.subtitleURL != nil,
+                            subtitlesEnabled: $subtitlesEnabled, hasSubtitles: selection.subtitleURL != nil || nativeSubtitlesAvailable,
                             subtitleSettingsPresented: $subtitleSettingsPresented,
                             volume: $volume, isMuted: $isMuted, close: closePlayer, toggle: togglePlayback,
                             seek: { seek(by: $0) }, editing: { editing in
@@ -1673,7 +1674,7 @@ struct PersistentVideoPlayerView: View {
                         Spacer()
 
                         CWorldAudioTrackMenu(player: player)
-                        if selection.subtitleURL != nil || !subtitleCues.isEmpty {
+                        if selection.subtitleURL != nil || !subtitleCues.isEmpty || nativeSubtitlesAvailable {
                             Button { subtitlesEnabled.toggle() } label: {
                                 Image(systemName: subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble")
                             }
@@ -1872,6 +1873,7 @@ struct PersistentVideoPlayerView: View {
             playbackHost.toggleCaptions = { subtitlesEnabled.toggle() }
             playbackHost.subtitlesOn = subtitlesEnabled
             playbackHost.hasSubtitles = requestedSelection.subtitleURL != nil
+            updateNativeSubtitles()
             if !playbackHost.connectionLost { newPlayer.play() }
             updatePlaybackState(for: newPlayer)
         } catch {
@@ -2242,6 +2244,30 @@ struct PersistentVideoPlayerView: View {
     }
 
     @MainActor
+    private func updateNativeSubtitles() {
+        nativeSubtitleTask?.cancel()
+        guard let currentPlayer = player, let item = currentPlayer.currentItem else { return }
+        let useNative = subtitlesEnabled && (currentPlayer.isExternalPlaybackActive || selection.subtitleURL == nil)
+        for output in item.outputs {
+            (output as? AVPlayerItemLegibleOutput)?.suppressesPlayerRendering = !useNative
+        }
+        nativeSubtitleTask = Task { @MainActor in
+            do {
+                let group = try await item.asset.loadMediaSelectionGroup(for: .legible)
+                guard !Task.isCancelled, player === currentPlayer, currentPlayer.currentItem === item else { return }
+                nativeSubtitlesAvailable = !(group?.options.isEmpty ?? true)
+                playbackHost.hasSubtitles = selection.subtitleURL != nil || nativeSubtitlesAvailable
+                if let group {
+                    let english = group.options.first { ($0.extendedLanguageTag ?? $0.locale?.languageCode ?? "").hasPrefix("en") }
+                    item.select(useNative ? (english ?? group.defaultOption ?? group.options.first) : nil, in: group)
+                }
+            } catch {
+                guard !Task.isCancelled, currentPlayer.currentItem === item else { return }
+                nativeSubtitlesAvailable = false
+            }
+        }
+    }
+
     private func loadSubtitles() {
         guard let subtitleURL = selection.subtitleURL else { return }
         subtitleTask?.cancel()

@@ -4,6 +4,7 @@ import SwiftUI
 struct CWorldIOSApp: App {
     @UIApplicationDelegateAdaptor(CWorldAppDelegate.self) private var appDelegate
     @StateObject private var appModel = AppModel()
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some Scene {
         WindowGroup {
@@ -12,6 +13,11 @@ struct CWorldIOSApp: App {
                 .environmentObject(appModel)
                 .task {
                     await appModel.restoreSession()
+                }
+                .onChange(of: scenePhase) { _, phase in
+                    #if !targetEnvironment(macCatalyst)
+                    if phase == .active { Task { await appModel.refreshSharedWatchData() } }
+                    #endif
                 }
         }
         #if targetEnvironment(macCatalyst)
