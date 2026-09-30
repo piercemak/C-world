@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-09-28T16:38:25.971Z",
+  "catalogRevision": "2026-09-30T02:24:49.185Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1009,6 +1009,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "74d700ab5ee7bb655bd145e56dea1f28fa4e1fea5f2ff1f8f0fea145490e0565"
+    },
+    "https://cearaworld.com/images/cardimages/americandadLogo.svg": {
+      "image": "ef99f41e038d-7e3ee9543c69.jpg",
+      "thumbnail": "ef99f41e038d-7e3ee9543c69-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7e3ee9543c6995009a1d61b63ff516d67200d1de5a6d23782fe238c83232c28f"
+    },
+    "https://cearaworld.com/images/americandad/covers/americandad_backdrop.svg": {
+      "image": "7ab673348d7a-98a2360f07f8.jpg",
+      "thumbnail": "7ab673348d7a-98a2360f07f8-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "98a2360f07f8554f2bf8a85210d00505454584e9d1dc236f6943a5f9ed7f44ec"
     }
   }
 }

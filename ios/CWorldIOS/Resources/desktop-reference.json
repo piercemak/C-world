@@ -62,9 +62,15 @@
     "thenightisshort",
     "cure",
     "theinvite",
-    "alienearth"
+    "alienearth",
+    "americandad"
   ],
   "newMedia": [
+    {
+      "id": "americandad",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "alienearth",
       "season": 1,

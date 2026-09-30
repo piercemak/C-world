@@ -728,6 +728,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: videoDataByShow["alienearth"],
         }, 
+        "americandad": {
+          type: "show",  
+          title: "American Dad",
+          agerating: "13+",
+          release_year: "2005",
+          genre: "Animation",
+          season_total_number: "22 seasons",
+          season_digit: 22,
+          description: "The escapades of Stan Smith, a conservative C.I.A. Agent dealing with family life, while keeping America safe.",
+          background: "/images/americandad/covers/americandadCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["americandad"],
+        }, 
         
       };
 

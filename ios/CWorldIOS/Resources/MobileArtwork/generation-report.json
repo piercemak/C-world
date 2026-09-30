@@ -1668,8 +1668,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 47.23616463383842
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/americandadLogo.svg",
+      "titles": [
+        "American Dad"
+      ],
+      "sourceBytes": 3202248,
+      "outputBytes": 296776,
+      "thumbnailBytes": 61894,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.52106657282033
+    },
+    {
+      "url": "https://cearaworld.com/images/americandad/covers/americandad_backdrop.svg",
+      "titles": [
+        "American Dad"
+      ],
+      "sourceBytes": 2048525,
+      "outputBytes": 648364,
+      "thumbnailBytes": 28895,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 50.33413537261326
     }
   ],
-  "sourceBytes": 688657499,
-  "outputBytes": 86988524
+  "sourceBytes": 693908272,
+  "outputBytes": 88024453
 }

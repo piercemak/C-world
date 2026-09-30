@@ -4,6 +4,16 @@
     export const newMedia = [
       {
         kind: "episode",
+        showSlug: "americandad",
+        showTitle: "American Dad",
+        season: 1,
+        episode: 1,
+        episodeTitle: "Pilot",
+        placeholder: `${cloudFrontDomain}/${clean("americandad")}/placeholders/season1/S1E1_${clean("americandad")}_placeholder.png`,
+        to: `/video-library/americandad?season=1&episode=1`,
+      }, 
+      {
+        kind: "episode",
         showSlug: "alienearth",
         showTitle: "Alien: Earth",
         season: 1,

@@ -567,6 +567,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2025 • Horror • 1 season"
+    },
+    "americandad": {
+      "image": "americandad-4a68e6ee8427.jpg",
+      "thumbnail": "americandad-4a68e6ee8427-thumb.jpg",
+      "source": "/images/americandad/covers/americandadCover.svg",
+      "sourceSHA256": "4a68e6ee8427bc936f8533da9485a8c89ae90e4ffb0ba8e147f4b8a7251a00ac",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2005 • Animation • 22 seasons"
     }
   }
 }

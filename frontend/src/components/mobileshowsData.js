@@ -742,4 +742,15 @@ export const SHOWS = [
         card: "/images/cardimages/alienearthLogo.svg", 
         dateadded: "9-28-26",
     }, 
+    {
+        id: "americandad",
+        title: "American Dad",
+        creator: "Mike Barker", 
+        background: "/images/americandad/covers/americandad_backdrop.svg",
+        ratings: "7.4",
+        type: "TV",
+        keyart: "/images/americandad/covers/americandad_mobileLogo.webp", 
+        card: "/images/cardimages/americandadLogo.svg", 
+        dateadded: "9-29-26",
+    }, 
 ];
