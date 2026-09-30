@@ -150,7 +150,10 @@ struct MacTitleView: View {
         VStack(spacing: 16) {
             GeometryReader { bounds in
               ZStack {
-                CatalogImage(url: heroEpisode == nil ? MacDesktopCatalog.placeholder(media) : MacDesktopCatalog.placeholder(media, season: seasonNumber, episode: heroEpisode?.number), showsBorder: false, maxPixelSize: 1000)
+                CatalogImage(url: heroEpisode == nil
+                    ? (media.type == "movie" ? MacDesktopCatalog.placeholder(media) : MacDesktopCatalog.cover(media))
+                    : MacDesktopCatalog.placeholder(media, season: seasonNumber, episode: heroEpisode?.number),
+                    showsBorder: false, maxPixelSize: 1000)
                     .frame(width: bounds.size.width, height: bounds.size.height)
                     .clipped()
                     .id(heroKey)
