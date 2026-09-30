@@ -456,12 +456,10 @@ const Show = ({
       19: 22,
       20: 22,
       21: 22,
-      22: 13,
     },
     "onepunchman": {
       1: 12,
       2: 12,
-      3: 12,
     },
   };
 const displaySeason =
