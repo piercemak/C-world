@@ -63,9 +63,15 @@
     "cure",
     "theinvite",
     "alienearth",
-    "americandad"
+    "americandad",
+    "onepunchman"
   ],
   "newMedia": [
+    {
+      "id": "onepunchman",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "americandad",
       "season": 1,

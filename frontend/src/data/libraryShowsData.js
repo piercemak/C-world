@@ -741,6 +741,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: videoDataByShow["americandad"],
         }, 
+        "onepunchman": {
+          type: "show",  
+          title: "One Punch Man",
+          agerating: "7+",
+          release_year: "2015",
+          genre: "Animation",
+          season_total_number: "3 seasons",
+          season_digit: 3,
+          description: "The story of Saitama, a hero that does it just for fun &amp; can defeat his enemies with a single punch.",
+          background: "/images/onepunchman/covers/onepunchmanCover.svg",
+          subtitles: "yes",
+          videos: videoDataByShow["onepunchman"],
+        }, 
         
       };
 

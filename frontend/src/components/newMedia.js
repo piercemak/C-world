@@ -4,6 +4,16 @@
     export const newMedia = [
       {
         kind: "episode",
+        showSlug: "onepunchman",
+        showTitle: "One Punch Man",
+        season: 1,
+        episode: 1,
+        episodeTitle: "The Strongest Man",
+        placeholder: `${cloudFrontDomain}/${clean("onepunchman")}/placeholders/season1/S1E1_${clean("onepunchman")}_placeholder.png`,
+        to: `/video-library/onepunchman?season=1&episode=1`,
+      }, 
+      {
+        kind: "episode",
         showSlug: "americandad",
         showTitle: "American Dad",
         season: 1,

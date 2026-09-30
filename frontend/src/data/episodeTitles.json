@@ -2011,5 +2011,49 @@
       "400",
       "Tales_from_the_Outer_Frontier"
     ]
+  },
+  "onepunchman": {
+    "1": [
+      "The_Strongest_Man",
+      "The_Lone_Cyborg",
+      "The_Obsessive_Scientist",
+      "The_Modern_Ninja",
+      "The_Ultimate_Master",
+      "The_Terrifying_City",
+      "The_Ultimate_Disciple",
+      "The_Deep_Sea_King",
+      "Unyielding_Justice",
+      "Unparalleled_Peril",
+      "The_Dominator_of_the_Universe",
+      "The_Strongest_Hero"
+    ],
+    "2": [
+      "Return_of_the_Hero",
+      "Human_Monster",
+      "The_Hunt_Begins",
+      "Metal_Bat",
+      "Martial_Arts_Tournament",
+      "The_Uprising_of_the_Monsters",
+      "Class_S_Heroes",
+      "The_Strong_Ones_Fight_Back",
+      "The_Ultimate_Dilemma",
+      "The_Encircling_Net_of_Justice",
+      "Everyones_Dignity",
+      "Cleaning_Up_the_Disciples_Mess"
+    ],
+    "3": [
+      "Strategy_Meeting",
+      "Monster_Traits",
+      "Organism_Limits",
+      "Counterattack_Signal",
+      "Monster_King",
+      "Motley_Heroes",
+      "Counterstrike",
+      "Ninja_Tale",
+      "Brave_Child",
+      "Immortal_Bloodbath",
+      "Top_Dragons",
+      "Ultimate_Lifeform"
+    ]
   }
 }

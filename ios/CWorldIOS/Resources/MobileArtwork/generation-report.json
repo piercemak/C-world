@@ -1694,8 +1694,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 50.33413537261326
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/onepunchmanLogo.svg",
+      "titles": [
+        "One Punch Man"
+      ],
+      "sourceBytes": 2117328,
+      "outputBytes": 192852,
+      "thumbnailBytes": 39711,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.61063912857572
+    },
+    {
+      "url": "https://cearaworld.com/images/onepunchman/covers/onepunchman_backdrop.svg",
+      "titles": [
+        "One Punch Man"
+      ],
+      "sourceBytes": 2472567,
+      "outputBytes": 595322,
+      "thumbnailBytes": 28560,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 49.498193703041
     }
   ],
-  "sourceBytes": 693908272,
-  "outputBytes": 88024453
+  "sourceBytes": 698498167,
+  "outputBytes": 88880898
 }

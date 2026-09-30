@@ -753,4 +753,15 @@ export const SHOWS = [
         card: "/images/cardimages/americandadLogo.svg", 
         dateadded: "9-29-26",
     }, 
+    {
+        id: "onepunchman",
+        title: "One Punch Man",
+        creator: "Yusuke Murata", 
+        background: "/images/onepunchman/covers/onepunchman_backdrop.svg",
+        ratings: "8.6",
+        type: "TV",
+        keyart: "/images/onepunchman/covers/onepunchman_mobileLogo.webp", 
+        card: "/images/cardimages/onepunchmanLogo.svg", 
+        dateadded: "9-30-26",
+    }, 
 ];

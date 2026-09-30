@@ -576,6 +576,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2005 • Animation • 22 seasons"
+    },
+    "onepunchman": {
+      "image": "onepunchman-cc8d3516a943.jpg",
+      "thumbnail": "onepunchman-cc8d3516a943-thumb.jpg",
+      "source": "/images/onepunchman/covers/onepunchmanCover.svg",
+      "sourceSHA256": "cc8d3516a9430f13c26630d219473c47cd711e6a1cb97ed850ac310e0d09fc20",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2015 • Animation • 3 seasons"
     }
   }
 }

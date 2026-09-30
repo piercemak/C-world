@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-09-30T02:24:49.185Z",
+  "catalogRevision": "2026-09-30T19:26:10.636Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1025,6 +1025,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "98a2360f07f8554f2bf8a85210d00505454584e9d1dc236f6943a5f9ed7f44ec"
+    },
+    "https://cearaworld.com/images/cardimages/onepunchmanLogo.svg": {
+      "image": "593bb564e90f-5e94788da10e.jpg",
+      "thumbnail": "593bb564e90f-5e94788da10e-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5e94788da10ee1c1de73535ed73f90ee2f4ac80340015116996eb9de3574e72a"
+    },
+    "https://cearaworld.com/images/onepunchman/covers/onepunchman_backdrop.svg": {
+      "image": "fc324596593e-ee28e11a071c.jpg",
+      "thumbnail": "fc324596593e-ee28e11a071c-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "ee28e11a071cbe370cf205ed46358b194c4c2bb3e9d03ce5a8ef40cf224e9b55"
     }
   }
 }
