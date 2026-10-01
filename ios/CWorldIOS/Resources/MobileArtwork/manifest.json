@@ -291,12 +291,12 @@
       "sourceSHA256": "74809271938fb7ef15e731c2cd0e0bd9f3334b1fe55efc5d3bfd2601a7182e36"
     },
     "https://cearaworld.com/images/cardimages/cyberpunkLogo.svg": {
-      "image": "515ae9906200-3dea81c8aa14.jpg",
-      "thumbnail": "515ae9906200-3dea81c8aa14-thumb.jpg",
+      "image": "515ae9906200-eb60f5e33ee5.jpg",
+      "thumbnail": "515ae9906200-eb60f5e33ee5-thumb.jpg",
       "width": 1024,
       "height": 1024,
       "thumbnailMaxPixelSize": 320,
-      "sourceSHA256": "3dea81c8aa1437806f6d166568add223a36a2362f6b492186a9b9d81b85ced3e"
+      "sourceSHA256": "eb60f5e33ee5a709beea2996deeb7f4be737efb8e4d0fbb43095fc0771d02e74"
     },
     "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg": {
       "image": "915563d55712-85a63fcaaaf8.jpg",
