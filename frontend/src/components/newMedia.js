@@ -3,6 +3,13 @@
     const clean = (s) => (s || "").replace(/-/g, "");
     export const newMedia = [
       {
+        kind: "movie",
+        showSlug: "interstellar",
+        showTitle: "Interstellar",
+        placeholder: "/images/interstellar/placeholders/interstellar_placeholder.png",
+        to: `/video-library/interstellar?movie=1`,
+      }, 
+      {
         kind: "episode",
         showSlug: "onepunchman",
         showTitle: "One Punch Man",

@@ -754,6 +754,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: videoDataByShow["onepunchman"],
         }, 
+        "interstellar": {
+          type: "movie",  
+          title: "Interstellar",
+          agerating: "13+",
+          release_year: "2014",
+          genre: "Adventure",
+          duration: "2h 49m",          
+          description: "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.",
+          background: "/images/interstellar/covers/interstellarCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "interstellar", "movie"),
+        }, 
         
       };
 

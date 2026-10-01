@@ -575,7 +575,7 @@
       "sourceSHA256": "4a68e6ee8427bc936f8533da9485a8c89ae90e4ffb0ba8e147f4b8a7251a00ac",
       "width": 1920,
       "height": 1080,
-      "meta": "2005 • Animation • 22 seasons"
+      "meta": "2005 • Animation • 21 seasons"
     },
     "onepunchman": {
       "image": "onepunchman-cc8d3516a943.jpg",
@@ -584,7 +584,16 @@
       "sourceSHA256": "cc8d3516a9430f13c26630d219473c47cd711e6a1cb97ed850ac310e0d09fc20",
       "width": 1920,
       "height": 1080,
-      "meta": "2015 • Animation • 3 seasons"
+      "meta": "2015 • Animation • 2 seasons"
+    },
+    "interstellar": {
+      "image": "interstellar-8df7c3038269.jpg",
+      "thumbnail": "interstellar-8df7c3038269-thumb.jpg",
+      "source": "/images/interstellar/covers/interstellarCover.svg",
+      "sourceSHA256": "8df7c303826903ede8062d75097be388927f6f029f89d43924f1dfdb4532f330",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2014 • Adventure • 2h 49m"
     }
   }
 }

@@ -764,4 +764,15 @@ export const SHOWS = [
         card: "/images/cardimages/onepunchmanLogo.svg", 
         dateadded: "9-30-26",
     }, 
+    {
+        id: "interstellar",
+        title: "Interstellar",
+        creator: "Christopher Nolan", 
+        background: "/images/interstellar/covers/interstellar_backdrop.svg",
+        ratings: "8.7",
+        type: "Movies",
+        keyart: "/images/interstellar/covers/interstellar_mobileLogo.jpg", 
+        card: "/images/cardimages/interstellarLogo.svg", 
+        dateadded: "10-1-26",
+    }, 
 ];

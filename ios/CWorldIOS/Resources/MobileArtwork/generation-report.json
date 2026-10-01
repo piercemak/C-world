@@ -1720,8 +1720,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 49.498193703041
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/interstellarLogo.svg",
+      "titles": [
+        "Interstellar"
+      ],
+      "sourceBytes": 13169629,
+      "outputBytes": 388742,
+      "thumbnailBytes": 44932,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 40.07352530772121
+    },
+    {
+      "url": "https://cearaworld.com/images/interstellar/covers/interstellar_backdrop.svg",
+      "titles": [
+        "Interstellar"
+      ],
+      "sourceBytes": 1358787,
+      "outputBytes": 1125960,
+      "thumbnailBytes": 29954,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.82901847252171
     }
   ],
-  "sourceBytes": 698498167,
-  "outputBytes": 88880898
+  "sourceBytes": 713026583,
+  "outputBytes": 90470486
 }

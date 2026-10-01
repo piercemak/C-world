@@ -71,6 +71,7 @@ const RandomCoverCarousel = () => {
     { id: "alienearth", src: "/images/alienearth/covers/alienearthCover.svg", title: "Alien: Earth" },
     { id: "americandad", src: "/images/americandad/covers/americandadCover.svg", title: "American Dad" },
     { id: "onepunchman", src: "/images/onepunchman/covers/onepunchmanCover.svg", title: "One Punch Man" },
+    { id: "interstellar", src: "/images/interstellar/covers/interstellarCover.svg", title: "Interstellar" },
   ], []);
 
   const showsById = useMemo(() => {

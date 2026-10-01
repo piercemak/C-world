@@ -64,9 +64,13 @@
     "theinvite",
     "alienearth",
     "americandad",
-    "onepunchman"
+    "onepunchman",
+    "interstellar"
   ],
   "newMedia": [
+    {
+      "id": "interstellar"
+    },
     {
       "id": "onepunchman",
       "season": 1,

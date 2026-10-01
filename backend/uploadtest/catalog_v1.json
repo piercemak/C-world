@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-01T17:07:50.179Z",
-  "generatedAt": "2026-10-01T17:07:50.179Z",
+  "catalogRevision": "2026-10-01T17:34:57.407Z",
+  "generatedAt": "2026-10-01T17:34:57.407Z",
   "items": [
     {
       "id": "steven-universe",
@@ -32606,6 +32606,42 @@
           ]
         }
       ]
+    },
+    {
+      "id": "interstellar",
+      "assetId": "interstellar",
+      "type": "movie",
+      "title": "Interstellar",
+      "dateAdded": "10-1-26",
+      "description": "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/interstellarLogo.svg",
+        "poster": "https://cearaworld.com/images/interstellar/covers/interstellar_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/interstellar/covers/interstellar_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/interstellar/covers/interstellar_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Christopher Nolan",
+        "rating": "8.7",
+        "year": "2014",
+        "genres": [
+          "Adventure"
+        ],
+        "duration": "2h 49m",
+        "ageRating": "13+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/interstellar/interstellar_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/interstellar/interstellar_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "interstellar",
+        "season": null,
+        "episode": null
+      }
     }
   ]
 }
