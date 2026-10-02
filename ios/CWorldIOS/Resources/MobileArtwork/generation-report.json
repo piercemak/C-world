@@ -1824,8 +1824,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 40.8497468056056
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/curbyourenthusiasmLogo.svg",
+      "titles": [
+        "Curb Your Enthusiasm"
+      ],
+      "sourceBytes": 1660742,
+      "outputBytes": 278650,
+      "thumbnailBytes": 42784,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.016106160964895
+    },
+    {
+      "url": "https://cearaworld.com/images/curbyourenthusiasm/covers/curbyourenthusiasm_backdrop.svg",
+      "titles": [
+        "Curb Your Enthusiasm"
+      ],
+      "sourceBytes": 215920,
+      "outputBytes": 137684,
+      "thumbnailBytes": 7222,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 57.33152708999495
     }
   ],
-  "sourceBytes": 758960829,
-  "outputBytes": 95291933
+  "sourceBytes": 760837491,
+  "outputBytes": 95758273
 }

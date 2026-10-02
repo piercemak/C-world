@@ -808,4 +808,15 @@ export const SHOWS = [
         card: "/images/cardimages/adultsLogo.svg", 
         dateadded: "10-2-26",
     }, 
+    {
+        id: "curbyourenthusiasm",
+        title: "Curb Your Enthusiasm",
+        creator: "Larry David", 
+        background: "/images/curbyourenthusiasm/covers/curbyourenthusiasm_backdrop.svg",
+        ratings: "8.8",
+        type: "TV",
+        keyart: "/images/curbyourenthusiasm/covers/curbyourenthusiasm_mobileLogo.webp", 
+        card: "/images/cardimages/curbyourenthusiasmLogo.svg", 
+        dateadded: "10-2-26",
+    }, 
 ];

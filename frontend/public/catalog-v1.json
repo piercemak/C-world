@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-02T19:40:02.626Z",
-  "generatedAt": "2026-10-02T19:40:02.626Z",
+  "catalogRevision": "2026-10-02T19:42:18.367Z",
+  "generatedAt": "2026-10-02T19:42:18.367Z",
   "items": [
     {
       "id": "steven-universe",
@@ -33087,6 +33087,2015 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E08_subtitles.srt"
               ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "curbyourenthusiasm",
+      "assetId": "curbyourenthusiasm",
+      "type": "show",
+      "title": "Curb Your Enthusiasm",
+      "dateAdded": "10-2-26",
+      "description": "Larry David stars as an over-the-top version of himself in this comedy series that shows how seemingly trivial details of day-to-day life can precipitate a catastrophic chain of events.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/curbyourenthusiasmLogo.svg",
+        "poster": "https://cearaworld.com/images/curbyourenthusiasm/covers/curbyourenthusiasm_mobileLogo.webp",
+        "backdrop": "https://cearaworld.com/images/curbyourenthusiasm/covers/curbyourenthusiasm_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/curbyourenthusiasm/covers/curbyourenthusiasm_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Larry David",
+        "rating": "8.8",
+        "year": "2000",
+        "genres": [
+          "Comedy"
+        ],
+        "duration": "22m",
+        "ageRating": "18+"
+      },
+      "subtitles": false,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Pants Tent",
+              "description": "An innocent bunch-up in Larry's trousers gives rise to an embarrassing situation.",
+              "airDate": "2000-10-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Ted and Mary",
+              "description": "Larry and Cheryl's fun-filled bowling date with Ted Danson and Mary Steenburgen ends with Larry's shoes missing.",
+              "airDate": "2000-10-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Porno Gil",
+              "description": "Larry sets off a bizarre chain of events (as he always seems to do) in which he is forced to attend a party at the home of a porno businessman.",
+              "airDate": "2000-10-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Bracelet",
+              "description": "Larry is continually thwarted in his effort to buy a bracelet as a peacemaking gift for Cheryl.",
+              "airDate": "2000-11-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Interior Decorator",
+              "description": "Larry has some medical problems involving a certain bracelet. No biggy. Then larger problems arise when Larry finds out he shares the same interior decorator as Diane Keaton.",
+              "airDate": "2000-11-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Wire",
+              "description": "Hoping to bury an unsightly telephone wire dangling over their yard, Larry and Cheryl befriend a pair of bizarre neighbors who must approve the burial. The husband is an incompetent lawyer but a big Seinfeld fan, so to appease him Larry arranges to have Julia Louis-Dreyfuss come for a visit. But when the actress arrives, the lawyer is missing; he's been hired to defend Jeff in a case involving a destructive kid Jeff sponsored for a Fresh Air Fund camp. At Larry's house, Julia ends up buying a bracelet from the lawyer's wife -- the same kind Larry wanted in episode 4 -- only to later accuse Larry of stealing it after he buys a similar one for Cheryl.",
+              "airDate": "2000-11-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "AAMCO",
+              "description": "Jeff gets a new car, and when Larry takes it for a spin, a commercial comes on the radio for AAMCO, with a noise sounding much like a car horn from behind. Upon hearing this, Larry curses the man behind him, prompting the man to rear-end Jeff's brand new car. Also, Larry and Cheryl hold a dinner party.",
+              "airDate": "2000-11-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Beloved Aunt",
+              "description": "When Cheryl's aunt dies, Larry is left in charge of the obituary. But when the newspaper accidentally places \"\"beloved c*nt\"\" instead of beloved aunt, things take an expected turn for the worse.",
+              "airDate": "2000-12-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Affirmative Action",
+              "description": "Larry gets himself in trouble, when he makes a racist-like comment to Richard's friend. Also, Larry inadvertently loses Cheryl's prescription note.",
+              "airDate": "2000-12-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Group",
+              "description": "Larry runs into his old girlfriend, and she asks him to escort her to an incest-survivors meeting. Cheryl is asked to co-star in \"\"The Vagina Monologues\"\" when one of the actresses is sick.",
+              "airDate": "2000-12-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 1,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Car Salesman",
+              "description": "Larry David and his wife purchase a new oceanfront home owned by a television star's agent. Meanwhile, Larry shocks his wife and friends by deciding to take a job as a car salesman.",
+              "airDate": "2001-09-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Thor",
+              "description": "Jeff leaves his wife Susie, and worries that his private life will become public in court. Jeff's concern affects Larry, who becomes obsessed with showing Cheryl how normal he is. Meanwhile, Larry seeks revenge on pro wrestler Thor Olson, who he believes slashed his tire after an argument on the road.",
+              "airDate": "2001-09-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Trick or Treat",
+              "description": "Larry offends two uncostumed trick-or-treaters by not giving them candy, so they show him the \"trick\" side of Halloween. He also alienates Cheryl's screenwriter friend Cliff and a Jewish neighbor AND spoils his romantic anniversary gift when Jeff arrives to play a round of golf.",
+              "airDate": "2001-10-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Shrimp Incident",
+              "description": "Larry is labeled a misogynist when he believes an HBO Network executive took some shrimp from of his meal, following a mistake in a delivery of Chinese food.",
+              "airDate": "2001-10-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "The Thong",
+              "description": "Larry and Richard Lewis, who both see the same psychotherapist, plot ways of ending their respective relationships with the therapist after Larry sees the man wearing a thong bathing suit.",
+              "airDate": "2001-10-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Acupuncturist",
+              "description": "Larry promises to pay an acupuncturist $5,000 if he can cure his neck. Meanwhile, a struggling writer asks Larry for a $5,000 loan which he promises to pay back after his father dies.",
+              "airDate": "2001-10-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Doll",
+              "description": "At the screening of a miniseries, the young daughter of a TV executive asks Larry to cut the hair off a beloved doll. When he complies, she becomes very upset. To remedy the situation, Larry and Jeff steal the head from Jeff's daughter's doll.",
+              "airDate": "2001-11-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Shaq",
+              "description": "Larry is villainized for accidentally tripping Shaquille O'Neal at a Lakers game, but the incident ironically ends up bringing him good luck.",
+              "airDate": "2001-11-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Baptism",
+              "description": "Larry can't believe that the Jewish man who is marrying Cheryl's sister is converting to Christianity. Richard Lewis accused Larry of stealing the outgoing message of his answering machine, and Larry accuses several passengers of stealing his airline tickets.",
+              "airDate": "2001-11-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Massage",
+              "description": "Cheryl's psychic busts Larry for a naughty massage, and a restaurant owner busts Larry for stealing forks.",
+              "airDate": "2001-11-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 2,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Chet's Shirt",
+              "description": "While comforting a friend whose husband passed away, Larry and Cheryl comment on the husband's shirt. Larry then goes to the department store the next day to buy it. Meanwhile, Jeff talks Larry into investing in a trendy new celebrity restaurant. Larry also gets into trouble when he throws away some trash in a random garbage can.",
+              "airDate": "2002-09-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Benadryl Brownie",
+              "description": "Thanks to Larry's miscommunication on his new cell phone, Richard Lewis' girlfriend succumbs to peanut allergies a week before they're supposed to go to the Emmy Awards. A practicing Christian Scientist, she doesn't take any medicine, so Richard and Larry devise a scheme to cook up some brownies laced with medicine. Like all things Larry does, the plan backfires.",
+              "airDate": "2002-09-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Club Soda and Salt",
+              "description": "Larry, Jeff, and Ted scramble to find a chef for the new restaurant, but Larry doesn't like Ted's recommendation. While trying to find a replacement, Larry learns a few things - Cheryl has a new, male, tennis playing friend, people won't take a wedding gift after a year, and that club soda and salt will get stains out of anything.",
+              "airDate": "2002-09-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Nanny from Hell",
+              "description": "Larry, Cheryl, Jeff and Susie encounter a \"\"nanny from hell\"\" whose reign of terror is thwarted by ten sponge cakes. Larry commits a \"\"penis faux pas\"\" after a pool party, and Richard Lewis seeks immortality from Bartlett's Quotations.",
+              "airDate": "2002-10-06",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "The Terrorist Attack",
+              "description": "A rumored threat of a terrorist attack undermines a benefit performance by Alanis Morissette at the home of one of Larry's friends. Meanwhile, Larry can't help snubbing Mindy Reiser, wife of actor Paul Reiser, during a series of encounters at a restaurant and the perfume shop where she works.",
+              "airDate": "2002-10-13",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Special Section",
+              "description": "Larry's mother dies while he's shooting a film in New York City, but he doesn't find out until he returns to Los Angeles two days after the funeral. Once he's past the initial shock, Larry uses his loss as an excuse to avoid a number of unsavory invitations. Meanwhile, Richard Lewis accuses Larry of taking back his meditation mantra, and Larry plots to relocate his mother's body at the cemetery.",
+              "airDate": "2002-10-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Corpse-Sniffing Dog",
+              "description": "Over a makeup dinner with the Braudys, Larry openly ponders the question, \"\"When a husband pays the check, do you have to also thank the wife?\"\" Meanwhile, Jeff's return home is ruined by his allergy to the family's corpse-sniffing German Shepherdâ€”but his daughter Sammy refuses to give away the dog. Concerned about his agent's welfare, Larry figures out an ingenious way to give the pooch to the Braudys, who are looking for just such a dog.",
+              "airDate": "2002-10-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Krazee-Eyez Killa",
+              "description": "Larry is accused of betraying the confidences of Wanda's boyfriend, Crazy-Eyez Killa, a rapper he met at a party. Later, Larry alienates Jeff's wife Susie by declining her house-tour offer. He encounters further problems when he tries to replace a sports jacket Cheryl threw out.",
+              "airDate": "2002-11-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Mary, Joseph and Larry",
+              "description": "Larry proves himself an unskilled Christmas tipper, while both Larry and Jeff prove incompetent at creating believable alibis for the messes they get in. After offending his housekeeper, Larry makes amends with her at the expense of his wife. Later, Larry attempts to reconcile with Cheryl's family after ruining their nativity scene.",
+              "airDate": "2002-11-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Grand Opening",
+              "description": "Larry figures out a way to fire a chef, and alienate an important restaurant critic, in the days before his new restaurant is scheduled to open. As Susie stews over a misunderstanding with Larry and Cheryl, the Davids spend some quality time at the car wash. With its grand opening at hand, the restaurant owners hire a new chef with a penchant for speaking his mind.",
+              "airDate": "2002-11-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 3,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Mel's Offer",
+              "description": "After going to a Karaoke bar that Mel Brooks is performing at, Mel is so impressed with Larry's singing that he asks Larry to be the star of his broadway show.",
+              "airDate": "2004-01-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Ben's Birthday Party",
+              "description": "Ben Stiller gets upset when Larry refuses to sing \"Happy Birthday\" to him.  Larry then hits him in the eye with a toothpick.",
+              "airDate": "2004-01-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Blind Date",
+              "description": "Larry sets up his blind friend on a date with a muslim woman.",
+              "airDate": "2004-01-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Weatherman",
+              "description": "Larry David has a huge problem with name tags. In the process Larry reveals a bathroom preference that disgusts Jeff. Ted Danson makes another great cameo.",
+              "airDate": "2004-01-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "The 5 Wood",
+              "description": "A bag of cashews and rasins threatens Larry's working relationship with David Schwimmer; a dirty locker and a golf club threatens his club membership; Larry gets into a compromising situation with a dog.",
+              "airDate": "2004-02-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Car Pool Lane",
+              "description": "To get to a Dodgers game, Larry finds a creative way to use the HOV lane.  Then, he finds himself in a bit of trouble when he gets his father medicinal marijuana.",
+              "airDate": "2004-02-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Surrogate",
+              "description": "Larry decides to buy a surrogate mother a gift, but it backfires.  He tries (and fails) to pass a routine physical and uses it as an advantage.",
+              "airDate": "2004-02-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Wandering Bear",
+              "description": "The purschasing of a video endangers Larry's relationship with his secretary, Antoinette, and almost kills Jeff and Susie's best friend.  Cheryl gets medical advice from an unorthodox source.",
+              "airDate": "2004-02-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Survivor",
+              "description": "Larry and Cheryl prepare to renew their wedding vows; Larry mulls an offer from his dry cleaner.",
+              "airDate": "2004-03-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Opening Night",
+              "description": "The show travels to New York City as Larry prepares to open on Broadway in \"The Producers\".",
+              "airDate": "2004-03-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 4,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Larry David Sandwich",
+              "description": "As the Jewish high holy days approach, a near-death experience, coupled with a comment made by his father, leaves Larry wondering if there's more to his identity than he thought. In better news, a sandwich now bears his name, but it's not entirely to his liking.",
+              "airDate": "2005-09-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Bowtie",
+              "description": "Larry seeks professional help to secure information about his past. Meanwhile, his place as a gay rights supporter hits a snag.",
+              "airDate": "2005-10-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Christ Nail",
+              "description": "A undergarment purchase for his housekeeper lands Larry in hot water, while his father-in-law's fondness for The Passion of the Christ comes in handy more than once.",
+              "airDate": "2005-10-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Kamikaze Bingo",
+              "description": "Larry wonders how a Japanese WWII veteran can call himself a kamikaze, and feels a nursing home bingo game may not be on the up-and-up.",
+              "airDate": "2005-10-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Lewis Needs a Kidney",
+              "description": "When Richard Lewis finds out he needs a kidney transplant, he finds two friends who match him, leaving them to decide who \"\"gets\"\" to give up their organ.",
+              "airDate": "2005-10-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Smoking Jacket",
+              "description": "His father's smoking jacket and \"\"bathroom contamination\"\" cause grief for Larry.",
+              "airDate": "2005-11-06",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Seder",
+              "description": "Cheryl puts on a Passover Seder, which Larry promptly finds numerous ways to ruin.",
+              "airDate": "2005-11-13",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The Ski Lift",
+              "description": "Anticipating having to give a kidney to Richard Lewis, Larry tries to develop a contingency plan should he need a kidney donation himself. Meanwhile, a nurse claims Jeff has some shortcomings. [tv.com]",
+              "airDate": "2005-11-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Korean Bookie",
+              "description": "Larry has his jacket borrowed without permission, but he manages to end up the bad guy. Meanwhile, his investigation into what happened to Jeff's missing dog, Oscar, leads him to suspect his Korean bookie.",
+              "airDate": "2005-11-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The End",
+              "description": "Larry finally learns the truth regarding his possible adoption, and makes his final decision about a kidney donation for Richard Lewis.",
+              "airDate": "2005-12-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 5,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Meet the Blacks",
+              "description": "The Davids take in a family whose life was destroyed by a hurricane; Larry comes up with a way to avoid going to parties he has no desire to attend",
+              "airDate": "2007-09-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Anonymous Donor",
+              "description": "It's moving day for both the Blacks and the Davids; Larry's prized Joe Pepitone jersey is lost at the dry cleaners; Larry's irked at Ted Danson's anonymous donation; Cheryl is grossed out by a semen stain on a guest-room quilt.",
+              "airDate": "2007-09-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Ida Funkhouser Roadside Memorial",
+              "description": "Marty Funkhouser is outraged when flowers from his mother's memorial are stolen; Larry complains about \"sample abusers\" in stores; Jeff and Susie find knowing Larry to be a liability when trying to get Sammy into an exclusive private school.",
+              "airDate": "2007-09-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Lefty Call",
+              "description": "Larry regrets getting Cha-Cha a job in his building when she monitors his bathroom habits, and runs into further problems with her when he has to make phone calls 'lefty'; the Blacks and Larry are fed up with Cheryl's environmentally conscious, but uncomfortable, toilet paper; a waiter objects to a doggie bag actually being prepared for a dog.",
+              "airDate": "2007-09-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "The Freak Book",
+              "description": "Larry is unrattled by a book about freaks and a bad chauffeur.",
+              "airDate": "2007-10-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Rat Dog",
+              "description": "A toaster makes life tough for Loretta and Leon; Larry gets to know an exterminator.",
+              "airDate": "2007-10-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The TiVo Guy",
+              "description": "When Larry snubs a frightened Cheryl's phone call in favor of dealing with a TiVo repairman, she walks out on him, leaving their friends to decide which of the pair to stay true to.",
+              "airDate": "2007-10-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The N Word",
+              "description": "Larry accidentally offends Lorreta's Auntie Rae and takes advantage of Jeff's hospitalization.",
+              "airDate": "2007-10-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Therapists",
+              "description": "Larry tries to use Cheryl's therapist to get back into her good graces after getting bad advice from his own; Larry's miffed at Marty's participation level in an Alzheimer's walk",
+              "airDate": "2007-11-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Bat Mitzvah",
+              "description": "Larry uses Sammie Greene's bat mitzvah to try and clear up a nasty rumor about him; the Blacks announce they're returning home; Larry makes another attempt at dating.",
+              "airDate": "2007-11-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 6,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Funkhouser's Crazy Sister",
+              "description": "Larry attempts a pre-emptive breakup with an ailing Loretta, and learns with Jeff that you can’t make an “empty gesture” to a Funkhouser.",
+              "airDate": "2009-09-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Vehicular Fellatio",
+              "description": "Against the will of a renowned doctor, Larry tries his best to irritate Loretta. Once again, Larry causes issues in Richard Lewis' new relationship, and, after being unintentionally tipped off by Leon, takes advantage of the wife of a depressed friend.",
+              "airDate": "2009-09-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Reunion",
+              "description": "Jeff pitches the idea of doing a Seinfeld reunion to Larry, who refuses at first, until he realizes how he could make it pay off personally.",
+              "airDate": "2009-10-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Hot Towel",
+              "description": "Larry makes an enemy of Christian Slater at Ted and Mary's anniversary party, but gets his payback while at a restaurant with an old flame. Meanwhile, Larry's doctor gives him his personal number and soon regrets it.",
+              "airDate": "2009-10-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Denise Handicap",
+              "description": "Larry believes that he has found a way to enjoy someone else's disability without being disabled himself. Meanwhile, he hopes to end a rumor that Rosie O'Donnell can beat him up.",
+              "airDate": "2009-10-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Bare Midriff",
+              "description": "When Larry and Jerry Seinfeld get together to write the reunion show, they consider including Larry's latest experience, which involves a crying Jesus and a bare-midriff assistant.",
+              "airDate": "2009-10-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Black Swan",
+              "description": "Larry has bad luck on the same golf hole twice.",
+              "airDate": "2009-11-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Officer Krupke",
+              "description": "Larry is forced to embrace his feminine side; Cheryl competes for a Seinfeld role; a law officer has an unusual name.",
+              "airDate": "2009-11-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Table Read",
+              "description": "Larry is miffed at both Marty Funkhouser's sudden presence on set during the Seinfeld reunion's table read and text messages from the nine-year-old daughter of a co-worker. Leon poses as a dead doctor to alleviate Michael Richards' concerns over his Groat's Disease diagnosis.",
+              "airDate": "2009-11-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Seinfeld",
+              "description": "Not tipping for a favor gets Larry into bad graces with the studio lot's coffee guy, while Julia Louis-Dreyfus accuses him of leaving a ring on an antique table in her house. Meanwhile, he deals with the suspicion that their closeness during production of the Seinfeld reunion has led to Cheryl sleeping with Jason Alexander.",
+              "airDate": "2009-11-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 7,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Divorce",
+              "description": "Larry learns his lawyer isn't kosher, and rescinds a cookie order from the Girl Scout daughter of a beleaguered sports owner.",
+              "airDate": "2011-07-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Safe House",
+              "description": "Larry becomes an unlikely role model for battered women. Richard Lewis's relationship with a burlesque performer is put to the test. Leon survives a case of mistaken identity.",
+              "airDate": "2011-07-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Palestinian Chicken",
+              "description": "A Palestinian chicken restaurant is incredibly popular with Larry and his friends despite its open hostility towards Jews and Israel. Meanwhile, Larry's approached to inform people that their habits are agitating by family members too scared to do so.",
+              "airDate": "2011-07-24",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Smiley Face",
+              "description": "Larry challenges the rules of dating and rethinks a decision regarding a new workplace neighbor. Meanwhile, Jeff invents an ill-advised excuse to get out of a dining engagement.",
+              "airDate": "2011-07-31",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Vow of Silence",
+              "description": "Larry's evolving alibi to get out of a charity function results in unexpected travel plans. Meanwhile, Susie makes demands for the terminally ill family dog's last meal; and Larry points out personal flaws in the buffet line and in parking lots.",
+              "airDate": "2011-08-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Hero",
+              "description": "Larry plays the hero in the sky and underground; Jeff’s courtship of Ricky Gervais is sabotaged by a nosy waiter.",
+              "airDate": "2011-08-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Bi-Sexual",
+              "description": "Larry competes with Rosie O’Donnell for the same woman, explores the nuances of Japanese bows, and refuses lunch with an LA acquaintance.",
+              "airDate": "2011-08-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Car Periscope",
+              "description": "Larry and Jeff weigh an investment opportunity; Wanda Sykes preempts Larry’s training schedule.",
+              "airDate": "2011-08-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Mister Softee",
+              "description": "An ice cream truck triggers a painful childhood memory for Larry.",
+              "airDate": "2011-09-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Larry vs. Michael J. Fox",
+              "description": "Larry accuses his neighbor, Michael J. Fox of harassment; Jeff takes a bullet for Susie; Larry gives an inappropriate gift to Elizabeth's son.",
+              "airDate": "2011-09-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 8,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Foisted!",
+              "description": "Larry tries to rid himself of an inept assistant, offends Jeff’s barber and gets into hot water over a new project.",
+              "airDate": "2017-10-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Pickle Gambit",
+              "description": "Larry reaches out to a familiar face, gives a hotel guest sartorial advice and looks to create a diversion to help a friend’s nephew.",
+              "airDate": "2017-10-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "A Disturbance in the Kitchen",
+              "description": "Larry turns to a writer for advice. Searching for Susie’s missing “little sister,” he gets ticketed by an overzealous cop.",
+              "airDate": "2017-10-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Running with the Bulls",
+              "description": "Larry’s therapist accuses him of overstepping. Susie grows suspicious of Jeff. Larry bribes an usher at a funeral.",
+              "airDate": "2017-10-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Thank You for Your Service",
+              "description": "Larry commits a faux pas with Sammi’s fiancé, and tries to start over with his mail carrier and golf club security guard.",
+              "airDate": "2017-10-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Accidental Text on Purpose",
+              "description": "Larry invents an ingenious ploy for getting his friends out of relationship jams. Larry upsets Funkhouser's new girlfriend.",
+              "airDate": "2017-11-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Namaste",
+              "description": "Larry angers a hot-yoga teacher, has an auspicious first date, and seethes over a run-in with an unfair Uber driver.",
+              "airDate": "2017-11-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Never Wait for Seconds!",
+              "description": "Bridget asks Larry for a favor on behalf of her son. Larry earns unexpected gratitude in a buffet line, and realizes that tips are better than favors.",
+              "airDate": "2017-11-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Shucker",
+              "description": "Larry is blackmailed by an employee and tormented by someone from his past; Jeff and Larry pitch a new creative venture; Susie gets turned on by a surprising source.",
+              "airDate": "2017-11-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Fatwa!",
+              "description": "Larry has a scheduling conflict, takes issue with work associates and hosts a pair of ungrateful house guests.",
+              "airDate": "2017-12-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 9,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Happy New Year",
+              "description": "Larry makes a new enemy and gets into hot water at a cocktail party.",
+              "airDate": "2020-01-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Side Sitting",
+              "description": "Larry's lawyer tries to resolve the situation with his assistant, Alice. Larry surprises Susie with an impressive birthday gift and comes one step closer to exacting revenge on Mocha Joe.",
+              "airDate": "2020-01-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Artificial Fruit",
+              "description": "Larry gets the chance to clear the air with Alice and goes to extreme lengths for a lunch with Richard.",
+              "airDate": "2020-02-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "You're Not Going to Get Me to Say Anything Bad About Mickey",
+              "description": "Larry brings an impromptu date to a destination wedding.",
+              "airDate": "2020-02-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Insufficient Praise",
+              "description": "Marty Funkhauser's brother sends Larry an unusual gift; and an actor friend of the Greens is dissatisfied with Larry's praise of his performance.",
+              "airDate": "2020-02-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Surprise Party",
+              "description": "When Susie plans a surprise party for Jeff, Larry suspects she has ulterior motives, and enlists the help of his new friend Wally to ensure things don’t go awry. Larry connects with a problematic inventor to develop an innovative new product. Dr. Andrew \"Rusty\" Holzer, portrayed by Greg Germann, adopts the nickname \"Rusty,\" a choice Larry openly opposes, echoing his disdain for the new waiting room decor and receptionist misinterpretation. Rusty highlights the necessity of professional supervision for the surprise party, especially during Chris Martin's performance, to ensure Jeff's safety. Larry's suspicions extend to Rusty's motives and Susie's intentions, prompting him to devise a subtle plan involving Rusty. Despite logistical challenges, Rusty's unfortunate encounter with Susie at the party leads to a distressing outcome.",
+              "airDate": "2020-02-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Ugly Section",
+              "description": "Larry attempts to capitalize on a friend’s unexpected death and takes issue with a pattern of discrimination at a trendy restaurant. Later, Larry offers his dermatologist’s son a job and Richard has a suspiciously good day on the golf course.",
+              "airDate": "2020-03-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Elizabeth, Margaret and Larry",
+              "description": "A prominent actor shadows Larry to prepare for an upcoming role. Larry meddles in the sale of Cheryl’s sister’s house, helps Leon grow a new business and stirs up trouble at a dinner party hosted by Richard’s girlfriend.",
+              "airDate": "2020-03-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Beep Panic",
+              "description": "Mocha Joe goes to war with his new competitor. Larry takes pity on a waitress and creates friction at the BMW dealership. Richard takes a career-defining role.",
+              "airDate": "2020-03-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Spite Store",
+              "description": "Larry runs into a familiar face, causes a rift between expectant parents and seeks a second opinion on his knee injury. His reaction to emergency sirens spells disaster.",
+              "airDate": "2020-03-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 10,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Five-Foot Fence",
+              "description": "A discovery in Larry's backyard threatens to derail his latest creative venture, while a clumsy mishap threatens the future of his latest romance. Albert Brooks hosts an unprecedented event, and Leon makes arrangements for an upcoming trip.",
+              "airDate": "2021-10-24",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Angel Muffin",
+              "description": "Larry is forced to attend an ill-fated work meeting and investigates the truth behind a faulty toilet. Determined to unravel a mystery of his own, Jeff employs Larry's detective skills.",
+              "airDate": "2021-10-31",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Mini Bar",
+              "description": "After enlisting Cheryl’s help in a last-ditch effort, Larry has an idea that could save his latest project.",
+              "airDate": "2021-11-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Watermelon",
+              "description": "Larry hangs out with Woody Harrelson and cashes in on Susie’s favor.",
+              "airDate": "2021-11-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "IRASSHAIMASE!",
+              "description": "After enlisting both Jeff and Freddy’s help for the occasion, Larry’s hot date quickly goes south.",
+              "airDate": "2021-11-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "Man Fights Tiny Woman",
+              "description": "Larry navigates the complexities of requesting a new chauffeur, letting his roofer do his job, and imparting some constructive criticism to his chiropractor.",
+              "airDate": "2021-11-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Irma Kostroski",
+              "description": "Before Election Day, Larry gets involved in local politics while mediating a conflict on his set.",
+              "airDate": "2021-12-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "What Have I Done?",
+              "description": "Larry does damage control to remain in Irma's good graces while encouraging Leon to monetize his knack for husbandly counsel.",
+              "airDate": "2021-12-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Igor, Gregor, & Timor",
+              "description": "Larry does the right thing (and regrets it) while seizing an unprecedented opportunity to avoid Irma. Jeff seeks out a pricey peace offering for Susie.",
+              "airDate": "2021-12-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Mormon Advantage",
+              "description": "Larry gives out some unsolicited marriage advice; Larry hosts an event for an American hero.",
+              "airDate": "2021-12-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 11,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 12,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Atlanta",
+              "description": "Larry heads to Georgia to appear at the birthday party of a prominent businessman, while Leon takes the opportunity to visit his Auntie Rae. Later, Larry has some trouble with his glasses and faces off with a surly hotel cleaner.",
+              "airDate": "2024-02-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 1
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Lawn Jockey",
+              "description": "Still in Atlanta, Larry finds himself stuck at a rental home with a questionable lawn ornament. Meanwhile, Jeff pays the price for taking Larry's advice for Susie's birthday gift.",
+              "airDate": "2024-02-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 2
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Vertical Drop, Horizontal Tug",
+              "description": "Larry's improved golf game causes trouble with an acclaimed actor. Freddy helps his neighbors through a delicate issue.",
+              "airDate": "2024-02-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 3
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Disgruntled",
+              "description": "Larry finds himself in Takahashi's crosshairs after a note is found in the men's locker room. Tensions mount when Larry and Irma's couple's counselor crosses a professional line.",
+              "airDate": "2024-02-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 4
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Fish Stuck",
+              "description": "After an incident at temple, Larry asks friends to vouch for his character – while also trying to help name a baby and worrying about a fish.",
+              "airDate": "2024-03-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 5
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Gettysburg Address",
+              "description": "Larry tries to make better use of the time he spends in the bathroom. Susie starts a new business, and her advertising has unexpected results. Later, Larry gives acting advice to an A-list actress.",
+              "airDate": "2024-03-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 6
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Dream Scheme",
+              "description": "An acquaintance from the club asks too much of Larry. Jeff and Freddy both use Larry's tactics to get out of unwanted obligations of their own.",
+              "airDate": "2024-03-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 7
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The Colostomy Bag",
+              "description": "When Richard enlists Larry's help to buy a vintage car, his careless behavior leads to an unwanted outcome. Jeff secretly schemes to give Larry power of attorney.",
+              "airDate": "2024-03-24",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 8
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Ken/Kendra",
+              "description": "A misunderstanding with Cheryl's masseuse threatens Larry's image. Then, public perception of Larry sinks even lower when he gives the wrong person COVID.",
+              "airDate": "2024-03-31",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 9
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "No Lessons Learned",
+              "description": "Larry returns to Atlanta, where he gets involved in Richard's love life and reveals a secret about Cheryl.",
+              "airDate": "2024-04-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "curbyourenthusiasm",
+                "season": 12,
+                "episode": 10
+              },
+              "subtitles": [],
+              "rokuSubtitles": [],
               "skipIntroEnd": null,
               "skipOutroStart": null
             }

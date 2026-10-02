@@ -621,6 +621,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2025 • Comedy • 2 seasons"
+    },
+    "curbyourenthusiasm": {
+      "image": "curbyourenthusiasm-c70638a59ce1.jpg",
+      "thumbnail": "curbyourenthusiasm-c70638a59ce1-thumb.jpg",
+      "source": "/images/curbyourenthusiasm/covers/curbyourenthusiasmCover.svg",
+      "sourceSHA256": "c70638a59ce169b8e101998a755e27bccef827c34aba47acf8404edc38ddbe89",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2000 • Comedy • 12 seasons"
     }
   }
 }

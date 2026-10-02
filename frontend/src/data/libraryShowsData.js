@@ -803,6 +803,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: videoDataByShow["adults"],
         }, 
+        "curbyourenthusiasm": {
+          type: "show",  
+          title: "Curb Your Enthusiasm",
+          agerating: "18+",
+          release_year: "2000",
+          genre: "Comedy",
+          season_total_number: "12 seasons",
+          season_digit: 12,
+          description: "Larry David stars as an over-the-top version of himself in this comedy series that shows how seemingly trivial details of day-to-day life can precipitate a catastrophic chain of events.",
+          background: "/images/curbyourenthusiasm/covers/curbyourenthusiasmCover.svg",
+          subtitles: "no",
+          videos: videoDataByShow["curbyourenthusiasm"],
+        }, 
         
       };
 

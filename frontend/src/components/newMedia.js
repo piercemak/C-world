@@ -4,6 +4,16 @@
     export const newMedia = [
       {
         kind: "episode",
+        showSlug: "curbyourenthusiasm",
+        showTitle: "Curb Your Enthusiasm",
+        season: 1,
+        episode: 1,
+        episodeTitle: "The Pants Tent",
+        placeholder: `${cloudFrontDomain}/${clean("curbyourenthusiasm")}/placeholders/season1/S1E1_${clean("curbyourenthusiasm")}_placeholder.png`,
+        to: `/video-library/curbyourenthusiasm?season=1&episode=1`,
+      }, 
+      {
+        kind: "episode",
         showSlug: "adults",
         showTitle: "Adults",
         season: 1,

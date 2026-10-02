@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-02T19:35:52.272Z",
+  "catalogRevision": "2026-10-02T19:42:18.367Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1105,6 +1105,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "e2a5e67d5395575db3e6dabadae0e4887db5e69278d94f648dc7291fb30625f1"
+    },
+    "https://cearaworld.com/images/cardimages/curbyourenthusiasmLogo.svg": {
+      "image": "c41df6dfc612-faad57d8ae98.jpg",
+      "thumbnail": "c41df6dfc612-faad57d8ae98-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "faad57d8ae988532ec31f88a03978c95bb7a5936842f42bd60f1d908bdcd40c1"
+    },
+    "https://cearaworld.com/images/curbyourenthusiasm/covers/curbyourenthusiasm_backdrop.svg": {
+      "image": "48ab585d0ae6-a4dc5b75d43e.jpg",
+      "thumbnail": "48ab585d0ae6-a4dc5b75d43e-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a4dc5b75d43e9df0781c3f8ef2d9cda34b9073c5e63def76278426a7dce5c624"
     }
   }
 }

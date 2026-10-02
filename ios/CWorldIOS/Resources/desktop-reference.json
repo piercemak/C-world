@@ -68,9 +68,15 @@
     "interstellar",
     "tron",
     "themist",
-    "adults"
+    "adults",
+    "curbyourenthusiasm"
   ],
   "newMedia": [
+    {
+      "id": "curbyourenthusiasm",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "adults",
       "season": 1,
