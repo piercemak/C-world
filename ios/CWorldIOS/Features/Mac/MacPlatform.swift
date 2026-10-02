@@ -62,7 +62,14 @@ struct MacPlayerInput: ViewModifier {
                 focused = true
                 setCursorHidden(!controlsVisible)
             }
-            .onKeyPress(.space) { toggle(); return .handled }
+            .background {
+                // Keep Space available even when the transport controls are hidden.
+                Button(action: toggle) { Color.clear.frame(width: 0, height: 0) }
+                    .keyboardShortcut(.space, modifiers: [])
+                    .opacity(0)
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+            }
             .onKeyPress(.leftArrow) { seek(-15); return .handled }
             .onKeyPress(.rightArrow) { seek(15); return .handled }
             .onKeyPress(.escape) { close(); return .handled }
@@ -126,6 +133,67 @@ final class MacTimelinePreview: ObservableObject {
     }
 }
 
+/// Draw the timeline directly: Mac-idiom UISlider rejects custom track styling.
+struct MacPlaybackTimeline: View {
+    @Binding var currentTime: Double
+    let duration: Double
+    let editing: (Bool) -> Void
+    @ObservedObject private var theme = MacProgressTheme.shared
+
+    @State private var scrubbing = false
+    @GestureState private var gestureActive = false
+    private var maximum: Double { duration.isFinite ? max(1, duration) : 1 }
+    private var position: Double { currentTime.isFinite ? min(max(0, currentTime), maximum) : 0 }
+
+    var body: some View {
+        GeometryReader { geometry in
+            let inset: CGFloat = 7
+            let width = max(1, geometry.size.width - inset * 2)
+            let fraction = position / maximum
+            ZStack(alignment: .leading) {
+                Capsule().fill(.white.opacity(0.25)).frame(height: 4)
+                Capsule().fill(theme.colorHex.map { Color(macHex: $0) } ?? .white)
+                    .frame(width: width * fraction, height: 4)
+                Circle().fill(.white).frame(width: 14, height: 14)
+                    .offset(x: width * fraction - inset)
+            }
+            .padding(.horizontal, inset)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(Rectangle())
+            .gesture(DragGesture(minimumDistance: 0)
+                .updating($gestureActive) { _, active, _ in active = true }
+                .onChanged { value in
+                    if !scrubbing { scrubbing = true; editing(true) }
+                    currentTime = Double(min(max(0, value.location.x - inset), width) / width) * maximum
+                }
+                .onEnded { value in
+                    currentTime = Double(min(max(0, value.location.x - inset), width) / width) * maximum
+                    finishScrubbing()
+                })
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Playback position")
+        .accessibilityValue("\(Int(position)) of \(Int(maximum)) seconds")
+        .accessibilityAdjustableAction { direction in
+            editing(true)
+            switch direction {
+            case .increment: currentTime = min(maximum, position + 5)
+            case .decrement: currentTime = max(0, position - 5)
+            @unknown default: break
+            }
+            editing(false)
+        }
+        .onChange(of: gestureActive) { _, active in if !active { finishScrubbing() } }
+        .onDisappear { finishScrubbing() }
+    }
+
+    private func finishScrubbing() {
+        guard scrubbing else { return }
+        scrubbing = false
+        editing(false)
+    }
+}
+
 struct MacPlaybackControls: View {
     let player: AVPlayer?
     let title: String
@@ -140,6 +208,7 @@ struct MacPlaybackControls: View {
     @Binding var isMuted: Bool
     let close: () -> Void
     let toggle: () -> Void
+    let restart: () -> Void
     let seek: (Double) -> Void
     let editing: (Bool) -> Void
     let mute: () -> Void
@@ -154,7 +223,8 @@ struct MacPlaybackControls: View {
     var body: some View {
         ZStack {
             LinearGradient(colors: [.black.opacity(0.8), .clear, .black.opacity(0.9)], startPoint: .top, endPoint: .bottom)
-                .allowsHitTesting(false)
+                .contentShape(Rectangle())
+                .onTapGesture(perform: toggle)
             VStack {
                 HStack(alignment: .top) {
                     Color.clear.frame(width: 34, height: 34)
@@ -172,12 +242,16 @@ struct MacPlaybackControls: View {
                     Text(time(duration)).monospacedDigit()
                 }.font(.system(size: 12)).foregroundStyle(.white.opacity(0.7))
                 HStack(spacing: 24) {
-                    Text("CW").font(.custom(CWorldFonts.elmsSans(.bold), size: 23)).foregroundStyle(.white.opacity(0.4)).frame(width: 160, alignment: .leading)
+                    HStack {
+                        Button(action: restart) { Image(systemName: "arrow.counterclockwise") }
+                            .help("Restart from beginning")
+                            .accessibilityLabel("Restart from beginning")
+                        Spacer()
+                    }.frame(width: 160)
                     Spacer()
                     if let previous { Button(action: previous) { Image(systemName: "backward.end.fill") }.help("Previous episode") }
                     Button { seek(-15) } label: { Image(systemName: "gobackward.15") }.help("Back 15 seconds · ←")
                     Button(action: toggle) { Image(systemName: isPlaying ? "pause.fill" : "play.fill").contentTransition(.symbolEffect(.replace)).font(.system(size: 28)).frame(width: 52, height: 52) }
-                        .keyboardShortcut(.space, modifiers: [])
                         .help("Play / Pause · Space")
                     Button { seek(15) } label: { Image(systemName: "goforward.15") }.help("Forward 15 seconds · →")
                     if let next { Button(action: next) { Image(systemName: "forward.end.fill") }.help("Next episode") }
@@ -210,8 +284,7 @@ struct MacPlaybackControls: View {
     }
     private var timeline: some View {
         GeometryReader { geometry in
-            Slider(value: $currentTime, in: 0...max(1, duration), onEditingChanged: editing)
-                .modifier(MacProgressTint())
+            MacPlaybackTimeline(currentTime: $currentTime, duration: duration, editing: editing)
                 .onContinuousHover { phase in
                     switch phase {
                     case .active(let location):

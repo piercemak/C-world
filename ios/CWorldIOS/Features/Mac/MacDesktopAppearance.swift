@@ -34,7 +34,10 @@ struct MacProgressFill: View {
 struct MacProgressTint: ViewModifier {
     @ObservedObject private var theme = MacProgressTheme.shared
     func body(content: Content) -> some View {
-        content.tint(theme.colorHex.map { Color(macHex: $0) } ?? .white)
+        let color = theme.colorHex.map { Color(macHex: $0) } ?? .white
+        // Catalyst sliders can use accentColor instead of the inherited tint.
+        // Set both locally so transport buttons keep their white styling.
+        content.tint(color).accentColor(color)
     }
 }
 

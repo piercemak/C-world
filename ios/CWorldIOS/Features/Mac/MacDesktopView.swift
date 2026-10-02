@@ -239,7 +239,9 @@ struct MacDesktopView: View {
             switch sheet {
             case .profiles: MacProfilePicker(isSwitching: true).environmentObject(appModel)
             case .editProfile:
-                if let profile = appModel.activeProfile { MacProfileEditor(profile: profile) }
+                if let profile = appModel.activeProfile {
+                    MacProfileEditor(profile: profile).environmentObject(appModel)
+                }
             }
         }
         .blur(radius: showingColors || showingRequest ? 4 : 0)

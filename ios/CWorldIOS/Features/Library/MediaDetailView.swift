@@ -1344,7 +1344,13 @@ struct PersistentVideoPlayerView: View {
 
                 Color.clear
                     .contentShape(Rectangle())
-                    .onTapGesture { toggleControls() }
+                    .onTapGesture {
+                        #if targetEnvironment(macCatalyst)
+                        togglePlayback()
+                        #else
+                        toggleControls()
+                        #endif
+                    }
 
                 if !externalDisplay.isConnected && !playbackHost.isAirPlay && !activeSubtitle.isEmpty && subtitlesEnabled {
                     VStack {
@@ -1564,6 +1570,7 @@ struct PersistentVideoPlayerView: View {
                             subtitlesEnabled: $subtitlesEnabled, hasSubtitles: selection.subtitleURL != nil || nativeSubtitlesAvailable,
                             subtitleSettingsPresented: $subtitleSettingsPresented,
                             volume: $volume, isMuted: $isMuted, close: closePlayer, toggle: togglePlayback,
+                            restart: restartPlayback,
                             seek: { seek(by: $0) }, editing: { editing in
                                 isScrubbing = editing
                                 if !editing { seek(to: currentTime) }
@@ -2137,6 +2144,18 @@ struct PersistentVideoPlayerView: View {
         } else {
             player.play()
         }
+        updatePlaybackState(for: player)
+        controlsVisible = true
+        scheduleControlsHide()
+    }
+
+    @MainActor
+    private func restartPlayback() {
+        guard let player else { return }
+        outroCountdown = nil
+        outroCancelled = false
+        seek(to: 0)
+        player.play()
         updatePlaybackState(for: player)
         controlsVisible = true
         scheduleControlsHide()

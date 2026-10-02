@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-01T17:34:57.407Z",
-  "generatedAt": "2026-10-01T17:34:57.407Z",
+  "catalogRevision": "2026-10-02T19:11:52.366Z",
+  "generatedAt": "2026-10-02T19:11:52.366Z",
   "items": [
     {
       "id": "steven-universe",
@@ -32135,8 +32135,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E01_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 280.85,
+              "skipOutroStart": 1330.7
             },
             {
               "number": 2,
@@ -32155,8 +32155,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E02_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 209.8,
+              "skipOutroStart": 1329.36
             },
             {
               "number": 3,
@@ -32175,8 +32175,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E03_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 237.8,
+              "skipOutroStart": 1320.53
             },
             {
               "number": 4,
@@ -32195,8 +32195,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E04_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 154.8,
+              "skipOutroStart": 1330.53
             },
             {
               "number": 5,
@@ -32215,8 +32215,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E05_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 159.8,
+              "skipOutroStart": 1322.53
             },
             {
               "number": 6,
@@ -32235,8 +32235,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E06_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 278.8,
+              "skipOutroStart": 1278.53
             },
             {
               "number": 7,
@@ -32255,8 +32255,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E07_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 168.8,
+              "skipOutroStart": 1332.53
             },
             {
               "number": 8,
@@ -32275,8 +32275,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E08_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 220.8,
+              "skipOutroStart": 1350.33
             },
             {
               "number": 9,
@@ -32295,8 +32295,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E09_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 202.8,
+              "skipOutroStart": 1321.53
             },
             {
               "number": 10,
@@ -32315,8 +32315,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E10_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 166.6,
+              "skipOutroStart": 1350.44
             },
             {
               "number": 11,
@@ -32335,8 +32335,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E11_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 224.8,
+              "skipOutroStart": 1350.33
             },
             {
               "number": 12,
@@ -32356,7 +32356,7 @@
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season1/S1E12_subtitles.srt"
               ],
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1432.55
             }
           ]
         },
@@ -32381,7 +32381,7 @@
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E01_subtitles.srt"
               ],
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1321.4
             },
             {
               "number": 2,
@@ -32400,8 +32400,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E02_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 309.4,
+              "skipOutroStart": 1222.8
             },
             {
               "number": 3,
@@ -32420,8 +32420,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E03_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 117.4,
+              "skipOutroStart": 1269.85
             },
             {
               "number": 4,
@@ -32440,8 +32440,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E04_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 198.4,
+              "skipOutroStart": 1315.85
             },
             {
               "number": 5,
@@ -32460,8 +32460,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E05_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 200.4,
+              "skipOutroStart": 1278.3
             },
             {
               "number": 6,
@@ -32480,8 +32480,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E06_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 190.4,
+              "skipOutroStart": 1290.81
             },
             {
               "number": 7,
@@ -32500,8 +32500,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E07_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 115.4,
+              "skipOutroStart": 1313.9
             },
             {
               "number": 8,
@@ -32520,8 +32520,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E08_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 173.4,
+              "skipOutroStart": 1334.85
             },
             {
               "number": 9,
@@ -32540,8 +32540,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E09_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 118.4,
+              "skipOutroStart": 1412.7
             },
             {
               "number": 10,
@@ -32560,8 +32560,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E10_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 185.4,
+              "skipOutroStart": 1334.81
             },
             {
               "number": 11,
@@ -32580,8 +32580,8 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E11_subtitles.srt"
               ],
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroEnd": 248.4,
+              "skipOutroStart": 1334.88
             },
             {
               "number": 12,
@@ -32601,7 +32601,7 @@
                 "https://cearaworld.com/roku-captions/subtitles/onepunchman/season2/S2E12_subtitles.srt"
               ],
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1318.95
             }
           ]
         }
