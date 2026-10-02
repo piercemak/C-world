@@ -1850,8 +1850,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 57.33152708999495
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/steelballrunLogo.svg",
+      "titles": [
+        "Steel Ball Run"
+      ],
+      "sourceBytes": 6416866,
+      "outputBytes": 461819,
+      "thumbnailBytes": 72720,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 40.2045861106754
+    },
+    {
+      "url": "https://cearaworld.com/images/steelballrun/covers/steelballrun_backdrop.svg",
+      "titles": [
+        "Steel Ball Run"
+      ],
+      "sourceBytes": 20019852,
+      "outputBytes": 1614540,
+      "thumbnailBytes": 46569,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 42.17348304451275
     }
   ],
-  "sourceBytes": 760837491,
-  "outputBytes": 95758273
+  "sourceBytes": 787274209,
+  "outputBytes": 97953921
 }

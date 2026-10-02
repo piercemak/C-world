@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-02T19:42:18.367Z",
+  "catalogRevision": "2026-10-02T19:56:31.318Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1121,6 +1121,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "a4dc5b75d43e9df0781c3f8ef2d9cda34b9073c5e63def76278426a7dce5c624"
+    },
+    "https://cearaworld.com/images/cardimages/steelballrunLogo.svg": {
+      "image": "5885e1d882e3-eae123ac0354.jpg",
+      "thumbnail": "5885e1d882e3-eae123ac0354-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "eae123ac0354bc0c805228066c592774341a0d4cc0b2be85e9e75977997176d9"
+    },
+    "https://cearaworld.com/images/steelballrun/covers/steelballrun_backdrop.svg": {
+      "image": "387ce05f0602-9d255268e0c6.jpg",
+      "thumbnail": "387ce05f0602-9d255268e0c6-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "9d255268e0c6c10988f11997c6db25d50946b894ff481143a5a0aaea8f7fcb28"
     }
   }
 }

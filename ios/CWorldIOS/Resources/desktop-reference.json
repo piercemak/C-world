@@ -69,9 +69,15 @@
     "tron",
     "themist",
     "adults",
-    "curbyourenthusiasm"
+    "curbyourenthusiasm",
+    "steelballrun"
   ],
   "newMedia": [
+    {
+      "id": "steelballrun",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "curbyourenthusiasm",
       "season": 1,

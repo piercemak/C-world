@@ -11700,5 +11700,81 @@
         "tmdbId": 4998036
       }
     ]
+  },
+  "steelballrun": {
+    "1": [
+      {
+        "title": "STEEL BALL RUN",
+        "description": "After a fateful encounter with outlaw Gyro Zeppeli, former racing prodigy Johnny Joestar enters the Steel Ball Run, the first horse race across America.",
+        "airDate": "2026-03-19",
+        "tmdbId": 6773515
+      },
+      {
+        "title": "The Sheriff's Request to Mountain Tim",
+        "description": "After a shocking end to the 1st STAGE, abnormal murders unfold. Legendary cowboy Mountain Tim steps in to investigate as the tense 2nd STAGE begins.",
+        "airDate": "2026-09-25",
+        "tmdbId": 7087828
+      },
+      {
+        "title": "The Desert-Born Outlaws",
+        "description": "At camp, Johnny catches a glimpse of Gyro's past. Then the Boomboom Family strikes with an otherworldly power. The duo escape — or so they think.",
+        "airDate": "2026-10-02",
+        "tmdbId": 7459374
+      },
+      {
+        "title": "Episode 4",
+        "description": "",
+        "airDate": "2026-10-09",
+        "tmdbId": 7459375
+      },
+      {
+        "title": "Episode 5",
+        "description": "",
+        "airDate": "2026-10-16",
+        "tmdbId": 7459376
+      },
+      {
+        "title": "Episode 6",
+        "description": "",
+        "airDate": "2026-10-23",
+        "tmdbId": 7459377
+      },
+      {
+        "title": "Episode 7",
+        "description": "",
+        "airDate": "2026-10-30",
+        "tmdbId": 7459378
+      },
+      {
+        "title": "Episode 8",
+        "description": "",
+        "airDate": "2026-11-06",
+        "tmdbId": 7459379
+      },
+      {
+        "title": "Episode 9",
+        "description": "",
+        "airDate": "2026-11-13",
+        "tmdbId": 7459380
+      },
+      {
+        "title": "Episode 10",
+        "description": "",
+        "airDate": "2026-11-20",
+        "tmdbId": 7459381
+      },
+      {
+        "title": "Episode 11",
+        "description": "",
+        "airDate": "2026-11-27",
+        "tmdbId": 7459382
+      },
+      {
+        "title": "Episode 12",
+        "description": "",
+        "airDate": "2026-12-04",
+        "tmdbId": 7459383
+      }
+    ]
   }
 }

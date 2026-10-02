@@ -630,6 +630,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2000 • Comedy • 12 seasons"
+    },
+    "steelballrun": {
+      "image": "steelballrun-9eb0bb07eecb.jpg",
+      "thumbnail": "steelballrun-9eb0bb07eecb-thumb.jpg",
+      "source": "/images/steelballrun/covers/steelballrunCover.svg",
+      "sourceSHA256": "9eb0bb07eecb660c74d47370253217dbd7c468556af0ba6699874ed0b6f34c86",
+      "width": 1920,
+      "height": 1080,
+      "meta": "TBD • TBD • 1 season"
     }
   }
 }

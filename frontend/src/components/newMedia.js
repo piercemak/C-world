@@ -4,6 +4,16 @@
     export const newMedia = [
       {
         kind: "episode",
+        showSlug: "steelballrun",
+        showTitle: "Steel Ball Run",
+        season: 1,
+        episode: 1,
+        episodeTitle: "STEEL BALL RUN",
+        placeholder: `${cloudFrontDomain}/${clean("steelballrun")}/placeholders/season1/S1E1_${clean("steelballrun")}_placeholder.png`,
+        to: `/video-library/steelballrun?season=1&episode=1`,
+      }, 
+      {
+        kind: "episode",
         showSlug: "curbyourenthusiasm",
         showTitle: "Curb Your Enthusiasm",
         season: 1,

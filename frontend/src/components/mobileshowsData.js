@@ -819,4 +819,15 @@ export const SHOWS = [
         card: "/images/cardimages/curbyourenthusiasmLogo.svg", 
         dateadded: "10-2-26",
     }, 
+    {
+        id: "steelballrun",
+        title: "Steel Ball Run",
+        creator: "TBD", 
+        background: "/images/steelballrun/covers/steelballrun_backdrop.svg",
+        ratings: "TBD",
+        type: "TV",
+        keyart: "/images/steelballrun/covers/steelballrun_mobileLogo.jpeg", 
+        card: "/images/cardimages/steelballrunLogo.svg", 
+        dateadded: "10-2-26",
+    }, 
 ];

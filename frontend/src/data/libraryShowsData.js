@@ -816,6 +816,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "no",
           videos: videoDataByShow["curbyourenthusiasm"],
         }, 
+        "steelballrun": {
+          type: "show",  
+          title: "Steel Ball Run",
+          agerating: "18+",
+          release_year: "TBD",
+          genre: "TBD",
+          season_total_number: "1 season",
+          season_digit: 1,
+          description: "Description TBD.",
+          background: "/images/steelballrun/covers/steelballrunCover.svg",
+          subtitles: "yes",
+          videos: videoDataByShow["steelballrun"],
+        }, 
         
       };
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-02T19:42:18.367Z",
-  "generatedAt": "2026-10-02T19:42:18.367Z",
+  "catalogRevision": "2026-10-02T19:56:31.318Z",
+  "generatedAt": "2026-10-02T19:56:31.318Z",
   "items": [
     {
       "id": "steven-universe",
@@ -35096,6 +35096,280 @@
               },
               "subtitles": [],
               "rokuSubtitles": [],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "steelballrun",
+      "assetId": "steelballrun",
+      "type": "show",
+      "title": "Steel Ball Run",
+      "dateAdded": "10-2-26",
+      "description": "Description TBD.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/steelballrunLogo.svg",
+        "poster": "https://cearaworld.com/images/steelballrun/covers/steelballrun_mobileLogo.jpeg",
+        "backdrop": "https://cearaworld.com/images/steelballrun/covers/steelballrun_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/steelballrun/covers/steelballrun_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "TBD",
+        "rating": "TBD",
+        "year": "TBD",
+        "genres": [
+          "TBD"
+        ],
+        "duration": "22m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "STEEL BALL RUN",
+              "description": "After a fateful encounter with outlaw Gyro Zeppeli, former racing prodigy Johnny Joestar enters the Steel Ball Run, the first horse race across America.",
+              "airDate": "2026-03-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E01_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Sheriff's Request to Mountain Tim",
+              "description": "After a shocking end to the 1st STAGE, abnormal murders unfold. Legendary cowboy Mountain Tim steps in to investigate as the tense 2nd STAGE begins.",
+              "airDate": "2026-09-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E02_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Desert-Born Outlaws",
+              "description": "At camp, Johnny catches a glimpse of Gyro's past. Then the Boomboom Family strikes with an otherworldly power. The duo escape — or so they think.",
+              "airDate": "2026-10-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E03_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Episode 4",
+              "description": "",
+              "airDate": "2026-10-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E04_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Episode 5",
+              "description": "",
+              "airDate": "2026-10-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E05_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "Episode 6",
+              "description": "",
+              "airDate": "2026-10-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E06_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Episode 7",
+              "description": "",
+              "airDate": "2026-10-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E07_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Episode 8",
+              "description": "",
+              "airDate": "2026-11-06",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E08_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Episode 9",
+              "description": "",
+              "airDate": "2026-11-13",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E09_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Episode 10",
+              "description": "",
+              "airDate": "2026-11-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 10
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E10_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E10_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 11,
+              "title": "Episode 11",
+              "description": "",
+              "airDate": "2026-11-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 11
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E11_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E11_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 12,
+              "title": "Episode 12",
+              "description": "",
+              "airDate": "2026-12-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "steelballrun",
+                "season": 1,
+                "episode": 12
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/steelballrun/season1/S1E12_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E12_subtitles.srt"
+              ],
               "skipIntroEnd": null,
               "skipOutroStart": null
             }
