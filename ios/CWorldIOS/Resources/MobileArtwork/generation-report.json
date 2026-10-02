@@ -1772,8 +1772,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 48.843076500719455
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/themistLogo.svg",
+      "titles": [
+        "The Mist"
+      ],
+      "sourceBytes": 6216338,
+      "outputBytes": 274754,
+      "thumbnailBytes": 37989,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.786792993667035
+    },
+    {
+      "url": "https://cearaworld.com/images/themist/covers/themist_backdrop.svg",
+      "titles": [
+        "The Mist"
+      ],
+      "sourceBytes": 7352997,
+      "outputBytes": 978615,
+      "thumbnailBytes": 8634,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 45.945762692042464
     }
   ],
-  "sourceBytes": 727909757,
-  "outputBytes": 91383857
+  "sourceBytes": 741479092,
+  "outputBytes": 92683849
 }

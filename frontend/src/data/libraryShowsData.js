@@ -778,6 +778,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "tron", "movie"),
         }, 
+        "themist": {
+          type: "movie",  
+          title: "The Mist",
+          agerating: "18+",
+          release_year: "2007",
+          genre: "Horror",
+          duration: "2h 6m",          
+          description: "After a massive thunderstorm, an eerie, unwavering fog descends upon a Maine community. Locals seek refuge in a grocery store from the monstrous creatures now roaming the countryside killing everyone they encounter.",
+          background: "/images/themist/covers/themistCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "themist", "movie"),
+        }, 
         
       };
 

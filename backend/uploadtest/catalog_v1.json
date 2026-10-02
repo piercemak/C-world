@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-02T19:25:26.389Z",
-  "generatedAt": "2026-10-02T19:25:26.389Z",
+  "catalogRevision": "2026-10-02T19:31:46.852Z",
+  "generatedAt": "2026-10-02T19:31:46.852Z",
   "items": [
     {
       "id": "steven-universe",
@@ -32675,6 +32675,42 @@
       ],
       "movieAsset": {
         "mediaId": "tron",
+        "season": null,
+        "episode": null
+      }
+    },
+    {
+      "id": "themist",
+      "assetId": "themist",
+      "type": "movie",
+      "title": "The Mist",
+      "dateAdded": "10-2-26",
+      "description": "After a massive thunderstorm, an eerie, unwavering fog descends upon a Maine community. Locals seek refuge in a grocery store from the monstrous creatures now roaming the countryside killing everyone they encounter.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/themistLogo.svg",
+        "poster": "https://cearaworld.com/images/themist/covers/themist_mobileLogo.jpeg",
+        "backdrop": "https://cearaworld.com/images/themist/covers/themist_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/themist/covers/themist_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Frank Darabont",
+        "rating": "7.1",
+        "year": "2007",
+        "genres": [
+          "Horror"
+        ],
+        "duration": "2h 6m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/themist/themist_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/themist/themist_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "themist",
         "season": null,
         "episode": null
       }

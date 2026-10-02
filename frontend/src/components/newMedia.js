@@ -4,6 +4,13 @@
     export const newMedia = [
       {
         kind: "movie",
+        showSlug: "themist",
+        showTitle: "The Mist",
+        placeholder: "/images/themist/placeholders/themist_placeholder.png",
+        to: `/video-library/themist?movie=1`,
+      }, 
+      {
+        kind: "movie",
         showSlug: "tron",
         showTitle: "Tron: Legacy",
         placeholder: "/images/tron/placeholders/tron_placeholder.png",

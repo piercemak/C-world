@@ -603,6 +603,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2010 • Action • 2h 5m"
+    },
+    "themist": {
+      "image": "themist-232e78ef3965.jpg",
+      "thumbnail": "themist-232e78ef3965-thumb.jpg",
+      "source": "/images/themist/covers/themistCover.svg",
+      "sourceSHA256": "232e78ef3965bd8e6532f6632799165a16cd365c958a44380bc23aa4000a05b1",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2007 • Horror • 2h 6m"
     }
   }
 }

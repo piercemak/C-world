@@ -786,4 +786,15 @@ export const SHOWS = [
         card: "/images/cardimages/tronLogo.svg", 
         dateadded: "10-2-26",
     }, 
+    {
+        id: "themist",
+        title: "The Mist",
+        creator: "Frank Darabont", 
+        background: "/images/themist/covers/themist_backdrop.svg",
+        ratings: "7.1",
+        type: "Movies",
+        keyart: "/images/themist/covers/themist_mobileLogo.jpeg", 
+        card: "/images/cardimages/themistLogo.svg", 
+        dateadded: "10-2-26",
+    }, 
 ];

@@ -66,9 +66,13 @@
     "americandad",
     "onepunchman",
     "interstellar",
-    "tron"
+    "tron",
+    "themist"
   ],
   "newMedia": [
+    {
+      "id": "themist"
+    },
     {
       "id": "tron"
     },
