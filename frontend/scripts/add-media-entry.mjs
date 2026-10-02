@@ -47,6 +47,8 @@ async function main() {
         year: args.year || metadata.releaseYear,
         tmdbId: args["tmdb-id"],
         requestedSeasons: args.seasons,
+        sourceSeason: args["tmdb-season"],
+        destinationSeason: args["cworld-season"],
       })
     : null;
   if (episodeCatalog) {
@@ -116,6 +118,9 @@ async function main() {
     plan.push(
       `TMDB series ${episodeCatalog.tmdbId}: ${episodeCatalog.episodeCount} episode(s) across ${episodeCatalog.seasonCount} season(s)`,
     );
+    if (episodeCatalog.sourceSeason) {
+      plan.push(`Import only TMDB season ${episodeCatalog.sourceSeason} as CWorld season ${episodeCatalog.destinationSeason} (use this number for HLS, artwork, and subtitles)`);
+    }
   }
 
   if (args["dry-run"]) {
@@ -316,7 +321,17 @@ async function fetchTmdbAgeRating({ title, mediaType, year, tmdbId }) {
   }
 }
 
-async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }) {
+async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons, sourceSeason, destinationSeason }) {
+  const seasonOption = (value, label) => {
+    if (value === undefined || value === null || value === "") return null;
+    if (!/^\d+$/.test(String(value)) || !Number.isSafeInteger(Number(value)) || Number(value) < 1) {
+      throw new Error(`${label} must be a positive whole season number.`);
+    }
+    return Number(value);
+  };
+  const selectedSeason = seasonOption(sourceSeason, "TMDB source season");
+  const targetSeason = seasonOption(destinationSeason, "CWorld season number");
+  if (targetSeason && !selectedSeason) throw new Error("Select a TMDB source season before setting a CWorld season number.");
   const apiKey = process.env.TMDB_API_KEY;
   const accessToken = process.env.TMDB_READ_ACCESS_TOKEN;
   if (!apiKey && !accessToken) {
@@ -356,8 +371,13 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
   const seasonLimit = clampPositiveInt(requestedSeasons, 0);
   const seasons = (series.seasons || [])
     .filter((season) => Number(season.season_number) > 0 && Number(season.episode_count) > 0)
-    .filter((season) => !seasonLimit || Number(season.season_number) <= seasonLimit)
+    .filter((season) => selectedSeason
+      ? Number(season.season_number) === selectedSeason
+      : !seasonLimit || Number(season.season_number) <= seasonLimit)
     .sort((a, b) => Number(a.season_number) - Number(b.season_number));
+  if (selectedSeason && !seasons.length) {
+    throw new Error(`TMDB series ${mediaId} has no regular episodes listed for season ${selectedSeason}. Check the source season on TMDB.`);
+  }
 
   const titlesBySeason = {};
   const displayTitlesBySeason = {};
@@ -366,6 +386,7 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
 
   for (const season of seasons) {
     const seasonNumber = Number(season.season_number);
+    const outputSeason = selectedSeason ? (targetSeason ?? 1) : seasonNumber;
     const seasonData = await request(`/tv/${mediaId}/season/${seasonNumber}`);
     const episodes = (seasonData.episodes || [])
       .filter((episode) => Number(episode.episode_number) > 0)
@@ -401,9 +422,9 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
         tmdbId: clampPositiveInt(episode.id, 0) || null,
       };
     }
-    titlesBySeason[String(seasonNumber)] = titles;
-    displayTitlesBySeason[String(seasonNumber)] = displayTitles;
-    metadataBySeason[String(seasonNumber)] = metadata;
+    titlesBySeason[String(outputSeason)] = titles;
+    displayTitlesBySeason[String(outputSeason)] = displayTitles;
+    metadataBySeason[String(outputSeason)] = metadata;
     episodeCount += titles.length;
   }
 
@@ -414,6 +435,8 @@ async function fetchTmdbEpisodeCatalog({ title, year, tmdbId, requestedSeasons }
 
   return {
     tmdbId: mediaId,
+    sourceSeason: selectedSeason,
+    destinationSeason: selectedSeason ? (targetSeason ?? 1) : null,
     seasonCount: Math.max(...seasonNumbers),
     episodeCount,
     titlesBySeason,
@@ -758,8 +781,9 @@ function formatNewMediaEntry(entry) {
 }
 
 function formatNewEpisodeMediaBlock(entry) {
-  const episodeTitle = entry.episodeCatalog?.displayTitlesBySeason?.["1"]?.[0]
-    || displayEpisodeTitleToken(entry.episodeCatalog?.titlesBySeason?.["1"]?.[0])
+  const firstSeason = Math.min(...Object.keys(entry.episodeCatalog?.titlesBySeason || { 1: [] }).map(Number));
+  const episodeTitle = entry.episodeCatalog?.displayTitlesBySeason?.[String(firstSeason)]?.[0]
+    || displayEpisodeTitleToken(entry.episodeCatalog?.titlesBySeason?.[String(firstSeason)]?.[0])
     || "Episode 1";
 
   return [
@@ -767,11 +791,11 @@ function formatNewEpisodeMediaBlock(entry) {
     `        kind: "episode",`,
     `        showSlug: ${quote(entry.id)},`,
     `        showTitle: ${quote(entry.title)},`,
-    "        season: 1,",
+    `        season: ${firstSeason},`,
     "        episode: 1,",
     `        episodeTitle: ${quote(episodeTitle)},`,
-    `        placeholder: \`\${cloudFrontDomain}/\${clean(${quote(entry.id)})}/placeholders/season1/S1E1_\${clean(${quote(entry.id)})}_placeholder.png\`,`,
-    `        to: \`/video-library/${entry.id}?season=1&episode=1\`,`,
+    `        placeholder: \`\${cloudFrontDomain}/\${clean(${quote(entry.id)})}/placeholders/season${firstSeason}/S${firstSeason}E1_\${clean(${quote(entry.id)})}_placeholder.png\`,`,
+    `        to: \`/video-library/${entry.id}?season=${firstSeason}&episode=1\`,`,
     "      }, ",
   ].join("\n");
 }
@@ -885,6 +909,8 @@ Useful:
   --age-rating PG-13          Override fetched US certification
   --tmdb-id 687163            Optional exact TMDB movie/show ID
   --seasons 3                 Optional show season limit; blank imports all regular seasons
+  --tmdb-season 6             Import only this regular TMDB season (overrides --seasons)
+  --cworld-season 1           Map that season to this CWorld number (defaults to 1)
   --subtitles yes|no
   --new-media                 Add to newMedia.js
   --cover /path/file.jpg      Copy to public/images/<asset>/covers
