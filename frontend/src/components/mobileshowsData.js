@@ -797,4 +797,15 @@ export const SHOWS = [
         card: "/images/cardimages/themistLogo.svg", 
         dateadded: "10-2-26",
     }, 
+    {
+        id: "adults",
+        title: "Adults",
+        creator: "Ben Kronengold", 
+        background: "/images/adults/covers/adults_backdrop.svg",
+        ratings: "7.4",
+        type: "TV",
+        keyart: "/images/adults/covers/adults_mobileLogo.jpg", 
+        card: "/images/cardimages/adultsLogo.svg", 
+        dateadded: "10-2-26",
+    }, 
 ];

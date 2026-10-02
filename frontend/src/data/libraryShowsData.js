@@ -790,6 +790,19 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "themist", "movie"),
         }, 
+        "adults": {
+          type: "show",  
+          title: "Adults",
+          agerating: "18+",
+          release_year: "2025",
+          genre: "Comedy",
+          season_total_number: "2 seasons",
+          season_digit: 2,
+          description: "A twenty-something ensemble comedy centering on codependent housemates navigating adulthood together despite their flaws.",
+          background: "/images/adults/covers/adultsCover.svg",
+          subtitles: "yes",
+          videos: videoDataByShow["adults"],
+        }, 
         
       };
 

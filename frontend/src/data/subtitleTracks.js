@@ -52,6 +52,7 @@ const SERIES_SUBTITLE_PATTERNS = {
   attackontitan: "/subtitles/attackontitan/season{season}/S{season}E{episode2}_subtitles.vtt",
   "alienearth": "/subtitles/alienearth/season{season}/S{season}E{episode2}_subtitles.vtt",
   "onepunchman": "/subtitles/onepunchman/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "adults": "/subtitles/adults/season{season}/S{season}E{episode2}_subtitles.vtt",
 };
 
 const fillPattern = (pattern, season, episode) => {

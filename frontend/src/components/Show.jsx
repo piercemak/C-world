@@ -461,6 +461,10 @@ const Show = ({
       1: 12,
       2: 12,
     },
+    "adults": {
+      1: 9,
+      2: 8,
+    },
   };
 const displaySeason =
   m ? parseInt(m[1], 10) : (Number.isFinite(season) ? season : null);
@@ -1908,6 +1912,31 @@ const resolveSignedEpisodeUrl = useCallback(async (targetSeason, targetEpisode) 
           10: { intro: { start: 96.25, end: 185.4 }, outro: { start: 1334.81, skipTo: "next" } },
           11: { intro: { start: 159.25, end: 248.4 }, outro: { start: 1334.88, skipTo: "next" } },
           12: { intro: { start: 0.0, end: 0.0 }, outro: { start: 1318.95, skipTo: "next" } },
+        },
+      },
+    },
+    "adults": {
+      seasons: {
+        1: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          9: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+        },
+        2: {
+          1: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          2: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          3: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          4: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          5: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          6: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          7: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
+          8: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },
         },
       },
     },

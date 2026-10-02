@@ -10846,5 +10846,113 @@
         "tmdbId": 1732566
       }
     ]
+  },
+  "adults": {
+    "1": [
+      {
+        "title": "Pilot",
+        "description": "The friend group finds out that someone they know is making national headlines.",
+        "airDate": "2025-05-28",
+        "tmdbId": 5504036
+      },
+      {
+        "title": "Spitroast",
+        "description": "The group accompanies Billie to the hospital for a colonoscopy and must decide who should be her medical proxy.",
+        "airDate": "2025-05-28",
+        "tmdbId": 6114552
+      },
+      {
+        "title": "Have You Seen This Man?",
+        "description": "A stabber is on the loose in the neighborhood and the group realizes Anton may have accidentally befriended him.",
+        "airDate": "2025-06-04",
+        "tmdbId": 6114553
+      },
+      {
+        "title": "House Rules",
+        "description": "The group continues a house tradition.",
+        "airDate": "2025-06-04",
+        "tmdbId": 6114555
+      },
+      {
+        "title": "Theracide",
+        "description": "Issa and Anton look for meaning after an unexpected loss, while Samir and Paul Baker start underage drinking.",
+        "airDate": "2025-06-11",
+        "tmdbId": 6114556
+      },
+      {
+        "title": "Roast Chicken",
+        "description": "The group throws their first dinner party.",
+        "airDate": "2025-06-11",
+        "tmdbId": 6114558
+      },
+      {
+        "title": "Annabelle",
+        "description": "Anton and Paul Baker host a visitor from out of town, while Issa takes a stand at work.",
+        "airDate": "2025-06-18",
+        "tmdbId": 6114560
+      },
+      {
+        "title": "The Mail",
+        "description": "The group opens the mailbox for the first time in months.",
+        "airDate": "2025-06-18",
+        "tmdbId": 6114562
+      },
+      {
+        "title": "Marathon Day",
+        "description": "How the group met Paul Baker.",
+        "airDate": "2026-07-31",
+        "tmdbId": 7602675
+      }
+    ],
+    "2": [
+      {
+        "title": "The Scrub",
+        "description": "The housemates uncover Paul Baker's long-kept secret.",
+        "airDate": "2026-08-27",
+        "tmdbId": 7371061
+      },
+      {
+        "title": "Fake ID",
+        "description": "Billie befriends the 20-year-old who inherited her fake ID.",
+        "airDate": "2026-08-27",
+        "tmdbId": 7371063
+      },
+      {
+        "title": "Talia",
+        "description": "Anton learns that his sister is starting a family, while Issa begins thinking about her own fertility.",
+        "airDate": "2026-09-03",
+        "tmdbId": 7371062
+      },
+      {
+        "title": "Raccoon",
+        "description": "Issa and Paul Baker host Acid Night.",
+        "airDate": "2026-09-03",
+        "tmdbId": 7371064
+      },
+      {
+        "title": "Room Swap",
+        "description": "Everyone switches bedrooms.",
+        "airDate": "2026-09-10",
+        "tmdbId": 7371065
+      },
+      {
+        "title": "Pop Girlie",
+        "description": "Samir's girlfriend Carly makes a drastic career change, and Anton grapples with the power of his influence.",
+        "airDate": "2026-09-10",
+        "tmdbId": 7371066
+      },
+      {
+        "title": "C Alert",
+        "description": "Anton makes a rare mistake at work, and Issa steps up to help him fix it.",
+        "airDate": "2026-09-17",
+        "tmdbId": 7371067
+      },
+      {
+        "title": "Vote for Paul Baker",
+        "description": "Paul Baker runs for president of the Homeowners Association, and into an uncertain future.",
+        "airDate": "2026-09-17",
+        "tmdbId": 7371068
+      }
+    ]
   }
 }

@@ -1798,8 +1798,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 45.945762692042464
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/adultsLogo.svg",
+      "titles": [
+        "Adults"
+      ],
+      "sourceBytes": 3731869,
+      "outputBytes": 397990,
+      "thumbnailBytes": 63484,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.892631146697724
+    },
+    {
+      "url": "https://cearaworld.com/images/adults/covers/adults_backdrop.svg",
+      "titles": [
+        "Adults"
+      ],
+      "sourceBytes": 13749868,
+      "outputBytes": 2106542,
+      "thumbnailBytes": 40068,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 40.8497468056056
     }
   ],
-  "sourceBytes": 741479092,
-  "outputBytes": 92683849
+  "sourceBytes": 758960829,
+  "outputBytes": 95291933
 }

@@ -67,9 +67,15 @@
     "onepunchman",
     "interstellar",
     "tron",
-    "themist"
+    "themist",
+    "adults"
   ],
   "newMedia": [
+    {
+      "id": "adults",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "themist"
     },

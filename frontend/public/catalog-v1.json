@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-02T19:31:46.852Z",
-  "generatedAt": "2026-10-02T19:31:46.852Z",
+  "catalogRevision": "2026-10-02T19:40:02.626Z",
+  "generatedAt": "2026-10-02T19:40:02.626Z",
   "items": [
     {
       "id": "steven-universe",
@@ -32714,6 +32714,385 @@
         "season": null,
         "episode": null
       }
+    },
+    {
+      "id": "adults",
+      "assetId": "adults",
+      "type": "show",
+      "title": "Adults",
+      "dateAdded": "10-2-26",
+      "description": "A twenty-something ensemble comedy centering on codependent housemates navigating adulthood together despite their flaws.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/adultsLogo.svg",
+        "poster": "https://cearaworld.com/images/adults/covers/adults_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/adults/covers/adults_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/adults/covers/adults_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Ben Kronengold",
+        "rating": "7.4",
+        "year": "2025",
+        "genres": [
+          "Comedy"
+        ],
+        "duration": "22m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Pilot",
+              "description": "The friend group finds out that someone they know is making national headlines.",
+              "airDate": "2025-05-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E01_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Spitroast",
+              "description": "The group accompanies Billie to the hospital for a colonoscopy and must decide who should be her medical proxy.",
+              "airDate": "2025-05-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E02_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Have You Seen This Man?",
+              "description": "A stabber is on the loose in the neighborhood and the group realizes Anton may have accidentally befriended him.",
+              "airDate": "2025-06-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E03_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "House Rules",
+              "description": "The group continues a house tradition.",
+              "airDate": "2025-06-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E04_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Theracide",
+              "description": "Issa and Anton look for meaning after an unexpected loss, while Samir and Paul Baker start underage drinking.",
+              "airDate": "2025-06-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E05_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "Roast Chicken",
+              "description": "The group throws their first dinner party.",
+              "airDate": "2025-06-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E06_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Annabelle",
+              "description": "Anton and Paul Baker host a visitor from out of town, while Issa takes a stand at work.",
+              "airDate": "2025-06-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E07_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The Mail",
+              "description": "The group opens the mailbox for the first time in months.",
+              "airDate": "2025-06-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E08_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Marathon Day",
+              "description": "How the group met Paul Baker.",
+              "airDate": "2026-07-31",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 1,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season1/S1E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E09_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Scrub",
+              "description": "The housemates uncover Paul Baker's long-kept secret.",
+              "airDate": "2026-08-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E01_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Fake ID",
+              "description": "Billie befriends the 20-year-old who inherited her fake ID.",
+              "airDate": "2026-08-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E02_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Talia",
+              "description": "Anton learns that his sister is starting a family, while Issa begins thinking about her own fertility.",
+              "airDate": "2026-09-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E03_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Raccoon",
+              "description": "Issa and Paul Baker host Acid Night.",
+              "airDate": "2026-09-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E04_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Room Swap",
+              "description": "Everyone switches bedrooms.",
+              "airDate": "2026-09-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E05_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "Pop Girlie",
+              "description": "Samir's girlfriend Carly makes a drastic career change, and Anton grapples with the power of his influence.",
+              "airDate": "2026-09-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E06_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "C Alert",
+              "description": "Anton makes a rare mistake at work, and Issa steps up to help him fix it.",
+              "airDate": "2026-09-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E07_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Vote for Paul Baker",
+              "description": "Paul Baker runs for president of the Homeowners Association, and into an uncertain future.",
+              "airDate": "2026-09-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "adults",
+                "season": 2,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/adults/season2/S2E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E08_subtitles.srt"
+              ],
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }

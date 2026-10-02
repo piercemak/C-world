@@ -612,6 +612,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2007 • Horror • 2h 6m"
+    },
+    "adults": {
+      "image": "adults-3eb152477516.jpg",
+      "thumbnail": "adults-3eb152477516-thumb.jpg",
+      "source": "/images/adults/covers/adultsCover.svg",
+      "sourceSHA256": "3eb152477516d9e2b0f6a7f5e7fa1afbbd146edefbb5f00a9079aec6ea484f7c",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2025 • Comedy • 2 seasons"
     }
   }
 }
