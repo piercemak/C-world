@@ -65,9 +65,13 @@
     "alienearth",
     "americandad",
     "onepunchman",
-    "interstellar"
+    "interstellar",
+    "tron"
   ],
   "newMedia": [
+    {
+      "id": "tron"
+    },
     {
       "id": "interstellar"
     },

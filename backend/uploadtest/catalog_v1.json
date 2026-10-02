@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-02T19:11:52.366Z",
-  "generatedAt": "2026-10-02T19:11:52.366Z",
+  "catalogRevision": "2026-10-02T19:25:26.389Z",
+  "generatedAt": "2026-10-02T19:25:26.389Z",
   "items": [
     {
       "id": "steven-universe",
@@ -32639,6 +32639,42 @@
       ],
       "movieAsset": {
         "mediaId": "interstellar",
+        "season": null,
+        "episode": null
+      }
+    },
+    {
+      "id": "tron",
+      "assetId": "tron",
+      "type": "movie",
+      "title": "Tron: Legacy",
+      "dateAdded": "10-2-26",
+      "description": "The son of a computer programmer goes looking for his father and ends up inside the digital world that his father designed. He meets his father's corrupted creation and a unique ally who was born inside the digital world.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/tronLogo.svg",
+        "poster": "https://cearaworld.com/images/tron/covers/tron_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/tron/covers/tron_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/tron/covers/tron_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Joseph Kosinski",
+        "rating": "6.8",
+        "year": "2010",
+        "genres": [
+          "Action"
+        ],
+        "duration": "2h 5m",
+        "ageRating": "7+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/tron/tron_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/tron/tron_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "tron",
         "season": null,
         "episode": null
       }

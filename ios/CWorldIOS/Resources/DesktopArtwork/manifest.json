@@ -594,6 +594,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2014 • Adventure • 2h 49m"
+    },
+    "tron": {
+      "image": "tron-31300817bfe1.jpg",
+      "thumbnail": "tron-31300817bfe1-thumb.jpg",
+      "source": "/images/tron/covers/tronCover.svg",
+      "sourceSHA256": "31300817bfe1acb81b02f74da1c0694bbc697956c7ab888b3d3b30c261317451",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2010 • Action • 2h 5m"
     }
   }
 }

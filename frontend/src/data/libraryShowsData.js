@@ -766,6 +766,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: generateSeasonVideos({}, "interstellar", "movie"),
         }, 
+        "tron": {
+          type: "movie",  
+          title: "Tron: Legacy",
+          agerating: "7+",
+          release_year: "2010",
+          genre: "Action",
+          duration: "2h 5m",          
+          description: "The son of a computer programmer goes looking for his father and ends up inside the digital world that his father designed. He meets his father's corrupted creation and a unique ally who was born inside the digital world.",
+          background: "/images/tron/covers/tronCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "tron", "movie"),
+        }, 
         
       };
 

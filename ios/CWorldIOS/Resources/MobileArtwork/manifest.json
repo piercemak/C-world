@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-01T17:34:57.407Z",
+  "catalogRevision": "2026-10-02T19:25:26.389Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1057,6 +1057,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "7cbd396e2679d10595882664dcb6cdeb1fbec32bd5d0f4e6bf7bb8f939fa3630"
+    },
+    "https://cearaworld.com/images/cardimages/tronLogo.svg": {
+      "image": "f87fa8f75694-5bda79883327.jpg",
+      "thumbnail": "f87fa8f75694-5bda79883327-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "5bda7988332700050e3bf53517f0d50ca6bc485444c83615a8125f9a93637488"
+    },
+    "https://cearaworld.com/images/tron/covers/tron_backdrop.svg": {
+      "image": "968ba9944482-b247415269be.jpg",
+      "thumbnail": "968ba9944482-b247415269be-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b247415269be27431dad51016863ee895d9295b410c650fd4746c4efbd1b73e0"
     }
   }
 }

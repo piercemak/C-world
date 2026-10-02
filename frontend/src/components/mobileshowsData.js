@@ -775,4 +775,15 @@ export const SHOWS = [
         card: "/images/cardimages/interstellarLogo.svg", 
         dateadded: "10-1-26",
     }, 
+    {
+        id: "tron",
+        title: "Tron: Legacy",
+        creator: "Joseph Kosinski", 
+        background: "/images/tron/covers/tron_backdrop.svg",
+        ratings: "6.8",
+        type: "Movies",
+        keyart: "/images/tron/covers/tron_mobileLogo.jpg", 
+        card: "/images/cardimages/tronLogo.svg", 
+        dateadded: "10-2-26",
+    }, 
 ];

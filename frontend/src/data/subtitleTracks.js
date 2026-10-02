@@ -32,6 +32,7 @@ const MOVIE_SUBTITLE_TRACKS = {
   "cure": "/videos/cure/cure_subtitles.vtt",
   "theinvite": "/videos/theinvite/theinvite_subtitles.vtt",
   "interstellar": "/videos/interstellar/interstellar_subtitles.vtt",
+  "tron": "/videos/tron/tron_subtitles.vtt",
 };
 
 const SERIES_SUBTITLE_PATTERNS = {

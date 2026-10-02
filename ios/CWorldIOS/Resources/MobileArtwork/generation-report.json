@@ -1746,8 +1746,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 48.82901847252171
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/tronLogo.svg",
+      "titles": [
+        "Tron: Legacy"
+      ],
+      "sourceBytes": 3163293,
+      "outputBytes": 201185,
+      "thumbnailBytes": 36218,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.5742915772461
+    },
+    {
+      "url": "https://cearaworld.com/images/tron/covers/tron_backdrop.svg",
+      "titles": [
+        "Tron: Legacy"
+      ],
+      "sourceBytes": 7548176,
+      "outputBytes": 656446,
+      "thumbnailBytes": 19881,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.843076500719455
     }
   ],
-  "sourceBytes": 717198288,
-  "outputBytes": 90470127
+  "sourceBytes": 727909757,
+  "outputBytes": 91383857
 }

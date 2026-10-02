@@ -4,6 +4,13 @@
     export const newMedia = [
       {
         kind: "movie",
+        showSlug: "tron",
+        showTitle: "Tron: Legacy",
+        placeholder: "/images/tron/placeholders/tron_placeholder.png",
+        to: `/video-library/tron?movie=1`,
+      }, 
+      {
+        kind: "movie",
         showSlug: "interstellar",
         showTitle: "Interstellar",
         placeholder: "/images/interstellar/placeholders/interstellar_placeholder.png",
