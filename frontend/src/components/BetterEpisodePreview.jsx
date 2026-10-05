@@ -62,7 +62,9 @@ const getSeasonNumbers = (media) => {
 };
 
 const getMoviePlaceholder = (media) => (
-  `/images/${cleanMediaId(media.id)}/placeholders/${cleanMediaId(media.id)}_placeholder.png`
+  cleanMediaId(media.id) === "thegrey"
+    ? "/images/thegrey/placeholders/thegrey_placeholder.png?v=53e47519f8c3"
+    : `/images/${cleanMediaId(media.id)}/placeholders/${cleanMediaId(media.id)}_placeholder.png`
 );
 
 const getEpisodePlaceholder = (media, seasonNumber, episodeNumber) => {

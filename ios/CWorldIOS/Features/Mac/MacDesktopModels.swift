@@ -165,6 +165,7 @@ enum MacDesktopCatalog {
             let prefix = "S\(season)"
             return URL(string: "https://d20honz3pkzrs8.cloudfront.net/\(id)/placeholders/season\(season)/\(prefix)E\(episode)_\(id)_placeholder.png")
         }
-        return URL(string: "https://cearaworld.com/images/\(id)/placeholders/\(id)_placeholder.png")
+        let version = id == "thegrey" ? "?v=53e47519f8c3" : ""
+        return URL(string: "https://cearaworld.com/images/\(id)/placeholders/\(id)_placeholder.png\(version)")
     }
 }

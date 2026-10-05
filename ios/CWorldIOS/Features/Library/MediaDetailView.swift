@@ -882,7 +882,8 @@ struct MediaDetailView: View {
 
     private var placeholderURL: URL? {
         let cleanID = media.id.replacingOccurrences(of: "-", with: "")
-        return URL(string: "https://cearaworld.com/images/\(cleanID)/placeholders/\(cleanID)_placeholder.png")
+        let version = cleanID == "thegrey" ? "?v=53e47519f8c3" : ""
+        return URL(string: "https://cearaworld.com/images/\(cleanID)/placeholders/\(cleanID)_placeholder.png\(version)")
     }
 
     private func episodePlaceholderURL(for episode: CWorldEpisode, season: Int) -> URL? {

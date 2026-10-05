@@ -549,7 +549,8 @@ struct ArchiveView: View {
         let cleanID = media.id.replacingOccurrences(of: "-", with: "")
 
         if media.type == "movie" {
-            return URL(string: "https://cearaworld.com/images/\(cleanID)/placeholders/\(cleanID)_placeholder.png")
+            let version = cleanID == "thegrey" ? "?v=53e47519f8c3" : ""
+            return URL(string: "https://cearaworld.com/images/\(cleanID)/placeholders/\(cleanID)_placeholder.png\(version)")
         }
 
         let progress = latestProgress(for: media)

@@ -6,7 +6,7 @@
         kind: "movie",
         showSlug: "thegrey",
         showTitle: "The Grey",
-        placeholder: "/images/thegrey/placeholders/thegrey_placeholder.png",
+        placeholder: "/images/thegrey/placeholders/thegrey_placeholder.png?v=53e47519f8c3",
         to: `/video-library/thegrey?movie=1`,
       }, 
       {
