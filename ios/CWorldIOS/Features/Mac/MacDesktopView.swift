@@ -96,7 +96,7 @@ struct MacDesktopView: View {
             } else if let playback {
                 NativeVideoPlayerView(mediaID: playback.playbackID, season: playback.season,
                                       episode: playback.episode?.number, title: playback.title,
-                                      subtitleURL: playback.subtitleURL, skipIntroEnd: playback.episode?.skipIntroEnd,
+                                      subtitleURL: playback.subtitleURL, skipIntroStart: playback.episode?.skipIntroStart, skipIntroEnd: playback.episode?.skipIntroEnd,
                                       skipOutroStart: playback.episode?.skipOutroStart,
                                       onClose: {
                                           resumeSnapshotInitialized = false

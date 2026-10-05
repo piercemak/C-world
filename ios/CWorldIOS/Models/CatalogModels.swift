@@ -91,6 +91,7 @@ struct CWorldEpisode: Codable, Identifiable {
     let playbackRef: PlaybackReference
     let subtitles: [URL]
     let rokuSubtitles: [URL]
+    let skipIntroStart: Double?
     let skipIntroEnd: Double?
     let skipOutroStart: Double?
 
@@ -98,7 +99,7 @@ struct CWorldEpisode: Codable, Identifiable {
 
     private enum CodingKeys: String, CodingKey {
         case number, title, description, airDate, duration, playbackRef
-        case subtitles, rokuSubtitles, skipIntroEnd, skipOutroStart
+        case subtitles, rokuSubtitles, skipIntroStart, skipIntroEnd, skipOutroStart
     }
 
     init(from decoder: Decoder) throws {
@@ -111,6 +112,12 @@ struct CWorldEpisode: Codable, Identifiable {
         playbackRef = try container.decode(PlaybackReference.self, forKey: .playbackRef)
         subtitles = try container.decodeIfPresent([URL].self, forKey: .subtitles) ?? []
         rokuSubtitles = try container.decodeIfPresent([URL].self, forKey: .rokuSubtitles) ?? []
+        // Missing field means a legacy catalog; explicit null means the current
+        // catalog disables the intro. Keep that distinct so bundled data cannot
+        // restore an intro that was removed in Show.jsx (the end stays nil).
+        skipIntroStart = container.contains(.skipIntroStart)
+            ? (try container.decodeIfPresent(Double.self, forKey: .skipIntroStart) ?? 0)
+            : nil
         skipIntroEnd = try container.decodeIfPresent(Double.self, forKey: .skipIntroEnd)
         skipOutroStart = try container.decodeIfPresent(Double.self, forKey: .skipOutroStart)
     }

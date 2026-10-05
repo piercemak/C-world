@@ -17,7 +17,7 @@ struct CWorldQueueEntry: Identifiable, Equatable {
             season: season, episode: episode?.number,
             title: episode.map { "S\(season ?? 1)E\($0.number) · \(name ?? $0.title)" } ?? media.title,
             subtitleURL: episode?.subtitles.first ?? (episode == nil ? media.subtitleTracks.first : nil),
-            skipIntroEnd: episode?.skipIntroEnd, skipOutroStart: episode?.skipOutroStart)
+            skipIntroStart: episode?.skipIntroStart, skipIntroEnd: episode?.skipIntroEnd, skipOutroStart: episode?.skipOutroStart)
     }
 }
 

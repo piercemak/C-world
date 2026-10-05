@@ -104,6 +104,7 @@ struct ArchiveView: View {
     @State private var resumeItem: ContinueWatchingItem?
     @State private var allMediaPage = 0
     @State private var catalogSnapshot = ArchiveCatalogSnapshot()
+    @State private var continueWatching: [ContinueWatchingItem] = []
 
     private let allMediaPerPage = 6
 
@@ -131,10 +132,6 @@ struct ArchiveView: View {
         allMediaPage = min(allMediaPage, max(catalogSnapshot.pages.count - 1, 0))
     }
 
-    private var continueWatching: [ContinueWatchingItem] {
-        Array(ContinueWatchingItem.make(catalog: appModel.catalog, records: Array(appModel.watchProgress.values)).prefix(10))
-    }
-
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
@@ -148,7 +145,7 @@ struct ArchiveView: View {
                     .ignoresSafeArea()
 
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: 60) {
+                    LazyVStack(alignment: .leading, spacing: 60) {
                         if !latestItems.isEmpty && searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             newMediaSection
                         }
@@ -189,7 +186,7 @@ struct ArchiveView: View {
                     episode: item.progress.episode,
                     title: item.episode.map { "S\(item.progress.season ?? 1)E\($0.number) · \($0.title)" } ?? item.media.title,
                     subtitleURL: item.episode?.subtitles.first ?? item.media.subtitleTracks.first,
-                    skipIntroEnd: item.episode?.skipIntroEnd,
+                    skipIntroStart: item.episode?.skipIntroStart, skipIntroEnd: item.episode?.skipIntroEnd,
                     skipOutroStart: item.episode?.skipOutroStart
                 )
             }
@@ -201,7 +198,17 @@ struct ArchiveView: View {
                     .presentationDragIndicator(.visible)
             }
             .animation(.easeInOut(duration: 0.25), value: isSearchOpen)
-            .onReceive(appModel.$catalog) { updateCatalogSnapshot($0) }
+            .onReceive(appModel.$catalog) { catalog in
+                updateCatalogSnapshot(catalog)
+                continueWatching = Array(ContinueWatchingItem.make(
+                    catalog: catalog, records: Array(appModel.watchProgress.values)
+                ).prefix(10))
+            }
+            .onReceive(appModel.$watchProgress) { records in
+                continueWatching = Array(ContinueWatchingItem.make(
+                    catalog: appModel.catalog, records: Array(records.values)
+                ).prefix(10))
+            }
             .onChange(of: searchText) { _, _ in
                 allMediaPage = 0
                 updateCatalogSnapshot(appModel.catalog)
@@ -222,23 +229,14 @@ struct ArchiveView: View {
     }
 
     private var archivePrefetchURLs: [URL] {
-        let currentPageItems = allMediaPages.indices.contains(allMediaPage)
-            ? allMediaPages[allMediaPage]
-            : []
-        let visibleItems = latestItems + continueWatching.map(\.media) + currentPageItems
-
-        var urls = visibleItems.flatMap { media in
-            [
-                media.artwork.preferredCard,
-                media.artwork.poster,
-                media.artwork.preferredBackdrop,
-                placeholderURL(for: media)
-            ].compactMap { $0 }
-        }
-        if let archiveBackdropURL {
-            urls.append(archiveBackdropURL)
-        }
-        return urls
+        // Fetch only artwork actually used on this screen, including adjacent
+        // pages. Do not compete with visible images by fetching every backdrop.
+        let nearbyItems = allMediaPages.indices
+            .filter { abs($0 - allMediaPage) <= 1 }
+            .flatMap { allMediaPages[$0] }
+        return (latestItems + nearbyItems).compactMap {
+            $0.artwork.preferredCard ?? $0.artwork.poster
+        } + continueWatching.prefix(2).compactMap { placeholderURL(for: $0.media) }
     }
 
     private var archiveHeader: some View {
@@ -363,14 +361,15 @@ struct ArchiveView: View {
                 .foregroundStyle(.white)
 
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
+                LazyHStack(spacing: 12) {
                     ForEach(continueWatching) { item in
                         let media = item.media
                         Button {
                             resumeItem = item
                         } label: {
                             ZStack(alignment: .bottomLeading) {
-                                CatalogImage(url: placeholderURL(for: media))
+                                CatalogImage(url: placeholderURL(for: media),
+                                             maxPixelSize: Self.artworkPixelSize(width: 282, height: 160, displayScale: displayScale))
                                     .frame(width: 282, height: 160)
 
                                 LinearGradient(
@@ -482,11 +481,18 @@ struct ArchiveView: View {
             } else {
                 TabView(selection: $allMediaPage) {
                     ForEach(Array(allMediaPages.enumerated()), id: \.offset) { pageIndex, page in
-                        ArchiveMediaPage(
-                            items: page,
-                            isActive: pageIndex == allMediaPage,
-                            onSelect: { selectedMediaID = $0.id }
-                        )
+                        Group {
+                            // Keep stable page tags, but build artwork/glass only
+                            // for the current page and its swipe neighbors.
+                            if abs(pageIndex - allMediaPage) <= 1 {
+                                ArchiveMediaPage(
+                                    items: page,
+                                    onSelect: { selectedMediaID = $0.id }
+                                )
+                            } else {
+                                Color.clear
+                            }
+                        }
                         .tag(pageIndex)
                     }
                 }
@@ -789,14 +795,11 @@ private struct ArchiveBackdropPickerView: View {
 
 private struct ArchiveMediaPage: View {
     let items: [CWorldMedia]
-    let isActive: Bool
     let onSelect: (CWorldMedia) -> Void
-
-    @State private var isVisible = false
 
     var body: some View {
         VStack(spacing: 8) {
-            ForEach(Array(items.enumerated()), id: \.element.id) { index, media in
+            ForEach(items) { media in
                 Button {
                     onSelect(media)
                 } label: {
@@ -833,19 +836,9 @@ private struct ArchiveMediaPage: View {
                     }
                 }
                 .buttonStyle(.plain)
-                .opacity(isVisible ? 1 : 0)
-                .offset(y: isVisible ? 0 : -22)
-                .animation(
-                    .easeOut(duration: 0.36).delay(Double(index) * 0.075),
-                    value: isVisible
-                )
             }
         }
         .frame(maxWidth: .infinity, alignment: .top)
-        .onAppear { animateIn() }
-        .onChange(of: isActive) { _, active in
-            if active { animateIn() } else { isVisible = false }
-        }
     }
 
     @ViewBuilder
@@ -868,13 +861,6 @@ private struct ArchiveMediaPage: View {
         }
     }
 
-    private func animateIn() {
-        isVisible = false
-        DispatchQueue.main.async {
-            guard isActive else { return }
-            isVisible = true
-        }
-    }
 }
 
 private extension View {

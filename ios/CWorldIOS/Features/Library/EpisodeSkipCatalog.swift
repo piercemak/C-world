@@ -44,12 +44,17 @@ enum EpisodeSkipCatalog {
     }()
 
     static func markers(mediaID: String, season: Int?, episode: Int?,
-                        introEnd: Double?, outroStart: Double?) -> EpisodeSkipMarkers {
+                        introStart: Double? = nil, introEnd: Double?, outroStart: Double?) -> EpisodeSkipMarkers {
+        // Catalog timing takes priority over the snapshot shipped with the app.
+        if let introStart {
+            return EpisodeSkipMarkers(introStart: introStart, introEnd: introEnd, outroStart: outroStart)
+        }
         if let season, let episode,
            let known = episodes["\(mediaID.replacingOccurrences(of: "-", with: "")):\(season):\(episode)"] {
             return known
         }
-        return EpisodeSkipMarkers(introStart: introEnd == nil ? nil : 0,
+        // An end timestamp alone cannot tell us when a cold open ends.
+        return EpisodeSkipMarkers(introStart: nil,
                                   introEnd: introEnd, outroStart: outroStart)
     }
 }

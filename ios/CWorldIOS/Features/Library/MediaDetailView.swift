@@ -271,11 +271,11 @@ struct NativeVideoPlayerView: View {
     private let surface: PersistentVideoPlayerView
     private let onClose: (() -> Void)?
     init(mediaID: String, season: Int? = nil, episode: Int? = nil, title: String,
-         subtitleURL: URL? = nil, skipIntroEnd: Double? = nil, skipOutroStart: Double? = nil,
+         subtitleURL: URL? = nil, skipIntroStart: Double? = nil, skipIntroEnd: Double? = nil, skipOutroStart: Double? = nil,
          onClose: (() -> Void)? = nil) {
         self.onClose = onClose
         surface = PersistentVideoPlayerView(mediaID: mediaID, season: season, episode: episode,
-            title: title, subtitleURL: subtitleURL, skipIntroEnd: skipIntroEnd,
+            title: title, subtitleURL: subtitleURL, skipIntroStart: skipIntroStart, skipIntroEnd: skipIntroEnd,
             skipOutroStart: skipOutroStart, onClose: { CWorldPlaybackHost.shared.stop() })
     }
     var body: some View {
@@ -836,7 +836,7 @@ struct MediaDetailView: View {
                                     episode: episode.number,
                                     title: "S\(String(format: "%02d", selectedSeason))E\(String(format: "%02d", episode.number)) · \(displayTitle(for: episode))",
                                     subtitleURL: episode.subtitles.first,
-                                    skipIntroEnd: episode.skipIntroEnd,
+                                    skipIntroStart: episode.skipIntroStart, skipIntroEnd: episode.skipIntroEnd,
                                     skipOutroStart: episode.skipOutroStart
                                 )
                             } label: {
@@ -1060,7 +1060,7 @@ struct EpisodeDetailView: View {
                         episode: episode.number,
                         title: "S\(String(format: "%02d", season))E\(String(format: "%02d", episode.number)) · \(episode.title)",
                         subtitleURL: episode.subtitles.first,
-                        skipIntroEnd: episode.skipIntroEnd,
+                        skipIntroStart: episode.skipIntroStart, skipIntroEnd: episode.skipIntroEnd,
                         skipOutroStart: episode.skipOutroStart
                     )
                 } label: {
@@ -1157,6 +1157,7 @@ struct PlayerSelection: Equatable {
     let episode: Int?
     let title: String
     let subtitleURL: URL?
+    let skipIntroStart: Double?
     let skipIntroEnd: Double?
     let skipOutroStart: Double?
 
@@ -1279,7 +1280,7 @@ struct PersistentVideoPlayerView: View {
         episode: Int? = nil,
         title: String,
         subtitleURL: URL? = nil,
-        skipIntroEnd: Double? = nil,
+        skipIntroStart: Double? = nil, skipIntroEnd: Double? = nil,
         skipOutroStart: Double? = nil,
         onClose: (() -> Void)? = nil
     ) {
@@ -1290,7 +1291,7 @@ struct PersistentVideoPlayerView: View {
             episode: episode,
             title: title,
             subtitleURL: subtitleURL,
-            skipIntroEnd: skipIntroEnd,
+            skipIntroStart: skipIntroStart, skipIntroEnd: skipIntroEnd,
             skipOutroStart: skipOutroStart
         ))
     }
@@ -1301,7 +1302,7 @@ struct PersistentVideoPlayerView: View {
 
     private var skipMarkers: EpisodeSkipMarkers {
         EpisodeSkipCatalog.markers(mediaID: selection.mediaID, season: selection.season,
-                                   episode: selection.episode, introEnd: selection.skipIntroEnd,
+                                   episode: selection.episode, introStart: selection.skipIntroStart, introEnd: selection.skipIntroEnd,
                                    outroStart: selection.skipOutroStart)
     }
     private var canSkipIntro: Bool { skipMarkers.introTarget(at: currentTime, duration: duration) != nil }
@@ -2270,7 +2271,7 @@ struct PersistentVideoPlayerView: View {
             episode: episode.number,
             title: "S\(String(format: "%02d", season.number))E\(String(format: "%02d", episode.number)) · \(EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season.number, episode: episode.number) ?? episode.title)",
             subtitleURL: episode.subtitles.first,
-            skipIntroEnd: episode.skipIntroEnd,
+            skipIntroStart: episode.skipIntroStart, skipIntroEnd: episode.skipIntroEnd,
             skipOutroStart: episode.skipOutroStart
         )
     }

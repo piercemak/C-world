@@ -70,7 +70,7 @@ struct LibraryView: View {
                                                 episode: entry.progress.episode,
                                                 title: entry.playerTitle,
                                                 subtitleURL: entry.episodeData?.subtitles.first ?? entry.media.subtitleTracks.first,
-                                                skipIntroEnd: entry.episodeData?.skipIntroEnd,
+                                                skipIntroStart: entry.episodeData?.skipIntroStart, skipIntroEnd: entry.episodeData?.skipIntroEnd,
                                                 skipOutroStart: entry.episodeData?.skipOutroStart
                                             )
                                         } label: {
@@ -294,10 +294,6 @@ struct CatalogImage: View {
             if let url {
                 if let nativeURL = MobileArtwork.bundledURL(for: url, maxPixelSize: maxPixelSize) {
                     CachedCatalogImage(url: nativeURL, maxPixelSize: maxPixelSize)
-                } else if let image = dataImage(from: url) {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFill()
                 } else if url.pathExtension.lowercased() == "svg" {
                     ZStack {
                         CatalogImageSkeleton()
@@ -325,12 +321,6 @@ struct CatalogImage: View {
         Color.gray.opacity(0.22)
     }
 
-    private func dataImage(from url: URL) -> UIImage? {
-        guard url.scheme == "data",
-              let encodedData = url.absoluteString.split(separator: ",", maxSplits: 1).last,
-              let data = Data(base64Encoded: String(encodedData)) else { return nil }
-        return UIImage(data: data)
-    }
 }
 
 struct FullScreenCatalogBackdrop: View {

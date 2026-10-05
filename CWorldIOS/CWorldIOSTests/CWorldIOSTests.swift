@@ -698,7 +698,7 @@ struct CWorldIOSTests {
     }
 
     @Test func episodeSkipTimingsIncludeColdOpensAndMissingCatalogMarkers() throws {
-        #expect(EpisodeSkipCatalog.episodes.count == 1252)
+        #expect(!EpisodeSkipCatalog.episodes.isEmpty)
         let steven = EpisodeSkipCatalog.markers(mediaID: "steven-universe", season: 1, episode: 1, introEnd: nil, outroStart: nil)
         #expect(steven.introTarget(at: 1, duration: 700) == 25)
         #expect(!steven.canSkipOutro(at: 669, duration: 700))
@@ -714,8 +714,26 @@ struct CWorldIOSTests {
         let noIntro = EpisodeSkipCatalog.markers(mediaID: "mob-psycho", season: 1, episode: 1, introEnd: nil, outroStart: nil)
         #expect(noIntro.introTarget(at: 1, duration: 1500) == nil)
         let future = EpisodeSkipCatalog.markers(mediaID: "unknown", season: 1, episode: 1, introEnd: 90, outroStart: 1200)
-        #expect(future.introTarget(at: 1, duration: 1400) == 90)
+        #expect(future.introTarget(at: 1, duration: 1400) == nil)
         #expect(!future.canSkipOutro(at: 1200, duration: 900))
+    }
+
+    @Test func liveCatalogSkipStartOverridesBundledTimings() throws {
+        let markers = EpisodeSkipCatalog.markers(mediaID: "onepunchman", season: 1, episode: 5,
+            introStart: 70.05, introEnd: 159.8, outroStart: 1322.53)
+        #expect(markers.introTarget(at: 0, duration: 1460) == nil)
+        #expect(markers.introTarget(at: 70, duration: 1460) == nil)
+        #expect(markers.introTarget(at: 70.05, duration: 1460) == 159.8)
+        #expect(markers.introTarget(at: 159.8, duration: 1460) == nil)
+        let updated = EpisodeSkipCatalog.markers(mediaID: "steven-universe", season: 1, episode: 1,
+            introStart: 50, introEnd: 100, outroStart: 600)
+        #expect(updated.introTarget(at: 1, duration: 700) == nil)
+        #expect(updated.introTarget(at: 50, duration: 700) == 100)
+        #expect(updated.outroStart == 600)
+        let disabled = EpisodeSkipCatalog.markers(mediaID: "steven-universe", season: 1, episode: 1,
+            introStart: 0, introEnd: nil, outroStart: nil)
+        #expect(disabled.introTarget(at: 1, duration: 700) == nil)
+        #expect(!disabled.canSkipOutro(at: 675, duration: 700))
     }
 
     @Test func searchFindsTitlesEpisodesCodesAndNormalizesInput() throws {

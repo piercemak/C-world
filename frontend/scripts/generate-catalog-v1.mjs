@@ -136,6 +136,7 @@ const toEpisode = (mediaId, season, fallbackTitle, index) => {
     rokuSubtitles: [getRokuSubtitlePath({ showId: mediaId, season, episode: index + 1 })]
       .filter(Boolean)
       .map(normalizePath),
+    skipIntroStart: skipMarkers.intro?.start ?? null,
     skipIntroEnd: skipMarkers.intro?.end ?? null,
     skipOutroStart: skipMarkers.outro?.start ?? null,
   };

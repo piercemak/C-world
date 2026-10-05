@@ -33,7 +33,7 @@ struct WatchHistoryView: View {
                                 episode: episode,
                                 title: entry.playbackTitle,
                                 subtitleURL: episodeData.subtitles.first,
-                                skipIntroEnd: episodeData.skipIntroEnd,
+                                skipIntroStart: episodeData.skipIntroStart, skipIntroEnd: episodeData.skipIntroEnd,
                                 skipOutroStart: episodeData.skipOutroStart
                             )
                         } else {

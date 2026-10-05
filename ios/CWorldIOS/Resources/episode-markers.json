@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/components/Show.jsx",
-  "sourceSHA256": "78ecee6e9354bc9759f0bd01ad5ee9cca61acf6fd08b9e9a337ed8ce6e701752",
+  "sourceSHA256": "c64761c366e2ffcc63b1fdaee7d09b61caae70f1ffa0b7fb1537deaac322d4e3",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -6259,6 +6259,2801 @@
       "outroStart": 1419.2
     },
     "attackontitan:4:29": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "alienearth:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "americandad:1:1": {
+      "introStart": 0.02,
+      "introEnd": 31.55,
+      "outroStart": 1273.95
+    },
+    "americandad:1:2": {
+      "introStart": 0,
+      "introEnd": 30.7,
+      "outroStart": 1280.55
+    },
+    "americandad:1:3": {
+      "introStart": 0.02,
+      "introEnd": 30.05,
+      "outroStart": 1275.35
+    },
+    "americandad:1:4": {
+      "introStart": 0,
+      "introEnd": 30.5,
+      "outroStart": 1275.35
+    },
+    "americandad:1:5": {
+      "introStart": 0,
+      "introEnd": 30.65,
+      "outroStart": 1275.45
+    },
+    "americandad:1:6": {
+      "introStart": 0,
+      "introEnd": 30.3,
+      "outroStart": 1274.75
+    },
+    "americandad:1:7": {
+      "introStart": 0,
+      "introEnd": 30.25,
+      "outroStart": 1276.1
+    },
+    "americandad:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1277.3
+    },
+    "americandad:2:2": {
+      "introStart": 0,
+      "introEnd": 29.95,
+      "outroStart": 1274.9
+    },
+    "americandad:2:3": {
+      "introStart": 0,
+      "introEnd": 30.5,
+      "outroStart": 1276.5
+    },
+    "americandad:2:4": {
+      "introStart": 0,
+      "introEnd": 29.3,
+      "outroStart": 1271.4
+    },
+    "americandad:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1272.86
+    },
+    "americandad:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1271
+    },
+    "americandad:2:7": {
+      "introStart": 0,
+      "introEnd": 28.4,
+      "outroStart": 1273.05
+    },
+    "americandad:2:8": {
+      "introStart": 0,
+      "introEnd": 28.4,
+      "outroStart": 1275.2
+    },
+    "americandad:2:9": {
+      "introStart": 0,
+      "introEnd": 30.1,
+      "outroStart": 1276.1
+    },
+    "americandad:2:10": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1274.4
+    },
+    "americandad:2:11": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1274.15
+    },
+    "americandad:2:12": {
+      "introStart": 0,
+      "introEnd": 30.1,
+      "outroStart": 1275.35
+    },
+    "americandad:2:13": {
+      "introStart": 0,
+      "introEnd": 30.55,
+      "outroStart": 1278.3
+    },
+    "americandad:2:14": {
+      "introStart": 0,
+      "introEnd": 30.25,
+      "outroStart": 1277.95
+    },
+    "americandad:2:15": {
+      "introStart": 0,
+      "introEnd": 30.25,
+      "outroStart": 1273.75
+    },
+    "americandad:2:16": {
+      "introStart": 0,
+      "introEnd": 30.75,
+      "outroStart": 1275.8
+    },
+    "americandad:3:1": {
+      "introStart": 0,
+      "introEnd": 30.11,
+      "outroStart": 1274.4
+    },
+    "americandad:3:2": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1273.15
+    },
+    "americandad:3:3": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.35
+    },
+    "americandad:3:4": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.5
+    },
+    "americandad:3:5": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.69
+    },
+    "americandad:3:6": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.49
+    },
+    "americandad:3:7": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.49
+    },
+    "americandad:3:8": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.55
+    },
+    "americandad:3:9": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.49
+    },
+    "americandad:3:10": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1276.05
+    },
+    "americandad:3:11": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1273.56
+    },
+    "americandad:3:12": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1275.75
+    },
+    "americandad:3:13": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1275.76
+    },
+    "americandad:3:14": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1304.35
+    },
+    "americandad:3:15": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.36
+    },
+    "americandad:3:16": {
+      "introStart": 0,
+      "introEnd": 30.4,
+      "outroStart": 1317.04
+    },
+    "americandad:3:17": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1275.96
+    },
+    "americandad:3:18": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1275.13
+    },
+    "americandad:3:19": {
+      "introStart": 0,
+      "introEnd": 31.2,
+      "outroStart": 1275.76
+    },
+    "americandad:4:1": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1274.6
+    },
+    "americandad:4:2": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1279.17
+    },
+    "americandad:4:3": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1279.4
+    },
+    "americandad:4:4": {
+      "introStart": 5,
+      "introEnd": 35.6,
+      "outroStart": 1280
+    },
+    "americandad:4:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1280.77
+    },
+    "americandad:4:6": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1273.46
+    },
+    "americandad:4:7": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1279.4
+    },
+    "americandad:4:8": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1279.8
+    },
+    "americandad:4:9": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1274.41
+    },
+    "americandad:4:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1280.37
+    },
+    "americandad:4:11": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1279.6
+    },
+    "americandad:4:12": {
+      "introStart": 5,
+      "introEnd": 35.6,
+      "outroStart": 1279.4
+    },
+    "americandad:4:13": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1306.8
+    },
+    "americandad:4:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1310.05
+    },
+    "americandad:4:15": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1250.05
+    },
+    "americandad:4:16": {
+      "introStart": 0,
+      "introEnd": 35.6,
+      "outroStart": 1279.08
+    },
+    "americandad:5:1": {
+      "introStart": 0,
+      "introEnd": 30.7,
+      "outroStart": 1273.5
+    },
+    "americandad:5:2": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.77
+    },
+    "americandad:5:3": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.19
+    },
+    "americandad:5:4": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1272.77
+    },
+    "americandad:5:5": {
+      "introStart": 0.1,
+      "introEnd": 30.8,
+      "outroStart": 1276.33
+    },
+    "americandad:5:6": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.6
+    },
+    "americandad:5:7": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.19
+    },
+    "americandad:5:8": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1268.27
+    },
+    "americandad:5:9": {
+      "introStart": 0,
+      "introEnd": 30.8,
+      "outroStart": 1273.22
+    },
+    "americandad:5:10": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1300.55
+    },
+    "americandad:5:11": {
+      "introStart": 0,
+      "introEnd": 30.8,
+      "outroStart": 1273.52
+    },
+    "americandad:5:12": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1270.8
+    },
+    "americandad:5:13": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.73
+    },
+    "americandad:5:14": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1274.98
+    },
+    "americandad:5:15": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.98
+    },
+    "americandad:5:16": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.45
+    },
+    "americandad:5:17": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.65
+    },
+    "americandad:5:18": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1273.26
+    },
+    "americandad:5:19": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1301.2
+    },
+    "americandad:5:20": {
+      "introStart": 0,
+      "introEnd": 30.6,
+      "outroStart": 1263.36
+    },
+    "americandad:6:1": {
+      "introStart": 0,
+      "introEnd": 30.85,
+      "outroStart": 1303.8
+    },
+    "americandad:6:2": {
+      "introStart": 0,
+      "introEnd": 30.05,
+      "outroStart": 1275.5
+    },
+    "americandad:6:3": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1275.25
+    },
+    "americandad:6:4": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.72
+    },
+    "americandad:6:5": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1275.17
+    },
+    "americandad:6:6": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.85
+    },
+    "americandad:6:7": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1303.35
+    },
+    "americandad:6:8": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1269.86
+    },
+    "americandad:6:9": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1275.07
+    },
+    "americandad:6:10": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1269.21
+    },
+    "americandad:6:11": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:6:12": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:6:13": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:6:14": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:6:15": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1301.2
+    },
+    "americandad:6:16": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:6:17": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:6:18": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1274.21
+    },
+    "americandad:7:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1272.5
+    },
+    "americandad:7:2": {
+      "introStart": 0,
+      "introEnd": 29.3,
+      "outroStart": 1274.1
+    },
+    "americandad:7:3": {
+      "introStart": 0,
+      "introEnd": 29.15,
+      "outroStart": 1275.5
+    },
+    "americandad:7:4": {
+      "introStart": 0,
+      "introEnd": 29.85,
+      "outroStart": 1275.65
+    },
+    "americandad:7:5": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.17
+    },
+    "americandad:7:6": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1269.21
+    },
+    "americandad:7:7": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.21
+    },
+    "americandad:7:8": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.24
+    },
+    "americandad:7:9": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.17
+    },
+    "americandad:7:10": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.17
+    },
+    "americandad:7:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1274.04
+    },
+    "americandad:7:12": {
+      "introStart": 0,
+      "introEnd": 29.1,
+      "outroStart": 1303.3
+    },
+    "americandad:7:13": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.21
+    },
+    "americandad:7:14": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1274.01
+    },
+    "americandad:7:15": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1304.25
+    },
+    "americandad:7:16": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1295.4
+    },
+    "americandad:7:17": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1273.86
+    },
+    "americandad:7:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1274.17
+    },
+    "americandad:7:19": {
+      "introStart": 0,
+      "introEnd": 29.2,
+      "outroStart": 1275.7
+    },
+    "americandad:8:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1274.35
+    },
+    "americandad:8:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1275.55
+    },
+    "americandad:8:3": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.75
+    },
+    "americandad:8:4": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.81
+    },
+    "americandad:8:5": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1305.55
+    },
+    "americandad:8:6": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.78
+    },
+    "americandad:8:7": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.9
+    },
+    "americandad:8:8": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1268.9
+    },
+    "americandad:8:9": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.4
+    },
+    "americandad:8:10": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1245.4
+    },
+    "americandad:8:11": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.77
+    },
+    "americandad:8:12": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1303.95
+    },
+    "americandad:8:13": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1275.81
+    },
+    "americandad:8:14": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1274.6
+    },
+    "americandad:8:15": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1301.2
+    },
+    "americandad:8:16": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1260.77
+    },
+    "americandad:8:17": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1260.55
+    },
+    "americandad:8:18": {
+      "introStart": 0,
+      "introEnd": 30.2,
+      "outroStart": 1259.45
+    },
+    "americandad:9:1": {
+      "introStart": 0,
+      "introEnd": 30.03,
+      "outroStart": 1259.5
+    },
+    "americandad:9:2": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.12
+    },
+    "americandad:9:3": {
+      "introStart": 0,
+      "introEnd": 28.6,
+      "outroStart": 1257.96
+    },
+    "americandad:9:4": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.18
+    },
+    "americandad:9:5": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.05
+    },
+    "americandad:9:6": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.12
+    },
+    "americandad:9:7": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1259.43
+    },
+    "americandad:9:8": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.18
+    },
+    "americandad:9:9": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.04
+    },
+    "americandad:9:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.11
+    },
+    "americandad:9:11": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1254.07
+    },
+    "americandad:9:12": {
+      "introStart": 0.57,
+      "introEnd": 30.6,
+      "outroStart": 1260.03
+    },
+    "americandad:9:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.15
+    },
+    "americandad:9:14": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.18
+    },
+    "americandad:9:15": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.12
+    },
+    "americandad:9:16": {
+      "introStart": 0.57,
+      "introEnd": 30.6,
+      "outroStart": 1260.01
+    },
+    "americandad:9:17": {
+      "introStart": 0,
+      "introEnd": 29.6,
+      "outroStart": 1259.08
+    },
+    "americandad:9:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1289.35
+    },
+    "americandad:9:19": {
+      "introStart": 0.57,
+      "introEnd": 30.6,
+      "outroStart": 1255
+    },
+    "americandad:10:1": {
+      "introStart": 0,
+      "introEnd": 30.35,
+      "outroStart": 1290.5
+    },
+    "americandad:10:2": {
+      "introStart": 0,
+      "introEnd": 30.45,
+      "outroStart": 1287
+    },
+    "americandad:10:3": {
+      "introStart": 0,
+      "introEnd": 30,
+      "outroStart": 1289.5
+    },
+    "americandad:10:4": {
+      "introStart": 0,
+      "introEnd": 30.3,
+      "outroStart": 1290.4
+    },
+    "americandad:10:5": {
+      "introStart": 0,
+      "introEnd": 30.9,
+      "outroStart": 1250.75
+    },
+    "americandad:10:6": {
+      "introStart": 0.9,
+      "introEnd": 31.8,
+      "outroStart": 1290.3
+    },
+    "americandad:10:7": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1259.9
+    },
+    "americandad:10:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.15
+    },
+    "americandad:10:9": {
+      "introStart": 0.9,
+      "introEnd": 31.8,
+      "outroStart": 1256.55
+    },
+    "americandad:10:10": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1230.69
+    },
+    "americandad:10:11": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1259.55
+    },
+    "americandad:10:12": {
+      "introStart": 0,
+      "introEnd": 31,
+      "outroStart": 1284.85
+    },
+    "americandad:10:13": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1254.95
+    },
+    "americandad:10:14": {
+      "introStart": 0,
+      "introEnd": 30.8,
+      "outroStart": 1289.5
+    },
+    "americandad:10:15": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1260.71
+    },
+    "americandad:10:16": {
+      "introStart": 0,
+      "introEnd": 31,
+      "outroStart": 1288
+    },
+    "americandad:10:17": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1289.4
+    },
+    "americandad:10:18": {
+      "introStart": 0.1,
+      "introEnd": 31,
+      "outroStart": 1259.75
+    },
+    "americandad:10:19": {
+      "introStart": 0.5,
+      "introEnd": 31.4,
+      "outroStart": 1291.4
+    },
+    "americandad:10:20": {
+      "introStart": 0,
+      "introEnd": 30.8,
+      "outroStart": 1260.9
+    },
+    "americandad:11:1": {
+      "introStart": 0,
+      "introEnd": 30.35,
+      "outroStart": 1279.3
+    },
+    "americandad:11:2": {
+      "introStart": 0,
+      "introEnd": 30.9,
+      "outroStart": 1259
+    },
+    "americandad:11:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1260.2
+    },
+    "americandad:12:1": {
+      "introStart": 57.45,
+      "introEnd": 86.35,
+      "outroStart": 1259.45
+    },
+    "americandad:12:2": {
+      "introStart": 71.85,
+      "introEnd": 100.6,
+      "outroStart": 1261.25
+    },
+    "americandad:12:3": {
+      "introStart": 91.25,
+      "introEnd": 120.95,
+      "outroStart": 1257.15
+    },
+    "americandad:12:4": {
+      "introStart": 56.9,
+      "introEnd": 86.6,
+      "outroStart": 1256.96
+    },
+    "americandad:12:5": {
+      "introStart": 71.7,
+      "introEnd": 101.4,
+      "outroStart": 1256.96
+    },
+    "americandad:12:6": {
+      "introStart": 61.5,
+      "introEnd": 91.2,
+      "outroStart": 1256.92
+    },
+    "americandad:12:7": {
+      "introStart": 82.7,
+      "introEnd": 112.4,
+      "outroStart": 1256.96
+    },
+    "americandad:12:8": {
+      "introStart": 105.3,
+      "introEnd": 135,
+      "outroStart": 1257.03
+    },
+    "americandad:12:9": {
+      "introStart": 108.3,
+      "introEnd": 138,
+      "outroStart": 1257.18
+    },
+    "americandad:12:10": {
+      "introStart": 31.5,
+      "introEnd": 61.2,
+      "outroStart": 1259.1
+    },
+    "americandad:12:11": {
+      "introStart": 117.5,
+      "introEnd": 147.2,
+      "outroStart": 1256.96
+    },
+    "americandad:12:12": {
+      "introStart": 81.3,
+      "introEnd": 111,
+      "outroStart": 1256.92
+    },
+    "americandad:12:13": {
+      "introStart": 123.7,
+      "introEnd": 153.4,
+      "outroStart": 1256.92
+    },
+    "americandad:12:14": {
+      "introStart": 67.9,
+      "introEnd": 97.6,
+      "outroStart": 1256.92
+    },
+    "americandad:12:15": {
+      "introStart": 112.1,
+      "introEnd": 141.8,
+      "outroStart": 1252.1
+    },
+    "americandad:13:1": {
+      "introStart": 51.55,
+      "introEnd": 80.8,
+      "outroStart": 1256.3
+    },
+    "americandad:13:2": {
+      "introStart": 72.35,
+      "introEnd": 101.6,
+      "outroStart": 1257.95
+    },
+    "americandad:13:3": {
+      "introStart": 116.95,
+      "introEnd": 146.2,
+      "outroStart": 1258.65
+    },
+    "americandad:13:4": {
+      "introStart": 160.35,
+      "introEnd": 189.6,
+      "outroStart": 1258.52
+    },
+    "americandad:13:5": {
+      "introStart": 144.75,
+      "introEnd": 174,
+      "outroStart": 1258.5
+    },
+    "americandad:13:6": {
+      "introStart": 110.95,
+      "introEnd": 140.2,
+      "outroStart": 1258.56
+    },
+    "americandad:13:7": {
+      "introStart": 94.95,
+      "introEnd": 124.2,
+      "outroStart": 1258.52
+    },
+    "americandad:13:8": {
+      "introStart": 135.35,
+      "introEnd": 164.6,
+      "outroStart": 1258.56
+    },
+    "americandad:13:9": {
+      "introStart": 72.55,
+      "introEnd": 101.8,
+      "outroStart": 1258.63
+    },
+    "americandad:13:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1258.52
+    },
+    "americandad:13:11": {
+      "introStart": 76.35,
+      "introEnd": 105.6,
+      "outroStart": 1258.56
+    },
+    "americandad:13:12": {
+      "introStart": 131.35,
+      "introEnd": 160.6,
+      "outroStart": 1259.2
+    },
+    "americandad:13:13": {
+      "introStart": 57.15,
+      "introEnd": 86.4,
+      "outroStart": 1258.56
+    },
+    "americandad:13:14": {
+      "introStart": 99.55,
+      "introEnd": 128.8,
+      "outroStart": 1258.56
+    },
+    "americandad:13:15": {
+      "introStart": 67.55,
+      "introEnd": 96.8,
+      "outroStart": 1258.56
+    },
+    "americandad:13:16": {
+      "introStart": 117.55,
+      "introEnd": 146.8,
+      "outroStart": 1258.56
+    },
+    "americandad:13:17": {
+      "introStart": 100.35,
+      "introEnd": 129.6,
+      "outroStart": 1258.52
+    },
+    "americandad:13:18": {
+      "introStart": 118.55,
+      "introEnd": 147.8,
+      "outroStart": 1258.5
+    },
+    "americandad:13:19": {
+      "introStart": 56.15,
+      "introEnd": 85.4,
+      "outroStart": 1259.45
+    },
+    "americandad:13:20": {
+      "introStart": 150.95,
+      "introEnd": 180.2,
+      "outroStart": 1258.52
+    },
+    "americandad:13:21": {
+      "introStart": 120.55,
+      "introEnd": 149.8,
+      "outroStart": 1258.56
+    },
+    "americandad:13:22": {
+      "introStart": 107.55,
+      "introEnd": 136.8,
+      "outroStart": 1258.56
+    },
+    "americandad:14:1": {
+      "introStart": 77.6,
+      "introEnd": 106.9,
+      "outroStart": 1258.9
+    },
+    "americandad:14:2": {
+      "introStart": 107.5,
+      "introEnd": 136.8,
+      "outroStart": 1258.76
+    },
+    "americandad:14:3": {
+      "introStart": 84.5,
+      "introEnd": 113.8,
+      "outroStart": 1258.72
+    },
+    "americandad:14:4": {
+      "introStart": 97.7,
+      "introEnd": 127,
+      "outroStart": 1258.76
+    },
+    "americandad:14:5": {
+      "introStart": 118.7,
+      "introEnd": 148,
+      "outroStart": 1258.76
+    },
+    "americandad:14:6": {
+      "introStart": 43.1,
+      "introEnd": 72.4,
+      "outroStart": 1258.76
+    },
+    "americandad:14:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1258.72
+    },
+    "americandad:14:8": {
+      "introStart": 76.9,
+      "introEnd": 106.2,
+      "outroStart": 1258.76
+    },
+    "americandad:14:9": {
+      "introStart": 87.1,
+      "introEnd": 116.4,
+      "outroStart": 1258.4
+    },
+    "americandad:14:10": {
+      "introStart": 91.9,
+      "introEnd": 121.2,
+      "outroStart": 1258.57
+    },
+    "americandad:14:11": {
+      "introStart": 64.1,
+      "introEnd": 93.4,
+      "outroStart": 561.2
+    },
+    "americandad:14:12": {
+      "introStart": 77.5,
+      "introEnd": 106.8,
+      "outroStart": 1258.57
+    },
+    "americandad:14:13": {
+      "introStart": 81.1,
+      "introEnd": 110.4,
+      "outroStart": 1258.78
+    },
+    "americandad:14:14": {
+      "introStart": 113.9,
+      "introEnd": 143.2,
+      "outroStart": 1258.15
+    },
+    "americandad:14:15": {
+      "introStart": 70.7,
+      "introEnd": 100,
+      "outroStart": 1258.57
+    },
+    "americandad:14:16": {
+      "introStart": 148.3,
+      "introEnd": 177.6,
+      "outroStart": 1259.2
+    },
+    "americandad:14:17": {
+      "introStart": 112.7,
+      "introEnd": 142,
+      "outroStart": 1258.4
+    },
+    "americandad:14:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1258.4
+    },
+    "americandad:14:19": {
+      "introStart": 142.3,
+      "introEnd": 171.6,
+      "outroStart": 1258.57
+    },
+    "americandad:14:20": {
+      "introStart": 136.7,
+      "introEnd": 166,
+      "outroStart": 1258.4
+    },
+    "americandad:14:21": {
+      "introStart": 114.5,
+      "introEnd": 143.8,
+      "outroStart": 1258.57
+    },
+    "americandad:14:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1258.57
+    },
+    "americandad:15:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1258.9
+    },
+    "americandad:15:2": {
+      "introStart": 83.45,
+      "introEnd": 112.35,
+      "outroStart": 1259.7
+    },
+    "americandad:15:3": {
+      "introStart": 86.1,
+      "introEnd": 115,
+      "outroStart": 1259.51
+    },
+    "americandad:15:4": {
+      "introStart": 104.7,
+      "introEnd": 133.6,
+      "outroStart": 1259.7
+    },
+    "americandad:15:5": {
+      "introStart": 102.7,
+      "introEnd": 131.6,
+      "outroStart": 1259.51
+    },
+    "americandad:15:6": {
+      "introStart": 118.5,
+      "introEnd": 147.4,
+      "outroStart": 1259.51
+    },
+    "americandad:15:7": {
+      "introStart": 129.5,
+      "introEnd": 158.4,
+      "outroStart": 1259.51
+    },
+    "americandad:15:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.5
+    },
+    "americandad:15:9": {
+      "introStart": 111.7,
+      "introEnd": 140.6,
+      "outroStart": 1259.55
+    },
+    "americandad:15:10": {
+      "introStart": 88.9,
+      "introEnd": 117.8,
+      "outroStart": 1259.45
+    },
+    "americandad:15:11": {
+      "introStart": 77.9,
+      "introEnd": 106.8,
+      "outroStart": 1259.6
+    },
+    "americandad:15:12": {
+      "introStart": 103.1,
+      "introEnd": 132,
+      "outroStart": 1259.6
+    },
+    "americandad:15:13": {
+      "introStart": 96.5,
+      "introEnd": 125.4,
+      "outroStart": 1259.4
+    },
+    "americandad:15:14": {
+      "introStart": 55.7,
+      "introEnd": 84.6,
+      "outroStart": 1259.55
+    },
+    "americandad:15:15": {
+      "introStart": 117.5,
+      "introEnd": 146.4,
+      "outroStart": 1259.3
+    },
+    "americandad:15:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.4
+    },
+    "americandad:15:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.57
+    },
+    "americandad:15:18": {
+      "introStart": 85.7,
+      "introEnd": 114.6,
+      "outroStart": 1259.72
+    },
+    "americandad:15:19": {
+      "introStart": 108.7,
+      "introEnd": 137.6,
+      "outroStart": 1259.57
+    },
+    "americandad:15:20": {
+      "introStart": 83.5,
+      "introEnd": 112.4,
+      "outroStart": 815.57
+    },
+    "americandad:15:21": {
+      "introStart": 76.9,
+      "introEnd": 105.8,
+      "outroStart": 1259.72
+    },
+    "americandad:15:22": {
+      "introStart": 88.1,
+      "introEnd": 117,
+      "outroStart": 1259.05
+    },
+    "americandad:16:1": {
+      "introStart": 125.24,
+      "introEnd": 153.35,
+      "outroStart": 1259.8
+    },
+    "americandad:16:2": {
+      "introStart": 60.89,
+      "introEnd": 89,
+      "outroStart": 1259.35
+    },
+    "americandad:16:3": {
+      "introStart": 114.49,
+      "introEnd": 142.6,
+      "outroStart": 1259.85
+    },
+    "americandad:16:4": {
+      "introStart": 59.69,
+      "introEnd": 87.8,
+      "outroStart": 1259.3
+    },
+    "americandad:16:5": {
+      "introStart": 76.89,
+      "introEnd": 105,
+      "outroStart": 1259.57
+    },
+    "americandad:16:6": {
+      "introStart": 99.29,
+      "introEnd": 127.4,
+      "outroStart": 1259.57
+    },
+    "americandad:16:7": {
+      "introStart": 123.29,
+      "introEnd": 151.4,
+      "outroStart": 1259.6
+    },
+    "americandad:16:8": {
+      "introStart": 74.49,
+      "introEnd": 102.6,
+      "outroStart": 1259.8
+    },
+    "americandad:16:9": {
+      "introStart": 92.89,
+      "introEnd": 121,
+      "outroStart": 1259.6
+    },
+    "americandad:16:10": {
+      "introStart": 103.89,
+      "introEnd": 132,
+      "outroStart": 1259.25
+    },
+    "americandad:16:11": {
+      "introStart": 83.89,
+      "introEnd": 112,
+      "outroStart": 1230.45
+    },
+    "americandad:16:12": {
+      "introStart": 93.29,
+      "introEnd": 121.4,
+      "outroStart": 1259.57
+    },
+    "americandad:16:13": {
+      "introStart": 123.09,
+      "introEnd": 151.2,
+      "outroStart": 1259.77
+    },
+    "americandad:16:14": {
+      "introStart": 121.29,
+      "introEnd": 149.4,
+      "outroStart": 1259.1
+    },
+    "americandad:16:15": {
+      "introStart": 57.09,
+      "introEnd": 85.2,
+      "outroStart": 1259.72
+    },
+    "americandad:16:16": {
+      "introStart": 106.09,
+      "introEnd": 134.2,
+      "outroStart": 1259.44
+    },
+    "americandad:16:17": {
+      "introStart": 84.49,
+      "introEnd": 112.6,
+      "outroStart": 1259.64
+    },
+    "americandad:16:18": {
+      "introStart": 99.69,
+      "introEnd": 127.8,
+      "outroStart": 1259.05
+    },
+    "americandad:16:19": {
+      "introStart": 63.29,
+      "introEnd": 91.4,
+      "outroStart": 1259.75
+    },
+    "americandad:16:20": {
+      "introStart": 125.69,
+      "introEnd": 153.8,
+      "outroStart": 1259.4
+    },
+    "americandad:17:1": {
+      "introStart": 151,
+      "introEnd": 179.8,
+      "outroStart": 1259.45
+    },
+    "americandad:17:2": {
+      "introStart": 142,
+      "introEnd": 170.8,
+      "outroStart": 1259.2
+    },
+    "americandad:17:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.2
+    },
+    "americandad:17:4": {
+      "introStart": 91.2,
+      "introEnd": 120,
+      "outroStart": 1259.24
+    },
+    "americandad:17:5": {
+      "introStart": 115.8,
+      "introEnd": 144.6,
+      "outroStart": 1259.5
+    },
+    "americandad:17:6": {
+      "introStart": 41,
+      "introEnd": 69.8,
+      "outroStart": 1259.2
+    },
+    "americandad:17:7": {
+      "introStart": 53.8,
+      "introEnd": 82.6,
+      "outroStart": 1259.7
+    },
+    "americandad:17:8": {
+      "introStart": 65,
+      "introEnd": 93.8,
+      "outroStart": 1259.52
+    },
+    "americandad:17:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.52
+    },
+    "americandad:17:10": {
+      "introStart": 64.4,
+      "introEnd": 93.2,
+      "outroStart": 1259.2
+    },
+    "americandad:17:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.24
+    },
+    "americandad:17:12": {
+      "introStart": 77.8,
+      "introEnd": 106.6,
+      "outroStart": 1259.2
+    },
+    "americandad:17:13": {
+      "introStart": 105.6,
+      "introEnd": 134.4,
+      "outroStart": 1259.35
+    },
+    "americandad:17:14": {
+      "introStart": 100.4,
+      "introEnd": 129.2,
+      "outroStart": 1259.4
+    },
+    "americandad:17:15": {
+      "introStart": 136.4,
+      "introEnd": 165.2,
+      "outroStart": 1259.85
+    },
+    "americandad:17:16": {
+      "introStart": 93.6,
+      "introEnd": 122.4,
+      "outroStart": 1259.24
+    },
+    "americandad:17:17": {
+      "introStart": 52.2,
+      "introEnd": 81,
+      "outroStart": 1259.32
+    },
+    "americandad:17:18": {
+      "introStart": 118.8,
+      "introEnd": 147.6,
+      "outroStart": 1259.2
+    },
+    "americandad:17:19": {
+      "introStart": 90.8,
+      "introEnd": 119.6,
+      "outroStart": 1259.2
+    },
+    "americandad:17:20": {
+      "introStart": 102.6,
+      "introEnd": 131.4,
+      "outroStart": 1259.2
+    },
+    "americandad:17:21": {
+      "introStart": 72.4,
+      "introEnd": 101.2,
+      "outroStart": 1259.8
+    },
+    "americandad:17:22": {
+      "introStart": 136.2,
+      "introEnd": 165,
+      "outroStart": 1259.24
+    },
+    "americandad:17:23": {
+      "introStart": 50,
+      "introEnd": 78.8,
+      "outroStart": 1259.2
+    },
+    "americandad:17:24": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1220.6
+    },
+    "americandad:18:1": {
+      "introStart": 101.15,
+      "introEnd": 130.5,
+      "outroStart": 1254.9
+    },
+    "americandad:18:2": {
+      "introStart": 102.45,
+      "introEnd": 131.8,
+      "outroStart": 1255.22
+    },
+    "americandad:18:3": {
+      "introStart": 70.25,
+      "introEnd": 99.6,
+      "outroStart": 1255.18
+    },
+    "americandad:18:4": {
+      "introStart": 68.85,
+      "introEnd": 98.2,
+      "outroStart": 1255.22
+    },
+    "americandad:18:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1255.18
+    },
+    "americandad:18:6": {
+      "introStart": 95.25,
+      "introEnd": 124.6,
+      "outroStart": 1255.22
+    },
+    "americandad:18:7": {
+      "introStart": 77.45,
+      "introEnd": 106.8,
+      "outroStart": 1255.18
+    },
+    "americandad:18:8": {
+      "introStart": 91.45,
+      "introEnd": 120.8,
+      "outroStart": 1255.18
+    },
+    "americandad:18:9": {
+      "introStart": 84.25,
+      "introEnd": 113.6,
+      "outroStart": 1255.18
+    },
+    "americandad:18:10": {
+      "introStart": 97.65,
+      "introEnd": 127,
+      "outroStart": 1255.18
+    },
+    "americandad:18:11": {
+      "introStart": 52.45,
+      "introEnd": 81.8,
+      "outroStart": 1255.18
+    },
+    "americandad:18:12": {
+      "introStart": 125.65,
+      "introEnd": 155,
+      "outroStart": 1255.22
+    },
+    "americandad:18:13": {
+      "introStart": 98.65,
+      "introEnd": 128,
+      "outroStart": 1255.18
+    },
+    "americandad:18:14": {
+      "introStart": 119.05,
+      "introEnd": 148.4,
+      "outroStart": 1255.18
+    },
+    "americandad:18:15": {
+      "introStart": 107.45,
+      "introEnd": 136.8,
+      "outroStart": 1254.01
+    },
+    "americandad:18:16": {
+      "introStart": 107.85,
+      "introEnd": 137.2,
+      "outroStart": 1255.18
+    },
+    "americandad:18:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1255.24
+    },
+    "americandad:18:18": {
+      "introStart": 97.05,
+      "introEnd": 126.4,
+      "outroStart": 1255.18
+    },
+    "americandad:18:19": {
+      "introStart": 98.45,
+      "introEnd": 127.8,
+      "outroStart": 1255.18
+    },
+    "americandad:18:20": {
+      "introStart": 108.45,
+      "introEnd": 137.8,
+      "outroStart": 1255.18
+    },
+    "americandad:18:21": {
+      "introStart": 103.25,
+      "introEnd": 132.6,
+      "outroStart": 1255.22
+    },
+    "americandad:18:22": {
+      "introStart": 76.45,
+      "introEnd": 105.8,
+      "outroStart": 1255.18
+    },
+    "americandad:19:1": {
+      "introStart": 102.35,
+      "introEnd": 132,
+      "outroStart": 1255.35
+    },
+    "americandad:19:2": {
+      "introStart": 143.95,
+      "introEnd": 173.6,
+      "outroStart": 1255.18
+    },
+    "americandad:19:3": {
+      "introStart": 132.75,
+      "introEnd": 162.4,
+      "outroStart": 1255.38
+    },
+    "americandad:19:4": {
+      "introStart": 114.35,
+      "introEnd": 144,
+      "outroStart": 1255.18
+    },
+    "americandad:19:5": {
+      "introStart": 112.15,
+      "introEnd": 141.8,
+      "outroStart": 1253.71
+    },
+    "americandad:19:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1255.18
+    },
+    "americandad:19:7": {
+      "introStart": 87.55,
+      "introEnd": 117.2,
+      "outroStart": 1261.28
+    },
+    "americandad:19:8": {
+      "introStart": 34.55,
+      "introEnd": 64.2,
+      "outroStart": 1259.55
+    },
+    "americandad:19:9": {
+      "introStart": 93.35,
+      "introEnd": 123,
+      "outroStart": 1261.28
+    },
+    "americandad:19:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.2
+    },
+    "americandad:19:11": {
+      "introStart": 66.35,
+      "introEnd": 96,
+      "outroStart": 1259.85
+    },
+    "americandad:19:12": {
+      "introStart": 24.35,
+      "introEnd": 54,
+      "outroStart": 1259.45
+    },
+    "americandad:19:13": {
+      "introStart": 82.35,
+      "introEnd": 112,
+      "outroStart": 1259.75
+    },
+    "americandad:19:14": {
+      "introStart": 91.55,
+      "introEnd": 121.2,
+      "outroStart": 1259.1
+    },
+    "americandad:19:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.9
+    },
+    "americandad:19:16": {
+      "introStart": 123.55,
+      "introEnd": 153.2,
+      "outroStart": 1259.8
+    },
+    "americandad:19:17": {
+      "introStart": 141.75,
+      "introEnd": 171.4,
+      "outroStart": 1259.2
+    },
+    "americandad:19:18": {
+      "introStart": 85.95,
+      "introEnd": 115.6,
+      "outroStart": 1259.4
+    },
+    "americandad:19:19": {
+      "introStart": 90.95,
+      "introEnd": 120.6,
+      "outroStart": 1258.75
+    },
+    "americandad:19:20": {
+      "introStart": 114.95,
+      "introEnd": 144.6,
+      "outroStart": 1259.2
+    },
+    "americandad:19:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1261.32
+    },
+    "americandad:19:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.4
+    },
+    "americandad:20:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259
+    },
+    "americandad:20:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.15
+    },
+    "americandad:20:3": {
+      "introStart": 109.95,
+      "introEnd": 138.25,
+      "outroStart": 1259.5
+    },
+    "americandad:20:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.52
+    },
+    "americandad:20:5": {
+      "introStart": 67.3,
+      "introEnd": 95.6,
+      "outroStart": 1259.35
+    },
+    "americandad:20:6": {
+      "introStart": 38.7,
+      "introEnd": 67,
+      "outroStart": 1259.35
+    },
+    "americandad:20:7": {
+      "introStart": 46.1,
+      "introEnd": 74.4,
+      "outroStart": 1259.35
+    },
+    "americandad:20:8": {
+      "introStart": 88.9,
+      "introEnd": 117.2,
+      "outroStart": 1259.48
+    },
+    "americandad:20:9": {
+      "introStart": 60.7,
+      "introEnd": 89,
+      "outroStart": 1259.52
+    },
+    "americandad:20:10": {
+      "introStart": 113.1,
+      "introEnd": 141.4,
+      "outroStart": 1259.27
+    },
+    "americandad:20:11": {
+      "introStart": 106.9,
+      "introEnd": 135.2,
+      "outroStart": 1259.27
+    },
+    "americandad:20:12": {
+      "introStart": 61.7,
+      "introEnd": 90,
+      "outroStart": 409.67
+    },
+    "americandad:20:13": {
+      "introStart": 66.1,
+      "introEnd": 94.4,
+      "outroStart": 1259.31
+    },
+    "americandad:20:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.23
+    },
+    "americandad:20:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.31
+    },
+    "americandad:20:16": {
+      "introStart": 132.5,
+      "introEnd": 160.8,
+      "outroStart": 1259.11
+    },
+    "americandad:20:17": {
+      "introStart": 102.3,
+      "introEnd": 130.6,
+      "outroStart": 1259.35
+    },
+    "americandad:20:18": {
+      "introStart": 61.3,
+      "introEnd": 89.6,
+      "outroStart": 1259.31
+    },
+    "americandad:20:19": {
+      "introStart": 93.5,
+      "introEnd": 121.8,
+      "outroStart": 1259.27
+    },
+    "americandad:20:20": {
+      "introStart": 127.9,
+      "introEnd": 156.2,
+      "outroStart": 1259.1
+    },
+    "americandad:20:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.31
+    },
+    "americandad:20:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.31
+    },
+    "americandad:21:1": {
+      "introStart": 38.25,
+      "introEnd": 66.65,
+      "outroStart": 1259.55
+    },
+    "americandad:21:2": {
+      "introStart": 48.8,
+      "introEnd": 77.2,
+      "outroStart": 1259.2
+    },
+    "americandad:21:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.47
+    },
+    "americandad:21:4": {
+      "introStart": 63.8,
+      "introEnd": 92.2,
+      "outroStart": 1259.51
+    },
+    "americandad:21:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1259.47
+    },
+    "americandad:21:6": {
+      "introStart": 74.6,
+      "introEnd": 103,
+      "outroStart": 1259.51
+    },
+    "americandad:21:7": {
+      "introStart": 110.6,
+      "introEnd": 139,
+      "outroStart": 1259.51
+    },
+    "americandad:21:8": {
+      "introStart": 126.6,
+      "introEnd": 155,
+      "outroStart": 1259.51
+    },
+    "americandad:21:9": {
+      "introStart": 97,
+      "introEnd": 125.4,
+      "outroStart": 1259.51
+    },
+    "americandad:21:10": {
+      "introStart": 101,
+      "introEnd": 129.4,
+      "outroStart": 1253.5
+    },
+    "americandad:21:11": {
+      "introStart": 113.4,
+      "introEnd": 141.8,
+      "outroStart": 1255.7
+    },
+    "americandad:21:12": {
+      "introStart": 76.2,
+      "introEnd": 104.6,
+      "outroStart": 1255.25
+    },
+    "onepunchman:1:1": {
+      "introStart": 191.1,
+      "introEnd": 280.85,
+      "outroStart": 1330.7
+    },
+    "onepunchman:1:2": {
+      "introStart": 120.05,
+      "introEnd": 209.8,
+      "outroStart": 1329.36
+    },
+    "onepunchman:1:3": {
+      "introStart": 148.05,
+      "introEnd": 237.8,
+      "outroStart": 1320.53
+    },
+    "onepunchman:1:4": {
+      "introStart": 65.05,
+      "introEnd": 154.8,
+      "outroStart": 1330.53
+    },
+    "onepunchman:1:5": {
+      "introStart": 70.05,
+      "introEnd": 159.8,
+      "outroStart": 1322.53
+    },
+    "onepunchman:1:6": {
+      "introStart": 189.05,
+      "introEnd": 278.8,
+      "outroStart": 1278.53
+    },
+    "onepunchman:1:7": {
+      "introStart": 79.05,
+      "introEnd": 168.8,
+      "outroStart": 1332.53
+    },
+    "onepunchman:1:8": {
+      "introStart": 131.05,
+      "introEnd": 220.8,
+      "outroStart": 1350.33
+    },
+    "onepunchman:1:9": {
+      "introStart": 113.05,
+      "introEnd": 202.8,
+      "outroStart": 1321.53
+    },
+    "onepunchman:1:10": {
+      "introStart": 76.85,
+      "introEnd": 166.6,
+      "outroStart": 1350.44
+    },
+    "onepunchman:1:11": {
+      "introStart": 135.05,
+      "introEnd": 224.8,
+      "outroStart": 1350.33
+    },
+    "onepunchman:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1432.55
+    },
+    "onepunchman:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1321.4
+    },
+    "onepunchman:2:2": {
+      "introStart": 220.25,
+      "introEnd": 309.4,
+      "outroStart": 1222.8
+    },
+    "onepunchman:2:3": {
+      "introStart": 28.25,
+      "introEnd": 117.4,
+      "outroStart": 1269.85
+    },
+    "onepunchman:2:4": {
+      "introStart": 109.25,
+      "introEnd": 198.4,
+      "outroStart": 1315.85
+    },
+    "onepunchman:2:5": {
+      "introStart": 111.25,
+      "introEnd": 200.4,
+      "outroStart": 1278.3
+    },
+    "onepunchman:2:6": {
+      "introStart": 101.25,
+      "introEnd": 190.4,
+      "outroStart": 1290.81
+    },
+    "onepunchman:2:7": {
+      "introStart": 26.25,
+      "introEnd": 115.4,
+      "outroStart": 1313.9
+    },
+    "onepunchman:2:8": {
+      "introStart": 84.25,
+      "introEnd": 173.4,
+      "outroStart": 1334.85
+    },
+    "onepunchman:2:9": {
+      "introStart": 29.25,
+      "introEnd": 118.4,
+      "outroStart": 1412.7
+    },
+    "onepunchman:2:10": {
+      "introStart": 96.25,
+      "introEnd": 185.4,
+      "outroStart": 1334.81
+    },
+    "onepunchman:2:11": {
+      "introStart": 159.25,
+      "introEnd": 248.4,
+      "outroStart": 1334.88
+    },
+    "onepunchman:2:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": 1318.95
+    },
+    "adults:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "adults:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:3:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:4:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:5:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:6:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:7:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:8:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:9:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:10:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:11:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "curbyourenthusiasm:12:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "steelballrun:1:12": {
       "introStart": null,
       "introEnd": null,
       "outroStart": null
