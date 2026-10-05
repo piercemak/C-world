@@ -830,4 +830,15 @@ export const SHOWS = [
         card: "/images/cardimages/steelballrunLogo.svg", 
         dateadded: "10-2-26",
     }, 
+    {
+        id: "thegrey",
+        title: "The Grey",
+        creator: "Joe Carnahan", 
+        background: "/images/thegrey/covers/thegrey_backdrop.svg",
+        ratings: "6.7",
+        type: "Movies",
+        keyart: "/images/thegrey/covers/thegrey_mobileLogo.jpeg", 
+        card: "/images/cardimages/thegreyLogo.svg", 
+        dateadded: "10-5-26",
+    }, 
 ];

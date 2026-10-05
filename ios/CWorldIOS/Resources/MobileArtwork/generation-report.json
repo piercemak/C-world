@@ -1876,8 +1876,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 42.17348304451275
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/thegreyLogo.svg",
+      "titles": [
+        "The Grey"
+      ],
+      "sourceBytes": 3608950,
+      "outputBytes": 382406,
+      "thumbnailBytes": 51670,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.061158210436
+    },
+    {
+      "url": "https://cearaworld.com/images/thegrey/covers/thegrey_backdrop.svg",
+      "titles": [
+        "The Grey"
+      ],
+      "sourceBytes": 567168,
+      "outputBytes": 645991,
+      "thumbnailBytes": 23057,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.71807380209944
     }
   ],
-  "sourceBytes": 787274209,
-  "outputBytes": 97953921
+  "sourceBytes": 791450327,
+  "outputBytes": 99057045
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-02T19:56:31.318Z",
+  "catalogRevision": "2026-10-05T16:44:27.701Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1137,6 +1137,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "9d255268e0c6c10988f11997c6db25d50946b894ff481143a5a0aaea8f7fcb28"
+    },
+    "https://cearaworld.com/images/cardimages/thegreyLogo.svg": {
+      "image": "fcfc82a1d924-cc0557f99be1.jpg",
+      "thumbnail": "fcfc82a1d924-cc0557f99be1-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "cc0557f99be10e14c6a3ec8f838bf0045ffdad9b8caea0cad1d0638af7d0ccbe"
+    },
+    "https://cearaworld.com/images/thegrey/covers/thegrey_backdrop.svg": {
+      "image": "8e0653514650-58e1ee211a8c.jpg",
+      "thumbnail": "8e0653514650-58e1ee211a8c-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "58e1ee211a8c8c6912735b46e948eb3ab1b8fd48bb794d7e33c87a10a003629b"
     }
   }
 }

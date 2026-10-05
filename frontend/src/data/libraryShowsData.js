@@ -829,6 +829,18 @@ export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => 
           subtitles: "yes",
           videos: videoDataByShow["steelballrun"],
         }, 
+        "thegrey": {
+          type: "movie",  
+          title: "The Grey",
+          agerating: "18+",
+          release_year: "2011",
+          genre: "Action",
+          duration: "1h 57m",          
+          description: "After their plane crashes in Alaska, six oil workers are led by a skilled huntsman to survival, but a pack of merciless wolves haunts their every step.",
+          background: "/images/thegrey/covers/thegreyCover.svg",
+          subtitles: "yes",
+          videos: generateSeasonVideos({}, "thegrey", "movie"),
+        }, 
         
       };
 

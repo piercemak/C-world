@@ -70,9 +70,13 @@
     "themist",
     "adults",
     "curbyourenthusiasm",
-    "steelballrun"
+    "steelballrun",
+    "thegrey"
   ],
   "newMedia": [
+    {
+      "id": "thegrey"
+    },
     {
       "id": "steelballrun",
       "season": 1,

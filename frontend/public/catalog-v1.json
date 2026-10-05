@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-04T21:30:20.666Z",
-  "generatedAt": "2026-10-04T21:30:20.666Z",
+  "catalogRevision": "2026-10-05T16:44:27.701Z",
+  "generatedAt": "2026-10-05T16:44:27.701Z",
   "items": [
     {
       "id": "steven-universe",
@@ -37279,6 +37279,42 @@
           ]
         }
       ]
+    },
+    {
+      "id": "thegrey",
+      "assetId": "thegrey",
+      "type": "movie",
+      "title": "The Grey",
+      "dateAdded": "10-5-26",
+      "description": "After their plane crashes in Alaska, six oil workers are led by a skilled huntsman to survival, but a pack of merciless wolves haunts their every step.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/thegreyLogo.svg",
+        "poster": "https://cearaworld.com/images/thegrey/covers/thegrey_mobileLogo.jpeg",
+        "backdrop": "https://cearaworld.com/images/thegrey/covers/thegrey_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/thegrey/covers/thegrey_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Joe Carnahan",
+        "rating": "6.7",
+        "year": "2011",
+        "genres": [
+          "Action"
+        ],
+        "duration": "1h 57m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/thegrey/thegrey_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/thegrey/thegrey_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "thegrey",
+        "season": null,
+        "episode": null
+      }
     }
   ]
 }
