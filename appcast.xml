@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+-->
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>CWorld Test</title>
+        <item>
+            <title>1.0.1</title>
+            <pubDate>Wed, 07 Oct 2026 12:32:58 -0400</pubDate>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="plain-text"><![CDATA[CWorld 1.0.1
+
+- Check for Updates is now available in the CWorld Test menu.
+- Optional automatic update checks and verified, signed downloads.
+- Removes the full-window keyboard focus outline while retaining shortcuts.
+
+Install this version manually once to enable future in-app updates.
+]]></description>
+            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.1-2/CWorld-Test-1.0.1-2.dmg" length="147729229" type="application/octet-stream" sparkle:edSignature="QjxsRgmcJTyzZAAqv9i8UzD/OGH6Ih1rYz8pG4K/Ty20owFsSRh2XvbC72z85h9jqPQxF+pXL1Q4mBQjMLWeCw=="/>
+        </item>
+    </channel>
+</rss>
+<!-- sparkle-signatures:
+edSignature: dkeyAL1QSg7nwDi/Mf/MNPANZWtFk2rUuuqincBye2+uqr24JZrHd2cq5wUZuQMmCEPLhFCABpZlKcup2pieBA==
+length: 1425
+-->
