@@ -1537,7 +1537,9 @@ const BetterEpisodePreview = () => {
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.img
                     key={`${selectedMedia.id}-${sideEpisode?.id || "media"}-thumb`}
-                    src={sideEpisode?.thumb || selectedMedia.cover}
+                    src={selectedMedia.type === "movie"
+                      ? getMoviePlaceholder(selectedMedia)
+                      : sideEpisode?.thumb || selectedMedia.cover}
                     alt={`${sideEpisode?.title || selectedMedia.title} preview`}
                     className="absolute inset-0 h-full w-full object-cover"
                     initial={{ opacity: 0, scale: 1.04 }}

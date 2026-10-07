@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "fs";
+import { generateRegistry, registryPath } from "./generate-media-registry.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { buildLibraryShows } from "../src/data/libraryShowsData.js";
@@ -40,10 +41,9 @@ async function main() {
   const replace = Boolean(args.replace);
   const limit = clampPositiveInt(args.limit, 0);
 
-  const episodeTitles = JSON.parse(fs.readFileSync(episodeTitlesPath, "utf8"));
-  const existingMetadata = fs.existsSync(episodeMetadataPath)
-    ? JSON.parse(fs.readFileSync(episodeMetadataPath, "utf8"))
-    : {};
+  const registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
+  const episodeTitles = Object.fromEntries(Object.entries(registry.media).filter(([, item]) => item.episodeTitles).map(([id, item]) => [id, item.episodeTitles]));
+  const existingMetadata = Object.fromEntries(Object.entries(registry.media).filter(([, item]) => item.episodeMetadata).map(([id, item]) => [id, item.episodeMetadata]));
   const shows = buildLibraryShows({
     videoDataByShow: {},
     generateSeasonVideos: () => [],
@@ -133,7 +133,9 @@ async function main() {
     return;
   }
 
-  fs.writeFileSync(episodeMetadataPath, `${JSON.stringify(nextMetadata, null, 2)}\n`);
+  for (const [id, metadata] of Object.entries(nextMetadata)) registry.media[id].episodeMetadata = metadata;
+  generateRegistry({ registry });
+  fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2) + "\n");
   console.log(summary.join("\n"));
   console.log(`Wrote ${path.relative(ROOT, episodeMetadataPath)}`);
 }

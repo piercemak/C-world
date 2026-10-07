@@ -1,17 +1,18 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { runInNewContext } from "node:vm";
-import { buildLibraryShows } from "../src/data/libraryShowsData.js";
-import { SHOWS } from "../src/components/mobileshowsData.js";
-import { getSubtitleTrackSrc } from "../src/data/subtitleTracks.js";
+import { generateRegistry } from "./generate-media-registry.mjs";
+generateRegistry();
+const { buildLibraryShows } = await import("../src/data/libraryShowsData.js");
+const { SHOWS } = await import("../src/components/mobileshowsData.js");
+const { getSubtitleTrackSrc } = await import("../src/data/subtitleTracks.js");
+const { getSkipMarkers } = await import("../src/data/mediaTiming.js");
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const frontendDir = path.resolve(scriptDir, "..");
 const cworldDir = path.resolve(frontendDir, "..");
 const titlesPath = path.join(frontendDir, "src", "data", "episodeTitles.json");
 const metadataPath = path.join(frontendDir, "src", "data", "episodeMetadata.json");
-const playerSourcePath = path.join(frontendDir, "src", "components", "Show.jsx");
 const outputPath = process.env.CWORLD_CATALOG_OUTPUT
   ? path.resolve(process.env.CWORLD_CATALOG_OUTPUT)
   : path.join(cworldDir, "backend", "uploadtest", "catalog_v1.json");
@@ -36,18 +37,7 @@ const HLS_PILOT = {
 
 const episodeTitles = JSON.parse(await readFile(titlesPath, "utf8"));
 const episodeMetadata = JSON.parse(await readFile(metadataPath, "utf8"));
-const playerSource = await readFile(playerSourcePath, "utf8");
 const mobileById = new Map(SHOWS.map((item) => [item.id, item]));
-
-const skipTimesStart = playerSource.indexOf("const skipTimes = ");
-const skipTimesEnd = playerSource.search(/;\s*const getActiveSkipTime/, skipTimesStart);
-if (skipTimesStart < 0 || skipTimesEnd < 0) {
-  throw new Error("Could not locate skipTimes in Show.jsx.");
-}
-const skipTimesSource = playerSource
-  .slice(skipTimesStart + "const skipTimes = ".length, skipTimesEnd)
-  .trim();
-const skipTimes = runInNewContext(`(${skipTimesSource})`);
 
 const normalizePath = (value) => {
   const source = String(value || "");
@@ -95,23 +85,6 @@ const desktopShows = buildLibraryShows({ videoDataByShow, generateSeasonVideos }
 const getEpisodeMetadata = (mediaId, season, index) => {
   const bySeason = episodeMetadata[mediaId] || {};
   return bySeason[String(season)]?.[index] || bySeason[season]?.[index] || {};
-};
-
-const getSkipMarkers = (mediaId, season, episode) => {
-  const config = skipTimes[mediaId];
-  const perEpisode = config?.seasons?.[season]?.[episode];
-  const defaults = perEpisode || config?.default;
-  if (!defaults) return { intro: null, outro: null };
-
-  const rules = perEpisode ? [] : (config?.rules || []);
-  const matched = rules.find((rule) => rule.condition?.(season, episode));
-  const intro = matched?.intro ?? defaults.intro ?? null;
-  const outro = matched?.outro ?? defaults.outro ?? null;
-
-  return {
-    intro: intro && intro.end > intro.start ? intro : null,
-    outro: outro && outro.start > 0 ? outro : null,
-  };
 };
 
 const toEpisode = (mediaId, season, fallbackTitle, index) => {

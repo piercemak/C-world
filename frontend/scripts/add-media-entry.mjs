@@ -1,24 +1,18 @@
 #!/usr/bin/env node
 import fs from "fs";
+import { renderRegistry } from "./generate-media-registry.mjs";
+import { addRegistryEntry } from "./media-registry-authoring.mjs";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = process.env.CWORLD_AUTHORING_ROOT || path.resolve(__dirname, "..");
 const SRC = path.join(ROOT, "src");
 const PUBLIC = path.join(ROOT, "public");
 
 const FILES = {
-  library: path.join(SRC, "data/libraryShowsData.js"),
-  subtitles: path.join(SRC, "data/subtitleTracks.js"),
-  catalog: path.join(SRC, "data/videoPlayerCatalogData.js"),
-  mobile: path.join(SRC, "components/mobileshowsData.js"),
-  carousel: path.join(SRC, "components/RandomCoverCarousel.jsx"),
+  registry: path.join(SRC, "data/mediaRegistry.json"),
   styles: path.join(SRC, "components/modules/videoLibrary.module.scss"),
-  newMedia: path.join(SRC, "components/newMedia.js"),
-  episodeTitles: path.join(SRC, "data/episodeTitles.json"),
-  episodeMetadata: path.join(SRC, "data/episodeMetadata.json"),
-  showPlayer: path.join(SRC, "components/Show.jsx"),
   packageJson: path.join(ROOT, "package.json"),
 };
 
@@ -74,7 +68,9 @@ async function main() {
   Object.assign(entry, paths);
 
   const files = readFiles(FILES);
-  assertCanInsert(files, entry);
+  const registry = JSON.parse(files.registry);
+  const dateAdded = args.dateadded || `${currentDate.getMonth() + 1}-${currentDate.getDate()}-${String(currentDate.getFullYear()).slice(-2)}`;
+  const nextRegistry = addRegistryEntry(registry, entry, { dateAdded, newMedia: Boolean(args["new-media"]) });
 
   queueAssetCopy(copies, args.cover, path.join(PUBLIC, trimPublicPath(entry.cover)));
   queueAssetCopy(copies, args.backdrop, path.join(PUBLIC, trimPublicPath(entry.backdrop)));
@@ -83,24 +79,9 @@ async function main() {
   queueAssetCopy(copies, args.card, path.join(PUBLIC, trimPublicPath(entry.card)));
   queueSubtitleCopies(subtitleCopies, directories, entry);
 
-  edits.push(updateLibraryShows(files.library, entry));
-  edits.push(updateVideoPlayerCatalog(files.catalog, entry));
-  edits.push(updateMobileShows(files.mobile, entry, currentDate));
-  edits.push(updateRandomCoverCarousel(files.carousel, entry));
+  edits.push({ file: FILES.registry, content: JSON.stringify(nextRegistry, null, 2) + "\n" });
+  for (const [relative, content] of renderRegistry(nextRegistry)) edits.push({ file: path.join(ROOT, relative), content });
   edits.push(updateVideoLibraryStyles(files.styles, entry));
-  if (episodeCatalog) {
-    edits.push(updateEpisodeTitles(files.episodeTitles, entry));
-    edits.push(updateEpisodeMetadata(files.episodeMetadata, entry));
-    edits.push(updateShowPlayer(files.showPlayer, entry));
-  }
-
-  if (entry.subtitles === "yes") {
-    edits.push(updateSubtitleTracks(files.subtitles, entry));
-  }
-
-  if (args["new-media"]) {
-    edits.push(updateNewMedia(files.newMedia, entry));
-  }
 
   if (args["add-script"] !== false) {
     edits.push(updatePackageJson(files.packageJson));
@@ -501,7 +482,7 @@ function normalizeAgeRating(value) {
 }
 
 function buildEntry({ id, title, mediaType, assetId, metadata }) {
-  const nextCard = getNextCardNumber(readFile(FILES.catalog));
+  const nextCard = getNextCardNumber(readFile(FILES.registry));
   const subtitles = normalizeYesNo(args.subtitles || "no");
 
   return {
@@ -616,62 +597,6 @@ function readFile(file) {
   return fs.readFileSync(file, "utf8");
 }
 
-function assertCanInsert(files, entry) {
-  if (files.library.includes(`"${entry.id}":`)) throw new Error(`libraryShowsData already has ${entry.id}.`);
-  if (files.catalog.includes(`"${entry.cardId}"`)) throw new Error(`Catalog already has ${entry.cardId}.`);
-  if (files.catalog.includes(`"${entry.id}"`)) throw new Error(`Catalog already maps ${entry.id}.`);
-  if (files.mobile.includes(`id: "${entry.id}"`)) throw new Error(`mobileshowsData already has ${entry.id}.`);
-  if (files.carousel.includes(`id: "${entry.id}"`)) throw new Error(`RandomCoverCarousel already has ${entry.id}.`);
-  if (files.styles.includes(`&.${entry.cardId}`)) throw new Error(`videoLibrary.module.scss already has ${entry.cardId}.`);
-  if (entry.mediaType === "show") {
-    const episodeTitles = JSON.parse(files.episodeTitles);
-    if (Object.hasOwn(episodeTitles, entry.id)) {
-      throw new Error(`episodeTitles.json already has ${entry.id}.`);
-    }
-    const episodeMetadata = JSON.parse(files.episodeMetadata);
-    if (Object.hasOwn(episodeMetadata, entry.id)) {
-      throw new Error(`episodeMetadata.json already has ${entry.id}.`);
-    }
-  }
-}
-
-function updateLibraryShows(content, entry) {
-  return replaceInFile(FILES.library, content, /(\n\s*};\n\n\s*return shows;)/, `\n${formatLibraryEntry(entry)}$1`);
-}
-
-function updateVideoPlayerCatalog(content, entry) {
-  let next = content.replace(/\n\n];/, `  { title: ${quote(entry.title)}, cardId: ${quote(entry.cardId)} },\n\n];`);
-  next = next.replace(/\n};\s*$/, `,\n  ${quote(entry.cardId)}: ${quote(entry.id)}\n};\n`);
-  return { file: FILES.catalog, content: next };
-}
-
-function updateMobileShows(content, entry, date) {
-  const dateAdded = args.dateadded || `${date.getMonth() + 1}-${date.getDate()}-${String(date.getFullYear()).slice(-2)}`;
-  const block = [
-    "    {",
-    `        id: ${quote(entry.id)},`,
-    `        title: ${quote(entry.title)},`,
-    `        creator: ${quote(entry.creator)}, `,
-    `        background: ${quote(entry.backdrop)},`,
-    `        ratings: ${quote(entry.rating)},`,
-    `        type: ${quote(entry.mediaType === "show" ? "TV" : "Movies")},`,
-    `        keyart: ${quote(entry.keyart)}, `,
-    `        card: ${quote(entry.card)}, `,
-    `        dateadded: ${quote(dateAdded)},`,
-    "    }, ",
-  ].join("\n");
-
-  return replaceInFile(FILES.mobile, content, /\n];\s*$/, `\n${block}\n];`);
-}
-
-function updateRandomCoverCarousel(content, entry) {
-  const line = `    { id: ${quote(entry.id)}, src: ${quote(entry.cover)}, title: ${quote(entry.title)} },`;
-  // Covers can be a plain array or the current useMemo(() => [...], []) array.
-  // Preserve the existing wrapper and anchor to the next declaration.
-  const newline = content.includes("\r\n") ? "\r\n" : "\n";
-  return replaceInFile(FILES.carousel, content, /(\r?\n[ \t]*\](?:[ \t]*,[ \t]*\[[ \t]*\][ \t]*\))?;[ \t]*\r?\n\s*const showsById)/, (match) => `${newline}${line}${match}`);
-}
-
 function updateVideoLibraryStyles(content, entry) {
   const block = [
     `    &.${entry.cardId} {`,
@@ -682,86 +607,6 @@ function updateVideoLibraryStyles(content, entry) {
   ].join("\n");
 
   return replaceInFile(FILES.styles, content, /(\n\n\s*}\n\n\n\n\s*@media \(max-width: 1280px\) \{)/, `\n${block}$1`);
-}
-
-function updateEpisodeTitles(content, entry) {
-  const catalog = JSON.parse(content);
-  catalog[entry.id] = entry.episodeCatalog.titlesBySeason;
-  return {
-    file: FILES.episodeTitles,
-    content: `${JSON.stringify(catalog, null, 2)}\n`,
-  };
-}
-
-function updateEpisodeMetadata(content, entry) {
-  const catalog = JSON.parse(content);
-  catalog[entry.id] = entry.episodeCatalog.metadataBySeason;
-  return {
-    file: FILES.episodeMetadata,
-    content: `${JSON.stringify(catalog, null, 2)}\n`,
-  };
-}
-
-function updateShowPlayer(content, entry) {
-  const seasonLengthBlock = [
-    `    ${quote(entry.assetId)}: {`,
-    ...Object.entries(entry.episodeCatalog.titlesBySeason).map(
-      ([season, titles]) => `      ${season}: ${titles.length},`,
-    ),
-    "    },",
-  ].join("\n");
-
-  const skipLines = [
-    `    ${quote(entry.assetId)}: {`,
-    "      seasons: {",
-  ];
-  for (const [season, titles] of Object.entries(entry.episodeCatalog.titlesBySeason)) {
-    skipLines.push(`        ${season}: {`);
-    titles.forEach((_, index) => {
-      skipLines.push(
-        `          ${index + 1}: { intro: { start: 0.0, end: 0.0 }, outro: { start: 0.0, skipTo: "next" } },`,
-      );
-    });
-    skipLines.push("        },");
-  }
-  skipLines.push("      },", "    },");
-
-  let next = insertIntoDeclaredObject(content, "const seasonLength = {", seasonLengthBlock);
-  next = insertIntoDeclaredObject(next, "const skipTimes = {", skipLines.join("\n"));
-  return { file: FILES.showPlayer, content: next };
-}
-
-function insertIntoDeclaredObject(content, declaration, block) {
-  const start = content.indexOf(declaration);
-  if (start < 0) {
-    throw new Error(`Could not find ${declaration} in Show.jsx.`);
-  }
-  const end = content.indexOf("\n  };", start);
-  if (end < 0) {
-    throw new Error(`Could not find the end of ${declaration} in Show.jsx.`);
-  }
-  const before = content.slice(0, end);
-  const trailingWhitespace = before.match(/\s*$/)?.[0] || "";
-  const body = before.slice(0, before.length - trailingWhitespace.length);
-  const normalizedBody = body.endsWith(",") ? body : `${body},`;
-  return `${normalizedBody}${trailingWhitespace}\n${block}${content.slice(end)}`;
-}
-
-function updateSubtitleTracks(content, entry) {
-  if (entry.mediaType === "movie") {
-    const line = `  ${quote(entry.id)}: ${quote(entry.subtitlePath)},`;
-    return replaceInFile(FILES.subtitles, content, /(\n};\n\nconst SERIES_SUBTITLE_PATTERNS)/, `\n${line}$1`);
-  }
-
-  const pattern = `/subtitles/${entry.assetId}/season{season}/S{season}E{episode2}_subtitles.vtt`;
-  const line = `  ${quote(entry.id)}: ${quote(pattern)},`;
-  return replaceInFile(FILES.subtitles, content, /(\n};\n\nconst fillPattern)/, `\n${line}$1`);
-}
-
-function updateNewMedia(content, entry) {
-  const block = formatNewMediaEntry(entry);
-
-  return replaceInFile(FILES.newMedia, content, /(export const newMedia = \[\n)/, `$1${block}\n`);
 }
 
 function formatNewMediaEntry(entry) {
@@ -924,7 +769,7 @@ Useful:
                               Sorted .vtt files copy to public/subtitles/<asset>/seasonN
   --subtitle-season 1 --subtitle-start-episode 1
                               Show additions also create every season subtitle folder,
-                              update episodeTitles.json, and add Show.jsx navigation/skip scaffolding
+                              update the media registry and generate episode/navigation/skip data
   --dry-run                   Print the plan without changing files
 
 Example:

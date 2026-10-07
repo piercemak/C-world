@@ -4,8 +4,8 @@
   "version": "0.1.2",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/generate-offline-assets.mjs && node scripts/generate-roku-captions.mjs && node scripts/generate-catalog-v1.mjs && vite",
-    "build": "node scripts/generate-offline-assets.mjs && node scripts/generate-roku-captions.mjs && node scripts/generate-catalog-v1.mjs && vite build",
+    "dev": "node scripts/generate-media-registry.mjs && node scripts/generate-offline-assets.mjs && node scripts/generate-roku-captions.mjs && node scripts/generate-catalog-v1.mjs && vite",
+    "build": "node scripts/generate-media-registry.mjs --check && node scripts/generate-offline-assets.mjs && node scripts/generate-roku-captions.mjs && node scripts/generate-catalog-v1.mjs && vite build",
     "catalog:generate": "node scripts/generate-catalog-v1.mjs",
     "captions:generate": "node scripts/generate-roku-captions.mjs",
     "lint": "eslint .",
@@ -21,7 +21,9 @@
     "tauri:version": "node scripts/bump-desktop-version.mjs",
     "tauri:version:patch": "node scripts/bump-desktop-version.mjs patch",
     "tauri:version:minor": "node scripts/bump-desktop-version.mjs minor",
-    "tauri:version:major": "node scripts/bump-desktop-version.mjs major"
+    "tauri:version:major": "node scripts/bump-desktop-version.mjs major",
+    "media:generate": "node scripts/generate-media-registry.mjs && node scripts/generate-catalog-v1.mjs && node ../ios/scripts/generate-episode-markers.mjs && node ../ios/scripts/generate-desktop-reference.mjs",
+    "media:check": "node scripts/generate-media-registry.mjs --check"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

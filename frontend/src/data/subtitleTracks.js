@@ -1,3 +1,4 @@
+// Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 const MOVIE_SUBTITLE_TRACKS = {
   "perfect-blue": "/videos/perfectblue/perfectblue.vtt",
   "paprika": "/videos/paprika/paprikaSub.vtt",
@@ -34,50 +35,36 @@ const MOVIE_SUBTITLE_TRACKS = {
   "interstellar": "/videos/interstellar/interstellar_subtitles.vtt",
   "tron": "/videos/tron/tron_subtitles.vtt",
   "themist": "/videos/themist/themist_subtitles.vtt",
-  "thegrey": "/videos/thegrey/thegrey_subtitles.vtt",
+  "thegrey": "/videos/thegrey/thegrey_subtitles.vtt"
 };
-
 const SERIES_SUBTITLE_PATTERNS = {
   "neon-genesis": "/subtitles/neongenesis/season{season}/S{season}E{episode2}_subtitles.vtt",
   "mob-psycho": "/subtitles/mobpsycho/season{season}/S{season}E{episode2}_subtitles.vtt",
-  fmab: "/subtitles/fmab/season{season}/S{season}E{episode2}_subtitles.vtt",
-  jjk: "/subtitles/jjk/season{season}/S{season}E{episode2}_subtitles.vtt",
-  cyberpunk: "/subtitles/cyberpunk/season{season}/S{season}E{episode2}_subtitles.vtt",
-  severance: "/subtitles/severance/season{season}/S{season}E{episode2}_subtitles.vtt",
-  pluribus: "/subtitles/pluribus/season{season}/S{season}E{episode2}_subtitles.vtt",
-  truedetective: "/subtitles/truedetective/season{season}/S{season}E{episode2}_subtitles.vtt",
-  mongolianchopsquad: "/subtitles/mongolianchopsquad/season{season}/S{season}E{episode2}_subtitles.vtt",
-  atlanta: "/subtitles/atlanta/season{season}/S{season}E{episode2}_subtitles.vtt",
-  jojos: "/subtitles/jojos/season{season}/S{season}E{episode2}_subtitles.vtt",
-  chernobyl: "/subtitles/chernobyl/season{season}/S{season}E{episode2}_subtitles.vtt",
-  attackontitan: "/subtitles/attackontitan/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "fmab": "/subtitles/fmab/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "jjk": "/subtitles/jjk/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "cyberpunk": "/subtitles/cyberpunk/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "severance": "/subtitles/severance/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "pluribus": "/subtitles/pluribus/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "truedetective": "/subtitles/truedetective/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "mongolianchopsquad": "/subtitles/mongolianchopsquad/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "atlanta": "/subtitles/atlanta/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "jojos": "/subtitles/jojos/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "chernobyl": "/subtitles/chernobyl/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "attackontitan": "/subtitles/attackontitan/season{season}/S{season}E{episode2}_subtitles.vtt",
   "alienearth": "/subtitles/alienearth/season{season}/S{season}E{episode2}_subtitles.vtt",
   "onepunchman": "/subtitles/onepunchman/season{season}/S{season}E{episode2}_subtitles.vtt",
   "adults": "/subtitles/adults/season{season}/S{season}E{episode2}_subtitles.vtt",
-  "steelballrun": "/subtitles/steelballrun/season{season}/S{season}E{episode2}_subtitles.vtt",
-};
-
-const fillPattern = (pattern, season, episode) => {
-  const seasonNum = Number(season);
-  const episodeNum = Number(episode);
-  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return null;
-
-  return pattern
-    .replaceAll("{season}", String(seasonNum))
-    .replaceAll("{episode}", String(episodeNum))
-    .replaceAll("{episode2}", String(episodeNum).padStart(2, "0"));
+  "steelballrun": "/subtitles/steelballrun/season{season}/S{season}E{episode2}_subtitles.vtt"
 };
 
 export const getSubtitleTrackSrc = ({ showId, season = null, episode = null }) => {
   if (!showId) return null;
-
-  if (MOVIE_SUBTITLE_TRACKS[showId]) {
-    return MOVIE_SUBTITLE_TRACKS[showId];
-  }
-
+  if (MOVIE_SUBTITLE_TRACKS[showId]) return MOVIE_SUBTITLE_TRACKS[showId];
   const pattern = SERIES_SUBTITLE_PATTERNS[showId];
   if (!pattern) return null;
-
-  return fillPattern(pattern, season, episode);
+  const seasonNum = Number(season), episodeNum = Number(episode);
+  if (!Number.isFinite(seasonNum) || !Number.isFinite(episodeNum)) return null;
+  return pattern.replaceAll("{season}", String(seasonNum))
+    .replaceAll("{episode}", String(episodeNum))
+    .replaceAll("{episode2}", String(episodeNum).padStart(2, "0"));
 };
-

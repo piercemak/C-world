@@ -1,56 +1,294 @@
+// Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
-  { title: "Steven Universe", cardId: "card-2" },
-  { title: "Adventure Time", cardId: "card-3" },
-  { title: "Over the Garden Wall", cardId: "card-1" },
-  { title: "Perfect Blue", cardId: "card-4" },
-  { title: "Paprika", cardId: "card-5" },
-  { title: "Princess Mononoke", cardId: "card-6" },
-  { title: "Aniara", cardId: "card-8" },
-  { title: "Weapons", cardId: "card-17" },
-  { title: "The Vanishing", cardId: "card-9" },
-  { title: "The Lighthouse", cardId: "card-10" },
-  { title: "A Ghost Story", cardId: "card-11" },
-  { title: "Little Miss Sunshine", cardId: "card-12" },
-  { title: "Ghost in the Shell", cardId: "card-13" },
-  { title: "Mob Psycho 100", cardId: "card-14" },
-  { title: "Fullmetal Alchemist", cardId: "card-15" },
-  { title: "Jujutsu Kaisen", cardId: "card-16" },
-  { title: "Neon Genesis Evangelion", cardId: "card-7" },
-  { title: "Cyberpunk: Edgerunners", cardId: "card-21" },
-  { title: "Solaris", cardId: "card-19" },
-  { title: "Event Horizon", cardId: "card-20" },
-  { title: "Tokyo Godfathers", cardId: "card-18" },
-  { title: "Love Death + Robots", cardId: "card-22" },
-  { title: "Demons", cardId: "card-23" },
-  { title: "Black Mirror", cardId: "card-24" },
-  { title: "Severance", cardId: "card-25" },
-  { title: "Pluribus", cardId: "card-26" },
-  { title: "Akira", cardId: "card-27" },
-  { title: "Ex Machina", cardId: "card-28" },
-  { title: "Annihilation", cardId: "card-29" },
-  { title: "It's Always Sunny In Philadelphia", cardId: "card-30" },
-  { title: "The Twilight Zone", cardId: "card-31" },
-  { title: "Redline", cardId: "card-32" },
-  { title: "Bugonia", cardId: "card-33" },
-  { title: "Frankenstein", cardId: "card-34" },
-  { title: "True Detective", cardId: "card-35" },
-  { title: "Sunset Boulevard", cardId: "card-36" },
-  { title: "Shiki-Jitsu", cardId: "card-37" },
-  { title: "Speak No Evil", cardId: "card-38" },
-  { title: "Ikiru", cardId: "card-39" },
-  { title: "The Eric Andre Show", cardId: "card-40" },
-  { title: "Pokémon 2000", cardId: "card-41" },
-  { title: "Coherence", cardId: "card-42" },
-  { title: "Exit 8", cardId: "card-43" },
-  { title: "Hokum", cardId: "card-44" },
-  { title: "Obsession", cardId: "card-45" },
-  { title: "Project Hail Mary", cardId: "card-46" },  
-  { title: "Blood: The Last Vampire", cardId: "card-47" },  
-  { title: "The Animatrix", cardId: "card-48" },
-  { title: "Beck: Mongolian Chop Squad", cardId: "card-49" },  { title: "Widow's Bay", cardId: "card-50" },  { title: "Backrooms", cardId: "card-51" },  { title: "Pokémon: Destiny Deoxys", cardId: "card-52" },  { title: "Atlanta", cardId: "card-53" },  { title: "Chronicle", cardId: "card-54" },  { title: "JoJo's Bizarre Adventure", cardId: "card-55" },  { title: "Chernobyl", cardId: "card-56" },  { title: "Being John Malkovich", cardId: "card-57" },  { title: "Attack on Titan", cardId: "card-58" },  { title: "The Drama", cardId: "card-59" },  { title: "The Night Is Short, Walk on Girl", cardId: "card-60" },  { title: "Cure", cardId: "card-61" },  { title: "The Invite", cardId: "card-62" },  { title: "Alien: Earth", cardId: "card-63" },  { title: "American Dad", cardId: "card-64" },  { title: "One Punch Man", cardId: "card-65" },  { title: "Interstellar", cardId: "card-66" },  { title: "Tron: Legacy", cardId: "card-67" },  { title: "The Mist", cardId: "card-68" },  { title: "Adults", cardId: "card-69" },  { title: "Curb Your Enthusiasm", cardId: "card-70" },  { title: "Steel Ball Run", cardId: "card-71" },  { title: "The Grey", cardId: "card-72" },
-
+  {
+    "title": "Steven Universe",
+    "cardId": "card-2"
+  },
+  {
+    "title": "Adventure Time",
+    "cardId": "card-3"
+  },
+  {
+    "title": "Over the Garden Wall",
+    "cardId": "card-1"
+  },
+  {
+    "title": "Perfect Blue",
+    "cardId": "card-4"
+  },
+  {
+    "title": "Paprika",
+    "cardId": "card-5"
+  },
+  {
+    "title": "Princess Mononoke",
+    "cardId": "card-6"
+  },
+  {
+    "title": "Aniara",
+    "cardId": "card-8"
+  },
+  {
+    "title": "Weapons",
+    "cardId": "card-17"
+  },
+  {
+    "title": "The Vanishing",
+    "cardId": "card-9"
+  },
+  {
+    "title": "The Lighthouse",
+    "cardId": "card-10"
+  },
+  {
+    "title": "A Ghost Story",
+    "cardId": "card-11"
+  },
+  {
+    "title": "Little Miss Sunshine",
+    "cardId": "card-12"
+  },
+  {
+    "title": "Ghost in the Shell",
+    "cardId": "card-13"
+  },
+  {
+    "title": "Mob Psycho 100",
+    "cardId": "card-14"
+  },
+  {
+    "title": "Fullmetal Alchemist",
+    "cardId": "card-15"
+  },
+  {
+    "title": "Jujutsu Kaisen",
+    "cardId": "card-16"
+  },
+  {
+    "title": "Neon Genesis Evangelion",
+    "cardId": "card-7"
+  },
+  {
+    "title": "Cyberpunk: Edgerunners",
+    "cardId": "card-21"
+  },
+  {
+    "title": "Solaris",
+    "cardId": "card-19"
+  },
+  {
+    "title": "Event Horizon",
+    "cardId": "card-20"
+  },
+  {
+    "title": "Tokyo Godfathers",
+    "cardId": "card-18"
+  },
+  {
+    "title": "Love Death + Robots",
+    "cardId": "card-22"
+  },
+  {
+    "title": "Demons",
+    "cardId": "card-23"
+  },
+  {
+    "title": "Black Mirror",
+    "cardId": "card-24"
+  },
+  {
+    "title": "Severance",
+    "cardId": "card-25"
+  },
+  {
+    "title": "Pluribus",
+    "cardId": "card-26"
+  },
+  {
+    "title": "Akira",
+    "cardId": "card-27"
+  },
+  {
+    "title": "Ex Machina",
+    "cardId": "card-28"
+  },
+  {
+    "title": "Annihilation",
+    "cardId": "card-29"
+  },
+  {
+    "title": "It's Always Sunny In Philadelphia",
+    "cardId": "card-30"
+  },
+  {
+    "title": "The Twilight Zone",
+    "cardId": "card-31"
+  },
+  {
+    "title": "Redline",
+    "cardId": "card-32"
+  },
+  {
+    "title": "Bugonia",
+    "cardId": "card-33"
+  },
+  {
+    "title": "Frankenstein",
+    "cardId": "card-34"
+  },
+  {
+    "title": "True Detective",
+    "cardId": "card-35"
+  },
+  {
+    "title": "Sunset Boulevard",
+    "cardId": "card-36"
+  },
+  {
+    "title": "Shiki-Jitsu",
+    "cardId": "card-37"
+  },
+  {
+    "title": "Speak No Evil",
+    "cardId": "card-38"
+  },
+  {
+    "title": "Ikiru",
+    "cardId": "card-39"
+  },
+  {
+    "title": "The Eric Andre Show",
+    "cardId": "card-40"
+  },
+  {
+    "title": "Pokémon 2000",
+    "cardId": "card-41"
+  },
+  {
+    "title": "Coherence",
+    "cardId": "card-42"
+  },
+  {
+    "title": "Exit 8",
+    "cardId": "card-43"
+  },
+  {
+    "title": "Hokum",
+    "cardId": "card-44"
+  },
+  {
+    "title": "Obsession",
+    "cardId": "card-45"
+  },
+  {
+    "title": "Project Hail Mary",
+    "cardId": "card-46"
+  },
+  {
+    "title": "Blood: The Last Vampire",
+    "cardId": "card-47"
+  },
+  {
+    "title": "The Animatrix",
+    "cardId": "card-48"
+  },
+  {
+    "title": "Beck: Mongolian Chop Squad",
+    "cardId": "card-49"
+  },
+  {
+    "title": "Widow's Bay",
+    "cardId": "card-50"
+  },
+  {
+    "title": "Backrooms",
+    "cardId": "card-51"
+  },
+  {
+    "title": "Pokémon: Destiny Deoxys",
+    "cardId": "card-52"
+  },
+  {
+    "title": "Atlanta",
+    "cardId": "card-53"
+  },
+  {
+    "title": "Chronicle",
+    "cardId": "card-54"
+  },
+  {
+    "title": "JoJo's Bizarre Adventure",
+    "cardId": "card-55"
+  },
+  {
+    "title": "Chernobyl",
+    "cardId": "card-56"
+  },
+  {
+    "title": "Being John Malkovich",
+    "cardId": "card-57"
+  },
+  {
+    "title": "Attack on Titan",
+    "cardId": "card-58"
+  },
+  {
+    "title": "The Drama",
+    "cardId": "card-59"
+  },
+  {
+    "title": "The Night Is Short, Walk on Girl",
+    "cardId": "card-60"
+  },
+  {
+    "title": "Cure",
+    "cardId": "card-61"
+  },
+  {
+    "title": "The Invite",
+    "cardId": "card-62"
+  },
+  {
+    "title": "Alien: Earth",
+    "cardId": "card-63"
+  },
+  {
+    "title": "American Dad",
+    "cardId": "card-64"
+  },
+  {
+    "title": "One Punch Man",
+    "cardId": "card-65"
+  },
+  {
+    "title": "Interstellar",
+    "cardId": "card-66"
+  },
+  {
+    "title": "Tron: Legacy",
+    "cardId": "card-67"
+  },
+  {
+    "title": "The Mist",
+    "cardId": "card-68"
+  },
+  {
+    "title": "Adults",
+    "cardId": "card-69"
+  },
+  {
+    "title": "Curb Your Enthusiasm",
+    "cardId": "card-70"
+  },
+  {
+    "title": "Steel Ball Run",
+    "cardId": "card-71"
+  },
+  {
+    "title": "The Grey",
+    "cardId": "card-72"
+  }
 ];
-
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-2": "steven-universe",
   "card-3": "adventure-time",

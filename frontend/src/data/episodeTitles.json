@@ -165,20 +165,6 @@
       "Change_Your_Mind"
     ]
   },
-  "over-the-garden-wall": {
-    "1": [
-      "The_Old_Grist_Mill",
-      "Hard_Times_at_the_Huskin_Bee",
-      "Schooltown_Follies",
-      "Songs_of_the_Dark_Lantern",
-      "Mad_Love",
-      "Lullaby_in_Frogland",
-      "The_Ringing_of_the_Bell",
-      "Babes_in_the_Woods",
-      "Into_the_Unknown",
-      "The_Unknown"
-    ]
-  },
   "adventure-time": {
     "1": [
       "Slumber_Party_Panic",
@@ -477,6 +463,20 @@
       "Temple_of_Mars",
       "Gumbaldia",
       "Come_Along_With_Me"
+    ]
+  },
+  "over-the-garden-wall": {
+    "1": [
+      "The_Old_Grist_Mill",
+      "Hard_Times_at_the_Huskin_Bee",
+      "Schooltown_Follies",
+      "Songs_of_the_Dark_Lantern",
+      "Mad_Love",
+      "Lullaby_in_Frogland",
+      "The_Ringing_of_the_Bell",
+      "Babes_in_the_Woods",
+      "Into_the_Unknown",
+      "The_Unknown"
     ]
   },
   "neon-genesis": {
