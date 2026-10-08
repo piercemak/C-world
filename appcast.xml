@@ -4,10 +4,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>CearaWorld</title>
         <item>
-            <title>1.0.4</title>
-            <pubDate>Thu, 08 Oct 2026 17:59:35 +0000</pubDate>
+            <title>1.0.5</title>
+            <pubDate>Thu, 08 Oct 2026 18:18:36 +0000</pubDate>
             <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+            <sparkle:shortVersionString>1.0.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="plain-text"><![CDATA[CWorld 1.0.2
 
@@ -17,10 +17,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 Updates continue to ask before installing.
 ]]></description>
-            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.4-4/CearaWorld-1.0.4-4.dmg" length="148101891" type="application/octet-stream" sparkle:edSignature="IFgdvPN6gPIqpml/4iI54rLt0s3GBBxnN1vf5fW02Mob504hCIJELgbGDKUES1prYndT4g0mjkVuma83lu5hBA=="></enclosure>
+            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.5-4/CearaWorld-1.0.5-4.dmg" length="149231932" type="application/octet-stream" sparkle:edSignature="c3scEhUL3TI9YYS+OVaD/WLFicJE9hrirGnUIj//eAfY7Hn4WD2spsPIhWU6DvzPuWu3KkRrQmhzA+HgyYJxBQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: dWHTmtPxjSQ4uPlqYZSyF724/+ZNsDnynx2hJDPvKp6uHXLU9zaQW7sW1pgeLl0XHAXPxh+BWBakuhR0zY8KAw==
+edSignature: UmhVdejxCz3fUb1no22ZlKQsQSuZrDpqXhg9oqbBfiqF4VSGyKj2W4p6KtjqiAyeO3LpkxCZIfCjDR4e+v2MCw==
 length: 1404
 -->
