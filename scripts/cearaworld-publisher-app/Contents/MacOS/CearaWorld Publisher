@@ -1,0 +1,4 @@
+#!/bin/zsh
+set -euo pipefail
+
+open -a Terminal "/Users/piercemakombe/Documents/Cworld/scripts/publish-cworld.command"
