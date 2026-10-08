@@ -4,10 +4,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>CWorld Test</title>
         <item>
-            <title>1.0.2</title>
-            <pubDate>Wed, 07 Oct 2026 14:00:00 -0400</pubDate>
-            <sparkle:version>3</sparkle:version>
-            <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+            <title>1.0.3</title>
+            <pubDate>Thu, 08 Oct 2026 17:33:52 +0000</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="plain-text"><![CDATA[CWorld 1.0.2
 
@@ -17,10 +17,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 Updates continue to ask before installing.
 ]]></description>
-            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.2-3/CWorld-Test-1.0.2-3.dmg" length="147729675" type="application/octet-stream" sparkle:edSignature="7duZiM0z8RBwgEtRZ/Zzd9ypxDOdR9mGYDSbGIyR5kAfW8QW7asC0sD/KuDZBjA3b9WhhHy+psnwAc4q8wUKAQ=="></enclosure>
+            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.3-4/CWorld-Test-1.0.3-4.dmg" length="147596848" type="application/octet-stream" sparkle:edSignature="AY09zYlcyH6GaVUwAb82BOoxhjkwXzIaG+Y5limNUgKG+MDEScNJ540UTVsJ576Gh8XNuvp/xP0RkPRtFzpWDQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: hkHBBI6aNL8bm5aGo+hHIDH8x8xUr4XABjjXJeDhzagH3zRgYX3QPLhecOJ0seY5SlqKmVcqcMmk9iHtL92uDg==
+edSignature: OU86MUv9WPrKbyLZu9jPgTeFUc3JdnbFO1SD8t4xOR262AytgAoXvLtbFGEuE1cZ980reOFEy+zp/ARYfAWLCw==
 length: 1407
 -->
