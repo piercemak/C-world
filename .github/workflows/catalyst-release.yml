@@ -75,6 +75,21 @@ jobs:
           fi
           printf 'version=%s\nbuild=%s\n' "$version" "$build" >> "$GITHUB_OUTPUT"
 
+      - name: Create automatic Mac release tag
+        env:
+          VERSION: ${{ steps.metadata.outputs.version }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tag="mac-v${VERSION}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "Release tag already exists: ${tag}"
+            exit 1
+          fi
+          git tag "$tag"
+          git push origin "$tag"
+
       - name: Create CI update configuration
         env:
           VERSION: ${{ steps.metadata.outputs.version }}
