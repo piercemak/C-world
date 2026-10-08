@@ -2,25 +2,25 @@
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
 --><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>CWorld Test</title>
+        <title>CearaWorld</title>
         <item>
-            <title>1.0.3</title>
-            <pubDate>Thu, 08 Oct 2026 17:33:52 +0000</pubDate>
+            <title>1.0.4</title>
+            <pubDate>Thu, 08 Oct 2026 17:59:35 +0000</pubDate>
             <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="plain-text"><![CDATA[CWorld 1.0.2
 
 - Automatic update checks are now enabled by default.
 - Existing installations enable automatic checks once when opening this version.
-- You can still turn automatic checks off from the CWorld Test menu.
+- You can still turn automatic checks off from the CearaWorld menu.
 
 Updates continue to ask before installing.
 ]]></description>
-            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.3-4/CWorld-Test-1.0.3-4.dmg" length="147596848" type="application/octet-stream" sparkle:edSignature="AY09zYlcyH6GaVUwAb82BOoxhjkwXzIaG+Y5limNUgKG+MDEScNJ540UTVsJ576Gh8XNuvp/xP0RkPRtFzpWDQ=="></enclosure>
+            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.4-4/CearaWorld-1.0.4-4.dmg" length="148101891" type="application/octet-stream" sparkle:edSignature="IFgdvPN6gPIqpml/4iI54rLt0s3GBBxnN1vf5fW02Mob504hCIJELgbGDKUES1prYndT4g0mjkVuma83lu5hBA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: OU86MUv9WPrKbyLZu9jPgTeFUc3JdnbFO1SD8t4xOR262AytgAoXvLtbFGEuE1cZ980reOFEy+zp/ARYfAWLCw==
-length: 1407
+edSignature: dWHTmtPxjSQ4uPlqYZSyF724/+ZNsDnynx2hJDPvKp6uHXLU9zaQW7sW1pgeLl0XHAXPxh+BWBakuhR0zY8KAw==
+length: 1404
 -->
