@@ -1,0 +1,8 @@
+{
+  "version": "1.0.2",
+  "build": 3,
+  "feedURL": "https://raw.githubusercontent.com/piercemak/C-world/mac-updates/appcast.xml",
+  "publicKey": "PazVC41rsqwZ4CxfDTQdVAftJKm7w4fkYpksEvvCY0c=",
+  "keychainAccount": "cworld-mac-local",
+  "githubRepository": "piercemak/C-world"
+}

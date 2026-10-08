@@ -1,0 +1,85 @@
+name: Publish CWorld Catalyst update
+
+on:
+  push:
+    tags:
+      - "mac-v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Marketing version, for example 1.0.3"
+        required: true
+        type: string
+      build:
+        description: "Build number; leave blank to use the workflow run number"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish-catalyst:
+    runs-on: macos-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Select release metadata
+        id: metadata
+        shell: bash
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_BUILD: ${{ inputs.build }}
+          RUN_NUMBER: ${{ github.run_number }}
+        run: |
+          set -euo pipefail
+          if [[ "$TAG_NAME" == mac-v* ]]; then
+            version="${TAG_NAME#mac-v}"
+          else
+            version="$INPUT_VERSION"
+          fi
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid version: $version" >&2
+            exit 1
+          fi
+          current_build="$(node -p "require('./ios/LocalMac/updates.json').build")"
+          requested_build="${INPUT_BUILD:-$RUN_NUMBER}"
+          build="$requested_build"
+          if (( build <= current_build )); then
+            build=$((current_build + 1))
+          fi
+          printf 'version=%s\nbuild=%s\n' "$version" "$build" >> "$GITHUB_OUTPUT"
+
+      - name: Create CI update configuration
+        env:
+          VERSION: ${{ steps.metadata.outputs.version }}
+          BUILD: ${{ steps.metadata.outputs.build }}
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const base = require('./ios/LocalMac/updates.json');
+          base.version = process.env.VERSION;
+          base.build = Number(process.env.BUILD);
+          fs.writeFileSync('/tmp/cworld-updates.json', JSON.stringify(base, null, 2) + '\n');
+          NODE
+
+      - name: Build Catalyst DMG
+        env:
+          CWORLD_UPDATE_CONFIG: /tmp/cworld-updates.json
+        run: |
+          bash ios/scripts/package-local-mac.sh "$GITHUB_WORKSPACE/dist/catalyst"
+
+      - name: Publish signed Sparkle update
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SPARKLE_ED_KEY: ${{ secrets.CWORLD_SPARKLE_ED_KEY }}
+        run: |
+          set -euo pipefail
+          dmg="$(find "$GITHUB_WORKSPACE/dist/catalyst" -maxdepth 1 -type f -name '*.dmg' -print -quit)"
+          if [[ -z "$dmg" ]]; then
+            echo "Catalyst DMG was not produced" >&2
+            exit 1
+          fi
+          node ios/scripts/publish-mac-update.mjs "$dmg" --publish

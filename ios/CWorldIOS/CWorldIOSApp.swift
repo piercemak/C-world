@@ -12,6 +12,9 @@ struct CWorldIOSApp: App {
                 .ignoresSafeArea()
                 .environmentObject(appModel)
                 .task {
+                    #if targetEnvironment(macCatalyst) && CWORLD_LOCAL_DISTRIBUTION
+                    CWorldMacUpdater.shared.start()
+                    #endif
                     await appModel.restoreSession()
                 }
                 .onChange(of: scenePhase) { _, phase in

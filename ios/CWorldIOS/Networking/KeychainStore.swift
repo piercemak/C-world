@@ -12,6 +12,22 @@ final class KeychainStore: TokenStore {
     private let service: String
     private let tokenAccount: String
 
+    #if targetEnvironment(macCatalyst) && CWORLD_LOCAL_DISTRIBUTION
+    private func localKeychain(_ operation: String, token: String? = nil) -> (OSStatus, String?) {
+        guard let url = Bundle.main.builtInPlugInsURL?.appendingPathComponent("CWorldLocalKeychain.bundle"),
+              let bundle = Bundle(url: url), bundle.load(),
+              let bridgeClass = bundle.principalClass as? NSObject.Type else {
+            return (errSecNotAvailable, nil)
+        }
+        let bridge = bridgeClass.init()
+        var request: [String: String] = ["operation": operation, "service": service, "account": tokenAccount]
+        request["token"] = token
+        guard let result = bridge.perform(NSSelectorFromString("execute:"), with: request as NSDictionary)?.takeUnretainedValue() as? NSDictionary,
+              let status = result["status"] as? NSNumber else { return (errSecInternalError, nil) }
+        return (status.int32Value, result["token"] as? String)
+    }
+    #endif
+
     init(service: String = "com.cearaworld.cworld.ios", tokenAccount: String = "auth-token") {
         self.service = service
         self.tokenAccount = tokenAccount
@@ -32,6 +48,10 @@ final class KeychainStore: TokenStore {
     }
 
     func readToken() -> String? {
+        #if targetEnvironment(macCatalyst) && CWORLD_LOCAL_DISTRIBUTION
+        let (status, token) = localKeychain("read")
+        return status == errSecSuccess ? token : nil
+        #else
         var query = query()
         query[kSecReturnData as String] = true
         query[kSecMatchLimit as String] = kSecMatchLimitOne
@@ -44,9 +64,14 @@ final class KeychainStore: TokenStore {
             return nil
         }
         return token
+        #endif
     }
 
     func saveToken(_ token: String) throws {
+        #if targetEnvironment(macCatalyst) && CWORLD_LOCAL_DISTRIBUTION
+        let (status, _) = localKeychain("save", token: token)
+        guard status == errSecSuccess else { throw KeychainError(status: status) }
+        #else
         let data = Data(token.utf8)
         let query = query()
         let attributes: [String: Any] = [kSecValueData as String: data]
@@ -62,11 +87,16 @@ final class KeychainStore: TokenStore {
         } else if updateStatus != errSecSuccess {
             throw KeychainError(status: updateStatus)
         }
+        #endif
     }
 
     func deleteToken() {
+        #if targetEnvironment(macCatalyst) && CWORLD_LOCAL_DISTRIBUTION
+        _ = localKeychain("delete")
+        #else
         let query = query()
         SecItemDelete(query as CFDictionary)
+        #endif
     }
 }
 

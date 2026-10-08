@@ -1,0 +1,7 @@
+CWorld 1.0.2
+
+- Automatic update checks are now enabled by default.
+- Existing installations enable automatic checks once when opening this version.
+- You can still turn automatic checks off from the CWorld Test menu.
+
+Updates continue to ask before installing.

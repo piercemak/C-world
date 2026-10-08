@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "source": "frontend/src/components/Show.jsx",
-  "sourceSHA256": "c64761c366e2ffcc63b1fdaee7d09b61caae70f1ffa0b7fb1537deaac322d4e3",
+  "source": "frontend/src/data/mediaRegistry.json",
+  "sourceSHA256": "d124d94b968f67a654ac639cc0fa75987cdef2419e29a36bcc21b6a0dd6d5729",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -3193,6 +3193,396 @@
       "introEnd": 100,
       "outroStart": 1525
     },
+    "lovedeathandrobots:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:1:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:3:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "lovedeathandrobots:4:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:3:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:3:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:3:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:3:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:3:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:4:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:4:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:4:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:4:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:4:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:4:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:5:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:5:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:5:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:6:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:6:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:6:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:6:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:6:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:7:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:7:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:7:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:7:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:7:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "blackmirror:7:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
     "severance:1:1": {
       "introStart": null,
       "introEnd": null,
@@ -3282,6 +3672,11 @@
       "introStart": 0,
       "introEnd": 80,
       "outroStart": 4400
+    },
+    "severance:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
     },
     "pluribus:1:1": {
       "introStart": null,
@@ -4172,6 +4567,46 @@
       "introStart": 63,
       "introEnd": 83,
       "outroStart": 1341
+    },
+    "itsalwayssunny:17:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "itsalwayssunny:17:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
     },
     "thetwilightzone:1:1": {
       "introStart": 0,
@@ -5822,6 +6257,31 @@
       "introStart": 185,
       "introEnd": 278.5,
       "outroStart": 1343.2
+    },
+    "chernobyl:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "chernobyl:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "chernobyl:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "chernobyl:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "chernobyl:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
     },
     "attackontitan:1:1": {
       "introStart": 123,

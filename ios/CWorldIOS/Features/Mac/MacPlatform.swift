@@ -12,7 +12,21 @@ extension Notification.Name {
 }
 
 struct CWorldMacCommands: Commands {
+    #if CWORLD_LOCAL_DISTRIBUTION
+    @ObservedObject private var updater = CWorldMacUpdater.shared
+    #endif
     var body: some Commands {
+        #if CWORLD_LOCAL_DISTRIBUTION
+        CommandGroup(after: .appInfo) {
+            Button("Check for Updates…") { updater.checkForUpdates() }
+                .disabled(!updater.canCheck)
+            Toggle("Automatically Check for Updates", isOn: Binding(
+                get: { updater.automaticChecks },
+                set: { updater.setAutomaticChecks($0) }
+            ))
+            .disabled(!updater.available)
+        }
+        #endif
         CommandGroup(after: .textEditing) {
             Button("Search CWorld") { NotificationCenter.default.post(name: .cworldMacSearch, object: nil) }
                 .keyboardShortcut("/", modifiers: .command)
@@ -22,6 +36,43 @@ struct CWorldMacCommands: Commands {
     }
 }
 
+#if CWORLD_LOCAL_DISTRIBUTION
+@MainActor
+final class CWorldMacUpdater: ObservableObject {
+    static let shared = CWorldMacUpdater()
+    @Published private(set) var canCheck = false
+    @Published private(set) var automaticChecks = false
+    @Published private(set) var available = false
+    private var bridge: NSObject?
+    private var observation: AnyCancellable?
+
+    func start() {
+        guard bridge == nil else { return }
+        guard let url = Bundle.main.builtInPlugInsURL?.appendingPathComponent("CWorldUpdater.bundle"),
+              let bundle = Bundle(url: url), bundle.load(),
+              let bridgeClass = bundle.principalClass as? NSObject.Type else {
+            NSLog("CWorld updater could not load its bundled component.")
+            return
+        }
+        observation = NotificationCenter.default.publisher(for: Notification.Name("cworld.mac.updater.state"))
+            .receive(on: RunLoop.main)
+            .sink { [weak self] notification in
+                self?.canCheck = notification.userInfo?["canCheck"] as? Bool ?? false
+                self?.automaticChecks = notification.userInfo?["automaticChecks"] as? Bool ?? false
+            }
+        let instance = bridgeClass.init()
+        bridge = instance
+        available = true
+        instance.perform(NSSelectorFromString("start"))
+    }
+
+    func checkForUpdates() { bridge?.perform(NSSelectorFromString("checkForUpdates")) }
+    func setAutomaticChecks(_ enabled: Bool) {
+        bridge?.perform(NSSelectorFromString("setAutomaticChecks:"), with: NSNumber(value: enabled))
+    }
+}
+#endif
+
 struct MacWindowConfiguration: UIViewRepresentable {
     final class WindowView: UIView {
         override func didMoveToWindow() {
@@ -30,6 +81,9 @@ struct MacWindowConfiguration: UIViewRepresentable {
             scene.sizeRestrictions?.minimumSize = CGSize(width: 1200, height: 760)
             scene.sizeRestrictions?.allowsFullScreen = true
             scene.title = "CearaWorld"
+            #if CWORLD_LOCAL_DISTRIBUTION
+            CWorldMacUpdater.shared.start()
+            #endif
         }
     }
     func makeUIView(context: Context) -> WindowView { WindowView() }
@@ -58,6 +112,7 @@ struct MacPlayerInput: ViewModifier {
 
     func body(content: Content) -> some View {
         content.focusable().focused($focused)
+            .focusEffectDisabled()
             .onAppear {
                 focused = true
                 setCursorHidden(!controlsVisible)

@@ -186,23 +186,22 @@ and episode codes (for example `S01E02`), with All/Titles/Episodes scopes. Selec
 an episode opens its show page at that season and highlights/scrolls to the episode.
 
 Skip actions remain visible independently of the auto-hiding transport controls.
-`Resources/episode-markers.json` expands the existing web player's timing rules for
-1,252 episodes, including cold-open start times omitted by the catalog. Unknown
-episodes retain catalog timing fallback; no timings are invented for uncovered
+`Resources/episode-markers.json` expands the canonical media registry's timing rules,
+including cold-open start times. Live catalog timings take precedence when the
+catalog includes `skipIntroStart`; the bundle supports older catalogs. No timings are invented for uncovered
 episodes. Invalid/out-of-duration timings are ignored. Skip Outro advances to the
 next episode when available, otherwise finishes the current one. Outgoing progress
 is captured before switching selections so it cannot be attributed to the next one.
 
-After changing the web player's timing table or adding episodes, regenerate:
+After changing registry timings or adding episodes, regenerate from `frontend`:
 
 ```sh
-node ios/scripts/generate-episode-markers.mjs
+npm run media:generate
 ```
 
-The script reads only the local `skipTimes` table and current catalog; it does not
-change the website or backend. Commit the generated JSON and rebuild iOS. The
-bundled timings take precedence for covered episodes; changes require regeneration.
-Update the coverage test count if the number of covered episodes changes.
+Commit and deploy the generated catalogs for live timing updates. Rebuild iOS to
+refresh bundled fallback data. The registry workflow is documented in
+`docs/media-authoring.md`; skip times no longer live in `Show.jsx`.
 
 Liquid Glass API reference: [Apple's custom-view guidance](https://developer.apple.com/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views).
 

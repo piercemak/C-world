@@ -66,9 +66,13 @@ struct MacDesktopView: View {
     private var totalPages: Int { max(1, Int(ceil(Double(searching ? searchResults.count : items.count) / Double(searching ? searchPageSize : 6)))) }
     private var resumeItems: [ContinueWatchingItem] { ContinueWatchingItem.make(catalog: catalog, records: Array(appModel.watchProgress.values)) }
     private var newShelfItems: [MacDesktopCatalog.NewMedia] {
-        MacDesktopCatalog.newMedia.filter { item in
-            catalog.contains { MacDesktopCatalog.normalizedID($0.id) == MacDesktopCatalog.normalizedID(item.id) }
-        }
+        // The reference lists additions newest first; count unique available titles.
+        let availableIDs = Set(catalog.map { MacDesktopCatalog.normalizedID($0.id) })
+        var seen = Set<String>()
+        return Array(MacDesktopCatalog.newMedia.filter { item in
+            let id = MacDesktopCatalog.normalizedID(item.id)
+            return availableIDs.contains(id) && seen.insert(id).inserted
+        }.prefix(10))
     }
     private var displayedResumeItems: [ContinueWatchingItem] {
         resumeSnapshotIDs.compactMap { id in resumeItems.first(where: { $0.id == id }) }
@@ -169,6 +173,7 @@ struct MacDesktopView: View {
         .buttonStyle(MacInteractiveButtonStyle())
         .background(MacWindowConfiguration())
         .focusable().focused($desktopFocused)
+        .focusEffectDisabled()
         .onAppear {
             rebuild(); loadPreferences(); expandedID = initialExpandedID; desktopFocused = true
             if showResume { captureResumeSnapshot() }
