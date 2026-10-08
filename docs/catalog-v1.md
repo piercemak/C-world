@@ -1,10 +1,10 @@
 # CWorld Catalog Contract v1
 
-This contract is the shared metadata boundary for the React/Tauri client, the Roku client, and MediaScraper. The first implementation may generate it from the existing CWorld source files, but clients must consume the normalized shape rather than reconstructing S3 paths from episode titles.
+This contract is the shared metadata boundary for native iOS/Catalyst, Roku, and MediaScraper. The authoring source is `frontend/src/data/mediaRegistry.json`; generated compatibility modules also feed the web UI. See [media authoring](media-authoring.md) for editing and generation instructions. Legacy MP4 lookups still retain filename conventions; HLS uses stable title/season/episode identities.
 
 ## Public endpoint
 
-The planned endpoint is:
+The implemented endpoints are:
 
 ```text
 GET /api/catalog/v1
