@@ -35,6 +35,8 @@ const directory = path.join(root, 'dist/catalyst/publish', tag);
 fs.mkdirSync(directory, { recursive: true });
 const name = `CearaWorld-${version}-${build}.dmg`;
 const archive = path.join(directory, name);
+const stableName = 'CearaWorld.dmg';
+const stableArchive = path.join(root, 'dist/catalyst/publish', `${tag}-${stableName}`);
 const digest = createHash('sha256').update(fs.readFileSync(installer)).digest('hex');
 if (fs.existsSync(archive) && createHash('sha256').update(fs.readFileSync(archive)).digest('hex') !== digest) {
   throw new Error('This release version was already prepared with different contents. Increment the build number.');
@@ -72,6 +74,7 @@ if (!feedSignature || !archiveSignature ||
   throw new Error('Independent signature verification failed. Nothing was published.');
 }
 fs.writeFileSync(path.join(directory, 'SHA256SUMS.txt'), `${digest}  ${name}\n`);
+fs.copyFileSync(archive, stableArchive);
 console.log(`Prepared signed release: ${directory}`);
 if (!publish) {
   console.log('Nothing uploaded. Add --publish to upload the release and publish the signed feed.');
@@ -114,12 +117,12 @@ if (!release) {
 }
 if (!release) {
   release = await api('/releases', 'POST', {
-    tag_name: tag, target_commitish: 'main', name: `CWorld Mac ${version} (build ${build})`,
+    tag_name: tag, target_commitish: 'main', name: `CearaWorld Mac ${version} (build ${build})`,
     body: fs.readFileSync(path.join(root, 'ios/LocalMac/release-notes.txt'), 'utf8') + '\n\nMac Catalyst, Intel and Apple Silicon, macOS 14+. Locally signed; not Apple-notarized. CWorld login required.\n',
-    draft: true, prerelease: true
+    draft: true, prerelease: false
   });
 }
-for (const [file, type] of [[archive, 'application/x-apple-diskimage'], [path.join(directory, 'SHA256SUMS.txt'), 'text/plain']]) {
+for (const [file, type] of [[archive, 'application/x-apple-diskimage'], [stableArchive, 'application/x-apple-diskimage'], [path.join(directory, 'SHA256SUMS.txt'), 'text/plain']]) {
   const filename = path.basename(file);
   const bytes = fs.statSync(file).size;
   const sha = createHash('sha256').update(fs.readFileSync(file)).digest('hex');
@@ -142,8 +145,9 @@ for (const [file, type] of [[archive, 'application/x-apple-diskimage'], [path.jo
     throw new Error(`GitHub did not verify the uploaded asset ${filename}: ${response.status}`);
   }
 }
-if (release.draft) release = await api(`/releases/${release.id}`, 'PATCH', { draft: false, prerelease: true });
+if (release.draft) release = await api(`/releases/${release.id}`, 'PATCH', { draft: false, prerelease: false });
 const publicDownload = `https://github.com/${githubRepository}/releases/download/${tag}/${name}`;
+const stableDownload = `https://github.com/${githubRepository}/releases/latest/download/${stableName}`;
 const downloadCheck = await fetch(publicDownload, { method: 'HEAD' });
 if (!downloadCheck.ok) throw new Error('Installer is not publicly reachable; the update feed has not been changed. Retry shortly.');
 if (!await api('/git/ref/heads/mac-updates', 'GET', undefined, true)) {
@@ -155,4 +159,6 @@ await api('/contents/appcast.xml', 'PUT', {
   message: `Publish CWorld Mac ${version} build ${build} update feed`, branch: 'mac-updates',
   content: feed.toString('base64'), ...(existingFeed ? { sha: existingFeed.sha } : {})
 });
-console.log(`Published installer: ${publicDownload}\nUpdate feed: ${feedURL}\nRelease: ${release.html_url}`);
+const stableCheck = await fetch(stableDownload, { method: 'HEAD' });
+if (!stableCheck.ok) throw new Error('Stable installer link is not publicly reachable.');
+console.log(`Published installer: ${publicDownload}\nStable installer: ${stableDownload}\nUpdate feed: ${feedURL}\nRelease: ${release.html_url}`);
