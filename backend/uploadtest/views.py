@@ -433,19 +433,29 @@ def register_user(request):
             status=status.HTTP_503_SERVICE_UNAVAILABLE,
         )
 
+    requested_username = str(request.data.get("username") or "").strip()
+    existing = User.objects.filter(username=requested_username).first() if requested_username else None
+    existing_approval = getattr(existing, "account_approval", None) if existing else None
+    replaceable_request = existing and existing_approval and existing_approval.status in {
+        AccountApprovalRequest.STATUS_PENDING,
+        AccountApprovalRequest.STATUS_DENIED,
+    }
+    if existing and not replaceable_request:
+        return Response(
+            {"username": ["A user with that username already exists."]},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
     serializer = RegisterSerializer(data=request.data)
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    existing = User.objects.filter(username=serializer.validated_data["username"]).first()
-    if existing and hasattr(existing, "account_approval") and existing.account_approval.status == AccountApprovalRequest.STATUS_PENDING:
-        return Response(
-            {"error": "This account request is already awaiting approval.", "status": AccountApprovalRequest.STATUS_PENDING},
-            status=status.HTTP_409_CONFLICT,
-        )
-
     try:
         with transaction.atomic():
+            if replaceable_request:
+                # Remove only a prior pending/denied request. If email sending
+                # fails, the transaction restores the original request.
+                existing.delete()
             user = serializer.save()
             Profile.objects.create(user=user, name=user.username)
             approval = AccountApprovalRequest.objects.create(user=user, email=user.email)

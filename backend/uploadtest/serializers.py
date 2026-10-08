@@ -21,6 +21,11 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "email", "password"]
+        extra_kwargs = {
+            # Registration view handles replacement of inactive approval requests
+            # explicitly; active usernames must still be rejected there.
+            "username": {"validators": []},
+        }
 
     def validate(self, attrs):
         candidate = User(username=attrs.get("username", ""), email=attrs.get("email", ""))

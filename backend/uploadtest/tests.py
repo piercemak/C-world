@@ -290,4 +290,25 @@ class AccountApprovalTests(TestCase):
         self.assertEqual(login.status_code, 200)
         self.assertTrue(login.data["token"])
 
+    @patch("uploadtest.views.send_mail")
+    def test_same_username_replaces_previous_inactive_request(self, send_mail):
+        first = self.client.post(
+            "/api/auth/register/",
+            {"username": "retry-viewer", "email": "first@example.com", "password": "Stronger-password-123"},
+            format="json",
+        )
+        self.assertEqual(first.status_code, 202)
+        first_request_id = AccountApprovalRequest.objects.get(user__username="retry-viewer").id
+
+        second = self.client.post(
+            "/api/auth/register/",
+            {"username": "retry-viewer", "email": "second@example.com", "password": "Different-password-456"},
+            format="json",
+        )
+        self.assertEqual(second.status_code, 202)
+        current = AccountApprovalRequest.objects.get(user__username="retry-viewer")
+        self.assertNotEqual(current.id, first_request_id)
+        self.assertEqual(current.email, "second@example.com")
+        self.assertEqual(AccountApprovalRequest.objects.filter(user__username="retry-viewer").count(), 1)
+
 # Create your tests here.
