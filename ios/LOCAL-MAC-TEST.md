@@ -7,9 +7,9 @@ in the built app's Info.plist. It uses the production CWorld API.
 
 ## Install
 
-1. Copy or download the CWorld-Test DMG onto your other Mac and open it.
-2. Drag **CWorld Test** into **Applications**, then eject the disk image.
-3. Open **CWorld Test** from Applications. If macOS blocks this trusted test copy,
+1. Copy or download the CearaWorld DMG onto your other Mac and open it.
+2. Drag **CearaWorld** into **Applications**, then eject the disk image.
+3. Open **CearaWorld** from Applications. If macOS blocks this trusted test copy,
    use **System Settings > Privacy & Security > Open Anyway** after trying to open it.
    Do not disable Gatekeeper globally. Managed Macs may prohibit exceptions.
 4. Sign in using your CWorld account and select your profile.

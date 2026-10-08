@@ -33,7 +33,7 @@ if (sparklePrivateKey) {
 const tag = `mac-catalyst-${version}-${build}`;
 const directory = path.join(root, 'dist/catalyst/publish', tag);
 fs.mkdirSync(directory, { recursive: true });
-const name = `CWorld-Test-${version}-${build}.dmg`;
+const name = `CearaWorld-${version}-${build}.dmg`;
 const archive = path.join(directory, name);
 const digest = createHash('sha256').update(fs.readFileSync(installer)).digest('hex');
 if (fs.existsSync(archive) && createHash('sha256').update(fs.readFileSync(archive)).digest('hex') !== digest) {
