@@ -2,13 +2,20 @@ name: Publish CWorld Catalyst update
 
 on:
   push:
-    tags:
-      - "mac-v*"
+    branches:
+      - main
+    paths:
+      - "ios/CWorldIOS/**"
+      - "ios/LocalMac/**"
+      - "ios/scripts/package-local-mac.sh"
+      - "ios/scripts/prepare-sparkle.sh"
+      - "ios/scripts/publish-mac-update.mjs"
+      - "CWorldIOS/CWorldMacLocal.entitlements"
   workflow_dispatch:
     inputs:
       version:
-        description: "Marketing version, for example 1.0.3"
-        required: true
+        description: "Marketing version; leave blank to increment the latest Mac version"
+        required: false
         type: string
       build:
         description: "Build number; leave blank to use the workflow run number"
@@ -17,6 +24,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: cworld-catalyst-release
+  cancel-in-progress: false
 
 jobs:
   publish-catalyst:
@@ -35,10 +46,22 @@ jobs:
           RUN_NUMBER: ${{ github.run_number }}
         run: |
           set -euo pipefail
-          if [[ "$TAG_NAME" == mac-v* ]]; then
-            version="${TAG_NAME#mac-v}"
-          else
+          if [[ -n "$INPUT_VERSION" ]]; then
             version="$INPUT_VERSION"
+          else
+            git fetch --tags --force
+            version="$(node <<'NODE'
+          const { execFileSync } = require('child_process');
+          const base = require('./ios/LocalMac/updates.json').version;
+          const tags = execFileSync('git', ['tag', '--list', 'mac-v*'], { encoding: 'utf8' })
+            .trim().split('\n').filter(Boolean).map(tag => tag.slice(5))
+            .filter(value => /^\d+\.\d+\.\d+$/.test(value))
+            .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+          const current = tags.at(-1) || base;
+          const [major, minor, patch] = current.split('.').map(Number);
+          process.stdout.write(`${major}.${minor}.${patch + 1}`);
+          NODE
+            )"
           fi
           if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Invalid version: $version" >&2
