@@ -36,7 +36,7 @@ fs.mkdirSync(directory, { recursive: true });
 const name = `CearaWorld-${version}-${build}.dmg`;
 const archive = path.join(directory, name);
 const stableName = 'CearaWorld.dmg';
-const stableArchive = path.join(root, 'dist/catalyst/publish', `${tag}-${stableName}`);
+const stableArchive = path.join(root, 'dist/catalyst/publish', stableName);
 const digest = createHash('sha256').update(fs.readFileSync(installer)).digest('hex');
 if (fs.existsSync(archive) && createHash('sha256').update(fs.readFileSync(archive)).digest('hex') !== digest) {
   throw new Error('This release version was already prepared with different contents. Increment the build number.');
