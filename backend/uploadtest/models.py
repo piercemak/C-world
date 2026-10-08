@@ -80,3 +80,27 @@ class DeviceLoginSession(models.Model):
 
     def __str__(self):
         return f"Device login {self.id} ({self.status})"
+
+
+class AccountApprovalRequest(models.Model):
+    STATUS_PENDING = "pending"
+    STATUS_APPROVED = "approved"
+    STATUS_DENIED = "denied"
+    STATUS_CHOICES = [
+        (STATUS_PENDING, "Pending"),
+        (STATUS_APPROVED, "Approved"),
+        (STATUS_DENIED, "Denied"),
+    ]
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="account_approval")
+    email = models.EmailField(blank=True)
+    status = models.CharField(max_length=16, choices=STATUS_CHOICES, default=STATUS_PENDING)
+    requested_at = models.DateTimeField(auto_now_add=True)
+    reviewed_at = models.DateTimeField(null=True, blank=True)
+    review_note = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ["-requested_at"]
+
+    def __str__(self):
+        return f"{self.user.username} ({self.status})"

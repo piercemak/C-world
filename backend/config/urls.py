@@ -14,6 +14,7 @@ from uploadtest.views import (
     device_login_poll,
     device_login_approve,
     device_login_qr,
+    account_approval,
 )
 from uploadtest.catalog_views import catalog_media_v1, catalog_v1, playback_session, episode_availability
 from uploadtest.hls import hls_manifest
@@ -33,6 +34,7 @@ urlpatterns = [
     path("api/auth/device/poll/", device_login_poll),
     path("api/auth/device/approve/", device_login_approve),
     path("api/auth/device/qr/", device_login_qr),
+    path("api/auth/approval/<str:token>/", account_approval, name="account-approval"),
     path("api/profiles/", profiles),
     path("api/profiles/<int:profile_id>/", profile_detail),
     path("api/progress/", progress),

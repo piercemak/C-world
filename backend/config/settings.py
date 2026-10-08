@@ -46,6 +46,11 @@ CWORLD_CATALOG_PATH = os.getenv(
 CWORLD_PUBLIC_WEB_URL = os.getenv("CWORLD_PUBLIC_WEB_URL", "https://cearaworld.com").rstrip("/")
 CWORLD_PUBLIC_API_URL = os.getenv("CWORLD_PUBLIC_API_URL", "https://c-world.onrender.com").rstrip("/")
 CWORLD_DEVICE_LOGIN_TTL_SECONDS = int(os.getenv("CWORLD_DEVICE_LOGIN_TTL_SECONDS", "300"))
+CWORLD_ACCOUNT_APPROVAL_EMAIL = os.getenv("CWORLD_ACCOUNT_APPROVAL_EMAIL", EMAIL_HOST_USER or "").strip()
+CWORLD_ACCOUNT_APPROVAL_TTL_SECONDS = int(os.getenv("CWORLD_ACCOUNT_APPROVAL_TTL_SECONDS", "86400"))
+CWORLD_ACCOUNT_PENDING_TTL_SECONDS = int(os.getenv("CWORLD_ACCOUNT_PENDING_TTL_SECONDS", "2592000"))
+CWORLD_ACCOUNT_DENIED_RETENTION_SECONDS = int(os.getenv("CWORLD_ACCOUNT_DENIED_RETENTION_SECONDS", "7776000"))
+CWORLD_TOKEN_TTL_SECONDS = int(os.getenv("CWORLD_TOKEN_TTL_SECONDS", "2592000"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -87,11 +92,14 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
+        "uploadtest.authentication.ExpiringTokenAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    "DEFAULT_THROTTLE_RATES": {
+        "account": "10/hour",
+    },
 }
 
 MIDDLEWARE = [

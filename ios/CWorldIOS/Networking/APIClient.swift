@@ -32,6 +32,35 @@ enum CWorldAPIError: LocalizedError {
 private struct APIErrorResponse: Decodable {
     let error: String?
     let detail: String?
+
+    private struct DynamicCodingKey: CodingKey {
+        let stringValue: String
+        let intValue: Int? = nil
+        init?(stringValue: String) { self.stringValue = stringValue }
+        init?(intValue: Int) { return nil }
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DynamicCodingKey.self)
+        let errorKey = DynamicCodingKey(stringValue: "error")!
+        let detailKey = DynamicCodingKey(stringValue: "detail")!
+        let decodedError = try? container.decode(String.self, forKey: errorKey)
+        let decodedDetail = try? container.decode(String.self, forKey: detailKey)
+        if decodedError != nil || decodedDetail != nil {
+            error = decodedError
+            detail = decodedDetail
+            return
+        }
+
+        var messages: [String] = []
+        for key in container.allKeys {
+            if let values = try? container.decode([String].self, forKey: key) {
+                messages.append(contentsOf: values.map { "\(key.stringValue): \($0)" })
+            }
+        }
+        error = messages.isEmpty ? nil : messages.joined(separator: "\n")
+        detail = nil
+    }
 }
 
 final class CWorldAPIClient {
@@ -60,6 +89,15 @@ final class CWorldAPIClient {
             path: "/api/auth/login/",
             method: "POST",
             body: try JSONEncoder().encode(LoginRequest(username: username, password: password)),
+            authenticated: false
+        )
+    }
+
+    func requestAccount(username: String, email: String, password: String) async throws -> AccountRegistrationResponse {
+        try await request(
+            path: "/api/auth/register/",
+            method: "POST",
+            body: try JSONEncoder().encode(AccountRegistrationRequest(username: username, email: email, password: password)),
             authenticated: false
         )
     }

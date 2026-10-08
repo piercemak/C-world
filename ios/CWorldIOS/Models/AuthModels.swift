@@ -10,6 +10,18 @@ struct LoginResponse: Decodable {
     let user: CWorldUser
 }
 
+struct AccountRegistrationRequest: Encodable {
+    let username: String
+    let email: String
+    let password: String
+}
+
+struct AccountRegistrationResponse: Decodable {
+    let status: String
+    let message: String
+    let user: CWorldUser?
+}
+
 struct DeviceLoginStart: Decodable {
     let status: String
     let pollToken: String

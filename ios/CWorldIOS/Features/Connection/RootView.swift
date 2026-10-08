@@ -82,7 +82,9 @@ struct RootView: View {
 struct ConnectionView: View {
     @EnvironmentObject private var appModel: AppModel
     @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
+    @State private var isRegistering = false
 
     var body: some View {
         NavigationStack {
@@ -98,7 +100,7 @@ struct ConnectionView: View {
                     VStack(spacing: 22) {
                         CWorldLogo(size: 32)
 
-                        Text("Log In")
+                        Text(isRegistering ? "Request Access" : "Log In")
                             .cworldRoundedFont(32, weight: .bold)
                             .foregroundStyle(.white)
 
@@ -124,6 +126,19 @@ struct ConnectionView: View {
                                 .tint(.white)
                                 .cworldGlass(cornerRadius: 10, fill: Color.white.opacity(0.12))
 
+                            if isRegistering {
+                                TextField("Email (optional)", text: $email)
+                                    .textInputAutocapitalization(.never)
+                                    .autocorrectionDisabled()
+                                    .textContentType(.emailAddress)
+                                    .keyboardType(.emailAddress)
+                                    .padding(.horizontal, 14)
+                                    .frame(height: 44)
+                                    .foregroundStyle(.white)
+                                    .tint(.white)
+                                    .cworldGlass(cornerRadius: 10, fill: Color.white.opacity(0.12))
+                            }
+
                             SecureField("Password", text: $password)
                                 .textContentType(.password)
                                 .padding(.horizontal, 14)
@@ -131,10 +146,23 @@ struct ConnectionView: View {
                                 .foregroundStyle(.white)
                                 .tint(.white)
                                 .cworldGlass(cornerRadius: 10, fill: Color.white.opacity(0.12))
+
+                            if isRegistering {
+                                Text("Password must be at least 12 characters.")
+                                    .font(.caption)
+                                    .foregroundStyle(password.count >= 12 ? CWorldTheme.secondaryText : .orange)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
 
                         Button {
-                            Task { await appModel.login(username: username, password: password) }
+                            Task {
+                                if isRegistering {
+                                    await appModel.requestAccount(username: username, email: email, password: password)
+                                } else {
+                                    await appModel.login(username: username, password: password)
+                                }
+                            }
                         } label: {
                             HStack(spacing: 8) {
                                 if appModel.isLoading {
@@ -142,7 +170,7 @@ struct ConnectionView: View {
                                         .tint(.white)
                                         .controlSize(.small)
                                 }
-                                Text(appModel.isLoading ? "Logging in…" : "Log In")
+                                Text(appModel.isLoading ? (isRegistering ? "Submitting…" : "Logging in…") : (isRegistering ? "Request Account" : "Log In"))
                             }
                             .cworldRoundedFont(16, weight: .bold)
                             .foregroundStyle(.white)
@@ -150,7 +178,25 @@ struct ConnectionView: View {
                             .frame(height: 56)
                             .background(.black, in: Capsule())
                         }
-                        .disabled(appModel.isLoading || username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || password.isEmpty)
+                        .disabled(appModel.isLoading || username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || password.isEmpty || (isRegistering && password.count < 12))
+
+                        Button {
+                            isRegistering.toggle()
+                            appModel.dismissError()
+                        } label: {
+                            Text(isRegistering ? "Already approved? Sign in" : "Request an account")
+                                .foregroundStyle(CWorldTheme.secondaryText)
+                        }
+                        .buttonStyle(.plain)
+
+                        if let message = appModel.accountRequestMessage {
+                            Label(message, systemImage: "checkmark.circle")
+                                .foregroundStyle(.green)
+                                .font(.caption)
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .cworldGlass(cornerRadius: 14, fill: Color.green.opacity(0.12))
+                        }
 
                         NavigationLink {
                             DeviceLoginView()

@@ -20,7 +20,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.gzip import gzip_page
 from rest_framework import status
-from rest_framework.authentication import TokenAuthentication
+from .authentication import ExpiringTokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -194,7 +194,7 @@ def _rewrite_manifest(text, media, manifest_path, token, expires):
 
 
 @api_view(["POST"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def hls_playback_session(request):
     media_id = str(request.data.get("mediaId", request.data.get("media_id")) or "").strip()

@@ -1,5 +1,6 @@
 from rest_framework import serializers # type: ignore
 from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
 from .models import Episode, Profile, WatchProgress, WatchHistory
 
 class EpisodeSerializer(serializers.ModelSerializer):
@@ -15,17 +16,23 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, min_length=8)
+    password = serializers.CharField(write_only=True, min_length=12)
 
     class Meta:
         model = User
         fields = ["username", "email", "password"]
+
+    def validate(self, attrs):
+        candidate = User(username=attrs.get("username", ""), email=attrs.get("email", ""))
+        validate_password(attrs["password"], candidate)
+        return attrs
 
     def create(self, validated_data):
         return User.objects.create_user(
             username=validated_data["username"],
             email=validated_data.get("email", ""),
             password=validated_data["password"],
+            is_active=False,
         )
 
 

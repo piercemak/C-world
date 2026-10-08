@@ -7,21 +7,28 @@ const Login = () => {
 
   const globeIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/></svg>  
 
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [notice, setNotice] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);    
     try {
-      const result = await login(username, password);
+      const result = isRegistering
+        ? await register({ username, email, password })
+        : await login(username, password);
       if (result.success) {
         navigate('/home');
+      } else if (result.pending) {
+        setNotice(result.message);
       } else {
-        alert(result.error || 'Invalid credentials');
+        setNotice(result.error || 'Invalid credentials');
       }
     } finally {
       setIsSubmitting(false);
@@ -55,8 +62,8 @@ const Login = () => {
                 <span>{globeIcon}</span>
                 <span className='text-lg'> CearaWorld </span>
             </div>
-            <h2 className="text-3xl font-bold mb-2">Welcome Back</h2>
-            <p className="text-gray-600 mb-6">Enter your username and password to access your account</p>
+            <h2 className="text-3xl font-bold mb-2">{isRegistering ? "Request Access" : "Welcome Back"}</h2>
+            <p className="text-gray-600 mb-6">{isRegistering ? "Create an account request for administrator approval" : "Enter your username and password to access your account"}</p>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <input
                 type="text"
@@ -65,6 +72,13 @@ const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+              {isRegistering && <input
+                type="email"
+                placeholder="Email (optional)"
+                className="border border-gray-300 p-3 rounded"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />}
               <input
                 type="password"
                 placeholder="Password"
@@ -85,11 +99,15 @@ const Login = () => {
                 type="submit" 
                 disabled={isSubmitting}
                 className="bg-black text-white p-3 rounded-3xl font-bold cursor-pointer disabled:opacity-60">
-                {isSubmitting ? "Signing in..." : "Sign In"}
+                {isSubmitting ? (isRegistering ? "Submitting..." : "Signing in...") : (isRegistering ? "Request Account" : "Sign In")}
               </motion.button>
             </form>
+            {notice && <p className="mt-4 rounded-xl bg-black/5 p-3 text-sm text-gray-700">{notice}</p>}
             <p className="text-sm text-center mt-6">
-              Don’t have an account? <span className="text-blue-500 hover:underline cursor-pointer">Good.</span>
+              {isRegistering ? "Already approved?" : "Need access?"}{' '}
+              <button type="button" onClick={() => { setIsRegistering((value) => !value); setNotice(''); }} className="text-blue-500 hover:underline cursor-pointer">
+                {isRegistering ? "Sign in" : "Request an account"}
+              </button>
             </p>
           </div>
         </div>

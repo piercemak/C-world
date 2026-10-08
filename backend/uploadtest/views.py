@@ -1,15 +1,18 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from django.db import IntegrityError, transaction
 from django.http import HttpResponse
 from django.utils import timezone
-from rest_framework.decorators import api_view, authentication_classes, permission_classes # type: ignore
+from rest_framework.decorators import api_view, authentication_classes, permission_classes, throttle_classes # type: ignore
 from rest_framework.response import Response # type: ignore
 from rest_framework import status # type: ignore
-from rest_framework.authentication import TokenAuthentication # type: ignore
 from rest_framework.permissions import IsAuthenticated # type: ignore
 from rest_framework.authtoken.models import Token # type: ignore
 from django.core.mail import send_mail
+from django.core.signing import BadSignature, SignatureExpired, TimestampSigner
+from django.urls import reverse
+from django.utils.html import escape
 from datetime import datetime, timedelta
 import base64
 import json
@@ -30,7 +33,8 @@ from .serializers import (
     WatchProgressSerializer,
     WatchHistorySerializer,
 )
-from .models import DeviceLoginSession, Profile, WatchProgress, WatchHistory
+from .models import AccountApprovalRequest, DeviceLoginSession, Profile, WatchProgress, WatchHistory
+from .authentication import AccountRateThrottle, ExpiringTokenAuthentication, fresh_token_for_user
 
 
 
@@ -55,6 +59,14 @@ def _canonical_device_code(value: str) -> str:
 def _ensure_user_profile(user):
     if not Profile.objects.filter(user=user).exists():
         Profile.objects.create(user=user, name=user.username)
+
+
+def _cleanup_stale_account_approvals():
+    now = timezone.now()
+    pending_age = now - timedelta(seconds=max(86400, int(getattr(settings, "CWORLD_ACCOUNT_PENDING_TTL_SECONDS", 2592000))))
+    denied_age = now - timedelta(seconds=max(86400, int(getattr(settings, "CWORLD_ACCOUNT_DENIED_RETENTION_SECONDS", 7776000))))
+    AccountApprovalRequest.objects.filter(status=AccountApprovalRequest.STATUS_PENDING, requested_at__lt=pending_age).delete()
+    AccountApprovalRequest.objects.filter(status=AccountApprovalRequest.STATUS_DENIED, reviewed_at__lt=denied_age).delete()
 
 
 @api_view(["POST"])
@@ -142,7 +154,7 @@ def device_login_poll(request):
 
             user = session.user
             _ensure_user_profile(user)
-            token, _ = Token.objects.get_or_create(user=user)
+            token = fresh_token_for_user(user)
             session.status = DeviceLoginSession.STATUS_CONSUMED
             session.consumed_at = now
             session.save(update_fields=["status", "consumed_at"])
@@ -160,7 +172,7 @@ def device_login_poll(request):
 
 
 @api_view(["POST"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def device_login_approve(request):
     device_code = _canonical_device_code(request.data.get("deviceCode") or request.data.get("code"))
@@ -411,23 +423,67 @@ def send_request_email(request):
 
 
 @api_view(["POST"])
+@throttle_classes([AccountRateThrottle])
 def register_user(request):
+    _cleanup_stale_account_approvals()
+    approval_email = str(getattr(settings, "CWORLD_ACCOUNT_APPROVAL_EMAIL", "") or "").strip()
+    if not approval_email:
+        return Response(
+            {"error": "Account registration is temporarily unavailable because approval email is not configured."},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
+
     serializer = RegisterSerializer(data=request.data)
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    user = serializer.save()
-    # Create a default profile so the profile picker has content after signup.
-    Profile.objects.create(user=user, name=user.username)
-    token, _ = Token.objects.get_or_create(user=user)
+    existing = User.objects.filter(username=serializer.validated_data["username"]).first()
+    if existing and hasattr(existing, "account_approval") and existing.account_approval.status == AccountApprovalRequest.STATUS_PENDING:
+        return Response(
+            {"error": "This account request is already awaiting approval.", "status": AccountApprovalRequest.STATUS_PENDING},
+            status=status.HTTP_409_CONFLICT,
+        )
+
+    try:
+        with transaction.atomic():
+            user = serializer.save()
+            Profile.objects.create(user=user, name=user.username)
+            approval = AccountApprovalRequest.objects.create(user=user, email=user.email)
+            review_token = TimestampSigner(salt="cworld-account-approval").sign(str(approval.pk))
+            review_url = f"{settings.CWORLD_PUBLIC_API_URL}{reverse('account-approval', args=[review_token])}"
+            send_mail(
+                subject=f"CWorld account approval: {user.username}",
+                message=(
+                    "A new CWorld account is requesting access.\n\n"
+                    f"Username: {user.username}\n"
+                    f"Email: {user.email or '(not provided)'}\n"
+                    f"Requested: {approval.requested_at.isoformat()}\n\n"
+                    "Open the secure review link to approve or deny this account:\n"
+                    f"{review_url}\n\n"
+                    "The link expires automatically. The account cannot log in until it is approved."
+                ),
+                from_email=getattr(settings, "DEFAULT_FROM_EMAIL", None) or approval_email,
+                recipient_list=[approval_email],
+                fail_silently=False,
+            )
+    except Exception as exc:
+        return Response(
+            {"error": f"The account request could not be submitted: {exc}"},
+            status=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )
 
     return Response(
-        {"token": token.key, "user": UserSerializer(user).data},
-        status=status.HTTP_201_CREATED,
+        {
+            "status": AccountApprovalRequest.STATUS_PENDING,
+            "message": "Your account request was submitted and is awaiting approval.",
+            "user": UserSerializer(user).data,
+        },
+        status=status.HTTP_202_ACCEPTED,
     )
 
 
 @api_view(["POST"])
+@throttle_classes([AccountRateThrottle])
 def login_user(request):
     username = request.data.get("username")
     password = request.data.get("password")
@@ -437,6 +493,20 @@ def login_user(request):
             {"error": "Username and password are required"},
             status=status.HTTP_400_BAD_REQUEST,
         )
+
+    candidate = User.objects.filter(username=username).first()
+    if candidate and not candidate.is_active:
+        approval = getattr(candidate, "account_approval", None)
+        if approval and approval.status == AccountApprovalRequest.STATUS_PENDING:
+            return Response(
+                {"error": "This account is awaiting approval.", "status": AccountApprovalRequest.STATUS_PENDING},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        if approval and approval.status == AccountApprovalRequest.STATUS_DENIED:
+            return Response(
+                {"error": "This account request was denied.", "status": AccountApprovalRequest.STATUS_DENIED},
+                status=status.HTTP_403_FORBIDDEN,
+            )
 
     user = authenticate(username=username, password=password)
     if not user:
@@ -450,12 +520,75 @@ def login_user(request):
     if not Profile.objects.filter(user=user).exists():
         Profile.objects.create(user=user, name=user.username)
 
-    token, _ = Token.objects.get_or_create(user=user)
+    token = fresh_token_for_user(user)
     return Response({"token": token.key, "user": UserSerializer(user).data})
 
 
+def _approval_request_from_token(token):
+    max_age = max(60, int(getattr(settings, "CWORLD_ACCOUNT_APPROVAL_TTL_SECONDS", 86400)))
+    approval_id = TimestampSigner(salt="cworld-account-approval").unsign(token, max_age=max_age)
+    return AccountApprovalRequest.objects.select_related("user").get(pk=int(approval_id))
+
+
+def _approval_page(title, message, approval=None, error=False):
+    forms = ""
+    account_summary = ""
+    error_class = "error" if error else ""
+    if approval:
+        account_summary = (
+            f'<div class="account"><strong>Username:</strong> {escape(approval.user.username)}<br>'
+            f'<strong>Email:</strong> {escape(approval.email or "Not provided")}<br>'
+            f'<strong>Status:</strong> {escape(approval.status)}</div>'
+        )
+    if approval and approval.status == AccountApprovalRequest.STATUS_PENDING:
+        forms = f"""
+        <div class=\"actions\">
+          <form method=\"post\"><input type=\"hidden\" name=\"action\" value=\"approve\"><button class=\"approve\" type=\"submit\">Approve account</button></form>
+          <form method=\"post\"><input type=\"hidden\" name=\"action\" value=\"deny\"><button class=\"deny\" type=\"submit\">Deny account</button></form>
+        </div>
+        """
+    return f"""<!doctype html><html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>CWorld account approval</title>
+    <style>body{{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#10131a;color:#f7f8fb;display:grid;place-items:center;min-height:100vh;margin:0;padding:24px}}main{{max-width:560px;width:100%;background:#1b202b;border:1px solid #343c4c;border-radius:18px;padding:30px;box-sizing:border-box}}h1{{margin-top:0}}p{{line-height:1.55;color:#c7cedb}}.account{{background:#11151d;border-radius:12px;padding:16px;margin:20px 0}}.actions{{display:flex;gap:12px;flex-wrap:wrap}}button{{border:0;border-radius:999px;padding:13px 20px;font-weight:700;cursor:pointer}}.approve{{background:#bdfc68;color:#111}}.deny{{background:#ff9c9c;color:#351010}}.error{{color:#ffb6b6}}</style></head>
+    <body><main><h1>{escape(title)}</h1><p class=\"{error_class}\">{escape(message)}</p>
+    {account_summary}
+    {forms}</main></body></html>"""
+
+
+@api_view(["GET", "POST"])
+def account_approval(request, token):
+    try:
+        approval = _approval_request_from_token(token)
+    except (BadSignature, SignatureExpired, ValueError, AccountApprovalRequest.DoesNotExist):
+        return HttpResponse(_approval_page("Invalid approval link", "This approval link is invalid or has expired.", error=True), status=410)
+
+    if request.method == "GET":
+        if approval.status != AccountApprovalRequest.STATUS_PENDING:
+            return HttpResponse(_approval_page("CWorld account already reviewed", f"This account has already been {approval.status}.", approval))
+        return HttpResponse(_approval_page("Review CWorld account", "Choose whether this account should be allowed to access CWorld.", approval))
+
+    action = str(request.POST.get("action", "")).lower()
+    if action not in {"approve", "deny"}:
+        return HttpResponse(_approval_page("Invalid action", "Choose Approve account or Deny account.", approval, error=True), status=400)
+
+    with transaction.atomic():
+        approval = AccountApprovalRequest.objects.select_for_update().select_related("user").get(pk=approval.pk)
+        if approval.status != AccountApprovalRequest.STATUS_PENDING:
+            return HttpResponse(_approval_page("CWorld account already reviewed", f"This account has already been {approval.status}.", approval))
+        approval.status = AccountApprovalRequest.STATUS_APPROVED if action == "approve" else AccountApprovalRequest.STATUS_DENIED
+        approval.reviewed_at = timezone.now()
+        approval.save(update_fields=["status", "reviewed_at"])
+        approval.user.is_active = action == "approve"
+        approval.user.save(update_fields=["is_active"])
+
+    return HttpResponse(_approval_page(
+        "Account approved" if action == "approve" else "Account denied",
+        f"{approval.user.username} can now sign in." if action == "approve" else f"{approval.user.username} will not be able to sign in.",
+        approval,
+    ))
+
+
 @api_view(["POST"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def logout_user(request):
     Token.objects.filter(user=request.user).delete()
@@ -463,14 +596,14 @@ def logout_user(request):
 
 
 @api_view(["GET"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def me(request):
     return Response({"user": UserSerializer(request.user).data})
 
 
 @api_view(["GET", "POST"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def profiles(request):
     if request.method == "GET":
@@ -486,7 +619,7 @@ def profiles(request):
 
 
 @api_view(["PATCH", "DELETE"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def profile_detail(request, profile_id):
     try:
@@ -524,7 +657,7 @@ def _get_active_profile(request):
 
 
 @api_view(["GET", "POST"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def progress(request):
     profile, error_response = _get_active_profile(request)
@@ -558,7 +691,7 @@ def progress(request):
 
 
 @api_view(["GET", "POST", "DELETE"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def history(request):
     profile, error_response = _get_active_profile(request)

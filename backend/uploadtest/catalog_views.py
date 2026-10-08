@@ -2,7 +2,7 @@ import os
 from datetime import datetime, timedelta, timezone
 
 from rest_framework import status
-from rest_framework.authentication import TokenAuthentication
+from .authentication import ExpiringTokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -83,7 +83,7 @@ def episode_availability(request, media_id):
 
 
 @api_view(["POST"])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([ExpiringTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def playback_session(request):
     media_id = request.data.get("mediaId", request.data.get("media_id"))

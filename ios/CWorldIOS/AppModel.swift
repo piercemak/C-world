@@ -66,6 +66,7 @@ final class AppModel: ObservableObject {
     @Published private(set) var isRestoringSession = false
     @Published private(set) var isShowingHomeIntro = false
     @Published var errorMessage: String?
+    @Published var accountRequestMessage: String?
 
     static let apiBaseURLKey = "cworld.apiBaseURL"
     static let activeProfileIDKey = "cworld.activeProfileID"
@@ -156,6 +157,7 @@ final class AppModel: ObservableObject {
     func login(username: String, password: String) async {
         isLoading = true
         errorMessage = nil
+        accountRequestMessage = nil
         defer { isLoading = false }
 
         do {
@@ -177,6 +179,22 @@ final class AppModel: ObservableObject {
             await watchSync
         } catch {
             clearSession(keepError: true)
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    func requestAccount(username: String, email: String, password: String) async {
+        isLoading = true
+        errorMessage = nil
+        accountRequestMessage = nil
+        defer { isLoading = false }
+
+        do {
+            rebuildClient()
+            guard let client else { throw CWorldAPIError.invalidBaseURL }
+            let response = try await client.requestAccount(username: username, email: email, password: password)
+            accountRequestMessage = response.message
+        } catch {
             errorMessage = error.localizedDescription
         }
     }

@@ -11,6 +11,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 
 from .catalog import reset_catalog_cache
+from .models import AccountApprovalRequest
 
 
 CATALOG = {
@@ -231,5 +232,62 @@ class CatalogApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "image/png")
         self.assertTrue(response.content.startswith(b"\x89PNG"))
+
+
+@override_settings(
+    CWORLD_ACCOUNT_APPROVAL_EMAIL="owner@example.com",
+    CWORLD_PUBLIC_API_URL="https://api.example.com",
+)
+class AccountApprovalTests(TestCase):
+    @patch("uploadtest.views.send_mail")
+    def test_registration_creates_pending_account_and_emails_owner(self, send_mail):
+        response = self.client.post(
+            "/api/auth/register/",
+            {"username": "new-viewer", "email": "viewer@example.com", "password": "Stronger-password-123"},
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, 202)
+        self.assertEqual(response.data["status"], AccountApprovalRequest.STATUS_PENDING)
+        user = User.objects.get(username="new-viewer")
+        self.assertFalse(user.is_active)
+        approval = AccountApprovalRequest.objects.get(user=user)
+        self.assertEqual(approval.status, AccountApprovalRequest.STATUS_PENDING)
+        self.assertNotIn("token", response.data)
+        self.assertIn("new-viewer", send_mail.call_args.kwargs["message"])
+        self.assertIn("https://api.example.com/api/auth/approval/", send_mail.call_args.kwargs["message"])
+
+    @patch("uploadtest.views.send_mail")
+    def test_pending_account_cannot_login_until_owner_approves(self, send_mail):
+        self.client.post(
+            "/api/auth/register/",
+            {"username": "waiting-viewer", "email": "viewer@example.com", "password": "Stronger-password-123"},
+            format="json",
+        )
+        pending_login = self.client.post(
+            "/api/auth/login/",
+            {"username": "waiting-viewer", "password": "Stronger-password-123"},
+            format="json",
+        )
+        self.assertEqual(pending_login.status_code, 403)
+        self.assertEqual(pending_login.data["status"], AccountApprovalRequest.STATUS_PENDING)
+
+        approval = AccountApprovalRequest.objects.get(user__username="waiting-viewer")
+        from django.core.signing import TimestampSigner
+        token = TimestampSigner(salt="cworld-account-approval").sign(str(approval.pk))
+        review = self.client.get(f"/api/auth/approval/{token}/")
+        self.assertEqual(review.status_code, 200)
+        self.assertIn(b"Approve account", review.content)
+        approved = self.client.post(f"/api/auth/approval/{token}/", {"action": "approve"})
+        self.assertEqual(approved.status_code, 200)
+        self.assertTrue(User.objects.get(username="waiting-viewer").is_active)
+
+        login = self.client.post(
+            "/api/auth/login/",
+            {"username": "waiting-viewer", "password": "Stronger-password-123"},
+            format="json",
+        )
+        self.assertEqual(login.status_code, 200)
+        self.assertTrue(login.data["token"])
 
 # Create your tests here.

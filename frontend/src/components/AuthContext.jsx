@@ -187,6 +187,10 @@ export const AuthProvider = ({ children }) => {
       const data = await res.json();
       if (!res.ok) return { success: false, error: data.error || "Registration failed" };
 
+      if (data.status === "pending" || res.status === 202) {
+        return { success: false, pending: true, message: data.message || "Your account request is awaiting approval." };
+      }
+
       setUser(data.user);
       setToken(data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
