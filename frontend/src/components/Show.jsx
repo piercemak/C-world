@@ -1,7 +1,7 @@
 import { seasonLength } from "../data/skipTimesData.js";
 import { getSkipMarkers } from "../data/mediaTiming.js";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { attachHls, isHlsSource, waitForHlsReady } from "../lib/hlsPlayback.js";
+import { attachHls, getAudioTracks, isHlsSource, selectAudioTrack, waitForHlsReady } from "../lib/hlsPlayback.js";
 import { motion, AnimatePresence } from "framer-motion";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
@@ -63,10 +63,32 @@ const Show = ({
   const previewRequestIdRef = useRef(0);
   const previewHideTimeoutRef = useRef(null);
   const [playbackSrc, setPlaybackSrc] = useState(src);
+  const [audioTracks, setAudioTracks] = useState([]);
+  const [selectedAudioTrack, setSelectedAudioTrack] = useState(null);
+  const [audioMenuOpen, setAudioMenuOpen] = useState(false);
   useEffect(() => {
+    setAudioTracks([]);
+    setSelectedAudioTrack(null);
     if (videoRef.current && isHlsSource(playbackSrc)) {
       return attachHls(videoRef.current, playbackSrc);
     }
+  }, [playbackSrc]);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !isHlsSource(playbackSrc)) return undefined;
+    const refresh = () => {
+      const tracks = getAudioTracks(video);
+      setAudioTracks(tracks);
+      const active = tracks.find((track) => track.selected);
+      if (active) setSelectedAudioTrack(active.index);
+    };
+    video.addEventListener("cworldaudiotrackschange", refresh);
+    video.addEventListener("loadedmetadata", refresh);
+    refresh();
+    return () => {
+      video.removeEventListener("cworldaudiotrackschange", refresh);
+      video.removeEventListener("loadedmetadata", refresh);
+    };
   }, [playbackSrc]);
   useEffect(() => () => {
     previewHlsCleanupRef.current?.();
@@ -104,6 +126,9 @@ const Show = ({
     previewTargetRef.current = null;
     window.clearTimeout(previewHideTimeoutRef.current);
     previewHideTimeoutRef.current = null;
+  }, [playbackSrc]);
+  useEffect(() => {
+    setAudioMenuOpen(false);
   }, [playbackSrc]);
   const spinner = <svg xmlns="http://www.w3.org/2000/svg" className="size-14" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FCFAFF"></stop><stop offset=".3" stop-color="#FCFAFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FCFAFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FCFAFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FCFAFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FCFAFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
   
@@ -1550,7 +1575,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
             </div>
             <div
               className={`justify-self-end grid items-center justify-items-center gap-3 ${
-                hasSubtitles ? "grid-cols-3 min-w-[144px]" : "grid-cols-2 min-w-[96px]"
+                hasSubtitles ? "grid-cols-4 min-w-[192px]" : "grid-cols-3 min-w-[144px]"
               }`}
             >
               {/* Volume Button */}
@@ -1621,6 +1646,53 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
                 )}
 
               </div>
+
+              {/* Audio tracks */}
+              {audioTracks.length > 1 && (
+                <div className="relative flex h-10 w-10 items-center justify-center">
+                  <motion.button
+                    whileHover={{ scale: 1.14 }}
+                    whileTap={{ scale: 0.92 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    onClick={() => setAudioMenuOpen((open) => !open)}
+                    className="flex h-10 w-10 items-center justify-center text-white/90 hover:text-white cursor-pointer focus-visible:outline-none"
+                    aria-label="Choose audio track"
+                    aria-expanded={audioMenuOpen}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.7" stroke="currentColor" className="size-7">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75v10.5m-3-8.25v6m6-6v6m3-3.75v1.5M6 9.75v4.5" />
+                    </svg>
+                  </motion.button>
+                  <AnimatePresence>
+                    {audioMenuOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                        transition={{ duration: 0.18, ease: "easeOut" }}
+                        className="absolute bottom-full right-0 z-[140] mb-3 min-w-[190px] rounded-xl border border-white/15 bg-black/75 p-2 text-left shadow-2xl backdrop-blur-xl"
+                      >
+                        <div className="px-2 pb-1 text-[11px] uppercase tracking-[0.18em] text-white/45">Audio</div>
+                        {audioTracks.map((track) => (
+                          <button
+                            key={`${track.id}-${track.index}`}
+                            onClick={() => {
+                              if (selectAudioTrack(videoRef.current, track.index)) {
+                                setSelectedAudioTrack(track.index);
+                                setAudioMenuOpen(false);
+                              }
+                            }}
+                            className="flex w-full items-center justify-between gap-3 rounded-lg px-2 py-2 text-sm text-white/80 transition-colors hover:bg-white/12 hover:text-white cursor-pointer"
+                          >
+                            <span className="truncate">{track.name}</span>
+                            {selectedAudioTrack === track.index && <span className="text-white">✓</span>}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
 
               {/* Subtitles */}
               {hasSubtitles && (
