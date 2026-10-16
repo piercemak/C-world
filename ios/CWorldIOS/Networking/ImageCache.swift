@@ -45,6 +45,7 @@ actor ImageCache {
     private let directoryURL: URL
     private let memoryCache = NSCache<NSString, UIImage>()
     private var inFlight: [URL: Task<Data?, Never>] = [:]
+    private var lastDiskTrim: Date = .distantPast
 
     private let maximumDiskBytes = 250 * 1024 * 1024
     private let maximumMemoryBytes = 128 * 1024 * 1024
@@ -190,6 +191,8 @@ actor ImageCache {
         }
 
         let options: [CFString: Any] = [
+            // Decompress on the image actor, not on first display during a swipe.
+            kCGImageSourceShouldCacheImmediately: true,
             kCGImageSourceCreateThumbnailFromImageAlways: true,
             kCGImageSourceCreateThumbnailWithTransform: true,
             kCGImageSourceThumbnailMaxPixelSize: maxPixelSize
@@ -214,6 +217,11 @@ actor ImageCache {
     }
 
     private func trimDiskCacheIfNeeded() {
+        // A burst of thumbnail downloads must not repeatedly enumerate the
+        // entire cache and hold up visible image requests on this actor.
+        let now = Date()
+        guard now.timeIntervalSince(lastDiskTrim) >= 60 else { return }
+        lastDiskTrim = now
         guard let files = try? fileManager.contentsOfDirectory(
             at: directoryURL,
             includingPropertiesForKeys: [.fileSizeKey, .contentModificationDateKey],

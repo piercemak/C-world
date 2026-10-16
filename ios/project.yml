@@ -15,6 +15,7 @@ targets:
         excludes:
           - Resources/MobileArtwork
           - Resources/DesktopArtwork
+          - Resources/IntroAnimations
       - path: ../frontend/src/data/episodeTitles.json
         buildPhase: resources
       - path: CWorldIOS/Resources/MobileArtwork
@@ -24,6 +25,9 @@ targets:
         type: folder
         buildPhase: resources
         platformFilters: [maccatalyst]
+      - path: CWorldIOS/Resources/IntroAnimations
+        type: folder
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.cearaworld.cworld
@@ -37,7 +41,7 @@ targets:
         "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": ../CWorldIOS/CWorldMac.entitlements
         "CODE_SIGN_ENTITLEMENTS[sdk=iphone*]": ../CWorldIOS/CWorldWatching.entitlements
         "INFOPLIST_KEY_LSApplicationCategoryType[sdk=macosx*]": public.app-category.entertainment
-        INFOPLIST_KEY_CFBundleDisplayName: CearaWorld
+        INFOPLIST_KEY_CFBundleDisplayName: SeedSpace
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
     dependencies:
       - target: CWorldWatchingWidget

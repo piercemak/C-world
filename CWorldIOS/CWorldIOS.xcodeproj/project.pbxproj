@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73000000000000000000001 /* IntroAnimations in Resources */ = {isa = PBXBuildFile; fileRef = A73000000000000000000002 /* IntroAnimations */; };
 		8692F5063051D26E00E0ACAE /* CatalogCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5003051D26E00E0ACAE /* CatalogCache.swift */; };
 		8692F5073051D26E00E0ACAE /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F4F93051D26E00E0ACAE /* MediaDetailView.swift */; };
 		8692F5083051D26E00E0ACAE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692F5033051D26E00E0ACAE /* AppModel.swift */; };
@@ -105,6 +106,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A73000000000000000000002 /* IntroAnimations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ../ios/CWorldIOS/Resources/IntroAnimations; sourceTree = SOURCE_ROOT; };
 		8692F4C83051CF5000E0ACAE /* CWorldIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CWorldIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8692F4D53051CF5100E0ACAE /* CWorldIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWorldIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8692F4DF3051CF5100E0ACAE /* CWorldIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CWorldIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 				F20000000000000000000001 /* Fonts */,
 				8692F5173051D26E00E0ACAE /* CWorldTheme.swift */,
 				8692F5193051D26E00E0ACAE /* HomeView.swift */,
+				A73000000000000000000002 /* IntroAnimations */,
 				8692F51D3051D26E00E0ACAE /* ArchiveView.swift */,
 				F1000000000000000000000E /* ../../frontend/src/data/episodeTitles.json */,
 				F1000000000000000000000F /* Features/Library/EpisodeTitleCatalog.swift */,
@@ -494,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A71000000000000000000001 /* Resources/MobileArtwork in Resources */,
+				A73000000000000000000001 /* IntroAnimations in Resources */,
 				A71500000000000000000002 /* Resources/DesktopArtwork in Resources */,
 				A71100000000000000000005 /* Resources/episode-markers.json in Resources */,
 				A71400000000000000000006 /* Resources/desktop-reference.json in Resources */,

@@ -89,20 +89,111 @@ struct ArchiveCatalogSnapshot {
     }
 }
 
+private struct ArchiveScrollFrameKey: PreferenceKey {
+    static let defaultValue = CGRect.zero
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+/// Non-publishing bookkeeping: scroll pixels must not invalidate the Library.
+private final class ArchiveScrollDirectionTracker {
+    var viewportHeight: CGFloat = 0
+    private var previous: CGFloat?
+    private var distance: CGFloat = 0
+    private var compact = false
+
+    func endGesture() { previous = nil; distance = 0 }
+
+    func update(_ offset: CGFloat) -> Bool? {
+        defer { previous = offset }
+        if offset <= 8 { distance = 0; return change(to: false) }
+        guard let previous else { return nil }
+        let delta = offset - previous
+        guard abs(delta) > 0.5 else { return nil }
+        if delta * distance < 0 { distance = 0 }
+        distance += delta
+        if distance > 18 { distance = 0; return change(to: true) }
+        if distance < -10 { distance = 0; return change(to: false) }
+        return nil
+    }
+
+    private func change(to value: Bool) -> Bool? {
+        guard compact != value else { return nil }
+        compact = value
+        return value
+    }
+}
+
+private struct ArchiveLegacyScrollFrame: ViewModifier {
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 18.0, *) {
+            content
+        } else {
+            content.background {
+                GeometryReader { proxy in
+                    Color.clear.preference(key: ArchiveScrollFrameKey.self,
+                        value: proxy.frame(in: .named("archiveVerticalScroll")))
+                }
+                .allowsHitTesting(false)
+            }
+        }
+    }
+}
+
+private struct ArchiveScrollOffsetObserver: ViewModifier {
+    let onCompactChange: (Bool) -> Void
+    @State private var tracker = ArchiveScrollDirectionTracker()
+
+    @ViewBuilder func body(content: Content) -> some View {
+        if #available(iOS 18.0, *) {
+            content.onScrollGeometryChange(for: CGFloat.self) { geometry in
+                let maximum = max(0, geometry.contentSize.height - geometry.containerSize.height
+                                  + geometry.contentInsets.top + geometry.contentInsets.bottom)
+                return min(maximum, max(0, geometry.contentOffset.y + geometry.contentInsets.top))
+            } action: { _, offset in
+                report(offset)
+            }
+            .onScrollPhaseChange { _, phase in
+                if phase == .idle { tracker.endGesture() }
+            }
+        } else {
+            content
+                .background {
+                    GeometryReader { proxy in
+                        Color.clear
+                            .onAppear { tracker.viewportHeight = proxy.size.height }
+                            .onChange(of: proxy.size.height) { _, height in
+                                tracker.viewportHeight = height
+                                tracker.endGesture()
+                            }
+                    }
+                    .allowsHitTesting(false)
+                }
+                .onPreferenceChange(ArchiveScrollFrameKey.self) { frame in
+                    guard tracker.viewportHeight > 0, frame.height > 0 else { return }
+                    let maximum = max(0, frame.height - tracker.viewportHeight)
+                    report(min(maximum, max(0, -frame.minY)))
+                }
+        }
+    }
+
+    private func report(_ offset: CGFloat) {
+        if let compact = tracker.update(offset) { onCompactChange(compact) }
+    }
+}
+
 struct ArchiveView: View {
+    var contentBottomInset: CGFloat = 0
+    var onOpenMedia: (String) -> Void
+    var onNavigationCompactChange: (Bool) -> Void = { _ in }
     @EnvironmentObject private var appModel: AppModel
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.displayScale) private var displayScale
     @State private var searchText = ""
-    @State private var isSearchOpen = false
     @State private var typeFilter: ArchiveTypeFilter = .all
     @State private var sortMode: ArchiveSortMode = .newest
-    @State private var showingProfiles = false
     @State private var showingBackdropPicker = false
-    @State private var profileExpanded = false
-    @State private var selectedMediaID: String?
     @State private var resumeItem: ContinueWatchingItem?
-    @State private var allMediaPage = 0
     @State private var catalogSnapshot = ArchiveCatalogSnapshot()
     @State private var continueWatching: [ContinueWatchingItem] = []
 
@@ -129,56 +220,13 @@ struct ArchiveView: View {
     private func updateCatalogSnapshot(_ catalog: [CWorldMedia]) {
         catalogSnapshot = ArchiveCatalogSnapshot(catalog: catalog, query: searchText,
                                                 type: typeFilter, sort: sortMode, pageSize: allMediaPerPage)
-        allMediaPage = min(allMediaPage, max(catalogSnapshot.pages.count - 1, 0))
     }
 
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .top) {
-                Color.black.ignoresSafeArea()
-
-                if archiveBackdropURL != nil {
-                    FullScreenCatalogBackdrop(url: archiveBackdropURL)
-                }
-
-                Color.black.opacity(0.58)
-                    .ignoresSafeArea()
-
-                ScrollView(.vertical, showsIndicators: false) {
-                    LazyVStack(alignment: .leading, spacing: 60) {
-                        if !latestItems.isEmpty && searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                            newMediaSection
-                        }
-
-                        if !continueWatching.isEmpty && searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                            continueWatchingSection
-                        }
-
-                        allMediaSection
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 72)
-                    .padding(.bottom, 28)
-                }
-
-                archiveHeader
-            }
+        Group {
+            archiveContent
             .toolbar(.hidden, for: .navigationBar)
-            .task(id: archivePrefetchKey) {
-                await ImageCache.shared.prefetchImages(archivePrefetchURLs)
-            }
-            .navigationDestination(item: $selectedMediaID) { mediaID in
-                if let media = appModel.catalog.first(where: { $0.id == mediaID }) {
-                    MediaDetailView(media: media, onBack: {
-                        selectedMediaID = nil
-                    })
-                } else {
-                    ContentUnavailableView("Title unavailable", systemImage: "film.stack")
-                }
-            }
-            .sheet(isPresented: $showingProfiles) {
-                ProfilePickerView()
-            }
+            .task(id: archivePrefetchKey) { await prepareArchiveArtwork() }
             .navigationDestination(item: $resumeItem) { item in
                 NativeVideoPlayerView(
                     mediaID: item.playbackID,
@@ -193,11 +241,6 @@ struct ArchiveView: View {
             .sheet(isPresented: $showingBackdropPicker) {
                 ArchiveBackdropPickerView()
             }
-            .sheet(isPresented: $isSearchOpen) {
-                CatalogSearchView()
-                    .presentationDragIndicator(.visible)
-            }
-            .animation(.easeInOut(duration: 0.25), value: isSearchOpen)
             .onReceive(appModel.$catalog) { catalog in
                 updateCatalogSnapshot(catalog)
                 continueWatching = Array(ContinueWatchingItem.make(
@@ -210,122 +253,78 @@ struct ArchiveView: View {
                 ).prefix(10))
             }
             .onChange(of: searchText) { _, _ in
-                allMediaPage = 0
                 updateCatalogSnapshot(appModel.catalog)
             }
             .onChange(of: typeFilter) { _, _ in
-                allMediaPage = 0
                 updateCatalogSnapshot(appModel.catalog)
             }
             .onChange(of: sortMode) { _, _ in
-                allMediaPage = 0
                 updateCatalogSnapshot(appModel.catalog)
             }
         }
     }
 
+    private var archiveContent: some View {
+    ZStack(alignment: .top) {
+        Color.black.ignoresSafeArea()
+
+        if archiveBackdropURL != nil {
+            FullScreenCatalogBackdrop(url: archiveBackdropURL)
+        }
+
+        Color.black.opacity(0.58)
+            .ignoresSafeArea()
+
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack(alignment: .leading, spacing: 60) {
+                if !latestItems.isEmpty && searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    newMediaSection
+                }
+
+                if !continueWatching.isEmpty && searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    continueWatchingSection
+                }
+
+                allMediaSection
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 8)
+            .padding(.bottom, 28 + contentBottomInset)
+            .modifier(ArchiveLegacyScrollFrame())
+        }
+        .coordinateSpace(name: "archiveVerticalScroll")
+        .modifier(ArchiveScrollOffsetObserver(onCompactChange: onNavigationCompactChange))
+
+    }
+    }
+
+    private func prepareArchiveArtwork() async {
+        // The retained Library warms before it is opened; switching tabs
+        // must not cancel/restart this work.
+        do { try await Task.sleep(for: .milliseconds(200)) } catch { return }
+        for (index, media) in latestItems.prefix(3).enumerated() {
+            guard !Task.isCancelled else { return }
+            guard let url = media.artwork.preferredCard ?? media.artwork.poster else { continue }
+            let size = Self.artworkPixelSize(width: index == 0 ? 240 : 118,
+                                            height: index == 0 ? 240 : 112,
+                                            displayScale: displayScale)
+            let resolved = MobileArtwork.bundledURL(for: url, maxPixelSize: size) ?? url
+            guard resolved.pathExtension.lowercased() != "svg" else { continue }
+            _ = await ImageCache.shared.image(for: resolved, maxPixelSize: size)
+        }
+        await ImageCache.shared.prefetchImages(archivePrefetchURLs)
+    }
+
     private var archivePrefetchKey: String {
-        "\(appModel.catalogRevision):\(filteredItems.map(\.id).joined(separator: ",")):\(sortMode.rawValue):\(typeFilter.rawValue):\(searchText):\(allMediaPage)"
+        "\(appModel.catalogRevision):\(continueWatching.map { "\($0.id):\($0.progress.season ?? 0):\($0.progress.episode ?? 0)" }.joined(separator: ","))"
     }
 
     private var archivePrefetchURLs: [URL] {
         // Fetch only artwork actually used on this screen, including adjacent
         // pages. Do not compete with visible images by fetching every backdrop.
-        let nearbyItems = allMediaPages.indices
-            .filter { abs($0 - allMediaPage) <= 1 }
-            .flatMap { allMediaPages[$0] }
-        return (latestItems + nearbyItems).compactMap {
+        return latestItems.compactMap {
             $0.artwork.preferredCard ?? $0.artwork.poster
-        } + continueWatching.prefix(2).compactMap { placeholderURL(for: $0.media) }
-    }
-
-    private var archiveHeader: some View {
-        HStack(spacing: 10) {
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "house.fill")
-                    .font(.system(size: 19, weight: .semibold))
-                    .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
-                    .background(.white.opacity(0.2), in: Circle())
-            }
-            .buttonStyle(.plain)
-
-            Spacer()
-
-            profileMenu
-
-            Button {
-                withAnimation { isSearchOpen.toggle() }
-            } label: {
-                Image(systemName: "magnifyingglass")
-                    .font(.system(size: 25))
-                    .foregroundStyle(.white)
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel("Search titles and episodes")
-        }
-        .padding(.horizontal, 10)
-        .padding(.top, 6)
-    }
-
-    private var profileMenu: some View {
-        HStack(spacing: 7) {
-            Button {
-                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
-                    profileExpanded = true
-                }
-            } label: {
-                HStack(spacing: 7) {
-                    ProfileHeaderImage(profile: appModel.activeProfile)
-                    Circle()
-                        .fill(CWorldTheme.success)
-                        .frame(width: 8, height: 8)
-                }
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel("Current profile")
-
-            if profileExpanded {
-                Button {
-                    showingProfiles = true
-                } label: {
-                    Image(systemName: "person.2.fill")
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Profiles")
-                .transition(.opacity.combined(with: .offset(x: 8)))
-
-                Button {
-                    showingBackdropPicker = true
-                } label: {
-                    Image(systemName: "photo.on.rectangle.angled")
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Choose archive backdrop")
-                .transition(.opacity.combined(with: .offset(x: 8)))
-
-                Button {
-                    withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
-                        profileExpanded = false
-                    }
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.white.opacity(0.55))
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Collapse profile menu")
-                .transition(.opacity)
-            }
-        }
-        .foregroundStyle(.white)
-        .font(.system(size: 18, weight: .semibold))
-        .padding(.horizontal, 9)
-        .padding(.vertical, 6)
-        .frame(width: profileExpanded ? 184 : 70, height: 42, alignment: .leading)
-        .background(.white.opacity(0.2), in: Capsule())
-        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: profileExpanded)
+        } + continueWatching.compactMap { placeholderURL(for: $0) }
     }
 
     private var newMediaSection: some View {
@@ -368,7 +367,8 @@ struct ArchiveView: View {
                             resumeItem = item
                         } label: {
                             ZStack(alignment: .bottomLeading) {
-                                CatalogImage(url: placeholderURL(for: media),
+                                CatalogImage(url: placeholderURL(for: item),
+                                             showsBorder: false,
                                              maxPixelSize: Self.artworkPixelSize(width: 282, height: 160, displayScale: displayScale))
                                     .frame(width: 282, height: 160)
 
@@ -384,16 +384,15 @@ struct ArchiveView: View {
                                         .foregroundStyle(.white)
                                         .lineLimit(1)
 
-                                    if let progress = latestProgress(for: media),
-                                       let season = progress.season,
-                                       let episode = progress.episode {
-                                        Text("S\(season) · E\(episode)\(episodeTitle(for: media, progress: progress).map { " · \($0)" } ?? "")")
+                                    if let season = item.progress.season,
+                                       let episode = item.progress.episode {
+                                        Text("S\(season) · E\(episode)\(item.episode.map { " · \($0.title)" } ?? "")")
                                             .archiveFont(13)
                                             .foregroundStyle(.white.opacity(0.7))
                                             .lineLimit(1)
                                     }
 
-                                    ProgressView(value: progressFraction(for: media))
+                                    ProgressView(value: min(max(item.progress.currentTime / max(item.progress.duration, 1), 0), 1))
                                         .tint(.white)
                                         .progressViewStyle(.linear)
                                         .frame(height: 4)
@@ -404,8 +403,7 @@ struct ArchiveView: View {
                             .frame(width: 282, height: 160)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .overlay {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(.white.opacity(0.15), lineWidth: 1)
+                                MobileArtworkGlassRim(fallbackOpacity: 0.15)
                             }
                             .overlay {
                                 CWorldTVPlaybackHighlight(mediaID: item.playbackID, season: item.progress.season, episode: item.progress.episode)
@@ -436,6 +434,9 @@ struct ArchiveView: View {
                     .foregroundStyle(.white)
                 Spacer()
                 Menu {
+                    Button("Choose library backdrop", systemImage: "photo.on.rectangle.angled") {
+                        showingBackdropPicker = true
+                    }
                     Section("Sort by") {
                         ForEach(ArchiveSortMode.allCases) { mode in
                             Button {
@@ -479,43 +480,8 @@ struct ArchiveView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 60)
             } else {
-                TabView(selection: $allMediaPage) {
-                    ForEach(Array(allMediaPages.enumerated()), id: \.offset) { pageIndex, page in
-                        Group {
-                            // Keep stable page tags, but build artwork/glass only
-                            // for the current page and its swipe neighbors.
-                            if abs(pageIndex - allMediaPage) <= 1 {
-                                ArchiveMediaPage(
-                                    items: page,
-                                    onSelect: { selectedMediaID = $0.id }
-                                )
-                            } else {
-                                Color.clear
-                            }
-                        }
-                        .tag(pageIndex)
-                    }
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .frame(height: CGFloat(allMediaPerPage * 96 + (allMediaPerPage - 1) * 8))
-
-                if allMediaPages.count > 1 {
-                    HStack(spacing: 8) {
-                        ForEach(allMediaPages.indices, id: \.self) { index in
-                            Button {
-                                allMediaPage = index
-                            } label: {
-                                Capsule()
-                                    .fill(index == allMediaPage ? .white : .white.opacity(0.35))
-                                    .frame(width: index == allMediaPage ? 24 : 8, height: 8)
-                            }
-                            .buttonStyle(.plain)
-                            .accessibilityLabel("Go to archive page \(index + 1)")
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 6)
-                }
+                ArchiveMediaPager(pages: allMediaPages, onOpenMedia: onOpenMedia)
+                    .id(filteredItems.map(\.id))
             }
         }
     }
@@ -528,7 +494,7 @@ struct ArchiveView: View {
 
     private func archiveImage(_ media: CWorldMedia, width: CGFloat, height: CGFloat) -> some View {
         Button {
-            selectedMediaID = media.id
+            onOpenMedia(media.id)
         } label: {
             CatalogImage(
                 url: media.artwork.preferredCard ?? media.artwork.poster,
@@ -545,7 +511,8 @@ struct ArchiveView: View {
         .buttonStyle(.plain)
     }
 
-    private func placeholderURL(for media: CWorldMedia) -> URL? {
+    private func placeholderURL(for item: ContinueWatchingItem) -> URL? {
+        let media = item.media
         let cleanID = media.id.replacingOccurrences(of: "-", with: "")
 
         if media.type == "movie" {
@@ -553,34 +520,13 @@ struct ArchiveView: View {
             return URL(string: "https://cearaworld.com/images/\(cleanID)/placeholders/\(cleanID)_placeholder.png\(version)")
         }
 
-        let progress = latestProgress(for: media)
-        let season = progress?.season ?? 1
-        let episode = progress?.episode ?? 1
+        let season = item.progress.season ?? 1
+        let episode = item.progress.episode ?? 1
         let seasonLabel = "S\(season)"
         let path = "https://d20honz3pkzrs8.cloudfront.net/\(cleanID)/placeholders/season\(season)/\(seasonLabel)E\(episode)_\(cleanID)_placeholder.png"
         return URL(string: path)
     }
 
-    private func latestProgress(for media: CWorldMedia) -> WatchProgressRecord? {
-        appModel.watchProgress.values
-            .filter { appModel.media(for: $0.showID)?.id == media.id }
-            .sorted { $0.updatedAt > $1.updatedAt }
-            .first
-    }
-
-    private func progressFraction(for media: CWorldMedia) -> Double {
-        guard let progress = latestProgress(for: media), progress.duration > 0 else { return 0 }
-        return min(max(progress.currentTime / progress.duration, 0), 1)
-    }
-
-    private func episodeTitle(for media: CWorldMedia, progress: WatchProgressRecord) -> String? {
-        guard let season = progress.season, let episode = progress.episode else { return nil }
-        return media.seasons?
-            .first(where: { $0.number == season })?
-            .episodes
-            .first(where: { $0.number == episode })?
-            .title
-    }
 }
 
 private struct ArchiveRatingBadge: View {
@@ -791,6 +737,80 @@ private struct ArchiveBackdropPickerView: View {
 
         await appModel.updateArchiveBackdrop("data:image/jpeg;base64,\(jpeg.base64EncodedString())")
         dismiss()
+    }
+}
+
+/// Own page selection here so a swipe does not rebuild every Library section.
+private struct ArchiveMediaPager: View {
+    let pages: [[CWorldMedia]]
+    let onOpenMedia: (String) -> Void
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var allMediaPage = 0
+
+    var body: some View {
+        VStack(spacing: 10) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(alignment: .center, spacing: 0) {
+                        ForEach(Array(pages.enumerated()), id: \.offset) { pageIndex, page in
+                            ArchiveMediaPage(
+                                items: page,
+                                onSelect: { onOpenMedia($0.id) }
+                            )
+                            .containerRelativeFrame(.horizontal)
+                            .id(pageIndex)
+                        }
+                    }
+                    .scrollTargetLayout()
+                }
+                // Native scrolling follows the finger continuously. Stable lazy
+                // pages avoid swapping the destination's content during a swipe.
+                .scrollTargetBehavior(.paging)
+                .scrollPosition(id: Binding<Int?>(
+                    get: { allMediaPage },
+                    set: { page in
+                        if let page, pages.indices.contains(page) { allMediaPage = page }
+                    }
+                ))
+                .frame(height: CGFloat(6 * 96 + (6 - 1) * 8))
+
+                if pages.count > 1 {
+                    HStack(spacing: 8) {
+                        ForEach(pages.indices, id: \.self) { index in
+                            Button {
+                                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.35)) {
+                                    allMediaPage = index
+                                }
+                            } label: {
+                                Capsule()
+                                    .fill(index == allMediaPage ? .white : .white.opacity(0.35))
+                                    .frame(width: index == allMediaPage ? 24 : 8, height: 8)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("Go to archive page \(index + 1)")
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 6)
+                    // Animate the indicator only, not every card/glass surface.
+                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: allMediaPage)
+                }
+        }
+        .task(id: allMediaPage) {
+            // Cancel obsolete work on another swipe; let visible images load
+            // first, then prepare at most the two neighboring six-item pages.
+            do { try await Task.sleep(for: .milliseconds(300)) } catch { return }
+            for index in [allMediaPage + 1, allMediaPage - 1] where pages.indices.contains(index) {
+                for media in pages[index] {
+                    guard !Task.isCancelled else { return }
+                    guard let url = media.artwork.preferredCard ?? media.artwork.poster else { continue }
+                    let resolved = MobileArtwork.bundledURL(for: url, maxPixelSize: 240) ?? url
+                    guard resolved.pathExtension.lowercased() != "svg" else { continue }
+                    // Match the actual row decode size and reuse the existing
+                    // bounded image cache. Never retain whole pages here.
+                    _ = await ImageCache.shared.image(for: resolved, maxPixelSize: 240)
+                }
+            }
+        }
     }
 }
 

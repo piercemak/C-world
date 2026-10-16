@@ -597,6 +597,16 @@ final class AppModel: ObservableObject {
             activeProfile = profiles.first
         }
         client.profileID = activeProfile?.id
+
+        // A restored profile means the app has completed a real launch. Show
+        // the short brand ident once before entering the library. Explicit
+        // profile selections already request the same presentation through
+        // selectProfile(startHomeIntro: true). Returning from a brief
+        // background interruption does not call applyProfiles, so playback or
+        // browsing resumes without replaying the animation.
+        if activeProfile != nil {
+            isShowingHomeIntro = true
+        }
     }
 
     private func syncWatchData(using client: CWorldAPIClient) async {

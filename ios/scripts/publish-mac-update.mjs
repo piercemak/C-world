@@ -33,7 +33,7 @@ if (sparklePrivateKey) {
 const tag = `mac-catalyst-${version}-${build}`;
 const directory = path.join(root, 'dist/catalyst/publish', tag);
 fs.mkdirSync(directory, { recursive: true });
-const name = `CearaWorld-${version}-${build}.dmg`;
+const name = `SeedSpace-${version}-${build}.dmg`;
 const archive = path.join(directory, name);
 const stableName = 'CearaWorld.dmg';
 const stableArchive = path.join(root, 'dist/catalyst/publish', stableName);
@@ -117,7 +117,7 @@ if (!release) {
 }
 if (!release) {
   release = await api('/releases', 'POST', {
-    tag_name: tag, target_commitish: 'main', name: `CearaWorld Mac ${version} (build ${build})`,
+    tag_name: tag, target_commitish: 'main', name: `SeedSpace Mac ${version} (build ${build})`,
     body: fs.readFileSync(path.join(root, 'ios/LocalMac/release-notes.txt'), 'utf8') + '\n\nMac Catalyst, Intel and Apple Silicon, macOS 14+. Locally signed; not Apple-notarized. CWorld login required.\n',
     draft: true, prerelease: false
   });

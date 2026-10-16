@@ -290,6 +290,13 @@ struct NativeVideoPlayerView: View {
 
 struct CWorldPlaybackOverlay: View {
     @ObservedObject private var host = CWorldPlaybackHost.shared
+    private var showConnectionBanner: Bool {
+        #if targetEnvironment(macCatalyst)
+        true
+        #else
+        host.minimized
+        #endif
+    }
     var body: some View {
         ZStack(alignment: .bottom) {
             if let surface = host.surface {
@@ -309,16 +316,12 @@ struct CWorldPlaybackOverlay: View {
                         }.accessibilityLabel("Play or pause")
                         Button { host.stop() } label: { Image(systemName: "xmark") }.accessibilityLabel("Stop playback")
                     }.padding().background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14)).padding()
-                } else {
-#if !targetEnvironment(macCatalyst)
-                    playbackOverlayControls
-#endif
                 }
             }
         }.foregroundStyle(.white)
             .sheet(isPresented: $host.remotePresented) { CWorldTVRemoteView() }
             .overlay(alignment: .top) {
-                if host.connectionLost {
+                if host.connectionLost && showConnectionBanner {
                     Button { host.remotePresented = true } label: {
                         Label("TV disconnected · Reconnect or continue on phone", systemImage: "wifi.exclamationmark")
                             .font(.caption.bold()).padding(12).background(.black.opacity(0.9), in: Capsule())
@@ -327,27 +330,7 @@ struct CWorldPlaybackOverlay: View {
             }
     }
 
-    @ViewBuilder
-    private var playbackOverlayControls: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button { host.remotePresented = true } label: {
-                    Image(systemName: "appletvremote.gen4.fill").padding(12)
-                }
-                .accessibilityLabel("TV remote and Up Next")
-                CWorldAirPlayPicker().frame(width: 44, height: 44)
-                Button { host.minimized = true } label: {
-                    Image(systemName: "chevron.down").padding(12)
-                }
-                .accessibilityLabel("Minimize player and browse")
-            }
-            .padding(.top, 60)
-            .padding(.horizontal)
-            Spacer()
-        }
-        .allowsHitTesting(true)
-    }
+
 }
 
 struct CWorldTVPlaybackHighlight: View {
@@ -1101,6 +1084,7 @@ private struct ReferenceCard: View {
 // original surround separate; selecting an option never changes the source file.
 struct CWorldAudioTrackMenu: View {
     let player: AVPlayer?
+    var touchTarget: CGFloat? = nil
     @ObservedObject private var host = CWorldPlaybackHost.shared
     @State private var group: AVMediaSelectionGroup?
     @State private var options: [AVMediaSelectionOption] = []
@@ -1123,6 +1107,8 @@ struct CWorldAudioTrackMenu: View {
             if host.isAirPlay { Text("AAC Stereo is the compatibility default for AirPlay.") }
         } label: {
             Image(systemName: "waveform")
+                .frame(width: touchTarget, height: touchTarget)
+                .contentShape(Rectangle())
         }
         .accessibilityLabel("Audio track")
         .help("Choose stereo or surround audio")
@@ -1210,6 +1196,57 @@ struct CWorldPlayerSurface: UIViewControllerRepresentable {
     }
 }
 
+/// Read window protection even when an ancestor ignores SwiftUI safe areas.
+struct CWorldWindowSafeAreaReader: UIViewRepresentable {
+    let onChange: (EdgeInsets) -> Void
+
+    func makeUIView(context: Context) -> ReaderView {
+        let view = ReaderView()
+        view.isUserInteractionEnabled = false
+        view.onChange = onChange
+        return view
+    }
+
+    func updateUIView(_ uiView: ReaderView, context: Context) {
+        uiView.onChange = onChange
+        uiView.setNeedsLayout()
+    }
+
+    final class ReaderView: UIView {
+        var onChange: ((EdgeInsets) -> Void)?
+        private var lastInsets: EdgeInsets?
+
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            reportInsets()
+        }
+
+        override func safeAreaInsetsDidChange() {
+            super.safeAreaInsetsDidChange()
+            setNeedsLayout()
+        }
+
+        override func didMoveToWindow() {
+            super.didMoveToWindow()
+            setNeedsLayout()
+        }
+
+        private func reportInsets() {
+            guard let window, bounds.width > 0, bounds.height > 0 else { return }
+            let safeRect = convert(window.bounds.inset(by: window.safeAreaInsets), from: window)
+            let insets = EdgeInsets(
+                top: max(0, safeRect.minY - bounds.minY),
+                leading: max(0, safeRect.minX - bounds.minX),
+                bottom: max(0, bounds.maxY - safeRect.maxY),
+                trailing: max(0, bounds.maxX - safeRect.maxX)
+            )
+            guard insets != lastInsets else { return }
+            lastInsets = insets
+            DispatchQueue.main.async { [weak self] in self?.onChange?(insets) }
+        }
+    }
+}
+
 enum PlaybackDisplayState: Equatable {
     case preparing, buffering, playing, paused, failed
 
@@ -1229,6 +1266,8 @@ enum PlaybackDisplayState: Equatable {
 struct PersistentVideoPlayerView: View {
     @Environment(\.accessibilityReduceMotion) private var reducePlayerMotion
     @State private var closingPlayer = false
+    @State private var mobileSafeArea = EdgeInsets()
+    @State private var showMobileBuffering = false
     private let onClose: (() -> Void)?
     @ObservedObject private var externalDisplay = ExternalDisplaySession.shared
     @EnvironmentObject private var appModel: AppModel
@@ -1354,25 +1393,13 @@ struct PersistentVideoPlayerView: View {
                         #endif
                     }
 
+                #if targetEnvironment(macCatalyst)
                 if !externalDisplay.isConnected && !playbackHost.isAirPlay && !activeSubtitle.isEmpty && subtitlesEnabled {
                     VStack {
                         Spacer()
-                        #if targetEnvironment(macCatalyst)
                         MacSubtitleText(text: activeSubtitle)
                             .padding(.horizontal, 24)
                             .padding(.bottom, controlsVisible ? 128 : (canSkipIntro || canSkipOutro ? 96 : 34))
-                        #else
-                        Text(activeSubtitle)
-                            .font(.custom("Helvetica Neue", size: 30).weight(.bold))
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.center)
-                            .shadow(color: .black.opacity(0.75), radius: 4, x: 2, y: 2)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(.black.opacity(0.0), in: RoundedRectangle(cornerRadius: 6))
-                            .padding(.horizontal, 24)
-                            .padding(.bottom, controlsVisible ? 128 : (canSkipIntro || canSkipOutro ? 96 : 34))
-                        #endif
                     }
                     .allowsHitTesting(false)
                 }
@@ -1381,6 +1408,7 @@ struct PersistentVideoPlayerView: View {
                     playerControls
                         .transition(.opacity)
                 }
+                #endif
             }
 
             if playbackState == .failed {
@@ -1392,17 +1420,24 @@ struct PersistentVideoPlayerView: View {
                     .foregroundStyle(.white)
                     .allowsHitTesting(false)
             } else if playbackState == .buffering {
+                #if targetEnvironment(macCatalyst)
                 ProgressView("Buffering…")
                     .tint(.white)
                     .foregroundStyle(.white)
                     .padding(16)
                     .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
                     .allowsHitTesting(false)
+                #endif
             }
         }
+        .overlay {
+            #if !targetEnvironment(macCatalyst)
+            mobilePlayerChrome
+            #endif
+        }
         .overlay(alignment: .bottomTrailing) {
+            #if targetEnvironment(macCatalyst)
             if player != nil && !isLoading && playbackState != .failed && (canSkipIntro || canSkipOutro) {
-                #if targetEnvironment(macCatalyst)
                 HStack(spacing: 8) {
                     if canSkipIntro {
                         Button("Skip Intro", action: skipIntro).buttonStyle(MacSkipButtonStyle())
@@ -1424,24 +1459,11 @@ struct PersistentVideoPlayerView: View {
                 .transition(.opacity.combined(with: .offset(y: reducePlayerMotion ? 0 : 18)))
                 .animation(reducePlayerMotion ? nil : .easeOut(duration: 0.25), value: canSkipIntro)
                 .animation(reducePlayerMotion ? nil : .easeOut(duration: 0.25), value: canSkipOutro && !outroCancelled)
-                #else
-                HStack(spacing: 10) {
-                    if canSkipIntro {
-                        Button("Skip Intro", systemImage: "forward.end.fill") { skipIntro() }
-                            .playerActionStyle()
-                    }
-                    if canSkipOutro {
-                        Button(nextSelection == nil ? "Skip Outro" : "Skip Outro · Play Next",
-                               systemImage: "forward.end.fill") { skipOutro() }
-                            .playerActionStyle()
-                    }
-                }
-                .padding(.horizontal, 18)
-                .padding(.bottom, controlsVisible ? 172 : 38)
-                #endif
             }
+            #endif
         }
         .overlay(alignment: .topTrailing) {
+            #if targetEnvironment(macCatalyst)
             if let subtitleError, controlsVisible && !isLoading && playbackState != .failed {
                 HStack(spacing: 8) {
                     Text(subtitleError).font(.caption).lineLimit(2)
@@ -1455,6 +1477,7 @@ struct PersistentVideoPlayerView: View {
                 .padding(.horizontal, 18)
                 .padding(.top, 66)
             }
+            #endif
         }
         .overlay(alignment: .topLeading) {
             #if targetEnvironment(macCatalyst)
@@ -1470,17 +1493,6 @@ struct PersistentVideoPlayerView: View {
                 .help("Back to media details · Escape")
                 .accessibilityLabel("Back to media details")
                 .padding(.leading, 36).padding(.top, 30)
-            }
-            #else
-            if isLoading || playbackState == .failed {
-                Button { closePlayer() } label: {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(.white)
-                        .frame(width: 44, height: 44)
-                        .background(.black.opacity(0.6), in: Circle())
-                }
-                .accessibilityLabel("Close player")
-                .padding(18)
             }
             #endif
         }
@@ -1540,6 +1552,10 @@ struct PersistentVideoPlayerView: View {
         .onChange(of: playbackHost.queue.map(\.id)) { _, _ in
             prefetchTask?.cancel(); prefetchTask = nil; preparedNext = nil
         }
+        .onChange(of: volumeControlVisible) { _, presented in
+            if presented { controlsVisible = true; hideControlsTask?.cancel() }
+            else { scheduleControlsHide() }
+        }
         .onChange(of: subtitlesEnabled) { _, enabled in
             playbackHost.subtitlesOn = enabled
             updateNativeSubtitles()
@@ -1550,15 +1566,6 @@ struct PersistentVideoPlayerView: View {
         }
         .onChange(of: playbackHost.isAirPlay) { _, active in
             updateNativeSubtitles()
-        }
-        .overlay(alignment: .top) {
-            #if !targetEnvironment(macCatalyst)
-            if let outroCountdown {
-                Text("Up next in \(outroCountdown)…")
-                    .padding(12).background(.black.opacity(0.75), in: Capsule()).padding(.top, 110)
-                    .foregroundStyle(.white).allowsHitTesting(false)
-            }
-            #endif
         }
         .opacity(closingPlayer ? 0 : 1)
         .scaleEffect(closingPlayer && !reducePlayerMotion ? 0.985 : 1)
@@ -1580,163 +1587,220 @@ struct PersistentVideoPlayerView: View {
                             previous: previousSelection.map { next in { switchTo(next) } },
                             next: nextSelection.map { next in { switchTo(next) } })
         #else
-        ZStack {
-            LinearGradient(
-                colors: [.black.opacity(0.82), .clear, .black.opacity(0.9)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
-
-            VStack(spacing: 0) {
-                HStack(spacing: 12) {
-                    Button { closePlayer() } label: {
-                        Image(systemName: "xmark")
-                            .font(.system(size: 17, weight: .bold))
-                            .frame(width: 38, height: 38)
-                            .background(.black.opacity(0.42), in: Circle())
-                    }
-                    .accessibilityLabel("Close player")
-
-                    Text(selection.title)
-                        .cworldRoundedFont(17, weight: .semibold)
-                        .lineLimit(1)
-
-                    Spacer()
-
-                    Button { tvHelpVisible = true } label: {
-                        Image(systemName: externalDisplay.isConnected ? "tv.fill" : "tv")
-                            .frame(width: 44, height: 44)
-                    }
-                    .accessibilityLabel(externalDisplay.isConnected ? "TV connected. Connection instructions" : "Watch on your TV")
-                }
-                .foregroundStyle(.white)
-                .padding(.horizontal, 18)
-                // The player is edge-to-edge and hides the status bar. Keep the
-                // metadata below the Dynamic Island / sensor housing on iPhone.
-                .padding(.top, 62)
-
-                Spacer()
-
-                HStack(spacing: 34) {
-                    Button { seek(by: -15) } label: {
-                        Image(systemName: "gobackward.15")
-                            .font(.system(size: 27, weight: .medium))
-                    }
-                    .accessibilityLabel("Back 15 seconds")
-
-                    Button { togglePlayback() } label: {
-                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
-                            .font(.system(size: 29, weight: .bold))
-                            .frame(width: 72, height: 72)
-                            .background(.white.opacity(0.18), in: Circle())
-                    }
-                    .accessibilityLabel(isPlaying ? "Pause" : "Play")
-
-                    Button { seek(by: 15) } label: {
-                        Image(systemName: "goforward.15")
-                            .font(.system(size: 27, weight: .medium))
-                    }
-                    .accessibilityLabel("Forward 15 seconds")
-                }
-                .foregroundStyle(.white)
-
-                Spacer()
-
-                VStack(spacing: 8) {
-                    Slider(
-                        value: Binding(
-                            get: { duration > 0 ? min(max(currentTime, 0), duration) : 0 },
-                            set: { currentTime = $0 }
-                        ),
-                        in: 0...max(duration, 1),
-                        onEditingChanged: { editing in
-                            isScrubbing = editing
-                            if !editing { seek(to: currentTime) }
-                        }
-                    )
-                    .tint(.white)
-
-                    HStack {
-                        Text(formatTime(currentTime))
-                        Spacer()
-                        Text(formatTime(duration))
-                    }
-                    .cworldRoundedFont(12, weight: .medium)
-
-                    HStack(spacing: 20) {
-                        Button { togglePlayback() } label: {
-                            Image(systemName: isPlaying ? "pause.fill" : "play.fill")
-                        }
-
-                        Button { seek(by: -15) } label: {
-                            Image(systemName: "gobackward.15")
-                        }
-
-                        Button { seek(by: 15) } label: {
-                            Image(systemName: "goforward.15")
-                        }
-
-                        if previousSelection != nil {
-                            Button { switchTo(previousSelection!) } label: {
-                                Image(systemName: "backward.end.fill")
-                            }
-                            .accessibilityLabel("Previous episode")
-                        }
-
-                        if nextSelection != nil {
-                            Button { switchTo(nextSelection!) } label: {
-                                Image(systemName: "forward.end.fill")
-                            }
-                            .accessibilityLabel("Next episode")
-                        }
-
-                        Spacer()
-
-                        CWorldAudioTrackMenu(player: player)
-                        if selection.subtitleURL != nil || !subtitleCues.isEmpty || nativeSubtitlesAvailable {
-                            Button { subtitlesEnabled.toggle() } label: {
-                                Image(systemName: subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble")
-                            }
-                            .accessibilityLabel(subtitlesEnabled ? "Turn subtitles off" : "Turn subtitles on")
-                        }
-
-                        if volumeControlVisible {
-                            Slider(
-                                value: Binding(
-                                    get: { Double(volume) },
-                                    set: {
-                                        volume = Float($0)
-                                        isMuted = volume == 0
-                                        player?.volume = volume
-                                    }
-                                ),
-                                in: 0...1
-                            )
-                            .tint(.white)
-                            .frame(width: 92)
-                        }
-
-                        Button { toggleMute() } label: {
-                            Image(systemName: isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill")
-                        }
-                        .accessibilityLabel(isMuted ? "Unmute" : "Mute")
-
-                        Button { volumeControlVisible.toggle() } label: {
-                            Image(systemName: "slider.horizontal.3")
-                        }
-                        .accessibilityLabel("Volume slider")
-                    }
-                    .font(.system(size: 18, weight: .semibold))
-                }
-                .foregroundStyle(.white)
-                .padding(.horizontal, 18)
-                .padding(.bottom, 22)
-            }
-        }
+        mobilePlayerChrome
         #endif
     }
+
+
+    #if !targetEnvironment(macCatalyst)
+    /// A single layout owns controls, captions and messages within the safe area.
+    private var mobilePlayerChrome: some View {
+        GeometryReader { geometry in
+            let compact = geometry.size.width > geometry.size.height
+            let showTransport = controlsVisible && player != nil && !isLoading && playbackState != .failed
+            let showHeader = controlsVisible || isLoading || playbackState == .failed
+            ZStack {
+                if showTransport {
+                    LinearGradient(colors: [.black.opacity(0.7), .clear, .black.opacity(0.8)],
+                                   startPoint: .top, endPoint: .bottom)
+                        .ignoresSafeArea()
+                        .allowsHitTesting(false)
+                }
+                VStack(spacing: compact ? 4 : 10) {
+                    if showHeader { mobilePlayerHeader }
+                    if showHeader { mobilePlayerStatus }
+                    Spacer(minLength: 0)
+                    if showTransport && !compact {
+                        HStack(spacing: compact ? 28 : 38) {
+                            mobileControl("gobackward.15", label: "Back 15 seconds") { seek(by: -15) }
+                            Button(action: togglePlayback) {
+                                Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                                    .font(.system(size: 28, weight: .bold))
+                                    .opacity(showMobileBuffering ? 0 : 1)
+                                    .frame(width: compact ? 56 : 72, height: compact ? 56 : 72)
+                                    .background(.white.opacity(0.18), in: Circle())
+                                    .overlay {
+                                        if showMobileBuffering {
+                                            ProgressView().tint(.white).allowsHitTesting(false)
+                                        }
+                                    }
+                            }
+                            .accessibilityLabel(isPlaying ? "Pause" : "Play")
+                            mobileControl("goforward.15", label: "Forward 15 seconds") { seek(by: 15) }
+                        }
+                        .font(.system(size: 25))
+                    }
+                    Spacer(minLength: 0)
+                    if !externalDisplay.isConnected && !playbackHost.isAirPlay &&
+                        subtitlesEnabled && !activeSubtitle.isEmpty {
+                        Text(activeSubtitle)
+                            .font(.custom("Helvetica Neue", size: compact ? 22 : 26).weight(.bold))
+                            .multilineTextAlignment(.center)
+                            .shadow(color: .black, radius: 3, x: 1, y: 1)
+                            .frame(maxWidth: 760)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .allowsHitTesting(false)
+                    }
+                    if player != nil && !isLoading && playbackState != .failed {
+                        mobileSkipActions
+                    }
+                    if showTransport { mobileTimeline(compact: compact) }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, compact ? 4 : 8)
+                .padding(EdgeInsets(
+                    top: max(geometry.safeAreaInsets.top, mobileSafeArea.top),
+                    leading: max(geometry.safeAreaInsets.leading, mobileSafeArea.leading),
+                    bottom: max(geometry.safeAreaInsets.bottom, mobileSafeArea.bottom),
+                    trailing: max(geometry.safeAreaInsets.trailing, mobileSafeArea.trailing)
+                ))
+                if showMobileBuffering && (compact || !showTransport) {
+                    ProgressView().tint(.white).allowsHitTesting(false)
+                }
+            }
+            .background(CWorldWindowSafeAreaReader { mobileSafeArea = $0 })
+            .foregroundStyle(.white)
+            .buttonStyle(.plain)
+        }
+        .task(id: playbackState) {
+            showMobileBuffering = false
+            guard playbackState == .buffering else { return }
+            do { try await Task.sleep(for: .milliseconds(450)) } catch { return }
+            guard !Task.isCancelled, playbackState == .buffering,
+                  player?.timeControlStatus == .waitingToPlayAtSpecifiedRate else { return }
+            showMobileBuffering = true
+        }
+    }
+
+    private var mobilePlayerHeader: some View {
+        HStack(spacing: 8) {
+            mobileControl("chevron.left", label: "Back to media details", action: closePlayer)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(playerDisplayMediaTitle).font(.headline).lineLimit(1)
+                if let episode = playerEpisodeLabel {
+                    Text(episode).font(.caption).foregroundStyle(.white.opacity(0.7)).lineLimit(1)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            CWorldAirPlayPicker().frame(width: 44, height: 44)
+            mobileControl("chevron.down", label: "Minimize player and browse") {
+                playbackHost.minimized = true
+            }
+        }
+    }
+
+    @ViewBuilder private var mobilePlayerStatus: some View {
+        if playbackHost.connectionLost {
+            Button { playbackHost.remotePresented = true } label: {
+                Label("TV disconnected · Reconnect", systemImage: "wifi.exclamationmark")
+                    .font(.caption).frame(minHeight: 44)
+            }
+        } else if let subtitleError, !isLoading && playbackState != .failed {
+            HStack(spacing: 8) {
+                Text(subtitleError).font(.caption).lineLimit(2)
+                Button("Retry") { loadSubtitles() }.frame(minWidth: 44, minHeight: 44)
+            }
+            .padding(.horizontal, 10)
+            .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 10))
+        }
+    }
+
+    @ViewBuilder private var mobileSkipActions: some View {
+        if canSkipIntro || canSkipOutro {
+            HStack(spacing: 8) {
+                Spacer(minLength: 0)
+                if canSkipIntro {
+                    Button("Skip Intro", action: skipIntro).playerActionStyle()
+                }
+                if canSkipOutro {
+                    Button(action: skipOutro) {
+                        Text(nextSelection == nil ? "Skip Outro" :
+                             outroCountdown.map { "Next episode · \($0)s" } ?? "Next episode")
+                    }
+                    .playerActionStyle()
+                }
+            }
+        }
+    }
+
+    private func mobileTimeline(compact: Bool) -> some View {
+        VStack(spacing: 0) {
+            Slider(value: Binding(
+                get: { duration > 0 ? min(max(currentTime, 0), duration) : 0 },
+                set: { currentTime = $0 }),
+                   in: 0...max(duration, 1),
+                   onEditingChanged: { editing in
+                       isScrubbing = editing
+                       if editing { hideControlsTask?.cancel() }
+                       else { seek(to: currentTime); scheduleControlsHide() }
+                   })
+                .tint(.white)
+                .accessibilityLabel("Playback position")
+            HStack {
+                Text(formatTime(currentTime))
+                Spacer()
+                Text(formatTime(duration))
+            }
+            .font(.caption.monospacedDigit())
+            HStack(spacing: 8) {
+                if compact {
+                    mobileControl("gobackward.15", label: "Back 15 seconds") { seek(by: -15) }
+                    mobileControl(isPlaying ? "pause.fill" : "play.fill", label: isPlaying ? "Pause" : "Play",
+                                  action: togglePlayback)
+                    mobileControl("goforward.15", label: "Forward 15 seconds") { seek(by: 15) }
+                }
+                if let previous = previousSelection {
+                    mobileControl("backward.end.fill", label: "Previous episode") { switchTo(previous) }
+                }
+                if let next = nextSelection {
+                    mobileControl("forward.end.fill", label: "Next episode") { switchTo(next) }
+                }
+                Spacer(minLength: 0)
+                CWorldAudioTrackMenu(player: player, touchTarget: 44)
+                if selection.subtitleURL != nil || nativeSubtitlesAvailable || !subtitleCues.isEmpty {
+                    mobileControl(subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble",
+                                  label: subtitlesEnabled ? "Turn subtitles off" : "Turn subtitles on") {
+                        subtitlesEnabled.toggle()
+                    }
+                }
+                Menu {
+                    Button("Restart", systemImage: "arrow.counterclockwise", action: restartPlayback)
+                    Button("TV remote and Up Next", systemImage: "appletvremote.gen4") {
+                        playbackHost.remotePresented = true
+                    }
+                    Button("Watch on your TV", systemImage: "tv") { tvHelpVisible = true }
+                    Button("Volume", systemImage: "speaker.wave.2") { volumeControlVisible = true }
+                    Button(isMuted ? "Unmute" : "Mute", systemImage: isMuted ? "speaker.wave.2" : "speaker.slash",
+                           action: toggleMute)
+                } label: {
+                    Image(systemName: "ellipsis").frame(width: 44, height: 44).contentShape(Rectangle())
+                }
+                .accessibilityLabel("More playback options")
+                .popover(isPresented: $volumeControlVisible) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Volume").font(.headline)
+                        Slider(value: Binding(get: { Double(volume) }, set: {
+                            volume = Float($0)
+                            isMuted = volume == 0
+                            player?.volume = volume
+                        }), in: 0...1)
+                        .accessibilityLabel("Player volume")
+                    }
+                    .padding(20).frame(width: 260)
+                    .presentationCompactAdaptation(.popover)
+                }
+            }
+            .font(.system(size: 18, weight: .semibold))
+        }
+    }
+
+    private func mobileControl(_ icon: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: icon).frame(width: 44, height: 44).contentShape(Rectangle())
+        }
+        .accessibilityLabel(label)
+    }
+    #endif
 
     private var playerDisplayMediaTitle: String { appModel.media(for: selection.mediaID)?.title ?? selection.title }
     private var playerEpisodeLabel: String? {
@@ -2216,10 +2280,10 @@ struct PersistentVideoPlayerView: View {
     @MainActor
     private func scheduleControlsHide() {
         hideControlsTask?.cancel()
-        guard isPlaying, !externalDisplay.isConnected, !subtitleSettingsPresented else { return }
+        guard isPlaying, !externalDisplay.isConnected, !subtitleSettingsPresented, !volumeControlVisible, !isScrubbing else { return }
         hideControlsTask = Task { @MainActor in
             try? await Task.sleep(nanoseconds: 4_000_000_000)
-            guard !Task.isCancelled, !subtitleSettingsPresented else { return }
+            guard !Task.isCancelled, !subtitleSettingsPresented, !volumeControlVisible, !isScrubbing else { return }
             withAnimation(.easeInOut(duration: 0.25)) { controlsVisible = false }
         }
     }
