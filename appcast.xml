@@ -2,12 +2,12 @@
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
 --><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>CearaWorld</title>
+        <title>SeedSpace</title>
         <item>
-            <title>1.0.6</title>
-            <pubDate>Thu, 08 Oct 2026 19:07:30 +0000</pubDate>
-            <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>1.0.6</sparkle:shortVersionString>
+            <title>1.0.7</title>
+            <pubDate>Fri, 16 Oct 2026 19:29:43 +0000</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>1.0.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="plain-text"><![CDATA[CWorld 1.0.2
 
@@ -17,10 +17,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 Updates continue to ask before installing.
 ]]></description>
-            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.6-4/CearaWorld-1.0.6-4.dmg" length="147697546" type="application/octet-stream" sparkle:edSignature="PqgDCnficK1s+O+QP8Wq1UG88uxar5lSd6aWIH13rrTC3EkBNhM64eOKaFVWGARQV969f4AZmQoTMBLVTE0ECw=="></enclosure>
+            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.7-5/SeedSpace-1.0.7-5.dmg" length="151663759" type="application/octet-stream" sparkle:edSignature="NO0DVRFMa+I6Cp3W/+kAq5DXbSdjq3zihnmlW31X+KsUMln4ypj1qonTTYtSTuFLcE34MhbeFEruYQWSYvIGDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: /ysOr36UTg8N4O3NgQovYqabtHjqcdpvl9uiJ6vVME2ox6DT1euBugowGDNKSR7yTu1t3DXABesbX43FWv1kAA==
-length: 1404
+edSignature: yKuf6zljrohiYbGCmm79GXvmouMoFT08zZymS/seHP++TFpTZ9OLHbuwJQfB7pzEttoMHv6ZLbte1ZhozA+5CQ==
+length: 1402
 -->
