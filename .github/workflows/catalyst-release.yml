@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "ios/CWorldIOS/**"
+      - "CWorldIOS/CWorldIOS/Assets.xcassets/**"
       - "ios/LocalMac/**"
       - "ios/scripts/package-local-mac.sh"
       - "ios/scripts/prepare-sparkle.sh"
