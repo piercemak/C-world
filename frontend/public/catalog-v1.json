@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-08T15:23:25.144Z",
-  "generatedAt": "2026-10-08T15:23:25.144Z",
+  "catalogRevision": "2026-10-19T18:00:43.405Z",
+  "generatedAt": "2026-10-19T18:00:43.405Z",
   "items": [
     {
       "id": "steven-universe",
@@ -34516,9 +34516,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 148.62,
+              "skipIntroEnd": 166.35,
+              "skipOutroStart": 1575.25
             },
             {
               "number": 2,
@@ -34537,9 +34537,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 26.65,
+              "skipOutroStart": 1170.3
             },
             {
               "number": 3,
@@ -34558,9 +34558,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 82.1,
+              "skipIntroEnd": 98.95,
+              "skipOutroStart": 1284.4
             },
             {
               "number": 4,
@@ -34579,9 +34579,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 9.55,
+              "skipIntroEnd": 26.4,
+              "skipOutroStart": 1250.35
             },
             {
               "number": 5,
@@ -34600,9 +34600,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 91.9,
+              "skipIntroEnd": 108.3,
+              "skipOutroStart": 1255.5
             },
             {
               "number": 6,
@@ -34623,7 +34623,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1377.9
             },
             {
               "number": 7,
@@ -34642,9 +34642,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 146.25,
+              "skipIntroEnd": 163.7,
+              "skipOutroStart": 1326.35
             },
             {
               "number": 8,
@@ -34663,9 +34663,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 106.35,
+              "skipIntroEnd": 122.45,
+              "skipOutroStart": 1407.1
             },
             {
               "number": 9,
@@ -34684,9 +34684,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season1/S1E09_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 96.65,
+              "skipIntroEnd": 113.5,
+              "skipOutroStart": 1172.05
             }
           ]
         },
@@ -34710,9 +34710,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 99.32,
+              "skipIntroEnd": 116.5,
+              "skipOutroStart": 1402.2
             },
             {
               "number": 2,
@@ -34731,9 +34731,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 49.62,
+              "skipIntroEnd": 66.8,
+              "skipOutroStart": 1475.35
             },
             {
               "number": 3,
@@ -34752,9 +34752,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 118.02,
+              "skipIntroEnd": 135.2,
+              "skipOutroStart": 1279.45
             },
             {
               "number": 4,
@@ -34775,7 +34775,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1532.9
             },
             {
               "number": 5,
@@ -34794,9 +34794,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 105.22,
+              "skipIntroEnd": 122.4,
+              "skipOutroStart": 1530.4
             },
             {
               "number": 6,
@@ -34815,9 +34815,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 102.42,
+              "skipIntroEnd": 119.6,
+              "skipOutroStart": 1243.05
             },
             {
               "number": 7,
@@ -34836,9 +34836,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 104.65,
+              "skipIntroEnd": 121.1,
+              "skipOutroStart": 1436.7
             },
             {
               "number": 8,
@@ -34857,9 +34857,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/adults/season2/S2E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 142.42,
+              "skipIntroEnd": 159.05,
+              "skipOutroStart": 1509.6
             }
           ]
         }

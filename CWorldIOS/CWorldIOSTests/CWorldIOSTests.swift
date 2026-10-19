@@ -9,8 +9,10 @@ import Foundation
 import Testing
 import UIKit
 import AVFoundation
+import CoreMedia
 import ImageIO
 import Combine
+import CryptoKit
 import SwiftUI
 @testable import CWorldIOS
 
@@ -758,6 +760,76 @@ struct CWorldIOSTests {
         #expect(index.search("   ").isEmpty)
         #expect(index.search("!!!").isEmpty)
         #expect(index.search("nonexistent").isEmpty)
+        #expect(index.search("cafe 2x03").first?.episode == 3)
+        #expect(index.search("cafe season 2").count == 2)
+        #expect(index.search("cafe season 20").isEmpty)
+        #expect(index.search("S02E30").isEmpty)
+        #expect(index.search("glsas", scope: .titles).first?.media.id == "movie")
+        #expect(index.search("glasss", scope: .titles).first?.media.id == "movie")
+        #expect(index.search("gla", scope: .titles).first?.media.id == "movie")
+        #expect(index.search("gzz", scope: .titles).isEmpty)
+        let aliases = try CatalogSearchIndex(catalog: [media("opm", title: "One Punch Man", type: "show"),
+                                                      media("aot", title: "Attack on Titan", type: "show")])
+        #expect(aliases.search("OPM").first?.media.id == "opm")
+        #expect(aliases.search("AOT").first?.media.id == "aot")
+    }
+
+    @Test func rememberedRemoteAuthenticatesContextAndCommands() throws {
+        let secret = Data(repeating: 7, count: 32)
+        let context = "account|phone|mac|fresh-host-challenge|fresh-phone-nonce"
+        let proof = RemoteTrustCrypto.proof(secret: secret, context: context)
+        #expect(RemoteTrustCrypto.verifies(proof, secret: secret, context: context))
+        #expect(!RemoteTrustCrypto.verifies(proof, secret: Data(repeating: 8, count: 32), context: context))
+        #expect(!RemoteTrustCrypto.verifies(proof, secret: secret, context: context + "new-connection"))
+        let key = RemoteTrustCrypto.key(secret: secret, context: context)
+        let plaintext = Data("pause".utf8)
+        let encrypted = try RemoteTrustCrypto.seal(plaintext, key: key, direction: "phone", sequence: 1)
+        #expect(try RemoteTrustCrypto.open(encrypted, key: key, direction: "phone", sequence: 1) == plaintext)
+        #expect(throws: (any Error).self) { try RemoteTrustCrypto.open(encrypted, key: key, direction: "host", sequence: 1) }
+        #expect(throws: (any Error).self) { try RemoteTrustCrypto.open(encrypted, key: key, direction: "phone", sequence: 2) }
+        let nextKey = RemoteTrustCrypto.key(secret: secret, context: context + "new-connection")
+        #expect(throws: (any Error).self) { try RemoteTrustCrypto.open(encrypted, key: nextKey, direction: "phone", sequence: 1) }
+        var tampered = encrypted; tampered[tampered.startIndex] ^= 1
+        #expect(throws: (any Error).self) { try RemoteTrustCrypto.open(tampered, key: key, direction: "phone", sequence: 1) }
+    }
+
+    @Test func desktopRemoteRequiresFreshExplicitPairing() {
+        let now = Date()
+        func allowed(_ code: String?, expired: Bool = false, failures: Int = 0, connected: Bool = false, pending: Bool = false) -> Bool {
+            DesktopRemotePairingPolicy.permits(provided: code, expected: "123456",
+                expires: now.addingTimeInterval(expired ? -1 : 120), failures: failures,
+                connected: connected, pending: pending, now: now)
+        }
+        #expect(allowed("123456"))
+        #expect(!allowed(nil))
+        #expect(!allowed("000000"))
+        #expect(!allowed("123456", expired: true))
+        #expect(!allowed("123456", failures: 5))
+        #expect(!allowed("123456", connected: true))
+        #expect(!allowed("123456", pending: true))
+        #expect(DesktopRemotePairingPolicy.mayRequestApproval(provided: "request:account-profile", scope: "account-profile", automatic: true, connected: false, pending: false, failures: 0))
+        #expect(!DesktopRemotePairingPolicy.mayRequestApproval(provided: "request:other", scope: "account-profile", automatic: true, connected: false, pending: false, failures: 0))
+        #expect(!DesktopRemotePairingPolicy.mayRequestApproval(provided: "request:", scope: "", automatic: true, connected: false, pending: false, failures: 0))
+        #expect(!DesktopRemotePairingPolicy.mayRequestApproval(provided: "request:account-profile", scope: "account-profile", automatic: true, connected: true, pending: false, failures: 0))
+        #expect(!DesktopRemotePairingPolicy.mayRequestApproval(provided: "request:account-profile", scope: "account-profile", automatic: true, connected: false, pending: true, failures: 0))
+    }
+
+    @Test func airPlayCaptionAppearanceUsesPlatformPreferences() throws {
+        let suite = "airplay-captions-test-\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let mobile = try #require(AirPlayCaptionAppearance.rules(defaults: defaults, useMacPreferences: false).first)
+        #expect(mobile.textMarkupAttributes[kCMTextMarkupAttribute_FontFamilyName as String] as? String == "Helvetica Neue")
+        #expect(mobile.textMarkupAttributes[kCMTextMarkupAttribute_BoldStyle as String] as? Bool == true)
+        defaults.set("Georgia", forKey: "cworld.mac.captions.font")
+        defaults.set(48.0, forKey: "cworld.mac.captions.size")
+        defaults.set("Yellow", forKey: "cworld.mac.captions.color")
+        let mac = try #require(AirPlayCaptionAppearance.rules(defaults: defaults, useMacPreferences: true).first)
+        #expect(mac.textMarkupAttributes[kCMTextMarkupAttribute_FontFamilyName as String] as? String == "Georgia")
+        #expect(mac.textMarkupAttributes[kCMTextMarkupAttribute_RelativeFontSize as String] as? Double == 160)
+        #expect(mac.textMarkupAttributes[kCMTextMarkupAttribute_ForegroundColorARGB as String] as? [Double] == [1, 1, 1, 0])
+        let unchangedMobile = try #require(AirPlayCaptionAppearance.rules(defaults: defaults, useMacPreferences: false).first)
+        #expect(unchangedMobile.textMarkupAttributes[kCMTextMarkupAttribute_FontFamilyName as String] as? String == "Helvetica Neue")
     }
 
     @Test func searchPresentationRendersWithResults() async throws {
@@ -772,7 +844,8 @@ struct CWorldIOSTests {
         window.rootViewController = controller
         window.makeKeyAndVisible()
         defer { window.isHidden = true; previousWindow?.makeKeyAndVisible() }
-        try await Task.sleep(for: .milliseconds(700))
+        window.layoutIfNeeded()
+        try await Task.sleep(for: .milliseconds(1500))
         window.layoutIfNeeded()
         let renderer = UIGraphicsImageRenderer(bounds: window.bounds)
         let image = renderer.image { _ in window.drawHierarchy(in: window.bounds, afterScreenUpdates: true) }

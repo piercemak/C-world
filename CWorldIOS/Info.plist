@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSLocalNetworkUsageDescription</key><string>SeedSpace connects your iPhone to your Mac so you can control playback over your local network.</string>
+    <key>NSBonjourServices</key><array><string>_seedspace-rc._tcp</string><string>_seedspace-rc._udp</string></array>
     <key>NSSupportsLiveActivities</key><true/>
     <key>CFBundleURLTypes</key><array><dict>
         <key>CFBundleURLName</key><string>com.cearaworld.remote</string>

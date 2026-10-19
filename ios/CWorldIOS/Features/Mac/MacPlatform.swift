@@ -250,6 +250,7 @@ struct MacPlaybackTimeline: View {
 }
 
 struct MacPlaybackControls: View {
+    @ObservedObject private var phoneRemote = DesktopRemote.shared
     let player: AVPlayer?
     let title: String
     let episodeLabel: String?
@@ -321,6 +322,11 @@ struct MacPlaybackControls: View {
                                 }
                         }
                         CWorldAudioTrackMenu(player: player)
+                        if phoneRemote.connected && phoneRemote.hosting {
+                            Button { phoneRemote.presented = true } label: {
+                                Image(systemName: "iphone.radiowaves.left.and.right")
+                            }.help("iPhone connected · Remote settings").accessibilityLabel("iPhone remote connected")
+                        }
                         CWorldAirPlayPicker().frame(width: 32, height: 32)
                             .help("AirPlay").accessibilityLabel("AirPlay")
                         HStack(spacing: 10) {
@@ -519,7 +525,7 @@ private struct MacSubtitleSettings: View {
                 fontName = "Helvetica Neue"; size = 30; bold = true
                 background = 0; color = "White"; shadow = true
             }
-            Text("Appearance saves automatically for this Mac. Direct AirPlay uses the TV’s subtitle styling.")
+            Text("Appearance saves automatically for this Mac. AirPlay requests this style for stream subtitles; your TV may override the font, size, and effects.")
                 .font(.caption).foregroundStyle(.secondary)
         }
         .font(.system(size: 13)).buttonStyle(.plain).tint(.white)

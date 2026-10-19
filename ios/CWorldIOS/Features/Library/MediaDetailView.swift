@@ -3,6 +3,35 @@ import AVKit
 import SwiftUI
 import Combine
 import MediaPlayer
+import CoreMedia
+
+/// Best-effort native WebVTT styling; the AirPlay receiver and accessibility
+/// preferences retain final control. Do not override authored cue positioning.
+enum AirPlayCaptionAppearance {
+    static func rules(defaults: UserDefaults = .standard, useMacPreferences: Bool) -> [AVTextStyleRule] {
+        let prefix = "cworld.mac.captions."
+        func number(_ key: String, fallback: Double) -> Double {
+            let value = defaults.object(forKey: prefix + key) as? Double ?? fallback
+            return value.isFinite ? value : fallback
+        }
+        let font = useMacPreferences ? defaults.string(forKey: prefix + "font") ?? "Helvetica Neue" : "Helvetica Neue"
+        let size = useMacPreferences ? min(48, max(18, number("size", fallback: 30))) : 30
+        let bold = useMacPreferences ? defaults.object(forKey: prefix + "bold") as? Bool ?? true : true
+        let shadow = useMacPreferences ? defaults.object(forKey: prefix + "shadow") as? Bool ?? true : true
+        let background = useMacPreferences ? min(0.85, max(0, number("background", fallback: 0))) : 0
+        let color = useMacPreferences ? defaults.string(forKey: prefix + "color") : nil
+        let foreground: [Double] = color == "Yellow" ? [1, 1, 1, 0] : color == "Warm White" ? [1, 1, 0.95, 0.83] : [1, 1, 1, 1]
+        let attributes: [String: Any] = [
+            kCMTextMarkupAttribute_FontFamilyName as String: font,
+            kCMTextMarkupAttribute_RelativeFontSize as String: size / 30 * 100,
+            kCMTextMarkupAttribute_BoldStyle as String: bold,
+            kCMTextMarkupAttribute_ForegroundColorARGB as String: foreground,
+            kCMTextMarkupAttribute_BackgroundColorARGB as String: [background, 0, 0, 0],
+            kCMTextMarkupAttribute_CharacterEdgeStyle as String: shadow ? kCMTextMarkupCharacterEdgeStyle_DropShadow : kCMTextMarkupCharacterEdgeStyle_None
+        ]
+        return AVTextStyleRule(textMarkupAttributes: attributes).map { [$0] } ?? []
+    }
+}
 
 /// The root retains the playback surface across navigation and minimization.
 @MainActor
@@ -30,6 +59,9 @@ final class CWorldPlaybackHost: ObservableObject {
     var skipNext: (() -> Void)?
     var skipPrevious: (() -> Void)?
     var toggleCaptions: (() -> Void)?
+    var remoteSkipIntro: (() -> Void)?
+    var remoteSkipOutro: (() -> Void)?
+    var remoteSetVolume: ((Float) -> Void)?
     private var connectionSubscriptions = Set<AnyCancellable>()
     private var wasConnectedToTV = false
     @Published private(set) var isPlaying = false
@@ -247,6 +279,9 @@ final class CWorldPlaybackHost: ObservableObject {
         hasAutomaticNext = false
         skipPrevious = nil
         toggleCaptions = nil
+        remoteSkipIntro = nil
+        remoteSkipOutro = nil
+        remoteSetVolume = nil
         CWorldLiveActivityController.shared.stop()
         artworkTask?.cancel()
         artworkTask = nil
@@ -270,16 +305,24 @@ struct NativeVideoPlayerView: View {
     @EnvironmentObject private var appModel: AppModel
     private let surface: PersistentVideoPlayerView
     private let onClose: (() -> Void)?
+    private let remoteSelection: PlayerSelection
     init(mediaID: String, season: Int? = nil, episode: Int? = nil, title: String,
          subtitleURL: URL? = nil, skipIntroStart: Double? = nil, skipIntroEnd: Double? = nil, skipOutroStart: Double? = nil,
          onClose: (() -> Void)? = nil) {
         self.onClose = onClose
+        remoteSelection = PlayerSelection(mediaID: mediaID, season: season, episode: episode, title: title,
+            subtitleURL: subtitleURL, skipIntroStart: skipIntroStart, skipIntroEnd: skipIntroEnd, skipOutroStart: skipOutroStart)
         surface = PersistentVideoPlayerView(mediaID: mediaID, season: season, episode: episode,
             title: title, subtitleURL: subtitleURL, skipIntroStart: skipIntroStart, skipIntroEnd: skipIntroEnd,
             skipOutroStart: skipOutroStart, onClose: { CWorldPlaybackHost.shared.stop() })
     }
     var body: some View {
         Color.black.ignoresSafeArea().onAppear {
+            if DesktopRemote.shared.controllingMac {
+                DesktopRemote.shared.sendSelection(remoteSelection, enqueue: false)
+                if let onClose { onClose() } else { dismiss() }
+                return
+            }
             let host = CWorldPlaybackHost.shared
             host.stop(clearQueue: false)
             host.surface = AnyView(surface.environmentObject(appModel).id(UUID()))
@@ -1546,8 +1589,19 @@ struct PersistentVideoPlayerView: View {
             if let player { externalDisplay.detach(player) }
         }
         .onChange(of: scenePhase) { _, phase in
-            guard phase == .background else { return }
-            scheduleProgressSave()
+            if phase == .background { scheduleProgressSave() }
+            if phase == .active {
+                updateNativeSubtitles()
+                refreshActiveSubtitle()
+                if subtitlesEnabled && subtitleCues.isEmpty && subtitleError != nil { loadSubtitles() }
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: AVPlayerItem.mediaSelectionDidChangeNotification)) { notification in
+            guard let item = notification.object as? AVPlayerItem,
+                  item === player?.currentItem else { return }
+            // AVFoundation can reset legible selection after a lock or route
+            // transition without changing the app's caption toggle.
+            updateNativeSubtitles()
         }
         .onChange(of: playbackHost.queue.map(\.id)) { _, _ in
             prefetchTask?.cancel(); prefetchTask = nil; preparedNext = nil
@@ -1566,6 +1620,9 @@ struct PersistentVideoPlayerView: View {
         }
         .onChange(of: playbackHost.isAirPlay) { _, active in
             updateNativeSubtitles()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)) { _ in
+            updateNativeSubtitleAppearance()
         }
         .opacity(closingPlayer ? 0 : 1)
         .scaleEffect(closingPlayer && !reducePlayerMotion ? 0.985 : 1)
@@ -1956,6 +2013,9 @@ struct PersistentVideoPlayerView: View {
             playbackHost.hasAutomaticNext = adjacentSelection(offset: 1) != nil
             playbackHost.skipPrevious = previousSelection.map { previous in { switchTo(previous) } }
             playbackHost.toggleCaptions = { subtitlesEnabled.toggle() }
+            playbackHost.remoteSkipIntro = { skipIntro() }
+            playbackHost.remoteSkipOutro = { skipOutro() }
+            playbackHost.remoteSetVolume = { value in volume = value; player?.volume = value }
             playbackHost.subtitlesOn = subtitlesEnabled
             playbackHost.hasSubtitles = requestedSelection.subtitleURL != nil
             updateNativeSubtitles()
@@ -2027,6 +2087,7 @@ struct PersistentVideoPlayerView: View {
             Task { @MainActor in
                 guard activeAttempt == attempt else { return }
                 updatePlaybackState(for: newPlayer)
+                if newPlayer.currentItem?.status == .readyToPlay { updateNativeSubtitles() }
             }
         }
         transportObservation = newPlayer.observe(\.timeControlStatus, options: [.initial, .new]) { _, _ in
@@ -2342,28 +2403,52 @@ struct PersistentVideoPlayerView: View {
     }
 
     @MainActor
+    private func updateNativeSubtitleAppearance() {
+        guard let player, let item = player.currentItem else { return }
+        #if targetEnvironment(macCatalyst)
+        let useMacPreferences = true
+        #else
+        let useMacPreferences = false
+        #endif
+        item.textStyleRules = player.isExternalPlaybackActive
+            ? AirPlayCaptionAppearance.rules(useMacPreferences: useMacPreferences) : nil
+    }
+
+    @MainActor
     private func updateNativeSubtitles() {
         nativeSubtitleTask?.cancel()
         guard let currentPlayer = player, let item = currentPlayer.currentItem else { return }
-        let useNative = subtitlesEnabled && (currentPlayer.isExternalPlaybackActive || selection.subtitleURL == nil)
-        for output in item.outputs {
-            (output as? AVPlayerItemLegibleOutput)?.suppressesPlayerRendering = !useNative
-        }
+        updateNativeSubtitleAppearance()
         nativeSubtitleTask = Task { @MainActor in
             do {
                 let group = try await item.asset.loadMediaSelectionGroup(for: .legible)
                 guard !Task.isCancelled, player === currentPlayer, currentPlayer.currentItem === item else { return }
+                // Read the current intent and route AFTER the suspension point.
+                let useNative = subtitlesEnabled && (currentPlayer.isExternalPlaybackActive || selection.subtitleURL == nil)
+                updateNativeSubtitleAppearance()
+                for output in item.outputs {
+                    (output as? AVPlayerItemLegibleOutput)?.suppressesPlayerRendering = !useNative
+                }
                 nativeSubtitlesAvailable = !(group?.options.isEmpty ?? true)
                 playbackHost.hasSubtitles = selection.subtitleURL != nil || nativeSubtitlesAvailable
                 if let group {
                     let english = group.options.first { ($0.extendedLanguageTag ?? $0.locale?.languageCode ?? "").hasPrefix("en") }
-                    item.select(useNative ? (english ?? group.defaultOption ?? group.options.first) : nil, in: group)
+                    let desired = useNative ? (english ?? group.defaultOption ?? group.options.first) : nil
+                    // Avoid a media-selection notification feedback loop.
+                    if item.currentMediaSelection.selectedMediaOption(in: group) != desired {
+                        item.select(desired, in: group)
+                    }
                 }
             } catch {
                 guard !Task.isCancelled, currentPlayer.currentItem === item else { return }
                 nativeSubtitlesAvailable = false
             }
         }
+    }
+
+    private func refreshActiveSubtitle() {
+        guard let seconds = player?.currentTime().seconds, seconds.isFinite else { return }
+        activeSubtitle = subtitleCues.filter { seconds >= $0.start && seconds < $0.end }.map(\.text).joined(separator: "\n")
     }
 
     private func loadSubtitles() {
@@ -2377,6 +2462,7 @@ struct PersistentVideoPlayerView: View {
                 let cues = try await SubtitleLoader.load(subtitleURL)
                 guard !Task.isCancelled, isVisible, activeAttempt == attempt, playbackKey == key else { return }
                 subtitleCues = cues
+                refreshActiveSubtitle()
             } catch {
                 guard !Task.isCancelled, isVisible, activeAttempt == attempt, playbackKey == key else { return }
                 subtitleError = error.localizedDescription

@@ -4,6 +4,7 @@ struct ProfilePickerView: View {
     @EnvironmentObject private var appModel: AppModel
     @Environment(\.dismiss) private var dismiss
     @State private var showingManagement = false
+    @State private var showingMacRemote = false
     @State private var isSelecting = false
 
     var body: some View {
@@ -61,6 +62,9 @@ struct ProfilePickerView: View {
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Mac Remote", systemImage: "appletvremote.gen4") { showingMacRemote = true }
+                }
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Sign out") { appModel.logout() }
                         .foregroundStyle(.white.opacity(0.72))
@@ -73,6 +77,7 @@ struct ProfilePickerView: View {
             .sheet(isPresented: $showingManagement) {
                 ProfileManagementView()
             }
+            .sheet(isPresented: $showingMacRemote) { DesktopRemoteView() }
         }
     }
 }

@@ -68,13 +68,14 @@ struct RootView: View {
         }
         .preferredColorScheme(.dark)
         .overlay { CWorldPlaybackOverlay() }
+        .modifier(DesktopRemoteCoordinator(appModel: appModel))
         .onOpenURL { url in
             guard url.scheme == "cearaworld", url.host == "remote", CWorldPlaybackHost.shared.surface != nil else { return }
             CWorldPlaybackHost.shared.remotePresented = true
         }
-        .onChange(of: appModel.activeProfile?.id) { _, _ in CWorldPlaybackHost.shared.stop() }
+        .onChange(of: appModel.activeProfile?.id) { _, _ in CWorldPlaybackHost.shared.stop(); DesktopRemote.shared.stop() }
         .onChange(of: appModel.isAuthenticated) { _, authenticated in
-            if !authenticated { CWorldPlaybackHost.shared.stop() }
+            if !authenticated { CWorldPlaybackHost.shared.stop(); DesktopRemote.shared.stop() }
         }
     }
 }

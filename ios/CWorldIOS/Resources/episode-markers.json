@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "d124d94b968f67a654ac639cc0fa75987cdef2419e29a36bcc21b6a0dd6d5729",
+  "sourceSHA256": "c4be5f84475f7c60287806315cd1c326451551fb6c6459603b55fabd9e850180",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -8541,7 +8541,7 @@
     "americandad:20:12": {
       "introStart": 61.7,
       "introEnd": 90,
-      "outroStart": 409.67
+      "outroStart": 1259.31
     },
     "americandad:20:13": {
       "introStart": 66.1,
@@ -8774,89 +8774,89 @@
       "outroStart": 1318.95
     },
     "adults:1:1": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 148.62,
+      "introEnd": 166.35,
+      "outroStart": 1575.25
     },
     "adults:1:2": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 26.65,
+      "outroStart": 1170.3
     },
     "adults:1:3": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 82.1,
+      "introEnd": 98.95,
+      "outroStart": 1284.4
     },
     "adults:1:4": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 9.55,
+      "introEnd": 26.4,
+      "outroStart": 1250.35
     },
     "adults:1:5": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 91.9,
+      "introEnd": 108.3,
+      "outroStart": 1255.5
     },
     "adults:1:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1377.9
     },
     "adults:1:7": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 146.25,
+      "introEnd": 163.7,
+      "outroStart": 1326.35
     },
     "adults:1:8": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 106.35,
+      "introEnd": 122.45,
+      "outroStart": 1407.1
     },
     "adults:1:9": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 96.65,
+      "introEnd": 113.5,
+      "outroStart": 1172.05
     },
     "adults:2:1": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 99.32,
+      "introEnd": 116.5,
+      "outroStart": 1402.2
     },
     "adults:2:2": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 49.62,
+      "introEnd": 66.8,
+      "outroStart": 1475.35
     },
     "adults:2:3": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 118.02,
+      "introEnd": 135.2,
+      "outroStart": 1279.45
     },
     "adults:2:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1532.9
     },
     "adults:2:5": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 105.22,
+      "introEnd": 122.4,
+      "outroStart": 1530.4
     },
     "adults:2:6": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 102.42,
+      "introEnd": 119.6,
+      "outroStart": 1243.05
     },
     "adults:2:7": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 104.65,
+      "introEnd": 121.1,
+      "outroStart": 1436.7
     },
     "adults:2:8": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 142.42,
+      "introEnd": 159.05,
+      "outroStart": 1509.6
     },
     "curbyourenthusiasm:1:1": {
       "introStart": null,
