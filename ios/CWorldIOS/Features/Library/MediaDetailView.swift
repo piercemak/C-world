@@ -1352,6 +1352,7 @@ struct PersistentVideoPlayerView: View {
     @State private var waitingTimeoutTask: Task<Void, Never>?
     @State private var tvHelpVisible = false
     @State private var outroCountdown: Int?
+    @AppStorage("cworld.playback.autoSkipOutro") private var autoSkipOutro = true
     @State private var outroCancelled = false
     @State private var preparedNext: (key: String, url: URL, date: Date)?
     @State private var prefetchTask: Task<Void, Never>?
@@ -1399,7 +1400,7 @@ struct PersistentVideoPlayerView: View {
               subtitle: subtitlesEnabled ? activeSubtitle : "",
               state: playbackState,
               message: subtitleError == nil ? nil : "Subtitles unavailable · Retry on your iPhone",
-              nextTitle: canSkipOutro && !outroCancelled ? nextSelection.map { "\($0.title) · starting in \(outroCountdown ?? 5)s" } : nil)
+              nextTitle: autoSkipOutro && canSkipOutro && !outroCancelled ? nextSelection.map { "\($0.title) · starting in \(outroCountdown ?? 5)s" } : nil)
     }
 
     var body: some View {
@@ -1486,7 +1487,7 @@ struct PersistentVideoPlayerView: View {
                         Button("Skip Intro", action: skipIntro).buttonStyle(MacSkipButtonStyle())
                     }
                     if canSkipOutro && !outroCancelled {
-                        if let next = nextSelection {
+                        if autoSkipOutro, let next = nextSelection {
                             MacOutroCard(artwork: appModel.media(for: next.mediaID).flatMap {
                                 MacDesktopCatalog.placeholder($0, season: next.season, episode: next.episode)
                             }, player: player, countdownStart: skipMarkers.outroStart,
@@ -1494,7 +1495,7 @@ struct PersistentVideoPlayerView: View {
                                 outroCancelled = true; outroCountdown = nil
                             })
                         } else {
-                            Button("Skip Outro", action: skipOutro).buttonStyle(MacSkipButtonStyle())
+                            Button(nextSelection == nil ? "Skip Outro" : "Next episode", action: skipOutro).buttonStyle(MacSkipButtonStyle())
                         }
                     }
                 }
@@ -1625,6 +1626,10 @@ struct PersistentVideoPlayerView: View {
             updateNativeSubtitleAppearance()
         }
         .opacity(closingPlayer ? 0 : 1)
+        .onChange(of: autoSkipOutro) { _, enabled in
+            outroCountdown = nil
+            if enabled { outroCancelled = false }
+        }
         .scaleEffect(closingPlayer && !reducePlayerMotion ? 0.985 : 1)
         .allowsHitTesting(!closingPlayer)
     }
@@ -1635,6 +1640,7 @@ struct PersistentVideoPlayerView: View {
                             currentTime: $currentTime, duration: duration,
                             subtitlesEnabled: $subtitlesEnabled, hasSubtitles: selection.subtitleURL != nil || nativeSubtitlesAvailable,
                             subtitleSettingsPresented: $subtitleSettingsPresented,
+                            autoSkipOutro: $autoSkipOutro,
                             volume: $volume, isMuted: $isMuted, close: closePlayer, toggle: togglePlayback,
                             restart: restartPlayback,
                             seek: { seek(by: $0) }, editing: { editing in
@@ -1821,6 +1827,7 @@ struct PersistentVideoPlayerView: View {
                     }
                 }
                 Menu {
+                    Toggle("Auto-skip outro", systemImage: "forward.end.circle", isOn: $autoSkipOutro)
                     Button("Restart", systemImage: "arrow.counterclockwise", action: restartPlayback)
                     Button("TV remote and Up Next", systemImage: "appletvremote.gen4") {
                         playbackHost.remotePresented = true
@@ -2177,7 +2184,7 @@ struct PersistentVideoPlayerView: View {
             hasReachedOutro = true
             scheduleProgressSave()
         }
-        if !outroCancelled, nextSelection != nil, let countdown = skipMarkers.nextEpisodeCountdown(at: seconds, duration: duration) {
+        if autoSkipOutro, !outroCancelled, nextSelection != nil, let countdown = skipMarkers.nextEpisodeCountdown(at: seconds, duration: duration) {
             outroCountdown = countdown
             if outroCountdown == 0, let nextSelection {
                 switchTo(nextSelection, completingEpisode: true)
@@ -2195,7 +2202,7 @@ struct PersistentVideoPlayerView: View {
         waitingTimeoutTask?.cancel()
         // Canceling the outro also cancels automatic advancement at the actual end.
         // loadPlayback resets this choice for the next episode; manual Next still works.
-        if !outroCancelled, let nextSelection {
+        if autoSkipOutro, !outroCancelled, let nextSelection {
             switchTo(nextSelection, completingEpisode: true)
         } else {
             outroCountdown = nil

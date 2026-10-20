@@ -183,8 +183,8 @@ const metadata = {
     "title": "Cyberpunk: Edgerunners",
     "release_year": "2022",
     "genre": "Action",
-    "season_total_number": "1 season",
-    "season_digit": 1,
+    "season_total_number": "2 seasons",
+    "season_digit": 2,
     "description": "A Street Kid trying to survive in a technology and body modification-obsessed city of the future. Having everything to lose, he chooses to stay alive by becoming an Edgerunner, a Mercenary outlaw also known as a Cyberpunk.",
     "background": "/images/cyberpunk/covers/cyberpunkCover.jpg",
     "subtitles": "yes"

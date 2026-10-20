@@ -1225,6 +1225,108 @@ export const skipTimes = {
             "skipTo": "next"
           }
         }
+      },
+      "2": {
+        "1": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "2": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "3": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "4": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "5": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "6": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "7": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "8": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "9": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "10": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        }
       }
     }
   },
@@ -13195,7 +13297,8 @@ export const seasonLength = {
     "3": 12
   },
   "cyberpunk": {
-    "1": 10
+    "1": 10,
+    "2": 10
   },
   "lovedeathandrobots": {
     "1": 18,

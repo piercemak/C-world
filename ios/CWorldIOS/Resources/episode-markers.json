@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "c4be5f84475f7c60287806315cd1c326451551fb6c6459603b55fabd9e850180",
+  "sourceSHA256": "437ec6ae649a6c191b41277bbacb07297b95c9b06e209486411993bc0cd90ba3",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -3192,6 +3192,56 @@
       "introStart": 0,
       "introEnd": 100,
       "outroStart": 1525
+    },
+    "cyberpunk:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "cyberpunk:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
     },
     "lovedeathandrobots:1:1": {
       "introStart": null,

@@ -260,6 +260,7 @@ struct MacPlaybackControls: View {
     @Binding var subtitlesEnabled: Bool
     let hasSubtitles: Bool
     @Binding var subtitleSettingsPresented: Bool
+    @Binding var autoSkipOutro: Bool
     @Binding var volume: Float
     @Binding var isMuted: Bool
     let close: () -> Void
@@ -322,6 +323,12 @@ struct MacPlaybackControls: View {
                                 }
                         }
                         CWorldAudioTrackMenu(player: player)
+                        Button { autoSkipOutro.toggle() } label: {
+                            Image(systemName: autoSkipOutro ? "forward.end.circle.fill" : "forward.end.circle")
+                        }
+                        .help("Auto-skip outro: \(autoSkipOutro ? "On" : "Off")")
+                        .accessibilityLabel("Auto-skip outro")
+                        .accessibilityValue(autoSkipOutro ? "On" : "Off")
                         if phoneRemote.connected && phoneRemote.hosting {
                             Button { phoneRemote.presented = true } label: {
                                 Image(systemName: "iphone.radiowaves.left.and.right")
