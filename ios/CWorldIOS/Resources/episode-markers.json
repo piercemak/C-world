@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "437ec6ae649a6c191b41277bbacb07297b95c9b06e209486411993bc0cd90ba3",
+  "sourceSHA256": "c9f762617527902b57eee41854270a2fc039c49112fb63adfea6e6b4816bde5c",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -3194,54 +3194,54 @@
       "outroStart": 1525
     },
     "cyberpunk:2:1": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 77.35,
+      "introEnd": 167.8,
+      "outroStart": 1514.75
     },
     "cyberpunk:2:2": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 9.35,
+      "introEnd": 99.8,
+      "outroStart": 1461.8
     },
     "cyberpunk:2:3": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 60.35,
+      "introEnd": 150.8,
+      "outroStart": 1489.18
     },
     "cyberpunk:2:4": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 9.35,
+      "introEnd": 99.8,
+      "outroStart": 1488.7
     },
     "cyberpunk:2:5": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 9.35,
+      "introEnd": 99.8,
+      "outroStart": 1382.32
     },
     "cyberpunk:2:6": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 80.35,
+      "introEnd": 170.8,
+      "outroStart": 1490.51
     },
     "cyberpunk:2:7": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 9.35,
+      "introEnd": 99.8,
+      "outroStart": 1520.46
     },
     "cyberpunk:2:8": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 55.35,
+      "introEnd": 145.8,
+      "outroStart": 1462.26
     },
     "cyberpunk:2:9": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 78.35,
+      "introEnd": 168.8,
+      "outroStart": 1551.82
     },
     "cyberpunk:2:10": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 99.8,
+      "outroStart": 1695.18
     },
     "lovedeathandrobots:1:1": {
       "introStart": null,

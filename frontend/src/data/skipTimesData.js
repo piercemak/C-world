@@ -1229,101 +1229,101 @@ export const skipTimes = {
       "2": {
         "1": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 77.35,
+            "end": 167.8
           },
           "outro": {
-            "start": 0,
+            "start": 1514.75,
             "skipTo": "next"
           }
         },
         "2": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 9.35,
+            "end": 99.8
           },
           "outro": {
-            "start": 0,
+            "start": 1461.8,
             "skipTo": "next"
           }
         },
         "3": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 60.35,
+            "end": 150.8
           },
           "outro": {
-            "start": 0,
+            "start": 1489.18,
             "skipTo": "next"
           }
         },
         "4": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 9.35,
+            "end": 99.8
           },
           "outro": {
-            "start": 0,
+            "start": 1488.7,
             "skipTo": "next"
           }
         },
         "5": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 9.35,
+            "end": 99.8
           },
           "outro": {
-            "start": 0,
+            "start": 1382.32,
             "skipTo": "next"
           }
         },
         "6": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 80.35,
+            "end": 170.8
           },
           "outro": {
-            "start": 0,
+            "start": 1490.51,
             "skipTo": "next"
           }
         },
         "7": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 9.35,
+            "end": 99.8
           },
           "outro": {
-            "start": 0,
+            "start": 1520.46,
             "skipTo": "next"
           }
         },
         "8": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 55.35,
+            "end": 145.8
           },
           "outro": {
-            "start": 0,
+            "start": 1462.26,
             "skipTo": "next"
           }
         },
         "9": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 78.35,
+            "end": 168.8
           },
           "outro": {
-            "start": 0,
+            "start": 1551.82,
             "skipTo": "next"
           }
         },
         "10": {
           "intro": {
             "start": 0,
-            "end": 0
+            "end": 99.8
           },
           "outro": {
-            "start": 0,
+            "start": 1695.18,
             "skipTo": "next"
           }
         }

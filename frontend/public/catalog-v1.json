@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-20T19:54:46.192Z",
-  "generatedAt": "2026-10-20T19:54:46.192Z",
+  "catalogRevision": "2026-10-21T00:51:05.068Z",
+  "generatedAt": "2026-10-21T00:51:05.068Z",
   "items": [
     {
       "id": "steven-universe",
@@ -12411,9 +12411,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 77.35,
+              "skipIntroEnd": 167.8,
+              "skipOutroStart": 1514.75
             },
             {
               "number": 2,
@@ -12432,9 +12432,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 9.35,
+              "skipIntroEnd": 99.8,
+              "skipOutroStart": 1461.8
             },
             {
               "number": 3,
@@ -12453,9 +12453,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 60.35,
+              "skipIntroEnd": 150.8,
+              "skipOutroStart": 1489.18
             },
             {
               "number": 4,
@@ -12474,9 +12474,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 9.35,
+              "skipIntroEnd": 99.8,
+              "skipOutroStart": 1488.7
             },
             {
               "number": 5,
@@ -12495,9 +12495,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 9.35,
+              "skipIntroEnd": 99.8,
+              "skipOutroStart": 1382.32
             },
             {
               "number": 6,
@@ -12516,9 +12516,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 80.35,
+              "skipIntroEnd": 170.8,
+              "skipOutroStart": 1490.51
             },
             {
               "number": 7,
@@ -12537,9 +12537,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 9.35,
+              "skipIntroEnd": 99.8,
+              "skipOutroStart": 1520.46
             },
             {
               "number": 8,
@@ -12558,9 +12558,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 55.35,
+              "skipIntroEnd": 145.8,
+              "skipOutroStart": 1462.26
             },
             {
               "number": 9,
@@ -12579,9 +12579,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E09_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 78.35,
+              "skipIntroEnd": 168.8,
+              "skipOutroStart": 1551.82
             },
             {
               "number": 10,
@@ -12600,9 +12600,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/cyberpunk/season2/S2E10_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 99.8,
+              "skipOutroStart": 1695.18
             }
           ]
         }
