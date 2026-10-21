@@ -30,7 +30,7 @@ struct CatalogSearchIndex {
                 normalizedTitle: Self.normalize(media.title))]
             for season in media.seasons ?? [] {
                 for episode in season.episodes {
-                    let title = EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season.number, episode: episode.number) ?? episode.title
+                    let title = episode.title
                     let code = String(format: "S%02dE%02d", season.number, episode.number)
                     let aliases = "\(code) S\(season.number)E\(episode.number) season \(season.number) episode \(episode.number)"
                     results.append(CatalogSearchResult(media: media, season: season.number, episode: episode.number,

@@ -367,7 +367,7 @@ const getEpisodesForSeason = (
     return {
       id: `S${String(seasonNumber).padStart(2, "0")}E${String(episodeNumber).padStart(2, "0")}`,
       number: episodeNumber,
-      title: String(title).replace(/_/g, " "),
+      title: episodeMetadata?.title || String(title).replace(/_/g, " "),
       runtime: titleToRuntime(media),
       progress,
       status: getStatus(progress),

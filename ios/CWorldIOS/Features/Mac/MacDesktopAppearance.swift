@@ -556,7 +556,7 @@ struct MacHistoryCard: View {
     }
     private var tileTitle: String {
         guard let episodeData else { return media.title }
-        return EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season ?? 1, episode: episodeData.number) ?? episodeData.title
+        return episodeData.title
     }
     private var tileSubtitle: String {
         guard let episodeData else { return "Movie · \(media.metadata.duration)" }

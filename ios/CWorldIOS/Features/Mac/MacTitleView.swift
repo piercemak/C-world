@@ -215,7 +215,7 @@ struct MacTitleView: View {
         }.font(.custom(CWorldFonts.poppins(.semibold), size: 12)).frame(maxWidth: .infinity).frame(height: compact ? 64 : 88)
             .cworldLiquidGlass(in: RoundedRectangle(cornerRadius: 5), fallback: .white.opacity(0.06))
     }
-    private func episodeTitle(_ episode: CWorldEpisode) -> String { EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: seasonNumber, episode: episode.number) ?? episode.title }
+    private func episodeTitle(_ episode: CWorldEpisode) -> String { episode.title }
     private func code(_ episode: CWorldEpisode) -> String { String(format: "S%02dE%02d", seasonNumber, episode.number) }
     private func episodeCard(_ episode: CWorldEpisode) -> some View {
         let missing = appModel.episodeIsAvailable(mediaID: media.id, season: seasonNumber, episode: episode.number) == false

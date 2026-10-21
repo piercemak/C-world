@@ -89,12 +89,11 @@ struct MacPlaybackSelection: Identifiable {
     var playbackID: String { episode?.playbackRef.mediaId ?? media.movieAsset?.mediaId ?? media.id }
     var title: String {
         guard let season, let episode else { return media.title }
-        return String(format: "S%02dE%02d", season, episode.number) + " · " +
-            (EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season, episode: episode.number) ?? episode.title)
+        return String(format: "S%02dE%02d", season, episode.number) + " · " + episode.title
     }
     var playerEpisodeLabel: String? {
         guard let season, let episode else { return nil }
-        let name = EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season, episode: episode.number) ?? episode.title
+        let name = episode.title
         return String(format: "S%02dE%02d", season, episode.number) + " • " + name
     }
     var subtitleURL: URL? { episode?.subtitles.first ?? (episode == nil ? media.subtitleTracks.first : nil) }

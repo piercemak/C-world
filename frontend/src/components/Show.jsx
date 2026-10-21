@@ -842,7 +842,9 @@ const handleSkipToPrevious = async () => {
       setDispE(Number.isFinite(e) ? e : (Number.isFinite(episode) ? episode : null));
     }, [playbackSrc, season, episode]);
 
-    const currentTitleRaw = dispS && dispE && episodeTitles?.[dispS]?.[dispE - 1];
+    const currentTitleRaw = dispS && dispE && (
+      episodeMetadata?.[dispS]?.[dispE - 1]?.title || episodeTitles?.[dispS]?.[dispE - 1]
+    );
     const currentTitleFormatted = currentTitleRaw
       ? currentTitleRaw.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
       : (dispE != null ? `Episode ${dispE}` : "");

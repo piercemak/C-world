@@ -611,7 +611,7 @@ struct CWorldQueueEntry: Identifiable, Equatable {
         id = UUID()
         mediaTitle = media.title
         artworkURL = MacDesktopCatalog.placeholder(media, season: season, episode: episode?.number)
-        let name = episode.map { EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season ?? 1, episode: $0.number) ?? $0.title }
+        let name = episode?.title
         selection = PlayerSelection(mediaID: episode?.playbackRef.mediaId ?? media.movieAsset?.mediaId ?? media.id,
             season: season, episode: episode?.number,
             title: episode.map { "S\(season ?? 1)E\($0.number) · \(name ?? $0.title)" } ?? media.title,

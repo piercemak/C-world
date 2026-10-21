@@ -919,11 +919,7 @@ struct MediaDetailView: View {
     }
 
     private func displayTitle(for episode: CWorldEpisode) -> String {
-        EpisodeTitleCatalog.displayTitle(
-            mediaID: media.id,
-            season: selectedSeason,
-            episode: episode.number
-        ) ?? episode.title
+        episode.title
     }
 }
 
@@ -1066,7 +1062,7 @@ struct EpisodeDetailView: View {
     var body: some View {
         List {
             Section {
-                Text(EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season, episode: episode.number) ?? episode.title)
+                Text(episode.title)
                     .cworldRoundedFont(24, weight: .bold)
                     .foregroundStyle(.white)
                 if !episode.description.isEmpty {
@@ -1870,7 +1866,7 @@ struct PersistentVideoPlayerView: View {
     private var playerEpisodeLabel: String? {
         guard let season = selection.season, let episodeNumber = selection.episode else { return nil }
         let episode = appModel.media(for: selection.mediaID)?.seasons?.first(where: { $0.number == season })?.episodes.first(where: { $0.number == episodeNumber })
-        let name = EpisodeTitleCatalog.displayTitle(mediaID: selection.mediaID, season: season, episode: episodeNumber) ?? episode?.title ?? "Episode \(episodeNumber)"
+        let name = episode?.title ?? "Episode \(episodeNumber)"
         return String(format: "S%02dE%02d", season, episodeNumber) + " • " + name
     }
 
@@ -2402,7 +2398,7 @@ struct PersistentVideoPlayerView: View {
             mediaID: episode.playbackRef.mediaId,
             season: season.number,
             episode: episode.number,
-            title: "S\(String(format: "%02d", season.number))E\(String(format: "%02d", episode.number)) · \(EpisodeTitleCatalog.displayTitle(mediaID: media.id, season: season.number, episode: episode.number) ?? episode.title)",
+            title: "S\(String(format: "%02d", season.number))E\(String(format: "%02d", episode.number)) · \(episode.title)",
             subtitleURL: episode.subtitles.first,
             skipIntroStart: episode.skipIntroStart, skipIntroEnd: episode.skipIntroEnd,
             skipOutroStart: episode.skipOutroStart
