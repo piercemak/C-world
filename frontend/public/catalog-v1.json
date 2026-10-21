@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-21T00:51:05.068Z",
-  "generatedAt": "2026-10-21T00:51:05.068Z",
+  "catalogRevision": "2026-10-21T17:17:12.170Z",
+  "generatedAt": "2026-10-21T17:17:12.170Z",
   "items": [
     {
       "id": "steven-universe",
@@ -37215,7 +37215,7 @@
       "type": "show",
       "title": "Steel Ball Run",
       "dateAdded": "10-2-26",
-      "description": "Description TBD.",
+      "description": "America, 1890. Johnny Joestar, a genius jockey now paralyzed from the waist down, chases after outlaw Gyro Zeppeli in a tough cross-continent horse race.",
       "artwork": {
         "card": "https://cearaworld.com/images/cardimages/steelballrunLogo.svg",
         "poster": "https://cearaworld.com/images/steelballrun/covers/steelballrun_mobileLogo.jpeg",
@@ -37223,11 +37223,11 @@
         "mobileBackdrop": "https://cearaworld.com/images/steelballrun/covers/steelballrun_backdrop.svg"
       },
       "metadata": {
-        "creator": "TBD",
+        "creator": "Hirohiko Araki",
         "rating": "TBD",
-        "year": "TBD",
+        "year": "2026",
         "genres": [
-          "TBD"
+          "Animation, Action & Adventure, Sci-Fi & Fantasy"
         ],
         "duration": "22m",
         "ageRating": "18+"
@@ -37304,8 +37304,8 @@
             },
             {
               "number": 4,
-              "title": "Episode 4",
-              "description": "",
+              "title": "The Devil's Palm",
+              "description": "Caught in the Boombooms' trap, a magnetic force threatens to tear Johnny, Gyro and Mountain Tim apart. They learn about \"Stands\" and Johnny's body reacts.",
               "airDate": "2026-10-09",
               "duration": "22m",
               "playbackRef": {
@@ -37325,8 +37325,8 @@
             },
             {
               "number": 5,
-              "title": "Episode 5",
-              "description": "",
+              "title": "The Terrorist from a Faraway Country",
+              "description": "At a checkpoint, Oye — a man who knows Gyro's past — confronts the duo. His power to turn anything he touches into a bomb leaves them with nowhere to run.",
               "airDate": "2026-10-16",
               "duration": "22m",
               "playbackRef": {

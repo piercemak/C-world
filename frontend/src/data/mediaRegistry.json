@@ -29696,16 +29696,16 @@
         "type": "show",
         "title": "Steel Ball Run",
         "agerating": "18+",
-        "release_year": "TBD",
-        "genre": "TBD",
+        "release_year": "2026",
+        "genre": "Animation, Action & Adventure, Sci-Fi & Fantasy",
         "season_total_number": "1 season",
         "season_digit": 1,
-        "description": "Description TBD.",
+        "description": "America, 1890. Johnny Joestar, a genius jockey now paralyzed from the waist down, chases after outlaw Gyro Zeppeli in a tough cross-continent horse race.",
         "background": "/images/steelballrun/covers/steelballrunCover.svg",
         "subtitles": "yes"
       },
       "mobile": {
-        "creator": "TBD",
+        "creator": "Hirohiko Araki",
         "background": "/images/steelballrun/covers/steelballrun_backdrop.svg",
         "ratings": "TBD",
         "type": "TV",
@@ -29761,14 +29761,14 @@
             "tmdbId": 7459374
           },
           {
-            "title": "Episode 4",
-            "description": "",
+            "title": "The Devil's Palm",
+            "description": "Caught in the Boombooms' trap, a magnetic force threatens to tear Johnny, Gyro and Mountain Tim apart. They learn about \"Stands\" and Johnny's body reacts.",
             "airDate": "2026-10-09",
             "tmdbId": 7459375
           },
           {
-            "title": "Episode 5",
-            "description": "",
+            "title": "The Terrorist from a Faraway Country",
+            "description": "At a checkpoint, Oye — a man who knows Gyro's past — confronts the duo. His power to turn anything he touches into a bomb leaves them with nowhere to run.",
             "airDate": "2026-10-16",
             "tmdbId": 7459376
           },

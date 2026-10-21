@@ -773,7 +773,7 @@ export const SHOWS = [
   {
     "id": "steelballrun",
     "title": "Steel Ball Run",
-    "creator": "TBD",
+    "creator": "Hirohiko Araki",
     "background": "/images/steelballrun/covers/steelballrun_backdrop.svg",
     "ratings": "TBD",
     "type": "TV",
