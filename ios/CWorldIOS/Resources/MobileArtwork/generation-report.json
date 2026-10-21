@@ -504,13 +504,13 @@
       "titles": [
         "Cyberpunk: Edgerunners"
       ],
-      "sourceBytes": 5358875,
-      "outputBytes": 252117,
-      "thumbnailBytes": 50685,
+      "sourceBytes": 5712185,
+      "outputBytes": 342662,
+      "thumbnailBytes": 61061,
       "width": 1024,
       "height": 1024,
       "format": "jpg",
-      "psnr": 44.91376250889803
+      "psnr": 42.532068878709175
     },
     {
       "url": "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg",
@@ -1904,6 +1904,6 @@
       "psnr": 51.71807380209944
     }
   ],
-  "sourceBytes": 791450327,
-  "outputBytes": 99057045
+  "sourceBytes": 791803637,
+  "outputBytes": 99157966
 }

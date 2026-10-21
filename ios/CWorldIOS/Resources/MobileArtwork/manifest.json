@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-20T19:47:26.841Z",
+  "catalogRevision": "2026-10-21T00:51:05.068Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -291,12 +291,12 @@
       "sourceSHA256": "74809271938fb7ef15e731c2cd0e0bd9f3334b1fe55efc5d3bfd2601a7182e36"
     },
     "https://cearaworld.com/images/cardimages/cyberpunkLogo.svg": {
-      "image": "515ae9906200-eb60f5e33ee5.jpg",
-      "thumbnail": "515ae9906200-eb60f5e33ee5-thumb.jpg",
+      "image": "515ae9906200-3ba48c36115e.jpg",
+      "thumbnail": "515ae9906200-3ba48c36115e-thumb.jpg",
       "width": 1024,
       "height": 1024,
       "thumbnailMaxPixelSize": 320,
-      "sourceSHA256": "eb60f5e33ee5a709beea2996deeb7f4be737efb8e4d0fbb43095fc0771d02e74"
+      "sourceSHA256": "3ba48c36115e86e7fb10d5b405a99c91d0901b370197f6bf4fa450a13cb26387"
     },
     "https://cearaworld.com/images/cyberpunk/covers/cyberpunk_backdrop.svg": {
       "image": "915563d55712-85a63fcaaaf8.jpg",
