@@ -37,34 +37,48 @@ const MobileLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full h-dvh  bg-[url('/images/misc/lilliesLoginMobile.svg')] bg-cover bg-center p-8 poppinsfont">
-      <div className='text-white flex flex-col items-center justify-center gap-4 h-full bg-white/20 backdrop-blur border border-white/40 shadow-lg rounded-3xl'>
-        <div className='flex flex-col items-center absolute h-full py-4'>
+    <form onSubmit={handleSubmit} className="w-full min-h-dvh bg-[#142522] bg-cover bg-center p-8 poppinsfont" style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)), url('/images/misc/lilliesLoginMobile.webp')", colorScheme: 'dark' }}>
+      <div className='text-white flex min-h-[calc(100dvh-4rem)] flex-col items-center bg-black/35 backdrop-blur border border-white/40 shadow-lg rounded-3xl'>
+        <div className='flex shrink-0 flex-col items-center py-6'>
           <span className='flex flex-row text-3xl items-center gap-1 font-bold'> C {globeIcon}</span>
-          <h2 className="text-3xl font-bold flex items-start h-dvh mt-8">{isRegistering ? "Request Access" : "Log In"}</h2>
+          <h2 className="text-3xl font-bold mt-8">{isRegistering ? "Request Access" : "Log In"}</h2>
         </div>
         
 
         
+        <div className="flex w-full flex-1 flex-col items-center justify-center gap-4 py-8">
         <input
           type="text"
+          name="username"
+          autoComplete="username"
+          autoCapitalize="none"
+          spellCheck={false}
+          aria-label="Username"
+          required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="bg-white/20 w-[70%] text-white p-2 rounded-lg focus:outline-none focus:ring-0 focus:border-none"
+          className="bg-black/50 border border-white/40 w-[80%] text-base text-white placeholder:text-white/70 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/70"
           placeholder="Username"
         />
         {isRegistering && <input
           type="email"
+          name="email"
+          autoComplete="email"
+          aria-label="Email (optional)"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="bg-white/20 w-[70%] text-white p-2 rounded-lg focus:outline-none focus:ring-0 focus:border-none"
+          className="bg-black/50 border border-white/40 w-[80%] text-base text-white placeholder:text-white/70 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/70"
           placeholder="Email (optional)"
         />}
         <input
           type="password"
+          name="password"
+          autoComplete={isRegistering ? 'new-password' : 'current-password'}
+          aria-label="Password"
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="bg-white/20 w-[70%] text-white p-2 rounded-lg focus:outline-none focus:ring-0 focus:border-none"
+          className="bg-black/50 border border-white/40 w-[80%] text-base text-white placeholder:text-white/70 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/70"
           placeholder="Password"
         />
         <motion.button 
@@ -84,6 +98,7 @@ const MobileLogin = () => {
         <button type="button" onClick={() => { setIsRegistering((value) => !value); setNotice(''); }} className="text-sm text-white/80 underline underline-offset-4">
           {isRegistering ? "Already approved? Sign in" : "Request an account"}
         </button>
+        </div>
       </div>
     </form>
   );
