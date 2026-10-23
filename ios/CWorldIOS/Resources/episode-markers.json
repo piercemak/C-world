@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "1a98a2c1e1416357eb8e6e6d9e4f63655090188b35f4684c0cbeaa468382b411",
+  "sourceSHA256": "7d45babea4261b32e2fad1884df97c4550483f624108d1dc3d6b656de26ae406",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -6776,42 +6776,42 @@
     "alienearth:1:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3610.4
     },
     "alienearth:1:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3103.65
     },
     "alienearth:1:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3057.9
     },
     "alienearth:1:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3343.9
     },
     "alienearth:1:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3655.3
     },
     "alienearth:1:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3242.95
     },
     "alienearth:1:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2481.95
     },
     "alienearth:1:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2633.65
     },
     "americandad:1:1": {
       "introStart": 0.02,
@@ -8911,627 +8911,627 @@
     "curbyourenthusiasm:1:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1667.48
     },
     "curbyourenthusiasm:1:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1639.65
     },
     "curbyourenthusiasm:1:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1634.85
     },
     "curbyourenthusiasm:1:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1587.85
     },
     "curbyourenthusiasm:1:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1669.55
     },
     "curbyourenthusiasm:1:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1704.8
     },
     "curbyourenthusiasm:1:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1548.92
     },
     "curbyourenthusiasm:1:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1711.8
     },
     "curbyourenthusiasm:1:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1726.95
     },
     "curbyourenthusiasm:1:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1774.1
     },
     "curbyourenthusiasm:2:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1720.9
     },
     "curbyourenthusiasm:2:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1594.75
     },
     "curbyourenthusiasm:2:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1739.95
     },
     "curbyourenthusiasm:2:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1677.8
     },
     "curbyourenthusiasm:2:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1587.05
     },
     "curbyourenthusiasm:2:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1713.71
     },
     "curbyourenthusiasm:2:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1703.25
     },
     "curbyourenthusiasm:2:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1726.15
     },
     "curbyourenthusiasm:2:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1714.55
     },
     "curbyourenthusiasm:2:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1705.7
     },
     "curbyourenthusiasm:3:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1735.05
     },
     "curbyourenthusiasm:3:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1705.35
     },
     "curbyourenthusiasm:3:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.65
     },
     "curbyourenthusiasm:3:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1721.15
     },
     "curbyourenthusiasm:3:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.5
     },
     "curbyourenthusiasm:3:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1715.1
     },
     "curbyourenthusiasm:3:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1632.45
     },
     "curbyourenthusiasm:3:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1701.3
     },
     "curbyourenthusiasm:3:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1790.15
     },
     "curbyourenthusiasm:3:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1706.55
     },
     "curbyourenthusiasm:4:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736
     },
     "curbyourenthusiasm:4:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1722
     },
     "curbyourenthusiasm:4:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1739.55
     },
     "curbyourenthusiasm:4:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1738.2
     },
     "curbyourenthusiasm:4:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.6
     },
     "curbyourenthusiasm:4:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1735.6
     },
     "curbyourenthusiasm:4:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1741
     },
     "curbyourenthusiasm:4:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1680.25
     },
     "curbyourenthusiasm:4:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1738.95
     },
     "curbyourenthusiasm:4:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3395.55
     },
     "curbyourenthusiasm:5:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.15
     },
     "curbyourenthusiasm:5:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.2
     },
     "curbyourenthusiasm:5:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1640.75
     },
     "curbyourenthusiasm:5:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1732.3
     },
     "curbyourenthusiasm:5:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.5
     },
     "curbyourenthusiasm:5:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1708
     },
     "curbyourenthusiasm:5:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1735.25
     },
     "curbyourenthusiasm:5:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1966.95
     },
     "curbyourenthusiasm:5:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1654.05
     },
     "curbyourenthusiasm:5:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2448.35
     },
     "curbyourenthusiasm:6:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1731.1
     },
     "curbyourenthusiasm:6:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1735.6
     },
     "curbyourenthusiasm:6:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1730.3
     },
     "curbyourenthusiasm:6:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1728.2
     },
     "curbyourenthusiasm:6:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1661.65
     },
     "curbyourenthusiasm:6:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1727.5
     },
     "curbyourenthusiasm:6:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1734.4
     },
     "curbyourenthusiasm:6:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1725
     },
     "curbyourenthusiasm:6:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1738.7
     },
     "curbyourenthusiasm:6:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2061.65
     },
     "curbyourenthusiasm:7:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1721.75
     },
     "curbyourenthusiasm:7:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1716.4
     },
     "curbyourenthusiasm:7:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1788.05
     },
     "curbyourenthusiasm:7:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1714.65
     },
     "curbyourenthusiasm:7:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1658.6
     },
     "curbyourenthusiasm:7:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1853.25
     },
     "curbyourenthusiasm:7:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1735.85
     },
     "curbyourenthusiasm:7:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1729.25
     },
     "curbyourenthusiasm:7:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2085.45
     },
     "curbyourenthusiasm:7:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2426.65
     },
     "curbyourenthusiasm:8:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1717.35
     },
     "curbyourenthusiasm:8:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1705.55
     },
     "curbyourenthusiasm:8:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1737.3
     },
     "curbyourenthusiasm:8:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.7
     },
     "curbyourenthusiasm:8:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1698.3
     },
     "curbyourenthusiasm:8:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1736.2
     },
     "curbyourenthusiasm:8:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1710.4
     },
     "curbyourenthusiasm:8:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1723.65
     },
     "curbyourenthusiasm:8:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1901.25
     },
     "curbyourenthusiasm:8:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1725.3
     },
     "curbyourenthusiasm:9:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2169.75
     },
     "curbyourenthusiasm:9:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2017.05
     },
     "curbyourenthusiasm:9:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1935.35
     },
     "curbyourenthusiasm:9:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1838.95
     },
     "curbyourenthusiasm:9:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1928.5
     },
     "curbyourenthusiasm:9:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2185.35
     },
     "curbyourenthusiasm:9:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1970.05
     },
     "curbyourenthusiasm:9:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1954.5
     },
     "curbyourenthusiasm:9:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2547.25
     },
     "curbyourenthusiasm:9:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2851.8
     },
     "curbyourenthusiasm:10:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2150
     },
     "curbyourenthusiasm:10:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1978.15
     },
     "curbyourenthusiasm:10:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2236.1
     },
     "curbyourenthusiasm:10:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2619.35
     },
     "curbyourenthusiasm:10:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2185.45
     },
     "curbyourenthusiasm:10:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2230.4
     },
     "curbyourenthusiasm:10:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2069.45
     },
     "curbyourenthusiasm:10:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2223.3
     },
     "curbyourenthusiasm:10:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2082.45
     },
     "curbyourenthusiasm:10:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2356.5
     },
     "curbyourenthusiasm:11:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2476.55
     },
     "curbyourenthusiasm:11:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2115.4
     },
     "curbyourenthusiasm:11:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2161.05
     },
     "curbyourenthusiasm:11:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2295.35
     },
     "curbyourenthusiasm:11:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2027.7
     },
     "curbyourenthusiasm:11:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2028.05
     },
     "curbyourenthusiasm:11:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1920.55
     },
     "curbyourenthusiasm:11:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2414.1
     },
     "curbyourenthusiasm:11:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2024.1
     },
     "curbyourenthusiasm:11:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2291.5
     },
     "curbyourenthusiasm:12:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2015.95
     },
     "curbyourenthusiasm:12:2": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1898.55
     },
     "curbyourenthusiasm:12:3": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2292.4
     },
     "curbyourenthusiasm:12:4": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1830.3
     },
     "curbyourenthusiasm:12:5": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2379.1
     },
     "curbyourenthusiasm:12:6": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2198.15
     },
     "curbyourenthusiasm:12:7": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2272.15
     },
     "curbyourenthusiasm:12:8": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1845.05
     },
     "curbyourenthusiasm:12:9": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 1999
     },
     "curbyourenthusiasm:12:10": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 3098
     },
     "steelballrun:1:1": {
       "introStart": null,
       "introEnd": null,
-      "outroStart": null
+      "outroStart": 2735.31
     },
     "steelballrun:1:2": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 136.1,
+      "introEnd": 223.5,
+      "outroStart": 1415.35
     },
     "steelballrun:1:3": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 182.2,
+      "introEnd": 269.6,
+      "outroStart": 1324.45
     },
     "steelballrun:1:4": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 102.2,
+      "introEnd": 189.6,
+      "outroStart": 1324.6
     },
     "steelballrun:1:5": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 72,
+      "introEnd": 159.4,
+      "outroStart": 1325.45
     },
     "steelballrun:1:6": {
       "introStart": null,

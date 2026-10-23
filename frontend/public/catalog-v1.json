@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-21T17:17:12.170Z",
-  "generatedAt": "2026-10-21T17:17:12.170Z",
+  "catalogRevision": "2026-10-22T19:28:45.182Z",
+  "generatedAt": "2026-10-22T19:28:45.182Z",
   "items": [
     {
       "id": "steven-universe",
@@ -27320,7 +27320,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3610.4
             },
             {
               "number": 2,
@@ -27341,7 +27341,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3103.65
             },
             {
               "number": 3,
@@ -27362,7 +27362,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3057.9
             },
             {
               "number": 4,
@@ -27383,7 +27383,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3343.9
             },
             {
               "number": 5,
@@ -27404,7 +27404,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3655.3
             },
             {
               "number": 6,
@@ -27425,7 +27425,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3242.95
             },
             {
               "number": 7,
@@ -27446,7 +27446,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2481.95
             },
             {
               "number": 8,
@@ -27467,7 +27467,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2633.65
             }
           ]
         }
@@ -35125,7 +35125,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1667.48
             },
             {
               "number": 2,
@@ -35142,7 +35142,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1639.65
             },
             {
               "number": 3,
@@ -35159,7 +35159,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1634.85
             },
             {
               "number": 4,
@@ -35176,7 +35176,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1587.85
             },
             {
               "number": 5,
@@ -35193,7 +35193,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1669.55
             },
             {
               "number": 6,
@@ -35210,7 +35210,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1704.8
             },
             {
               "number": 7,
@@ -35227,7 +35227,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1548.92
             },
             {
               "number": 8,
@@ -35244,7 +35244,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1711.8
             },
             {
               "number": 9,
@@ -35261,7 +35261,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1726.95
             },
             {
               "number": 10,
@@ -35278,7 +35278,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1774.1
             }
           ]
         },
@@ -35300,7 +35300,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1720.9
             },
             {
               "number": 2,
@@ -35317,7 +35317,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1594.75
             },
             {
               "number": 3,
@@ -35334,7 +35334,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1739.95
             },
             {
               "number": 4,
@@ -35351,7 +35351,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1677.8
             },
             {
               "number": 5,
@@ -35368,7 +35368,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1587.05
             },
             {
               "number": 6,
@@ -35385,7 +35385,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1713.71
             },
             {
               "number": 7,
@@ -35402,7 +35402,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1703.25
             },
             {
               "number": 8,
@@ -35419,7 +35419,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1726.15
             },
             {
               "number": 9,
@@ -35436,7 +35436,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1714.55
             },
             {
               "number": 10,
@@ -35453,7 +35453,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1705.7
             }
           ]
         },
@@ -35475,7 +35475,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1735.05
             },
             {
               "number": 2,
@@ -35492,7 +35492,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1705.35
             },
             {
               "number": 3,
@@ -35509,7 +35509,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.65
             },
             {
               "number": 4,
@@ -35526,7 +35526,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1721.15
             },
             {
               "number": 5,
@@ -35543,7 +35543,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.5
             },
             {
               "number": 6,
@@ -35560,7 +35560,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1715.1
             },
             {
               "number": 7,
@@ -35577,7 +35577,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1632.45
             },
             {
               "number": 8,
@@ -35594,7 +35594,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1701.3
             },
             {
               "number": 9,
@@ -35611,7 +35611,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1790.15
             },
             {
               "number": 10,
@@ -35628,7 +35628,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1706.55
             }
           ]
         },
@@ -35650,7 +35650,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736
             },
             {
               "number": 2,
@@ -35667,7 +35667,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1722
             },
             {
               "number": 3,
@@ -35684,7 +35684,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1739.55
             },
             {
               "number": 4,
@@ -35701,7 +35701,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1738.2
             },
             {
               "number": 5,
@@ -35718,7 +35718,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.6
             },
             {
               "number": 6,
@@ -35735,7 +35735,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1735.6
             },
             {
               "number": 7,
@@ -35752,7 +35752,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1741
             },
             {
               "number": 8,
@@ -35769,7 +35769,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1680.25
             },
             {
               "number": 9,
@@ -35786,7 +35786,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1738.95
             },
             {
               "number": 10,
@@ -35803,7 +35803,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3395.55
             }
           ]
         },
@@ -35825,7 +35825,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.15
             },
             {
               "number": 2,
@@ -35842,7 +35842,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.2
             },
             {
               "number": 3,
@@ -35859,7 +35859,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1640.75
             },
             {
               "number": 4,
@@ -35876,7 +35876,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1732.3
             },
             {
               "number": 5,
@@ -35893,7 +35893,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.5
             },
             {
               "number": 6,
@@ -35910,7 +35910,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1708
             },
             {
               "number": 7,
@@ -35927,7 +35927,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1735.25
             },
             {
               "number": 8,
@@ -35944,7 +35944,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1966.95
             },
             {
               "number": 9,
@@ -35961,7 +35961,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1654.05
             },
             {
               "number": 10,
@@ -35978,7 +35978,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2448.35
             }
           ]
         },
@@ -36000,7 +36000,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1731.1
             },
             {
               "number": 2,
@@ -36017,7 +36017,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1735.6
             },
             {
               "number": 3,
@@ -36034,7 +36034,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1730.3
             },
             {
               "number": 4,
@@ -36051,7 +36051,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1728.2
             },
             {
               "number": 5,
@@ -36068,7 +36068,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1661.65
             },
             {
               "number": 6,
@@ -36085,7 +36085,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1727.5
             },
             {
               "number": 7,
@@ -36102,7 +36102,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1734.4
             },
             {
               "number": 8,
@@ -36119,7 +36119,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1725
             },
             {
               "number": 9,
@@ -36136,7 +36136,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1738.7
             },
             {
               "number": 10,
@@ -36153,7 +36153,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2061.65
             }
           ]
         },
@@ -36175,7 +36175,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1721.75
             },
             {
               "number": 2,
@@ -36192,7 +36192,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1716.4
             },
             {
               "number": 3,
@@ -36209,7 +36209,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1788.05
             },
             {
               "number": 4,
@@ -36226,7 +36226,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1714.65
             },
             {
               "number": 5,
@@ -36243,7 +36243,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1658.6
             },
             {
               "number": 6,
@@ -36260,7 +36260,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1853.25
             },
             {
               "number": 7,
@@ -36277,7 +36277,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1735.85
             },
             {
               "number": 8,
@@ -36294,7 +36294,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1729.25
             },
             {
               "number": 9,
@@ -36311,7 +36311,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2085.45
             },
             {
               "number": 10,
@@ -36328,7 +36328,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2426.65
             }
           ]
         },
@@ -36350,7 +36350,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1717.35
             },
             {
               "number": 2,
@@ -36367,7 +36367,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1705.55
             },
             {
               "number": 3,
@@ -36384,7 +36384,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1737.3
             },
             {
               "number": 4,
@@ -36401,7 +36401,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.7
             },
             {
               "number": 5,
@@ -36418,7 +36418,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1698.3
             },
             {
               "number": 6,
@@ -36435,7 +36435,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1736.2
             },
             {
               "number": 7,
@@ -36452,7 +36452,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1710.4
             },
             {
               "number": 8,
@@ -36469,7 +36469,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1723.65
             },
             {
               "number": 9,
@@ -36486,7 +36486,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1901.25
             },
             {
               "number": 10,
@@ -36503,7 +36503,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1725.3
             }
           ]
         },
@@ -36525,7 +36525,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2169.75
             },
             {
               "number": 2,
@@ -36542,7 +36542,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2017.05
             },
             {
               "number": 3,
@@ -36559,7 +36559,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1935.35
             },
             {
               "number": 4,
@@ -36576,7 +36576,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1838.95
             },
             {
               "number": 5,
@@ -36593,7 +36593,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1928.5
             },
             {
               "number": 6,
@@ -36610,7 +36610,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2185.35
             },
             {
               "number": 7,
@@ -36627,7 +36627,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1970.05
             },
             {
               "number": 8,
@@ -36644,7 +36644,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1954.5
             },
             {
               "number": 9,
@@ -36661,7 +36661,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2547.25
             },
             {
               "number": 10,
@@ -36678,7 +36678,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2851.8
             }
           ]
         },
@@ -36700,7 +36700,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2150
             },
             {
               "number": 2,
@@ -36717,7 +36717,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1978.15
             },
             {
               "number": 3,
@@ -36734,7 +36734,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2236.1
             },
             {
               "number": 4,
@@ -36751,7 +36751,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2619.35
             },
             {
               "number": 5,
@@ -36768,7 +36768,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2185.45
             },
             {
               "number": 6,
@@ -36785,7 +36785,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2230.4
             },
             {
               "number": 7,
@@ -36802,7 +36802,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2069.45
             },
             {
               "number": 8,
@@ -36819,7 +36819,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2223.3
             },
             {
               "number": 9,
@@ -36836,7 +36836,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2082.45
             },
             {
               "number": 10,
@@ -36853,7 +36853,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2356.5
             }
           ]
         },
@@ -36875,7 +36875,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2476.55
             },
             {
               "number": 2,
@@ -36892,7 +36892,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2115.4
             },
             {
               "number": 3,
@@ -36909,7 +36909,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2161.05
             },
             {
               "number": 4,
@@ -36926,7 +36926,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2295.35
             },
             {
               "number": 5,
@@ -36943,7 +36943,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2027.7
             },
             {
               "number": 6,
@@ -36960,7 +36960,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2028.05
             },
             {
               "number": 7,
@@ -36977,7 +36977,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1920.55
             },
             {
               "number": 8,
@@ -36994,7 +36994,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2414.1
             },
             {
               "number": 9,
@@ -37011,7 +37011,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2024.1
             },
             {
               "number": 10,
@@ -37028,7 +37028,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2291.5
             }
           ]
         },
@@ -37050,7 +37050,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2015.95
             },
             {
               "number": 2,
@@ -37067,7 +37067,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1898.55
             },
             {
               "number": 3,
@@ -37084,7 +37084,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2292.4
             },
             {
               "number": 4,
@@ -37101,7 +37101,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1830.3
             },
             {
               "number": 5,
@@ -37118,7 +37118,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2379.1
             },
             {
               "number": 6,
@@ -37135,7 +37135,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2198.15
             },
             {
               "number": 7,
@@ -37152,7 +37152,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2272.15
             },
             {
               "number": 8,
@@ -37169,7 +37169,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1845.05
             },
             {
               "number": 9,
@@ -37186,7 +37186,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 1999
             },
             {
               "number": 10,
@@ -37203,7 +37203,7 @@
               "rokuSubtitles": [],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 3098
             }
           ]
         }
@@ -37258,7 +37258,7 @@
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipOutroStart": 2735.31
             },
             {
               "number": 2,
@@ -37277,9 +37277,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 136.1,
+              "skipIntroEnd": 223.5,
+              "skipOutroStart": 1415.35
             },
             {
               "number": 3,
@@ -37298,9 +37298,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 182.2,
+              "skipIntroEnd": 269.6,
+              "skipOutroStart": 1324.45
             },
             {
               "number": 4,
@@ -37319,9 +37319,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 102.2,
+              "skipIntroEnd": 189.6,
+              "skipOutroStart": 1324.6
             },
             {
               "number": 5,
@@ -37340,9 +37340,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 72,
+              "skipIntroEnd": 159.4,
+              "skipOutroStart": 1325.45
             },
             {
               "number": 6,
