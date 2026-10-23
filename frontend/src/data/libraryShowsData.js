@@ -760,6 +760,17 @@ const metadata = {
     "description": "After their plane crashes in Alaska, six oil workers are led by a skilled huntsman to survival, but a pack of merciless wolves haunts their every step.",
     "background": "/images/thegrey/covers/thegreyCover.svg",
     "subtitles": "yes"
+  },
+  "batmanbeyond": {
+    "type": "movie",
+    "title": "Batman Beyond: Return of the Joker",
+    "agerating": "7+",
+    "release_year": "2000",
+    "genre": "Animation",
+    "duration": "1h 16m",
+    "description": "The Joker is back with a vengeance, and Gotham's newest Dark Knight needs answers as he stands alone to face Gotham's most infamous Clown Prince of Crime.",
+    "background": "/images/batmanbeyond/covers/batmanbeyondCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

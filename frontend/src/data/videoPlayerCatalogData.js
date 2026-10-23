@@ -287,6 +287,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "The Grey",
     "cardId": "card-72"
+  },
+  {
+    "title": "Batman Beyond: Return of the Joker",
+    "cardId": "card-73"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -361,5 +365,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-69": "adults",
   "card-70": "curbyourenthusiasm",
   "card-71": "steelballrun",
-  "card-72": "thegrey"
+  "card-72": "thegrey",
+  "card-73": "batmanbeyond"
 };

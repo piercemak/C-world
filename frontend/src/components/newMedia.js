@@ -2,6 +2,13 @@
 export const newMedia = [
   {
     "kind": "movie",
+    "showSlug": "batmanbeyond",
+    "placeholder": "/images/batmanbeyond/placeholders/batmanbeyond_placeholder.png",
+    "to": "/video-library/batmanbeyond?movie=1",
+    "showTitle": "Batman Beyond: Return of the Joker"
+  },
+  {
+    "kind": "movie",
     "showSlug": "thegrey",
     "placeholder": "/images/thegrey/placeholders/thegrey_placeholder.png?v=53e47519f8c3",
     "to": "/video-library/thegrey?movie=1",

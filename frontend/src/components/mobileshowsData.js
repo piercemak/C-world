@@ -791,5 +791,16 @@ export const SHOWS = [
     "keyart": "/images/thegrey/covers/thegrey_mobileLogo.jpeg",
     "card": "/images/cardimages/thegreyLogo.svg",
     "dateadded": "10-5-26"
+  },
+  {
+    "id": "batmanbeyond",
+    "title": "Batman Beyond: Return of the Joker",
+    "creator": "Curt Geda",
+    "background": "/images/batmanbeyond/covers/batmanbeyond_backdrop.svg",
+    "ratings": "7.8",
+    "type": "Movies",
+    "keyart": "/images/batmanbeyond/covers/batmanbeyond_mobileLogo.jpg",
+    "card": "/images/cardimages/batmanbeyondLogo.svg",
+    "dateadded": "10-23-26"
   }
 ];

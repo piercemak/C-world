@@ -638,7 +638,7 @@
       "sourceSHA256": "9eb0bb07eecb660c74d47370253217dbd7c468556af0ba6699874ed0b6f34c86",
       "width": 1920,
       "height": 1080,
-      "meta": "TBD • TBD • 1 season"
+      "meta": "2026 • Animation, Action & Adventure, Sci-Fi & Fantasy • 1 season"
     },
     "thegrey": {
       "image": "thegrey-9f82bffd8bc4.jpg",
@@ -648,6 +648,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2011 • Action • 1h 57m"
+    },
+    "batmanbeyond": {
+      "image": "batmanbeyond-a9e33804055d.jpg",
+      "thumbnail": "batmanbeyond-a9e33804055d-thumb.jpg",
+      "source": "/images/batmanbeyond/covers/batmanbeyondCover.svg",
+      "sourceSHA256": "a9e33804055d19c4be53e76e4c940d8ef6a9d2bd4a4d8af3c523728768e68d16",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2000 • Animation • 1h 16m"
     }
   }
 }

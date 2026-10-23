@@ -71,7 +71,8 @@ export const mediaAssetIds = {
   "adults": "adults",
   "curbyourenthusiasm": "curbyourenthusiasm",
   "steelballrun": "steelballrun",
-  "thegrey": "thegrey"
+  "thegrey": "thegrey",
+  "batmanbeyond": "batmanbeyond"
 };
 export const skipTimes = {
   "stevenuniverse": {

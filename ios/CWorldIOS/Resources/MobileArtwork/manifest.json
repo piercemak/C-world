@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-21T00:51:05.068Z",
+  "catalogRevision": "2026-10-23T19:45:01.616Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1153,6 +1153,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "58e1ee211a8c8c6912735b46e948eb3ab1b8fd48bb794d7e33c87a10a003629b"
+    },
+    "https://cearaworld.com/images/cardimages/batmanbeyondLogo.svg": {
+      "image": "75c0ee66185c-0b595ec53325.jpg",
+      "thumbnail": "75c0ee66185c-0b595ec53325-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "0b595ec533254ab9142287a1b5a0acbc953af40addc8db4a1f39ee4b422147ab"
+    },
+    "https://cearaworld.com/images/batmanbeyond/covers/batmanbeyond_backdrop.svg": {
+      "image": "d65fbd5b56bd-e6afdfc31c8b.jpg",
+      "thumbnail": "d65fbd5b56bd-e6afdfc31c8b-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "e6afdfc31c8bf8f2042a30385f543baf24eafece3897d9bab2fd317f5ecfe57d"
     }
   }
 }

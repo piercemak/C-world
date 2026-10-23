@@ -1902,8 +1902,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 51.71807380209944
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/batmanbeyondLogo.svg",
+      "titles": [
+        "Batman Beyond: Return of the Joker"
+      ],
+      "sourceBytes": 4283308,
+      "outputBytes": 184558,
+      "thumbnailBytes": 36721,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.015494659429166
+    },
+    {
+      "url": "https://cearaworld.com/images/batmanbeyond/covers/batmanbeyond_backdrop.svg",
+      "titles": [
+        "Batman Beyond: Return of the Joker"
+      ],
+      "sourceBytes": 13920193,
+      "outputBytes": 516061,
+      "thumbnailBytes": 17672,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.77011994496766
     }
   ],
-  "sourceBytes": 791803637,
-  "outputBytes": 99157966
+  "sourceBytes": 810007138,
+  "outputBytes": 99912978
 }

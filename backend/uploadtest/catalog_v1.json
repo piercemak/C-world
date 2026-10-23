@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-22T19:28:45.182Z",
-  "generatedAt": "2026-10-22T19:28:45.182Z",
+  "catalogRevision": "2026-10-23T19:45:01.616Z",
+  "generatedAt": "2026-10-23T19:45:01.616Z",
   "items": [
     {
       "id": "steven-universe",
@@ -37527,6 +37527,42 @@
       ],
       "movieAsset": {
         "mediaId": "thegrey",
+        "season": null,
+        "episode": null
+      }
+    },
+    {
+      "id": "batmanbeyond",
+      "assetId": "batmanbeyond",
+      "type": "movie",
+      "title": "Batman Beyond: Return of the Joker",
+      "dateAdded": "10-23-26",
+      "description": "The Joker is back with a vengeance, and Gotham's newest Dark Knight needs answers as he stands alone to face Gotham's most infamous Clown Prince of Crime.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/batmanbeyondLogo.svg",
+        "poster": "https://cearaworld.com/images/batmanbeyond/covers/batmanbeyond_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/batmanbeyond/covers/batmanbeyond_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/batmanbeyond/covers/batmanbeyond_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Curt Geda",
+        "rating": "7.8",
+        "year": "2000",
+        "genres": [
+          "Animation"
+        ],
+        "duration": "1h 16m",
+        "ageRating": "7+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/batmanbeyond/batmanbeyond_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/batmanbeyond/batmanbeyond_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "batmanbeyond",
         "season": null,
         "episode": null
       }

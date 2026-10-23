@@ -359,5 +359,10 @@ export const CAROUSEL_COVERS = [
     "id": "thegrey",
     "src": "/images/thegrey/covers/thegreyCover.svg",
     "title": "The Grey"
+  },
+  {
+    "id": "batmanbeyond",
+    "src": "/images/batmanbeyond/covers/batmanbeyondCover.svg",
+    "title": "Batman Beyond: Return of the Joker"
   }
 ];

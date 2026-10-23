@@ -29979,9 +29979,49 @@
       "captions": {
         "movie": "/videos/thegrey/thegrey_subtitles.vtt"
       }
+    },
+    "batmanbeyond": {
+      "assetId": "batmanbeyond",
+      "library": {
+        "type": "movie",
+        "title": "Batman Beyond: Return of the Joker",
+        "agerating": "7+",
+        "release_year": "2000",
+        "genre": "Animation",
+        "duration": "1h 16m",
+        "description": "The Joker is back with a vengeance, and Gotham's newest Dark Knight needs answers as he stands alone to face Gotham's most infamous Clown Prince of Crime.",
+        "background": "/images/batmanbeyond/covers/batmanbeyondCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Curt Geda",
+        "background": "/images/batmanbeyond/covers/batmanbeyond_backdrop.svg",
+        "ratings": "7.8",
+        "type": "Movies",
+        "keyart": "/images/batmanbeyond/covers/batmanbeyond_mobileLogo.jpg",
+        "card": "/images/cardimages/batmanbeyondLogo.svg",
+        "dateadded": "10-23-26"
+      },
+      "mobileOrder": 72,
+      "sidebar": {
+        "cardId": "card-73",
+        "order": 72
+      },
+      "carousel": {
+        "order": 72
+      },
+      "captions": {
+        "movie": "/videos/batmanbeyond/batmanbeyond_subtitles.vtt"
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "batmanbeyond",
+      "placeholder": "/images/batmanbeyond/placeholders/batmanbeyond_placeholder.png",
+      "to": "/video-library/batmanbeyond?movie=1"
+    },
     {
       "kind": "movie",
       "showSlug": "thegrey",
