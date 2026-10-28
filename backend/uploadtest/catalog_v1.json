@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-23T19:45:01.616Z",
-  "generatedAt": "2026-10-23T19:45:01.616Z",
+  "catalogRevision": "2026-10-28T16:15:18.956Z",
+  "generatedAt": "2026-10-28T16:15:18.956Z",
   "items": [
     {
       "id": "steven-universe",
@@ -8380,7 +8380,7 @@
       "description": "Aniara is one of the spaceships used for transporting Earth's population to their new home-planet Mars. But just as Aniara leaves the ruined Earth, she collides with an asteroid and is knocked off her course.",
       "artwork": {
         "card": "https://cearaworld.com/images/cardimages/aniaraLogo.jpg",
-        "poster": "https://cearaworld.com/images/aniara/covers/aniaraLogomobile.jpg",
+        "poster": "https://cearaworld.com/images/aniara/covers/aniara_mobileLogo_20261028.jpg",
         "backdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg",
         "mobileBackdrop": "https://cearaworld.com/images/aniara/covers/aniara_backdrop.svg"
       },
@@ -14898,7 +14898,7 @@
       "description": "A biologist signs up for a dangerous, secret expedition in which the laws of nature don't apply.",
       "artwork": {
         "card": "https://cearaworld.com/images/cardimages/annihilationLogo.svg",
-        "poster": "https://cearaworld.com/images/annihilation/covers/annihilation_mobileLogo.png",
+        "poster": "https://cearaworld.com/images/annihilation/covers/annihilation_mobileLogo_20261028.jpg",
         "backdrop": "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg",
         "mobileBackdrop": "https://cearaworld.com/images/annihilation/covers/annihilation_backdrop.svg"
       },

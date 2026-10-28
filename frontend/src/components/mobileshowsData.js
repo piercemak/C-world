@@ -73,7 +73,7 @@ export const SHOWS = [
     "background": "/images/aniara/covers/aniara_backdrop.svg",
     "ratings": "5.8",
     "type": "Movies",
-    "keyart": "/images/aniara/covers/aniaraLogomobile.jpg",
+    "keyart": "/images/aniara/covers/aniara_mobileLogo_20261028.jpg",
     "card": "/images/cardimages/aniaraLogo.jpg",
     "dateadded": "1-7-25"
   },
@@ -304,7 +304,7 @@ export const SHOWS = [
     "background": "/images/annihilation/covers/annihilation_backdrop.svg",
     "ratings": "6.8",
     "type": "Movies",
-    "keyart": "/images/annihilation/covers/annihilation_mobileLogo.png",
+    "keyart": "/images/annihilation/covers/annihilation_mobileLogo_20261028.jpg",
     "card": "/images/cardimages/annihilationLogo.svg",
     "dateadded": "1-29-25"
   },
