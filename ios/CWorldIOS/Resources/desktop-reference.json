@@ -72,9 +72,15 @@
     "curbyourenthusiasm",
     "steelballrun",
     "thegrey",
-    "batmanbeyond"
+    "batmanbeyond",
+    "bleach"
   ],
   "newMedia": [
+    {
+      "id": "bleach",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "batmanbeyond"
     },

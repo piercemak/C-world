@@ -55,7 +55,8 @@ const SERIES_SUBTITLE_PATTERNS = {
   "alienearth": "/subtitles/alienearth/season{season}/S{season}E{episode2}_subtitles.vtt",
   "onepunchman": "/subtitles/onepunchman/season{season}/S{season}E{episode2}_subtitles.vtt",
   "adults": "/subtitles/adults/season{season}/S{season}E{episode2}_subtitles.vtt",
-  "steelballrun": "/subtitles/steelballrun/season{season}/S{season}E{episode2}_subtitles.vtt"
+  "steelballrun": "/subtitles/steelballrun/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "bleach": "/subtitles/bleach/season{season}/S{season}E{episode2}_subtitles.vtt"
 };
 
 export const getSubtitleTrackSrc = ({ showId, season = null, episode = null }) => {

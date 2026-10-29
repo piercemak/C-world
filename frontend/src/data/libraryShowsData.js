@@ -771,6 +771,18 @@ const metadata = {
     "description": "The Joker is back with a vengeance, and Gotham's newest Dark Knight needs answers as he stands alone to face Gotham's most infamous Clown Prince of Crime.",
     "background": "/images/batmanbeyond/covers/batmanbeyondCover.svg",
     "subtitles": "yes"
+  },
+  "bleach": {
+    "type": "show",
+    "title": "Bleach: Thousand-Year Blood War",
+    "agerating": "13+",
+    "release_year": "2022",
+    "genre": "Animation",
+    "season_total_number": "1 season",
+    "season_digit": 1,
+    "description": "The peace is suddenly broken when warning sirens blare through the Soul Society. Residents are disappearing without a trace and nobody knows who's behind it. Meanwhile, a darkness is approaching Ichigo and his friends in Karakura ...",
+    "background": "/images/bleach/covers/bleachCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

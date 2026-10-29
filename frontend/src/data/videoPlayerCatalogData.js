@@ -291,6 +291,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "Batman Beyond: Return of the Joker",
     "cardId": "card-73"
+  },
+  {
+    "title": "Bleach: Thousand-Year Blood War",
+    "cardId": "card-74"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -366,5 +370,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-70": "curbyourenthusiasm",
   "card-71": "steelballrun",
   "card-72": "thegrey",
-  "card-73": "batmanbeyond"
+  "card-73": "batmanbeyond",
+  "card-74": "bleach"
 };

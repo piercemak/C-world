@@ -657,6 +657,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2000 • Animation • 1h 16m"
+    },
+    "bleach": {
+      "image": "bleach-a58503146f20.jpg",
+      "thumbnail": "bleach-a58503146f20-thumb.jpg",
+      "source": "/images/bleach/covers/bleachCover.svg",
+      "sourceSHA256": "a58503146f200df0bfe408bd42d154f157677fc0885f4a8c774aa0293ed05347",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2022 • Animation • 1 season"
     }
   }
 }

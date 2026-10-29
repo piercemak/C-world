@@ -802,5 +802,16 @@ export const SHOWS = [
     "keyart": "/images/batmanbeyond/covers/batmanbeyond_mobileLogo.jpg",
     "card": "/images/cardimages/batmanbeyondLogo.svg",
     "dateadded": "10-23-26"
+  },
+  {
+    "id": "bleach",
+    "title": "Bleach: Thousand-Year Blood War",
+    "creator": "Tite Kubo",
+    "background": "/images/bleach/covers/bleach_backdrop.svg",
+    "ratings": "9.0",
+    "type": "TV",
+    "keyart": "/images/bleach/covers/bleach_mobileLogo.jpg",
+    "card": "/images/cardimages/bleachLogo.svg",
+    "dateadded": "10-29-26"
   }
 ];

@@ -72,7 +72,8 @@ export const mediaAssetIds = {
   "curbyourenthusiasm": "curbyourenthusiasm",
   "steelballrun": "steelballrun",
   "thegrey": "thegrey",
-  "batmanbeyond": "batmanbeyond"
+  "batmanbeyond": "batmanbeyond",
+  "bleach": "bleach"
 };
 export const skipTimes = {
   "stevenuniverse": {
@@ -13252,6 +13253,512 @@ export const skipTimes = {
         }
       }
     }
+  },
+  "bleach": {
+    "seasons": {
+      "1": {
+        "1": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "2": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "3": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "4": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "5": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "6": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "7": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "8": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "9": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "10": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "11": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "12": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "13": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "14": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "15": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "16": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "17": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "18": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "19": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "20": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "21": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "22": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "23": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "24": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "25": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "26": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "27": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "28": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "29": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "30": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "31": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "32": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "33": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "34": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "35": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "36": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "37": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "38": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "39": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "40": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "41": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "42": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "43": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "44": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "45": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "46": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "47": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "48": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "49": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "50": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        }
+      }
+    }
   }
 };
 export const seasonLength = {
@@ -13428,5 +13935,8 @@ export const seasonLength = {
   },
   "steelballrun": {
     "1": 12
+  },
+  "bleach": {
+    "1": 50
   }
 };

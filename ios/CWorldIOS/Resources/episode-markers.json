@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "eddb74f1e5a08d2dc3160002ed46239ae2c7fa04811e5268a5d15a9748d96997",
+  "sourceSHA256": "c2d45aaba07f13b89ba640f985a9f03ae9f0116322a9ff405a9db5ba2df57b4d",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -9564,6 +9564,256 @@
       "outroStart": null
     },
     "steelballrun:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:19": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:23": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:24": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:25": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:26": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:27": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:28": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:29": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:30": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:31": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:32": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:33": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:34": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:35": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:36": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:37": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:38": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:39": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:40": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:41": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:42": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:43": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:44": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:45": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:46": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:47": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:48": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:49": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "bleach:1:50": {
       "introStart": null,
       "introEnd": null,
       "outroStart": null

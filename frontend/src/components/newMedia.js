@@ -1,6 +1,16 @@
 // Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const newMedia = [
   {
+    "kind": "episode",
+    "showSlug": "bleach",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "The Blood Warfare",
+    "placeholder": "https://d20honz3pkzrs8.cloudfront.net/bleach/placeholders/season1/S1E1_bleach_placeholder.png",
+    "to": "/video-library/bleach?season=1&episode=1",
+    "showTitle": "Bleach: Thousand-Year Blood War"
+  },
+  {
     "kind": "movie",
     "showSlug": "batmanbeyond",
     "placeholder": "/images/batmanbeyond/placeholders/batmanbeyond_placeholder.png",

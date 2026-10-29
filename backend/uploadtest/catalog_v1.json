@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-28T16:15:18.956Z",
-  "generatedAt": "2026-10-28T16:15:18.956Z",
+  "catalogRevision": "2026-10-29T22:30:44.599Z",
+  "generatedAt": "2026-10-29T22:30:44.599Z",
   "items": [
     {
       "id": "steven-universe",
@@ -37566,6 +37566,1090 @@
         "season": null,
         "episode": null
       }
+    },
+    {
+      "id": "bleach",
+      "assetId": "bleach",
+      "type": "show",
+      "title": "Bleach: Thousand-Year Blood War",
+      "dateAdded": "10-29-26",
+      "description": "The peace is suddenly broken when warning sirens blare through the Soul Society. Residents are disappearing without a trace and nobody knows who's behind it. Meanwhile, a darkness is approaching Ichigo and his friends in Karakura ...",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/bleachLogo.svg",
+        "poster": "https://cearaworld.com/images/bleach/covers/bleach_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/bleach/covers/bleach_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/bleach/covers/bleach_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Tite Kubo",
+        "rating": "9.0",
+        "year": "2022",
+        "genres": [
+          "Animation"
+        ],
+        "duration": "22m",
+        "ageRating": "13+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Blood Warfare",
+              "description": "The Soul Society is observing a sudden surge in the number of Hollows being destroyed.",
+              "airDate": "2022-10-11",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E01_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Foundation Stones",
+              "description": "Arrancars Nel Tu and Pesche Guatiche have come to seek Ichigo’s help explaining that Hueco Mundo is under attack by an unknown enemy. Unable to ignore the situation, Ichigo and his friends decide to set out for Hueco Mundo.",
+              "airDate": "2022-10-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E02_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "March of the Starcross",
+              "description": "Ichigo and his friends arrive in Hueco Mundo to confront Quilge Opie and learn that their latest enemy are Quincies.",
+              "airDate": "2022-10-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E03_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Kill the Shadow",
+              "description": "The Wandenreich mobilizes its elite force, the Stern Ritter, to annihilate the Soul Society. Creating massive flaming pillars of Reishi as a distraction, the Stern Ritter easily enter the Soul Society to bring carnage to the Soul Reapers.",
+              "airDate": "2022-11-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E04_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Wrath as a Lightning",
+              "description": "Quilge Opie uses his power to imprison Ichigo inside the Garganta. As he tries to break free, Ichigo begins to hear, through his Soul Phone, the screams of the Soul Reapers falling to the enemy's onslaught.",
+              "airDate": "2022-11-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E05_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Fire",
+              "description": "Shigekuni Genryusai Yamamoto confronts Yhwach for the first time in a thousand years. As Yhwach finally draws his sword against Genryusai, the Soul Reapers notice an abnormal change taking place across the Seireitei.",
+              "airDate": "2022-11-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E06_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Born in the Dark",
+              "description": "Shigekuni Genryusai Yamamoto learns that the Yhwach he defeated was an impostor. The real Yhwach then reveals himself and easily kills Genryusai, sending a wave of shock and devastation across the Soul Reapers.",
+              "airDate": "2022-11-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E07_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The Shooting Star Project [Zero Mix]",
+              "description": "Rescue efforts are being made across the Seireitei to find and help those who've survived the Stern Ritter attack. Meanwhile, Ichigo meets with Mayuri Kurotsuchi about fixing his broken Tensa Zangetsu.",
+              "airDate": "2022-11-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E08_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Drop",
+              "description": "Squad Zero brings Ichigo back to the Royal Palace to prepare for the coming battle. Meanwhile, Kyoraku is appointed as the new Head Captain to lead the Thirteen Court Guard Squads.",
+              "airDate": "2022-12-06",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E09_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Battle",
+              "description": "Kenpachi Zaraki removes his eye patch to fight Retsu Unohana, a.k.a. Yachiru Unohana, “The First Kenpachi.” Meanwhile, Ichigo and Renji head to Hoohden to meet Oh-Etsu Nimaiya, the man who is said to have created the Zanpakuto.",
+              "airDate": "2022-12-13",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 10
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E10_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E10_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 11,
+              "title": "Everything but the Rain",
+              "description": "Ichigo is kicked out of the Royal Palace by Oh-etsu Nimaiya for failing his test. When Ichigo next opens his eyes, he finds himself standing in front of his house in the World of the Living.",
+              "airDate": "2022-12-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 11
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E11_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E11_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 12,
+              "title": "Everything but the Rain: June Truth",
+              "description": "Squad 10 Captain Isshin Shiba of the Thirteen Court Guard Squads decides to not report his encounter with the Quincy named Masaki Kurosaki in the World of the Living to the Head Captain.",
+              "airDate": "2022-12-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 12
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E12_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E12_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 13,
+              "title": "The Blade Is Me",
+              "description": "Ichigo learns that he is the child born of a Soul Reaper and a Quincy. Finally understanding the truth behind his heritage, Ichigo decides to return to Hoohden with a renewed resolve to finish what he has started.",
+              "airDate": "2022-12-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 13
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E13_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E13_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 14,
+              "title": "The Last 9 Days",
+              "description": "Ichigo prepares to leave the Royal Palace to return to the Seireitei but is stopped by Hyosube, who claims that Ichigo cannot defeat Yhwach as he is now.",
+              "airDate": "2023-07-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 14
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E14_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E14_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 15,
+              "title": "PEACE FROM SHADOWS",
+              "description": "Yhwach sets his plan to end the world in nine days in motion.",
+              "airDate": "2023-07-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 15
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E15_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E15_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 16,
+              "title": "THE FUNDAMENTAL VIRULENCE",
+              "description": "Mayuri receives a call from Urahara, who had stayed behind in Hueco Mundo.",
+              "airDate": "2023-07-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 16
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E16_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E16_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 17,
+              "title": "HEART OF WOLF",
+              "description": "The Stern Ritters drive the Soul Reapers deeper into a corner.",
+              "airDate": "2023-07-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 17
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E17_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E17_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 18,
+              "title": "RAGES AT RINGSIDE",
+              "description": "Kensei Muguruma joins the battle against Masculine.",
+              "airDate": "2023-08-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 18
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E18_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E18_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 19,
+              "title": "THE WHITE HAZE",
+              "description": "A fearless Rukia takes on Äs Nödt.",
+              "airDate": "2023-08-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 19
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E19_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E19_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 20,
+              "title": "I AM THE EDGE",
+              "description": "Isane and Yachiru are attacked by Gwenael.",
+              "airDate": "2023-08-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 20
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E20_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E20_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 21,
+              "title": "THE HEADLESS STAR",
+              "description": "Candice, Meninas, Giselle, and Liltotto try to take down Kenpachi.",
+              "airDate": "2023-08-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 21
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E21_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E21_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 22,
+              "title": "MARCHING OUT THE ZOMBIES",
+              "description": "Ichigo tries to stop Yhwach upon learning that his real target lies within the Royal Palace.",
+              "airDate": "2023-09-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 22
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E22_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E22_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 23,
+              "title": "MARCHING OUT THE ZOMBIES 2",
+              "description": "Ikkaku, Yumichika, and the Arrancars work together to fight off Giselle’s zombies.",
+              "airDate": "2023-09-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 23
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E23_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E23_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 24,
+              "title": "TOO EARLY TO WIN TOO LATE TO KNOW",
+              "description": "Yhwach finally enters the Royal Palace.",
+              "airDate": "2023-09-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 24
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E24_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E24_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 25,
+              "title": "THE MASTER",
+              "description": "Yhwach confronts Hyosube, who is protecting the real Royal Palace.",
+              "airDate": "2023-09-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 25
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E25_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E25_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 26,
+              "title": "BLACK",
+              "description": "Yhwach performs Auswählen to bestow power to his fallen Royal Guards.",
+              "airDate": "2023-09-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 26
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E26_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E26_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 27,
+              "title": "A",
+              "description": "The battle between Squad Zero and Yhwach's Royal Guards for the Soul King rages on.",
+              "airDate": "2024-10-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 27
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E27_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E27_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 28,
+              "title": "KILL THE KING",
+              "description": "Ichigo and his friends hurry to the Reio Greater Palace to stop Yhwach.",
+              "airDate": "2024-10-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 28
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E28_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E28_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 29,
+              "title": "THE DARK ARM",
+              "description": "Ichigo tries to remove the impaled sword from the Soul King and save his life.",
+              "airDate": "2024-10-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 29
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E29_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E29_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 30,
+              "title": "THE BETRAYER",
+              "description": "Ukitake takes the place of the slain Soul King by releasing the power of Mimihagi.",
+              "airDate": "2024-10-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 30
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E30_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E30_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 31,
+              "title": "AGAINST THE JUDGEMENT",
+              "description": "Yhwach is overflowing with power from having absorbed the Soul King.",
+              "airDate": "2024-11-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 31
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E31_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E31_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 32,
+              "title": "THE HOLY NEWBORN",
+              "description": "The Soul Reapers regroup to prepare their counterattack against the Quincies.",
+              "airDate": "2024-11-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 32
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E32_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E32_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 33,
+              "title": "GATE OF THE SUN",
+              "description": "Yhwach builds his new castle, Wahr Welt.",
+              "airDate": "2024-11-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 33
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E33_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E33_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 34,
+              "title": "BABY, HOLD YOUR HAND",
+              "description": "Kenpachi and Mayuri's group advance through Vier Ast.",
+              "airDate": "2024-11-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 34
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E34_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E34_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 35,
+              "title": "DON'T CHASE A SHADOW",
+              "description": "The change in Mayuri's Spiritual Pressure is also felt elsewhere by Urahara and Kyoraku.",
+              "airDate": "2024-11-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 35
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E35_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E35_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 36,
+              "title": "BABY, HOLD YOUR HAND 2 [NEVER ENDING MY DREAM]",
+              "description": "Nemu ignores Mayuri's orders by intervening in his battle against Pernida.",
+              "airDate": "2024-12-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 36
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E36_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E36_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 37,
+              "title": "SHADOWS GONE",
+              "description": "Lille undergoes further transformation to hunt down and pass judgment on Kyoraku.",
+              "airDate": "2024-12-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 37
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E37_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E37_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 38,
+              "title": "FRIEND",
+              "description": "As the battle between the soul reapers and the quincies rages, Haschwalt finds himself confronted by Bazz-B inside Wahrwelt",
+              "airDate": "2024-12-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 38
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E38_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E38_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 39,
+              "title": "THE VISIBLE ANSWER",
+              "description": "Kyoraku has paved the way for the soul reapers to reach the enemy's stronghold within Wahrwelt, but Gerard Valkyrie prevents them from advancing any further.",
+              "airDate": "2024-12-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 39
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E39_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E39_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 40,
+              "title": "MY LAST WORDS",
+              "description": "Haschwalt suddenly attacks Uryu to pass judgement. The ensuing explosion and smoke draw Ichigo to the scene where he and Uryu are reunited.",
+              "airDate": "2024-12-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 40
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E40_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E40_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 41,
+              "title": "GOD OF THUNDER",
+              "description": "Ichigo, Orihime and Chad head out to defeat Yhwach while Yoruichi clashes with Nakk Le Vaar.",
+              "airDate": "2026-07-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 41
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E41_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E41_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 42,
+              "title": "SON OF DARKNESS",
+              "description": "The battle between Nakk Le Vaar, Yoruichi and Urahara rages and Ichigo and Orihime confront Yhwach.",
+              "airDate": "2026-08-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 42
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E42_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E42_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 43,
+              "title": "BLOOD FOR MY BONE",
+              "description": "Ichigo and Orihime confront Yhwach in a battle that will shape the fate of the Three Worlds.",
+              "airDate": "2026-08-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 43
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E43_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E43_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 44,
+              "title": "THE PERFECT CRIMSON",
+              "description": "Gerard's ability remains unbroken, while Ichigo endures Yhwach's fierce assault.",
+              "airDate": "2026-08-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 44
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E44_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E44_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 45,
+              "title": "DEFEND YOU",
+              "description": "Confronting Yhwach, Ichigo awakens the power of the Hollow deep within, becoming Demi-Hollowfied.",
+              "airDate": "2026-08-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 45
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E45_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E45_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 46,
+              "title": "THE END",
+              "description": "The battle between Uryu and Haschwalth intensifies and nears its conclusion.",
+              "airDate": "2026-08-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 46
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E46_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E46_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 47,
+              "title": "THE END 2",
+              "description": "Ichigo's Bankai fails to reach Yhwach.",
+              "airDate": "2026-09-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 47
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E47_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E47_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 48,
+              "title": "THE END TWO WORLD",
+              "description": "Ichigo, with his Bankai broken, and Zanpakuto shattered, sinks into the depths of despair.",
+              "airDate": "2026-09-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 48
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E48_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E48_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 49,
+              "title": "THE BLADE",
+              "description": "Yhwach simultaneously appears in the Seireitei, the World of the Living, and Hueco Mundo.",
+              "airDate": "2026-10-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 49
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E49_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E49_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 50,
+              "title": "DEATH & STRAWBERRY",
+              "description": "The Department of Research & Development detects an ominous Spiritual Pressure...",
+              "airDate": "2026-10-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "bleach",
+                "season": 1,
+                "episode": 50
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/bleach/season1/S1E50_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/bleach/season1/S1E50_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }

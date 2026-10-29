@@ -1928,8 +1928,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 48.77011994496766
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/bleachLogo.svg",
+      "titles": [
+        "Bleach: Thousand-Year Blood War"
+      ],
+      "sourceBytes": 1452992,
+      "outputBytes": 214266,
+      "thumbnailBytes": 45112,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.22026276994852
+    },
+    {
+      "url": "https://cearaworld.com/images/bleach/covers/bleach_backdrop.svg",
+      "titles": [
+        "Bleach: Thousand-Year Blood War"
+      ],
+      "sourceBytes": 7359029,
+      "outputBytes": 1165685,
+      "thumbnailBytes": 39713,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.22366769610972
     }
   ],
-  "sourceBytes": 810007138,
-  "outputBytes": 99912978
+  "sourceBytes": 818819159,
+  "outputBytes": 101377754
 }

@@ -364,5 +364,10 @@ export const CAROUSEL_COVERS = [
     "id": "batmanbeyond",
     "src": "/images/batmanbeyond/covers/batmanbeyondCover.svg",
     "title": "Batman Beyond: Return of the Joker"
+  },
+  {
+    "id": "bleach",
+    "src": "/images/bleach/covers/bleachCover.svg",
+    "title": "Bleach: Thousand-Year Blood War"
   }
 ];

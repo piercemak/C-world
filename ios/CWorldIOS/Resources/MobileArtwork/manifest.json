@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-23T19:45:01.616Z",
+  "catalogRevision": "2026-10-29T22:30:44.599Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1169,6 +1169,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "e6afdfc31c8bf8f2042a30385f543baf24eafece3897d9bab2fd317f5ecfe57d"
+    },
+    "https://cearaworld.com/images/cardimages/bleachLogo.svg": {
+      "image": "bcf91bf19e8b-b2e5c81509ac.jpg",
+      "thumbnail": "bcf91bf19e8b-b2e5c81509ac-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "b2e5c81509acc12d0bad24c668ded1b36b6d6cc57436535f01cfddb236d48be3"
+    },
+    "https://cearaworld.com/images/bleach/covers/bleach_backdrop.svg": {
+      "image": "6ccf3e275cb4-928c4f97c1b9.jpg",
+      "thumbnail": "6ccf3e275cb4-928c4f97c1b9-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "928c4f97c1b939722105b8c1bed7fa12b837f23ef794965d64ed7a6db7dba03a"
     }
   }
 }
