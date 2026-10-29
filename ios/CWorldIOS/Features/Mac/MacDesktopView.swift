@@ -26,9 +26,13 @@ struct MacDesktopView: View {
     @FocusState private var searchFocused: Bool
     @FocusState private var desktopFocused: Bool
     @AppStorage("mac.library.mobileLogoView") private var mobileLogoView = false
+    @State private var displayedMobileLogoView = UserDefaults.standard.bool(forKey: "mac.library.mobileLogoView")
     @State private var browseFilter: MacBrowseFilter = .all
     @State private var browseSort: MacBrowseSort = .newest
     @State private var browseAnchor: String?
+    @State private var artworkSwitchRequest = 0
+    @State private var switchingArtwork = false
+    @State private var artworkOffscreen = false
     @State private var page = 0
     @State private var expandedID: String?
     @State private var detail: CWorldMedia?
@@ -160,12 +164,11 @@ struct MacDesktopView: View {
                                 VStack(spacing: 0) {
                                     if searchOpen { searchToolbar; if searching { searchGrid } else { searchPrompt } }
                                     else if section == .history { historyContent }
-                                    else if mobileLogoView && section == .library {
-                                        MacLogoBrowseView(catalog: catalog, resume: resumeItems, watchedIDs: browseWatchedIDs,
+                                    else if displayedMobileLogoView && section == .library {
+                                        MacLogoBrowseView(catalog: catalog, resume: resumeItems, watchedIDs: browseWatchedIDs, revealed: !artworkOffscreen,
                                                           filter: $browseFilter, sort: $browseSort, anchor: $browseAnchor,
                                                           onOpen: { open($0) })
                                         .opacity(showResume ? 0 : 1)
-                                        .transition(reduceMotion ? .opacity : .opacity.combined(with: .move(edge: .trailing)))
                                     }
                                     else {
                                         pageNavigation
@@ -177,8 +180,14 @@ struct MacDesktopView: View {
                                     }
                                 }
                                 .padding(.leading, libraryContentInset)
-                                .allowsHitTesting(!showResume)
-                                .accessibilityHidden(showResume)
+                                .offset(x: artworkOffscreen && !reduceMotion ? geometry.size.width : 0)
+                                .opacity(artworkOffscreen ? 0 : 1)
+                                .allowsHitTesting(!showResume && !switchingArtwork)
+                                .accessibilityHidden(showResume || switchingArtwork)
+                                .task(id: artworkSwitchRequest) {
+                                    guard switchingArtwork else { return }
+                                    await performArtworkSwitch()
+                                }
                                 if showResume {
                                     continueContent
                                         .padding(.leading, 30)
@@ -189,7 +198,7 @@ struct MacDesktopView: View {
                         }
                         .padding(.trailing, 50).padding(.top, 50)
                     }
-                    .animation(reduceMotion ? nil : .spring(response: 0.52, dampingFraction: 0.86), value: compactLibrarySidebar)
+                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.55), value: compactLibrarySidebar)
                     .animation(reduceMotion ? nil : .easeInOut(duration: 0.55), value: showResume)
                     .frame(maxWidth: 1400).frame(height: panelHeight)
                     .background(.black.opacity(0.20), in: RoundedRectangle(cornerRadius: 20))
@@ -438,13 +447,9 @@ struct MacDesktopView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            Menu {
-                ForEach(MacSection.allCases) { target in
-                    Button(target.rawValue, systemImage: target.icon) {
-                        section = target; page = 0; expandedID = nil; showResume = false; closeSearch()
-                    }
-                }
-            } label: { Text(section.rawValue).font(.custom(CWorldFonts.poppins(.semibold), size: 28)) }.help("Library, Archive, and Reviews")
+            Text(section.rawValue)
+                .font(.custom(CWorldFonts.poppins(.semibold), size: 28))
+                .accessibilityAddTraits(.isHeader)
             Group {
                 HStack(spacing: -6) {
                     ForEach(0..<3) { _ in MacBackgroundFill(value: preferences.settings.visualBackground).frame(width: 36, height: 36).clipShape(Circle()) }
@@ -457,10 +462,9 @@ struct MacDesktopView: View {
             Spacer(minLength: 8)
             if section == .library && !showResume && !searchOpen {
                 Button {
-                    withAnimation(reduceMotion ? nil : .spring(response: 0.52, dampingFraction: 0.86)) {
-                        expandedID = nil
-                        mobileLogoView.toggle()
-                    }
+                    guard !switchingArtwork else { return }
+                    switchingArtwork = true
+                    artworkSwitchRequest += 1
                 } label: {
                     Image(systemName: mobileLogoView ? "square.grid.2x2" : "rectangle.portrait.on.rectangle.portrait")
                         .font(.system(size: 15, weight: .medium))
@@ -471,6 +475,7 @@ struct MacDesktopView: View {
                 .help(mobileLogoView ? "Show card images" : "Show mobile logos")
                 .accessibilityLabel(mobileLogoView ? "Switch to card images" : "Switch to mobile logos")
                 .accessibilityIdentifier("mac.library.artworkToggle")
+                .disabled(switchingArtwork)
             }
             HStack(spacing: 10) {
                 Button {
@@ -507,6 +512,43 @@ struct MacDesktopView: View {
         }.padding(.bottom, windowWidth <= 1280 ? 0 : 20)
     }
 
+    @MainActor
+    private func performArtworkSwitch() async {
+        defer {
+            var transaction = Transaction()
+            transaction.disablesAnimations = true
+            withTransaction(transaction) {
+                displayedMobileLogoView = mobileLogoView
+                artworkOffscreen = false
+                switchingArtwork = false
+            }
+        }
+        if reduceMotion {
+            expandedID = nil
+            mobileLogoView.toggle()
+            displayedMobileLogoView = mobileLogoView
+            return
+        }
+        let exitAnimation = Animation.timingCurve(0.4, 0, 0.8, 1, duration: 0.48)
+        let entranceAnimation = Animation.timingCurve(0.16, 1, 0.3, 1, duration: 0.55)
+        // Change the surrounding layout immediately, keeping the outgoing grid mounted.
+        withAnimation(exitAnimation) {
+            expandedID = nil
+            mobileLogoView.toggle()
+            artworkOffscreen = true
+        }
+        do { try await Task.sleep(for: .milliseconds(480)) } catch { return }
+        guard !Task.isCancelled else { return }
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) { displayedMobileLogoView = mobileLogoView }
+        // Lay out the incoming grid offscreen before revealing it.
+        do { try await Task.sleep(for: .milliseconds(32)) } catch { return }
+        guard !Task.isCancelled else { return }
+        withAnimation(entranceAnimation) { artworkOffscreen = false }
+        do { try await Task.sleep(for: .milliseconds(550)) } catch { return }
+    }
+
     private var pageNavigation: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 26) {
@@ -531,7 +573,7 @@ struct MacDesktopView: View {
                     Color.clear.contentShape(Rectangle()).onTapGesture { withAnimation(reduceMotion ? nil : .spring(response: 0.4, dampingFraction: 0.85)) { expandedID = nil } }
                     ForEach(Array(visible.enumerated()), id: \.element.id) { index, media in
                         let selected = visible.firstIndex { $0.id == expandedID }
-                        let useLogos = mobileLogoView && section == .library
+                        let useLogos = displayedMobileLogoView && section == .library
                         let rect = useLogos
                             ? mobileLogoFrame(index: index, size: geometry.size)
                             : MacGalleryGeometry.frame(index: index, selected: selected, size: geometry.size, windowWidth: windowWidth)
@@ -958,12 +1000,16 @@ private struct MacLogoBrowseView: View {
     let catalog: [CWorldMedia]
     let resume: [ContinueWatchingItem]
     let watchedIDs: Set<String>
+    let revealed: Bool
     @Binding var filter: MacBrowseFilter
     @Binding var sort: MacBrowseSort
     @Binding var anchor: String?
     let onOpen: (CWorldMedia) -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var matches: [CWorldMedia] = []
+    @State private var renderedSelection: String?
+    @State private var contentVisible = true
+    @State private var updatingSelection = false
     @Namespace private var filterSelection
 
     private var snapshotKey: String {
@@ -980,7 +1026,7 @@ private struct MacLogoBrowseView: View {
             HStack(spacing: 6) {
                 ForEach(MacBrowseFilter.allCases, id: \.self) { choice in
                     Button {
-                        anchor = nil
+                        guard filter != choice else { return }
                         withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.22)) { filter = choice }
                     } label: {
                         Text(choice.rawValue).font(.system(size: 12, weight: .semibold))
@@ -1005,10 +1051,11 @@ private struct MacLogoBrowseView: View {
                     HStack(alignment: .top, spacing: 12) {
                         ScrollView(.vertical) {
                             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 5), spacing: 24) {
-                                ForEach(matches) { media in
+                                ForEach(Array(matches.enumerated()), id: \.element.id) { index, media in
                                     let width = max(80, (geometry.size.width - (sort == .alphabetical ? 40 : 0) - 112) / 5)
                                     MacMobileLogoCard(media: media, onOpen: { onOpen(media) })
                                     .frame(height: width * 1.5 + 56)
+                                    .modifier(MacBrowseCardArrival(revealed: revealed, column: index % 5, reduceMotion: reduceMotion))
                                     .id(media.id)
                                 }
                             }
@@ -1016,7 +1063,8 @@ private struct MacLogoBrowseView: View {
                             .padding(.horizontal, 16).padding(.top, 24).padding(.bottom, 40)
                         }
                         .scrollClipDisabled(false)
-                        .scrollPosition(id: Binding(get: { anchor }, set: { if let value = $0 { anchor = value } }), anchor: .top)
+                        .scrollPosition(id: Binding(get: { anchor }, set: { if !updatingSelection, let value = $0 { anchor = value } }), anchor: .top)
+                        .id(renderedSelection)
                         .overlay {
                             if matches.isEmpty {
                                 ContentUnavailableView("No matching titles", systemImage: "line.3.horizontal.decrease", description: Text("Choose another filter to browse your library."))
@@ -1037,18 +1085,38 @@ private struct MacLogoBrowseView: View {
                             }.frame(width: 28)
                         }
                     }
+                    .opacity(contentVisible ? 1 : 0)
+                    .offset(y: contentVisible || reduceMotion ? 0 : 8)
+                    .allowsHitTesting(!updatingSelection)
                     .task(id: snapshotKey) {
-                        let saved = anchor
-                        rebuild()
+                        let selection = filter.rawValue + "|" + sort.rawValue
+                        let changed = renderedSelection != nil && renderedSelection != selection
+                        let saved = changed ? nil : anchor
+                        updatingSelection = true
+                        if changed && !reduceMotion {
+                            withAnimation(.easeOut(duration: 0.14)) { contentVisible = false }
+                            do { try await Task.sleep(for: .milliseconds(150)) } catch { return }
+                        }
+                        guard !Task.isCancelled else { return }
+                        // Swap results while hidden; a new scroll identity starts each filter at the top.
+                        var transaction = Transaction()
+                        transaction.disablesAnimations = true
+                        withTransaction(transaction) {
+                            if changed { anchor = nil }
+                            rebuild()
+                            renderedSelection = selection
+                        }
                         await Task.yield()
                         guard !Task.isCancelled else { return }
-                        if let saved, matches.contains(where: { $0.id == saved }) { proxy.scrollTo(saved, anchor: .top) }
-                        else if let first = matches.first { proxy.scrollTo(first.id, anchor: .top) }
+                        if !changed, let saved, matches.contains(where: { $0.id == saved }) {
+                            proxy.scrollTo(saved, anchor: .top)
+                        }
+                        withAnimation(reduceMotion ? nil : .easeOut(duration: 0.24)) { contentVisible = true }
+                        updatingSelection = false
                     }
                 }
             }
         }
-        .onChange(of: sort) { _, _ in anchor = nil }
     }
 
     private func rebuild() {
@@ -1072,6 +1140,27 @@ private struct MacLogoBrowseView: View {
                 return a == b ? $0.title.localizedStandardCompare($1.title) == .orderedAscending : a > b
             }
         }
+    }
+}
+
+/// Starts after the incoming container is revealed; delays stay short even deep in the catalog.
+private struct MacBrowseCardArrival: ViewModifier {
+    let revealed: Bool
+    let column: Int
+    let reduceMotion: Bool
+    @State private var arrived = false
+
+    func body(content: Content) -> some View {
+        content
+            .opacity(arrived || reduceMotion ? 1 : 0)
+            .offset(x: arrived || reduceMotion ? 0 : 32)
+            .task(id: revealed) {
+                guard revealed else { return } // Outgoing cards stay visible for the container’s exit.
+                guard !reduceMotion else { arrived = true; return }
+                do { try await Task.sleep(for: .milliseconds(column * 35)) } catch { return }
+                guard !Task.isCancelled else { return }
+                withAnimation(.timingCurve(0.16, 1, 0.3, 1, duration: 0.44)) { arrived = true }
+            }
     }
 }
 
