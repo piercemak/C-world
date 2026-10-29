@@ -369,5 +369,10 @@ export const CAROUSEL_COVERS = [
     "id": "bleach",
     "src": "/images/bleach/covers/bleachCover.svg",
     "title": "Bleach: Thousand-Year Blood War"
+  },
+  {
+    "id": "primetime",
+    "src": "/images/primetime/covers/primetimeCover.svg",
+    "title": "Primetime"
   }
 ];

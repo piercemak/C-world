@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-29T22:30:44.599Z",
-  "generatedAt": "2026-10-29T22:30:44.599Z",
+  "catalogRevision": "2026-10-29T22:35:01.829Z",
+  "generatedAt": "2026-10-29T22:35:01.829Z",
   "items": [
     {
       "id": "steven-universe",
@@ -38650,6 +38650,42 @@
           ]
         }
       ]
+    },
+    {
+      "id": "primetime",
+      "assetId": "primetime",
+      "type": "movie",
+      "title": "Primetime",
+      "dateAdded": "10-29-26",
+      "description": "In 2006, To Catch a Predator host Chris Hansen sets out to make television history.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/primetimeLogo.svg",
+        "poster": "https://cearaworld.com/images/primetime/covers/primetime_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/primetime/covers/primetime_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/primetime/covers/primetime_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Lance Oppenheim",
+        "rating": "8.7",
+        "year": "2026",
+        "genres": [
+          "Action"
+        ],
+        "duration": "1h 50m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/primetime/primetime_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/primetime/primetime_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "primetime",
+        "season": null,
+        "episode": null
+      }
     }
   ]
 }

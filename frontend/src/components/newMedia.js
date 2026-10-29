@@ -1,6 +1,13 @@
 // Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const newMedia = [
   {
+    "kind": "movie",
+    "showSlug": "primetime",
+    "placeholder": "/images/primetime/placeholders/primetime_placeholder.png",
+    "to": "/video-library/primetime?movie=1",
+    "showTitle": "Primetime"
+  },
+  {
     "kind": "episode",
     "showSlug": "bleach",
     "season": 1,

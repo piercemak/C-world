@@ -1954,8 +1954,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 47.22366769610972
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/primetimeLogo.svg",
+      "titles": [
+        "Primetime"
+      ],
+      "sourceBytes": 7020497,
+      "outputBytes": 388483,
+      "thumbnailBytes": 39258,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.86210132773631
+    },
+    {
+      "url": "https://cearaworld.com/images/primetime/covers/primetime_backdrop.svg",
+      "titles": [
+        "Primetime"
+      ],
+      "sourceBytes": 13821530,
+      "outputBytes": 1160182,
+      "thumbnailBytes": 31168,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 46.88532720610474
     }
   ],
-  "sourceBytes": 818819159,
-  "outputBytes": 101377754
+  "sourceBytes": 839661186,
+  "outputBytes": 102996845
 }

@@ -666,6 +666,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2022 • Animation • 1 season"
+    },
+    "primetime": {
+      "image": "primetime-5616365c74b2.jpg",
+      "thumbnail": "primetime-5616365c74b2-thumb.jpg",
+      "source": "/images/primetime/covers/primetimeCover.svg",
+      "sourceSHA256": "5616365c74b2afd70a2a6dd017750d914f9855e85ab5010c03c7bfa4c11c3579",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Action • 1h 50m"
     }
   }
 }

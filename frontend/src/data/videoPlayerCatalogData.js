@@ -295,6 +295,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "Bleach: Thousand-Year Blood War",
     "cardId": "card-74"
+  },
+  {
+    "title": "Primetime",
+    "cardId": "card-75"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -371,5 +375,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-71": "steelballrun",
   "card-72": "thegrey",
   "card-73": "batmanbeyond",
-  "card-74": "bleach"
+  "card-74": "bleach",
+  "card-75": "primetime"
 };

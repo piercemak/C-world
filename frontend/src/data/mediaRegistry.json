@@ -30915,9 +30915,49 @@
           }
         }
       }
+    },
+    "primetime": {
+      "assetId": "primetime",
+      "library": {
+        "type": "movie",
+        "title": "Primetime",
+        "agerating": "18+",
+        "release_year": "2026",
+        "genre": "Action",
+        "duration": "1h 50m",
+        "description": "In 2006, To Catch a Predator host Chris Hansen sets out to make television history.",
+        "background": "/images/primetime/covers/primetimeCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Lance Oppenheim",
+        "background": "/images/primetime/covers/primetime_backdrop.svg",
+        "ratings": "8.7",
+        "type": "Movies",
+        "keyart": "/images/primetime/covers/primetime_mobileLogo.jpg",
+        "card": "/images/cardimages/primetimeLogo.svg",
+        "dateadded": "10-29-26"
+      },
+      "mobileOrder": 74,
+      "sidebar": {
+        "cardId": "card-75",
+        "order": 74
+      },
+      "carousel": {
+        "order": 74
+      },
+      "captions": {
+        "movie": "/videos/primetime/primetime_subtitles.vtt"
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "primetime",
+      "placeholder": "/images/primetime/placeholders/primetime_placeholder.png",
+      "to": "/video-library/primetime?movie=1"
+    },
     {
       "kind": "episode",
       "showSlug": "bleach",

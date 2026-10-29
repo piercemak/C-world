@@ -73,9 +73,13 @@
     "steelballrun",
     "thegrey",
     "batmanbeyond",
-    "bleach"
+    "bleach",
+    "primetime"
   ],
   "newMedia": [
+    {
+      "id": "primetime"
+    },
     {
       "id": "bleach",
       "season": 1,

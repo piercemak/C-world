@@ -813,5 +813,16 @@ export const SHOWS = [
     "keyart": "/images/bleach/covers/bleach_mobileLogo.jpg",
     "card": "/images/cardimages/bleachLogo.svg",
     "dateadded": "10-29-26"
+  },
+  {
+    "id": "primetime",
+    "title": "Primetime",
+    "creator": "Lance Oppenheim",
+    "background": "/images/primetime/covers/primetime_backdrop.svg",
+    "ratings": "8.7",
+    "type": "Movies",
+    "keyart": "/images/primetime/covers/primetime_mobileLogo.jpg",
+    "card": "/images/cardimages/primetimeLogo.svg",
+    "dateadded": "10-29-26"
   }
 ];

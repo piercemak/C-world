@@ -73,7 +73,8 @@ export const mediaAssetIds = {
   "steelballrun": "steelballrun",
   "thegrey": "thegrey",
   "batmanbeyond": "batmanbeyond",
-  "bleach": "bleach"
+  "bleach": "bleach",
+  "primetime": "primetime"
 };
 export const skipTimes = {
   "stevenuniverse": {

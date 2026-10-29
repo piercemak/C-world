@@ -783,6 +783,17 @@ const metadata = {
     "description": "The peace is suddenly broken when warning sirens blare through the Soul Society. Residents are disappearing without a trace and nobody knows who's behind it. Meanwhile, a darkness is approaching Ichigo and his friends in Karakura ...",
     "background": "/images/bleach/covers/bleachCover.svg",
     "subtitles": "yes"
+  },
+  "primetime": {
+    "type": "movie",
+    "title": "Primetime",
+    "agerating": "18+",
+    "release_year": "2026",
+    "genre": "Action",
+    "duration": "1h 50m",
+    "description": "In 2006, To Catch a Predator host Chris Hansen sets out to make television history.",
+    "background": "/images/primetime/covers/primetimeCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(
