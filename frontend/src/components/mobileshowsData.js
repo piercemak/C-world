@@ -824,5 +824,16 @@ export const SHOWS = [
     "keyart": "/images/primetime/covers/primetime_mobileLogo.jpg",
     "card": "/images/cardimages/primetimeLogo.svg",
     "dateadded": "10-29-26"
+  },
+  {
+    "id": "vinland",
+    "title": "Vinland Saga",
+    "creator": "N/A",
+    "background": "/images/vinland/covers/vinland_backdrop.svg",
+    "ratings": "8.9",
+    "type": "TV",
+    "keyart": "/images/vinland/covers/vinland_mobileLogo.jpg",
+    "card": "/images/cardimages/vinlandLogo.svg",
+    "dateadded": "10-29-26"
   }
 ];

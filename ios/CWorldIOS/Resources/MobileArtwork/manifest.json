@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-29T22:35:01.829Z",
+  "catalogRevision": "2026-10-29T22:39:29.835Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1201,6 +1201,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "2f6fc6b2bd173e7e7b60282305a2cbb97d3a7da63bc5c4405e24d9933f00bb56"
+    },
+    "https://cearaworld.com/images/cardimages/vinlandLogo.svg": {
+      "image": "debf5e207216-774af860d9ea.jpg",
+      "thumbnail": "debf5e207216-774af860d9ea-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "774af860d9eaf0cfeca190d2c33fd75f8bbca7664fb36c9eda5afeab8045e670"
+    },
+    "https://cearaworld.com/images/vinland/covers/vinland_backdrop.svg": {
+      "image": "e3790906686b-3a347065fb29.jpg",
+      "thumbnail": "e3790906686b-3a347065fb29-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "3a347065fb29933a94f58255dc3f54cbdc9004464bba0759eab08460d4ab6039"
     }
   }
 }

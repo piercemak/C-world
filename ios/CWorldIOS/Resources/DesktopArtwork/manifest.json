@@ -675,6 +675,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2026 • Action • 1h 50m"
+    },
+    "vinland": {
+      "image": "vinland-7ea0fcca4dca.jpg",
+      "thumbnail": "vinland-7ea0fcca4dca-thumb.jpg",
+      "source": "/images/vinland/covers/vinlandCover.svg",
+      "sourceSHA256": "7ea0fcca4dcac53a0ac73ae2d55103636983472f359fdfdc9b5bf83c2d475891",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2019 • Animation • 2 seasons"
     }
   }
 }

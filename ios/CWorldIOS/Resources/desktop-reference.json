@@ -74,9 +74,15 @@
     "thegrey",
     "batmanbeyond",
     "bleach",
-    "primetime"
+    "primetime",
+    "vinland"
   ],
   "newMedia": [
+    {
+      "id": "vinland",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "primetime"
     },

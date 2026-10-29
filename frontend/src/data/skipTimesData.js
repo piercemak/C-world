@@ -74,7 +74,8 @@ export const mediaAssetIds = {
   "thegrey": "thegrey",
   "batmanbeyond": "batmanbeyond",
   "bleach": "bleach",
-  "primetime": "primetime"
+  "primetime": "primetime",
+  "vinland": "vinland"
 };
 export const skipTimes = {
   "stevenuniverse": {
@@ -13760,6 +13761,494 @@ export const skipTimes = {
         }
       }
     }
+  },
+  "vinland": {
+    "seasons": {
+      "1": {
+        "1": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "2": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "3": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "4": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "5": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "6": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "7": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "8": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "9": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "10": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "11": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "12": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "13": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "14": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "15": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "16": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "17": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "18": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "19": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "20": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "21": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "22": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "23": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "24": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        }
+      },
+      "2": {
+        "1": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "2": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "3": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "4": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "5": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "6": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "7": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "8": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "9": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "10": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "11": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "12": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "13": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "14": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "15": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "16": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "17": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "18": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "19": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "20": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "21": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "22": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "23": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "24": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        }
+      }
+    }
   }
 };
 export const seasonLength = {
@@ -13939,5 +14428,9 @@ export const seasonLength = {
   },
   "bleach": {
     "1": 50
+  },
+  "vinland": {
+    "1": 24,
+    "2": 24
   }
 };

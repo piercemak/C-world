@@ -374,5 +374,10 @@ export const CAROUSEL_COVERS = [
     "id": "primetime",
     "src": "/images/primetime/covers/primetimeCover.svg",
     "title": "Primetime"
+  },
+  {
+    "id": "vinland",
+    "src": "/images/vinland/covers/vinlandCover.svg",
+    "title": "Vinland Saga"
   }
 ];

@@ -794,6 +794,18 @@ const metadata = {
     "description": "In 2006, To Catch a Predator host Chris Hansen sets out to make television history.",
     "background": "/images/primetime/covers/primetimeCover.svg",
     "subtitles": "yes"
+  },
+  "vinland": {
+    "type": "show",
+    "title": "Vinland Saga",
+    "agerating": "18+",
+    "release_year": "2019",
+    "genre": "Animation",
+    "season_total_number": "2 seasons",
+    "season_digit": 2,
+    "description": "Following a tragedy, Thorfinn embarks on a journey with the man responsible for it to take his life in a duel as a true and honorable warrior.",
+    "background": "/images/vinland/covers/vinlandCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "00e358d7067398b0268dc2c4790f805de63c0db734d8629d5d4a769590fbc544",
+  "sourceSHA256": "d58c2439c474ad8f5b1ac02e6aafd793679da6a27a9e71d732881587bd5b72d9",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -9814,6 +9814,246 @@
       "outroStart": null
     },
     "bleach:1:50": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:19": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:23": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:1:24": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:19": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:22": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:23": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "vinland:2:24": {
       "introStart": null,
       "introEnd": null,
       "outroStart": null

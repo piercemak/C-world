@@ -1,6 +1,16 @@
 // Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const newMedia = [
   {
+    "kind": "episode",
+    "showSlug": "vinland",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "Somewhere Not Here",
+    "placeholder": "https://d20honz3pkzrs8.cloudfront.net/vinland/placeholders/season1/S1E1_vinland_placeholder.png",
+    "to": "/video-library/vinland?season=1&episode=1",
+    "showTitle": "Vinland Saga"
+  },
+  {
     "kind": "movie",
     "showSlug": "primetime",
     "placeholder": "/images/primetime/placeholders/primetime_placeholder.png",

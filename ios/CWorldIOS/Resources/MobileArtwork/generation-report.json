@@ -1980,8 +1980,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 46.88532720610474
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/vinlandLogo.svg",
+      "titles": [
+        "Vinland Saga"
+      ],
+      "sourceBytes": 2534021,
+      "outputBytes": 322914,
+      "thumbnailBytes": 62624,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 45.43294879699248
+    },
+    {
+      "url": "https://cearaworld.com/images/vinland/covers/vinland_backdrop.svg",
+      "titles": [
+        "Vinland Saga"
+      ],
+      "sourceBytes": 7966111,
+      "outputBytes": 1695303,
+      "thumbnailBytes": 36154,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 43.66428306867945
     }
   ],
-  "sourceBytes": 839661186,
-  "outputBytes": 102996845
+  "sourceBytes": 850161318,
+  "outputBytes": 105113840
 }
