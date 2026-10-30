@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 from botocore.exceptions import ClientError
 from django.core.cache import cache
 
-from .hls import hls_media
+from .hls import hls_media, _hls_key
 from .views import get_s3_client
 
 
@@ -44,5 +44,33 @@ def season_availability(media, season):
 
     with ThreadPoolExecutor(max_workers=8) as pool:
         result = {"mediaId": media["id"], "season": season["number"], "episodes": dict(pool.map(check, numbers))}
+    cache.set(key, result, 60)
+    return result
+
+
+def movie_availability(media):
+    """Check the same canonical HLS, legacy HLS and MP4 paths as playback."""
+    bucket = os.getenv("AWS_MEDIA_BUCKET", "all-shows")
+    keys = [_hls_key(hls_media(media), "master.m3u8")]
+    if (media.get("playback") or {}).get("type") == "hls":
+        keys.append(_hls_key(hls_media(media, legacy=True), "master.m3u8"))
+    keys.append(f"{media['assetId']}/{media['assetId']}.mp4")
+    identity = f"{bucket}:{media['id']}:{keys}"
+    key = "availability:movie:v1:" + hashlib.sha256(identity.encode()).hexdigest()
+    cached = cache.get(key)
+    if cached is not None:
+        return cached
+    client = get_s3_client()
+    available = False
+    for object_key in dict.fromkeys(keys):
+        try:
+            if client.head_object(Bucket=bucket, Key=object_key).get("ContentLength", 0) > 0:
+                available = True
+                break
+        except ClientError as exc:
+            if exc.response.get("Error", {}).get("Code") not in {"404", "NoSuchKey", "NotFound"}:
+                raise
+    # The single-item map lets existing clients share the availability machinery.
+    result = {"mediaId": media["id"], "season": 1, "episodes": {"1": available}, "available": available}
     cache.set(key, result, 60)
     return result

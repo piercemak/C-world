@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "d58c2439c474ad8f5b1ac02e6aafd793679da6a27a9e71d732881587bd5b72d9",
+  "sourceSHA256": "4d277de3c60960ce73b5f2df056d19282889706579d611bc29eb598ca5e98e4f",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -9819,124 +9819,124 @@
       "outroStart": null
     },
     "vinland:1:1": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 249.9,
+      "introEnd": 346.85,
+      "outroStart": 1637.9
     },
     "vinland:1:2": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 108.8,
+      "outroStart": 1396.87
     },
     "vinland:1:3": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 221.05,
+      "introEnd": 309.8,
+      "outroStart": 1396.87
     },
     "vinland:1:4": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 270.7,
+      "introEnd": 358.8,
+      "outroStart": 1396.87
     },
     "vinland:1:5": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 108.8,
+      "outroStart": 1396.87
     },
     "vinland:1:6": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 125.7,
+      "introEnd": 214.8,
+      "outroStart": 1396.87
     },
     "vinland:1:7": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 282.65,
+      "introEnd": 371.8,
+      "outroStart": 1396.87
     },
     "vinland:1:8": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 92.4,
+      "introEnd": 181.8,
+      "outroStart": 1396.87
     },
     "vinland:1:9": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 217.55,
+      "introEnd": 307.8,
+      "outroStart": 1396.87
     },
     "vinland:1:10": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 221.1,
+      "introEnd": 310.8,
+      "outroStart": 1396.87
     },
     "vinland:1:11": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 108.8,
+      "outroStart": 1396.87
     },
     "vinland:1:12": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 108.8,
+      "outroStart": 1396.87
     },
     "vinland:1:13": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 58.2,
+      "introEnd": 146.7,
+      "outroStart": 1394.1
     },
     "vinland:1:14": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 116.1,
+      "introEnd": 204.05,
+      "outroStart": 1395.45
     },
     "vinland:1:15": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 98.75,
+      "introEnd": 188.6,
+      "outroStart": 1392.45
     },
     "vinland:1:16": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 106.15,
+      "introEnd": 195.6,
+      "outroStart": 1392.1
     },
     "vinland:1:17": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 114.55,
+      "introEnd": 204.6,
+      "outroStart": 1393.25
     },
     "vinland:1:18": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 172.4,
+      "introEnd": 261.6,
+      "outroStart": 1393
     },
     "vinland:1:19": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 108.55,
+      "introEnd": 197.6,
+      "outroStart": 1393.5
     },
     "vinland:1:20": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 135.65,
+      "introEnd": 224.6,
+      "outroStart": 1393.2
     },
     "vinland:1:21": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 108.6,
+      "outroStart": 1393.75
     },
     "vinland:1:22": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 136.85,
+      "introEnd": 226.7,
+      "outroStart": 1393.8
     },
     "vinland:1:23": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 0,
+      "introEnd": 108.6,
+      "outroStart": 1393.3
     },
     "vinland:1:24": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 93.15,
+      "introEnd": 182.6,
+      "outroStart": 1392.35
     },
     "vinland:2:1": {
       "introStart": null,

@@ -1364,13 +1364,13 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                         return (
                             <motion.div 
                                 key={index}
-                                aria-disabled={show?.type === "show" && episodeAvailability[index + 1] === false}
-                                style={{ opacity: show?.type === "show" && episodeAvailability[index + 1] === false ? 0.5 : 1 }}
+                                aria-disabled={episodeAvailability[index + 1] === false}
+                                style={{ opacity: episodeAvailability[index + 1] === false ? 0.5 : 1 }}
                                 className={`flex flex-col w-full items-center cursor-pointer flex-shrink-0 snap-center ${
                                     show?.type !== "movie" ? "gap-4" : ""
                                 }`}
                                 onClick={ async () => {
-                                if (show?.type === "show" && episodeAvailability[index + 1] === false) return;
+                                if (episodeAvailability[index + 1] === false) return;
                                 let videoPath = videoUrl.path;
                             
                                 if (awsHostedShows.includes(showId)) {
@@ -1472,7 +1472,7 @@ const subtitleTrackSrc = getSubtitleTrackSrc({
                               )}                           
 
                               {show?.type === "movie" ? (
-                                  <div className=""> </div>
+                                  <div className="text-sm text-white/60">{episodeAvailability[1] === false ? "Not uploaded yet" : null}</div>
                               ) : (
                                   <div
                                       className={`text-white/80 flex font-semibold ${

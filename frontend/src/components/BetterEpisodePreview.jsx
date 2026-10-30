@@ -555,7 +555,7 @@ const BetterEpisodePreview = () => {
       ? getWatchProgressPercent(media.id, seasonNumber, episodeNumber)
       : getProgress(media.id, seasonNumber || 1, episodeNumber || 1)
   ), [getWatchProgressPercent, isProductionRoute]);
-  const availability = useEpisodeAvailability(selectedMedia.id, selectedSeason, isProductionRoute && selectedMedia.type === "show");
+  const availability = useEpisodeAvailability(selectedMedia.id, selectedSeason, isProductionRoute);
   const episodes = useMemo(
     () => getEpisodesForSeason(selectedMedia, selectedSeason, progressResolver).map(episode => ({ ...episode, available: availability[episode.number] })),
     [progressResolver, selectedMedia, selectedSeason, watchProgressVersion, availability],
@@ -1498,7 +1498,7 @@ const BetterEpisodePreview = () => {
                 <motion.button
                   type="button"
                   onClick={isProductionRoute ? handleContinuePlayback : undefined}
-                  disabled={isProductionRoute && (!resumeTarget || (resumeTarget.season === selectedSeason && availability[resumeTarget.episode] === false))}
+                  disabled={isProductionRoute && (!resumeTarget || (selectedMedia.type === "movie" ? availability[1] === false : (resumeTarget.season === selectedSeason && availability[resumeTarget.episode] === false)))}
                   className={`inline-flex h-12 origin-left transform-gpu items-center gap-2 rounded-md border border-white/15 bg-white/10 px-5 text-sm font-semibold text-white transition-colors hover:bg-white/16 will-change-transform ${
                     isProductionRoute && !resumeTarget
                       ? "cursor-not-allowed opacity-45"

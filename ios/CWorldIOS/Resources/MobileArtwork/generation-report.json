@@ -1960,13 +1960,13 @@
       "titles": [
         "Primetime"
       ],
-      "sourceBytes": 7020497,
-      "outputBytes": 388483,
-      "thumbnailBytes": 39258,
+      "sourceBytes": 7020495,
+      "outputBytes": 388522,
+      "thumbnailBytes": 39277,
       "width": 1024,
       "height": 1024,
       "format": "jpg",
-      "psnr": 42.86210132773631
+      "psnr": 42.860418659299626
     },
     {
       "url": "https://cearaworld.com/images/primetime/covers/primetime_backdrop.svg",
@@ -2008,6 +2008,6 @@
       "psnr": 43.66428306867945
     }
   ],
-  "sourceBytes": 850161318,
-  "outputBytes": 105113840
+  "sourceBytes": 850161316,
+  "outputBytes": 105113898
 }

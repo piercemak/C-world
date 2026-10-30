@@ -6,7 +6,7 @@ from django.core.cache import cache
 from django.test import SimpleTestCase
 from rest_framework.test import APIRequestFactory
 
-from .availability import season_availability
+from .availability import season_availability, movie_availability
 from .catalog_views import episode_availability
 
 
@@ -81,3 +81,54 @@ class AvailabilityTests(SimpleTestCase):
         result = episode_availability(APIRequestFactory().get("/availability/?season=11"), "test-show")
         self.assertEqual(result.status_code, 503)
         self.assertNotIn("episodes", result.data)
+
+
+class MovieAvailabilityTests(AvailabilityTests):
+    def movie(self):
+        return {"id": "test-movie", "assetId": "testmovie", "type": "movie"}
+
+    def test_movie_hls_and_mp4(self):
+        for key in ["hls/testmovie/master.m3u8", "testmovie/testmovie.mp4"]:
+            cache.clear()
+            def head(**kwargs):
+                if kwargs["Key"] == key:
+                    return {"ContentLength": 100}
+                raise ClientError({"Error": {"Code": "404"}}, "HeadObject")
+            self.client.head_object.side_effect = head
+            self.assertTrue(movie_availability(self.movie())["available"])
+
+    def test_movie_missing_and_refresh(self):
+        self.assertFalse(movie_availability(self.movie())["available"])
+        self.client.head_object.side_effect = None
+        self.client.head_object.return_value = {"ContentLength": 405}
+        self.assertFalse(movie_availability(self.movie())["available"])
+        cache.clear()
+        self.assertTrue(movie_availability(self.movie())["available"])
+
+    def test_movie_empty_is_missing(self):
+        self.client.head_object.side_effect = None
+        self.client.head_object.return_value = {"ContentLength": 0}
+        self.assertFalse(movie_availability(self.movie())["available"])
+
+    def test_movie_legacy_hls(self):
+        media = {**self.movie(), "playback": {"type": "hls", "hlsPrefix": "testmovie/hls"}}
+        def head(**kwargs):
+            if kwargs["Key"] == "testmovie/hls/master.m3u8":
+                return {"ContentLength": 405}
+            raise ClientError({"Error": {"Code": "404"}}, "HeadObject")
+        self.client.head_object.side_effect = head
+        self.assertTrue(movie_availability(media)["available"])
+
+    @patch("uploadtest.catalog_views.find_media")
+    def test_movie_endpoint_and_permission_failure(self, find):
+        find.return_value = self.movie()
+        request = APIRequestFactory().get("/availability/")
+        result = episode_availability(request, "test-movie")
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.data["episodes"], {"1": False})
+        self.assertEqual(result["Cache-Control"], "no-store")
+        cache.clear()
+        self.client.head_object.side_effect = ClientError({"Error": {"Code": "AccessDenied"}}, "HeadObject")
+        result = episode_availability(request, "test-movie")
+        self.assertEqual(result.status_code, 503)
+        self.assertNotIn("available", result.data)

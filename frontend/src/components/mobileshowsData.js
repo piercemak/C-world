@@ -828,7 +828,7 @@ export const SHOWS = [
   {
     "id": "vinland",
     "title": "Vinland Saga",
-    "creator": "N/A",
+    "creator": "Makoto Yukimura",
     "background": "/images/vinland/covers/vinland_backdrop.svg",
     "ratings": "8.9",
     "type": "TV",

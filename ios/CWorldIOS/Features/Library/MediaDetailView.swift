@@ -523,7 +523,7 @@ struct MediaDetailView: View {
             await ImageCache.shared.prefetchImages(detailPrefetchURLs)
         }
         .task(id: "availability:\(detailPrefetchKey)") {
-            if media.type != "movie" { await appModel.monitorEpisodeAvailability(mediaID: media.id, season: selectedSeason) }
+            await appModel.monitorEpisodeAvailability(mediaID: media.id, season: media.type == "movie" ? 1 : selectedSeason)
         }
     }
 
@@ -719,6 +719,8 @@ struct MediaDetailView: View {
         .frame(maxWidth: .infinity)
     }
 
+    private var movieMissing: Bool { appModel.episodeIsAvailable(mediaID: media.id, season: nil, episode: nil) == false }
+
     private var moviePlaceholder: some View {
         GeometryReader { proxy in
             ZStack(alignment: .topLeading) {
@@ -751,10 +753,19 @@ struct MediaDetailView: View {
                     .frame(width: proxy.size.width, height: proxy.size.height)
                 }
                 .buttonStyle(.plain)
+                .disabled(movieMissing)
+                .opacity(movieMissing ? 0.5 : 1)
+                .overlay(alignment: .bottom) {
+                    if movieMissing {
+                        Text("Not uploaded yet").font(.caption).padding(8)
+                            .background(.black.opacity(0.65), in: Capsule()).padding(.bottom, 16)
+                            .allowsHitTesting(false)
+                    }
+                }
                 .contextMenu {
                     Button("Add movie to Up Next", systemImage: "text.badge.plus") {
                         CWorldPlaybackHost.shared.enqueue(CWorldQueueEntry(media: media))
-                    }
+                    }.disabled(movieMissing)
                 }
 
                 backButton

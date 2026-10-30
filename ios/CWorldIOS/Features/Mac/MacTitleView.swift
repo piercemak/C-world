@@ -26,6 +26,7 @@ struct MacTitleView: View {
             appModel.episodeIsAvailable(mediaID: media.id, season: $0.progress.season, episode: $0.progress.episode) != false
         }
     }
+    private var movieMissing: Bool { media.type == "movie" && appModel.episodeIsAvailable(mediaID: media.id, season: nil, episode: nil) == false }
     private var meta: String { MacDesktopCatalog.desktopMeta(media) }
     private var context: String { heroEpisode.map { "\(media.title) • Season \(seasonNumber) • \(code($0))" } ?? "\(media.type == "movie" ? "Movie" : "Series") • \(meta)" }
     private var fraction: Double { min(1, max(0, (progress?.currentTime ?? 0) / max(1, progress?.duration ?? 1))) }
@@ -115,7 +116,7 @@ struct MacTitleView: View {
         .onAppear { seasonNumber = initialSeason ?? media.seasons?.first?.number ?? 1; selectedEpisode = initialEpisode }
         .onDisappear { hoverTask?.cancel() }
         .task(id: "\(media.id):\(seasonNumber)") {
-            if media.type != "movie" { await appModel.monitorEpisodeAvailability(mediaID: media.id, season: seasonNumber) }
+            await appModel.monitorEpisodeAvailability(mediaID: media.id, season: media.type == "movie" ? 1 : seasonNumber)
         }
     }
     private var hero: some View {
@@ -135,9 +136,9 @@ struct MacTitleView: View {
                 // Episode hover should not animate or resize the surrounding text.
             HStack(spacing: 12) {
                 Button { onPlay(selection) } label: {
-                    Label(fraction > 0 ? "Resume" : "Play", systemImage: "play.fill").font(.custom(CWorldFonts.poppins(.bold), size: 13))
+                    Label(movieMissing ? "Not uploaded yet" : (fraction > 0 ? "Resume" : "Play"), systemImage: "play.fill").font(.custom(CWorldFonts.poppins(.bold), size: 13))
                         .foregroundStyle(.black).padding(.horizontal, 20).frame(height: 48).background(.white, in: RoundedRectangle(cornerRadius: 6))
-                }.disabled(media.type != "movie" && (playEpisode == nil || appModel.episodeIsAvailable(mediaID: media.id, season: seasonNumber, episode: playEpisode?.number) == false)).accessibilityIdentifier("mac.title.play")
+                }.disabled(movieMissing || (media.type != "movie" && (playEpisode == nil || appModel.episodeIsAvailable(mediaID: media.id, season: seasonNumber, episode: playEpisode?.number) == false))).accessibilityIdentifier("mac.title.play")
                 Button { if let resume { onPlay(.resume(resume)) } } label: {
                     Label("Continue", systemImage: "play.fill").font(.custom(CWorldFonts.poppins(.semibold), size: 13))
                         .padding(.horizontal, 20).frame(height: 48)
@@ -170,7 +171,7 @@ struct MacTitleView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         previewText(heroEpisode.map(code) ?? media.title, height: 18)
                             .font(.custom(CWorldFonts.poppins(.bold), size: 12))
-                        previewText(heroEpisode.map { "\(previewStatus) • \($0.duration)" } ?? meta, height: 16)
+                        previewText(movieMissing ? "Not uploaded yet" : (heroEpisode.map { "\(previewStatus) • \($0.duration)" } ?? meta), height: 16)
                             .font(.system(size: 12)).foregroundStyle(.white.opacity(0.65))
                     }
                     .padding(12)

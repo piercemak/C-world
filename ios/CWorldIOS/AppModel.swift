@@ -10,7 +10,8 @@ final class AppModel: ObservableObject {
     }
 
     func episodeIsAvailable(mediaID: String, season: Int?, episode: Int?) -> Bool? {
-        guard let season, let episode else { return nil }
+        let season = season ?? 1
+        let episode = episode ?? 1
         return episodeAvailability[availabilityKey(mediaID, season)]?.episodes[String(episode)]
     }
 
@@ -421,12 +422,12 @@ final class AppModel: ObservableObject {
         }
         guard let client else { throw CWorldAPIError.invalidBaseURL }
         guard client === requestingClient else { throw CancellationError() }
-        if let season, let episode {
-            await refreshEpisodeAvailability(mediaID: mediaID, season: season)
+        do {
+            await refreshEpisodeAvailability(mediaID: mediaID, season: season ?? 1)
             try Task.checkCancellation()
             guard self.client === client else { throw CancellationError() }
             if episodeIsAvailable(mediaID: mediaID, season: season, episode: episode) == false {
-                throw CWorldAPIError.httpStatus(404, "This episode has not been uploaded yet.")
+                throw CWorldAPIError.httpStatus(404, season == nil ? "This movie has not been uploaded yet." : "This episode has not been uploaded yet.")
             }
         }
         let profileID = activeProfile?.id

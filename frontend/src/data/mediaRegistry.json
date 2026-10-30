@@ -30965,7 +30965,7 @@
         "subtitles": "yes"
       },
       "mobile": {
-        "creator": "N/A",
+        "creator": "Makoto Yukimura",
         "background": "/images/vinland/covers/vinland_backdrop.svg",
         "ratings": "8.9",
         "type": "TV",
@@ -31341,241 +31341,241 @@
           "1": {
             "1": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 249.9,
+                "end": 346.85
               },
               "outro": {
-                "start": 0,
+                "start": 1637.9,
                 "skipTo": "next"
               }
             },
             "2": {
               "intro": {
                 "start": 0,
-                "end": 0
+                "end": 108.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "3": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 221.05,
+                "end": 309.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "4": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 270.7,
+                "end": 358.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "5": {
               "intro": {
                 "start": 0,
-                "end": 0
+                "end": 108.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "6": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 125.7,
+                "end": 214.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "7": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 282.65,
+                "end": 371.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "8": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 92.4,
+                "end": 181.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "9": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 217.55,
+                "end": 307.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "10": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 221.1,
+                "end": 310.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "11": {
               "intro": {
                 "start": 0,
-                "end": 0
+                "end": 108.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "12": {
               "intro": {
                 "start": 0,
-                "end": 0
+                "end": 108.8
               },
               "outro": {
-                "start": 0,
+                "start": 1396.87,
                 "skipTo": "next"
               }
             },
             "13": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 58.2,
+                "end": 146.7
               },
               "outro": {
-                "start": 0,
+                "start": 1394.1,
                 "skipTo": "next"
               }
             },
             "14": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 116.1,
+                "end": 204.05
               },
               "outro": {
-                "start": 0,
+                "start": 1395.45,
                 "skipTo": "next"
               }
             },
             "15": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 98.75,
+                "end": 188.6
               },
               "outro": {
-                "start": 0,
+                "start": 1392.45,
                 "skipTo": "next"
               }
             },
             "16": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 106.15,
+                "end": 195.6
               },
               "outro": {
-                "start": 0,
+                "start": 1392.1,
                 "skipTo": "next"
               }
             },
             "17": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 114.55,
+                "end": 204.6
               },
               "outro": {
-                "start": 0,
+                "start": 1393.25,
                 "skipTo": "next"
               }
             },
             "18": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 172.4,
+                "end": 261.6
               },
               "outro": {
-                "start": 0,
+                "start": 1393,
                 "skipTo": "next"
               }
             },
             "19": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 108.55,
+                "end": 197.6
               },
               "outro": {
-                "start": 0,
+                "start": 1393.5,
                 "skipTo": "next"
               }
             },
             "20": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 135.65,
+                "end": 224.6
               },
               "outro": {
-                "start": 0,
+                "start": 1393.2,
                 "skipTo": "next"
               }
             },
             "21": {
               "intro": {
                 "start": 0,
-                "end": 0
+                "end": 108.6
               },
               "outro": {
-                "start": 0,
+                "start": 1393.75,
                 "skipTo": "next"
               }
             },
             "22": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 136.85,
+                "end": 226.7
               },
               "outro": {
-                "start": 0,
+                "start": 1393.8,
                 "skipTo": "next"
               }
             },
             "23": {
               "intro": {
                 "start": 0,
-                "end": 0
+                "end": 108.6
               },
               "outro": {
-                "start": 0,
+                "start": 1393.3,
                 "skipTo": "next"
               }
             },
             "24": {
               "intro": {
-                "start": 0,
-                "end": 0
+                "start": 93.15,
+                "end": 182.6
               },
               "outro": {
-                "start": 0,
+                "start": 1392.35,
                 "skipTo": "next"
               }
             }

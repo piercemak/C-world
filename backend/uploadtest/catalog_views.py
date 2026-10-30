@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from .catalog import CatalogError, find_episode, find_media, load_catalog
 from .hls import build_hls_playback_payload, resolve_hls_media
 from .views import build_signed_cloudfront_url, resolve_episode_s3_key
-from .availability import season_availability
+from .availability import season_availability, movie_availability
 
 
 def _catalog_envelope(catalog, items):
@@ -69,6 +69,10 @@ def episode_availability(request, media_id):
         if not media:
             media = next((item for item in load_catalog()["items"]
                           if item["id"].replace("-", "") == media_id.replace("-", "")), None)
+        if media and media.get("type") == "movie":
+            response = Response(movie_availability(media))
+            response["Cache-Control"] = "no-store"
+            return response
         number = _positive_int(request.query_params.get("season"), "season")
         season = next((s for s in (media or {}).get("seasons", []) if s["number"] == number), None)
         if not season:
