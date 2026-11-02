@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-02T19:43:02.363Z",
-  "generatedAt": "2026-11-02T19:43:02.363Z",
+  "catalogRevision": "2026-11-02T20:06:00.758Z",
+  "generatedAt": "2026-11-02T20:06:00.758Z",
   "items": [
     {
       "id": "steven-universe",
@@ -37346,8 +37346,8 @@
             },
             {
               "number": 6,
-              "title": "Episode 6",
-              "description": "",
+              "title": "Gyro Zeppeli's Destiny",
+              "description": "Wounded and weary, the duo finds the Zombie Horse. As Gyro patches himself up, memories surface — revealing a family legacy steeped in duty and sacrifice.",
               "airDate": "2026-10-23",
               "duration": "22m",
               "playbackRef": {
@@ -37367,8 +37367,8 @@
             },
             {
               "number": 7,
-              "title": "Episode 7",
-              "description": "",
+              "title": "Tusk (1)",
+              "description": "Near Monument Valley, Gyro vanishes into thin air. Alone and under attack, Johnny suspects the mummified arm in his possession has made them both targets.",
               "airDate": "2026-10-30",
               "duration": "22m",
               "playbackRef": {
