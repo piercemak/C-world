@@ -249,6 +249,14 @@ final class CWorldAPIClient {
         )
     }
 
+    func searchRequestTitles(_ query: String) async throws -> [RequestTitle] {
+        struct Results: Decodable { let results: [RequestTitle] }
+        var components = URLComponents()
+        components.queryItems = [URLQueryItem(name: "q", value: query)]
+        let result: Results = try await request(path: "/api/request-search/?" + (components.percentEncodedQuery ?? ""), authenticated: true)
+        return result.results
+    }
+
     func sendMediaRequest(_ text: String, language: String) async throws -> Bool {
         struct Payload: Encodable { let mediaRequest: String; let languageSubs: String }
         struct Response: Decodable { let success: Bool }
@@ -319,4 +327,14 @@ private struct EmptyResponse: Decodable {}
 
 private struct SignedURLResponse: Decodable {
     let url: String
+}
+
+struct RequestTitle: Decodable, Identifiable {
+    let id: Int
+    let type: String
+    let title: String
+    let year: String
+    let poster: String?
+    var identity: String { "\(type)-\(id)" }
+    var requestText: String { "\(title) (\(year)) • \(type == "tv" ? "Show" : "Movie")\nhttps://www.themoviedb.org/\(type)/\(id)" }
 }

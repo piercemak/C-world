@@ -1,3 +1,4 @@
+import SwiftUI
 #if targetEnvironment(macCatalyst)
 import SwiftUI
 import UIKit
@@ -72,29 +73,6 @@ struct MacProfilePicker: View {
     }
 }
 
-struct MacRequestView: View {
-    @EnvironmentObject private var appModel: AppModel
-    @Environment(\.dismiss) private var dismiss
-    @State private var request = ""
-    @State private var language = ""
-    @State private var sending = false
-    @State private var sent = false
-    var onClose: (() -> Void)?
-    var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            HStack { Text("Requests").font(.title2.bold()); Spacer(); Button { if let onClose { onClose() } else { dismiss() } } label: { Image(systemName: "xmark").frame(width: 24, height: 24) }.keyboardShortcut(.cancelAction) }
-            Text("Want a movie or show added? You can also report a playback problem here.").foregroundStyle(.secondary)
-            TextEditor(text: $request).frame(height: 140).overlay { RoundedRectangle(cornerRadius: 8).stroke(.secondary.opacity(0.25)) }
-            TextField("Language or subtitles (optional)", text: $language).textFieldStyle(.roundedBorder)
-            if sent { Label("Your request was sent.", systemImage: "checkmark.circle.fill").foregroundStyle(.green) }
-            else if let error = appModel.errorMessage { Text(error).foregroundStyle(.red).font(.caption) }
-            Button(sending ? "Sending…" : "Send Request") {
-                sending = true
-                Task { sent = await appModel.sendMediaRequest(request, language: language); sending = false }
-            }.buttonStyle(.borderedProminent).disabled(sending || sent || request.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-        }.padding(4).frame(width: 540, height: 430)
-    }
-}
 
 struct MacProfileManagement: View {
     @EnvironmentObject private var appModel: AppModel
@@ -228,3 +206,101 @@ struct MacBackdropPicker: View {
     }
 }
 #endif
+
+struct MacRequestView: View {
+    @EnvironmentObject private var appModel: AppModel
+    @Environment(\.dismiss) private var dismiss
+    @State private var query = ""
+    @State private var results: [RequestTitle] = []
+    @State private var selected: RequestTitle?
+    @State private var language = "Original audio"
+    @State private var subtitles = ""
+    @State private var searching = false
+    @State private var sending = false
+    @State private var sent = false
+    @State private var error: String?
+    var onClose: (() -> Void)?
+    var body: some View {
+        VStack(alignment: .leading, spacing: 18) {
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Request a title").font(.title2.bold())
+                    Text("Find your next movie or show.").font(.subheadline).foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button { withAnimation(.easeInOut(duration: 0.25)) { if let onClose { onClose() } else { dismiss() } } } label: { Image(systemName: "xmark").padding(8) }.keyboardShortcut(.cancelAction)
+            }
+            if sent {
+                Spacer()
+                Label("Your request was sent", systemImage: "checkmark.circle.fill").font(.title3.bold()).foregroundStyle(.green)
+                Text("We’ll review your title and language preferences.").foregroundStyle(.secondary)
+                Spacer()
+            } else {
+                HStack {
+                    Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
+                    TextField("Search movies and shows", text: $query).textFieldStyle(.plain)
+                    if searching { ProgressView().controlSize(.small) }
+                }.padding(14).background(.primary.opacity(0.06), in: RoundedRectangle(cornerRadius: 14))
+                if let selected {
+                    titleRow(selected)
+                    Button("Choose a different title") { withAnimation { self.selected = nil } }.font(.caption)
+                    TextField("Audio language", text: $language).textFieldStyle(.roundedBorder)
+                    TextField("Subtitle language (optional)", text: $subtitles).textFieldStyle(.roundedBorder)
+                    Text("Language preferences are requests; availability may vary.").font(.caption).foregroundStyle(.secondary)
+                    Spacer(minLength: 0)
+                    Button(sending ? "Sending…" : "Send request") {
+                        sending = true; error = nil
+                        Task {
+                            let success = await appModel.sendMediaRequest(selected.requestText, language: "Audio: \(language)\nSubtitles: \(subtitles.isEmpty ? "No preference" : subtitles)")
+                            withAnimation(.easeInOut(duration: 0.25)) { sent = success }
+                            if !success { error = appModel.errorMessage }
+                            sending = false
+                        }
+                    }.buttonStyle(.borderedProminent).disabled(sending)
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 10) {
+                            ForEach(results, id: \.identity) { title in
+                                Button { withAnimation(.spring(response: 0.38, dampingFraction: 0.86)) { selected = title; error = nil } } label: { titleRow(title) }.buttonStyle(.plain)
+                            }
+                            if !searching && results.isEmpty {
+                                Text(query.count < 2 ? "Search for a title to get started." : "No titles found. Try another name.").foregroundStyle(.secondary).padding(.vertical, 40)
+                            }
+                        }
+                    }
+                }
+                if let error { Text(error).font(.caption).foregroundStyle(.red) }
+            }
+            Text("Search powered by TMDB. This product is not endorsed or certified by TMDB.").font(.system(size: 10)).foregroundStyle(.secondary)
+        }.padding(16).frame(maxWidth: 540).frame(height: 530)
+        .disabled(sending)
+        .task(id: query) {
+            selected = nil; error = nil
+            let text = query.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard text.count >= 2 else { results = []; searching = false; return }
+            searching = true
+            do {
+                try await Task.sleep(for: .milliseconds(300))
+                let found = try await appModel.searchRequestTitles(text)
+                try Task.checkCancellation()
+                withAnimation(.easeInOut(duration: 0.2)) { results = found }
+                searching = false
+            } catch {
+                guard !Task.isCancelled else { return }
+                results = []; searching = false; self.error = error.localizedDescription
+            }
+        }
+    }
+    private func titleRow(_ title: RequestTitle) -> some View {
+        HStack(spacing: 14) {
+            AsyncImage(url: title.poster.flatMap(URL.init(string:))) { image in image.resizable().scaledToFill() } placeholder: { Color.gray.opacity(0.15).overlay { Image(systemName: "film") } }
+                .frame(width: 54, height: 80).clipShape(RoundedRectangle(cornerRadius: 8))
+            VStack(alignment: .leading, spacing: 5) {
+                Text(title.title).font(.headline).multilineTextAlignment(.leading)
+                Text("\(title.type == "tv" ? "Show" : "Movie") • \(title.year)").font(.caption).foregroundStyle(.secondary)
+            }
+            Spacer()
+            Image(systemName: selected?.identity == title.identity ? "checkmark.circle.fill" : "chevron.right").foregroundStyle(.secondary)
+        }.padding(10).frame(maxWidth: .infinity).background(.primary.opacity(0.04), in: RoundedRectangle(cornerRadius: 12))
+    }
+}

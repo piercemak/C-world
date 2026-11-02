@@ -1,3 +1,4 @@
+from uploadtest.request_search import request_search
 from uploadtest.views import (
     get_signed_url,
     get_signed_episode_url,
@@ -22,6 +23,7 @@ from django.urls import path
 from django.contrib import admin
 
 urlpatterns = [
+    path("api/request-search/", request_search),
     path('admin/', admin.site.urls),
     path('api/signed-url/', get_signed_url),
     path('api/signed-episode-url/', get_signed_episode_url),

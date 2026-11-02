@@ -328,6 +328,11 @@ final class AppModel: ObservableObject {
         }
     }
 
+    func searchRequestTitles(_ query: String) async throws -> [RequestTitle] {
+        guard let client, isAuthenticated else { throw CWorldAPIError.sessionUnavailable }
+        return try await client.searchRequestTitles(query)
+    }
+
     func sendMediaRequest(_ text: String, language: String) async -> Bool {
         guard let client, isAuthenticated else { errorMessage = "Sign in before sending a request."; return false }
         let text = text.trimmingCharacters(in: .whitespacesAndNewlines)

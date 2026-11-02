@@ -4,6 +4,7 @@ struct ProfilePickerView: View {
     @EnvironmentObject private var appModel: AppModel
     @Environment(\.dismiss) private var dismiss
     @State private var showingManagement = false
+    @State private var showingRequests = false
     @State private var showingMacRemote = false
     @State private var isSelecting = false
 
@@ -62,6 +63,7 @@ struct ProfilePickerView: View {
             }
             .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) { Button("Request a title", systemImage: "plus.circle") { showingRequests = true } }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Mac Remote", systemImage: "appletvremote.gen4") { showingMacRemote = true }
                 }
@@ -74,6 +76,7 @@ struct ProfilePickerView: View {
                         .foregroundStyle(.white)
                 }
             }
+            .sheet(isPresented: $showingRequests) { MacRequestView().environmentObject(appModel).presentationDragIndicator(.visible) }
             .sheet(isPresented: $showingManagement) {
                 ProfileManagementView()
             }
