@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-10-30T20:56:56.287Z",
-  "generatedAt": "2026-10-30T20:56:56.287Z",
+  "catalogRevision": "2026-11-02T19:43:02.363Z",
+  "generatedAt": "2026-11-02T19:43:02.363Z",
   "items": [
     {
       "id": "steven-universe",
@@ -37361,9 +37361,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 149.1,
+              "skipIntroEnd": 237.75,
+              "skipOutroStart": 1325.55
             },
             {
               "number": 7,
@@ -37382,9 +37382,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/steelballrun/season1/S1E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 178.2,
+              "skipIntroEnd": 267.35,
+              "skipOutroStart": 1325.1
             },
             {
               "number": 8,

@@ -13185,21 +13185,21 @@ export const skipTimes = {
         },
         "6": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 149.1,
+            "end": 237.75
           },
           "outro": {
-            "start": 0,
+            "start": 1325.55,
             "skipTo": "next"
           }
         },
         "7": {
           "intro": {
-            "start": 0,
-            "end": 0
+            "start": 178.2,
+            "end": 267.35
           },
           "outro": {
-            "start": 0,
+            "start": 1325.1,
             "skipTo": "next"
           }
         },
