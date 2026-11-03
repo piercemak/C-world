@@ -839,7 +839,7 @@ export const SHOWS = [
   {
     "id": "residentevil",
     "title": "Resident Evil",
-    "creator": "Paul W.S. Anderson",
+    "creator": "Zach Cregger",
     "background": "/images/residentevil/covers/residentevil_backdrop.svg",
     "ratings": "6.6",
     "type": "Movies",
