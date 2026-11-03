@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-02T20:06:00.758Z",
-  "generatedAt": "2026-11-02T20:06:00.758Z",
+  "catalogRevision": "2026-11-03T14:49:22.927Z",
+  "generatedAt": "2026-11-03T14:49:22.927Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39243,9 +39243,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 88.15,
+              "skipOutroStart": 1439.4
             },
             {
               "number": 2,
@@ -39264,9 +39264,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 88.2,
+              "skipOutroStart": 1439.45
             },
             {
               "number": 3,
@@ -39285,9 +39285,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 334.05,
+              "skipIntroEnd": 422.2,
+              "skipOutroStart": 1439.4
             },
             {
               "number": 4,
@@ -39306,9 +39306,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 258.05,
+              "skipIntroEnd": 346.2,
+              "skipOutroStart": 1439.36
             },
             {
               "number": 5,
@@ -39327,9 +39327,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 88.2,
+              "skipOutroStart": 1439.4
             },
             {
               "number": 6,
@@ -39348,9 +39348,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 88.2,
+              "skipOutroStart": 1439.4
             },
             {
               "number": 7,
@@ -39369,9 +39369,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 50.05,
+              "skipIntroEnd": 138.2,
+              "skipOutroStart": 1439.44
             },
             {
               "number": 8,
@@ -39390,9 +39390,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 167.05,
+              "skipIntroEnd": 255.2,
+              "skipOutroStart": 1439.44
             },
             {
               "number": 9,
@@ -39411,9 +39411,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E09_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 181.05,
+              "skipIntroEnd": 269.2,
+              "skipOutroStart": 1439.52
             },
             {
               "number": 10,
@@ -39432,9 +39432,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E10_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 88.2,
+              "skipOutroStart": 1439.48
             },
             {
               "number": 11,
@@ -39453,9 +39453,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E11_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 462.05,
+              "skipIntroEnd": 550.2,
+              "skipOutroStart": 1439.36
             },
             {
               "number": 12,
@@ -39474,9 +39474,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E12_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 103.05,
+              "skipIntroEnd": 191.2,
+              "skipOutroStart": 1439.44
             },
             {
               "number": 13,
@@ -39495,9 +39495,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E13_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 242.85,
+              "skipIntroEnd": 334,
+              "skipOutroStart": 1437.55
             },
             {
               "number": 14,
@@ -39516,9 +39516,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E14_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 89,
+              "skipOutroStart": 1437.47
             },
             {
               "number": 15,
@@ -39537,9 +39537,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E15_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 89,
+              "skipOutroStart": 1437.5
             },
             {
               "number": 16,
@@ -39558,9 +39558,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E16_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 96.45,
+              "skipIntroEnd": 185,
+              "skipOutroStart": 1437.37
             },
             {
               "number": 17,
@@ -39579,9 +39579,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E17_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 89,
+              "skipOutroStart": 1437.5
             },
             {
               "number": 18,
@@ -39600,9 +39600,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E18_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 140.85,
+              "skipIntroEnd": 232,
+              "skipOutroStart": 1437.37
             },
             {
               "number": 19,
@@ -39621,9 +39621,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E19_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 270.85,
+              "skipIntroEnd": 362,
+              "skipOutroStart": 1437.37
             },
             {
               "number": 20,
@@ -39642,9 +39642,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E20_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 296.85,
+              "skipIntroEnd": 388,
+              "skipOutroStart": 1437.46
             },
             {
               "number": 21,
@@ -39663,9 +39663,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E21_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 210.85,
+              "skipIntroEnd": 302,
+              "skipOutroStart": 1437.37
             },
             {
               "number": 22,
@@ -39684,9 +39684,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E22_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 89,
+              "skipOutroStart": 1437.56
             },
             {
               "number": 23,
@@ -39705,9 +39705,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E23_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 89,
+              "skipOutroStart": 1437.46
             },
             {
               "number": 24,
@@ -39726,9 +39726,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/vinland/season2/S2E24_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 89,
+              "skipOutroStart": 1447.56
             }
           ]
         }
