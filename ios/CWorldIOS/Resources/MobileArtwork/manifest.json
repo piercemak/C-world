@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-10-29T22:39:29.835Z",
+  "catalogRevision": "2026-11-03T16:13:14.277Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1217,6 +1217,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "3a347065fb29933a94f58255dc3f54cbdc9004464bba0759eab08460d4ab6039"
+    },
+    "https://cearaworld.com/images/cardimages/residentevilLogo.svg": {
+      "image": "61bffe6e27d4-2abe35b4c47f.jpg",
+      "thumbnail": "61bffe6e27d4-2abe35b4c47f-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "2abe35b4c47f606aa907a2a212535d1550731979e02368103d109908c3d6b70f"
+    },
+    "https://cearaworld.com/images/residentevil/covers/residentevil_backdrop.svg": {
+      "image": "25f139f63866-0c5990a62f93.jpg",
+      "thumbnail": "25f139f63866-0c5990a62f93-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "0c5990a62f93907ad3238bbff4244b2206a9446a454a145e77f6cbcc239eedd1"
     }
   }
 }

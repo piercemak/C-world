@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-03T14:49:22.927Z",
-  "generatedAt": "2026-11-03T14:49:22.927Z",
+  "catalogRevision": "2026-11-03T16:13:14.277Z",
+  "generatedAt": "2026-11-03T16:13:14.277Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39733,6 +39733,42 @@
           ]
         }
       ]
+    },
+    {
+      "id": "residentevil",
+      "assetId": "residentevil",
+      "type": "movie",
+      "title": "Resident Evil",
+      "dateAdded": "11-3-26",
+      "description": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/residentevilLogo.svg",
+        "poster": "https://cearaworld.com/images/residentevil/covers/residentevil_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/residentevil/covers/residentevil_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/residentevil/covers/residentevil_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Paul W.S. Anderson",
+        "rating": "6.6",
+        "year": "2002",
+        "genres": [
+          "Action"
+        ],
+        "duration": "1h 40m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/residentevil/residentevil_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/residentevil/residentevil_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "residentevil",
+        "season": null,
+        "episode": null
+      }
     }
   ]
 }

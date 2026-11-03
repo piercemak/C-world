@@ -303,6 +303,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "Vinland Saga",
     "cardId": "card-76"
+  },
+  {
+    "title": "Resident Evil",
+    "cardId": "card-77"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -381,5 +385,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-73": "batmanbeyond",
   "card-74": "bleach",
   "card-75": "primetime",
-  "card-76": "vinland"
+  "card-76": "vinland",
+  "card-77": "residentevil"
 };

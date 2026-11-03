@@ -37,7 +37,8 @@ const MOVIE_SUBTITLE_TRACKS = {
   "themist": "/videos/themist/themist_subtitles.vtt",
   "thegrey": "/videos/thegrey/thegrey_subtitles.vtt",
   "batmanbeyond": "/videos/batmanbeyond/batmanbeyond_subtitles.vtt",
-  "primetime": "/videos/primetime/primetime_subtitles.vtt"
+  "primetime": "/videos/primetime/primetime_subtitles.vtt",
+  "residentevil": "/videos/residentevil/residentevil_subtitles.vtt"
 };
 const SERIES_SUBTITLE_PATTERNS = {
   "neon-genesis": "/subtitles/neongenesis/season{season}/S{season}E{episode2}_subtitles.vtt",

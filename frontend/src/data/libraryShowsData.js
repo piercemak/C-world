@@ -806,6 +806,17 @@ const metadata = {
     "description": "Following a tragedy, Thorfinn embarks on a journey with the man responsible for it to take his life in a duel as a true and honorable warrior.",
     "background": "/images/vinland/covers/vinlandCover.svg",
     "subtitles": "yes"
+  },
+  "residentevil": {
+    "type": "movie",
+    "title": "Resident Evil",
+    "agerating": "18+",
+    "release_year": "2002",
+    "genre": "Action",
+    "duration": "1h 40m",
+    "description": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+    "background": "/images/residentevil/covers/residentevilCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

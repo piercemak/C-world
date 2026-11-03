@@ -31824,9 +31824,49 @@
           }
         }
       }
+    },
+    "residentevil": {
+      "assetId": "residentevil",
+      "library": {
+        "type": "movie",
+        "title": "Resident Evil",
+        "agerating": "18+",
+        "release_year": "2002",
+        "genre": "Action",
+        "duration": "1h 40m",
+        "description": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+        "background": "/images/residentevil/covers/residentevilCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Paul W.S. Anderson",
+        "background": "/images/residentevil/covers/residentevil_backdrop.svg",
+        "ratings": "6.6",
+        "type": "Movies",
+        "keyart": "/images/residentevil/covers/residentevil_mobileLogo.jpg",
+        "card": "/images/cardimages/residentevilLogo.svg",
+        "dateadded": "11-3-26"
+      },
+      "mobileOrder": 76,
+      "sidebar": {
+        "cardId": "card-77",
+        "order": 76
+      },
+      "carousel": {
+        "order": 76
+      },
+      "captions": {
+        "movie": "/videos/residentevil/residentevil_subtitles.vtt"
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "residentevil",
+      "placeholder": "/images/residentevil/placeholders/residentevil_placeholder.png",
+      "to": "/video-library/residentevil?movie=1"
+    },
     {
       "kind": "episode",
       "showSlug": "vinland",

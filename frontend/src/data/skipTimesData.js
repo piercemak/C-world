@@ -75,7 +75,8 @@ export const mediaAssetIds = {
   "batmanbeyond": "batmanbeyond",
   "bleach": "bleach",
   "primetime": "primetime",
-  "vinland": "vinland"
+  "vinland": "vinland",
+  "residentevil": "residentevil"
 };
 export const skipTimes = {
   "stevenuniverse": {

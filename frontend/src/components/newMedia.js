@@ -1,6 +1,13 @@
 // Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const newMedia = [
   {
+    "kind": "movie",
+    "showSlug": "residentevil",
+    "placeholder": "/images/residentevil/placeholders/residentevil_placeholder.png",
+    "to": "/video-library/residentevil?movie=1",
+    "showTitle": "Resident Evil"
+  },
+  {
     "kind": "episode",
     "showSlug": "vinland",
     "season": 1,

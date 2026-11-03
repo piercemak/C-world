@@ -835,5 +835,16 @@ export const SHOWS = [
     "keyart": "/images/vinland/covers/vinland_mobileLogo.jpg",
     "card": "/images/cardimages/vinlandLogo.svg",
     "dateadded": "10-29-26"
+  },
+  {
+    "id": "residentevil",
+    "title": "Resident Evil",
+    "creator": "Paul W.S. Anderson",
+    "background": "/images/residentevil/covers/residentevil_backdrop.svg",
+    "ratings": "6.6",
+    "type": "Movies",
+    "keyart": "/images/residentevil/covers/residentevil_mobileLogo.jpg",
+    "card": "/images/cardimages/residentevilLogo.svg",
+    "dateadded": "11-3-26"
   }
 ];

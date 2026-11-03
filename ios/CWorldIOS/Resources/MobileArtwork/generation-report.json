@@ -2006,8 +2006,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 43.66428306867945
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/residentevilLogo.svg",
+      "titles": [
+        "Resident Evil"
+      ],
+      "sourceBytes": 2011271,
+      "outputBytes": 267368,
+      "thumbnailBytes": 41749,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 43.276140421437795
+    },
+    {
+      "url": "https://cearaworld.com/images/residentevil/covers/residentevil_backdrop.svg",
+      "titles": [
+        "Resident Evil"
+      ],
+      "sourceBytes": 2462315,
+      "outputBytes": 673294,
+      "thumbnailBytes": 23149,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 48.3084515179557
     }
   ],
-  "sourceBytes": 850161316,
-  "outputBytes": 105113898
+  "sourceBytes": 854634902,
+  "outputBytes": 106119458
 }

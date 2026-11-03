@@ -75,9 +75,13 @@
     "batmanbeyond",
     "bleach",
     "primetime",
-    "vinland"
+    "vinland",
+    "residentevil"
   ],
   "newMedia": [
+    {
+      "id": "residentevil"
+    },
     {
       "id": "vinland",
       "season": 1,
