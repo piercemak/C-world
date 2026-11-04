@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-03T20:01:01.259Z",
-  "generatedAt": "2026-11-03T20:01:01.259Z",
+  "catalogRevision": "2026-11-04T14:59:34.143Z",
+  "generatedAt": "2026-11-04T14:59:34.143Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39740,7 +39740,7 @@
       "type": "movie",
       "title": "Resident Evil",
       "dateAdded": "11-3-26",
-      "description": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+      "description": "Medical courier Bryan becomes trapped in a desperate fight for survival as a terrifying night plunges the world around him into chaos.",
       "artwork": {
         "card": "https://cearaworld.com/images/cardimages/residentevilLogo.svg",
         "poster": "https://cearaworld.com/images/residentevil/covers/residentevil_mobileLogo.jpg",
@@ -39749,13 +39749,13 @@
       },
       "metadata": {
         "creator": "Zach Cregger",
-        "rating": "6.6",
-        "year": "2002",
+        "rating": "7.6",
+        "year": "2026",
         "genres": [
-          "Action"
+          "Horror, Action"
         ],
-        "duration": "1h 40m",
-        "ageRating": "18+"
+        "duration": "1h 34m",
+        "ageRating": "R"
       },
       "subtitles": true,
       "subtitleTracks": [

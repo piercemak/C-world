@@ -810,11 +810,11 @@ const metadata = {
   "residentevil": {
     "type": "movie",
     "title": "Resident Evil",
-    "agerating": "18+",
-    "release_year": "2002",
-    "genre": "Action",
-    "duration": "1h 40m",
-    "description": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+    "agerating": "R",
+    "release_year": "2026",
+    "genre": "Horror, Action",
+    "duration": "1h 34m",
+    "description": "Medical courier Bryan becomes trapped in a desperate fight for survival as a terrifying night plunges the world around him into chaos.",
     "background": "/images/residentevil/covers/residentevilCover.svg",
     "subtitles": "yes"
   }

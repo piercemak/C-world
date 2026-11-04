@@ -841,7 +841,7 @@ export const SHOWS = [
     "title": "Resident Evil",
     "creator": "Zach Cregger",
     "background": "/images/residentevil/covers/residentevil_backdrop.svg",
-    "ratings": "6.6",
+    "ratings": "7.6",
     "type": "Movies",
     "keyart": "/images/residentevil/covers/residentevil_mobileLogo.jpg",
     "card": "/images/cardimages/residentevilLogo.svg",
