@@ -16,6 +16,18 @@ function Art({ src, candidates = [], title }) {
   const urls = [...new Set([src,...candidates,'/images/misc/placeholder.png'].filter(Boolean))];
   return <img src={urls[Math.min(index,urls.length-1)]} alt={title} loading="lazy" decoding="async" onError={() => setIndex(i => Math.min(i+1,urls.length-1))}/>;
 }
+export function RecentLauncher({ items, onClick, compact = false }) {
+  const count = Math.min(items.length, 10);
+  return <button type="button" className={`desktop-launcher-button${compact ? ' desktop-launcher-compact' : ''}`} onClick={onClick} aria-label="Open Recently Watched" title="Open Recently Watched">
+    <span className="desktop-launcher-art" aria-hidden="true">
+      {items.slice(0,3).map((item,index) => <span className="desktop-launcher-card" key={item.key} style={{'--side': compact ? index-1 : index === 0 ? 0 : index === 1 ? -1 : 1, zIndex: compact ? index===1 ? 3 : index : index===0 ? 3 : 3-index}}>
+        <Art key={item.img} src={item.img} candidates={item.imgCandidates} title=""/>
+      </span>)}
+      {!count && <svg className="desktop-launcher-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6m3-4v6l4 2"/></svg>}
+    </span>
+    <span className="desktop-launcher-copy"><span className="desktop-launcher-label">Recently Watched <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m4 2 4 4-4 4"/></svg></span><small>{count ? `${count} ${count===1?'title':'titles'} to continue` : 'Explore recently watched'}</small></span>
+  </button>;
+}
 export function MobileLogoLibrary() {
   const navigate = useNavigate();
   const reduce = useReducedMotion();

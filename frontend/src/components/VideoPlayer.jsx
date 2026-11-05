@@ -8,14 +8,14 @@ import ColorPicker from "./ColorPicker";
 import Menu from './framercomponents/Menu.jsx'
 import { allEpisodeTitles } from "./episodeTitles.js";
 import { newMedia } from "./newMedia.js";
-import { ArtworkToggle, MobileLogoLibrary, DesktopRecent } from "./DesktopLibraryViews.jsx";
+import { ArtworkToggle, MobileLogoLibrary, DesktopRecent, RecentLauncher } from "./DesktopLibraryViews.jsx";
 import {
   VIDEO_PLAYER_CARD_ID_TO_SLUG,
   VIDEO_PLAYER_SIDEBAR_ITEMS,
 } from "../data/videoPlayerCatalogData.js";
 import { continueWatchingEntries, removeContinueWatching } from "../lib/watchSync.js";
 import { useAuth } from "./AuthContext.jsx";
-import { apiFetch } from "../lib/apiClient.js";
+import RequestTitleModal from "./RequestTitleModal.jsx";
 import { readWatchProgress } from "../lib/watchProgressStorage.js";
 
 import { useSnow } from "./SnowContext.jsx"; 
@@ -188,36 +188,6 @@ const VideoPlayer = () => {
 
     {/* Request Modal */}
     const [isRequestOpen, setIsRequestOpen] = useState(false)
-    const [mediaRequest, setMediaRequest] = useState('');
-    const [languageSubs, setLanguageSubs] = useState('');
-    const handleSubmit = async () => {
-      try {
-        const res = await apiFetch("/api/send-request/", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            mediaRequest,
-            languageSubs,
-          }),
-        });
-        const data = await res.json();
-        if (data.success) {
-          alert('Request submitted successfully!');
-          setMediaRequest('');
-          setLanguageSubs('');
-          setIsRequestOpen(false);
-        } else {
-          alert('Failed to send request.');
-        }
-      } catch (err) {
-        console.error(err);
-        alert('Error sending request.');
-      }
-    };    
-
-    
   // Search state
   const [searchOpen, setSearchOpen] = useState(false);
   const searchMainRef = useRef(null);
@@ -1039,22 +1009,7 @@ const continueItems = useMemo(() => {
             </div>
 
               <div className="desktop-recent-launcher">
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  whileHover={{ scale: 1.03 }}
-                  className="desktop-launcher-button"
-                  onClick={() => {
-                    if (continueOpen) {
-                      closeContinue();
-                    } else {
-                      setContinueOpen(true);
-                    }
-                  }}
-
-                >
-                  <span className="desktop-launcher-art" aria-hidden="true">{continueItems.slice(0,3).map(item=><img key={item.key} src={item.img} alt=""/>)}</span>
-                  <span>Recently Watched <span aria-hidden="true">›</span></span>
-                </motion.button>
+                <RecentLauncher items={continueItems} onClick={() => setContinueOpen(true)}/>
               </div>
               
             </div>
@@ -1117,94 +1072,13 @@ const continueItems = useMemo(() => {
                 </div>
 
               <AnimatePresence>
-                {isRequestOpen && (
-                  <motion.div
-                    key="color-picker"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="fixed inset-0 bg-black/10 backdrop-blur-sm flex items-center justify-center z-[1000]"
-                  >
-                    <div className="w-[600px] h-[500px] bg-white flex items-center justify-center text-black rounded-2xl p-4 shadow-2xl border-2 border-black/20">
-                      <div className="w-full h-full flex flex-col p-4">
-                        <span className="text-4xl font-bold"> Requests </span>
-                        <span className="text-sm leading-5 mt-2 text-black/70"> Want to watch something that isn't on this site? Make a request down below and i'll make sure to add it as soon as I have time. </span>
-                        <div className="flex flex-col mt-4">
-                          <span className="mb-2"> Media Request </span>
-                          <input 
-                            placeholder="Enter request here"
-                            value={mediaRequest}
-                            onChange={(e) => setMediaRequest(e.target.value)}                            
-                            className="bg-black/10 h-14 p-2 rounded-lg"/>
-                            <span className="text-xs text-blue-500/60 leading-3 mt-2 p-1"> Enter a request for any media type such as shows or movies. Or if you experience any bugs feel free to notify me here as well. </span>
-                        </div>
-                        <div className="flex flex-col mt-8">
-                          <span className="mb-2"> Language/Subtitles </span>
-                          <input 
-                            placeholder="Write content here"
-                            value={languageSubs}
-                            onChange={(e) => setLanguageSubs(e.target.value)}                            
-                            className="bg-black/10 h-14 p-2 rounded-lg"/>
-                            <span className="text-xs text-blue-500/60 leading-4 mt-2 p-1"> If you are requesting something that requires subtitles or a different language please notify me here. (Ex. English,Sub) </span>
-                        </div>
-                        <div className="w-full flex justify-end mt-4 items-center gap-4">
-                          <motion.button 
-                            whileTap={{
-                            scale: 0.9,
-                            transition: {
-                            type: 'spring',
-                            stiffness: 500,
-                            damping: 10,
-                            },
-                            }}
-                            whileHover={{
-                                scale: 1.05,
-                                transition: {
-                                type: 'spring',
-                                stiffness: 300,
-                                damping: 10,
-                                },
-                            }}                       
-                            onClick={() => setIsRequestOpen(false)} 
-                            className="w-26 h-10 bg-gray-500/80 text-white rounded-3xl p-4 flex items-center justify-center cursor-pointer"
-                          >
-                            Close
-                          </motion.button>                          
-                          <motion.button
-                            whileTap={{
-                            scale: 0.9,
-                            transition: {
-                            type: 'spring',
-                            stiffness: 500,
-                            damping: 10,
-                            },
-                            }}
-                            whileHover={{
-                                scale: 1.05,
-                                transition: {
-                                type: 'spring',
-                                stiffness: 300,
-                                damping: 10,
-                                },
-                            }}
-                            onClick={handleSubmit}                             
-                            className="w-26 h-10 bg-blue-600 text-white text-sm font-semibold rounded-full p-4 items-center justify-center flex cursor-pointer"
-                          > 
-                            Submit 
-                          </motion.button>                      
-                        </div>  
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>  
-
+                {isRequestOpen && <RequestTitleModal onClose={() => setIsRequestOpen(false)}/>}
+              </AnimatePresence>
 
               {/* Gradient Switcher & SearchBar */}
               <div className="desktop-header-actions flex flex-row gap-4 items-center">
                 {!continueOpen && !searchOpen && <ArtworkToggle active={mobileLogoView} onClick={() => {setClickedCard(null);setMobileLogoView(value => !value);}}/>}
-                {mobileLogoView && !continueOpen && !searchOpen && <button className="desktop-view-toggle" title="Recently Watched" aria-label="Recently Watched" onClick={() => setContinueOpen(true)}>↶</button>}
+                {mobileLogoView && !continueOpen && !searchOpen && <RecentLauncher compact items={continueItems} onClick={() => setContinueOpen(true)}/>}
                 
                 {/* Search Bar */}
                 <motion.div
