@@ -5,6 +5,7 @@ import { attachHls, getAudioTracks, isHlsSource, waitForHlsReady } from "../lib/
 import { motion, AnimatePresence } from "framer-motion";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { bindPlayerCaptions } from "../lib/playerCaptions.js";
 import BrowserPlayerControls, { captionDefaults, captionStyle } from "./BrowserPlayerControls.jsx";
 import { queueWatchProgressSync, flushWatchProgressSync } from "../lib/watchSync.js";
 import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
@@ -58,6 +59,8 @@ const Show = ({
 
   const containerRef = useRef(null)
   const videoRef = useRef(null);
+  const subtitleTrackRef = useRef(null);
+  const [nativeCaptionsAvailable, setNativeCaptionsAvailable] = useState(false);
   const previewVideoRef = useRef(null);
   const previewFrameCacheRef = useRef(new Map());
   const previewQueueRef = useRef(Promise.resolve());
@@ -1116,7 +1119,7 @@ const handleSkipToPrevious = async () => {
     };
   }, [isPlaying, isPreviewing, controlsBusy]);
 
-  const [subtitlesEnabled, setSubtitlesEnabled] = useState(() => hasSubtitles && localStorage.getItem('cworld.browser.captions.enabled') !== 'false');
+  const [subtitlesEnabled, setSubtitlesEnabled] = useState(() => localStorage.getItem('cworld.browser.captions.enabled') !== 'false');
   const changeSubtitlesEnabled = (enabled) => {
     localStorage.setItem('cworld.browser.captions.enabled', String(enabled));
     setSubtitlesEnabled(enabled);
@@ -1125,51 +1128,20 @@ const handleSkipToPrevious = async () => {
   const subtitleTrackSrc = getSubtitleTrackSrc({ showId, season, episode });
 
   useEffect(() => {
-  setSubtitlesEnabled(hasSubtitles && localStorage.getItem("cworld.browser.captions.enabled") !== "false");
+  setSubtitlesEnabled(localStorage.getItem("cworld.browser.captions.enabled") !== "false");
   setActiveSubtitleCues([]);
   }, [hasSubtitles, playbackSrc]);
 
   useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
-
-    const track = vid.textTracks[0];
-    if (!track) return;
-
-    if (!subtitlesEnabled) {
-      track.mode = "disabled";
-      setActiveSubtitleCues([]);
-      return;
-    }
-
-    track.mode = "hidden"; 
-    const handleCueChange = () => {
-      const activeCues = track.activeCues;
-      if (!activeCues || activeCues.length === 0) {
-        setActiveSubtitleCues([]);
-        return;
-      }
-
-      const normalized = Array.from(activeCues)
-        .map((cue) => ({
-          text: (cue?.text || "").trim(),
-          startTime: Number(cue?.startTime || 0),
-        }))
-        .filter((cue) => cue.text)
-        .sort((a, b) => a.startTime - b.startTime);
-
-      setActiveSubtitleCues(normalized);
-    };
-
-    track.addEventListener("cuechange", handleCueChange);
-    handleCueChange();
-
-    return () => {
-      track.removeEventListener("cuechange", handleCueChange);
-    };
-  }, [playbackSrc, subtitlesEnabled]);
-
-
+    const video = videoRef.current;
+    if (!video) return;
+    return bindPlayerCaptions(video, {
+      sidecar: subtitleTrackRef.current,
+      enabled: subtitlesEnabled,
+      onCues: setActiveSubtitleCues,
+      onAvailable: setNativeCaptionsAvailable,
+    });
+  }, [playbackSrc, subtitleTrackSrc, subtitlesEnabled]);
 
   {/* Loading Pulse State */}
   const [isLoading, setIsLoading] = useState(true);
@@ -1373,10 +1345,12 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
 
       {subtitleTrackSrc && (
         <track
+          key={subtitleTrackSrc}
+          ref={subtitleTrackRef}
           src={subtitleTrackSrc}
           kind="subtitles"
           srcLang="en"
-          label="English"
+          label="CWorld English"
         />
       )}
 
@@ -1408,11 +1382,8 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
       </div>
     )}    
 
-    {subtitlesEnabled && activeSubtitleCues.length > 0 && <div className={`browser-player-caption ${controlsVisible ? 'controls-visible' : ''}`}>
-      <span className="browser-player-caption-text" style={captionStyle(captionSettings)}>{activeSubtitleCues[0]?.text}</span>
-    </div>}
-    {subtitlesEnabled && activeSubtitleCues.length > 1 && <div className="browser-player-caption top">
-      <span className="browser-player-caption-text" style={captionStyle(captionSettings)}>{activeSubtitleCues.slice(1).map(cue=>cue.text).join('\n')}</span>
+    {subtitlesEnabled && activeSubtitleCues.length > 0 && <div className={`browser-player-caption ${controlsVisible ? 'controls-visible' : introVisible || showOutroCta ? 'skip-visible' : ''}`}>
+      <span className="browser-player-caption-text" style={captionStyle(captionSettings)}>{activeSubtitleCues.map(cue => cue.text).join('\n')}</span>
     </div>}
 
     {previewImage && (
@@ -1435,7 +1406,7 @@ const attemptPlaybackRecovery = async (reason = "stall") => {
           volume={volume} muted={toggleMute} toggleMute={()=>setToggleMute(value=>!value)}
           setVolume={value=>{setVolume(value);setToggleMute(value===0);if(videoRef.current)videoRef.current.volume=value;}}
           tracks={audioTracks} selectedTrack={selectedAudioTrack} setSelectedTrack={setSelectedAudioTrack}
-          hasSubtitles={hasSubtitles} subtitlesEnabled={subtitlesEnabled} setSubtitlesEnabled={changeSubtitlesEnabled}
+          hasSubtitles={Boolean(hasSubtitles || subtitleTrackSrc || nativeCaptionsAvailable)} subtitlesEnabled={subtitlesEnabled} setSubtitlesEnabled={changeSubtitlesEnabled}
           settings={captionSettings} setSettings={setCaptionSettings}
           autoSkipOutro={autoSkipOutro} setAutoSkipOutro={setAutoSkipOutro}
           fullscreen={isFullscreen} toggleFullscreen={toggleFullscreen} getPreviewFrame={getPreviewFrame} onBusy={setControlsBusy}/>
