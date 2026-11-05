@@ -735,6 +735,7 @@ const continueItems = useMemo(() => {
 
   return (
    <div className={`${styles['body']} desktop-library-root`}>
+    <div aria-hidden="true" className="desktop-atmosphere" style={{backgroundImage: atmosphereImage ? `url("${atmosphereImage}")` : 'none', opacity: atmosphere && continueOpen ? 1 : 0, transitionDuration: atmosphere && continueOpen ? '0.65s' : '1.4s'}}/>
     {/*
       <motion.div 
         className={isMenuOpen ? 'z-80' : 'z-20'}
@@ -743,7 +744,6 @@ const continueItems = useMemo(() => {
       </motion.div>
     */}
         <div className={`${styles.app} desktop-library-shell ${continueOpen ? 'desktop-recent-mode' : mobileLogoView && !searchOpen ? 'desktop-poster-mode' : ''}`}>
-            <div className="desktop-atmosphere" style={{backgroundImage: atmosphereImage ? `url("${atmosphereImage}")` : 'none', opacity: atmosphere && continueOpen ? .3 : 0, transitionDuration: atmosphere && continueOpen ? '0.6s' : '1.4s'}}/>
             <div className={`${styles["sidebar"]} desktop-library-sidebar overflow-y-hidden`} inert={continueOpen || (mobileLogoView && !searchOpen) ? true : undefined}>
                 
             <div className={styles['user']}>
