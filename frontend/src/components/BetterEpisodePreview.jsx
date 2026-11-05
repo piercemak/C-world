@@ -1904,6 +1904,7 @@ const BetterEpisodePreview = () => {
                   {isProductionRoute && realPlayerVisible && selectedVideo && (
                     <div className="absolute inset-0 z-[100] bg-black">
                       <Show
+                        onClose={handlePreviewClose}
                         src={selectedVideo.path}
                         showId={selectedVideo.showId}
                         season={selectedVideo.season}

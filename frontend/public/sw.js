@@ -49,6 +49,23 @@ const cacheFirst = async (request, cacheName) => {
   return response;
 };
 
+// Cross-origin image responses are often opaque, including missing-object errors.
+// Never let an old opaque response permanently hide artwork uploaded later.
+const refreshRemoteImage = async (request) => {
+  const cache = await caches.open(IMAGE_CACHE);
+  try {
+    const response = await fetch(request, { cache: "no-cache" });
+    if (isCacheableResponse(response)) {
+      // A cache/quota failure must not discard a successfully fetched image.
+      try { await cache.put(request, response.clone()); } catch { /* Use network image. */ }
+      return response;
+    }
+    return (await cache.match(request)) || response;
+  } catch {
+    return (await cache.match(request)) || Response.error();
+  }
+};
+
 const staleWhileRevalidate = async (request, cacheName) => {
   const cached = await caches.match(request);
   const network = fetch(request)
@@ -114,7 +131,9 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (request.destination === "image" || url.pathname.startsWith("/images/")) {
-    event.respondWith(cacheFirst(request, IMAGE_CACHE));
+    event.respondWith(url.origin === self.location.origin
+      ? cacheFirst(request, IMAGE_CACHE)
+      : refreshRemoteImage(request));
     return;
   }
 

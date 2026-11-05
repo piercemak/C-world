@@ -1,0 +1,83 @@
+.desktop-library-shell{isolation:isolate}.desktop-library-sidebar{transition:flex-basis .45s cubic-bezier(.16,1,.3,1),padding .45s,opacity .3s,transform .45s;min-width:0}.desktop-poster-mode .desktop-library-sidebar,.desktop-recent-mode .desktop-library-sidebar{flex-basis:0!important;padding-left:0!important;padding-right:0!important;opacity:0;transform:translateX(-100%);pointer-events:none}.desktop-library-main{position:relative;z-index:1;min-height:0;transition:padding .45s}.desktop-library-header{flex-shrink:0}.desktop-poster-mode .desktop-library-main,.desktop-recent-mode .desktop-library-main{padding-left:30px!important;padding-right:30px!important}.desktop-atmosphere{position:absolute;inset:-80px;background-size:cover;background-position:center;filter:blur(70px);transition:opacity .6s,background-image .6s;pointer-events:none;z-index:-1}.desktop-content-stage{flex:1;min-height:0;overflow:hidden}.desktop-view-toggle{width:40px;height:40px;display:grid;place-items:center;border-radius:14px;background:#ffffff10;border:1px solid #ffffff18;color:#fff;cursor:pointer;backdrop-filter:blur(18px);transition:background .25s,transform .25s}.desktop-view-toggle:hover{background:#ffffff23;transform:translateY(-1px)}.desktop-view-toggle:active{transform:scale(.95)}.desktop-browse{height:100%;display:flex;flex-direction:column;color:white;min-height:0}.desktop-browse-tools{display:flex;gap:12px;align-items:center;flex-shrink:0;padding:8px 0 12px}.desktop-filters{display:flex;gap:4px}.desktop-filters button{position:relative;border:0;background:none;color:#ffffff90;padding:9px 12px;cursor:pointer;font-size:12px;font-weight:600}.desktop-filters button[aria-pressed=true]{color:white}.desktop-filters button>span:first-child:not(:last-child){position:absolute;inset:0;background:#ffffff20;border-radius:24px}.desktop-filters button>span:last-child{position:relative}.desktop-count{margin-left:auto;color:#ffffff70;font-size:11px}.desktop-browse select{appearance:none;-webkit-appearance:none;background-color:#25272c;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-opacity='.75' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:14px;color:white;border:1px solid #ffffff20;padding:8px 38px 8px 12px;border-radius:10px;font-size:12px;line-height:18px;cursor:pointer;flex-shrink:0}.desktop-browse-body{display:flex;min-height:0;flex:1}.desktop-poster-scroll{overflow:auto;min-height:0;flex:1;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ffffff30 transparent}.desktop-poster-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px 20px;padding:24px 16px 40px}.desktop-poster{min-width:0;text-align:left;align-self:start;color:white;background:none;border:0;cursor:pointer;scroll-margin-top:24px}.desktop-art{aspect-ratio:2/3;border-radius:16px;position:relative;overflow:hidden;box-shadow:0 8px 20px #0005;transition:transform .3s,box-shadow .3s}.desktop-art img{width:100%;height:100%;object-fit:cover}.desktop-art:after,.desktop-classic-card:after{content:'';position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 38%,#ffffff45 50%,transparent 62%);transform:translateX(-130%);pointer-events:none;transition:transform .75s cubic-bezier(.16,1,.3,1)}.desktop-poster:hover .desktop-art:after,.desktop-classic-card:hover:after{transform:translateX(130%)}.desktop-poster:hover .desktop-art{transform:translateY(-3px);box-shadow:0 14px 32px #0007}.desktop-poster strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px;font-weight:600;margin-top:6px;letter-spacing:.1px}.desktop-rating{display:flex;align-items:center;gap:5px;font-size:11px;color:#ffffffbb;margin-top:9px}.desktop-rating b{font-size:9px;background:#e7c547;color:#111;padding:1px 4px;border-radius:3px}.desktop-alphabet{width:28px;overflow:auto;padding-top:24px;scrollbar-width:none}.desktop-alphabet button{display:block;width:100%;height:23px;border:0;background:none;color:#ffffffaa;font-size:11px;cursor:pointer}.desktop-empty{padding:32px;color:#ffffff70;text-align:center}.desktop-classic-card{box-shadow:0 10px 24px #0004;border:0}.desktop-recent{height:100%;overflow:auto;overscroll-behavior:contain;padding-bottom:30px;color:white}.desktop-back{width:40px;height:40px;font-size:36px;line-height:30px;background:none;border:0;color:#ffffffbb;cursor:pointer;transition:transform .3s,color .3s}.desktop-back:hover{transform:translateX(-3px);color:white}.desktop-shelf{margin:12px 0 30px;min-width:0}.desktop-shelf h2{font-size:21px;font-weight:600;margin:0 16px 10px}.desktop-shelf-scroll{overflow-x:auto;overflow-y:hidden;padding:16px;scrollbar-width:thin;scrollbar-color:#ffffff25 transparent;overscroll-behavior-x:contain}.desktop-shelf-track{display:flex;gap:18px;width:max-content}.desktop-tile{width:clamp(230px,23vw,330px);position:relative;border-radius:18px;transition:transform .3s;flex-shrink:0}.desktop-tile:hover{transform:translateY(-4px)}.desktop-tile-open{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;border-radius:18px;border:1px solid #ffffff20;padding:0;cursor:pointer;background:#18191d;color:white;box-shadow:0 10px 24px #0005;display:block;text-align:left}.desktop-tile-open img{width:100%;height:100%;object-fit:cover}.desktop-tile-badge{position:absolute;top:10px;left:10px;border-radius:20px;background:#0008;backdrop-filter:blur(16px);padding:5px 9px;font-size:11px;display:flex;align-items:center;gap:7px}.desktop-tile-badge i{width:6px;height:6px;border-radius:50%;background:#51d88b;animation:desktop-pulse 1.8s ease-in-out infinite}.desktop-tile-caption{position:absolute;inset:auto 0 0;padding:32px 12px 12px;background:linear-gradient(transparent,#000c);display:flex;flex-direction:column}.desktop-tile-caption strong{font-size:14px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.desktop-tile-caption small{font-size:11px;color:#ffffffaa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}.desktop-tile-progress{position:absolute;bottom:0;left:0;right:0;height:3px;background:#ffffff30}.desktop-tile-progress>span{display:block;height:100%;background:var(--progress-accent,#fff)}.desktop-remove{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;border:1px solid #ffffff30;background:#0009;color:white;opacity:0;transition:opacity .25s;cursor:pointer}.desktop-tile:hover .desktop-remove,.desktop-tile:focus-within .desktop-remove{opacity:1}.desktop-shelf-dots{display:flex;justify-content:center;gap:6px;margin-top:8px;align-items:center;height:8px}.desktop-shelf-dots span{width:5px;height:5px;border-radius:20px;background:#ffffff40;transition:width .3s,background-color .3s;background-size:cover;background-position:center}.desktop-shelf-dots span.active{width:24px;background-color:#fff}.desktop-recent-launcher{margin-top:auto;padding-top:20px}.desktop-library-shell button:focus-visible{outline:2px solid #b4d4ff;outline-offset:4px}@keyframes desktop-pulse{50%{opacity:.4;box-shadow:0 0 10px #51d88b}}@media(max-width:1050px){.desktop-poster-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.desktop-browse-tools{flex-wrap:wrap}}@media(prefers-reduced-motion:reduce){.desktop-library-shell *{animation:none!important;transition-duration:.01ms!important}}
+.desktop-launcher-button{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:none;border:0;color:#ffffffb0;font-size:12px;cursor:pointer;text-align:left;padding:8px 0}.desktop-launcher-art{display:flex;height:52px;padding-left:4px;align-items:center}.desktop-launcher-art img{width:74px;height:44px;object-fit:cover;border-radius:9px;box-shadow:0 5px 14px #0007;margin-left:-4px;transform:rotate(-5deg);transition:transform .35s}.desktop-launcher-art img:nth-child(2){transform:rotate(2deg);margin-left:-22px}.desktop-launcher-art img:nth-child(3){transform:rotate(8deg);margin-left:-22px}.desktop-launcher-button:hover .desktop-launcher-art img{transform:rotate(0) translateY(-3px)}.desktop-launcher-button:hover{color:white}.desktop-classic-card:focus-visible{outline:2px solid #b4d4ff;outline-offset:4px}
+/* Window-sized gallery and Catalyst episode shelf geometry. */
+.desktop-library-root{padding:clamp(12px,2vw,28px)!important;height:100dvh!important;box-sizing:border-box}
+.desktop-library-shell{max-width:none!important;max-height:none!important;height:100%!important;min-height:0}
+.desktop-library-main{padding-top:clamp(22px,3vh,40px)!important;padding-right:clamp(20px,3vw,44px)!important;padding-bottom:20px!important;overflow:hidden}
+.desktop-gallery-stage{container-type:size;min-height:0;width:100%}
+.desktop-gallery-stage:not(.desktop-gallery-expanded) .desktop-gallery-page{height:100cqh;min-height:0;grid-template-rows:repeat(2,minmax(0,1fr));align-items:center;justify-items:center;gap:16px 24px;padding:8px 6px 16px;box-sizing:border-box}
+.desktop-gallery-stage:not(.desktop-gallery-expanded) .desktop-classic-card{width:min(calc((100cqw - 60px)/3),calc((100cqh - 40px)/2))!important;height:auto!important;aspect-ratio:1;max-width:100%}
+.desktop-gallery-expanded .desktop-classic-card{max-width:100%}
+.desktop-gallery-stage>div>div{height:100%;min-height:0!important;padding-top:0!important}
+.desktop-recent-mode .desktop-library-main{padding-left:30px!important;padding-right:30px!important}
+.desktop-recent-mode .desktop-library-header{margin-bottom:0!important}
+.desktop-recent{box-sizing:border-box;width:100%;max-width:100%;min-width:0;height:100%;overflow-x:hidden;overflow-y:auto;padding:24px 0 18px;scrollbar-width:thin;scrollbar-color:#ffffff25 transparent}
+/* The legacy mobile stylesheet styles bare section elements globally.
+   Keep shelf headings, scrollers, and indicators in independent full-width rows. */
+.desktop-recent .desktop-shelf{
+  box-sizing:border-box;
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  justify-content:normal;
+  align-items:start;
+  gap:0;
+  position:relative;
+  z-index:auto;
+  width:100%;
+  max-width:none;
+  min-width:0;
+  margin:0 0 30px;
+  padding:0;
+}
+.desktop-shelf-heading{display:flex;align-items:center;justify-content:space-between;min-height:34px;padding:0 8px 0 0;margin-bottom:10px}
+.desktop-shelf-heading h2{font-size:20px;line-height:1.4;font-weight:600;margin:0}
+.desktop-back{display:grid;place-items:center;width:34px;height:34px;flex-shrink:0;border-radius:50%;background:#ffffff12;border:1px solid #ffffff15;backdrop-filter:blur(18px);font-size:14px}
+.desktop-back:hover{transform:scale(1.06);background:#ffffff20}
+.desktop-shelf-scroll{box-sizing:border-box;width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;padding:12px 10px 18px;scrollbar-width:none;scroll-padding-inline:10px}
+.desktop-shelf-scroll::-webkit-scrollbar{display:none}
+.desktop-shelf-track{gap:12px;min-width:0}
+.desktop-tile{width:320px;max-width:calc(100vw - 100px);border-radius:8px;flex:0 0 auto}
+.desktop-tile:hover{transform:translateY(-5px) scale(1.025)}
+.desktop-tile-open{display:flex;flex-direction:column;aspect-ratio:auto;width:100%;border-radius:8px;background:#ffffff0f;border:1px solid #ffffff1a;box-shadow:none;overflow:hidden}
+.desktop-tile-image{display:block;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;flex-shrink:0}
+.desktop-tile-image img{display:block;width:100%;height:100%;object-fit:cover}
+.desktop-tile-shade{position:absolute;inset:0;background:#0003;pointer-events:none}
+.desktop-tile-caption{position:static;display:flex;flex-direction:column;gap:6px;width:100%;padding:12px;background:none;min-width:0;box-sizing:border-box}
+.desktop-tile-caption strong{font-size:13px;line-height:18px;font-weight:700}
+.desktop-tile-caption small{font-size:12px;line-height:17px;font-weight:500;color:#ffffff80;margin:0}
+.desktop-tile-badge{top:12px;left:12px;padding:5px 8px;background:#000a;font-size:11px;font-weight:700}
+.desktop-tile-progress{height:4px}.desktop-tile-progress>span{background:var(--progress-accent,#6ee7b7)}
+.desktop-remove{width:24px;height:24px;top:5px;right:5px;border:0;background:#000b}
+.desktop-shelf-dots{margin-top:0;height:8px}.desktop-recent .desktop-empty{padding:18px 0;text-align:left;font-size:14px}
+@media(max-width:1100px){.desktop-library-sidebar{flex-basis:235px!important;padding-left:20px!important;padding-right:24px!important}.desktop-poster-mode .desktop-library-sidebar,.desktop-recent-mode .desktop-library-sidebar{flex-basis:0!important;padding:0!important}}
+
+/* Fit the available browser viewport, including short laptop windows and zoom. */
+.desktop-library-sidebar{min-height:0;overflow-y:auto!important;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ffffff25 transparent}
+.desktop-library-sidebar>div{flex-shrink:0}
+.desktop-library-header{min-width:0;gap:12px;flex-wrap:wrap}
+.desktop-header-actions{min-width:0;max-width:100%;flex-wrap:wrap}
+.desktop-page-nav{max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:thin;scrollbar-color:#ffffff25 transparent;flex-shrink:0}
+.desktop-page-nav>a{flex:0 0 auto}
+.desktop-browse{container-type:inline-size}
+.desktop-browse-tools{min-width:0;flex-wrap:wrap}
+.desktop-filters{min-width:0;max-width:100%;flex-wrap:wrap}
+.desktop-browse-body,.desktop-poster-scroll{min-width:0}
+.desktop-alphabet{flex-shrink:0}
+@container(max-width:900px){.desktop-poster-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 16px}}
+@container(max-width:660px){.desktop-poster-grid{grid-template-columns:repeat(3,minmax(0,1fr));padding-inline:10px;gap:18px 12px}}
+@container(max-width:440px){.desktop-poster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.desktop-filters button{padding:8px}}
+@media(max-width:1250px),(max-height:750px){
+  .desktop-library-root{padding:12px!important}
+  .desktop-library-main{padding:18px 20px 14px!important}
+  .desktop-poster-mode .desktop-library-main,.desktop-recent-mode .desktop-library-main{padding-left:20px!important;padding-right:20px!important}
+  .desktop-library-sidebar{padding-top:22px!important;padding-bottom:20px!important}
+  .desktop-page-nav{padding-top:12px!important;padding-bottom:12px!important}
+  .desktop-header-actions{gap:10px}
+  .desktop-recent{padding-top:14px}
+}
+@media(max-width:850px){
+  .desktop-library-sidebar{flex-basis:200px!important;padding-left:16px!important;padding-right:16px!important}
+  .desktop-library-main{padding-left:14px!important;padding-right:14px!important}
+  .desktop-poster-mode .desktop-library-sidebar,.desktop-recent-mode .desktop-library-sidebar{flex-basis:0!important;padding:0!important}
+  .desktop-tile{width:280px}
+}

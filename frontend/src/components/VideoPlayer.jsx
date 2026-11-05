@@ -8,7 +8,7 @@ import ColorPicker from "./ColorPicker";
 import Menu from './framercomponents/Menu.jsx'
 import { allEpisodeTitles } from "./episodeTitles.js";
 import { newMedia } from "./newMedia.js";
-import RandomCoverCarousel from "./RandomCoverCarousel";
+import { ArtworkToggle, MobileLogoLibrary, DesktopRecent } from "./DesktopLibraryViews.jsx";
 import {
   VIDEO_PLAYER_CARD_ID_TO_SLUG,
   VIDEO_PLAYER_SIDEBAR_ITEMS,
@@ -29,6 +29,15 @@ const DEFAULT_GRADIENT = 'conic-gradient(from .5turn at bottom center in oklab, 
 
 
 const VideoPlayer = () => {
+    const [mobileLogoView, setMobileLogoView] = useState(() => localStorage.getItem('desktop.mobileLogoView') === 'true');
+    const [atmosphere, setAtmosphereValue] = useState(null);
+    const [atmosphereImage, setAtmosphereImage] = useState(null);
+    const setAtmosphere = useCallback((image) => {
+      // Keep the last artwork mounted while its opacity fades back to the theme.
+      if (image) setAtmosphereImage(image);
+      setAtmosphereValue(image);
+    }, []);
+    useEffect(() => { localStorage.setItem('desktop.mobileLogoView', String(mobileLogoView)); }, [mobileLogoView]);
     const navigate = useNavigate();
     const { activeProfile, updateActiveProfile } = useAuth();
     
@@ -209,7 +218,7 @@ const VideoPlayer = () => {
     };    
 
     
-  {/* Search Bar */}
+  // Search state
   const [searchOpen, setSearchOpen] = useState(false);
   const searchMainRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -683,6 +692,7 @@ const continueItems = useMemo(() => {
         img,
         imgCandidates: candidates, 
         progress: prog.fraction,
+        runtime: prog.duration > 0 ? `${Math.round(prog.duration / 60)}m` : null,
         to: isSeries
           ? `/video-library/${showSlug}?season=${Number(entry.lastSeason) || 1}&episode=${Number(entry.lastEpisode) || 1}`
           : `/video-library/${showSlug}?movie=1`,
@@ -724,7 +734,7 @@ const continueItems = useMemo(() => {
 
 
   return (
-   <div className={styles['body']}>
+   <div className={`${styles['body']} desktop-library-root`}>
     {/*
       <motion.div 
         className={isMenuOpen ? 'z-80' : 'z-20'}
@@ -732,8 +742,9 @@ const continueItems = useMemo(() => {
       <Menu closeMenu={() => setIsMenuOpen(false)} />
       </motion.div>
     */}
-        <div className={styles['app']}>
-            <div className={`${styles["sidebar"]} overflow-y-hidden`}>
+        <div className={`${styles.app} desktop-library-shell ${continueOpen ? 'desktop-recent-mode' : mobileLogoView && !searchOpen ? 'desktop-poster-mode' : ''}`}>
+            <div className="desktop-atmosphere" style={{backgroundImage: atmosphereImage ? `url("${atmosphereImage}")` : 'none', opacity: atmosphere && continueOpen ? .3 : 0, transitionDuration: atmosphere && continueOpen ? '0.6s' : '1.4s'}}/>
+            <div className={`${styles["sidebar"]} desktop-library-sidebar overflow-y-hidden`} inert={continueOpen || (mobileLogoView && !searchOpen) ? true : undefined}>
                 
             <div className={styles['user']}>
                 {/* Profile Image Section */}
@@ -1027,11 +1038,11 @@ const continueItems = useMemo(() => {
               </AnimatePresence>
             </div>
 
-              <div className="fixed bottom-20">
+              <div className="desktop-recent-launcher">
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   whileHover={{ scale: 1.03 }}
-                  className="group flex flex-row items-center gap-2 bg-white/5 border border-white/5 px-2.5 py-1.5 text-sm tracking-wide rounded-lg ring-1 ring-white/10 shadow-lg/30 cursor-pointer text-white/70 hover:text-white transition-colors duration-300"
+                  className="desktop-launcher-button"
                   onClick={() => {
                     if (continueOpen) {
                       closeContinue();
@@ -1041,15 +1052,15 @@ const continueItems = useMemo(() => {
                   }}
 
                 >
-                  <span>{continueIcon}</span>
-                  <span className="">Recently Watched</span>
+                  <span className="desktop-launcher-art" aria-hidden="true">{continueItems.slice(0,3).map(item=><img key={item.key} src={item.img} alt=""/>)}</span>
+                  <span>Recently Watched <span aria-hidden="true">›</span></span>
                 </motion.button>
               </div>
               
             </div>
             
-            <div className={`${styles["main"]} min-w-0`}>
-              <div className={styles['main-header']}>
+            <div className={`${styles["main"]} desktop-library-main min-w-0`}>
+              <div className={`${styles['main-header']} desktop-library-header`}>
                 <div className="flex flex-row">
                   <div className={styles['main-header__title']}>Library</div>
                   <div className={styles['main-header__avatars']}>
@@ -1191,7 +1202,9 @@ const continueItems = useMemo(() => {
 
 
               {/* Gradient Switcher & SearchBar */}
-              <div className="flex flex-row gap-4 items-center">
+              <div className="desktop-header-actions flex flex-row gap-4 items-center">
+                {!continueOpen && !searchOpen && <ArtworkToggle active={mobileLogoView} onClick={() => {setClickedCard(null);setMobileLogoView(value => !value);}}/>}
+                {mobileLogoView && !continueOpen && !searchOpen && <button className="desktop-view-toggle" title="Recently Watched" aria-label="Recently Watched" onClick={() => setContinueOpen(true)}>↶</button>}
                 
                 {/* Search Bar */}
                 <motion.div
@@ -1338,7 +1351,7 @@ const continueItems = useMemo(() => {
               </div>
 
               <AnimatePresence initial={false}>
-                {!continueOpen && (
+                {!continueOpen && (!mobileLogoView || isSearching) && (
                   <motion.div
                     key="page-nav"
                     initial={{ opacity: 0, y: -10 }}
@@ -1346,7 +1359,7 @@ const continueItems = useMemo(() => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.22, ease: "easeInOut" }}
                   >
-                    <div className={styles["main-header-nav"]}>
+                    <div className={`${styles["main-header-nav"]} desktop-page-nav`}>
                       {isSearching ? (
                         totalSearchPages > 1 ? (
                           Array.from({ length: totalSearchPages }).map((_, i) => (
@@ -1499,260 +1512,21 @@ const continueItems = useMemo(() => {
               ) : (
                 <AnimatePresence mode="wait" initial={false}>
                   {continueOpen ? (
-                    <motion.div
-                      key="continue-view"
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 14 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="w-full h-full flex flex-col"
-                    >
-
-                      <div className="w-full">
-                        <RandomCoverCarousel />
-                      </div>   
-
-                      {/* ✅ NEW CONTAINER VIEW */}
-                      <div className="w-full h-full flex flex-col justify-end gap-2 mb-2">
-                        <div className="">
-                          {/* header row / extra space */}
-                          <div className="w-full mt-1 mb-0.5 flex items-center justify-between">
-                            <div className="text-white/90 text-xl font-semibold tracking-wide flex flex-row items-center gap-1 cursor-pointer hover:text-white/60 transition-colors duration-300">
-                              <span>Recently Watched</span>
-                              {rightArrow}
-                            </div>
-
-                            <motion.button
-                              whileTap={{ scale: 0.95 }}
-                              whileHover={{ scale: 1.03 }}
-                              onClick={closeContinue}
-                              className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition cursor-pointer"
-                            >
-                              Back
-                            </motion.button>
-                          </div>
-
-                        {/* empty state */}
-                        {continueItems.length === 0 && (
-                          <div className="text-white/60 text-sm mt-4">
-                            No recently watched items yet.
-                          </div>
-                        )}
-
-                          {/* ✅ Recently watched */}
-                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-1">
-                            <motion.div layout className="flex flex-nowrap gap-3 w-max">
-                              <AnimatePresence initial={false}>
-                              {continueItems.map((item) => {
-                                const isLoading = !loadedContinueThumbs[item.key];
-                                return (
-                                  <motion.div
-                                    key={item.key}
-                                    layout
-                                    exit={{ opacity: 0, y: 22, scale: 0.98 }}
-                                    transition={{
-                                      layout: { type: "spring", stiffness: 260, damping: 28 },
-                                      opacity: { duration: 0.2 },
-                                      y: { duration: 0.22, ease: "easeOut" },
-                                    }}
-                                    whileHover={{
-                                      scale: 0.95,
-                                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                                      transition: { duration: 0.3, ease: "easeInOut" }
-                                    }}
-                                    whileTap={{
-                                        scale: 0.90,
-                                        transition: {
-                                        type: 'spring',
-                                        stiffness: 200,
-                                        damping: 10,
-                                        },
-                                    }} 
-                                    onClick={() => {
-                                      setContinueOpen(false);
-                                      navigate(item.to);
-                                    }}
-                                    className="group relative w-52 h-28 shrink-0 rounded-2xl overflow-hidden snap-start border border-white/10 bg-white/5 cursor-pointer"
-                                  >
-                                    <button
-                                      type="button"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                        void removeRecentlyWatched(item);
-                                      }}
-                                      className="absolute top-2 right-2 z-20 flex items-center justify-center size-6 rounded-full bg-black/65 text-white/80 border border-white/20 opacity-0 translate-x-1 -translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200 hover:text-white hover:bg-black/80 cursor-pointer"
-                                      aria-label="Remove from recently watched"
-                                      title="Remove"
-                                    >
-                                      {closeIcon}
-                                    </button>
-                                    {/* Loader */}
-                                    <div
-                                      className={`w-full h-full ${isLoading ? "animate-pulse bg-white/5" : ""}`}
-                                      style={
-                                        !isLoading
-                                          ? {
-                                              backgroundImage: `url(${item.img})`,
-                                              backgroundSize: "cover",
-                                              backgroundPosition: "center",
-                                            }
-                                          : {}
-                                      }
-                                    >
-                                      <img
-                                        src={item.img}
-                                        alt=""
-                                        className="hidden"
-                                        onLoad={() =>
-                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
-                                        }
-                                        onError={() =>
-                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
-                                        }
-                                      />
-                                    </div>
-
-                                    {/* bottom overlay */}
-                                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end">
-                                      <div className="px-3 pb-1 text-white font-semibold truncate text-sm">
-                                        {item.title}
-                                      </div>
-                                      <div className="px-3 pb-2 text-white/70 text-xs truncate">
-                                        {item.subtitle}
-                                      </div>
-
-                                      {/* progress bar */}
-                                      <div className="w-full h-1 bg-white/20 overflow-hidden">
-                                        <div
-                                          className="h-full bg-white"
-                                          style={{ width: `${Math.round((item.progress || 0) * 100)}%` }}
-                                        />
-                                      </div>
-                                    </div>
-                                  </motion.div>
-                                );
-                              })}
-                              </AnimatePresence>
-                            </motion.div>
-                          </div>
-                        </div>
-
-                        <div>
-                          {/* New on Cearaworld */}
-                          <div className="w-full mb-2 flex items-center justify-between">
-                            <div className="text-white/90 text-xl font-semibold tracking-wide flex flex-row items-center gap-1 cursor-pointer hover:text-white/60 transition-colors duration-300">
-                             <span>New on CearaWorld</span>
-                             {rightArrow}
-                            </div>
-                          </div>
-
-                          <div className="flex flex-row gap-3 overflow-x-auto w-full max-w-full min-w-0 snap-x snap-mandatory scroll-smooth recent-scrollbar pb-1">
-                            <div className="flex flex-nowrap gap-3 w-max">
-                              {newMedia.map((item) => {
-                                const isLoading = !loadedContinueThumbs[item.key];
-                                return (                                
-                                  <motion.div
-                                    key={`${item.kind}-${item.showSlug}-${item.season ?? "m"}-${item.episode ?? "m"}`}
-                                    whileHover={{
-                                      scale: 0.95,
-                                      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-                                      transition: { duration: 0.3, ease: "easeInOut" }
-                                    }}
-                                    whileTap={{
-                                        scale: 0.90,
-                                        transition: {
-                                        type: 'spring',
-                                        stiffness: 200,
-                                        damping: 10,
-                                        },
-                                    }} 
-                                    onClick={() => {
-                                      setContinueOpen(false);
-                                      navigate(item.to);
-                                    }}
-                                    className="relative w-52 h-28 shrink-0 rounded-2xl overflow-hidden snap-start border border-white/10 bg-white/5 cursor-pointer"
-                                  >
-
-                                    {/* Loader */}
-                                    <div
-                                      className={`w-full h-full ${isLoading ? "animate-pulse bg-white/5" : ""}`}
-                                      style={
-                                        !isLoading
-                                          ? {
-                                              backgroundImage: `url(${item.placeholder})`,
-                                              backgroundSize: "cover",
-                                              backgroundPosition: "center",
-                                            }
-                                          : {}
-                                      }
-                                    >
-                                      <img
-                                        src={item.placeholder}
-                                        alt=""
-                                        className="hidden"
-                                        onLoad={() =>
-                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
-                                        }
-                                        onError={() =>
-                                          setLoadedContinueThumbs((p) => ({ ...p, [item.key]: true }))
-                                        }
-                                      />
-                                    </div>
-
-                                    {/* Top Right Overlay */}
-                                    <div
-                                      className="
-                                        absolute top-0 right-0
-                                        flex items-center gap-2
-                                        px-3.5 py-1
-                                        rounded-bl-full
-                                        bg-black/55
-                                        border border-white/25
-                                        shadow-lg
-                                        text-white
-                                      "
-                                    >
-                                      <span className="text-[11px] font-semibold tracking-wide uppercase">
-                                        New
-                                      </span>
-
-                                      <span className="relative flex items-center justify-center">
-                                        {/* ping behind */}
-                                        <span className="absolute inline-flex h-3 w-3 rounded-full bg-emerald-400/60 animate-ping" />
-                                        {/* solid dot */}
-                                        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-                                      </span>
-                                    </div>
-
-                                    {/* Bottom Overlay */}
-                                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end">
-                                      <div className="px-3 pb-1 text-white font-semibold truncate text-sm">
-                                        {item.showTitle}
-                                      </div>
-                                      <div className="px-3 pb-2 text-white/70 text-xs truncate">
-                                        {item.kind === "episode"
-                                          ? `S${item.season}E${item.episode} — ${item.episodeTitle ?? ""}`
-                                          : ""}
-                                      </div>
-                                    </div>
-                                  </motion.div>
-                                );                                
-                              })}
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
+                    <motion.div key="continue-view" className="desktop-content-stage" initial={{opacity:0,x:40}} animate={{opacity:1,x:0}} exit={{opacity:0,x:80}} transition={{duration:.38}}>
+                      <DesktopRecent items={continueItems} additions={newMedia} onRemove={removeRecentlyWatched} onBack={() => {setAtmosphere(null);closeContinue();}} onAtmosphere={setAtmosphere}/>
+                    </motion.div>
+                  ) : mobileLogoView ? (
+                    <motion.div key="mobile-logo-view" className="desktop-content-stage" initial={{opacity:0,x:100}} animate={{opacity:1,x:0}} exit={{opacity:0,x:100}} transition={{duration:.4,ease:[.16,1,.3,1]}}>
+                      <MobileLogoLibrary key={activeProfile?.id} />
                     </motion.div>
                   ) : (
                     <motion.div
                       key="default-grid"
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 12 }}
-                      transition={{ duration: 0.22, ease: "easeOut" }}
-                      className="w-full h-full"
+                      initial={{ opacity: 0, x: 100 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 100 }}
+                      transition={{ duration: 0.38, ease: [.16,1,.3,1] }}
+                      className={`desktop-content-stage desktop-gallery-stage ${clickedCard ? "desktop-gallery-expanded" : ""}`}
                     >
                       {/* Default pages grid */}
                       <div
@@ -1769,7 +1543,7 @@ const continueItems = useMemo(() => {
                             {pages.map((page, pageIndex) => (
                               <div
                                 key={pageIndex}
-                                className={`grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
+                                className={`desktop-gallery-page grid grid-cols-3 gap-[24px] snap-start w-full flex-shrink-0 transition-opacity duration-500 ${
                                   pageIndex === currentPage
                                     ? "opacity-100"
                                     : "opacity-0 pointer-events-none"
@@ -1788,11 +1562,13 @@ const continueItems = useMemo(() => {
                                     layout
                                     layoutId={`library-${cardId}`}
                                     initial={false}
-                                    className={`${styles.card} ${styles[cardId]} ${styles["card-img"]} ${
+                                    className={`${styles.card} ${styles[cardId]} ${styles["card-img"]} desktop-classic-card ${
                                       isActiveCard ? styles.active : ""
                                     }`}
                                     ref={(node) => preloadCssCardThumb(cardId, node)}
                                     onClick={() => handleCardClick(cardId)}
+                                    role="button" tabIndex={0} aria-label={`Open ${slugToTitle[cardIdToSlug[cardId]] || 'title'}`}
+                                    onKeyDown={event => {if(event.key === 'Enter' || event.key === ' ') {event.preventDefault();handleCardClick(cardId);}}}
                                     animate={
                                       isDimmedCard
                                         ? { opacity: 0.42, scale: 0.965, x: 6 }
