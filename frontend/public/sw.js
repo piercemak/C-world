@@ -40,18 +40,9 @@ const networkFirst = async (request, fallbackUrl = "/index.html") => {
   }
 };
 
-const cacheFirst = async (request, cacheName) => {
-  const cached = await caches.match(request);
-  if (cached) return cached;
-
-  const response = await fetch(request);
-  await putCache(cacheName, request, response);
-  return response;
-};
-
-// Cross-origin image responses are often opaque, including missing-object errors.
-// Never let an old opaque response permanently hide artwork uploaded later.
-const refreshRemoteImage = async (request) => {
+// Artwork can be replaced at the same URL. Revalidate both local and remote
+// images instead of pinning an old copy indefinitely; retain offline fallback.
+const refreshArtwork = async (request) => {
   const cache = await caches.open(IMAGE_CACHE);
   try {
     const response = await fetch(request, { cache: "no-cache" });
@@ -131,9 +122,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (request.destination === "image" || url.pathname.startsWith("/images/")) {
-    event.respondWith(url.origin === self.location.origin
-      ? cacheFirst(request, IMAGE_CACHE)
-      : refreshRemoteImage(request));
+    event.respondWith(refreshArtwork(request));
     return;
   }
 
