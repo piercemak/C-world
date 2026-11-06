@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "95c9ccd297f3d82ccfe595638de43c59ed7cb71ddb11865d1a43e2028abcc4c7",
+  "sourceSHA256": "32cc50f5befe93eab3871540ea095fe243a8c2978f17309f6de480f3a377fb93",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -9544,9 +9544,9 @@
       "outroStart": 1325.1
     },
     "steelballrun:1:8": {
-      "introStart": null,
-      "introEnd": null,
-      "outroStart": null
+      "introStart": 21.6,
+      "introEnd": 108.55,
+      "outroStart": 1415.05
     },
     "steelballrun:1:9": {
       "introStart": null,
