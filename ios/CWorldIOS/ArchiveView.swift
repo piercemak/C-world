@@ -197,6 +197,9 @@ struct ArchiveView: View {
     @State private var catalogSnapshot = ArchiveCatalogSnapshot()
     @State private var continueWatching: [ContinueWatchingItem] = []
 
+    @AppStorage("seedspace.library.posterGrid") private var posterGrid = true
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     private let allMediaPerPage = 6
 
     private var filteredItems: [CWorldMedia] { catalogSnapshot.items }
@@ -433,6 +436,16 @@ struct ArchiveView: View {
                     .archiveFont(24, weight: .semibold)
                     .foregroundStyle(.white)
                 Spacer()
+                Button {
+                    withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.25)) { posterGrid.toggle() }
+                } label: {
+                    Image(systemName: posterGrid ? "list.bullet" : "square.grid.2x2")
+                        .font(.system(size: 19, weight: .semibold))
+                        .frame(width: 44, height: 44)
+                        .background(.white.opacity(0.1), in: RoundedRectangle(cornerRadius: 12))
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(posterGrid ? "Switch to paged list" : "Switch to poster grid")
                 Menu {
                     Button("Choose library backdrop", systemImage: "photo.on.rectangle.angled") {
                         showingBackdropPicker = true
@@ -462,6 +475,10 @@ struct ArchiveView: View {
                 }
             }
 
+            Text("\(filteredItems.count) titles · \(typeFilter.rawValue) · \(sortMode.rawValue)")
+                .font(.caption).foregroundStyle(.white.opacity(0.65))
+                .accessibilityLabel("\(filteredItems.count) titles, \(typeFilter.rawValue), sorted by \(sortMode.rawValue)")
+
             if filteredItems.isEmpty {
                 VStack(spacing: 8) {
                     Text("No results found.")
@@ -479,6 +496,35 @@ struct ArchiveView: View {
                 .foregroundStyle(.white.opacity(0.72))
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 60)
+            } else if posterGrid {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 12)], alignment: .leading, spacing: 20) {
+                    ForEach(filteredItems) { media in
+                        Button { onOpenMedia(media.id) } label: {
+                            VStack(alignment: .leading, spacing: 6) {
+                                Color.clear
+                                    .aspectRatio(2.0 / 3.0, contentMode: .fit)
+                                    .overlay {
+                                        GeometryReader { frame in
+                                            CatalogImage(url: media.artwork.poster ?? media.artwork.preferredCard,
+                                                         showsBorder: false, maxPixelSize: 600)
+                                                .frame(width: frame.size.width, height: frame.size.height)
+                                                .clipped()
+                                        }
+                                    }
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                Text(media.title).font(.subheadline.weight(.semibold))
+                                    .lineLimit(2).frame(height: 40, alignment: .topLeading)
+                                Label(media.metadata.rating, systemImage: "star.fill")
+                                    .font(.caption2).foregroundStyle(.white.opacity(0.65))
+                                    .frame(height: 16)
+                                    .opacity(media.metadata.rating.isEmpty || media.metadata.rating == "TBD" ? 0 : 1)
+                            }.foregroundStyle(.white).contentShape(Rectangle())
+                        }.buttonStyle(.plain)
+                        .accessibilityLabel(media.title)
+                        .accessibilityHint("Open media details")
+                    }
+                }
+                .transition(.opacity)
             } else {
                 ArchiveMediaPager(pages: allMediaPages, onOpenMedia: onOpenMedia)
                     .id(filteredItems.map(\.id))
@@ -746,6 +792,7 @@ private struct ArchiveMediaPager: View {
     let onOpenMedia: (String) -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var allMediaPage = 0
+    @State private var settledPage = 0
 
     var body: some View {
         VStack(spacing: 10) {
@@ -757,6 +804,11 @@ private struct ArchiveMediaPager: View {
                                 onSelect: { onOpenMedia($0.id) }
                             )
                             .containerRelativeFrame(.horizontal)
+                            .scrollTransition(.interactive, axis: .horizontal) { content, phase in
+                                content
+                                    .opacity(reduceMotion || phase.isIdentity ? 1 : 0.88)
+                                    .scaleEffect(reduceMotion || phase.isIdentity ? 1 : 0.985)
+                            }
                             .id(pageIndex)
                         }
                     }
@@ -771,28 +823,45 @@ private struct ArchiveMediaPager: View {
                         if let page, pages.indices.contains(page) { allMediaPage = page }
                     }
                 ))
+                .modifier(ArchivePageSettlement(page: allMediaPage) { settledPage = allMediaPage })
+                .sensoryFeedback(.selection, trigger: settledPage)
                 .frame(height: CGFloat(6 * 96 + (6 - 1) * 8))
 
                 if pages.count > 1 {
-                    HStack(spacing: 8) {
-                        ForEach(pages.indices, id: \.self) { index in
-                            Button {
-                                withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.35)) {
-                                    allMediaPage = index
+                    HStack(spacing: 4) {
+                        pageStep("chevron.left", label: "Previous page", offset: -1)
+                        Menu {
+                            Picker("Page", selection: Binding(
+                                get: { allMediaPage },
+                                set: { goToPage($0) }
+                            )) {
+                                ForEach(pages.indices, id: \.self) { index in
+                                    Text("Page \(index + 1)").tag(index)
                                 }
-                            } label: {
-                                Capsule()
-                                    .fill(index == allMediaPage ? .white : .white.opacity(0.35))
-                                    .frame(width: index == allMediaPage ? 24 : 8, height: 8)
                             }
-                            .buttonStyle(.plain)
-                            .accessibilityLabel("Go to archive page \(index + 1)")
+                        } label: {
+                            HStack(spacing: 6) {
+                                Text("\(allMediaPage + 1)")
+                                    .contentTransition(.numericText())
+                                Text("/ \(pages.count)").foregroundStyle(.white.opacity(0.5))
+                                Image(systemName: "chevron.up.chevron.down")
+                                    .font(.system(size: 9, weight: .semibold))
+                                    .foregroundStyle(.white.opacity(0.5))
+                            }
+                            .font(.caption.weight(.semibold).monospacedDigit())
+                            .frame(minWidth: 76, minHeight: 44)
+                            .contentShape(Rectangle())
                         }
+                        .accessibilityLabel("Page \(allMediaPage + 1) of \(pages.count)")
+                        .accessibilityHint("Choose any library page")
+                        pageStep("chevron.right", label: "Next page", offset: 1)
                     }
-                    .frame(maxWidth: .infinity)
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.white)
+                    .background(.white.opacity(0.06), in: Capsule())
+                    .overlay { Capsule().strokeBorder(.white.opacity(0.1), lineWidth: 0.5) }
+                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.22), value: allMediaPage)
                     .padding(.top, 6)
-                    // Animate the indicator only, not every card/glass surface.
-                    .animation(reduceMotion ? nil : .easeInOut(duration: 0.2), value: allMediaPage)
                 }
         }
         .task(id: allMediaPage) {
@@ -809,6 +878,49 @@ private struct ArchiveMediaPager: View {
                     // bounded image cache. Never retain whole pages here.
                     _ = await ImageCache.shared.image(for: resolved, maxPixelSize: 240)
                 }
+            }
+        }
+    }
+    private func goToPage(_ page: Int) {
+        guard pages.indices.contains(page) else { return }
+        withAnimation(reduceMotion ? nil : .smooth(duration: 0.36)) { allMediaPage = page }
+    }
+
+    private func pageStep(_ symbol: String, label: String, offset: Int) -> some View {
+        Button { goToPage(allMediaPage + offset) } label: {
+            Image(systemName: symbol)
+                .font(.system(size: 12, weight: .semibold))
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
+        }
+        .disabled(!pages.indices.contains(allMediaPage + offset))
+        .opacity(pages.indices.contains(allMediaPage + offset) ? 1 : 0.25)
+        .accessibilityLabel(label)
+    }
+
+}
+
+/// Haptics follow completed page changes, not every frame of finger movement.
+private struct ArchivePageSettlement: ViewModifier {
+    let page: Int
+    let settle: () -> Void
+    @State private var scrolling = false
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if #available(iOS 18.0, *) {
+            content
+                .onScrollPhaseChange { _, phase in
+                    scrolling = phase != .idle
+                    if phase == .idle { settle() }
+                }
+                .onChange(of: page) { _, _ in
+                    if !scrolling { settle() }
+                }
+        } else {
+            content.task(id: page) {
+                do { try await Task.sleep(for: .milliseconds(250)) } catch { return }
+                settle()
             }
         }
     }

@@ -343,10 +343,15 @@ struct CWorldPlaybackOverlay: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             if let surface = host.surface {
+                #if targetEnvironment(macCatalyst)
                 surface.opacity(host.minimized ? 0 : 1)
                     .allowsHitTesting(!host.minimized)
                     .accessibilityHidden(host.minimized)
+                #else
+                CWorldMobilePlaybackPresentation(host: host, surface: surface)
+                #endif
                 if host.minimized {
+                    #if targetEnvironment(macCatalyst)
                     HStack {
                         Button { host.minimized = false } label: {
                             Label(host.title.isEmpty ? "Now Playing" : host.title, systemImage: "tv")
@@ -359,6 +364,7 @@ struct CWorldPlaybackOverlay: View {
                         }.accessibilityLabel("Play or pause")
                         Button { host.stop() } label: { Image(systemName: "xmark") }.accessibilityLabel("Stop playback")
                     }.padding().background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14)).padding()
+                    #endif
                 }
             }
         }.foregroundStyle(.white)
@@ -374,6 +380,163 @@ struct CWorldPlaybackOverlay: View {
     }
 
 
+}
+
+/// Retains the playing surface while animating between full-screen and browsing.
+private struct CWorldMobilePlaybackPresentation: View {
+    @ObservedObject var host: CWorldPlaybackHost
+    let surface: AnyView
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var safeArea = EdgeInsets()
+    @GestureState private var drag: CGFloat = 0
+
+    var body: some View {
+        GeometryReader { geometry in
+            // Same window coordinate system as HomeView's 48-point navigation bar.
+            let bottom = max(0, max(safeArea.bottom, geometry.safeAreaInsets.bottom) - 10) + 48 + 12
+            let fraction = min(drag / max(geometry.size.height * 0.55, 1), 0.94)
+            surface
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                .simultaneousGesture(
+                    DragGesture(minimumDistance: 24)
+                        .updating($drag) { value, state, _ in
+                            guard canMinimize(value, height: geometry.size.height) else { return }
+                            state = max(0, value.translation.height)
+                        }
+                        .onEnded { value in
+                            guard canMinimize(value, height: geometry.size.height) else { return }
+                            if value.translation.height > 90 || value.predictedEndTranslation.height > 180 {
+                                host.minimized = true
+                            }
+                        }
+                )
+                .modifier(CWorldPlayerBarMorph(
+                    progress: host.minimized ? 1 : fraction,
+                    size: geometry.size, bottom: bottom,
+                    reduceMotion: reduceMotion, host: host
+                ))
+                .animation(reduceMotion ? .easeOut(duration: 0.18) : .spring(response: 0.52, dampingFraction: 0.9), value: host.minimized)
+                .animation(.spring(response: 0.44, dampingFraction: 0.9), value: drag == 0)
+        }
+        .ignoresSafeArea()
+        .background(CWorldWindowSafeAreaReader { safeArea = $0 })
+    }
+
+    private func canMinimize(_ value: DragGesture.Value, height: CGFloat) -> Bool {
+        // Leave the header buttons and bottom timeline free to handle their own gestures.
+        !host.minimized && value.startLocation.y > 100 && value.startLocation.y < height - 180 &&
+        value.translation.height > 0 && value.translation.height > abs(value.translation.width) * 1.5
+    }
+}
+
+/// A single animated envelope moves and reshapes into the browsing bar.
+/// Interpolating progress here keeps the late control crossfade synchronized with
+/// the actual geometry, including when a drag is cancelled or reversed.
+private struct CWorldPlayerBarMorph: AnimatableModifier {
+    var progress: CGFloat
+    let size: CGSize
+    let bottom: CGFloat
+    let reduceMotion: Bool
+    let host: CWorldPlaybackHost
+
+    var animatableData: CGFloat {
+        get { progress }
+        set { progress = newValue }
+    }
+
+    func body(content: Content) -> some View {
+        let p = min(max(progress, 0), 1)
+        let shapeProgress = reduceMotion ? (host.minimized ? CGFloat(1) : 0) : p
+        let width = max(1, size.width - 32 * shapeProgress)
+        let height = max(1, size.height + (80 - size.height) * shapeProgress)
+        let centerY = size.height / 2 + (size.height / 2 - bottom - 40) * shapeProgress
+        let controls = min(max((p - 0.55) / 0.45, 0), 1)
+
+        content
+            // Keep the player layout stable: crop the shrinking envelope rather
+            // than reflowing transport controls on every animation frame.
+            .scaleEffect(width / max(size.width, 1))
+            .frame(width: width, height: height)
+            .opacity(1 - controls)
+            .allowsHitTesting(!host.minimized)
+            .accessibilityHidden(host.minimized)
+            .background(.black.opacity(1 - controls))
+            .overlay {
+                CWorldMobileNowPlayingBar(host: host)
+                    .frame(width: width)
+                    .opacity(controls)
+                    .allowsHitTesting(host.minimized)
+                    .accessibilityHidden(!host.minimized)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 22 * shapeProgress, style: .continuous))
+            .shadow(color: .black.opacity(0.3 * shapeProgress), radius: 16 * shapeProgress, y: 6 * shapeProgress)
+            .position(x: size.width / 2, y: centerY)
+    }
+}
+
+/// Compact browsing controls. Progress updates are isolated from the library.
+private struct CWorldMobileNowPlayingBar: View {
+    @ObservedObject var host: CWorldPlaybackHost
+    var body: some View {
+        VStack(spacing: 8) {
+            HStack(spacing: 8) {
+                Button { host.minimized = false } label: {
+                    HStack(spacing: 10) {
+                        Group {
+                            if let artwork = host.artworkImage {
+                                Image(uiImage: artwork).resizable().scaledToFill()
+                            } else {
+                                Image(systemName: "play.rectangle.fill").resizable().scaledToFit().padding(10)
+                            }
+                        }.frame(width: 44, height: 44).clipped()
+                            .clipShape(RoundedRectangle(cornerRadius: 9))
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(host.showTitle.isEmpty ? host.title : host.showTitle)
+                                .font(.subheadline.weight(.semibold)).lineLimit(1)
+                            Text(host.isAirPlay ? "Playing on AirPlay" : host.title == host.showTitle ? "Now Playing" : host.title)
+                                .font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                        }.frame(maxWidth: .infinity, alignment: .leading)
+                    }.contentShape(Rectangle())
+                }.accessibilityLabel("Open player: \(host.title)")
+                Button {
+                    if host.player?.rate == 0 { host.player?.play() } else { host.player?.pause() }
+                } label: {
+                    Image(systemName: host.isPlaying ? "pause.fill" : "play.fill")
+                        .font(.system(size: 19, weight: .semibold)).frame(width: 44, height: 44)
+                }.accessibilityLabel(host.isPlaying ? "Pause" : "Play")
+                Button { host.remotePresented = true } label: {
+                    Image(systemName: "appletvremote.gen4.fill").frame(width: 44, height: 44)
+                }.accessibilityLabel("Remote and Up Next")
+                Menu {
+                    Button("Open player", systemImage: "arrow.up.left.and.arrow.down.right") { host.minimized = false }
+                    if let next = host.skipNext {
+                        Button("Next episode", systemImage: "forward.end.fill", action: next)
+                    }
+                    if host.hasSubtitles {
+                        Button(host.subtitlesOn ? "Turn subtitles off" : "Turn subtitles on", systemImage: "captions.bubble") {
+                            host.toggleCaptions?()
+                        }
+                    }
+                    Button("Stop playback", systemImage: "stop.fill", role: .destructive) { host.stop() }
+                } label: {
+                    Image(systemName: "ellipsis").frame(width: 44, height: 44)
+                }.accessibilityLabel("Playback options")
+            }
+            TimelineView(.periodic(from: .now, by: 1)) { _ in
+                let time = host.player?.currentTime().seconds ?? 0
+                let duration = host.player?.currentItem?.duration.seconds ?? 0
+                let fraction = time.isFinite && duration.isFinite && duration > 0 ? min(max(time / duration, 0), 1) : 0
+                ProgressView(value: fraction).tint(.white)
+                    .accessibilityLabel("Playback progress")
+            }
+        }
+        .buttonStyle(.plain).foregroundStyle(.white)
+        .padding(12)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22))
+        .overlay { RoundedRectangle(cornerRadius: 22).stroke(.white.opacity(0.16), lineWidth: 0.5) }
+        .shadow(color: .black.opacity(0.3), radius: 16, y: 6)
+        .environment(\.colorScheme, .dark)
+    }
 }
 
 struct CWorldTVPlaybackHighlight: View {
@@ -1676,10 +1839,6 @@ struct PersistentVideoPlayerView: View {
                         .ignoresSafeArea()
                         .allowsHitTesting(false)
                 }
-                VStack(spacing: compact ? 4 : 10) {
-                    if showHeader { mobilePlayerHeader }
-                    if showHeader { mobilePlayerStatus }
-                    Spacer(minLength: 0)
                     if showTransport && !compact {
                         HStack(spacing: compact ? 28 : 38) {
                             mobileControl("gobackward.15", label: "Back 15 seconds") { seek(by: -15) }
@@ -1695,11 +1854,16 @@ struct PersistentVideoPlayerView: View {
                                         }
                                     }
                             }
+                            .buttonStyle(.plain)
                             .accessibilityLabel(isPlaying ? "Pause" : "Play")
                             mobileControl("goforward.15", label: "Forward 15 seconds") { seek(by: 15) }
                         }
                         .font(.system(size: 25))
                     }
+
+                VStack(spacing: compact ? 4 : 10) {
+                    if showHeader { mobilePlayerHeader }
+                    if showHeader { mobilePlayerStatus }
                     Spacer(minLength: 0)
                     if !externalDisplay.isConnected && !playbackHost.isAirPlay &&
                         subtitlesEnabled && !activeSubtitle.isEmpty {
@@ -1869,6 +2033,7 @@ struct PersistentVideoPlayerView: View {
         Button(action: action) {
             Image(systemName: icon).frame(width: 44, height: 44).contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
         .accessibilityLabel(label)
     }
     #endif

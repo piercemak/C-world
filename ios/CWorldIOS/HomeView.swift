@@ -97,6 +97,7 @@ private enum MobileLibraryTab: String {
 }
 
 struct CWorldHomeView: View {
+    @ObservedObject private var browsingPlayback = CWorldPlaybackHost.shared
     @EnvironmentObject private var appModel: AppModel
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @GestureState(resetTransaction: Transaction(animation: .spring(response: 0.32, dampingFraction: 0.85))) private var carouselDrag: CGFloat = 0
@@ -191,7 +192,7 @@ struct CWorldHomeView: View {
                             .foregroundStyle(.white.opacity(0.72))
                         }
                     }
-                    .padding(.bottom, 64 + max(geometry.safeAreaInsets.bottom, homeSafeArea.bottom))
+                    .padding(.bottom, (64 + (browsingPlayback.minimized && browsingPlayback.surface != nil ? 92 : 0)) + max(geometry.safeAreaInsets.bottom, homeSafeArea.bottom))
                 }
                 .animation(.easeInOut(duration: 0.45), value: currentMedia?.id)
                 .opacity(showingArchive ? 0 : 1)
@@ -200,7 +201,7 @@ struct CWorldHomeView: View {
                 .accessibilityHidden(showingArchive)
 
                 ArchiveView(
-                    contentBottomInset: 64 + max(geometry.safeAreaInsets.bottom, homeSafeArea.bottom),
+                    contentBottomInset: (64 + (browsingPlayback.minimized && browsingPlayback.surface != nil ? 92 : 0)) + max(geometry.safeAreaInsets.bottom, homeSafeArea.bottom),
                     onOpenMedia: { selectedMediaID = $0 },
                     onNavigationCompactChange: { libraryNavigationCompact = $0 }
                 )
