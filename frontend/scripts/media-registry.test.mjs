@@ -53,6 +53,7 @@ test("Add to CWorld writes the registry and consistent projections; drift checks
     assert.equal(run.status,0,run.stderr);
     const updated=JSON.parse(fs.readFileSync(path.join(root,"src/data/mediaRegistry.json")));
     assert.ok(updated.media["registry-fixture"].captions.movie);
+    assert.equal(updated.media["registry-fixture"].captions.defaultEnabled, false);
     assert.equal(updated.newMedia[0].showSlug,"registry-fixture");
     generateRegistry({root,check:true});
     const {SHOWS}=await import(pathToFileURL(path.join(root,"src/components/mobileshowsData.js")));
@@ -60,4 +61,19 @@ test("Add to CWorld writes the registry and consistent projections; drift checks
     fs.appendFileSync(path.join(root,"src/components/mobileshowsData.js"),"// accidental direct edit\n");
     assert.throws(()=>generateRegistry({root,check:true}),/stale/);
   } finally { fs.rmSync(root,{recursive:true,force:true}); }
+});
+
+
+test("subtitle defaults are opt-in, support asset aliases, and reject non-booleans", async () => {
+  const copy = structuredClone(registry);
+  copy.media["steven-universe"].captions.defaultEnabled = true;
+  delete copy.media.jjk.captions.defaultEnabled;
+  const code = renderRegistry(copy).get("src/data/subtitleTracks.js");
+  const {getSubtitleDefaultEnabled} = await import(`data:text/javascript;base64,${Buffer.from(code).toString("base64")}`);
+  assert.equal(getSubtitleDefaultEnabled("steven-universe"), true);
+  assert.equal(getSubtitleDefaultEnabled("stevenuniverse"), true);
+  assert.equal(getSubtitleDefaultEnabled("jjk"), false);
+  assert.equal(getSubtitleDefaultEnabled("unknown"), false);
+  copy.media.jjk.captions.defaultEnabled = "yes";
+  assert.throws(() => validateRegistry(copy), /Invalid subtitle default/);
 });

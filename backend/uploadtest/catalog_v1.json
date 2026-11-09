@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-06T19:32:04.632Z",
-  "generatedAt": "2026-11-06T19:32:04.632Z",
+  "catalogRevision": "2026-11-09T20:09:31.293Z",
+  "generatedAt": "2026-11-09T20:09:31.293Z",
   "items": [
     {
       "id": "steven-universe",
@@ -27,6 +27,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -2699,6 +2700,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -7504,6 +7506,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -7708,6 +7711,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -8289,6 +8293,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/perfectblue/perfectblue.vtt"
       ],
@@ -8326,6 +8331,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/paprika/paprikaSub.vtt"
       ],
@@ -8363,6 +8369,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -8396,6 +8403,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -8429,6 +8437,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/thevanishing/thevanishing_subtitles.vtt"
       ],
@@ -8466,6 +8475,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -8499,6 +8509,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -8532,6 +8543,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -8565,6 +8577,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/ghostintheshell/ghostintheshell_subtitles.vtt"
       ],
@@ -8602,6 +8615,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -9423,6 +9437,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -10821,6 +10836,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -12104,6 +12120,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -12137,6 +12154,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt"
       ],
@@ -12173,6 +12191,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -12633,6 +12652,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/solaris/solaris_subtitles.vtt"
       ],
@@ -12670,6 +12690,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -12702,6 +12723,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -13517,6 +13539,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/demons/demons_subtitles.vtt"
       ],
@@ -13553,6 +13576,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -14178,6 +14202,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -14616,6 +14641,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -14840,6 +14866,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/akira/akira_subtitles.vtt"
       ],
@@ -14877,6 +14904,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/exmachina/exmachina.vtt"
       ],
@@ -14913,6 +14941,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/annihilation/annihilation_subtitles.vtt"
       ],
@@ -14949,6 +14978,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -18072,6 +18102,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -20779,6 +20810,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/redline/redline_subtitles.vtt"
       ],
@@ -20816,6 +20848,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/bugonia/bugonia_subtitles.vtt"
       ],
@@ -20852,6 +20885,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/frankenstein/frankenstein_subtitles.vtt"
       ],
@@ -20888,6 +20922,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -21090,6 +21125,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/sunsetboulevard/sunsetboulevard_subtitles.vtt"
       ],
@@ -21126,6 +21162,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/shikijitsu/shikijitsu_subtitles.vtt"
       ],
@@ -21162,6 +21199,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/speaknoevil/speaknoevil_subtitles.vtt"
       ],
@@ -21198,6 +21236,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/ikiru/ikiru_subtitles.vtt"
       ],
@@ -21234,6 +21273,7 @@
         "ageRating": ""
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -22155,6 +22195,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/pokemon2000/pokemon2000_subtitles.vtt"
       ],
@@ -22191,6 +22232,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/coherence/coherence_subtitles.vtt"
       ],
@@ -22227,6 +22269,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/exit8/exit8_subtitles.vtt"
       ],
@@ -22263,6 +22306,7 @@
         "ageRating": ""
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/hokum/hokum_subtitles.vtt"
       ],
@@ -22299,6 +22343,7 @@
         "ageRating": "18+"
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "movieAsset": {
@@ -22331,6 +22376,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/projecthailmary/projecthailmary_subtitles.vtt"
       ],
@@ -22367,6 +22413,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/bloodthelastvampire/bloodthelastvampire_subtitles.vtt"
       ],
@@ -22403,6 +22450,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/theanimatrix/theanimatrix_subtitles.vtt"
       ],
@@ -22439,6 +22487,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -23019,6 +23068,7 @@
         "ageRating": "18+"
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -23223,6 +23273,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/backrooms/backrooms_subtitles.vtt"
       ],
@@ -23259,6 +23310,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/pokemondestinydeoxys/pokemondestinydeoxys_subtitles.vtt"
       ],
@@ -23295,6 +23347,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -24205,6 +24258,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/chronicle/chronicle_subtitles.vtt"
       ],
@@ -24241,6 +24295,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -25073,6 +25128,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -25212,6 +25268,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/beingjohnmalkovich/beingjohnmalkovich_subtitles.vtt"
       ],
@@ -25248,6 +25305,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -27145,6 +27203,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/thedrama/thedrama_subtitles.vtt"
       ],
@@ -27187,6 +27246,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/thenightisshort/thenightisshort_subtitles.vtt"
       ],
@@ -27223,6 +27283,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [
         "https://cearaworld.com/videos/cure/cure_subtitles.vtt"
       ],
@@ -27259,6 +27320,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/theinvite/theinvite_subtitles.vtt"
       ],
@@ -27295,6 +27357,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -27497,6 +27560,7 @@
         "ageRating": "13+"
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -34057,6 +34121,7 @@
         "ageRating": "7+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -34600,6 +34665,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/interstellar/interstellar_subtitles.vtt"
       ],
@@ -34636,6 +34702,7 @@
         "ageRating": "7+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/tron/tron_subtitles.vtt"
       ],
@@ -34672,6 +34739,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/themist/themist_subtitles.vtt"
       ],
@@ -34708,6 +34776,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -35104,6 +35173,7 @@
         "ageRating": "18+"
       },
       "subtitles": false,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -37233,6 +37303,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -37519,6 +37590,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/thegrey/thegrey_subtitles.vtt"
       ],
@@ -37555,6 +37627,7 @@
         "ageRating": "7+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/batmanbeyond/batmanbeyond_subtitles.vtt"
       ],
@@ -37591,6 +37664,7 @@
         "ageRating": "13+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -38675,6 +38749,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/primetime/primetime_subtitles.vtt"
       ],
@@ -38711,6 +38786,7 @@
         "ageRating": "18+"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": true,
       "subtitleTracks": [],
       "rokuSubtitleTracks": [],
       "seasons": [
@@ -39758,6 +39834,7 @@
         "ageRating": "R"
       },
       "subtitles": true,
+      "subtitlesDefaultEnabled": false,
       "subtitleTracks": [
         "https://cearaworld.com/videos/residentevil/residentevil_subtitles.vtt"
       ],

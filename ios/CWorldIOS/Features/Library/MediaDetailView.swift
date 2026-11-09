@@ -52,7 +52,7 @@ final class CWorldPlaybackHost: ObservableObject {
     @Published var isIntermission = false
     @Published var artworkImage: UIImage?
     @Published var showTitle = ""
-    @Published var subtitlesOn = true
+    @Published var subtitlesOn = false
     @Published var hasSubtitles = false
     @Published var hasAutomaticNext = false
     var selectQueued: ((PlayerSelection) -> Void)?
@@ -1504,7 +1504,8 @@ struct PersistentVideoPlayerView: View {
     @State private var isMuted = false
     @State private var volume: Float = 1
     @State private var volumeControlVisible = false
-    @State private var subtitlesEnabled = true
+    @State private var subtitlesEnabled = false
+    @State private var subtitleIntentMediaID: String?
     @State private var subtitleSettingsPresented = false
     @State private var subtitleCues: [SubtitleCue] = []
     @State private var activeSubtitle = ""
@@ -2094,6 +2095,11 @@ struct PersistentVideoPlayerView: View {
         let attempt = UUID()
         activeAttempt = attempt
         let requestedSelection = selection
+        // Reset on a new title; retain a viewer's CC choice across episodes/retries.
+        if subtitleIntentMediaID != requestedSelection.mediaID {
+            subtitlesEnabled = appModel.media(for: requestedSelection.mediaID)?.subtitlesDefaultEnabled ?? false
+            subtitleIntentMediaID = requestedSelection.mediaID
+        }
         removePlayerObservers()
         progressTask?.cancel()
         progressTask = nil

@@ -8,7 +8,7 @@ import { getCurrentWindow } from "@tauri-apps/api/window";
 import { bindPlayerCaptions } from "../lib/playerCaptions.js";
 import BrowserPlayerControls, { captionDefaults, captionStyle } from "./BrowserPlayerControls.jsx";
 import { queueWatchProgressSync, flushWatchProgressSync } from "../lib/watchSync.js";
-import { getSubtitleTrackSrc } from "../data/subtitleTracks.js";
+import { getSubtitleTrackSrc, getSubtitleDefaultEnabled } from "../data/subtitleTracks.js";
 import {
   dispatchWatchProgressUpdate,
   readWatchProgressRaw,
@@ -1119,17 +1119,19 @@ const handleSkipToPrevious = async () => {
     };
   }, [isPlaying, isPreviewing, controlsBusy]);
 
-  const [subtitlesEnabled, setSubtitlesEnabled] = useState(() => localStorage.getItem('cworld.browser.captions.enabled') !== 'false');
+  const [subtitlesEnabled, setSubtitlesEnabled] = useState(() => getSubtitleDefaultEnabled(showId));
   const changeSubtitlesEnabled = (enabled) => {
-    localStorage.setItem('cworld.browser.captions.enabled', String(enabled));
     setSubtitlesEnabled(enabled);
   };
   const [activeSubtitleCues, setActiveSubtitleCues] = useState([]);
   const subtitleTrackSrc = getSubtitleTrackSrc({ showId, season, episode });
 
   useEffect(() => {
-  setSubtitlesEnabled(localStorage.getItem("cworld.browser.captions.enabled") !== "false");
-  setActiveSubtitleCues([]);
+    setSubtitlesEnabled(getSubtitleDefaultEnabled(showId));
+  }, [showId]);
+
+  useEffect(() => {
+    setActiveSubtitleCues([]);
   }, [hasSubtitles, playbackSrc]);
 
   useEffect(() => {

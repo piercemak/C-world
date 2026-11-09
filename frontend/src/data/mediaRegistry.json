@@ -31,7 +31,9 @@
         "order": 26
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Gem_Glow",
@@ -1209,7 +1211,9 @@
         "order": 0
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Slumber_Party_Panic",
@@ -3266,7 +3270,9 @@
         "order": 18
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "The_Old_Grist_Mill",
@@ -3404,7 +3410,8 @@
       },
       "review": {},
       "captions": {
-        "series": "/subtitles/neongenesis/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/neongenesis/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -3654,7 +3661,8 @@
       },
       "review": {},
       "captions": {
-        "movie": "/videos/perfectblue/perfectblue.vtt"
+        "movie": "/videos/perfectblue/perfectblue.vtt",
+        "defaultEnabled": true
       },
       "reviewFields": [
         "type",
@@ -3698,7 +3706,8 @@
       },
       "review": {},
       "captions": {
-        "movie": "/videos/paprika/paprikaSub.vtt"
+        "movie": "/videos/paprika/paprikaSub.vtt",
+        "defaultEnabled": true
       },
       "reviewFields": [
         "type",
@@ -3740,7 +3749,9 @@
         "order": 22
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "reviewFields": [
         "type",
         "title",
@@ -3781,7 +3792,9 @@
         "order": 3
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "reviewFields": [
         "type",
         "title",
@@ -3824,7 +3837,8 @@
       },
       "review": {},
       "captions": {
-        "movie": "/videos/thevanishing/thevanishing_subtitles.vtt"
+        "movie": "/videos/thevanishing/thevanishing_subtitles.vtt",
+        "defaultEnabled": true
       },
       "reviewFields": [
         "type",
@@ -3866,7 +3880,9 @@
         "order": 27
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "reviewFields": [
         "type",
         "title",
@@ -3907,7 +3923,9 @@
         "order": 1
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "reviewFields": [
         "type",
         "title",
@@ -3948,7 +3966,9 @@
         "order": 14
       },
       "review": {},
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "reviewFields": [
         "type",
         "title",
@@ -3994,7 +4014,8 @@
       },
       "review": {},
       "captions": {
-        "movie": "/videos/ghostintheshell/ghostintheshell_subtitles.vtt"
+        "movie": "/videos/ghostintheshell/ghostintheshell_subtitles.vtt",
+        "defaultEnabled": true
       },
       "reviewFields": [
         "type",
@@ -4039,7 +4060,8 @@
       },
       "review": {},
       "captions": {
-        "series": "/subtitles/mobpsycho/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/mobpsycho/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -4743,7 +4765,8 @@
       },
       "review": {},
       "captions": {
-        "series": "/subtitles/fmab/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/fmab/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -5290,7 +5313,8 @@
         "order": 13
       },
       "captions": {
-        "series": "/subtitles/jjk/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/jjk/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -6350,7 +6374,9 @@
       "review": {
         "logo": "images/cardimages/weaponsLogo.svg"
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "reviewFields": [
         "type",
         "title",
@@ -6392,7 +6418,8 @@
         "order": 30
       },
       "captions": {
-        "movie": "/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt"
+        "movie": "/videos/tokyogodfathers/tokyogodfathers_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "cyberpunk": {
@@ -6426,7 +6453,8 @@
         "order": 6
       },
       "captions": {
-        "series": "/subtitles/cyberpunk/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/cyberpunk/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -6819,7 +6847,8 @@
         "order": 25
       },
       "captions": {
-        "movie": "/videos/solaris/solaris_subtitles.vtt"
+        "movie": "/videos/solaris/solaris_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "event-horizon": {
@@ -6850,7 +6879,9 @@
       "carousel": {
         "order": 8
       },
-      "captions": {}
+      "captions": {
+        "defaultEnabled": false
+      }
     },
     "lovedeathandrobots": {
       "assetId": "lovedeathandrobots",
@@ -6882,7 +6913,9 @@
         "title": "Love, Death + Robots",
         "order": 15
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Sonnies_Edge",
@@ -7255,7 +7288,8 @@
         "order": 7
       },
       "captions": {
-        "movie": "/videos/demons/demons_subtitles.vtt"
+        "movie": "/videos/demons/demons_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "blackmirror": {
@@ -7287,7 +7321,9 @@
       "carousel": {
         "order": 5
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "The_National_Anthem",
@@ -7583,7 +7619,8 @@
         "order": 24
       },
       "captions": {
-        "series": "/subtitles/severance/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/severance/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -7938,7 +7975,8 @@
         "order": 21
       },
       "captions": {
-        "series": "/subtitles/pluribus/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/pluribus/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -8137,7 +8175,8 @@
         "order": 2
       },
       "captions": {
-        "movie": "/videos/akira/akira_subtitles.vtt"
+        "movie": "/videos/akira/akira_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "exmachina": {
@@ -8170,7 +8209,8 @@
         "order": 9
       },
       "captions": {
-        "movie": "/videos/exmachina/exmachina.vtt"
+        "movie": "/videos/exmachina/exmachina.vtt",
+        "defaultEnabled": false
       }
     },
     "annihilation": {
@@ -8203,7 +8243,8 @@
         "order": 4
       },
       "captions": {
-        "movie": "/videos/annihilation/annihilation_subtitles.vtt"
+        "movie": "/videos/annihilation/annihilation_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "itsalwayssunny": {
@@ -8237,7 +8278,9 @@
         "title": "It's Always Sunny in Philadelphia",
         "order": 12
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "The_Gang_Gets_Racist",
@@ -11315,7 +11358,9 @@
       "carousel": {
         "order": 28
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Where_Is_Everybody",
@@ -14044,7 +14089,8 @@
         "order": 23
       },
       "captions": {
-        "movie": "/videos/redline/redline_subtitles.vtt"
+        "movie": "/videos/redline/redline_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "bugonia": {
@@ -14077,7 +14123,8 @@
         "order": 32
       },
       "captions": {
-        "movie": "/videos/bugonia/bugonia_subtitles.vtt"
+        "movie": "/videos/bugonia/bugonia_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "frankenstein": {
@@ -14110,7 +14157,8 @@
         "order": 33
       },
       "captions": {
-        "movie": "/videos/frankenstein/frankenstein_subtitles.vtt"
+        "movie": "/videos/frankenstein/frankenstein_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "truedetective": {
@@ -14144,7 +14192,8 @@
         "order": 34
       },
       "captions": {
-        "series": "/subtitles/truedetective/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/truedetective/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -14330,7 +14379,8 @@
         "order": 35
       },
       "captions": {
-        "movie": "/videos/sunsetboulevard/sunsetboulevard_subtitles.vtt"
+        "movie": "/videos/sunsetboulevard/sunsetboulevard_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "shikijitsu": {
@@ -14363,7 +14413,8 @@
         "order": 36
       },
       "captions": {
-        "movie": "/videos/shikijitsu/shikijitsu_subtitles.vtt"
+        "movie": "/videos/shikijitsu/shikijitsu_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "speaknoevil": {
@@ -14396,7 +14447,8 @@
         "order": 37
       },
       "captions": {
-        "movie": "/videos/speaknoevil/speaknoevil_subtitles.vtt"
+        "movie": "/videos/speaknoevil/speaknoevil_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "ikiru": {
@@ -14429,7 +14481,8 @@
         "order": 38
       },
       "captions": {
-        "movie": "/videos/ikiru/ikiru_subtitles.vtt"
+        "movie": "/videos/ikiru/ikiru_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "theericandreshow": {
@@ -14461,7 +14514,9 @@
       "carousel": {
         "order": 39
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Dolph_Lundgren",
@@ -15401,7 +15456,8 @@
         "order": 40
       },
       "captions": {
-        "movie": "/videos/pokemon2000/pokemon2000_subtitles.vtt"
+        "movie": "/videos/pokemon2000/pokemon2000_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "coherence": {
@@ -15434,7 +15490,8 @@
         "order": 41
       },
       "captions": {
-        "movie": "/videos/coherence/coherence_subtitles.vtt"
+        "movie": "/videos/coherence/coherence_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "exit8": {
@@ -15467,7 +15524,8 @@
         "order": 42
       },
       "captions": {
-        "movie": "/videos/exit8/exit8_subtitles.vtt"
+        "movie": "/videos/exit8/exit8_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "hokum": {
@@ -15500,7 +15558,8 @@
         "order": 43
       },
       "captions": {
-        "movie": "/videos/hokum/hokum_subtitles.vtt"
+        "movie": "/videos/hokum/hokum_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "obsession": {
@@ -15533,7 +15592,9 @@
       "carousel": {
         "order": 44
       },
-      "captions": {}
+      "captions": {
+        "defaultEnabled": false
+      }
     },
     "projecthailmary": {
       "assetId": "projecthailmary",
@@ -15566,7 +15627,8 @@
         "order": 45
       },
       "captions": {
-        "movie": "/videos/projecthailmary/projecthailmary_subtitles.vtt"
+        "movie": "/videos/projecthailmary/projecthailmary_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "bloodthelastvampire": {
@@ -15600,7 +15662,8 @@
         "order": 46
       },
       "captions": {
-        "movie": "/videos/bloodthelastvampire/bloodthelastvampire_subtitles.vtt"
+        "movie": "/videos/bloodthelastvampire/bloodthelastvampire_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "theanimatrix": {
@@ -15634,7 +15697,8 @@
         "order": 47
       },
       "captions": {
-        "movie": "/videos/theanimatrix/theanimatrix_subtitles.vtt"
+        "movie": "/videos/theanimatrix/theanimatrix_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "mongolianchopsquad": {
@@ -15669,7 +15733,8 @@
         "order": 48
       },
       "captions": {
-        "series": "/subtitles/mongolianchopsquad/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/mongolianchopsquad/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -16158,7 +16223,9 @@
       "carousel": {
         "order": 49
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Welcome_to_Widows_Bay",
@@ -16378,7 +16445,8 @@
         "order": 50
       },
       "captions": {
-        "movie": "/videos/backrooms/backrooms_subtitles.vtt"
+        "movie": "/videos/backrooms/backrooms_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "pokemondestinydeoxys": {
@@ -16412,7 +16480,8 @@
         "order": 51
       },
       "captions": {
-        "movie": "/videos/pokemondestinydeoxys/pokemondestinydeoxys_subtitles.vtt"
+        "movie": "/videos/pokemondestinydeoxys/pokemondestinydeoxys_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "atlanta": {
@@ -16447,7 +16516,8 @@
         "order": 52
       },
       "captions": {
-        "series": "/subtitles/atlanta/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/atlanta/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -17216,7 +17286,8 @@
         "order": 53
       },
       "captions": {
-        "movie": "/videos/chronicle/chronicle_subtitles.vtt"
+        "movie": "/videos/chronicle/chronicle_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "jojos": {
@@ -17251,7 +17322,8 @@
         "order": 54
       },
       "captions": {
-        "series": "/subtitles/jojos/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/jojos/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -17954,7 +18026,8 @@
         "order": 55
       },
       "captions": {
-        "series": "/subtitles/chernobyl/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/chernobyl/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -18034,7 +18107,8 @@
         "order": 56
       },
       "captions": {
-        "movie": "/videos/beingjohnmalkovich/beingjohnmalkovich_subtitles.vtt"
+        "movie": "/videos/beingjohnmalkovich/beingjohnmalkovich_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "attackontitan": {
@@ -18069,7 +18143,8 @@
         "order": 57
       },
       "captions": {
-        "series": "/subtitles/attackontitan/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/attackontitan/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -19637,7 +19712,8 @@
         "order": 58
       },
       "captions": {
-        "movie": "/videos/thedrama/thedrama_subtitles.vtt"
+        "movie": "/videos/thedrama/thedrama_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "thenightisshort": {
@@ -19671,7 +19747,8 @@
         "order": 59
       },
       "captions": {
-        "movie": "/videos/thenightisshort/thenightisshort_subtitles.vtt"
+        "movie": "/videos/thenightisshort/thenightisshort_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "cure": {
@@ -19705,7 +19782,8 @@
         "order": 60
       },
       "captions": {
-        "movie": "/videos/cure/cure_subtitles.vtt"
+        "movie": "/videos/cure/cure_subtitles.vtt",
+        "defaultEnabled": true
       }
     },
     "theinvite": {
@@ -19739,7 +19817,8 @@
         "order": 61
       },
       "captions": {
-        "movie": "/videos/theinvite/theinvite_subtitles.vtt"
+        "movie": "/videos/theinvite/theinvite_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "alienearth": {
@@ -19774,7 +19853,8 @@
         "order": 62
       },
       "captions": {
-        "series": "/subtitles/alienearth/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/alienearth/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -19961,7 +20041,9 @@
       "carousel": {
         "order": 63
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "Pilot",
@@ -26638,7 +26720,8 @@
         "order": 64
       },
       "captions": {
-        "series": "/subtitles/onepunchman/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/onepunchman/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -27104,7 +27187,8 @@
         "order": 65
       },
       "captions": {
-        "movie": "/videos/interstellar/interstellar_subtitles.vtt"
+        "movie": "/videos/interstellar/interstellar_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "tron": {
@@ -27138,7 +27222,8 @@
         "order": 66
       },
       "captions": {
-        "movie": "/videos/tron/tron_subtitles.vtt"
+        "movie": "/videos/tron/tron_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "themist": {
@@ -27172,7 +27257,8 @@
         "order": 67
       },
       "captions": {
-        "movie": "/videos/themist/themist_subtitles.vtt"
+        "movie": "/videos/themist/themist_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "adults": {
@@ -27207,7 +27293,8 @@
         "order": 68
       },
       "captions": {
-        "series": "/subtitles/adults/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/adults/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
       },
       "episodeTitles": {
         "1": [
@@ -27554,7 +27641,9 @@
       "carousel": {
         "order": 69
       },
-      "captions": {},
+      "captions": {
+        "defaultEnabled": false
+      },
       "episodeTitles": {
         "1": [
           "The_Pants_Tent",
@@ -29722,7 +29811,8 @@
         "order": 70
       },
       "captions": {
-        "series": "/subtitles/steelballrun/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/steelballrun/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -29977,7 +30067,8 @@
         "order": 71
       },
       "captions": {
-        "movie": "/videos/thegrey/thegrey_subtitles.vtt"
+        "movie": "/videos/thegrey/thegrey_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "batmanbeyond": {
@@ -30011,7 +30102,8 @@
         "order": 72
       },
       "captions": {
-        "movie": "/videos/batmanbeyond/batmanbeyond_subtitles.vtt"
+        "movie": "/videos/batmanbeyond/batmanbeyond_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "bleach": {
@@ -30046,7 +30138,8 @@
         "order": 73
       },
       "captions": {
-        "series": "/subtitles/bleach/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/bleach/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -30947,7 +31040,8 @@
         "order": 74
       },
       "captions": {
-        "movie": "/videos/primetime/primetime_subtitles.vtt"
+        "movie": "/videos/primetime/primetime_subtitles.vtt",
+        "defaultEnabled": false
       }
     },
     "vinland": {
@@ -30982,7 +31076,8 @@
         "order": 75
       },
       "captions": {
-        "series": "/subtitles/vinland/season{season}/S{season}E{episode2}_subtitles.vtt"
+        "series": "/subtitles/vinland/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": true
       },
       "episodeTitles": {
         "1": [
@@ -31856,7 +31951,8 @@
         "order": 76
       },
       "captions": {
-        "movie": "/videos/residentevil/residentevil_subtitles.vtt"
+        "movie": "/videos/residentevil/residentevil_subtitles.vtt",
+        "defaultEnabled": false
       }
     }
   },

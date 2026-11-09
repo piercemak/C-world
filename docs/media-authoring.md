@@ -79,3 +79,19 @@ CSS card presentation remains styling code; adding a title still adds its card r
 Publish regenerated catalog/assets to update the deployed web/native data. Native
 code changes and bundled artwork still need an app rebuild. This registry does not
 upload video or HLS captions to S3; those publication steps remain in the migration tools.
+
+### Subtitle playback defaults
+
+`mediaRegistry.json` owns each title's `captions.defaultEnabled` boolean. It is
+`false` unless explicitly enabled. This is separate from subtitle availability:
+turning the default off does not remove captions or prevent using the CC button.
+Set it to `true` for titles that should start with subtitles, then run
+`npm run media:generate` from `frontend` and publish the generated catalog/web changes.
+iOS and Catalyst read `subtitlesDefaultEnabled` from the live catalog. The browser
+uses the generated subtitle defaults. A manual CC choice persists across episodes
+within the active title's player session; switching titles applies the new default.
+Existing native installations need the client update once to support this field.
+
+MediaScraper's Add to CWorld form offers **Subtitles on by default**, unchecked
+for new titles. This can be chosen before subtitle files are available. CLI:
+`--subtitles-default-enabled`. Adding another season preserves the title's setting.

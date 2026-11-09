@@ -501,6 +501,7 @@ function buildEntry({ id, title, mediaType, assetId, metadata }) {
     ageRating: metadata.ageRating || "13+",
     seasonCount: Math.max(1, Number(metadata.seasons || 1)),
     subtitles,
+    subtitlesDefaultEnabled: args["subtitles-default-enabled"] === true,
   };
 }
 
@@ -756,6 +757,7 @@ Useful:
   --seasons 3                 Optional show season limit; blank imports all regular seasons
   --tmdb-season 6             Import only this regular TMDB season (overrides --seasons)
   --cworld-season 1           Map that season to this CWorld number (defaults to 1)
+  --subtitles-default-enabled  Start this title with captions on (default: off)
   --subtitles yes|no
   --new-media                 Add to newMedia.js
   --cover /path/file.jpg      Copy to public/images/<asset>/covers

@@ -15,6 +15,7 @@ export function validateRegistry(registry) {
     if (assets.has(item.assetId)) throw Error(`Duplicate asset identity: ${item.assetId}`);
     assets.add(item.assetId);
     if (!["movie", "show"].includes(item.library?.type) || !item.library.title || !item.mobile) throw Error(`Missing presentation metadata: ${id}`);
+    if (item.captions?.defaultEnabled !== undefined && typeof item.captions.defaultEnabled !== "boolean") throw Error(`Invalid subtitle default: ${id}`);
     if (item.sidebar) {
       if (!/^card-\d+$/.test(item.sidebar.cardId) || cards.has(item.sidebar.cardId)) throw Error(`Invalid/duplicate card: ${id}`);
       cards.add(item.sidebar.cardId);
@@ -69,7 +70,7 @@ export function renderRegistry(registry) {
     ["src/data/episodeTitles.json", json(pick("episodeTitles")) + "\n"],
     ["src/data/episodeMetadata.json", json(pick("episodeMetadata")) + "\n"],
     ["src/data/skipTimesData.js", banner + `export const mediaAssetIds = ${json(Object.fromEntries(entries.map(([id,item])=>[id,item.assetId])))};\nexport const skipTimes = ${json(timings)};\nexport const seasonLength = ${json(lengths)};\n`],
-    ["src/data/subtitleTracks.js", banner + `const MOVIE_SUBTITLE_TRACKS = ${json(movieCaptions)};\nconst SERIES_SUBTITLE_PATTERNS = ${json(seriesCaptions)};\n
+    ["src/data/subtitleTracks.js", banner + `const MOVIE_SUBTITLE_TRACKS = ${json(movieCaptions)};\nconst SERIES_SUBTITLE_PATTERNS = ${json(seriesCaptions)};\nconst SUBTITLE_DEFAULTS = ${json(Object.fromEntries(entries.flatMap(([id,item]) => [[id,item.captions?.defaultEnabled === true],[item.assetId,item.captions?.defaultEnabled === true]])))};\nexport const getSubtitleDefaultEnabled = showId => SUBTITLE_DEFAULTS[showId] === true;\n
 export const getSubtitleTrackSrc = ({ showId, season = null, episode = null }) => {
   if (!showId) return null;
   if (MOVIE_SUBTITLE_TRACKS[showId]) return MOVIE_SUBTITLE_TRACKS[showId];

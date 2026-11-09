@@ -22,6 +22,7 @@ struct CWorldMedia: Codable, Identifiable {
     let description: String
     let artwork: CWorldArtwork
     let metadata: CWorldMetadata
+    let subtitlesDefaultEnabled: Bool
     let subtitles: Bool
     let subtitleTracks: [URL]
     let rokuSubtitleTracks: [URL]
@@ -30,7 +31,7 @@ struct CWorldMedia: Codable, Identifiable {
 
     private enum CodingKeys: String, CodingKey {
         case id, assetId, type, title, dateAdded, description, artwork, metadata, subtitles
-        case subtitleTracks, rokuSubtitleTracks, movieAsset, seasons
+        case subtitleTracks, rokuSubtitleTracks, movieAsset, seasons, subtitlesDefaultEnabled
     }
 
     init(from decoder: Decoder) throws {
@@ -43,6 +44,7 @@ struct CWorldMedia: Codable, Identifiable {
         description = try container.decode(String.self, forKey: .description)
         artwork = try container.decode(CWorldArtwork.self, forKey: .artwork)
         metadata = try container.decode(CWorldMetadata.self, forKey: .metadata)
+        subtitlesDefaultEnabled = try container.decodeIfPresent(Bool.self, forKey: .subtitlesDefaultEnabled) ?? false
         subtitles = try container.decodeIfPresent(Bool.self, forKey: .subtitles) ?? false
         subtitleTracks = try container.decodeIfPresent([URL].self, forKey: .subtitleTracks) ?? []
         rokuSubtitleTracks = try container.decodeIfPresent([URL].self, forKey: .rokuSubtitleTracks) ?? []

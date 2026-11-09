@@ -5,7 +5,7 @@ import { generateRegistry } from "./generate-media-registry.mjs";
 generateRegistry();
 const { buildLibraryShows } = await import("../src/data/libraryShowsData.js");
 const { SHOWS } = await import("../src/components/mobileshowsData.js");
-const { getSubtitleTrackSrc } = await import("../src/data/subtitleTracks.js");
+const { getSubtitleTrackSrc, getSubtitleDefaultEnabled } = await import("../src/data/subtitleTracks.js");
 const { getSkipMarkers } = await import("../src/data/mediaTiming.js");
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -141,6 +141,7 @@ const toMedia = ([id, desktop]) => {
       ageRating: String(desktop.agerating || ""),
     },
     subtitles: String(desktop.subtitles || mobile.subtitles || "").toLowerCase() === "yes",
+    subtitlesDefaultEnabled: getSubtitleDefaultEnabled(id),
     subtitleTracks: [],
     rokuSubtitleTracks: [],
   };

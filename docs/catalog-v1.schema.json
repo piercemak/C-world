@@ -98,6 +98,7 @@
         "artwork": { "$ref": "#/$defs/artwork" },
         "metadata": { "$ref": "#/$defs/metadata" },
         "subtitles": { "type": "boolean" },
+        "subtitlesDefaultEnabled": { "type": "boolean", "default": false },
         "subtitleTracks": {
           "type": "array",
           "items": { "$ref": "#/$defs/url" }

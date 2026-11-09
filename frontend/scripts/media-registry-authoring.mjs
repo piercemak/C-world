@@ -26,6 +26,7 @@ export function addRegistryEntry(registry, entry, { dateAdded, newMedia = false 
       ? { movie: entry.subtitlePath }
       : { series: `/subtitles/${entry.assetId}/season{season}/S{season}E{episode2}_subtitles.vtt` },
   };
+  item.captions.defaultEnabled = entry.subtitlesDefaultEnabled === true;
   if (entry.episodeCatalog) {
     item.episodeTitles = entry.episodeCatalog.titlesBySeason;
     item.episodeMetadata = entry.episodeCatalog.metadataBySeason;
