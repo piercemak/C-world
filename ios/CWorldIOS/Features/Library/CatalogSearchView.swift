@@ -123,6 +123,8 @@ struct CatalogSearchIndex {
 
 struct CatalogSearchView: View {
     @EnvironmentObject private var appModel: AppModel
+    @ObservedObject private var playbackHost = CWorldPlaybackHost.shared
+    @State private var closingForPlayback = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @FocusState private var isFocused: Bool
@@ -196,6 +198,18 @@ struct CatalogSearchView: View {
         }
         .preferredColorScheme(.dark)
         .tint(.white)
+        // Playback lives in the root overlay, beneath this sheet. Ignore the
+        // initial value so opening search while a video is playing still works.
+        .onReceive(playbackHost.$surface.dropFirst()) { surface in
+            if surface != nil { closeSearchForPlayback() }
+        }
+    }
+
+    private func closeSearchForPlayback() {
+        guard !closingForPlayback else { return }
+        closingForPlayback = true
+        isFocused = false
+        dismiss()
     }
 
     private var searchField: some View {
@@ -398,7 +412,8 @@ struct CatalogSearchView: View {
                                     season: result.season, episode: result.episode, title: result.title,
                                     subtitleURL: episode?.subtitles.first ?? result.media.subtitleTracks.first,
                                     skipIntroStart: episode?.skipIntroStart, skipIntroEnd: episode?.skipIntroEnd,
-                                    skipOutroStart: episode?.skipOutroStart)
+                                    skipOutroStart: episode?.skipOutroStart,
+                                    onClose: { closeSearchForPlayback() })
     }
 
     private func progress(for result: CatalogSearchResult) -> WatchProgressRecord? {
