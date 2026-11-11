@@ -103,6 +103,6 @@ export function DesktopRecent({ items, additions, onRemove, onBack, onAtmosphere
   useEffect(() => () => onAtmosphere(null), [onAtmosphere]);
   return <div className="desktop-recent">
     <Shelf title="Continue Watching" items={items} onRemove={onRemove} onBack={onBack} onAtmosphere={onAtmosphere}/>
-    <Shelf title="New on SeedSpace" items={fresh} fresh onAtmosphere={onAtmosphere}/>
+    <Shelf title="New on CearaWorld" items={fresh} fresh onAtmosphere={onAtmosphere}/>
   </div>;
 }
