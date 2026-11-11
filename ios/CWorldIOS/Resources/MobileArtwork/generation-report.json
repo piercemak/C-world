@@ -2038,13 +2038,13 @@
       "titles": [
         "Look Back"
       ],
-      "sourceBytes": 1420096,
-      "outputBytes": 416749,
-      "thumbnailBytes": 62927,
+      "sourceBytes": 1696033,
+      "outputBytes": 413002,
+      "thumbnailBytes": 57921,
       "width": 1024,
       "height": 1024,
       "format": "jpg",
-      "psnr": 41.20707833238286
+      "psnr": 40.72427243222844
     },
     {
       "url": "https://cearaworld.com/images/lookback/covers/lookback_backdrop.svg",
@@ -2060,6 +2060,6 @@
       "psnr": 51.58503397676512
     }
   ],
-  "sourceBytes": 858229768,
-  "outputBytes": 107186023
+  "sourceBytes": 858505705,
+  "outputBytes": 107177270
 }

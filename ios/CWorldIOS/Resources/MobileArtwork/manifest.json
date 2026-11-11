@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-11-11T15:45:24.259Z",
+  "catalogRevision": "2026-11-11T15:56:12.052Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1235,12 +1235,12 @@
       "sourceSHA256": "0c5990a62f93907ad3238bbff4244b2206a9446a454a145e77f6cbcc239eedd1"
     },
     "https://cearaworld.com/images/cardimages/lookbackLogo.svg": {
-      "image": "ca0a309c507b-713e41d96f65.jpg",
-      "thumbnail": "ca0a309c507b-713e41d96f65-thumb.jpg",
+      "image": "ca0a309c507b-9d76b6d6c664.jpg",
+      "thumbnail": "ca0a309c507b-9d76b6d6c664-thumb.jpg",
       "width": 1024,
       "height": 1024,
       "thumbnailMaxPixelSize": 320,
-      "sourceSHA256": "713e41d96f654b1b926120b3253ac8e3e6d3687a8e3df4e5c1deaa54c3e89fcd"
+      "sourceSHA256": "9d76b6d6c6649b1dfbe79f0ba226b2f8ece10dde6e49179c15a01edb37cb9fcd"
     },
     "https://cearaworld.com/images/lookback/covers/lookback_backdrop.svg": {
       "image": "9b13e7bc05fd-15fb7fa40521.jpg",
