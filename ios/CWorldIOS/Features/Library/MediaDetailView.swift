@@ -204,6 +204,9 @@ final class CWorldPlaybackHost: ObservableObject {
     }
 
     func togglePlaybackFromRemote() {
+        if DesktopRemote.shared.controllingMac {
+            DesktopRemote.shared.command(isPlaying ? "pause" : "play"); return
+        }
         if player?.timeControlStatus == .paused { play() }
         else { player?.pause(); publishLockScreen() }
     }
@@ -263,6 +266,23 @@ final class CWorldPlaybackHost: ObservableObject {
         }
         return .success
     }
+    func updateMacRemote(_ state: DesktopRemoteMessage, appModel: AppModel) {
+        if mediaID != state.mediaID || season != state.season || episode != state.episode {
+            if let media = state.mediaID.flatMap({ appModel.media(for: $0) }) {
+                configureLockScreen(title: state.title ?? media.title, showTitle: media.title,
+                    artworkURL: MacDesktopCatalog.placeholder(media, season: state.season, episode: state.episode), fallbackURL: nil)
+                // Remote transport is foreground-only; do not advertise local lock-screen playback.
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+            }
+        }
+        mediaID = state.mediaID; season = state.season; episode = state.episode
+        title = state.title ?? "Mac playback"; isPlaying = state.playing == true
+        hasSubtitles = state.hasCaptions == true; subtitlesOn = state.captions == true
+        hasAutomaticNext = state.next == true
+        skipNext = state.next == true ? { DesktopRemote.shared.command("next") } : nil
+        toggleCaptions = { DesktopRemote.shared.command("captions") }
+    }
+
     func stop(clearQueue: Bool = true) {
         wasConnectedToTV = false
         connectionLost = false
@@ -476,6 +496,8 @@ private struct CWorldPlayerBarMorph: AnimatableModifier {
 
 /// Compact browsing controls. Progress updates are isolated from the library.
 private struct CWorldMobileNowPlayingBar: View {
+    @ObservedObject private var remote = DesktopRemote.shared
+    @State private var showQueue = false
     @ObservedObject var host: CWorldPlaybackHost
     var body: some View {
         VStack(spacing: 8) {
@@ -493,19 +515,19 @@ private struct CWorldMobileNowPlayingBar: View {
                         VStack(alignment: .leading, spacing: 3) {
                             Text(host.showTitle.isEmpty ? host.title : host.showTitle)
                                 .font(.subheadline.weight(.semibold)).lineLimit(1)
-                            Text(host.isAirPlay ? "Playing on AirPlay" : host.title == host.showTitle ? "Now Playing" : host.title)
+                            Text(remote.controllingMac ? (remote.connected ? "Playing on \(remote.macName)" : "Reconnecting to \(remote.macName)…") : host.isAirPlay ? "Playing on AirPlay" : host.title == host.showTitle ? "Now Playing" : host.title)
                                 .font(.caption2).foregroundStyle(.secondary).lineLimit(1)
                         }.frame(maxWidth: .infinity, alignment: .leading)
                     }.contentShape(Rectangle())
                 }.accessibilityLabel("Open player: \(host.title)")
                 Button {
-                    if host.player?.rate == 0 { host.player?.play() } else { host.player?.pause() }
+                    host.togglePlaybackFromRemote()
                 } label: {
                     Image(systemName: host.isPlaying ? "pause.fill" : "play.fill")
                         .font(.system(size: 19, weight: .semibold)).frame(width: 44, height: 44)
                 }.accessibilityLabel(host.isPlaying ? "Pause" : "Play")
-                Button { host.remotePresented = true } label: {
-                    Image(systemName: "appletvremote.gen4.fill").frame(width: 44, height: 44)
+                Button { if remote.controllingMac { showQueue = true } else { host.remotePresented = true } } label: {
+                    Image(systemName: "list.bullet").frame(width: 44, height: 44)
                 }.accessibilityLabel("Remote and Up Next")
                 Menu {
                     Button("Open player", systemImage: "arrow.up.left.and.arrow.down.right") { host.minimized = false }
@@ -517,14 +539,18 @@ private struct CWorldMobileNowPlayingBar: View {
                             host.toggleCaptions?()
                         }
                     }
-                    Button("Stop playback", systemImage: "stop.fill", role: .destructive) { host.stop() }
+                    if remote.controllingMac {
+                        Button("Disconnect from Mac", systemImage: "desktopcomputer", role: .destructive) { remote.stop() }
+                    } else {
+                        Button("Stop playback", systemImage: "stop.fill", role: .destructive) { host.stop() }
+                    }
                 } label: {
                     Image(systemName: "ellipsis").frame(width: 44, height: 44)
                 }.accessibilityLabel("Playback options")
             }
             TimelineView(.periodic(from: .now, by: 1)) { _ in
-                let time = host.player?.currentTime().seconds ?? 0
-                let duration = host.player?.currentItem?.duration.seconds ?? 0
+                let time = remote.controllingMac ? remote.snapshot?.value ?? 0 : host.player?.currentTime().seconds ?? 0
+                let duration = remote.controllingMac ? remote.snapshot?.duration ?? 0 : host.player?.currentItem?.duration.seconds ?? 0
                 let fraction = time.isFinite && duration.isFinite && duration > 0 ? min(max(time / duration, 0), 1) : 0
                 ProgressView(value: fraction).tint(.white)
                     .accessibilityLabel("Playback progress")
@@ -536,6 +562,7 @@ private struct CWorldMobileNowPlayingBar: View {
         .overlay { RoundedRectangle(cornerRadius: 22).stroke(.white.opacity(0.16), lineWidth: 0.5) }
         .shadow(color: .black.opacity(0.3), radius: 16, y: 6)
         .environment(\.colorScheme, .dark)
+        .sheet(isPresented: $showQueue) { MacRemoteQueueView() }
     }
 }
 
@@ -1477,6 +1504,9 @@ enum PlaybackDisplayState: Equatable {
 }
 
 struct PersistentVideoPlayerView: View {
+    @ObservedObject private var remote = DesktopRemote.shared
+    private let remotePlayback: Bool
+    @State private var showingRemoteQueue = false
     @Environment(\.accessibilityReduceMotion) private var reducePlayerMotion
     @State private var closingPlayer = false
     @State private var mobileSafeArea = EdgeInsets()
@@ -1537,8 +1567,10 @@ struct PersistentVideoPlayerView: View {
         subtitleURL: URL? = nil,
         skipIntroStart: Double? = nil, skipIntroEnd: Double? = nil,
         skipOutroStart: Double? = nil,
-        onClose: (() -> Void)? = nil
+        onClose: (() -> Void)? = nil,
+        remotePlayback: Bool = false
     ) {
+        self.remotePlayback = remotePlayback
         self.onClose = onClose
         _selection = State(initialValue: PlayerSelection(
             mediaID: mediaID,
@@ -1578,6 +1610,12 @@ struct PersistentVideoPlayerView: View {
         ZStack {
             Color.black.ignoresSafeArea()
 
+            if remotePlayback {
+                VStack(spacing: 10) {
+                    Image(systemName: "desktopcomputer").font(.system(size: 38))
+                    Text(remote.connected ? "Playing on \(remote.macName)" : remote.status).font(.headline)
+                }.foregroundStyle(.white.opacity(0.7)).offset(y: -110)
+            }
             if let player {
                 if externalDisplay.isConnected {
                     VStack(spacing: 10) {
@@ -1743,8 +1781,12 @@ struct PersistentVideoPlayerView: View {
         .task(id: retryID) {
             isVisible = true
             playbackHost.playerControlsVisible = true
-            await loadPlayback()
+            if remotePlayback { syncRemoteState() } else { await loadPlayback() }
         }
+        .onReceive(remote.$snapshot) { _ in
+            if remotePlayback { DispatchQueue.main.async { syncRemoteState() } }
+        }
+        .sheet(isPresented: $showingRemoteQueue) { MacRemoteQueueView() }
         .onDisappear {
             isVisible = false
             playbackHost.playerControlsVisible = true
@@ -1831,7 +1873,7 @@ struct PersistentVideoPlayerView: View {
     private var mobilePlayerChrome: some View {
         GeometryReader { geometry in
             let compact = geometry.size.width > geometry.size.height
-            let showTransport = controlsVisible && player != nil && !isLoading && playbackState != .failed
+            let showTransport = controlsVisible && (player != nil || remotePlayback) && !isLoading && playbackState != .failed
             let showHeader = controlsVisible || isLoading || playbackState == .failed
             ZStack {
                 if showTransport {
@@ -1860,6 +1902,7 @@ struct PersistentVideoPlayerView: View {
                             mobileControl("goforward.15", label: "Forward 15 seconds") { seek(by: 15) }
                         }
                         .font(.system(size: 25))
+                        .disabled(remotePlayback && !remote.connected)
                     }
 
                 VStack(spacing: compact ? 4 : 10) {
@@ -1876,10 +1919,10 @@ struct PersistentVideoPlayerView: View {
                             .fixedSize(horizontal: false, vertical: true)
                             .allowsHitTesting(false)
                     }
-                    if player != nil && !isLoading && playbackState != .failed {
-                        mobileSkipActions
+                    if (player != nil || remotePlayback) && !isLoading && playbackState != .failed {
+                        mobileSkipActions.disabled(remotePlayback && !remote.connected)
                     }
-                    if showTransport { mobileTimeline(compact: compact) }
+                    if showTransport { mobileTimeline(compact: compact).disabled(remotePlayback && !remote.connected) }
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, compact ? 4 : 8)
@@ -1917,7 +1960,13 @@ struct PersistentVideoPlayerView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            CWorldAirPlayPicker().frame(width: 44, height: 44)
+            if remotePlayback {
+                Menu {
+                    Text(remote.connected ? "Connected to \(remote.macName)" : remote.status)
+                    if !remote.connected { Button("Reconnect") { remote.retryConnection() } }
+                    Button("Disconnect", role: .destructive) { remote.stop() }
+                } label: { Image(systemName: "desktopcomputer").frame(width: 44, height: 44) }
+            } else { CWorldAirPlayPicker().frame(width: 44, height: 44) }
             mobileControl("chevron.down", label: "Minimize player and browse") {
                 playbackHost.minimized = true
             }
@@ -1925,7 +1974,12 @@ struct PersistentVideoPlayerView: View {
     }
 
     @ViewBuilder private var mobilePlayerStatus: some View {
-        if playbackHost.connectionLost {
+        if remotePlayback {
+            if !remote.connected {
+                Button("Reconnect to \(remote.macName)") { remote.retryConnection() }
+                    .font(.caption).frame(minHeight: 44)
+            }
+        } else if playbackHost.connectionLost {
             Button { playbackHost.remotePresented = true } label: {
                 Label("TV disconnected · Reconnect", systemImage: "wifi.exclamationmark")
                     .font(.caption).frame(minHeight: 44)
@@ -1984,27 +2038,47 @@ struct PersistentVideoPlayerView: View {
                                   action: togglePlayback)
                     mobileControl("goforward.15", label: "Forward 15 seconds") { seek(by: 15) }
                 }
-                if let previous = previousSelection {
-                    mobileControl("backward.end.fill", label: "Previous episode") { switchTo(previous) }
-                }
-                if let next = nextSelection {
-                    mobileControl("forward.end.fill", label: "Next episode") { switchTo(next) }
+                if remotePlayback {
+                    if remote.snapshot?.previous == true {
+                        mobileControl("backward.end.fill", label: "Previous episode") { remote.command("previous") }
+                    }
+                    if remote.snapshot?.next == true {
+                        mobileControl("forward.end.fill", label: "Next episode") { remote.command("next") }
+                    }
+                } else {
+                    if let previous = previousSelection {
+                        mobileControl("backward.end.fill", label: "Previous episode") { switchTo(previous) }
+                    }
+                    if let next = nextSelection {
+                        mobileControl("forward.end.fill", label: "Next episode") { switchTo(next) }
+                    }
                 }
                 Spacer(minLength: 0)
-                CWorldAudioTrackMenu(player: player, touchTarget: 44)
+                if remotePlayback {
+                    Menu {
+                        ForEach(remote.snapshot?.audio ?? []) { track in
+                            Button { remote.command("audio", value: Double(track.id)) } label: {
+                                Label(track.title, systemImage: track.selected ? "checkmark" : "waveform")
+                            }
+                        }
+                    } label: { Image(systemName: "waveform").frame(width: 44, height: 44) }
+                    .accessibilityLabel("Mac audio track")
+                } else { CWorldAudioTrackMenu(player: player, touchTarget: 44) }
                 if selection.subtitleURL != nil || nativeSubtitlesAvailable || !subtitleCues.isEmpty {
                     mobileControl(subtitlesEnabled ? "captions.bubble.fill" : "captions.bubble",
                                   label: subtitlesEnabled ? "Turn subtitles off" : "Turn subtitles on") {
-                        subtitlesEnabled.toggle()
+                        if remotePlayback { remote.command("captions") } else { subtitlesEnabled.toggle() }
                     }
                 }
                 Menu {
-                    Toggle("Auto-skip outro", systemImage: "forward.end.circle", isOn: $autoSkipOutro)
+                    Toggle("Auto-skip outro", systemImage: "forward.end.circle", isOn: Binding(
+                        get: { remotePlayback ? remote.snapshot?.autoSkipOutro ?? true : autoSkipOutro },
+                        set: { if remotePlayback { remote.command("autoSkipOutro", value: $0 ? 1 : 0) } else { autoSkipOutro = $0 } }))
                     Button("Restart", systemImage: "arrow.counterclockwise", action: restartPlayback)
-                    Button("TV remote and Up Next", systemImage: "appletvremote.gen4") {
-                        playbackHost.remotePresented = true
+                    Button("Up Next", systemImage: "list.bullet") {
+                        if remotePlayback { showingRemoteQueue = true } else { playbackHost.remotePresented = true }
                     }
-                    Button("Watch on your TV", systemImage: "tv") { tvHelpVisible = true }
+                    if !remotePlayback { Button("Watch on your TV", systemImage: "tv") { tvHelpVisible = true } }
                     Button("Volume", systemImage: "speaker.wave.2") { volumeControlVisible = true }
                     Button(isMuted ? "Unmute" : "Mute", systemImage: isMuted ? "speaker.wave.2" : "speaker.slash",
                            action: toggleMute)
@@ -2018,8 +2092,10 @@ struct PersistentVideoPlayerView: View {
                         Slider(value: Binding(get: { Double(volume) }, set: {
                             volume = Float($0)
                             isMuted = volume == 0
-                            player?.volume = volume
-                        }), in: 0...1)
+                            if !remotePlayback { player?.volume = volume }
+                        }), in: 0...1, onEditingChanged: { editing in
+                            if remotePlayback && !editing { remote.command("volume", value: Double(volume)) }
+                        })
                         .accessibilityLabel("Player volume")
                     }
                     .padding(20).frame(width: 260)
@@ -2039,6 +2115,22 @@ struct PersistentVideoPlayerView: View {
     }
     #endif
 
+    private func syncRemoteState() {
+        guard let state = remote.snapshot else { return }
+        let episode = state.mediaID.flatMap { appModel.media(for: $0) }?.seasons?
+            .first(where: { $0.number == state.season })?.episodes.first(where: { $0.number == state.episode })
+        selection = PlayerSelection(mediaID: state.mediaID ?? "", season: state.season, episode: state.episode,
+            title: state.title ?? "Mac playback", subtitleURL: nil,
+            skipIntroStart: episode?.skipIntroStart, skipIntroEnd: episode?.skipIntroEnd,
+            skipOutroStart: episode?.skipOutroStart)
+        if !isScrubbing { currentTime = state.value ?? 0 }
+        duration = state.duration ?? 0
+        playbackState = state.playing == true ? .playing : .paused
+        subtitlesEnabled = state.captions == true; nativeSubtitlesAvailable = state.hasCaptions == true
+        if !volumeControlVisible { volume = Float(state.volume ?? 1); isMuted = volume == 0 }
+        playbackHost.updateMacRemote(state, appModel: appModel)
+    }
+
     private var playerDisplayMediaTitle: String { appModel.media(for: selection.mediaID)?.title ?? selection.title }
     private var playerEpisodeLabel: String? {
         guard let season = selection.season, let episodeNumber = selection.episode else { return nil }
@@ -2048,6 +2140,7 @@ struct PersistentVideoPlayerView: View {
     }
 
     private func closePlayer() {
+        if remotePlayback { playbackHost.minimized = true; return }
         #if targetEnvironment(macCatalyst)
         guard !closingPlayer else { return }
         // Route underneath the persistent overlay before revealing the detail page.
@@ -2450,6 +2543,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func togglePlayback() {
+        if remotePlayback { remote.command(isPlaying ? "pause" : "play"); return }
         guard let player else { return }
         if player.timeControlStatus != .paused {
             player.pause()
@@ -2463,6 +2557,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func restartPlayback() {
+        if remotePlayback { remote.command("restart"); return }
         guard let player else { return }
         outroCountdown = nil
         outroCancelled = false
@@ -2480,6 +2575,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func seek(to seconds: Double) {
+        if remotePlayback { remote.command("seek", value: seconds); return }
         guard let player else { return }
         let target = min(max(seconds, 0), max(duration - 0.1, 0))
         player.seek(to: CMTime(seconds: target, preferredTimescale: 600), toleranceBefore: .zero, toleranceAfter: .zero)
@@ -2488,6 +2584,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func skipIntro() {
+        if remotePlayback { remote.command("intro"); return }
         guard let target = skipMarkers.introTarget(at: currentTime, duration: duration) else { return }
         seek(to: target)
         controlsVisible = true
@@ -2496,6 +2593,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func skipOutro() {
+        if remotePlayback { remote.command("outro"); return }
         guard canSkipOutro else { return }
         if let nextSelection {
             switchTo(nextSelection, completingEpisode: true)
@@ -2510,6 +2608,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func toggleMute() {
+        if remotePlayback { remote.command("volume", value: isMuted ? 1 : 0); return }
         isMuted.toggle()
         player?.isMuted = isMuted
     }
@@ -2525,6 +2624,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func scheduleControlsHide() {
+        if remotePlayback { return }
         hideControlsTask?.cancel()
         guard isPlaying, !externalDisplay.isConnected, !subtitleSettingsPresented, !volumeControlVisible, !isScrubbing else { return }
         hideControlsTask = Task { @MainActor in
@@ -2536,6 +2636,7 @@ struct PersistentVideoPlayerView: View {
 
     @MainActor
     private func switchTo(_ next: PlayerSelection, completingEpisode: Bool = false) {
+        if remotePlayback { remote.sendSelection(next, enqueue: false); return }
         guard selection != next else { return }
         activeAttempt = UUID()
         prefetchTask?.cancel()

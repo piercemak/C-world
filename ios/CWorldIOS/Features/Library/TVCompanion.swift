@@ -46,19 +46,19 @@ enum RemoteTrustCrypto {
     }
 }
 
-private struct RemoteQueueItem: Codable, Identifiable {
+struct RemoteQueueItem: Codable, Identifiable {
     var id: String
     var mediaID: String
     var season: Int?
     var episode: Int?
     var title: String
 }
-private struct RemoteAudioItem: Codable, Identifiable {
+struct RemoteAudioItem: Codable, Identifiable {
     var id: Int
     var title: String
     var selected: Bool
 }
-private struct DesktopRemoteMessage: Codable {
+struct DesktopRemoteMessage: Codable {
     var command: String
     var value: Double?
     var title: String?
@@ -77,6 +77,7 @@ private struct DesktopRemoteMessage: Codable {
     var itemID: String?
     var audio: [RemoteAudioItem]?
     var queueOrder: [String]?
+    var autoSkipOutro: Bool?
 }
 
 enum DesktopRemotePairingPolicy {
@@ -88,6 +89,15 @@ enum DesktopRemotePairingPolicy {
                         connected: Bool, pending: Bool, now: Date = Date()) -> Bool {
         expected.count == 6 && expected.allSatisfy(\.isNumber) && provided == expected &&
         now <= expires && failures < 5 && !connected && !pending
+    }
+}
+
+/// Reconnection never silently switches Macs or bypasses a new pairing approval.
+enum DesktopRemoteReconnectPolicy {
+    static func permits(target: String?, discovered: String?, trusted: Bool,
+                        connected: Bool, handshaking: Bool, suspended: Bool, attempts: Int) -> Bool {
+        guard let target, !target.isEmpty else { return false }
+        return target == discovered && trusted && !connected && !handshaking && !suspended && attempts < 3
     }
 }
 
@@ -121,7 +131,7 @@ final class DesktopRemote: NSObject, ObservableObject {
     private var receivedSequence: UInt64 = 0
     private var handshakeTimeout: Task<Void, Never>?
     private var authorizedPeer: MCPeerID?
-    @Published fileprivate var snapshot: DesktopRemoteMessage?
+    @Published private(set) var snapshot: DesktopRemoteMessage?
     private let peer = MCPeerID(displayName: String(UIDevice.current.name.prefix(40)))
     private var session: MCSession?
     private var advertiser: MCNearbyServiceAdvertiser?
@@ -133,7 +143,50 @@ final class DesktopRemote: NSObject, ObservableObject {
     private var lastCommand = Date.distantPast
     private let service = "seedspace-rc"
 
-    var controllingMac: Bool { connected && !hosting }
+    @Published private(set) var reconnectHost: String?
+    @Published private(set) var macName = "Mac"
+    private var suspended = false
+    private var retryCount = 0
+    private var lastStateReceived = Date.distantPast
+    var controllingMac: Bool { !hosting && (connected || reconnectHost != nil) }
+    func sceneChanged(_ phase: ScenePhase, appModel: AppModel) {
+        #if !targetEnvironment(macCatalyst)
+        if phase == .background {
+            suspended = true
+            if controllingMac { stop(preservingRoute: true); status = "Reconnects when you return to SeedSpace" }
+            return
+        }
+        if phase == .active {
+            suspended = false; retryCount = 0
+            activate(appModel: appModel)
+        }
+        #else
+        if phase == .active { activate(appModel: appModel) }
+        #endif
+    }
+    func retryConnection() {
+        retryCount = 0
+        stop(preservingRoute: true)
+        if let model = appModel { activate(appModel: model) }
+    }
+    private func recoverConnection() {
+        let resume = controllingMac && reconnectHost != nil
+        stop(preservingRoute: resume)
+        status = resume ? "Reconnecting to \(macName)…" : "Disconnected"
+        guard !suspended, retryCount < 3 else { status = "Mac unavailable. Tap Reconnect to try again."; return }
+        retryCount += 1
+        if let model = appModel { activate(appModel: model) }
+    }
+    func openPlayer() {
+        guard controllingMac, let state = snapshot, let model = appModel else { return }
+        let host = CWorldPlaybackHost.shared
+        if host.surface == nil {
+            host.surface = AnyView(PersistentVideoPlayerView(mediaID: state.mediaID ?? "", season: state.season,
+                episode: state.episode, title: state.title ?? "Mac playback", remotePlayback: true)
+                .environmentObject(model))
+        }
+        host.minimized = false
+    }
     var remoteTitle: String { snapshot?.title ?? "Mac playback" }
     func activate(appModel: AppModel, freshPrompt: Bool = false) {
         self.appModel = appModel
@@ -150,7 +203,7 @@ final class DesktopRemote: NSObject, ObservableObject {
             offeredPeers.removeAll()
             if !connected, let first = peers.first { discoveredMac = first; offeredPeers.insert(first) }
         }
-        if connected { return }
+        if connected || suspended { return }
         #if targetEnvironment(macCatalyst)
         guard CWorldPlaybackHost.shared.player != nil else { if hosting { stop() }; return }
         if advertiser == nil { host(automatically: true) }
@@ -162,6 +215,7 @@ final class DesktopRemote: NSObject, ObservableObject {
         guard !connected, handshake == nil, let peer = discoveredMac, let session, let info = discoveries[peer],
               let host = info["device"], let challenge = info["challenge"] else { return }
         discoveredMac = nil
+        macName = peer.displayName
         sessionKey = nil; pairingSecret = nil; sentSequence = 0; receivedSequence = 0
         var request = RemoteInvitation(scope: scope, device: trust.deviceID, host: host, challenge: challenge, nonce: UUID().uuidString)
         if let raw = trust.secrets[host], let secret = Data(base64Encoded: raw) {
@@ -171,19 +225,20 @@ final class DesktopRemote: NSObject, ObservableObject {
         handshake = request; authorizedPeer = peer
         guard let context = try? JSONEncoder().encode(request) else { return }
         browser?.invitePeer(peer, to: session, withContext: context, timeout: 30)
-        status = sessionKey == nil ? "Approve this phone once on your Mac…" : "Reconnecting securely…"; presented = true
+        status = sessionKey == nil ? "Approve this phone once on your Mac…" : "Reconnecting securely…"; presented = sessionKey == nil
         handshakeTimeout?.cancel()
         handshakeTimeout = Task { [weak self] in
             try? await Task.sleep(for: .seconds(35))
             guard !Task.isCancelled, let self, !self.connected else { return }
-            self.stop(); self.status = "Connection timed out. Please reconnect and approve on your Mac if asked."
+            self.recoverConnection()
         }
     }
     func sendSelection(_ selection: PlayerSelection, enqueue: Bool) {
         guard controllingMac else { return }
+        guard connected else { status = "Reconnect to \(macName) before changing titles."; openPlayer(); return }
         send(DesktopRemoteMessage(command: enqueue ? "enqueue" : "load", mediaKey: snapshot?.mediaKey,
             mediaID: selection.mediaID, season: selection.season, episode: selection.episode))
-        if !enqueue { presented = true }
+        if !enqueue { openPlayer() }
     }
     func removeQueued(_ id: String) {
         send(DesktopRemoteMessage(command: "removeQueue", mediaKey: snapshot?.mediaKey, itemID: id))
@@ -198,7 +253,7 @@ final class DesktopRemote: NSObject, ObservableObject {
     }
 
     private func setup() {
-        stop()
+        stop(preservingRoute: reconnectHost != nil)
         let session = MCSession(peer: peer, securityIdentity: nil, encryptionPreference: .required)
         session.delegate = self
         self.session = session
@@ -252,7 +307,12 @@ final class DesktopRemote: NSObject, ObservableObject {
         trust.secrets = [:]; persistTrust(); stop()
         if let model = appModel { activate(appModel: model) }
     }
-    func stop() {
+    func stop(preservingRoute: Bool = false) {
+        let hadRoute = reconnectHost != nil
+        if !preservingRoute {
+            reconnectHost = nil; snapshot = nil; offeredPeers.removeAll(); presented = false
+            if hadRoute { CWorldPlaybackHost.shared.stop() }
+        }
         handshakeTimeout?.cancel(); handshakeTimeout = nil
         handshake = nil; sessionKey = nil; pairingSecret = nil; authorizedPeer = nil
         sentSequence = 0; receivedSequence = 0; discoveries = [:]
@@ -262,8 +322,8 @@ final class DesktopRemote: NSObject, ObservableObject {
         invitation?(false, nil); invitation = nil; pendingPhone = nil
         advertiser?.stopAdvertisingPeer(); advertiser = nil
         browser?.stopBrowsingForPeers(); browser = nil
-        session?.disconnect(); session = nil
-        connected = false; hosting = false; automatic = false; code = ""; peers = []; snapshot = nil; status = "Not connected"
+        let previousSession = session; session = nil; previousSession?.disconnect()
+        connected = false; hosting = false; automatic = false; code = ""; peers = []; status = "Not connected"
     }
     fileprivate func send(_ message: DesktopRemoteMessage) {
         guard connected, let session, let key = sessionKey, let target = authorizedPeer, session.connectedPeers.contains(target),
@@ -274,7 +334,7 @@ final class DesktopRemote: NSObject, ObservableObject {
                 direction: hosting ? "host" : "phone", sequence: sentSequence))
             try session.send(JSONEncoder().encode(wire), toPeers: [target], with: .reliable)
         }
-        catch { status = "Connection interrupted. Reconnect to the Mac." }
+        catch { recoverConnection() }
     }
     func command(_ name: String, value: Double? = nil) {
         guard connected, !hosting else { return }
@@ -308,7 +368,8 @@ final class DesktopRemote: NSObject, ObservableObject {
             previous: host.skipPrevious != nil, volume: Double(host.player?.volume ?? 1), mediaKey: currentKey,
             mediaID: host.mediaID, season: host.season, episode: host.episode,
             queue: host.queue.prefix(100).map { RemoteQueueItem(id: $0.id.uuidString, mediaID: $0.selection.mediaID,
-                season: $0.selection.season, episode: $0.selection.episode, title: $0.selection.title) }, audio: knownAudio))
+                season: $0.selection.season, episode: $0.selection.episode, title: $0.selection.title) }, audio: knownAudio,
+            autoSkipOutro: UserDefaults.standard.object(forKey: "cworld.playback.autoSkipOutro") as? Bool ?? true))
     }
     private func receive(_ data: Data, from peer: MCPeerID, in receivedSession: MCSession) {
         guard receivedSession === session, peer == authorizedPeer, receivedSession.connectedPeers.contains(peer), data.count < 65536 else { return }
@@ -326,10 +387,10 @@ final class DesktopRemote: NSObject, ObservableObject {
               let plaintext = try? RemoteTrustCrypto.open(wire.sealed, key: key, direction: hosting ? "phone" : "host", sequence: wire.sequence),
               let message = try? JSONDecoder().decode(DesktopRemoteMessage.self, from: plaintext) else { return }
         receivedSequence = wire.sequence
-        if !connected && !hosting && message.command == "state" { finishConnection(peer) }
+        if !connected && !hosting && message.command == "state" { snapshot = message; finishConnection(peer) }
         guard connected else { return }
         if !hosting {
-            if message.command == "state" { snapshot = message }
+            if message.command == "state" { lastStateReceived = Date(); snapshot = message }
             return
         }
         guard message.mediaKey == currentKey, Date().timeIntervalSince(lastCommand) > 0.08 else { return }
@@ -362,6 +423,8 @@ final class DesktopRemote: NSObject, ObservableObject {
                let group = audioGroup, let item = player.currentItem, item === audioItem {
                 item.select(group.options[Int(value)], in: group)
             }
+        case "autoSkipOutro": if let value = message.value { UserDefaults.standard.set(value != 0, forKey: "cworld.playback.autoSkipOutro") }
+        case "restart": host.remoteSeek(to: 0); host.play()
         case "play": host.play()
         case "pause": player.pause()
         case "seek": if let value = message.value, value.isFinite { host.remoteSeek(to: value) }
@@ -379,10 +442,26 @@ final class DesktopRemote: NSObject, ObservableObject {
     }
     private func finishConnection(_ peer: MCPeerID) {
         handshakeTimeout?.cancel(); handshakeTimeout = nil
-        connected = true; status = "Connected to \(peer.displayName)"
+        retryCount = 0; connected = true; status = "Connected to \(peer.displayName)"
         advertiser?.stopAdvertisingPeer(); browser?.stopBrowsingForPeers(); code = ""
         if hosting { publishState() }
-        else { CWorldPlaybackHost.shared.stop(); presented = true }
+        else {
+            let restoring = reconnectHost != nil
+            reconnectHost = handshake?.host; macName = peer.displayName; retryCount = 0
+            presented = false
+            if !restoring { CWorldPlaybackHost.shared.stop(); openPlayer() }
+            lastStateReceived = Date()
+            ticker?.cancel()
+            ticker = Task { [weak self] in
+                while !Task.isCancelled {
+                    do { try await Task.sleep(for: .seconds(3)) } catch { return }
+                    guard let self, !Task.isCancelled, self.connected else { return }
+                    if !self.suspended && Date().timeIntervalSince(self.lastStateReceived) > 10 {
+                        self.recoverConnection(); return
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -407,12 +486,11 @@ extension DesktopRemote: MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, M
                     self.handshakeTimeout = Task { [weak self] in
                         try? await Task.sleep(for: .seconds(10))
                         guard !Task.isCancelled, let self, !self.connected else { return }
-                        self.stop(); self.status = "Could not verify this Mac. If pairing was reset, forget trusted devices and pair again."
+                        self.recoverConnection()
                     }
                 }
             } else if state == .notConnected {
-                self.stop(); self.status = "Disconnected. Reconnect when the Mac is available."
-                if let model = self.appModel { self.activate(appModel: model) }
+                self.recoverConnection()
             }
         }
     }
@@ -454,7 +532,13 @@ extension DesktopRemote: MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, M
             guard browser === self.browser, info?["protocol"] == "3", info?["scope"] == self.scope, info?["playing"] == "1" else { return }
             self.discoveries[peerID] = info
             if !self.peers.contains(peerID) { self.peers.append(peerID) }
-            if !self.connected && self.discoveredMac == nil && !self.offeredPeers.contains(peerID) {
+            if DesktopRemoteReconnectPolicy.permits(target: self.reconnectHost, discovered: info?["device"],
+                trusted: self.reconnectHost.flatMap { self.trust.secrets[$0] } != nil,
+                connected: self.connected, handshaking: self.handshake != nil,
+                suspended: self.suspended, attempts: self.retryCount) {
+                self.discoveredMac = peerID; self.requestConnection(); return
+            }
+            if self.reconnectHost == nil && !self.connected && self.discoveredMac == nil && !self.offeredPeers.contains(peerID) {
                 self.offeredPeers.insert(peerID); self.discoveredMac = peerID
             }
         }
@@ -481,18 +565,10 @@ struct DesktopRemoteCoordinator: ViewModifier {
                 remote.activate(appModel: appModel)
             }
             .onChange(of: phase) { _, value in
-                if value == .active { remote.activate(appModel: appModel, freshPrompt: true) }
+                remote.sceneChanged(value, appModel: appModel)
             }
             .onChange(of: host.player) { _, _ in
                 remote.activate(appModel: appModel)
-            }
-            .overlay(alignment: .topTrailing) {
-                if remote.controllingMac {
-                    Button { remote.presented = true } label: {
-                        Label("Playing on Mac", systemImage: "desktopcomputer")
-                            .font(.caption.bold()).padding(10).background(.ultraThinMaterial, in: Capsule())
-                    }.padding(.trailing, 16).padding(.top, 52)
-                }
             }
             .sheet(isPresented: $remote.presented) { DesktopRemoteView().environmentObject(appModel) }
             #if targetEnvironment(macCatalyst)
@@ -515,10 +591,6 @@ struct DesktopRemoteCoordinator: ViewModifier {
 struct DesktopRemoteView: View {
     @ObservedObject private var remote = DesktopRemote.shared
     @Environment(\.dismiss) private var dismiss
-    @State private var position = 0.0
-    @State private var volume = 1.0
-    @State private var scrubbing = false
-    @State private var addingToQueue = false
     @State private var confirmingForget = false
     var body: some View {
         NavigationStack {
@@ -538,66 +610,23 @@ struct DesktopRemoteView: View {
                         }
                     }
                     #endif
-                    if remote.connected || remote.hosting { Button("Disconnect", role: .destructive) { remote.stop() } }
+                    if remote.controllingMac && !remote.connected { Button("Reconnect to Mac") { remote.retryConnection() } }
+                    if remote.controllingMac || remote.hosting { Button("Disconnect", role: .destructive) { remote.stop() } }
                     Button("Forget trusted devices", role: .destructive) { confirmingForget = true }
                 } footer: { Text("Use the same local network and SeedSpace account/profile. Your Mac must be awake. Browse normally on your phone to play a different title on the connected Mac.") }
-                if remote.connected && !remote.hosting, let state = remote.snapshot {
-                    Section(state.title ?? "Mac playback") {
-                        Slider(value: Binding(get: { scrubbing ? position : min(state.value ?? 0, max(1, state.duration ?? 1)) }, set: { position = $0 }),
-                               in: 0...max(1, state.duration ?? 1), onEditingChanged: { editing in
-                            scrubbing = editing; if !editing { remote.command("seek", value: position) }
-                        }).disabled((state.duration ?? 0) <= 0).accessibilityLabel("Playback position")
-                        HStack {
-                            control("back", "gobackward.15", "Back 15 seconds")
-                            control(state.playing == true ? "pause" : "play", state.playing == true ? "pause.fill" : "play.fill", "Play or pause")
-                            control("forward", "goforward.15", "Forward 15 seconds")
-                        }.buttonStyle(.borderless)
-                        Button("Previous episode") { remote.command("previous") }.disabled(state.previous != true)
-                        Button("Next episode") { remote.command("next") }.disabled(state.next != true)
-                        Button("Skip intro") { remote.command("intro") }
-                        Button("Skip outro") { remote.command("outro") }
-                        Button(state.captions == true ? "Turn subtitles off" : "Turn subtitles on") { remote.command("captions") }.disabled(state.hasCaptions != true)
-                        if let audio = state.audio, audio.count > 1 {
-                            Menu("Audio track") {
-                                ForEach(audio) { track in
-                                    Button { remote.command("audio", value: Double(track.id)) } label: {
-                                        Label(track.title, systemImage: track.selected ? "checkmark" : "waveform")
-                                    }
-                                }
-                            }
-                        }
-                        VStack {
-                            Text("Mac player volume")
-                            Slider(value: $volume, in: 0...1, onEditingChanged: { editing in
-                                if !editing { remote.command("volume", value: volume) }
-                            })
-                        }.onAppear { volume = state.volume ?? 1 }
-                    }
-                    Section("Up Next on Mac") {
-                        ForEach(state.queue ?? []) { item in
-                            Button(item.title) { remote.playQueued(item.id) }
-                        }
-                            .onDelete { offsets in
-                                for index in offsets { if let items = state.queue, items.indices.contains(index) { remote.removeQueued(items[index].id) } }
-                            }
-                            .onMove { offsets, destination in remote.moveQueued(from: offsets, to: destination) }
-                        Button("Add movies or episodes", systemImage: "plus") { addingToQueue = true }
-                    }
+                if remote.controllingMac {
+                    Section { Button("Open player", systemImage: "play.rectangle") { dismiss(); remote.openPlayer() } }
                 }
+
             }
             .navigationTitle("Mac Remote")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
-                ToolbarItem(placement: .topBarLeading) { if remote.controllingMac { EditButton() } }
             }
-            .sheet(isPresented: $addingToQueue) { CWorldQueuePicker() }
             .confirmationDialog("Forget all trusted remote devices for this profile?", isPresented: $confirmingForget, titleVisibility: .visible) {
                 Button("Forget and disconnect", role: .destructive) { remote.forgetTrustedDevices() }
             } message: { Text("To pair again, use Forget trusted devices on both devices, then approve the new connection on your Mac.") }
         }.preferredColorScheme(.dark)
-    }
-    private func control(_ command: String, _ icon: String, _ label: String) -> some View {
-        Button { remote.command(command) } label: { Image(systemName: icon).font(.title).frame(maxWidth: .infinity, minHeight: 55) }.accessibilityLabel(label)
     }
 }
 
@@ -780,5 +809,38 @@ struct CWorldQueuePicker: View {
         return Button { host.enqueue(item) } label: {
             HStack { Text(title); Spacer(); Image(systemName: current ? "play.fill" : added ? "checkmark" : "plus.circle") }
         }.disabled(added || current)
+    }
+}
+
+/// Queue editing is secondary to the shared player, never a replacement controller.
+struct MacRemoteQueueView: View {
+    @ObservedObject private var remote = DesktopRemote.shared
+    @Environment(\.dismiss) private var dismiss
+    @State private var adding = false
+    var body: some View {
+        NavigationStack {
+            List {
+                Section("Up Next on \(remote.macName)") {
+                    ForEach(remote.snapshot?.queue ?? []) { item in
+                        Button(item.title) { remote.playQueued(item.id) }
+                    }
+                    .onDelete { offsets in
+                        let items = remote.snapshot?.queue ?? []
+                        for index in offsets where items.indices.contains(index) { remote.removeQueued(items[index].id) }
+                    }
+                    .onMove { remote.moveQueued(from: $0, to: $1) }
+                    if remote.snapshot?.queue?.isEmpty != false {
+                        Text("Choose a movie or episode to add to the queue.").foregroundStyle(.secondary)
+                    }
+                    Button("Add movies or episodes", systemImage: "plus") { adding = true }
+                }.disabled(!remote.connected)
+            }
+            .navigationTitle("Up Next")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+                ToolbarItem(placement: .topBarLeading) { EditButton() }
+            }
+            .sheet(isPresented: $adding) { CWorldQueuePicker() }
+        }.preferredColorScheme(.dark)
     }
 }
