@@ -307,6 +307,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "Resident Evil",
     "cardId": "card-77"
+  },
+  {
+    "title": "Look Back",
+    "cardId": "card-78"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -386,5 +390,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-74": "bleach",
   "card-75": "primetime",
   "card-76": "vinland",
-  "card-77": "residentevil"
+  "card-77": "residentevil",
+  "card-78": "lookback"
 };

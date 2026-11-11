@@ -384,5 +384,10 @@ export const CAROUSEL_COVERS = [
     "id": "residentevil",
     "src": "/images/residentevil/covers/residentevilCover.svg",
     "title": "Resident Evil"
+  },
+  {
+    "id": "lookback",
+    "src": "/images/lookback/covers/lookbackCover.svg",
+    "title": "Look Back"
   }
 ];

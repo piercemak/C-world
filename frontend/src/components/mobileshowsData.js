@@ -846,5 +846,16 @@ export const SHOWS = [
     "keyart": "/images/residentevil/covers/residentevil_mobileLogo.jpg",
     "card": "/images/cardimages/residentevilLogo.svg",
     "dateadded": "11-3-26"
+  },
+  {
+    "id": "lookback",
+    "title": "Look Back",
+    "creator": "Kiyotaka Oshiyama",
+    "background": "/images/lookback/covers/lookback_backdrop.svg",
+    "ratings": "7.8",
+    "type": "Movies",
+    "keyart": "/images/lookback/covers/lookback_mobileLogo.webp",
+    "card": "/images/cardimages/lookbackLogo.svg",
+    "dateadded": "11-11-26"
   }
 ];

@@ -817,6 +817,17 @@ const metadata = {
     "description": "Medical courier Bryan becomes trapped in a desperate fight for survival as a terrifying night plunges the world around him into chaos.",
     "background": "/images/residentevil/covers/residentevilCover.svg",
     "subtitles": "yes"
+  },
+  "lookback": {
+    "type": "movie",
+    "title": "Look Back",
+    "agerating": "13+",
+    "release_year": "2024",
+    "genre": "Animation",
+    "duration": "58m",
+    "description": "The overly confident Fujino and the shut-in Kyomoto couldn't be more different, but a love of drawing manga brings these two small-town girls together.",
+    "background": "/images/lookback/covers/lookbackCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

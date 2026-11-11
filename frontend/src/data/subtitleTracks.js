@@ -38,7 +38,8 @@ const MOVIE_SUBTITLE_TRACKS = {
   "thegrey": "/videos/thegrey/thegrey_subtitles.vtt",
   "batmanbeyond": "/videos/batmanbeyond/batmanbeyond_subtitles.vtt",
   "primetime": "/videos/primetime/primetime_subtitles.vtt",
-  "residentevil": "/videos/residentevil/residentevil_subtitles.vtt"
+  "residentevil": "/videos/residentevil/residentevil_subtitles.vtt",
+  "lookback": "/videos/lookback/lookback_subtitles.vtt"
 };
 const SERIES_SUBTITLE_PATTERNS = {
   "neon-genesis": "/subtitles/neongenesis/season{season}/S{season}E{episode2}_subtitles.vtt",
@@ -152,7 +153,8 @@ const SUBTITLE_DEFAULTS = {
   "bleach": true,
   "primetime": false,
   "vinland": true,
-  "residentevil": false
+  "residentevil": false,
+  "lookback": true
 };
 export const getSubtitleDefaultEnabled = showId => SUBTITLE_DEFAULTS[showId] === true;
 

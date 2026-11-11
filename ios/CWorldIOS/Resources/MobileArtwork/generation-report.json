@@ -2032,8 +2032,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 48.3084515179557
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/lookbackLogo.svg",
+      "titles": [
+        "Look Back"
+      ],
+      "sourceBytes": 1420096,
+      "outputBytes": 416749,
+      "thumbnailBytes": 62927,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.20707833238286
+    },
+    {
+      "url": "https://cearaworld.com/images/lookback/covers/lookback_backdrop.svg",
+      "titles": [
+        "Look Back"
+      ],
+      "sourceBytes": 2174770,
+      "outputBytes": 565440,
+      "thumbnailBytes": 21449,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 51.58503397676512
     }
   ],
-  "sourceBytes": 854634902,
-  "outputBytes": 106119458
+  "sourceBytes": 858229768,
+  "outputBytes": 107186023
 }

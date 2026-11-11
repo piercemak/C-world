@@ -76,9 +76,13 @@
     "bleach",
     "primetime",
     "vinland",
-    "residentevil"
+    "residentevil",
+    "lookback"
   ],
   "newMedia": [
+    {
+      "id": "lookback"
+    },
     {
       "id": "residentevil"
     },

@@ -2,6 +2,13 @@
 export const newMedia = [
   {
     "kind": "movie",
+    "showSlug": "lookback",
+    "placeholder": "/images/lookback/placeholders/lookback_placeholder.png",
+    "to": "/video-library/lookback?movie=1",
+    "showTitle": "Look Back"
+  },
+  {
+    "kind": "movie",
     "showSlug": "residentevil",
     "placeholder": "/images/residentevil/placeholders/residentevil_placeholder.png",
     "to": "/video-library/residentevil?movie=1",

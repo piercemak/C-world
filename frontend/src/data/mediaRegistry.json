@@ -31954,9 +31954,50 @@
         "movie": "/videos/residentevil/residentevil_subtitles.vtt",
         "defaultEnabled": false
       }
+    },
+    "lookback": {
+      "assetId": "lookback",
+      "library": {
+        "type": "movie",
+        "title": "Look Back",
+        "agerating": "13+",
+        "release_year": "2024",
+        "genre": "Animation",
+        "duration": "58m",
+        "description": "The overly confident Fujino and the shut-in Kyomoto couldn't be more different, but a love of drawing manga brings these two small-town girls together.",
+        "background": "/images/lookback/covers/lookbackCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Kiyotaka Oshiyama",
+        "background": "/images/lookback/covers/lookback_backdrop.svg",
+        "ratings": "7.8",
+        "type": "Movies",
+        "keyart": "/images/lookback/covers/lookback_mobileLogo.webp",
+        "card": "/images/cardimages/lookbackLogo.svg",
+        "dateadded": "11-11-26"
+      },
+      "mobileOrder": 77,
+      "sidebar": {
+        "cardId": "card-78",
+        "order": 77
+      },
+      "carousel": {
+        "order": 77
+      },
+      "captions": {
+        "movie": "/videos/lookback/lookback_subtitles.vtt",
+        "defaultEnabled": true
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "lookback",
+      "placeholder": "/images/lookback/placeholders/lookback_placeholder.png",
+      "to": "/video-library/lookback?movie=1"
+    },
     {
       "kind": "movie",
       "showSlug": "residentevil",

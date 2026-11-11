@@ -692,7 +692,16 @@
       "sourceSHA256": "34eb8490c89ee73af468c1d5b945bbad4d0ba7e83ec22c0d30c82545af3ad9ba",
       "width": 1920,
       "height": 1080,
-      "meta": "2002 • Action • 1h 40m"
+      "meta": "2026 • Horror, Action • 1h 34m"
+    },
+    "lookback": {
+      "image": "lookback-180efd9fb1bf.jpg",
+      "thumbnail": "lookback-180efd9fb1bf-thumb.jpg",
+      "source": "/images/lookback/covers/lookbackCover.svg",
+      "sourceSHA256": "180efd9fb1bf12e9a9f14b10937b9785a32675e862325d38981923e7beb1f53e",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2024 • Animation • 58m"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-09T20:09:31.293Z",
-  "generatedAt": "2026-11-09T20:09:31.293Z",
+  "catalogRevision": "2026-11-11T15:45:24.259Z",
+  "generatedAt": "2026-11-11T15:45:24.259Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39843,6 +39843,43 @@
       ],
       "movieAsset": {
         "mediaId": "residentevil",
+        "season": null,
+        "episode": null
+      }
+    },
+    {
+      "id": "lookback",
+      "assetId": "lookback",
+      "type": "movie",
+      "title": "Look Back",
+      "dateAdded": "11-11-26",
+      "description": "The overly confident Fujino and the shut-in Kyomoto couldn't be more different, but a love of drawing manga brings these two small-town girls together.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/lookbackLogo.svg",
+        "poster": "https://cearaworld.com/images/lookback/covers/lookback_mobileLogo.webp",
+        "backdrop": "https://cearaworld.com/images/lookback/covers/lookback_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/lookback/covers/lookback_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Kiyotaka Oshiyama",
+        "rating": "7.8",
+        "year": "2024",
+        "genres": [
+          "Animation"
+        ],
+        "duration": "58m",
+        "ageRating": "13+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": true,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/lookback/lookback_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/lookback/lookback_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "lookback",
         "season": null,
         "episode": null
       }
