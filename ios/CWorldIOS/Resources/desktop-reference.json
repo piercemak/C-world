@@ -77,9 +77,13 @@
     "primetime",
     "vinland",
     "residentevil",
-    "lookback"
+    "lookback",
+    "listers"
   ],
   "newMedia": [
+    {
+      "id": "listers"
+    },
     {
       "id": "lookback"
     },

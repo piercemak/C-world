@@ -857,5 +857,16 @@ export const SHOWS = [
     "keyart": "/images/lookback/covers/lookback_mobileLogo.webp",
     "card": "/images/cardimages/lookbackLogo.svg",
     "dateadded": "11-11-26"
+  },
+  {
+    "id": "listers",
+    "title": "Listers",
+    "creator": "Owen Reiser",
+    "background": "/images/listers/covers/listers_backdrop.svg",
+    "ratings": "8.5",
+    "type": "Movies",
+    "keyart": "/images/listers/covers/listers_mobileLogo.jpg",
+    "card": "/images/cardimages/listersLogo.svg",
+    "dateadded": "11-17-26"
   }
 ];

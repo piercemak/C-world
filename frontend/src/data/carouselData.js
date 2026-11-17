@@ -389,5 +389,10 @@ export const CAROUSEL_COVERS = [
     "id": "lookback",
     "src": "/images/lookback/covers/lookbackCover.svg",
     "title": "Look Back"
+  },
+  {
+    "id": "listers",
+    "src": "/images/listers/covers/listersCover.svg",
+    "title": "Listers"
   }
 ];

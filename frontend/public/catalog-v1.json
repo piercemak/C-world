@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-11T15:56:12.052Z",
-  "generatedAt": "2026-11-11T15:56:12.052Z",
+  "catalogRevision": "2026-11-17T15:34:16.655Z",
+  "generatedAt": "2026-11-17T15:34:16.655Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39880,6 +39880,43 @@
       ],
       "movieAsset": {
         "mediaId": "lookback",
+        "season": null,
+        "episode": null
+      }
+    },
+    {
+      "id": "listers",
+      "assetId": "listers",
+      "type": "movie",
+      "title": "Listers",
+      "dateAdded": "11-17-26",
+      "description": "Two brothers dive into competitive birdwatching, living in a van for a year while traveling across the country to participate in a Big Year contest.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/listersLogo.svg",
+        "poster": "https://cearaworld.com/images/listers/covers/listers_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/listers/covers/listers_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/listers/covers/listers_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Owen Reiser",
+        "rating": "8.5",
+        "year": "2026",
+        "genres": [
+          "Documentary"
+        ],
+        "duration": "119m",
+        "ageRating": "13+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": false,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/listers/listers_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/listers/listers_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "listers",
         "season": null,
         "episode": null
       }

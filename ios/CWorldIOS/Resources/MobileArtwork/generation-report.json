@@ -2058,8 +2058,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 51.58503397676512
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/listersLogo.svg",
+      "titles": [
+        "Listers"
+      ],
+      "sourceBytes": 847105,
+      "outputBytes": 251492,
+      "thumbnailBytes": 37794,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 44.461324218495186
+    },
+    {
+      "url": "https://cearaworld.com/images/listers/covers/listers_backdrop.svg",
+      "titles": [
+        "Listers"
+      ],
+      "sourceBytes": 3051178,
+      "outputBytes": 1283793,
+      "thumbnailBytes": 43886,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.889707545769795
     }
   ],
-  "sourceBytes": 858505705,
-  "outputBytes": 107177270
+  "sourceBytes": 862403988,
+  "outputBytes": 108794235
 }

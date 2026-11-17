@@ -828,6 +828,17 @@ const metadata = {
     "description": "The overly confident Fujino and the shut-in Kyomoto couldn't be more different, but a love of drawing manga brings these two small-town girls together.",
     "background": "/images/lookback/covers/lookbackCover.svg",
     "subtitles": "yes"
+  },
+  "listers": {
+    "type": "movie",
+    "title": "Listers",
+    "agerating": "13+",
+    "release_year": "2026",
+    "genre": "Documentary",
+    "duration": "119m",
+    "description": "Two brothers dive into competitive birdwatching, living in a van for a year while traveling across the country to participate in a Big Year contest.",
+    "background": "/images/listers/covers/listersCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

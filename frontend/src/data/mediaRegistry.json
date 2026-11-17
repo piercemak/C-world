@@ -31989,9 +31989,50 @@
         "movie": "/videos/lookback/lookback_subtitles.vtt",
         "defaultEnabled": true
       }
+    },
+    "listers": {
+      "assetId": "listers",
+      "library": {
+        "type": "movie",
+        "title": "Listers",
+        "agerating": "13+",
+        "release_year": "2026",
+        "genre": "Documentary",
+        "duration": "119m",
+        "description": "Two brothers dive into competitive birdwatching, living in a van for a year while traveling across the country to participate in a Big Year contest.",
+        "background": "/images/listers/covers/listersCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Owen Reiser",
+        "background": "/images/listers/covers/listers_backdrop.svg",
+        "ratings": "8.5",
+        "type": "Movies",
+        "keyart": "/images/listers/covers/listers_mobileLogo.jpg",
+        "card": "/images/cardimages/listersLogo.svg",
+        "dateadded": "11-17-26"
+      },
+      "mobileOrder": 78,
+      "sidebar": {
+        "cardId": "card-79",
+        "order": 78
+      },
+      "carousel": {
+        "order": 78
+      },
+      "captions": {
+        "movie": "/videos/listers/listers_subtitles.vtt",
+        "defaultEnabled": false
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "listers",
+      "placeholder": "/images/listers/placeholders/listers_placeholder.png",
+      "to": "/video-library/listers?movie=1"
+    },
     {
       "kind": "movie",
       "showSlug": "lookback",

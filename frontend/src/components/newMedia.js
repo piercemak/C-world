@@ -2,6 +2,13 @@
 export const newMedia = [
   {
     "kind": "movie",
+    "showSlug": "listers",
+    "placeholder": "/images/listers/placeholders/listers_placeholder.png",
+    "to": "/video-library/listers?movie=1",
+    "showTitle": "Listers"
+  },
+  {
+    "kind": "movie",
     "showSlug": "lookback",
     "placeholder": "/images/lookback/placeholders/lookback_placeholder.png",
     "to": "/video-library/lookback?movie=1",

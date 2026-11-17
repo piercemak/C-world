@@ -702,6 +702,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2024 • Animation • 58m"
+    },
+    "listers": {
+      "image": "listers-ffdff5aa08ab.jpg",
+      "thumbnail": "listers-ffdff5aa08ab-thumb.jpg",
+      "source": "/images/listers/covers/listersCover.svg",
+      "sourceSHA256": "ffdff5aa08abdf1b81f45d969b2f80e2170083758d0049e99dc0aec2acc6320c",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Documentary • 119m"
     }
   }
 }
