@@ -38,7 +38,7 @@ struct ArchiveCatalogSnapshot {
         let dated = catalog.enumerated().map { (offset: $0.offset, media: $0.element, date: Self.parseAddedDate($0.element.dateAdded)) }
         let newest = dated.filter { $0.date != nil }.sorted {
             if $0.date != $1.date { return $0.date! > $1.date! }
-            return $0.offset < $1.offset
+            return $0.offset > $1.offset
         }.prefix(3).map(\.media)
         latest = newest.isEmpty ? Array(catalog.suffix(3).reversed()) : Array(newest)
 
@@ -56,6 +56,8 @@ struct ArchiveCatalogSnapshot {
                 let left = lhs.date ?? .distantPast
                 let right = rhs.date ?? .distantPast
                 if left != right { return sort == .newest ? left > right : left < right }
+                // Later catalog entries were added later when dates share a day.
+                return sort == .newest ? lhs.offset > rhs.offset : lhs.offset < rhs.offset
             case .highestRated, .lowestRated:
                 let left = Double(lhs.media.metadata.rating) ?? 0
                 let right = Double(rhs.media.metadata.rating) ?? 0
