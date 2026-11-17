@@ -711,6 +711,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2026 • Documentary • 119m"
+    },
+    "theodyssey": {
+      "image": "theodyssey-1ab5d349ccd7.jpg",
+      "thumbnail": "theodyssey-1ab5d349ccd7-thumb.jpg",
+      "source": "/images/theodyssey/covers/theodysseyCover.svg",
+      "sourceSHA256": "1ab5d349ccd7fffdaa342219c868af729f9101d2060f5fb1e14f7a5b52fd1e46",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Action • 2h 52m"
     }
   }
 }

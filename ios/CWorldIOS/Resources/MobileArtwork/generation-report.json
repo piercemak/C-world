@@ -2084,8 +2084,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 47.889707545769795
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/theodysseyLogo.svg",
+      "titles": [
+        "The Odyssey"
+      ],
+      "sourceBytes": 2544773,
+      "outputBytes": 192317,
+      "thumbnailBytes": 26550,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.14308494315299
+    },
+    {
+      "url": "https://cearaworld.com/images/theodyssey/covers/theodyssey_backdrop.svg",
+      "titles": [
+        "The Odyssey"
+      ],
+      "sourceBytes": 607770,
+      "outputBytes": 370018,
+      "thumbnailBytes": 8382,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 54.11767647048782
     }
   ],
-  "sourceBytes": 862403988,
-  "outputBytes": 108794235
+  "sourceBytes": 865556531,
+  "outputBytes": 109391502
 }

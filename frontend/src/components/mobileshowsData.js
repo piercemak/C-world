@@ -868,5 +868,16 @@ export const SHOWS = [
     "keyart": "/images/listers/covers/listers_mobileLogo.jpg",
     "card": "/images/cardimages/listersLogo.svg",
     "dateadded": "11-17-26"
+  },
+  {
+    "id": "theodyssey",
+    "title": "The Odyssey",
+    "creator": "Christopher Nolan",
+    "background": "/images/theodyssey/covers/theodyssey_backdrop.svg",
+    "ratings": "8.4",
+    "type": "Movies",
+    "keyart": "/images/theodyssey/covers/theodyssey_mobileLogo.jpg",
+    "card": "/images/cardimages/theodysseyLogo.svg",
+    "dateadded": "11-17-26"
   }
 ];

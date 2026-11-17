@@ -32024,9 +32024,50 @@
         "movie": "/videos/listers/listers_subtitles.vtt",
         "defaultEnabled": false
       }
+    },
+    "theodyssey": {
+      "assetId": "theodyssey",
+      "library": {
+        "type": "movie",
+        "title": "The Odyssey",
+        "agerating": "18+",
+        "release_year": "2026",
+        "genre": "Action",
+        "duration": "2h 52m",
+        "description": "After the Trojan War, Odysseus faces a dangerous voyage back to Ithaca, meeting creatures like the Cyclops Polyphemus, Sirens, and Calypso along the way.",
+        "background": "/images/theodyssey/covers/theodysseyCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Christopher Nolan",
+        "background": "/images/theodyssey/covers/theodyssey_backdrop.svg",
+        "ratings": "8.4",
+        "type": "Movies",
+        "keyart": "/images/theodyssey/covers/theodyssey_mobileLogo.jpg",
+        "card": "/images/cardimages/theodysseyLogo.svg",
+        "dateadded": "11-17-26"
+      },
+      "mobileOrder": 79,
+      "sidebar": {
+        "cardId": "card-80",
+        "order": 79
+      },
+      "carousel": {
+        "order": 79
+      },
+      "captions": {
+        "movie": "/videos/theodyssey/theodyssey_subtitles.vtt",
+        "defaultEnabled": false
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "theodyssey",
+      "placeholder": "/images/theodyssey/placeholders/theodyssey_placeholder.png",
+      "to": "/video-library/theodyssey?movie=1"
+    },
     {
       "kind": "movie",
       "showSlug": "listers",

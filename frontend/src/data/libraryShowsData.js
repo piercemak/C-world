@@ -839,6 +839,17 @@ const metadata = {
     "description": "Two brothers dive into competitive birdwatching, living in a van for a year while traveling across the country to participate in a Big Year contest.",
     "background": "/images/listers/covers/listersCover.svg",
     "subtitles": "yes"
+  },
+  "theodyssey": {
+    "type": "movie",
+    "title": "The Odyssey",
+    "agerating": "18+",
+    "release_year": "2026",
+    "genre": "Action",
+    "duration": "2h 52m",
+    "description": "After the Trojan War, Odysseus faces a dangerous voyage back to Ithaca, meeting creatures like the Cyclops Polyphemus, Sirens, and Calypso along the way.",
+    "background": "/images/theodyssey/covers/theodysseyCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

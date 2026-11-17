@@ -78,7 +78,8 @@ export const mediaAssetIds = {
   "vinland": "vinland",
   "residentevil": "residentevil",
   "lookback": "lookback",
-  "listers": "listers"
+  "listers": "listers",
+  "theodyssey": "theodyssey"
 };
 export const skipTimes = {
   "stevenuniverse": {

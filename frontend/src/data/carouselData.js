@@ -394,5 +394,10 @@ export const CAROUSEL_COVERS = [
     "id": "listers",
     "src": "/images/listers/covers/listersCover.svg",
     "title": "Listers"
+  },
+  {
+    "id": "theodyssey",
+    "src": "/images/theodyssey/covers/theodysseyCover.svg",
+    "title": "The Odyssey"
   }
 ];

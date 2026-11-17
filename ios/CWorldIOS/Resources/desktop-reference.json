@@ -78,9 +78,13 @@
     "vinland",
     "residentevil",
     "lookback",
-    "listers"
+    "listers",
+    "theodyssey"
   ],
   "newMedia": [
+    {
+      "id": "theodyssey"
+    },
     {
       "id": "listers"
     },

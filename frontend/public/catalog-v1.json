@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-17T15:34:16.655Z",
-  "generatedAt": "2026-11-17T15:34:16.655Z",
+  "catalogRevision": "2026-11-17T19:46:07.567Z",
+  "generatedAt": "2026-11-17T19:46:07.567Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39917,6 +39917,43 @@
       ],
       "movieAsset": {
         "mediaId": "listers",
+        "season": null,
+        "episode": null
+      }
+    },
+    {
+      "id": "theodyssey",
+      "assetId": "theodyssey",
+      "type": "movie",
+      "title": "The Odyssey",
+      "dateAdded": "11-17-26",
+      "description": "After the Trojan War, Odysseus faces a dangerous voyage back to Ithaca, meeting creatures like the Cyclops Polyphemus, Sirens, and Calypso along the way.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/theodysseyLogo.svg",
+        "poster": "https://cearaworld.com/images/theodyssey/covers/theodyssey_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/theodyssey/covers/theodyssey_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/theodyssey/covers/theodyssey_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Christopher Nolan",
+        "rating": "8.4",
+        "year": "2026",
+        "genres": [
+          "Action"
+        ],
+        "duration": "2h 52m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": false,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/theodyssey/theodyssey_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/theodyssey/theodyssey_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "theodyssey",
         "season": null,
         "episode": null
       }

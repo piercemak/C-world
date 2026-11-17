@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-11-17T15:34:16.655Z",
+  "catalogRevision": "2026-11-17T19:46:07.567Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1265,6 +1265,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "a8e1d4386e1bb2d69dae7b797cf53349d1bd4c69618cf50ddfc28c5801b0b5ca"
+    },
+    "https://cearaworld.com/images/cardimages/theodysseyLogo.svg": {
+      "image": "921396f58d9e-c0bc8fa702a1.jpg",
+      "thumbnail": "921396f58d9e-c0bc8fa702a1-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "c0bc8fa702a1617981df50ed333f1da98b2eef547a707d2b65868e551caf2550"
+    },
+    "https://cearaworld.com/images/theodyssey/covers/theodyssey_backdrop.svg": {
+      "image": "57a93ba05b86-4b1468c26dca.jpg",
+      "thumbnail": "57a93ba05b86-4b1468c26dca-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "4b1468c26dcafc79b6896fefbd4a38ce00a159a9ca7f1ce2e694c5e47b6830d1"
     }
   }
 }

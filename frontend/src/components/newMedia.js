@@ -2,6 +2,13 @@
 export const newMedia = [
   {
     "kind": "movie",
+    "showSlug": "theodyssey",
+    "placeholder": "/images/theodyssey/placeholders/theodyssey_placeholder.png",
+    "to": "/video-library/theodyssey?movie=1",
+    "showTitle": "The Odyssey"
+  },
+  {
+    "kind": "movie",
     "showSlug": "listers",
     "placeholder": "/images/listers/placeholders/listers_placeholder.png",
     "to": "/video-library/listers?movie=1",
