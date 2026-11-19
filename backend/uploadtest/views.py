@@ -128,7 +128,8 @@ def device_login_poll(request):
     now = timezone.now()
     try:
         with transaction.atomic():
-            session = DeviceLoginSession.objects.select_for_update().select_related("user").get(
+            # Lock only the session: nullable user joins cannot be locked on PostgreSQL.
+            session = DeviceLoginSession.objects.select_for_update().get(
                 poll_token_hash=_hash_device_value(poll_token)
             )
             if session.expires_at <= now:
