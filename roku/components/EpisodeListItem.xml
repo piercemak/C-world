@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="EpisodeListItem" extends="Group">
-    <interface>
-        <field id="itemContent" type="node" onChange="onContentChanged" />
-    </interface>
-    <children>
-        <Rectangle id="background" width="1180" height="74" color="0x222831FF" opacity="0.0" />
-        <Label id="label" translation="[24,12]" width="1120" height="48" font="font:MediumSystemFont" ellipsisText="..." />
-    </children>
-    <script type="text/brightscript" uri="pkg:/components/EpisodeListItem.brs" />
+ <interface>
+  <field id="itemContent" type="node" onChange="onContentChanged" />
+  <field id="focusPercent" type="float" onChange="onFocusChanged" />
+ </interface>
+ <children>
+  <Group id="tile" translation="[5,5]" scaleRotateCenter="[130,82]">
+   <Rectangle width="260" height="194" color="0x243247FF" />
+   <Poster id="fallback" width="260" height="146" loadDisplayMode="scaleToFill" />
+   <Poster id="poster" width="260" height="146" loadDisplayMode="scaleToFill" />
+   <Rectangle translation="[10,10]" width="80" height="26" color="0x000000BB" />
+   <Label id="code" translation="[18,14]" width="70" height="22"><Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="12" /></Label>
+   <Rectangle translation="[0,146]" width="260" height="48" color="0xFFFFFF12" />
+   <Label id="label" translation="[10,148]" width="236" height="28" ellipsisText="..."><Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="13" /></Label>
+   <Label id="meta" translation="[10,170]" width="236" height="24" color="0xBFCCDCFF"><Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="11" /></Label>
+   <Rectangle id="progress" translation="[0,142]" width="0" height="4" color="0x7CBCEAFF" />
+   <Rectangle id="focus" width="260" height="3" color="0xD6EDFFFF" opacity="0" />
+  </Group>
+ </children>
+ <script type="text/brightscript" uri="pkg:/components/EpisodeListItem.brs" />
 </component>

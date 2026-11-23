@@ -1,26 +1,33 @@
 sub init()
     m.poster = m.top.findNode("poster")
-    m.title = m.top.findNode("title")
-    m.focusFrame = m.top.findNode("focusFrame")
-    m.top.observeField("focusedChild", "onFocusChanged")
+    m.card = m.top.findNode("card")
+    m.shine = m.top.findNode("shine")
 end sub
-
 sub onContentChanged()
-    content = m.top.itemContent
-    if content = invalid
-        return
+    if m.top.itemContent <> invalid
+        c = m.top.itemContent
+        m.poster.uri = c.HDPosterUrl
+        m.top.findNode("title").text = c.title
+        m.top.findNode("title").visible = c.posterMode
+        if c.posterMode
+            m.poster.width = 132
+            m.poster.height = 190
+            m.poster.translation = [44,0]
+        else
+            m.poster.width = 238
+            m.poster.height = 238
+            m.poster.translation = [0,0]
+        end if
+        onFocusChanged()
     end if
-
-    m.poster.uri = content.HDPosterUrl
-    m.title.text = content.title
 end sub
-
 sub onFocusChanged()
-    focused = m.top.hasFocus()
-    if focused
-        m.focusFrame.opacity = 0.9
-    else
-        m.focusFrame.opacity = 0.0
-    end if
-    m.focusFrame.color = "0x5ED8FFFF"
+    amount = m.top.focusPercent
+    m.shine.opacity = 0.35 * amount
+    m.shine.translation = m.poster.translation
+    m.shine.width = m.poster.width
+    m.shine.height = m.poster.height
+    size = 1.0
+    m.card.translation = [4, 4]
+    m.card.scale = [size, size]
 end sub

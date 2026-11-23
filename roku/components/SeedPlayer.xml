@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SeedPlayer" extends="Group">
+ <interface>
+  <function name="playbackEnded" />
+  <field id="video" type="node" onChange="bindVideo" />
+  <field id="playbackInfo" type="assocarray" onChange="configure" />
+  <field id="active" type="boolean" onChange="activeChanged" />
+  <field id="action" type="string" alwaysNotify="true" />
+  <field id="failure" type="string" onChange="update" />
+ </interface>
+ <children>
+  <Group id="chrome">
+   <Poster uri="pkg:/images/ui/player-shade.png" width="1280" height="720" />
+   <Rectangle id="backFocus" translation="[40,32]" width="145" height="46" color="0xFFFFFF25" />
+   <Label translation="[54,38]" width="145" height="38" text="‹  Back" ><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="22" /></Label>
+   <Label id="title" translation="[220,36]" width="1008" height="42" horizAlign="right"><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="25" /></Label>
+   <Label id="episode" translation="[220,82]" width="1008" height="36" horizAlign="right" color="0xCCCCCCFF"><Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" /></Label>
+   <Rectangle id="timelineFocus" translation="[44,568]" width="1192" height="25" color="0xFFFFFF18" />
+   <Rectangle translation="[52,578]" width="1176" height="5" color="0xFFFFFF44" />
+   <Rectangle id="progress" translation="[52,578]" width="0" height="5" color="0xFFFFFFFF" />
+   <Label id="elapsed" translation="[52,592]" width="300" height="28"><Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="15" /></Label>
+   <Label id="duration" translation="[928,592]" width="300" height="28" horizAlign="right"><Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="15" /></Label>
+   <Group id="buttons" translation="[52,632]" />
+  </Group>
+  <Group id="skip" translation="[906,374]" visible="false">
+   <Rectangle width="322" height="162" color="0x141414F2" />
+   <Poster id="nextArtwork" translation="[12,12]" width="105" height="60" loadDisplayMode="scaleToZoom" />
+   <Label id="skipTitle" translation="[130,12]" width="180" height="62" wrap="true" numLines="2"><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="16" /></Label>
+   <Rectangle id="skipFocus" translation="[12,84]" width="298" height="38" color="0xFFFFFF20" />
+   <Rectangle id="sweep" translation="[12,84]" width="0" height="38" color="0xFFFFFF55" />
+   <Label id="skipLabel" translation="[22,90]" width="280" height="30"><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="17" /></Label>
+   <Label id="cancelLabel" translation="[22,129]" width="280" height="28" text="↓ Keep watching"><Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="14" /></Label>
+  </Group>
+  <Group id="status" visible="false">
+   <Rectangle translation="[360,284]" width="560" height="130" color="0x101010E8" />
+   <Label id="statusText" translation="[380,300]" width="520" height="100" wrap="true" numLines="3" horizAlign="center" vertAlign="center"><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="20" /></Label>
+  </Group>
+  <Animation id="sweepAnimation" duration="0.25" easeFunction="linear"><FloatFieldInterpolator id="sweepInterpolator" fieldToInterp="sweep.width" key="[0,1]" keyValue="[0,0]" /></Animation>
+  <Timer id="tick" duration="0.25" repeat="true" />
+  <Timer id="hide" duration="4" repeat="false" />
+  <Animation id="fadeIn" duration="0.18" easeFunction="outCubic"><FloatFieldInterpolator fieldToInterp="chrome.opacity" key="[0,1]" keyValue="[0,1]" /></Animation>
+  <Animation id="fadeOut" duration="0.25" easeFunction="outCubic"><FloatFieldInterpolator fieldToInterp="chrome.opacity" key="[0,1]" keyValue="[1,0]" /></Animation>
+ </children>
+ <script type="text/brightscript" uri="pkg:/source/PlaybackRules.brs" />
+ <script type="text/brightscript" uri="pkg:/components/SeedPlayer.brs" />
+</component>

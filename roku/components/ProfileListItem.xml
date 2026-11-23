@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="ProfileListItem" extends="Group">
     <interface>
+        <field id="focusPercent" type="float" onChange="onFocusChanged" />
         <field id="itemContent" type="node" onChange="onContentChanged" />
     </interface>
     <children>

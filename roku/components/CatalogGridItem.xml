@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="CatalogGridItem" extends="Group">
-    <interface>
-        <field id="itemContent" type="node" onChange="onContentChanged" />
-    </interface>
-    <children>
-        <Poster id="poster" width="250" height="375" />
-        <Rectangle id="focusFrame" width="250" height="375" color="0x5ED8FFFF" opacity="0.0" />
-        <Label id="title" translation="[0,390]" width="250" height="48" horizAlign="center" ellipsisText="..." />
-    </children>
-    <script type="text/brightscript" uri="pkg:/components/CatalogGridItem.brs" />
+ <interface><field id="itemContent" type="node" onChange="onContentChanged" /><field id="focusPercent" type="float" onChange="onFocusChanged" /></interface>
+ <children>
+  <Group id="card" translation="[4,4]" scaleRotateCenter="[119,119]">
+   <Group>
+    <Poster id="poster" width="238" height="238" loadDisplayMode="scaleToFill" />
+    <Poster id="shine" translation="[0,0]" width="238" height="238" uri="pkg:/images/ui/card-gloss.png" opacity="0" />
+   </Group>
+  </Group>
+  <Label id="title" translation="[4,207]" width="238" height="30" horizAlign="center" visible="false" ellipsisText="..."><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="16" /></Label>
+ </children><script type="text/brightscript" uri="pkg:/components/CatalogGridItem.brs" />
 </component>

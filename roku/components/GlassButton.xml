@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="GlassButton" extends="Group" focusable="true">
+ <interface>
+  <field id="text" type="string" onChange="update" />
+  <field id="minWidth" type="float" value="160" onChange="update" />
+  <field id="width" type="float" value="160" onChange="update" />
+  <field id="height" type="float" value="44" />
+  <field id="buttonSelected" type="boolean" alwaysNotify="true" />
+ </interface>
+ <children>
+  <Rectangle id="surface" width="160" height="42" color="0xFFFFFF12" opacity="0" />
+  <Label id="textLabel" translation="[12,8]" width="150" height="32" color="0xD0D0D0FF"><Font role="font" uri="pkg:/fonts/Poppins-Semibold.ttf" size="18" /></Label>
+  <Rectangle id="underline" translation="[12,41]" width="120" height="2" color="0xFFFFFFFF" opacity="0" />
+ </children>
+ <script type="text/brightscript" uri="pkg:/components/GlassButton.brs" />
+</component>

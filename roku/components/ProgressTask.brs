@@ -16,31 +16,32 @@ sub executeTask()
     transfer.AddHeader("Authorization", "Token " + m.top.authToken)
     transfer.AddHeader("X-Profile-Id", m.top.profileId)
 
+    port = CreateObject("roMessagePort")
+    transfer.SetPort(port)
     if m.top.method = "POST"
         transfer.SetRequest("POST")
         transfer.AddHeader("Content-Type", "application/json")
-        port = CreateObject("roMessagePort")
-        transfer.SetPort(port)
-        if not transfer.AsyncPostFromString(m.top.bodyJson)
-            m.top.errorMessage = "Progress request could not start."
-            return
-        end if
-        event = wait(15000, port)
-        if event = invalid
-            transfer.AsyncCancel()
-            m.top.errorMessage = "Progress request timed out."
-            return
-        end if
-        if type(event) <> "roUrlEvent"
-            m.top.errorMessage = "Progress returned an invalid response event."
-            return
-        end if
-        payload = event.GetString()
-        responseCode = event.GetResponseCode()
+        started = transfer.AsyncPostFromString(m.top.bodyJson)
     else
-        payload = transfer.GetToString()
-        responseCode = transfer.GetResponseCode()
+        started = transfer.AsyncGetToString()
     end if
+    if not started
+        m.top.errorMessage = "Progress request could not start."
+        return
+    end if
+    event = wait(15000, port)
+    if event = invalid
+        transfer.AsyncCancel()
+        m.top.errorMessage = "Progress request timed out."
+        return
+    end if
+    if type(event) <> "roUrlEvent"
+        m.top.errorMessage = "Progress returned an invalid response event."
+        return
+    end if
+    payload = event.GetString()
+    responseCode = event.GetResponseCode()
+    print "[Roku progress] HTTP "; responseCode
 
     if responseCode < 200 or responseCode >= 300
         m.top.errorMessage = "Progress request failed (HTTP " + responseCode.ToStr() + ")."

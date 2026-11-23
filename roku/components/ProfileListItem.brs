@@ -12,9 +12,5 @@ sub onContentChanged()
 end sub
 
 sub onFocusChanged()
-    if m.top.hasFocus()
-        m.background.opacity = 0.9
-    else
-        m.background.opacity = 0.0
-    end if
+    m.background.opacity = 0.9 * m.top.focusPercent
 end sub

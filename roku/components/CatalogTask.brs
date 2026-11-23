@@ -33,6 +33,7 @@ sub executeTask()
 
     responseCode = event.GetResponseCode()
     payload = event.GetString()
+    print "[Roku catalog] HTTP "; responseCode; " bytes="; Len(payload)
     if responseCode < 200 or responseCode >= 300
         m.top.errorMessage = "Catalog request failed (HTTP " + responseCode.ToStr() + ")."
         return

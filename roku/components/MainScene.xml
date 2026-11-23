@@ -1,63 +1,210 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <component name="MainScene" extends="Scene" focusable="true">
-    <interface>
-        <field id="config" type="assocarray" onChange="onConfigChanged" />
-    </interface>
-    <children>
-        <Rectangle id="background" width="1280" height="720" color="0x111318FF" />
-        <Label id="brand" translation="[72,42]" text="CWorld" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" />
-        <Label id="status" translation="[72,104]" width="1136" height="44" font="font:MediumSystemFont" color="0x9BA5B4FF" ellipsisText="..." />
-        <Button id="allTitlesButton" translation="[72,145]" text="All Titles" minWidth="190" focusable="true" />
-        <Button id="continueButton" translation="[280,145]" text="Continue Watching" minWidth="270" focusable="true" />
-        <MarkupGrid id="catalogGrid" translation="[72,170]" itemComponentName="CatalogGridItem" numColumns="4" itemSize="[280,450]" numRows="1" />
-
-        <Group id="loginView" visible="false">
-            <Rectangle translation="[210,90]" width="860" height="560" color="0x1B222EFF" opacity="0.98" />
-            <Label translation="[300,150]" text="Sign in to CWorld" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" />
-            <Button id="usernameInput" translation="[300,245]" width="680" height="64" text="Username" focusable="true" />
-            <Button id="passwordInput" translation="[300,330]" width="680" height="64" text="Password" focusable="true" />
-            <Button id="loginButton" translation="[300,430]" text="Sign in" minWidth="220" focusable="true" />
-            <Label id="loginStatus" translation="[300,525]" width="680" height="44" font="font:MediumSystemFont" color="0xFFB86BFF" ellipsisText="..." />
-        </Group>
-
-        <Group id="deviceLoginView" visible="false">
-            <Rectangle translation="[170,45]" width="940" height="630" color="0x1B222EFF" opacity="0.98" />
-            <Label translation="[250,90]" text="Sign in with your phone" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" />
-            <Poster id="deviceQr" translation="[250,170]" width="250" height="250" loadDisplayMode="scaleToFit" />
-            <Label id="deviceCode" translation="[560,195]" width="500" height="60" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" ellipsisText="..." />
-            <Label id="deviceUrl" translation="[560,275]" width="500" height="70" font="font:MediumSystemFont" color="0xAEB8C7FF" wrap="true" ellipsisText="..." />
-            <Label id="deviceStatus" translation="[560,355]" width="500" height="75" font="font:MediumSystemFont" color="0xFFB86BFF" wrap="true" ellipsisText="..." />
-            <Button id="useRemoteLoginButton" translation="[560,465]" text="Use remote login" width="260" height="64" focusable="true" />
-            <Button id="refreshDeviceButton" translation="[840,465]" text="New QR code" width="220" height="64" focusable="true" />
-            <Label translation="[250,585]" width="810" height="42" text="Scan the code, sign in, and approve this TV in your browser." font="font:SmallSystemFont" color="0x9BA5B4FF" />
-        </Group>
-
-        <Group id="profileView" visible="false">
-            <Rectangle translation="[210,90]" width="860" height="560" color="0x1B222EFF" opacity="0.98" />
-            <Label translation="[300,150]" text="Choose a profile" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" />
-            <MarkupList id="profileList" translation="[300,245]" itemComponentName="ProfileListItem" itemSize="[760,90]" />
-            <Label id="profileStatus" translation="[300,610]" width="760" height="44" font="font:MediumSystemFont" color="0xFFB86BFF" ellipsisText="..." />
-        </Group>
-
-        <Group id="detailView" visible="false">
-            <Poster id="detailPoster" translation="[72,80]" width="300" height="450" />
-            <Label id="detailTitle" translation="[420,92]" width="770" height="70" font="font:LargeBoldSystemFont" color="0xFFFFFFFF" ellipsisText="..." />
-            <Label id="detailMeta" translation="[420,174]" width="770" height="42" font="font:MediumSystemFont" color="0xAEB8C7FF" ellipsisText="..." />
-            <Label id="detailDescription" translation="[420,230]" width="770" height="140" font="font:MediumSystemFont" color="0xE0E5EDFF" wrap="true" ellipsisText="..." />
-            <MarkupList id="episodeList" translation="[420,395]" itemComponentName="EpisodeListItem" itemSize="[1180,82]" visible="false" />
-            <Button id="moviePlayButton" translation="[420,410]" text="Play" minWidth="220" visible="false" />
-            <Label id="detailStatus" translation="[420,640]" width="770" height="40" font="font:MediumSystemFont" color="0xFFB86BFF" ellipsisText="..." />
-        </Group>
-
-        <Video id="video" translation="[0,0]" width="1280" height="720" visible="false" />
-        <CatalogTask id="catalogTask" />
-        <PlaybackTask id="playbackTask" />
-        <LoginTask id="loginTask" />
-        <ProfileTask id="profileTask" />
-        <ProgressTask id="progressTask" />
-        <HistoryTask id="historyTask" />
-        <DeviceTask id="deviceTask" />
-        <Timer id="devicePollTimer" duration="2" repeat="true" />
-    </children>
-    <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+  <interface>
+    <field id="config" type="assocarray" onChange="onConfigChanged" />
+  </interface>
+  <children>
+    <Poster id="background" width="1280" height="720" uri="pkg:/images/ui/library-background.png" />
+    <Poster translation="[32,28]" width="1216" height="664" uri="pkg:/images/ui/panel.png" />
+    <Label id="brand" translation="[64,42]" width="230" height="48" text="SeedSpace" ellipsisText="..." visible="false">
+      <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="30" />
+    </Label>
+    <Label id="libraryHeading" translation="[310,64]" width="240" height="44" text="Library">
+      <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="28" />
+    </Label>
+    <Label id="status" translation="[72,645]" width="220" height="38" color="0xAAB8C9FF" wrap="true">
+      <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+    </Label>
+    <GlassButton id="allTitlesButton" translation="[530,64]" text="All titles" minWidth="130" width="130" />
+    <GlassButton id="continueButton" translation="[68,590]" text="Recently Watched ›" minWidth="230" width="230" />
+    <GlassButton id="browseButton" translation="[1040,64]" text="Browse ▾" minWidth="150" width="150" />
+    <Group id="catalogErrorView" visible="false">
+      <Rectangle translation="[350,180]" width="850" height="350" color="0x191919FF" />
+      <Label translation="[382,212]" width="780" height="48" text="Unable to load library">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Bold.ttf" />
+      </Label>
+      <Label id="catalogErrorText" translation="[382,280]" width="780" height="120" wrap="true">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+      <GlassButton id="catalogRetry" translation="[382,430]" text="Try again" />
+    </Group>
+    <Group id="libraryInfo" visible="false">
+      <Poster id="profileAvatar" translation="[72,72]" width="48" height="48" loadDisplayMode="scaleToFill" />
+      <Label id="profileName" translation="[72,134]" width="210" height="34" text="Your library">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Label translation="[72,177]" width="215" height="30" text="Welcome to your world." color="0x888888FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="14" />
+      </Label>
+      <Rectangle translation="[72,215]" width="210" height="1" color="0xFFFFFF26" />
+      <Label id="focusedTitle" visible="false">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+      <Label id="focusedMeta" visible="false">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+      <Label id="focusedDescription" visible="false">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+      <Label id="libraryPosition" translation="[310,127]" width="880" height="32" color="0xC0C0C0FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="15" />
+      </Label>
+      <Label id="sideTitle0" translation="[72,235]" width="210" height="49" wrap="true" color="0x808080FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Label id="sideTitle1" translation="[72,286]" width="210" height="49" wrap="true" color="0x808080FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Label id="sideTitle2" translation="[72,337]" width="210" height="49" wrap="true" color="0x808080FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Label id="sideTitle3" translation="[72,388]" width="210" height="49" wrap="true" color="0x808080FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Label id="sideTitle4" translation="[72,439]" width="210" height="49" wrap="true" color="0x808080FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Label id="sideTitle5" translation="[72,490]" width="210" height="49" wrap="true" color="0x808080FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="18" />
+      </Label>
+      <Poster translation="[423,69]" width="32" height="32" uri="pkg:/images/ui/circle.png" opacity="0.45" />
+      <Poster translation="[447,69]" width="32" height="32" uri="pkg:/images/ui/circle.png" opacity="0.65" />
+      <Poster translation="[471,69]" width="32" height="32" uri="pkg:/images/ui/circle.png" opacity="0.8500000000000001" />
+      <Poster id="recentThumb0" translation="[76,553]" width="78" height="44" rotation="-7" loadDisplayMode="scaleToFill" />
+      <Poster id="recentThumb1" translation="[148,553]" width="78" height="44" rotation="7" loadDisplayMode="scaleToFill" />
+      <Poster id="recentThumb2" translation="[110,546]" width="78" height="44" rotation="0" loadDisplayMode="scaleToFill" />
+    </Group>
+    <PagedCatalogGrid id="catalogGrid" visible="false" translation="[310,170]" />
+    <Animation id="libraryEntrance" duration="0.45" easeFunction="outCubic">
+      <Vector2DFieldInterpolator id="librarySlide" key="[0,1]" keyValue="[[1420,170],[310,170]]" fieldToInterp="catalogGrid.translation" />
+      <FloatFieldInterpolator key="[0,1]" keyValue="[0,1]" fieldToInterp="catalogGrid.opacity" />
+    </Animation>
+    <Group id="loginView" visible="false">
+      <Rectangle translation="[210,90]" width="860" height="560" color="0x191919FF" opacity="0.98" />
+      <Label translation="[300,150]" text="Sign in to CWorld" color="0xFFFFFFFF">
+        <Font role="font" size="20" uri="pkg:/fonts/Poppins-Bold.ttf" />
+      </Label>
+      <GlassButton id="usernameInput" translation="[300,245]" width="680" height="64" text="Username" focusable="true" />
+      <GlassButton id="passwordInput" translation="[300,330]" width="680" height="64" text="Password" focusable="true" />
+      <GlassButton id="loginButton" translation="[300,430]" text="Sign in" minWidth="220" focusable="true" />
+      <Label id="loginStatus" translation="[300,525]" width="680" height="44" color="0xFFB86BFF" ellipsisText="...">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+    </Group>
+    <Group id="deviceLoginView" visible="false">
+      <Rectangle translation="[170,45]" width="940" height="630" color="0x191919FF" opacity="0.98" />
+      <Label translation="[250,90]" text="Sign in with your phone" color="0xFFFFFFFF">
+        <Font role="font" size="20" uri="pkg:/fonts/Poppins-Bold.ttf" />
+      </Label>
+      <Poster id="deviceQr" translation="[250,170]" width="250" height="250" loadDisplayMode="scaleToFit" />
+      <Label id="deviceCode" translation="[560,195]" width="500" height="60" color="0xFFFFFFFF" ellipsisText="...">
+        <Font role="font" size="20" uri="pkg:/fonts/Poppins-Bold.ttf" />
+      </Label>
+      <Label id="deviceUrl" translation="[560,275]" width="500" height="70" color="0xAEB8C7FF" wrap="true" ellipsisText="...">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+      <Label id="deviceStatus" translation="[560,355]" width="500" height="75" color="0xFFB86BFF" wrap="true" ellipsisText="...">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+      <GlassButton id="useRemoteLoginButton" translation="[560,465]" text="Use remote login" width="260" height="64" focusable="true" />
+      <GlassButton id="refreshDeviceButton" translation="[840,465]" text="New QR code" width="220" height="64" focusable="true" />
+      <Label translation="[250,585]" width="810" height="42" text="Scan the code, sign in, and approve this TV in your browser." color="0x9BA5B4FF">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+    </Group>
+    <Group id="profileView" visible="false">
+      <Rectangle translation="[210,90]" width="860" height="560" color="0x191919FF" opacity="0.98" />
+      <Label translation="[300,150]" text="Choose a profile" color="0xFFFFFFFF">
+        <Font role="font" size="20" uri="pkg:/fonts/Poppins-Bold.ttf" />
+      </Label>
+      <MarkupList id="profileList" translation="[300,245]" itemComponentName="ProfileListItem" itemSize="[760,90]" />
+      <Label id="profileStatus" translation="[300,610]" width="760" height="44" color="0xFFB86BFF" ellipsisText="...">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Regular.ttf" />
+      </Label>
+    </Group>
+    <Group id="detailView" visible="false">
+      <Rectangle width="1280" height="720" color="0x101723FF" />
+      <Poster id="detailBackdrop" width="1280" height="720" loadDisplayMode="scaleToFill" />
+      <Poster width="1280" height="720" uri="pkg:/images/ui/hero-shade.png" />
+      <Label translation="[64,32]" width="400" height="36" text="‹  Back to library" color="0xAAB8C9FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="20" />
+      </Label>
+      <Label id="detailTitle" translation="[64,132]" width="715" height="112" wrap="true">
+        <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="42" />
+      </Label>
+      <Label id="detailMeta" translation="[64,250]" width="690" height="32" wrap="true" color="0xAAB8C9FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="15" />
+      </Label>
+      <Label id="detailDescription" translation="[64,292]" width="690" height="68" wrap="true" color="0xD3DCE7FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="17" />
+      </Label>
+      <Poster translation="[856,106]" width="360" height="274" uri="pkg:/images/ui/preview-panel.png" />
+      <Poster id="detailPoster" translation="[872,122]" width="328" height="170" loadDisplayMode="scaleToFill" />
+      <Poster translation="[872,210]" width="328" height="82" uri="pkg:/images/ui/caption-shade.png" />
+      <Label id="previewTitle" translation="[884,246]" width="304" height="22">
+        <Font role="font" uri="pkg:/fonts/Poppins-Bold.ttf" size="14" />
+      </Label>
+      <Label id="previewMeta" translation="[884,270]" width="304" height="20" color="0xC2CEDCFF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="12" />
+      </Label>
+      <Rectangle id="previewProgress" translation="[872,288]" width="0" height="4" color="0x7CBCEAFF" />
+      <GlassButton id="seasonButton" translation="[64,433]" text="Season 1" minWidth="190" visible="false" width="190" />
+      <MarkupGrid id="episodeList" translation="[64,482]" itemComponentName="EpisodeListItem" numColumns="4" numRows="1" itemSize="[280,202]" itemSpacing="[12,0]" drawFocusFeedback="false" visible="false" />
+      <GlassButton id="moviePlayButton" translation="[64,370]" text="▶ Play" minWidth="150" visible="false" width="150" />
+      <Label id="detailStatus" translation="[64,694]" width="1150" height="22" color="0xFFCF96FF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="13" />
+      </Label>
+      <Poster translation="[872,308]" width="104" height="60" uri="pkg:/images/ui/stat-panel.png" />
+      <Label translation="[872,316]" width="104" height="20" text="Resume" horizAlign="center" color="0xAAAAAAFF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="12" />
+      </Label>
+      <Label id="statResume" translation="[872,342]" width="104" height="22" text="Start" horizAlign="center">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="13" />
+      </Label>
+      <Poster translation="[984,308]" width="104" height="60" uri="pkg:/images/ui/stat-panel.png" />
+      <Label translation="[984,316]" width="104" height="20" text="Runtime" horizAlign="center" color="0xAAAAAAFF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="12" />
+      </Label>
+      <Label id="statRuntime" translation="[984,342]" width="104" height="22" text="—" horizAlign="center">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="13" />
+      </Label>
+      <Poster translation="[1096,308]" width="104" height="60" uri="pkg:/images/ui/stat-panel.png" />
+      <Label translation="[1096,316]" width="104" height="20" text="Playback" horizAlign="center" color="0xAAAAAAFF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="12" />
+      </Label>
+      <Label id="statStream" translation="[1096,342]" width="104" height="22" text="Stream" horizAlign="center">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="13" />
+      </Label>
+      <GlassButton id="detailContinue" translation="[240,370]" text="Continue" minWidth="160" width="160" />
+    </Group>
+    <Animation id="detailEntrance" duration="0.35" easeFunction="outCubic">
+      <FloatFieldInterpolator key="[0,1]" keyValue="[0,1]" fieldToInterp="detailView.opacity" />
+      <Vector2DFieldInterpolator key="[0,1]" keyValue="[[36,0],[0,0]]" fieldToInterp="detailView.translation" />
+    </Animation>
+    <Video id="video" translation="[0,0]" width="1280" height="720" visible="false" enableUI="false" notificationInterval="0.1" />
+    <SeedPlayer id="playerOverlay" visible="false" />
+    <Group id="seasonView" visible="false">
+      <Rectangle width="1280" height="720" color="0x000000BB" />
+      <Rectangle translation="[340,80]" width="600" height="550" color="0x191919FF" />
+      <Label translation="[380,110]" width="520" height="50" text="Choose a season">
+        <Font role="font" size="16" uri="pkg:/fonts/Poppins-Bold.ttf" />
+      </Label>
+      <LabelList id="seasonList" translation="[380,180]" itemSize="[520,60]" numRows="6" color="0xBEBEBEFF" focusedColor="0xFFFFFFFF" focusBitmapBlendColor="0xFFFFFF28">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="20" />
+        <Font role="focusedFont" uri="pkg:/fonts/Poppins-Semibold.ttf" size="20" />
+      </LabelList>
+      <Label translation="[380,565]" width="520" height="36" text="↑ ↓ Choose a season · OK select · Back cancel" color="0xAAAAAAFF">
+        <Font role="font" uri="pkg:/fonts/Poppins-Regular.ttf" size="14" />
+      </Label>
+    </Group>
+    <CatalogTask id="catalogTask" />
+    <PlaybackTask id="playbackTask" />
+    <LoginTask id="loginTask" />
+    <ProfileTask id="profileTask" />
+    <ProgressTask id="progressTask" />
+    <HistoryTask id="historyTask" />
+    <DeviceTask id="deviceTask" />
+    <Timer id="devicePollTimer" duration="2" repeat="true" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
 </component>
