@@ -399,5 +399,10 @@ export const CAROUSEL_COVERS = [
     "id": "theodyssey",
     "src": "/images/theodyssey/covers/theodysseyCover.svg",
     "title": "The Odyssey"
+  },
+  {
+    "id": "avatar",
+    "src": "/images/avatar/covers/avatarCover.svg",
+    "title": "Avatar: The Last Airbender"
   }
 ];

@@ -79,9 +79,15 @@
     "residentevil",
     "lookback",
     "listers",
-    "theodyssey"
+    "theodyssey",
+    "avatar"
   ],
   "newMedia": [
+    {
+      "id": "avatar",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "theodyssey"
     },

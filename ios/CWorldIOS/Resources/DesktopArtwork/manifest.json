@@ -720,6 +720,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2026 • Action • 2h 52m"
+    },
+    "avatar": {
+      "image": "avatar-ac87b761b527.jpg",
+      "thumbnail": "avatar-ac87b761b527-thumb.jpg",
+      "source": "/images/avatar/covers/avatarCover.svg",
+      "sourceSHA256": "ac87b761b52712f42fcff3187bf9ac867c878c810d2a3f63715ee65ab751a191",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2005 • Animation • 3 seasons"
     }
   }
 }

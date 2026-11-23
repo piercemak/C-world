@@ -319,6 +319,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "The Odyssey",
     "cardId": "card-80"
+  },
+  {
+    "title": "Avatar: The Last Airbender",
+    "cardId": "card-81"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -401,5 +405,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-77": "residentevil",
   "card-78": "lookback",
   "card-79": "listers",
-  "card-80": "theodyssey"
+  "card-80": "theodyssey",
+  "card-81": "avatar"
 };

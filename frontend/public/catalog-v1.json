@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-17T19:46:07.567Z",
-  "generatedAt": "2026-11-17T19:46:07.567Z",
+  "catalogRevision": "2026-11-23T21:02:33.248Z",
+  "generatedAt": "2026-11-23T21:02:33.248Z",
   "items": [
     {
       "id": "steven-universe",
@@ -39957,6 +39957,1332 @@
         "season": null,
         "episode": null
       }
+    },
+    {
+      "id": "avatar",
+      "assetId": "avatar",
+      "type": "show",
+      "title": "Avatar: The Last Airbender",
+      "dateAdded": "11-23-26",
+      "description": "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar, and bring peace to the world.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/avatarLogo.svg",
+        "poster": "https://cearaworld.com/images/avatar/covers/avatar_mobileLogo.webp",
+        "backdrop": "https://cearaworld.com/images/avatar/covers/avatar_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/avatar/covers/avatar_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Michael Dante DiMartino",
+        "rating": "9.3",
+        "year": "2005",
+        "genres": [
+          "Animation"
+        ],
+        "duration": "22m",
+        "ageRating": "7+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": false,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Boy in the Iceberg",
+              "description": "Two teenage siblings (Sokka and Katara) living in the South Pole discover a very strange boy (Aang), along with his pet flying bison Appa, in an iceberg. But can they trust him when he accidentally draws the war to their village's doorstep?",
+              "airDate": "2005-02-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E01_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Avatar Returns",
+              "description": "Katara and Sokka discover that Aang is the long-lost Avatar and must rescue him when a firebending prince named Zuko kidnaps him.",
+              "airDate": "2005-02-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E02_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Southern Air Temple",
+              "description": "Aang is excited about going home for the first time in one hundred years, but he is shocked to find out that the temple is deserted. Aang tells Sokka and Katara about his childhood as they explore the temple, but they soon discover something that Aang never expected. Meanwhile, Zuko must make repairs to his ship and the only way he can do it is to dock his ship at his rival's naval base.",
+              "airDate": "2005-02-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E03_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Warriors of Kyoshi",
+              "description": "The gang arrives at Kyoshi Island and are captured by some Kyoshi warriors. When Aang reveals that he is the avatar, news quickly spreads out, eventually reaching Zuko, who then goes to Kyoshi Island to capture him.",
+              "airDate": "2005-03-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E04_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "The King of Omashu",
+              "description": "Aang's abilities as an airbender are challenged by a strange king.",
+              "airDate": "2005-03-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E05_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "Imprisoned",
+              "description": "In a nearby Earth Village, the gang meets a teenage earthbender named Haru. This village lives in fear of the Fire Nation, for soldiers there capture any earthbenders they can find. After Haru is captured for earthbending, Katara is compelled to rescue him.",
+              "airDate": "2005-03-25",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E06_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Spirit World: Winter Solstice (1)",
+              "description": "Aang and friends visit a village being terrorized by an angry spirit. Iroh is captured by Earth Kingdom soldiers.",
+              "airDate": "2005-04-08",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E07_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Avatar Roku: Winter Solstice (2)",
+              "description": "To contact the spirit of the previous Avatar, Aang must reach a temple in the Fire Nation before the sun sets on the following day. There he will learn what he must do to restore balance to the world. Zuko must defy his banishment to follow Aang.",
+              "airDate": "2005-04-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E08_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "The Waterbending Scroll",
+              "description": "After Katara attempts to teach Aang waterbending, but realizes that he is learning it much faster than she is, she is desperate to improve her abilities.  When Katara inadvertently stumbles across a waterbending scroll that can help improve her abilities at a pirate’s store, she decides to steal it, realizing that she couldn’t hope to afford it.",
+              "airDate": "2005-04-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E09_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Jet",
+              "description": "While traveling towards the North Pole, the group almost gets captured by the Fire Nation.  However, when a charismatic young man and his band of rebels attack the Fire Nation camp and rescue them, they learn that they are trying to resist the Fire Nation’s motives to expand their territory.  Katara and Aang really enjoy their time with the band of rebels, but Sokka soon discovers that they aren’t as noble as meets the eye.",
+              "airDate": "2005-05-06",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 10
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E10_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E10_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 11,
+              "title": "The Great Divide",
+              "description": "While on their way to the North Pole, Aang and his friends arrive at a giant canyon where two groups of refugees are bickering over who should get to go across.  Aang decides to walk across with the two groups to ensure they don’t fight one another.  However, he soon learns that the two tribes have been feuding for one hundred years and they both believe their actions are justified.  But when the predators inside the canyon start to come out, Aang is stuck trying to defend both tribes from each other and the vicious wildlife.",
+              "airDate": "2005-05-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 11
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E11_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E11_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 12,
+              "title": "The Storm",
+              "description": "Sokka accepts a job for a fisherman who is looking for someone to help him out with his fishing. After the fisherman finds out Aang is the Avatar, Aang runs away in response to the fisherman's hostile reaction. When Katara finds Aang, he begins to reveal his life before he was frozen in the iceberg. Meanwhile, after Zuko gets into a fight with his crew, Iroh tells them about Zuko's complicated past, attempting to make both sides understand each other.",
+              "airDate": "2005-06-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 12
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E12_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E12_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 13,
+              "title": "The Blue Spirit",
+              "description": "While Aang, Katara and Sokka are traveling, Sokka gets a fever. Katara and Aang try to help Sokka, when Katara also catches the fever. It's up to Aang to go up on his own to save his two friends. But before he can get the medicine he is captured by the newly promoted Admiral Zhao and put in Zhao's fortress.",
+              "airDate": "2005-06-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 13
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E13_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E13_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 14,
+              "title": "The Fortuneteller",
+              "description": "When the group tries to help a man who is being attacked by a platypus-bear, they discover that the local town has a fortuneteller named Aunt Wu in it, who has been forecasting the town's fate for years. But when Sokka and Aang discover one of the fortuneteller's most vital predictions is dead wrong, they have to develop a plan to convince the stubborn townspeople that their beloved Aunt Wu was wrong.",
+              "airDate": "2005-09-23",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 14
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E14_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E14_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 15,
+              "title": "Bato of the Water Tribe",
+              "description": "Aang feels neglected as Katara and Sokka reunite with Bato, an old friend of their father’s from the South Pole. They begin to reminisce on their times in the past while they wait for a message to arrive from their father. Aang believes Katara and Sokka will abandon him and go out to find their father should the message arrive. However, when the messenger gives Aang the message to give to Bato, Aang betrays his friends in a way Katara or Sokka could never imagine. However, when Zuko recruits a bounty hunter named June to track Aang down, his friendship is put to the test as he must deal with the fact that he betrayed his friends while defending himself from yet another fight.",
+              "airDate": "2005-10-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 15
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E15_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E15_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 16,
+              "title": "The Deserter",
+              "description": "Team Avatar learns of a firebending master who deserted the Fire Lord’s army. This may be Aang’s only chance to learn firebending, but the deserter warns that the young Avatar is not yet ready for the control a firebender needs.",
+              "airDate": "2005-10-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 16
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E16_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E16_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 17,
+              "title": "The Northern Air Temple",
+              "description": "Arriving at the Northern Air Temple, Aang is upset to discover the sacred place being desecrated by a brilliant inventor intent on renovating it into a home for his displaced family.",
+              "airDate": "2005-11-04",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 17
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E17_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E17_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 18,
+              "title": "The Waterbending Master",
+              "description": "When Aang tries to find the north pole, he is found by the north pole instead. As they are taken there, Aang and Katara are eager to find a waterbending master, only to discover that girls are not allowed to learn waterbending.",
+              "airDate": "2005-11-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 18
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E18_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E18_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 19,
+              "title": "The Siege of the North (1)",
+              "description": "Zhao begins to launch his attack against the Northern Water Tribe. As the walls of the prestiged city begin to fall, the Avatar taps into the spirit world and seeks the help of one of the oldest spirits, in hopes of saving one of the most prominent areas of the world.",
+              "airDate": "2005-12-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 19
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E19_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E19_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 20,
+              "title": "The Siege of the North (2)",
+              "description": "Aang returns from the spirit world to a big surprise. Meanwhile, Zhao and his forces continue to press deeper into the Northern Water Tribe. Iroh makes a powerful stand and Zuko struggles to keep his plan intact.",
+              "airDate": "2005-12-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 1,
+                "episode": 20
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season1/S1E20_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E20_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Avatar State",
+              "description": "Plagued with nightmares featuring the devastating power of his Avatar State, Aang and the gang meet an Earth Kingdom general who has big plans for defeating the Fire Nation. Meanwhile, Zuko and Iroh, having survived the failed attack on the North Water Tribe, have a surprise visit from Zuko's sister with seemingly good news.",
+              "airDate": "2006-03-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E01_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Cave of Two Lovers",
+              "description": "On their way to Omashu, Aang, Katara, and Sokka meet a group of nomads who show them a shortcut through the \"Cave of Two Lovers\". But when the group becomes trapped in the cave, it's up to Aang and Katara to save the group by trusting in love, possibly questioning their relationship. Meanwhile, Iroh gets a lethal rash so Zuko and Iroh head to a small Earth Kingdom town for help, hoping their real identities will not be discovered.",
+              "airDate": "2006-03-24",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E02_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Return to Omashu",
+              "description": "Despite the shocking news the gang have just discovered, Aang insists on trying to find Bumi within Omashu's borders, even with the dangers that will await him and his friends if his real identity is discovered.  Meanwhile Azula goes in search of old friends to help her with her mission.",
+              "airDate": "2006-04-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E03_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "The Swamp",
+              "description": "A mysterious tornado pulls the kids into a supernatural swamp where Katara, Sokka and Aang have mysterious visions. Meanwhile, Momo and Appa are chased by rogue swamp dwellers and only Aang and the gang can save them.",
+              "airDate": "2006-04-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E04_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Avatar Day",
+              "description": "Aang and the gang discover an Earth town that celebrates something called \"Avatar Day.\" But when they get there and learn the festival is of \"anti-Avatar\" sentiment and Aang is put on trial for a crime a past incarnation allegedly committed. Looking to clear the Avatar's good name, Katara and Sokka venture back to a familiar  place to gather evidence and discover the truth.",
+              "airDate": "2006-04-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E05_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Blind Bandit",
+              "description": "In search for an earthbending teacher for Aang, the kids go to an underground earthbending tournament called Earth Rumble 6, where they encounter Toph, a blind but powerful earthbending girl. After seeing her unique style of earthbending, Aang wants Toph to become his teacher, but there are complications with Toph's family.",
+              "airDate": "2006-05-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E06_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Zuko Alone",
+              "description": "Zuko travels by himself to an Earth Kingdom town where he meets a local boy. The two almost become friends, while Zuko suffers from flashbacks of his past.",
+              "airDate": "2006-05-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E07_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The Chase",
+              "description": "Tired from trying to escape a machine that shows up every time they try to sleep, Aang and the gang have to escape Azula and her team, but their exhaustion leads to a tight situation. Meanwhile, Zuko must deal with something personal, and Iroh bonds with an unlikely individual.",
+              "airDate": "2006-05-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E08_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Bitter Work",
+              "description": "Toph's instructing abilities come into question when Aang cannot seem to overcome a block that keeps him from earthbending. Sokka gets himself in a jam, while befriending what was, moments before, his next meal, and Iroh and Zuko begin training utilizing new philosophies and methods that originate from the other elements.",
+              "airDate": "2006-06-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E09_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Library",
+              "description": "When Aang and his friends find a professor who knows of a library that contains information about the world, Sokka decides to go there to hopefully find some information to use against the Fire Nation. The library is guarded by the knowledge spirit, Wan Shi Tong, who unfortunately doesn't welcome humans into his library, because he believes they only seek information for evil purposes.",
+              "airDate": "2006-07-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 10
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E10_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E10_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 11,
+              "title": "The Desert",
+              "description": "Aang searches for Appa while Katara struggles to keep everyone together to survive in the vast desert. Meanwhile, Iroh and Zuko seek help from an ancient secret society.",
+              "airDate": "2006-07-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 11
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E11_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E11_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 12,
+              "title": "The Serpent's Pass",
+              "description": "When Aang and the gang meet up with a group of refugees, they tell the gang where they can get on a ferry to Ba Sing Se. But after a series of events they have to take a deadly route called the serpent's pass with the help of an old friend, Suki. Meanwhile, Zuko and Iroh meet up with a boy named Jet and his freedom fighters.",
+              "airDate": "2006-09-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 12
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E12_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E12_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 13,
+              "title": "The Drill",
+              "description": "Having made it to the outer wall of Ba Sing Se, the kids confront a Fire Nation army that is driving a massive Fire Nation drill, which poses an imminent threat to the last Earth Kingdom stronghold. Meanwhile, Zuko and Iroh make crucial mistakes which begin to attract Jet's suspicions.",
+              "airDate": "2006-09-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 13
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E13_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E13_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 14,
+              "title": "City of Walls and Secrets",
+              "description": "Having finally made it into Ba Sing Se, the kids are given a house in the upper ring. The kids are anxious to tell the Earth King their plan but there are complications. Meanwhile, still convinced that Iroh and Zuko may be Fire Nation, Jet decides to take matters into his own hands and do whatever it takes to get the refugees to reveal their true nature.",
+              "airDate": "2006-09-22",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 14
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E14_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E14_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 15,
+              "title": "The Tales of Ba Sing Se",
+              "description": "A series of short stories, highlighting different characters and their individual adventures in the city. Tales of Katara and Toph, Iroh, Sokka, Aang, Zuko, and Momo.",
+              "airDate": "2006-09-29",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 15
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E15_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E15_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 16,
+              "title": "Appa's Lost Days",
+              "description": "Appa's journey from being abducted in the desert to the present is explored.",
+              "airDate": "2006-10-13",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 16
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E16_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E16_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 17,
+              "title": "Lake Laogai",
+              "description": "Aang and his friends continue to search for Appa and, unbeknownst to them, they aren't the only ones looking for him. During their search, the kids meet up with Jet, whom they are understandably reluctant to trust. The kids soon realize that the Dai Li are doing their best to thwart the kids' efforts to find Appa. Meanwhile, Iroh is offered his own tea shop in the upper ring, and Zuko discovers the avatar is in the city.",
+              "airDate": "2006-11-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 17
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E17_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E17_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 18,
+              "title": "The Earth King",
+              "description": "The kids battle Long Feng and the Dai Li when they attempt to show the Earth King the vast conspiracy taking place in his city. Zuko becomes seriously ill and has feverish dreams as he faces a spiritual crisis.",
+              "airDate": "2006-11-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 18
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E18_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E18_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 19,
+              "title": "The Guru",
+              "description": "Aang travels to the Eastern Air temple to receive guidance from Guru Pathik while Sokka is reunited with his long-lost father. Meanwhile, Azula has something diabolical in store for her enemies in the Earth Kingdom, including Zuko and Iroh.",
+              "airDate": "2006-12-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 19
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E19_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E19_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 20,
+              "title": "The Crossroads of Destiny",
+              "description": "Everyone races against time to stop Azula's sinister plan. Zuko finds companionship in an unlikely source. Aang's destiny hangs in the balance—and so does Zuko's, as Iroh tells him it's time to make a choice.",
+              "airDate": "2006-12-01",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 2,
+                "episode": 20
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season2/S2E20_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E20_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "The Awakening",
+              "description": "After sustaining serious injuries at the end of season two, Aang awakens to find himself aboard a Fire Nation ship. Meanwhile, Zuko journeys home.",
+              "airDate": "2007-09-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E01_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "The Headband",
+              "description": "To better camouflage themselves as real Fire Nation citizens, the kids check out a Fire Nation school. Avatar dance special. Also, Zuko confronts Uncle.",
+              "airDate": "2007-09-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E02_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "The Painted Lady",
+              "description": "When the gang arrives at a suffering fishing village, a mysterious spirit appears to help the villagers.",
+              "airDate": "2007-10-05",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E03_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Sokka's Master",
+              "description": "When Sokka feels he's not contributing enough to the group, he seeks out a mysterious master to teach him the ways of the sword.",
+              "airDate": "2007-10-12",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E04_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "The Beach",
+              "description": "Zuko, Azula, Mai, and Ty Lee go on vacation at Lo and Li's beach house, where they learn a lot about themselves and each other. Meanwhile, the kids face a new enemy.",
+              "airDate": "2007-10-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E05_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "The Avatar and the Firelord",
+              "description": "The Avatar and The Firelord\n\nThe world's power was split between the Earth, Fire, Water and Air nations. Only Aang could save it.",
+              "airDate": "2007-10-26",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E06_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "The Runaway",
+              "description": "When Toph discovers a quick way to make cash, Katara disapproves, and the rift between them has disastrous consequences.",
+              "airDate": "2007-11-02",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E07_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "The Puppetmaster",
+              "description": "The kids investigate mysterious disappearances in a spooky town. Katara makes a special connection.",
+              "airDate": "2007-11-09",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E08_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Nightmares and Daydreams",
+              "description": "Nightmares and Daydreams\n\nOn the eve of the eclipse, Aang's anxiety gets the better of him. His dreams become nightmares, and soon he can no longer tell dream from reality.",
+              "airDate": "2007-11-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E09_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "The Day of Black Sun: The Invasion (1)",
+              "description": "The day of the eclipse has arrived, and the invasion force gathers together to make last preparations. They infiltrate the island and the battle begins. Meanwhile, Aang searches for the Fire Lord.",
+              "airDate": "2007-11-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 10
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E10_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E10_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 11,
+              "title": "The Day of Black Sun: The Eclipse (2)",
+              "description": "As the invasion force fights their way to the Fire Nation capital, the kids help Aang find the Fire Lord in time for the eclipse. Zuko confronts his father with shocking news.",
+              "airDate": "2007-11-30",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 11
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E11_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E11_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 12,
+              "title": "The Western Air Temple",
+              "description": "Aang and the group arrive at the Western Air Temple, with Zuko in pursuit. Zuko wishes to help the Avatar end the war by teaching him firebending.",
+              "airDate": "2008-07-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 12
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E12_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E12_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 13,
+              "title": "The Firebending Masters",
+              "description": "While teaching Aang firebending, Zuko realizes that he has lost all his firebending skills. To regain his powers, Zuko and Aang must seek the original source of firebending within the ruins of a lost civilization.",
+              "airDate": "2008-07-15",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 13
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E13_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E13_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 14,
+              "title": "The Boiling Rock (1)",
+              "description": "Sokka wants to break his father out of jail and asks Zuko for information on Fire Nation prisons. Sokka and Zuko head for the Boiling Rock, a prison located in the middle of a volcano, to rescue Sokka's father.",
+              "airDate": "2008-07-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 14
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E14_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E14_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 15,
+              "title": "The Boiling Rock (2)",
+              "description": "Zuko and Sokka make new plans to break out of the prison with Suki, Sokka's father and some others while a shocking twist leaves Azula none too happy with her two closest friends.",
+              "airDate": "2008-07-16",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 15
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E15_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E15_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 16,
+              "title": "The Southern Raiders",
+              "description": "Katara decides to confront the Fire Nation soldier responsible for her mother's death. Aang tries to talk her out of it, but she doesn't listen.",
+              "airDate": "2008-07-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 16
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E16_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E16_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 17,
+              "title": "The Ember Island Players",
+              "description": "A play recounting the gang's adventures does not sit well with Aang and his friends, except for Toph who enjoys it very much. Meanwhile, Aang confesses his love to Katara, but the response is ambiguous.",
+              "airDate": "2008-07-18",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 17
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E17_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E17_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 18,
+              "title": "Sozin's Comet: The Phoenix King (1)",
+              "description": "Aang struggles to decide whether or not he has to kill the Fire Lord and, during the night, is drawn toward an island which disappears before morning. Zuko leads the rest of the group to the Earth Kingdom to meet a tracker whom they hope can find Aang. The Fire Lord crowns himself Phoenix King and Aang awakens on the island not knowing where he is.",
+              "airDate": "2008-07-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 18
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E18_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E18_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 19,
+              "title": "Sozin's Comet: The Old Masters (2)",
+              "description": "While on the island, Aang seeks guidance from his past lives, but is not pleased with what he is told. The island, in fact, turns out to be a lion turtle from which Aang is given the guidance he had been seeking. Meanwhile, after the tracker is unable to track Aang, the rest of the group decide they must find Iroh. While tracking him down, the group meets up with The Order of the White Lotus, a group that transcends the division of the four nations.",
+              "airDate": "2008-07-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 19
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E19_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E19_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 20,
+              "title": "Sozin's Comet: Into the Inferno (3)",
+              "description": "Sokka, Suki, and Toph try to stop the Fire Nation's air fleet. Meanwhile, Zuko and Azula duel in an Agni Kai and Aang confronts the Fire Lord.",
+              "airDate": "2008-07-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 20
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E20_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E20_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 21,
+              "title": "Sozin's Comet: Avatar Aang (4)",
+              "description": "Aang is on the offensive after getting hit in the back of his scar and triggering the Avatar State. Meanwhile, after Zuko seems to have the upper hand against Azula, Katara is forced to join the fight when Azula resorts to desperate measures.",
+              "airDate": "2008-07-19",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "avatar",
+                "season": 3,
+                "episode": 21
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/avatar/season3/S3E21_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E21_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }

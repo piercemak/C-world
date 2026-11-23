@@ -879,5 +879,16 @@ export const SHOWS = [
     "keyart": "/images/theodyssey/covers/theodyssey_mobileLogo.jpg",
     "card": "/images/cardimages/theodysseyLogo.svg",
     "dateadded": "11-17-26"
+  },
+  {
+    "id": "avatar",
+    "title": "Avatar: The Last Airbender",
+    "creator": "Michael Dante DiMartino",
+    "background": "/images/avatar/covers/avatar_backdrop.svg",
+    "ratings": "9.3",
+    "type": "TV",
+    "keyart": "/images/avatar/covers/avatar_mobileLogo.webp",
+    "card": "/images/cardimages/avatarLogo.svg",
+    "dateadded": "11-23-26"
   }
 ];

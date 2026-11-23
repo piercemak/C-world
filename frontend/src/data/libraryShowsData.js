@@ -850,6 +850,18 @@ const metadata = {
     "description": "After the Trojan War, Odysseus faces a dangerous voyage back to Ithaca, meeting creatures like the Cyclops Polyphemus, Sirens, and Calypso along the way.",
     "background": "/images/theodyssey/covers/theodysseyCover.svg",
     "subtitles": "yes"
+  },
+  "avatar": {
+    "type": "show",
+    "title": "Avatar: The Last Airbender",
+    "agerating": "7+",
+    "release_year": "2005",
+    "genre": "Animation",
+    "season_total_number": "3 seasons",
+    "season_digit": 3,
+    "description": "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar, and bring peace to the world.",
+    "background": "/images/avatar/covers/avatarCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

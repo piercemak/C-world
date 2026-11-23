@@ -2110,8 +2110,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 54.11767647048782
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/avatarLogo.svg",
+      "titles": [
+        "Avatar: The Last Airbender"
+      ],
+      "sourceBytes": 9951468,
+      "outputBytes": 373648,
+      "thumbnailBytes": 60114,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.26898732716417
+    },
+    {
+      "url": "https://cearaworld.com/images/avatar/covers/avatar_backdrop.svg",
+      "titles": [
+        "Avatar: The Last Airbender"
+      ],
+      "sourceBytes": 757307,
+      "outputBytes": 343800,
+      "thumbnailBytes": 13077,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 54.76931124594277
     }
   ],
-  "sourceBytes": 865556531,
-  "outputBytes": 109391502
+  "sourceBytes": 876265306,
+  "outputBytes": 110182141
 }

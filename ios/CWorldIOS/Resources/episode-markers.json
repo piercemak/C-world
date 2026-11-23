@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "6bcda67416ab6bf89d836783d573b495aa6aff205c92fcd4bf30b729e3dce6ad",
+  "sourceSHA256": "bf4deb92fe9558f29447f0ef46fe6e5333f4d717b9487fa6042e3fb3d2885d2b",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -10057,6 +10057,311 @@
       "introStart": 0,
       "introEnd": 89,
       "outroStart": 1447.56
+    },
+    "avatar:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:19": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:1:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:19": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:2:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:14": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:15": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:16": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:17": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:18": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:19": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:20": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "avatar:3:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
     }
   }
 }

@@ -1,6 +1,16 @@
 // Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const newMedia = [
   {
+    "kind": "episode",
+    "showSlug": "avatar",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "The Boy in the Iceberg",
+    "placeholder": "https://d20honz3pkzrs8.cloudfront.net/avatar/placeholders/season1/S1E1_avatar_placeholder.png",
+    "to": "/video-library/avatar?season=1&episode=1",
+    "showTitle": "Avatar: The Last Airbender"
+  },
+  {
     "kind": "movie",
     "showSlug": "theodyssey",
     "placeholder": "/images/theodyssey/placeholders/theodyssey_placeholder.png",
