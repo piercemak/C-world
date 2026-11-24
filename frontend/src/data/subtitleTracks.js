@@ -64,7 +64,8 @@ const SERIES_SUBTITLE_PATTERNS = {
   "bleach": "/subtitles/bleach/season{season}/S{season}E{episode2}_subtitles.vtt",
   "vinland": "/subtitles/vinland/season{season}/S{season}E{episode2}_subtitles.vtt",
   "avatar": "/subtitles/avatar/season{season}/S{season}E{episode2}_subtitles.vtt",
-  "mononoke": "/subtitles/mononoke/season{season}/S{season}E{episode2}_subtitles.vtt"
+  "mononoke": "/subtitles/mononoke/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "finalspace": "/subtitles/finalspace/season{season}/S{season}E{episode2}_subtitles.vtt"
 };
 const SUBTITLE_DEFAULTS = {
   "steven-universe": false,
@@ -162,7 +163,8 @@ const SUBTITLE_DEFAULTS = {
   "listers": false,
   "theodyssey": false,
   "avatar": false,
-  "mononoke": true
+  "mononoke": true,
+  "finalspace": false
 };
 export const getSubtitleDefaultEnabled = showId => SUBTITLE_DEFAULTS[showId] === true;
 

@@ -327,6 +327,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "Mononoke",
     "cardId": "card-82"
+  },
+  {
+    "title": "Final Space",
+    "cardId": "card-83"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -411,5 +415,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-79": "listers",
   "card-80": "theodyssey",
   "card-81": "avatar",
-  "card-82": "mononoke"
+  "card-82": "mononoke",
+  "card-83": "finalspace"
 };

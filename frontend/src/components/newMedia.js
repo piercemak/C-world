@@ -2,6 +2,16 @@
 export const newMedia = [
   {
     "kind": "episode",
+    "showSlug": "finalspace",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "Chapter One",
+    "placeholder": "https://d20honz3pkzrs8.cloudfront.net/finalspace/placeholders/season1/S1E1_finalspace_placeholder.png",
+    "to": "/video-library/finalspace?season=1&episode=1",
+    "showTitle": "Final Space"
+  },
+  {
+    "kind": "episode",
     "showSlug": "mononoke",
     "season": 1,
     "episode": 1,

@@ -81,9 +81,15 @@
     "listers",
     "theodyssey",
     "avatar",
-    "mononoke"
+    "mononoke",
+    "finalspace"
   ],
   "newMedia": [
+    {
+      "id": "finalspace",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "mononoke",
       "season": 1,

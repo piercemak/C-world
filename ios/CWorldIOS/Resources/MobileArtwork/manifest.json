@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-11-24T18:52:42.525Z",
+  "catalogRevision": "2026-11-24T19:19:04.950Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1313,6 +1313,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "0973dd6b956e56e61810a3395b2d41604025a763cadbfeff0ac4a3eb1f6ad44d"
+    },
+    "https://cearaworld.com/images/cardimages/finalspaceLogo.svg": {
+      "image": "9be647ba73c9-184731e58bbe.jpg",
+      "thumbnail": "9be647ba73c9-184731e58bbe-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "184731e58bbee263af0e91625209a8537eac6dffb20f3f33de4558a898c55bfe"
+    },
+    "https://cearaworld.com/images/finalspace/covers/finalspace_backdrop.svg": {
+      "image": "b894ec5afad6-a3edce4a62b3.jpg",
+      "thumbnail": "b894ec5afad6-a3edce4a62b3-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "a3edce4a62b324eab6c824f00b7b5734d4c754464a7f5b85bb11c751dc7f77e9"
     }
   }
 }

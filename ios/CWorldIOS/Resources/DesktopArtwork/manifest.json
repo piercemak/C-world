@@ -738,6 +738,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2007 • Animation • 1 season"
+    },
+    "finalspace": {
+      "image": "finalspace-c1718d4226ca.jpg",
+      "thumbnail": "finalspace-c1718d4226ca-thumb.jpg",
+      "source": "/images/finalspace/covers/finalspaceCover.svg",
+      "sourceSHA256": "c1718d4226cac2ae0ec0c7997cdde1cc6a33abdddefce66b2de91c616a8c3349",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2018 • Animation • 3 seasons"
     }
   }
 }

@@ -901,5 +901,16 @@ export const SHOWS = [
     "keyart": "/images/mononoke/covers/mononoke_mobileLogo.webp",
     "card": "/images/cardimages/mononokeLogo.svg",
     "dateadded": "11-24-26"
+  },
+  {
+    "id": "finalspace",
+    "title": "Final Space",
+    "creator": "Olan Rogers",
+    "background": "/images/finalspace/covers/finalspace_backdrop.svg",
+    "ratings": "8.2",
+    "type": "TV",
+    "keyart": "/images/finalspace/covers/finalspace_mobileLogo.jpg",
+    "card": "/images/cardimages/finalspaceLogo.svg",
+    "dateadded": "11-24-26"
   }
 ];

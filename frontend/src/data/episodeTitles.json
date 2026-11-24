@@ -2406,5 +2406,49 @@
       "Bakeneko_Second_Act",
       "Bakeneko_Finale"
     ]
+  },
+  "finalspace": {
+    "1": [
+      "Chapter_One",
+      "Chapter_Two",
+      "Chapter_Three",
+      "Chapter_Four",
+      "Chapter_Five",
+      "Chapter_Six",
+      "Chapter_Seven",
+      "Chapter_Eight",
+      "Chapter_Nine",
+      "Chapter_Ten"
+    ],
+    "2": [
+      "The_Toro_Regatta",
+      "The_Happy_Place",
+      "The_Grand_Surrender",
+      "The_Other_Side",
+      "The_Notorious_Mrs_Goodspeed",
+      "Arachnitects",
+      "The_First_Times_They_Met",
+      "The_Remembered",
+      "The_Closer_You_Get",
+      "The_Lost_Spy",
+      "The_Set_Up",
+      "The_Descent_Into_Darkness",
+      "The_Sixth_Key"
+    ],
+    "3": [
+      "And_Into_The_Fire",
+      "The_Hidden_Light",
+      "The_Ventrexian",
+      "One_of_Us",
+      "All_the_Moments_Lost",
+      "Change_is_Gonna_Come",
+      "The_Chamber_of_Doubt",
+      "Forgiveness",
+      "Hyper_Transdimensional_Bridge_Rising",
+      "Until_the_Sky_Falls",
+      "The_Dead_Speak",
+      "The_Leaving",
+      "The_Devils_Den"
+    ]
   }
 }

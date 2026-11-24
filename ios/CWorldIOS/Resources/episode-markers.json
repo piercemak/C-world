@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "732ac50920b5c253adffcce7e31e1be683d3571a324c02a1b6a6df0a3efeb029",
+  "sourceSHA256": "32dd2a2bc9f3afa1c0e08bda1548ef8f49ba723f91396de56fd5a52bb4cf581f",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -10419,6 +10419,186 @@
       "outroStart": null
     },
     "mononoke:1:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:2:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:12": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "finalspace:3:13": {
       "introStart": null,
       "introEnd": null,
       "outroStart": null

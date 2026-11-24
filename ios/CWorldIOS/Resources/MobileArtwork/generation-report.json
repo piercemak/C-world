@@ -2162,8 +2162,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 45.64474286775532
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/finalspaceLogo.svg",
+      "titles": [
+        "Final Space"
+      ],
+      "sourceBytes": 2785313,
+      "outputBytes": 363719,
+      "thumbnailBytes": 56040,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 42.08282859346414
+    },
+    {
+      "url": "https://cearaworld.com/images/finalspace/covers/finalspace_backdrop.svg",
+      "titles": [
+        "Final Space"
+      ],
+      "sourceBytes": 28497161,
+      "outputBytes": 1454234,
+      "thumbnailBytes": 43081,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 44.8538731110272
     }
   ],
-  "sourceBytes": 878375592,
-  "outputBytes": 112942311
+  "sourceBytes": 909658066,
+  "outputBytes": 114859385
 }

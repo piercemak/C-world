@@ -409,5 +409,10 @@ export const CAROUSEL_COVERS = [
     "id": "mononoke",
     "src": "/images/mononoke/covers/mononokeCover.svg",
     "title": "Mononoke"
+  },
+  {
+    "id": "finalspace",
+    "src": "/images/finalspace/covers/finalspaceCover.svg",
+    "title": "Final Space"
   }
 ];

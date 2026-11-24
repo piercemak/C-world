@@ -874,6 +874,18 @@ const metadata = {
     "description": "The Medicine Seller is a deadly and mysterious master of the occult who travels across feudal Japan in search of malevolent spirits called mononoke to slay. When he locates one of these spirits, he cannot simply kill it; he must first learn its Form, its Truth, and its Reason in order to wield the mighty Exorcism Sword and fight against it. He must begin his strange exorcisms with intense psychological analysis and careful investigative work—an extremely dangerous step, as he must first confront and learn about the mononoke before he even has the means to defeat it.",
     "background": "/images/mononoke/covers/mononokeCover.svg",
     "subtitles": "yes"
+  },
+  "finalspace": {
+    "type": "show",
+    "title": "Final Space",
+    "agerating": "13+",
+    "release_year": "2018",
+    "genre": "Animation",
+    "season_total_number": "3 seasons",
+    "season_digit": 3,
+    "description": "An astronaut named Gary and his planet-destroying sidekick Mooncake embark on serialized journeys through space in order to unlock the mystery of “Final Space,” the last point in the universe, if it actually does exist.",
+    "background": "/images/finalspace/covers/finalspaceCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(
