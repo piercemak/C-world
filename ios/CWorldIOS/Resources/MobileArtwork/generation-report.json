@@ -1074,7 +1074,7 @@
     {
       "url": "https://cearaworld.com/images/cardimages/pokemon2000Logo.svg",
       "titles": [
-        "Pokémon 2000"
+        "Pok\u00e9mon 2000"
       ],
       "sourceBytes": 5473135,
       "outputBytes": 604019,
@@ -1087,7 +1087,7 @@
     {
       "url": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg",
       "titles": [
-        "Pokémon 2000"
+        "Pok\u00e9mon 2000"
       ],
       "sourceBytes": 40090101,
       "outputBytes": 781344,
@@ -1360,7 +1360,7 @@
     {
       "url": "https://cearaworld.com/images/cardimages/pokemondestinydeoxysLogo.svg",
       "titles": [
-        "Pokémon: Destiny Deoxys"
+        "Pok\u00e9mon: Destiny Deoxys"
       ],
       "sourceBytes": 8063042,
       "outputBytes": 296440,
@@ -1373,7 +1373,7 @@
     {
       "url": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg",
       "titles": [
-        "Pokémon: Destiny Deoxys"
+        "Pok\u00e9mon: Destiny Deoxys"
       ],
       "sourceBytes": 1388174,
       "outputBytes": 826819,
@@ -2116,13 +2116,13 @@
       "titles": [
         "Avatar: The Last Airbender"
       ],
-      "sourceBytes": 9951468,
-      "outputBytes": 373648,
-      "thumbnailBytes": 60114,
+      "sourceBytes": 3167774,
+      "outputBytes": 345476,
+      "thumbnailBytes": 59766,
       "width": 1024,
       "height": 1024,
       "format": "jpg",
-      "psnr": 42.26898732716417
+      "psnr": 43.79370459144713
     },
     {
       "url": "https://cearaworld.com/images/avatar/covers/avatar_backdrop.svg",
@@ -2138,6 +2138,6 @@
       "psnr": 54.76931124594277
     }
   ],
-  "sourceBytes": 876265306,
-  "outputBytes": 110182141
+  "sourceBytes": 869481612,
+  "outputBytes": 110153621
 }
