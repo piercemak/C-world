@@ -2116,13 +2116,13 @@
       "titles": [
         "Avatar: The Last Airbender"
       ],
-      "sourceBytes": 3167774,
-      "outputBytes": 345476,
-      "thumbnailBytes": 59766,
+      "sourceBytes": 3167620,
+      "outputBytes": 343699,
+      "thumbnailBytes": 59358,
       "width": 1024,
       "height": 1024,
       "format": "jpg",
-      "psnr": 43.79370459144713
+      "psnr": 43.69718490007231
     },
     {
       "url": "https://cearaworld.com/images/avatar/covers/avatar_backdrop.svg",
@@ -2138,6 +2138,6 @@
       "psnr": 54.76931124594277
     }
   ],
-  "sourceBytes": 869481612,
-  "outputBytes": 110153621
+  "sourceBytes": 869481458,
+  "outputBytes": 110151436
 }
