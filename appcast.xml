@@ -4,10 +4,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>SeedSpace</title>
         <item>
-            <title>1.0.43</title>
-            <pubDate>Tue, 24 Nov 2026 19:28:33 +0000</pubDate>
-            <sparkle:version>42</sparkle:version>
-            <sparkle:shortVersionString>1.0.43</sparkle:shortVersionString>
+            <title>1.0.44</title>
+            <pubDate>Tue, 24 Nov 2026 21:02:53 +0000</pubDate>
+            <sparkle:version>43</sparkle:version>
+            <sparkle:shortVersionString>1.0.44</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="plain-text"><![CDATA[CWorld 1.0.2
 
@@ -17,10 +17,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 Updates continue to ask before installing.
 ]]></description>
-            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.43-42/SeedSpace-1.0.43-42.dmg" length="179117023" type="application/octet-stream" sparkle:edSignature="oo0eK2HGkSqQ2eh47lLdEZ/d71Dnyhx5zwqrSfv9fCr4+3VIj4jOSIV9qHct503JGLa7Ebqll+U3mkXe3LUnAg=="></enclosure>
+            <enclosure url="https://github.com/piercemak/C-world/releases/download/mac-catalyst-1.0.44-43/SeedSpace-1.0.44-43.dmg" length="178918312" type="application/octet-stream" sparkle:edSignature="lYAbByg9vk16fFnR0BLp5zpCOd4D0nZvwVfgWQksfxEqgO9kNwn+vowzRqfajQq4giZOW/HoQ0fEhJ5L6nC2Ag=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: qt4YOp2lmVT63569vvv9oWQNtKQTRoVuuJEZjiOQYXIxsRZkaVIbHslZDt4sRxKxL0Md4S2CbiDjFYy/HFbNBQ==
+edSignature: ymPXb0TowxL5a1wfrYxZ24i01QxdeaK1TODESwgumbSrl+kn4mdVD2BDzDu3jkeEe9LI94Sx6XeM1fueGmLxAg==
 length: 1409
 -->
