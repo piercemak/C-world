@@ -2,6 +2,16 @@
 export const newMedia = [
   {
     "kind": "episode",
+    "showSlug": "mononoke",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "Zaraki Warashi, Part 1",
+    "placeholder": "https://d20honz3pkzrs8.cloudfront.net/mononoke/placeholders/season1/S1E1_mononoke_placeholder.png",
+    "to": "/video-library/mononoke?season=1&episode=1",
+    "showTitle": "Mononoke"
+  },
+  {
+    "kind": "episode",
     "showSlug": "avatar",
     "season": 1,
     "episode": 1,

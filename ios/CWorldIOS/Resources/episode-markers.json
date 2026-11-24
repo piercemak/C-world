@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "bf4deb92fe9558f29447f0ef46fe6e5333f4d717b9487fa6042e3fb3d2885d2b",
+  "sourceSHA256": "732ac50920b5c253adffcce7e31e1be683d3571a324c02a1b6a6df0a3efeb029",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -10359,6 +10359,66 @@
       "outroStart": null
     },
     "avatar:3:21": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:5": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:6": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:7": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:8": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:9": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:10": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:11": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "mononoke:1:12": {
       "introStart": null,
       "introEnd": null,
       "outroStart": null

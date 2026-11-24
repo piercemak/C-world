@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-23T21:02:33.248Z",
-  "generatedAt": "2026-11-23T21:02:33.248Z",
+  "catalogRevision": "2026-11-24T18:52:42.525Z",
+  "generatedAt": "2026-11-24T18:52:42.525Z",
   "items": [
     {
       "id": "steven-universe",
@@ -41275,6 +41275,293 @@
               ],
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E21_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mononoke",
+      "assetId": "mononoke",
+      "type": "show",
+      "title": "Mononoke",
+      "dateAdded": "11-24-26",
+      "description": "The Medicine Seller is a deadly and mysterious master of the occult who travels across feudal Japan in search of malevolent spirits called mononoke to slay. When he locates one of these spirits, he cannot simply kill it; he must first learn its Form, its Truth, and its Reason in order to wield the mighty Exorcism Sword and fight against it. He must begin his strange exorcisms with intense psychological analysis and careful investigative work—an extremely dangerous step, as he must first confront and learn about the mononoke before he even has the means to defeat it.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/mononokeLogo.svg",
+        "poster": "https://cearaworld.com/images/mononoke/covers/mononoke_mobileLogo.webp",
+        "backdrop": "https://cearaworld.com/images/mononoke/covers/mononoke_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/mononoke/covers/mononoke_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "TBD",
+        "rating": "8.1",
+        "year": "2007",
+        "genres": [
+          "Animation"
+        ],
+        "duration": "22m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": true,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Zaraki Warashi, Part 1",
+              "description": "The Medicine Seller checks into the last room of a traditional inn, just as a pregnant woman named Shino desperately asks for shelter.\n\nShe is given a secret room - a room possessed by a group of ghosts.",
+              "airDate": "2007-07-13",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E01_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Zaraki Warashi, Part 2",
+              "description": "The Medicine Seller delves into the inn's past as he attempts to understand the ghost's motivations and history, before it can interfere with Shino.",
+              "airDate": "2007-07-20",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E02_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Umibouzu, Opening Act",
+              "description": "The Medicine Seller takes a journey on a merchant's luxurious ship, but before long the craft is diverted into the Dragon's Triangle, an area of the sea infested with ghosts.",
+              "airDate": "2007-07-27",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E03_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Umibouzu, Second Act",
+              "description": "The Medicine Seller tries to find out who diverted the ship and why, as the crew is terrorised by a ghost who forces them to reveal their deepest fears.",
+              "airDate": "2007-08-03",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E04_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Umibouzu, Finale",
+              "description": "Genkei the monk explains what happened to him when he was younger as the Medicine Seller inspects the submerged craft thrown up by the seamonster.",
+              "airDate": "2007-08-10",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E05_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 6,
+              "title": "Nopperabou, Part 1",
+              "description": "Trapped in jail, a woman named Ochou confesses to the murder of her husband and his family. The Medicine Seller has reason to doubt this and visits her, coming across a creature with thousands of faces.",
+              "airDate": "2007-08-17",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 6
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E06_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E06_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 7,
+              "title": "Nopperabou, Part 2",
+              "description": "The Medicine Seller unmasks the masked creature while revealing the life of Ochou, the enslaved housewife.",
+              "airDate": "2007-08-24",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 7
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E07_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E07_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 8,
+              "title": "Nue, Part 1",
+              "description": "Four men should have turned up to the house of Lady Ruri in a bid to win her hand in marriage. However, one of them has disappeared, so the Medicine Seller takes his place in the traditional incense competition taking place.",
+              "airDate": "2007-08-31",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 8
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E08_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E08_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 9,
+              "title": "Nue, Part 2",
+              "description": "The Medicine Seller takes over the responsibility of refereeing the incense competition while prying into the real reason these three men have gathered here - the Toudaiji.",
+              "airDate": "2007-09-07",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 9
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E09_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E09_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 10,
+              "title": "Bakeneko, Opening Act",
+              "description": "Skipping ahead a few centuries, the Medicine Seller boards a train filled with seemingly unrelated people, and before long find themselves trapped in limbo.",
+              "airDate": "2007-09-14",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 10
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E10_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E10_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 11,
+              "title": "Bakeneko, Second Act",
+              "description": "Unable to leave the train under threat of death, the passengers reveal what they know about an event that affected them all.",
+              "airDate": "2007-09-21",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 11
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E11_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E11_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 12,
+              "title": "Bakeneko, Finale",
+              "description": "The Medicine Seller unravels the mystery and finds the truth behind the passenger's stories.",
+              "airDate": "2007-09-28",
+              "duration": "22m",
+              "playbackRef": {
+                "mediaId": "mononoke",
+                "season": 1,
+                "episode": 12
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/mononoke/season1/S1E12_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/mononoke/season1/S1E12_subtitles.srt"
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,

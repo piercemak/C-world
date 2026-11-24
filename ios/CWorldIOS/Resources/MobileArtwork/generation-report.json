@@ -1074,7 +1074,7 @@
     {
       "url": "https://cearaworld.com/images/cardimages/pokemon2000Logo.svg",
       "titles": [
-        "Pok\u00e9mon 2000"
+        "Pokémon 2000"
       ],
       "sourceBytes": 5473135,
       "outputBytes": 604019,
@@ -1087,7 +1087,7 @@
     {
       "url": "https://cearaworld.com/images/pokemon2000/covers/pokemon2000_backdrop.svg",
       "titles": [
-        "Pok\u00e9mon 2000"
+        "Pokémon 2000"
       ],
       "sourceBytes": 40090101,
       "outputBytes": 781344,
@@ -1360,7 +1360,7 @@
     {
       "url": "https://cearaworld.com/images/cardimages/pokemondestinydeoxysLogo.svg",
       "titles": [
-        "Pok\u00e9mon: Destiny Deoxys"
+        "Pokémon: Destiny Deoxys"
       ],
       "sourceBytes": 8063042,
       "outputBytes": 296440,
@@ -1373,7 +1373,7 @@
     {
       "url": "https://cearaworld.com/images/pokemondestinydeoxys/covers/pokemondestinydeoxys_backdrop.svg",
       "titles": [
-        "Pok\u00e9mon: Destiny Deoxys"
+        "Pokémon: Destiny Deoxys"
       ],
       "sourceBytes": 1388174,
       "outputBytes": 826819,
@@ -2136,8 +2136,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 54.76931124594277
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/mononokeLogo.svg",
+      "titles": [
+        "Mononoke"
+      ],
+      "sourceBytes": 4534034,
+      "outputBytes": 842041,
+      "thumbnailBytes": 112930,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 37.35409324861963
+    },
+    {
+      "url": "https://cearaworld.com/images/mononoke/covers/mononoke_backdrop.svg",
+      "titles": [
+        "Mononoke"
+      ],
+      "sourceBytes": 4360100,
+      "outputBytes": 1783109,
+      "thumbnailBytes": 52795,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 45.64474286775532
     }
   ],
-  "sourceBytes": 869481458,
-  "outputBytes": 110151436
+  "sourceBytes": 878375592,
+  "outputBytes": 112942311
 }

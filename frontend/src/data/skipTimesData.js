@@ -80,7 +80,8 @@ export const mediaAssetIds = {
   "lookback": "lookback",
   "listers": "listers",
   "theodyssey": "theodyssey",
-  "avatar": "avatar"
+  "avatar": "avatar",
+  "mononoke": "mononoke"
 };
 export const skipTimes = {
   "stevenuniverse": {
@@ -14874,6 +14875,132 @@ export const skipTimes = {
         }
       }
     }
+  },
+  "mononoke": {
+    "seasons": {
+      "1": {
+        "1": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "2": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "3": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "4": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "5": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "6": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "7": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "8": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "9": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "10": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "11": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "12": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        }
+      }
+    }
   }
 };
 export const seasonLength = {
@@ -15062,5 +15189,8 @@ export const seasonLength = {
     "1": 20,
     "2": 20,
     "3": 21
+  },
+  "mononoke": {
+    "1": 12
   }
 };

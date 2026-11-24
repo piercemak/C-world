@@ -80,9 +80,15 @@
     "lookback",
     "listers",
     "theodyssey",
-    "avatar"
+    "avatar",
+    "mononoke"
   ],
   "newMedia": [
+    {
+      "id": "mononoke",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "avatar",
       "season": 1,

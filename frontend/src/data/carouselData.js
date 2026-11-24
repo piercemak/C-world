@@ -404,5 +404,10 @@ export const CAROUSEL_COVERS = [
     "id": "avatar",
     "src": "/images/avatar/covers/avatarCover.svg",
     "title": "Avatar: The Last Airbender"
+  },
+  {
+    "id": "mononoke",
+    "src": "/images/mononoke/covers/mononokeCover.svg",
+    "title": "Mononoke"
   }
 ];

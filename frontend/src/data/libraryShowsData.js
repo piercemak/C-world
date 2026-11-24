@@ -862,6 +862,18 @@ const metadata = {
     "description": "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar, and bring peace to the world.",
     "background": "/images/avatar/covers/avatarCover.svg",
     "subtitles": "yes"
+  },
+  "mononoke": {
+    "type": "show",
+    "title": "Mononoke",
+    "agerating": "18+",
+    "release_year": "2007",
+    "genre": "Animation",
+    "season_total_number": "1 season",
+    "season_digit": 1,
+    "description": "The Medicine Seller is a deadly and mysterious master of the occult who travels across feudal Japan in search of malevolent spirits called mononoke to slay. When he locates one of these spirits, he cannot simply kill it; he must first learn its Form, its Truth, and its Reason in order to wield the mighty Exorcism Sword and fight against it. He must begin his strange exorcisms with intense psychological analysis and careful investigative work—an extremely dangerous step, as he must first confront and learn about the mononoke before he even has the means to defeat it.",
+    "background": "/images/mononoke/covers/mononokeCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

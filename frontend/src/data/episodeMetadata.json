@@ -12810,5 +12810,81 @@
         "tmdbId": 13575
       }
     ]
+  },
+  "mononoke": {
+    "1": [
+      {
+        "title": "Zaraki Warashi, Part 1",
+        "description": "The Medicine Seller checks into the last room of a traditional inn, just as a pregnant woman named Shino desperately asks for shelter.\n\nShe is given a secret room - a room possessed by a group of ghosts.",
+        "airDate": "2007-07-13",
+        "tmdbId": 549715
+      },
+      {
+        "title": "Zaraki Warashi, Part 2",
+        "description": "The Medicine Seller delves into the inn's past as he attempts to understand the ghost's motivations and history, before it can interfere with Shino.",
+        "airDate": "2007-07-20",
+        "tmdbId": 549717
+      },
+      {
+        "title": "Umibouzu, Opening Act",
+        "description": "The Medicine Seller takes a journey on a merchant's luxurious ship, but before long the craft is diverted into the Dragon's Triangle, an area of the sea infested with ghosts.",
+        "airDate": "2007-07-27",
+        "tmdbId": 549716
+      },
+      {
+        "title": "Umibouzu, Second Act",
+        "description": "The Medicine Seller tries to find out who diverted the ship and why, as the crew is terrorised by a ghost who forces them to reveal their deepest fears.",
+        "airDate": "2007-08-03",
+        "tmdbId": 549719
+      },
+      {
+        "title": "Umibouzu, Finale",
+        "description": "Genkei the monk explains what happened to him when he was younger as the Medicine Seller inspects the submerged craft thrown up by the seamonster.",
+        "airDate": "2007-08-10",
+        "tmdbId": 549718
+      },
+      {
+        "title": "Nopperabou, Part 1",
+        "description": "Trapped in jail, a woman named Ochou confesses to the murder of her husband and his family. The Medicine Seller has reason to doubt this and visits her, coming across a creature with thousands of faces.",
+        "airDate": "2007-08-17",
+        "tmdbId": 549721
+      },
+      {
+        "title": "Nopperabou, Part 2",
+        "description": "The Medicine Seller unmasks the masked creature while revealing the life of Ochou, the enslaved housewife.",
+        "airDate": "2007-08-24",
+        "tmdbId": 549720
+      },
+      {
+        "title": "Nue, Part 1",
+        "description": "Four men should have turned up to the house of Lady Ruri in a bid to win her hand in marriage. However, one of them has disappeared, so the Medicine Seller takes his place in the traditional incense competition taking place.",
+        "airDate": "2007-08-31",
+        "tmdbId": 549723
+      },
+      {
+        "title": "Nue, Part 2",
+        "description": "The Medicine Seller takes over the responsibility of refereeing the incense competition while prying into the real reason these three men have gathered here - the Toudaiji.",
+        "airDate": "2007-09-07",
+        "tmdbId": 549722
+      },
+      {
+        "title": "Bakeneko, Opening Act",
+        "description": "Skipping ahead a few centuries, the Medicine Seller boards a train filled with seemingly unrelated people, and before long find themselves trapped in limbo.",
+        "airDate": "2007-09-14",
+        "tmdbId": 549724
+      },
+      {
+        "title": "Bakeneko, Second Act",
+        "description": "Unable to leave the train under threat of death, the passengers reveal what they know about an event that affected them all.",
+        "airDate": "2007-09-21",
+        "tmdbId": 549726
+      },
+      {
+        "title": "Bakeneko, Finale",
+        "description": "The Medicine Seller unravels the mystery and finds the truth behind the passenger's stories.",
+        "airDate": "2007-09-28",
+        "tmdbId": 549725
+      }
+    ]
   }
 }

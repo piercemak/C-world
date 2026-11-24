@@ -1,0 +1,1893 @@
+1
+00:00:01,466 --> 00:00:02,467
+KATARA: Water...
+
+2
+00:00:03,760 --> 00:00:04,928
+Earth...
+
+3
+00:00:05,762 --> 00:00:06,888
+Fire...
+
+4
+00:00:07,972 --> 00:00:09,224
+Air.
+
+5
+00:00:10,099 --> 00:00:13,269
+Long ago, the four nations
+lived together in harmony.
+
+6
+00:00:14,187 --> 00:00:17,941
+Then everything changed
+when the fire nation attacked.
+
+7
+00:00:18,691 --> 00:00:22,278
+Only the Avatar, master of all
+four elements, could stop them.
+
+8
+00:00:22,695 --> 00:00:25,907
+But when the world
+needed him most, he vanished.
+
+9
+00:00:26,407 --> 00:00:28,785
+A hundred years passed and my brother
+and I discovered the new Avatar
+
+10
+00:00:29,702 --> 00:00:31,871
+an airbender named Aang.
+
+11
+00:00:31,955 --> 00:00:34,082
+And although his airbending
+skills are great
+
+12
+00:00:34,165 --> 00:00:36,459
+he has a lot to learn before
+he's ready to save anyone.
+
+13
+00:00:36,543 --> 00:00:37,544
+AANG: Oof!
+
+14
+00:00:37,794 --> 00:00:41,422
+But I believe Aang
+can save the world.
+
+15
+00:00:41,548 --> 00:00:43,216
+( OPENING MUSIC PLAYING )
+
+16
+00:00:47,136 --> 00:00:49,097
+MAN: Previously on Avatar.
+
+17
+00:00:49,931 --> 00:00:52,559
+WOMAN: Ember Island
+is a magical place.
+
+18
+00:00:53,643 --> 00:00:55,770
+TY LEE: Doesn't your family have
+a house on Ember Island?
+
+19
+00:00:56,020 --> 00:00:58,856
+AZULA: We used to come every summer
+when we were kids.
+
+20
+00:00:59,440 --> 00:01:00,692
+ZUKO: That was a long time ago.
+
+21
+00:01:01,442 --> 00:01:05,321
+WOMAN: Like waves washing away
+the footprints on the sand
+
+22
+00:01:06,030 --> 00:01:09,450
+Ember Island gives everyone a clean slate.
+
+23
+00:01:09,993 --> 00:01:12,954
+Ember Island reveals the true you.
+
+24
+00:01:19,335 --> 00:01:21,129
+( BIRDS SQUAWKING )
+
+25
+00:01:32,599 --> 00:01:34,767
+Doesn't it seem kind of weird
+that we're hiding
+
+26
+00:01:34,851 --> 00:01:36,436
+from the Fire Lord in his own house?
+
+27
+00:01:36,769 --> 00:01:40,398
+I told you, my father hasn't come here
+since our family was actually happy.
+
+28
+00:01:41,107 --> 00:01:42,358
+And that was a long time ago.
+
+29
+00:01:42,650 --> 00:01:44,986
+It's the last place anyone
+would think to look for us.
+
+30
+00:01:45,320 --> 00:01:47,113
+You guys are not
+gonna believe this.
+
+31
+00:01:47,614 --> 00:01:48,990
+There's a play about us.
+
+32
+00:01:49,657 --> 00:01:51,701
+We were just in town,
+and we found this poster.
+
+33
+00:01:52,243 --> 00:01:53,244
+KATARA: What?
+
+34
+00:01:53,328 --> 00:01:54,871
+How is that possible?
+
+35
+00:01:55,079 --> 00:01:56,080
+Listen to this.
+
+36
+00:01:56,164 --> 00:01:57,832
+"The Boy In The Iceberg is
+a new production
+
+37
+00:01:57,915 --> 00:01:59,834
+"from acclaimed playwright Pu-on Tin,
+
+38
+00:02:00,043 --> 00:02:02,962
+"who scoured the globe, gathering
+information on the Avatar.
+
+39
+00:02:03,338 --> 00:02:05,965
+"From the icy south pole
+to the heart of Ba Sing Se.
+
+40
+00:02:06,132 --> 00:02:09,010
+"His sources include
+singing nomads, pirates, prisoners of war
+
+41
+00:02:09,093 --> 00:02:11,596
+"and a surprisingly knowledgeable
+merchant of cabbage."
+
+42
+00:02:12,138 --> 00:02:14,599
+SUKI: "Brought to you by the critically
+acclaimed Ember Island players."
+
+43
+00:02:15,391 --> 00:02:16,392
+Ugh.
+
+44
+00:02:16,684 --> 00:02:18,478
+My mother used to
+take us to see them.
+
+45
+00:02:18,728 --> 00:02:21,314
+They butchered Love Amongst
+The Dragons every year.
+
+46
+00:02:22,523 --> 00:02:24,400
+Sokka, do you really think
+it's a good idea
+
+47
+00:02:24,484 --> 00:02:26,527
+for us to attend a play about ourselves?
+
+48
+00:02:26,986 --> 00:02:28,446
+Come on.
+A day at the theater?
+
+49
+00:02:28,655 --> 00:02:31,574
+This is the kind of wacky,
+time-wasting nonsense I've been missing.
+
+50
+00:02:35,328 --> 00:02:38,164
+( GENERAL CONVERSATIONS )
+
+51
+00:02:43,461 --> 00:02:45,963
+Hey, uh, I wanted to sit there.
+
+52
+00:02:46,297 --> 00:02:47,298
+Just sit next to me.
+
+53
+00:02:47,382 --> 00:02:48,549
+What's the big deal?
+
+54
+00:02:48,633 --> 00:02:50,843
+I was just... I wanted to...
+
+55
+00:02:52,345 --> 00:02:53,596
+Okay.
+
+56
+00:02:53,971 --> 00:02:56,224
+Why are we sitting
+in the nosebleed section?
+
+57
+00:02:56,391 --> 00:02:58,309
+My feet can't see
+a thing from up here.
+
+58
+00:02:58,476 --> 00:02:59,477
+Don't worry.
+
+59
+00:02:59,560 --> 00:03:01,145
+I'll tell your feet
+what's happening.
+
+60
+00:03:01,813 --> 00:03:03,815
+( MUSIC PLAYING )
+
+61
+00:03:08,111 --> 00:03:09,237
+( GASPING )
+
+62
+00:03:10,279 --> 00:03:11,280
+( SIGHING )
+
+63
+00:03:11,406 --> 00:03:13,199
+Sokka, my only brother.
+
+64
+00:03:13,574 --> 00:03:16,661
+We constantly roam
+these icy south pole seas
+
+65
+00:03:16,869 --> 00:03:20,206
+and yet, never do we find
+anything fulfilling.
+
+66
+00:03:20,957 --> 00:03:23,501
+All I want is a full feeling
+in my stomach.
+
+67
+00:03:23,584 --> 00:03:24,627
+I'm starving.
+
+68
+00:03:24,752 --> 00:03:26,421
+( LAUGHING )
+
+69
+00:03:29,424 --> 00:03:31,801
+ACTRESS KATARA: Is food the only
+thing on your mind?
+
+70
+00:03:32,301 --> 00:03:35,680
+Well, I'm trying to get it out
+of my mind and into my mouth.
+
+71
+00:03:35,972 --> 00:03:37,056
+I'm starving.
+
+72
+00:03:37,265 --> 00:03:38,266
+( AUDIENCE LAUGHING )
+
+73
+00:03:38,349 --> 00:03:39,350
+This is pathetic.
+
+74
+00:03:39,434 --> 00:03:41,352
+My jokes are way
+funnier than this.
+
+75
+00:03:41,477 --> 00:03:42,895
+( LAUGHING )
+
+76
+00:03:42,979 --> 00:03:45,022
+I think he's got you pegged.
+
+77
+00:03:45,565 --> 00:03:48,818
+ACTRESS KATARA: Every day,
+the world awaits a beacon to guide us,
+
+78
+00:03:48,985 --> 00:03:50,570
+yet none appears.
+
+79
+00:03:50,653 --> 00:03:56,534
+Still, we cannot give up hope,
+for hope is all we have
+
+80
+00:03:56,617 --> 00:04:01,539
+and we must never relinquish it, even...
+Even to our dying breath.
+
+81
+00:04:01,748 --> 00:04:03,291
+( SOBBING )
+
+82
+00:04:04,792 --> 00:04:06,002
+Well, that's just silly.
+
+83
+00:04:06,085 --> 00:04:07,670
+I don't sound like that.
+
+84
+00:04:07,795 --> 00:04:09,005
+( LAUGHING )
+
+85
+00:04:09,088 --> 00:04:11,424
+Oh, man, this writer's a genius.
+
+86
+00:04:15,928 --> 00:04:20,558
+ACTRESS KATARA: It appears to be someone
+frozen in ice, perhaps for 100 years.
+
+87
+00:04:20,933 --> 00:04:22,143
+ACTOR SOKKA: But who?
+
+88
+00:04:22,351 --> 00:04:24,520
+Who is the boy in the iceberg?
+
+89
+00:04:26,022 --> 00:04:27,023
+Waterbend!
+
+90
+00:04:27,231 --> 00:04:28,232
+Hi-ya!
+
+91
+00:04:33,696 --> 00:04:35,782
+( CROWD "OOH"ING )
+
+92
+00:04:36,741 --> 00:04:39,160
+Who are you, frozen boy?
+
+93
+00:04:39,744 --> 00:04:40,953
+( LAUGHING )
+
+94
+00:04:41,037 --> 00:04:44,415
+I'm the avatar, silly,
+here to spread joy and fun.
+
+95
+00:04:45,124 --> 00:04:47,502
+Wait, is that
+a woman playing me?
+
+96
+00:04:48,795 --> 00:04:50,463
+( GROWLING )
+
+97
+00:04:55,802 --> 00:04:56,803
+( GASPING )
+
+98
+00:04:56,886 --> 00:04:58,471
+An airbender.
+
+99
+00:04:58,721 --> 00:05:03,100
+My heart is so full of hope
+that it's making me tear-bend.
+
+100
+00:05:03,392 --> 00:05:05,645
+( SOBBING )
+
+101
+00:05:06,979 --> 00:05:10,483
+My stomach is so empty
+that it's making me tear-bend.
+
+102
+00:05:10,691 --> 00:05:11,943
+( SOBBING )
+
+103
+00:05:12,652 --> 00:05:13,861
+I need meat!
+
+104
+00:05:14,153 --> 00:05:15,154
+( GASPING )
+
+105
+00:05:15,238 --> 00:05:16,447
+But wait.
+
+106
+00:05:16,531 --> 00:05:18,366
+Is that a platter
+of meaty dumplings?
+
+107
+00:05:18,950 --> 00:05:20,368
+ACTOR SOKKA: Oh, where, where?
+
+108
+00:05:20,785 --> 00:05:22,495
+( LAUGHING )
+
+109
+00:05:23,246 --> 00:05:26,165
+Did I mention that I'm
+an incurable prankster?
+
+110
+00:05:27,583 --> 00:05:29,043
+I don't do that.
+
+111
+00:05:29,335 --> 00:05:30,461
+That's not what I'm like.
+
+112
+00:05:30,670 --> 00:05:32,421
+And I'm not a woman.
+
+113
+00:05:33,047 --> 00:05:34,048
+( LAUGHING )
+
+114
+00:05:34,257 --> 00:05:36,634
+Oh, they nailed you, twinkle-toes.
+
+115
+00:05:36,717 --> 00:05:37,760
+( LAUGHING )
+
+116
+00:05:42,265 --> 00:05:44,851
+Prince Zuko,
+you must try this cake.
+
+117
+00:05:45,518 --> 00:05:47,645
+I don't have time
+to stuff my face.
+
+118
+00:05:47,770 --> 00:05:50,398
+I must capture the avatar
+to regain my honor.
+
+119
+00:05:50,940 --> 00:05:55,611
+Well, while you do that, maybe
+I'll capture another slice.
+
+120
+00:05:55,862 --> 00:05:56,904
+( MAKING EATING NOISES )
+
+121
+00:05:56,988 --> 00:05:58,155
+You sicken me.
+
+122
+00:05:58,573 --> 00:06:00,658
+They make me look totally
+stiff and humorless.
+
+123
+00:06:01,242 --> 00:06:03,995
+Actually, I think
+that actor's pretty spot-on.
+
+124
+00:06:04,537 --> 00:06:05,663
+How could you say that?
+
+125
+00:06:06,163 --> 00:06:09,667
+Let's forget about the avatar
+and get massages.
+
+126
+00:06:10,167 --> 00:06:11,961
+How could you say that?
+
+127
+00:06:18,843 --> 00:06:20,052
+Hey, look.
+
+128
+00:06:20,136 --> 00:06:21,554
+I think I found something.
+
+129
+00:06:25,892 --> 00:06:27,768
+It's a flying rabbit monkey.
+
+130
+00:06:28,269 --> 00:06:30,187
+I think I'll name him Momo.
+
+131
+00:06:30,396 --> 00:06:31,689
+( LAUGHING )
+
+132
+00:06:32,690 --> 00:06:33,858
+Hi, everybody.
+
+133
+00:06:34,066 --> 00:06:35,568
+I love you.
+
+134
+00:06:36,736 --> 00:06:37,737
+Ugh.
+
+135
+00:06:42,575 --> 00:06:44,994
+Does this dress make
+my butt look fat?
+
+136
+00:06:45,578 --> 00:06:46,954
+( AUDIENCE LAUGHING )
+
+137
+00:06:49,457 --> 00:06:54,837
+Riddles and challenges must you face
+if you are ever to leave this place.
+
+138
+00:06:55,755 --> 00:06:57,089
+( LAUGHING )
+
+139
+00:06:57,673 --> 00:06:58,841
+( MOANING )
+
+140
+00:07:10,770 --> 00:07:13,481
+ACTOR SOKKA: Why did you have to steal
+that waterbending scroll?
+
+141
+00:07:14,690 --> 00:07:17,485
+( SOBBING ): It just gave me
+so much hope.
+
+142
+00:07:17,693 --> 00:07:19,070
+( SOBBING )
+
+143
+00:07:23,699 --> 00:07:25,785
+The avatar is mine!
+
+144
+00:07:25,993 --> 00:07:27,870
+Wait, who's coming?
+
+145
+00:07:28,454 --> 00:07:32,792
+MALE VOICE: I am the blue spirit,
+the scourge of the fire nation
+
+146
+00:07:32,875 --> 00:07:34,502
+Here to save the avatar.
+
+147
+00:07:40,967 --> 00:07:42,677
+ACTOR AANG: My hero.
+
+148
+00:07:52,144 --> 00:07:53,521
+( SOBBING )
+
+149
+00:07:55,314 --> 00:07:56,857
+Don't cry, baby.
+
+150
+00:07:57,483 --> 00:08:00,319
+Jet will wipe out
+that nasty town for you.
+
+151
+00:08:05,658 --> 00:08:06,701
+ACTRESS KATARA: Oh, Jet.
+
+152
+00:08:06,784 --> 00:08:08,285
+You're so bad.
+
+153
+00:08:09,578 --> 00:08:10,746
+( LAUGHING )
+
+154
+00:08:11,998 --> 00:08:17,336
+Look, it's the great divide, the biggest
+canyon in the earth kingdom.
+
+155
+00:08:19,588 --> 00:08:21,048
+Eh, let's keep flying.
+
+156
+00:08:23,300 --> 00:08:24,802
+Don't go, Yue.
+
+157
+00:08:25,011 --> 00:08:28,139
+You're the only woman who's ever
+taken my mind off of food.
+
+158
+00:08:29,807 --> 00:08:30,808
+( GAGS )
+
+159
+00:08:30,891 --> 00:08:33,019
+Wait. Did you have
+pickled fish for dinner?
+
+160
+00:08:33,519 --> 00:08:34,729
+Goodbye, Sokka.
+
+161
+00:08:34,937 --> 00:08:37,523
+I have important moon duties
+to take care of.
+
+162
+00:08:38,524 --> 00:08:41,986
+And yes, I did
+have pickled fish.
+
+163
+00:08:42,486 --> 00:08:43,571
+( LAUGHING )
+
+164
+00:08:43,738 --> 00:08:45,573
+You never told me you made out
+with the moon spirit.
+
+165
+00:08:45,781 --> 00:08:47,992
+Shh, I'm trying to watch.
+
+166
+00:08:57,168 --> 00:08:58,377
+( LAUGHING )
+
+167
+00:08:58,461 --> 00:09:01,172
+The avatar is back
+to save the day!
+
+168
+00:09:01,255 --> 00:09:02,465
+Yay!
+
+169
+00:09:08,512 --> 00:09:09,722
+( CHEERING AND APPLAUSE )
+
+170
+00:09:09,805 --> 00:09:10,931
+-( GROANING )
+-( LAUGHING )
+
+171
+00:09:18,481 --> 00:09:21,108
+ZUKO: So far, this intermission
+is the best part of the play.
+
+172
+00:09:21,609 --> 00:09:23,444
+Apparently, the playwright
+thinks I'm an idiot
+
+173
+00:09:23,527 --> 00:09:25,696
+who tells bad jokes
+about meat all the time.
+
+174
+00:09:26,030 --> 00:09:29,283
+Yeah, you tell bad jokes
+about plenty of other topics.
+
+175
+00:09:29,825 --> 00:09:30,951
+I know!
+
+176
+00:09:31,243 --> 00:09:33,537
+AANG: At least the Sokka actor
+kind of looks like you.
+
+177
+00:09:33,829 --> 00:09:36,373
+That woman playing the avatar
+doesn't resemble me at all.
+
+178
+00:09:36,957 --> 00:09:37,958
+I don't know.
+
+179
+00:09:38,042 --> 00:09:40,628
+You are more in touch with
+your feminine side than most guys.
+
+180
+00:09:40,878 --> 00:09:41,879
+( GROANING )
+
+181
+00:09:41,962 --> 00:09:42,963
+KATARA: Relax, Aang.
+
+182
+00:09:43,047 --> 00:09:44,340
+They're not accurate portrayals.
+
+183
+00:09:44,840 --> 00:09:47,259
+It's not like I'm
+a preachy crybaby
+
+184
+00:09:47,343 --> 00:09:50,721
+who can't resist giving overemotional
+speeches about hope all the time.
+
+185
+00:09:53,140 --> 00:09:54,141
+What?
+
+186
+00:09:54,308 --> 00:09:56,268
+Yeah, that's not you at all.
+
+187
+00:09:56,769 --> 00:09:57,937
+Listen, friends.
+
+188
+00:09:58,020 --> 00:10:00,397
+It's obvious that
+the playwright did his research.
+
+189
+00:10:00,981 --> 00:10:01,982
+I know it must hurt,
+
+190
+00:10:02,066 --> 00:10:04,527
+but what you're seeing up there
+on that stage is the truth.
+
+191
+00:10:05,694 --> 00:10:08,656
+Well, here we are
+in the earth kingdom.
+
+192
+00:10:09,323 --> 00:10:13,285
+I'd better have a look around to see
+if I can find an earthbending teacher.
+
+193
+00:10:13,536 --> 00:10:14,578
+This is it.
+
+194
+00:10:14,703 --> 00:10:16,330
+This must be where I come in.
+
+195
+00:10:19,750 --> 00:10:21,877
+ACTOR AANG: I flew all over town,
+
+196
+00:10:21,961 --> 00:10:25,631
+but I couldn't find
+a single earthbending master.
+
+197
+00:10:26,298 --> 00:10:27,341
+Here it comes.
+
+198
+00:10:27,633 --> 00:10:30,594
+You can't find an earthbending
+master in the sky.
+
+199
+00:10:30,678 --> 00:10:32,346
+You have to look underground.
+
+200
+00:10:32,721 --> 00:10:33,806
+( LAUGHING )
+
+201
+00:10:34,265 --> 00:10:35,349
+Who are you?
+
+202
+00:10:35,891 --> 00:10:40,563
+My name's Toph, because it sounds like
+tough, and that's just what I am.
+
+203
+00:10:40,646 --> 00:10:41,647
+( AUDIENCE LAUGHING )
+
+204
+00:10:41,730 --> 00:10:42,731
+Wait a minute.
+
+205
+00:10:42,815 --> 00:10:45,192
+I sound like a guy.
+
+206
+00:10:45,609 --> 00:10:47,653
+A really buff guy.
+
+207
+00:10:47,820 --> 00:10:49,947
+Well, Toph, what you hear
+up there is the truth.
+
+208
+00:10:50,322 --> 00:10:51,490
+It hurts, doesn't it?
+
+209
+00:10:51,699 --> 00:10:52,908
+Are you kidding me?
+
+210
+00:10:53,033 --> 00:10:54,869
+I wouldn't have cast it
+any other way.
+
+211
+00:10:55,327 --> 00:10:56,412
+( LAUGHING )
+
+212
+00:10:56,495 --> 00:10:58,080
+At least it's not
+a flying bald lady.
+
+213
+00:11:00,958 --> 00:11:03,294
+So, you're blind?
+
+214
+00:11:03,794 --> 00:11:04,920
+( LAUGHING )
+
+215
+00:11:05,171 --> 00:11:06,755
+I can see you doing that.
+
+216
+00:11:07,006 --> 00:11:10,718
+I see everything that you see,
+except I don't see like you do.
+
+217
+00:11:10,801 --> 00:11:13,012
+I release a sonic wave
+from my mouth.
+
+218
+00:11:14,096 --> 00:11:15,306
+( SCREAMING )
+
+219
+00:11:20,394 --> 00:11:21,395
+There.
+
+220
+00:11:21,478 --> 00:11:22,771
+I got a pretty good look at you.
+
+221
+00:11:22,980 --> 00:11:24,190
+( APPLAUSE )
+
+222
+00:11:27,443 --> 00:11:31,655
+Zuko, it's time we had
+a talk about your hair.
+
+223
+00:11:31,864 --> 00:11:33,741
+It's gone too far.
+
+224
+00:11:34,116 --> 00:11:37,411
+Maybe it's best if we split up.
+
+225
+00:11:41,373 --> 00:11:44,293
+ACTOR ZUKO: Azula, my sister,
+what are you doing here?
+
+226
+00:11:44,668 --> 00:11:45,878
+You caught me.
+
+227
+00:11:46,128 --> 00:11:47,671
+Wait, what's that?
+
+228
+00:11:47,963 --> 00:11:49,715
+I think it's your honor.
+
+229
+00:11:49,924 --> 00:11:51,258
+Where?
+
+230
+00:11:52,718 --> 00:11:53,928
+She escaped.
+
+231
+00:11:54,011 --> 00:11:55,054
+But how?
+
+232
+00:12:00,517 --> 00:12:04,230
+If she continues drilling,
+this wall will come down for sure.
+
+233
+00:12:06,565 --> 00:12:08,609
+( LAUGHING ) Yes.
+
+234
+00:12:08,734 --> 00:12:10,444
+Continue drilling.
+
+235
+00:12:10,861 --> 00:12:13,989
+The city of Ba Sing Se
+can hide no longer.
+
+236
+00:12:21,497 --> 00:12:22,706
+( YAWNING )
+
+237
+00:12:30,547 --> 00:12:31,966
+ACTOR AANG: No, Jet.
+
+238
+00:12:32,049 --> 00:12:33,634
+What did they do to you?
+
+239
+00:12:34,218 --> 00:12:37,137
+Must serve Earth King.
+
+240
+00:12:37,304 --> 00:12:38,389
+( GASPING )
+
+241
+00:12:39,640 --> 00:12:42,351
+Must destroy!
+
+242
+00:12:42,977 --> 00:12:44,895
+( GRUNTING )
+
+243
+00:12:48,023 --> 00:12:50,025
+Help. ( GRUNTING )
+
+244
+00:12:52,361 --> 00:12:54,405
+Did Jet just die?
+
+245
+00:12:54,947 --> 00:12:56,782
+You know, it was really unclear.
+
+246
+00:12:58,075 --> 00:13:02,705
+I have to admit, Prince Zuko,
+I really find you attractive.
+
+247
+00:13:03,205 --> 00:13:04,790
+You don't have to
+make fun of me.
+
+248
+00:13:05,499 --> 00:13:06,834
+But I mean it.
+
+249
+00:13:07,001 --> 00:13:10,796
+I've had eyes for you since
+the day you first captured me.
+
+250
+00:13:12,798 --> 00:13:13,799
+ACTOR ZUKO: Wait.
+
+251
+00:13:14,008 --> 00:13:15,968
+I thought you were
+the avatar's girl.
+
+252
+00:13:17,636 --> 00:13:18,637
+( LAUGHS )
+
+253
+00:13:18,721 --> 00:13:19,722
+The avatar?
+
+254
+00:13:20,222 --> 00:13:22,308
+Why, he's like
+a little brother to me.
+
+255
+00:13:22,391 --> 00:13:23,392
+( LAUGHS )
+
+256
+00:13:23,475 --> 00:13:26,312
+I certainly don't think of him
+in a romantic way.
+
+257
+00:13:27,479 --> 00:13:31,317
+Besides, how could he ever
+find out about this?
+
+258
+00:13:33,861 --> 00:13:35,237
+Oh, you're getting up?
+
+259
+00:13:35,612 --> 00:13:37,698
+Can you get me some fire flakes?
+
+260
+00:13:39,700 --> 00:13:41,452
+Oh, and fire gummies.
+
+261
+00:13:42,953 --> 00:13:47,207
+Well, my brother,
+what's it going to be?
+
+262
+00:13:47,416 --> 00:13:50,502
+Your nation,
+or a life of treachery?
+
+263
+00:13:53,380 --> 00:13:54,548
+Choose treachery.
+
+264
+00:13:54,673 --> 00:13:56,258
+It's more fun.
+
+265
+00:13:57,926 --> 00:13:59,511
+No way.
+
+266
+00:14:02,473 --> 00:14:03,766
+( GRUNTING )
+
+267
+00:14:03,849 --> 00:14:05,225
+I hate you, uncle.
+
+268
+00:14:05,893 --> 00:14:08,687
+You smell, and I hate you
+for all time!
+
+269
+00:14:12,649 --> 00:14:14,360
+You didn't really
+say that, did you?
+
+270
+00:14:14,735 --> 00:14:16,195
+I might as well have.
+
+271
+00:14:33,837 --> 00:14:36,090
+( APPLAUDING )
+
+272
+00:14:37,174 --> 00:14:38,175
+Avatar state.
+
+273
+00:14:38,258 --> 00:14:39,301
+Yip-yip.
+
+274
+00:14:48,435 --> 00:14:50,521
+Not if my lightning can help it.
+
+275
+00:14:52,481 --> 00:14:54,400
+( SCREAMING )
+
+276
+00:15:00,823 --> 00:15:03,992
+The avatar is no more.
+
+277
+00:15:05,411 --> 00:15:06,995
+( CHEERING AND APPLAUDING )
+
+278
+00:15:12,668 --> 00:15:14,336
+SUKI: It seems like every time
+there's a big battle,
+
+279
+00:15:14,420 --> 00:15:15,963
+you guys barely make it out alive.
+
+280
+00:15:16,213 --> 00:15:17,965
+I mean, you guys lose a lot.
+
+281
+00:15:18,424 --> 00:15:19,758
+You're one to talk, Suki.
+
+282
+00:15:19,842 --> 00:15:21,176
+Didn't Azula take you captive?
+
+283
+00:15:21,427 --> 00:15:22,719
+That's right, she did.
+
+284
+00:15:24,096 --> 00:15:25,973
+Are you trying to get
+on my bad side?
+
+285
+00:15:26,598 --> 00:15:27,724
+I'm just saying.
+
+286
+00:15:28,100 --> 00:15:29,393
+Does anyone know where Aang is?
+
+287
+00:15:29,726 --> 00:15:32,062
+He left to get me fire gummies,
+like, 10 minutes ago,
+
+288
+00:15:32,229 --> 00:15:33,730
+and I'm still waiting.
+
+289
+00:15:34,731 --> 00:15:35,941
+I'm gonna check outside.
+
+290
+00:15:46,285 --> 00:15:47,536
+Are you all right?
+
+291
+00:15:47,703 --> 00:15:49,079
+No, I'm not.
+
+292
+00:15:49,246 --> 00:15:50,539
+I hate this play.
+
+293
+00:15:51,665 --> 00:15:54,543
+I know it's upsetting, but it
+sounds like you're overreacting.
+
+294
+00:15:54,877 --> 00:15:56,003
+Overreacting?
+
+295
+00:15:56,295 --> 00:15:57,796
+If I hadn't blocked my chakra,
+
+296
+00:15:57,880 --> 00:16:00,132
+I'd probably be in
+the avatar state right now.
+
+297
+00:16:03,385 --> 00:16:04,928
+Whee!
+
+298
+00:16:06,054 --> 00:16:08,515
+Suki, what are the chances
+you can get me backstage?
+
+299
+00:16:08,765 --> 00:16:10,767
+I got some jokes I want
+to give to the actor me.
+
+300
+00:16:11,101 --> 00:16:16,315
+I'm an elite warrior who's trained
+for many years in the art of stealth.
+
+301
+00:16:17,608 --> 00:16:19,151
+I think I could
+get you backstage.
+
+302
+00:16:21,195 --> 00:16:24,156
+Geez, everyone's getting
+so upset about their characters.
+
+303
+00:16:24,364 --> 00:16:27,534
+Even you seem more down than usual,
+and that's saying something.
+
+304
+00:16:27,910 --> 00:16:28,952
+You don't get it.
+
+305
+00:16:29,036 --> 00:16:30,245
+It's different for you.
+
+306
+00:16:30,537 --> 00:16:33,790
+You get a muscly version of yourself
+taking down 10 bad guys at once
+
+307
+00:16:34,041 --> 00:16:35,501
+and making sassy remarks.
+
+308
+00:16:36,043 --> 00:16:37,753
+Yeah, that's pretty great.
+
+309
+00:16:37,961 --> 00:16:41,048
+But for me, it takes
+all the mistakes I've made in my life
+
+310
+00:16:41,173 --> 00:16:42,799
+and shoves them back in my face.
+
+311
+00:16:43,425 --> 00:16:47,429
+My uncle, he's always been on my side,
+even when things were bad.
+
+312
+00:16:47,804 --> 00:16:49,014
+He was there for me.
+
+313
+00:16:49,431 --> 00:16:52,309
+He taught me so much,
+and how do I repay him?
+
+314
+00:16:52,601 --> 00:16:54,102
+With a knife in his back.
+
+315
+00:16:54,811 --> 00:16:58,398
+It's my greatest regret, and I
+may never get to redeem myself.
+
+316
+00:16:59,441 --> 00:17:01,485
+You have redeemed yourself
+to your uncle.
+
+317
+00:17:01,902 --> 00:17:04,112
+You don't realize it,
+but you already have.
+
+318
+00:17:04,488 --> 00:17:05,531
+How do you know?
+
+319
+00:17:05,656 --> 00:17:08,283
+Because I once had a long conversation
+with the guy
+
+320
+00:17:08,450 --> 00:17:10,369
+And all he would talk about
+was you.
+
+321
+00:17:11,078 --> 00:17:12,079
+Really?
+
+322
+00:17:12,162 --> 00:17:14,081
+Yeah, and it was
+kind of annoying.
+
+323
+00:17:14,540 --> 00:17:15,749
+Oh, sorry.
+
+324
+00:17:15,832 --> 00:17:17,543
+But it was also very sweet.
+
+325
+00:17:18,001 --> 00:17:21,672
+All your uncle wanted was for you to find
+your own path and see the light.
+
+326
+00:17:22,172 --> 00:17:23,382
+Now you're here with us.
+
+327
+00:17:23,966 --> 00:17:25,217
+He'd be proud.
+
+328
+00:17:26,343 --> 00:17:27,469
+Ow.
+
+329
+00:17:27,928 --> 00:17:29,221
+What was that for?
+
+330
+00:17:29,429 --> 00:17:31,014
+That's how I show affection.
+
+331
+00:17:33,225 --> 00:17:36,645
+Your Zuko costume's pretty good,
+but your scar's on the wrong side.
+
+332
+00:17:38,480 --> 00:17:40,274
+The scar's not on
+the wrong side!
+
+333
+00:17:48,657 --> 00:17:50,075
+He's coming this way.
+
+334
+00:17:52,119 --> 00:17:53,537
+Can I help you?
+
+335
+00:17:53,912 --> 00:17:56,081
+Actually, I think
+I can help you.
+
+336
+00:17:56,540 --> 00:17:58,041
+I'm a big Sokka fan
+
+337
+00:17:58,125 --> 00:18:00,335
+but I don't think you're representing him
+quite as well as you could be.
+
+338
+00:18:00,752 --> 00:18:01,837
+Oh, no.
+
+339
+00:18:01,920 --> 00:18:03,338
+Another fan with ideas.
+
+340
+00:18:03,422 --> 00:18:04,548
+Just hear me out.
+
+341
+00:18:05,257 --> 00:18:07,301
+Here's something I think
+the real Sokka would say.
+
+342
+00:18:07,426 --> 00:18:08,427
+( CLEARS THROAT )
+
+343
+00:18:08,510 --> 00:18:11,305
+What does the cabbage merchant
+use to fix his cabbages?
+
+344
+00:18:12,014 --> 00:18:13,640
+A cabbage patch!
+
+345
+00:18:15,058 --> 00:18:16,226
+( LAUGHING )
+
+346
+00:18:16,310 --> 00:18:17,394
+That's actually pretty good.
+
+347
+00:18:17,519 --> 00:18:18,604
+Let me see those.
+
+348
+00:18:20,063 --> 00:18:21,106
+( LAUGHING )
+
+349
+00:18:21,189 --> 00:18:23,025
+A rocky relationship.
+
+350
+00:18:23,108 --> 00:18:24,192
+Not bad.
+
+351
+00:18:24,776 --> 00:18:28,780
+Also, don't be afraid to make up some
+phrases, especially before an attack.
+
+352
+00:18:28,989 --> 00:18:31,867
+Something like,
+"flying kick-a-pow!"
+
+353
+00:18:31,950 --> 00:18:33,452
+ACTOR SOKKA: Who are you, anyway?
+
+354
+00:18:33,869 --> 00:18:35,579
+I'm just a guy who likes comedy.
+
+355
+00:18:37,164 --> 00:18:39,499
+Katara, did you really mean
+what you said in there?
+
+356
+00:18:39,958 --> 00:18:41,209
+In where?
+
+357
+00:18:41,293 --> 00:18:42,753
+What are you talking about?
+
+358
+00:18:43,045 --> 00:18:46,882
+On stage, when you said I was
+just like a brother to you
+
+359
+00:18:47,257 --> 00:18:48,925
+and you didn't have
+feelings for me.
+
+360
+00:18:49,301 --> 00:18:50,344
+I didn't say that.
+
+361
+00:18:50,469 --> 00:18:51,511
+An actor said that.
+
+362
+00:18:52,095 --> 00:18:53,388
+But it's true, isn't it?
+
+363
+00:18:53,930 --> 00:18:58,685
+We kissed at the invasion, and I thought
+we were gonna be together, but we're not.
+
+364
+00:18:59,436 --> 00:19:02,022
+Aang, I don't know.
+
+365
+00:19:02,439 --> 00:19:03,690
+Why don't you know?
+
+366
+00:19:04,024 --> 00:19:05,776
+Because we're in
+the middle of a war
+
+367
+00:19:05,859 --> 00:19:07,903
+and we have other things
+to worry about.
+
+368
+00:19:08,362 --> 00:19:09,780
+This isn't the right time.
+
+369
+00:19:10,155 --> 00:19:11,865
+Well, when is the right time?
+
+370
+00:19:12,908 --> 00:19:16,370
+Aang, I'm sorry, but right now,
+I'm just a little confused.
+
+371
+00:19:22,084 --> 00:19:23,794
+I just said I was confused.
+
+372
+00:19:27,005 --> 00:19:28,340
+I'm going inside.
+
+373
+00:19:31,218 --> 00:19:33,428
+Ugh, I'm such an idiot.
+
+374
+00:19:38,975 --> 00:19:40,185
+Here's what you missed.
+
+375
+00:19:40,352 --> 00:19:43,939
+We went to the fire nation, and you got
+better, and Katara was the painted lady
+
+376
+00:19:44,022 --> 00:19:46,900
+and I got a sword,
+and I think combustion man died.
+
+377
+00:19:47,025 --> 00:19:48,026
+Ooh, look.
+
+378
+00:19:48,110 --> 00:19:49,611
+The invasion's about to start.
+
+379
+00:19:49,695 --> 00:19:50,779
+Shh.
+
+380
+00:19:51,405 --> 00:19:55,409
+I just want to let you know,
+Aang, that I'll always love you.
+
+381
+00:19:56,410 --> 00:19:57,911
+Like a brother.
+
+382
+00:19:58,286 --> 00:20:01,123
+I wouldn't want it
+any other way.
+
+383
+00:20:11,800 --> 00:20:12,843
+Hey, Toph.
+
+384
+00:20:12,926 --> 00:20:16,263
+Would you say you and Aang
+have a rocky relationship?
+
+385
+00:20:16,596 --> 00:20:17,597
+( LAUGHING )
+
+386
+00:20:18,265 --> 00:20:19,391
+( GASPING )
+
+387
+00:20:19,474 --> 00:20:21,017
+I told him to say that.
+
+388
+00:20:22,185 --> 00:20:24,604
+I hope everyone's ready
+for the invasion.
+
+389
+00:20:24,980 --> 00:20:25,981
+"Slop-a-pow!"
+
+390
+00:20:26,314 --> 00:20:27,315
+( LAUGHING )
+
+391
+00:20:28,233 --> 00:20:30,610
+( AUDIENCE LAUGHING )
+
+392
+00:20:34,531 --> 00:20:38,660
+ACTOR AANG: We finally made it to
+the royal palace, but no one's home.
+
+393
+00:20:39,244 --> 00:20:40,704
+Actually, I'm home.
+
+394
+00:20:41,163 --> 00:20:42,539
+And I want to join you.
+
+395
+00:20:43,790 --> 00:20:45,083
+I guess we have no choice.
+
+396
+00:20:45,292 --> 00:20:46,334
+Come on.
+
+397
+00:20:48,670 --> 00:20:49,921
+I guess that's it.
+
+398
+00:20:50,005 --> 00:20:51,590
+The play's caught up
+to the present now.
+
+399
+00:20:51,715 --> 00:20:52,716
+Wait.
+
+400
+00:20:52,841 --> 00:20:53,842
+The play's not over.
+
+401
+00:20:54,134 --> 00:20:58,555
+But it is over,
+unless this is the future.
+
+402
+00:21:01,516 --> 00:21:03,643
+With the energy harnessed from that comet,
+
+403
+00:21:04,060 --> 00:21:08,190
+no one will be able to stop
+the fire nation!
+
+404
+00:21:08,440 --> 00:21:11,401
+Father, Zuko and the avatar
+are at the palace.
+
+405
+00:21:11,777 --> 00:21:13,487
+They are trying to stop you.
+
+406
+00:21:14,696 --> 00:21:16,364
+You take care of Zuko.
+
+407
+00:21:16,531 --> 00:21:19,743
+I shall face the avatar myself.
+
+408
+00:21:25,290 --> 00:21:27,918
+Aang, you find the fire lord.
+
+409
+00:21:28,001 --> 00:21:29,419
+I'll hold her off.
+
+410
+00:21:30,712 --> 00:21:32,964
+You are no longer my brother.
+
+411
+00:21:33,173 --> 00:21:34,883
+You are an enemy.
+
+412
+00:21:35,509 --> 00:21:39,346
+No, I am the rightful heir
+to the throne.
+
+413
+00:21:40,514 --> 00:21:42,432
+We'll see.
+
+414
+00:21:54,569 --> 00:21:56,321
+ACTOR ZUKO: Honor!
+
+415
+00:21:59,783 --> 00:22:02,202
+( CHEERING AND APPLAUDING )
+
+416
+00:22:09,417 --> 00:22:13,088
+So, you have mastered
+all four elements?
+
+417
+00:22:13,839 --> 00:22:16,383
+Yeah, and now,
+you're going down.
+
+418
+00:22:17,384 --> 00:22:21,263
+No, it is you
+who are going down.
+
+419
+00:22:21,471 --> 00:22:23,807
+You see, you are too late.
+
+420
+00:22:24,432 --> 00:22:29,563
+The comet is already here,
+and I'm unstoppable!
+
+421
+00:22:52,043 --> 00:22:53,879
+No!
+
+422
+00:23:02,762 --> 00:23:04,222
+It is over, Father.
+
+423
+00:23:04,389 --> 00:23:05,765
+We've done it.
+
+424
+00:23:05,932 --> 00:23:08,643
+Yes, we have done it.
+
+425
+00:23:09,185 --> 00:23:15,191
+The dreams of my father and
+my father's father have now been realized.
+
+426
+00:23:15,609 --> 00:23:19,154
+The world is mine.
+
+427
+00:23:20,405 --> 00:23:22,574
+( CHEERING AND APPLAUDING )
+
+428
+00:23:29,831 --> 00:23:32,208
+ZUKO: That wasn't a good play.
+
+429
+00:23:32,500 --> 00:23:33,501
+I'll say.
+
+430
+00:23:33,585 --> 00:23:34,586
+No kidding.
+
+431
+00:23:34,669 --> 00:23:35,670
+Horrible.
+
+432
+00:23:35,754 --> 00:23:36,755
+You said it.
+
+433
+00:23:36,838 --> 00:23:38,048
+But the effects were decent.
+
+434
+00:23:48,016 --> 00:23:50,977
+( MEN VOCALIZING RHYTHMICALLY )

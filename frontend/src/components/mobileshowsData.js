@@ -890,5 +890,16 @@ export const SHOWS = [
     "keyart": "/images/avatar/covers/avatar_mobileLogo.webp",
     "card": "/images/cardimages/avatarLogo.svg",
     "dateadded": "11-23-26"
+  },
+  {
+    "id": "mononoke",
+    "title": "Mononoke",
+    "creator": "TBD",
+    "background": "/images/mononoke/covers/mononoke_backdrop.svg",
+    "ratings": "8.1",
+    "type": "TV",
+    "keyart": "/images/mononoke/covers/mononoke_mobileLogo.webp",
+    "card": "/images/cardimages/mononokeLogo.svg",
+    "dateadded": "11-24-26"
   }
 ];

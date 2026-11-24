@@ -729,6 +729,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2005 • Animation • 3 seasons"
+    },
+    "mononoke": {
+      "image": "mononoke-adea13c5ef6e.jpg",
+      "thumbnail": "mononoke-adea13c5ef6e-thumb.jpg",
+      "source": "/images/mononoke/covers/mononokeCover.svg",
+      "sourceSHA256": "adea13c5ef6ef985667708f35ba8a1915538f35f7ecf5b8f6926a91d1f3614e9",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2007 • Animation • 1 season"
     }
   }
 }

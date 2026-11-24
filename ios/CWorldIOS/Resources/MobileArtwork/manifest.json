@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-11-23T21:02:33.248Z",
+  "catalogRevision": "2026-11-24T18:52:42.525Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1297,6 +1297,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "97a0c681a151e0bc4419bc57bea7334be2b0435b08704e817c7d29c54a119d10"
+    },
+    "https://cearaworld.com/images/cardimages/mononokeLogo.svg": {
+      "image": "a97d7c9bba65-8f833cf662da.jpg",
+      "thumbnail": "a97d7c9bba65-8f833cf662da-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "8f833cf662da23a020b73f231476937c7268d7d865284cbe26fafc22f7681189"
+    },
+    "https://cearaworld.com/images/mononoke/covers/mononoke_backdrop.svg": {
+      "image": "e38650dbacf7-0973dd6b956e.jpg",
+      "thumbnail": "e38650dbacf7-0973dd6b956e-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "0973dd6b956e56e61810a3395b2d41604025a763cadbfeff0ac4a3eb1f6ad44d"
     }
   }
 }
