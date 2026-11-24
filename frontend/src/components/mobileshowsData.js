@@ -894,7 +894,7 @@ export const SHOWS = [
   {
     "id": "mononoke",
     "title": "Mononoke",
-    "creator": "TBD",
+    "creator": "Kenji Nakamura",
     "background": "/images/mononoke/covers/mononoke_backdrop.svg",
     "ratings": "8.1",
     "type": "TV",
