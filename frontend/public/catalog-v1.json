@@ -40006,9 +40006,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 78.9,
+              "skipOutroStart": 1368.85
             },
             {
               "number": 2,
@@ -40027,9 +40027,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.9,
+              "skipOutroStart": 1297.65
             },
             {
               "number": 3,
@@ -40048,9 +40048,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.8,
+              "skipOutroStart": 1354.5
             },
             {
               "number": 4,
@@ -40069,9 +40069,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.8,
+              "skipOutroStart": 1339.18
             },
             {
               "number": 5,
@@ -40090,9 +40090,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.8,
+              "skipOutroStart": 1361.7
             },
             {
               "number": 6,
@@ -40111,9 +40111,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.8,
+              "skipOutroStart": 1380.46
             },
             {
               "number": 7,
@@ -40132,9 +40132,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.8,
+              "skipOutroStart": 1384.75
             },
             {
               "number": 8,
@@ -40153,9 +40153,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.45,
+              "skipOutroStart": 1340.6
             },
             {
               "number": 9,
@@ -40174,9 +40174,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E09_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1388.95
             },
             {
               "number": 10,
@@ -40195,9 +40195,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E10_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.6,
+              "skipOutroStart": 1371.6
             },
             {
               "number": 11,
@@ -40216,9 +40216,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E11_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.45,
+              "skipOutroStart": 1394.7
             },
             {
               "number": 12,
@@ -40237,9 +40237,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E12_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.35,
+              "skipOutroStart": 1394.45
             },
             {
               "number": 13,
@@ -40258,9 +40258,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E13_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.65,
+              "skipOutroStart": 1377.1
             },
             {
               "number": 14,
@@ -40279,9 +40279,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E14_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.62,
+              "skipOutroStart": 1395.1
             },
             {
               "number": 15,
@@ -40300,9 +40300,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E15_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 48.1,
+              "skipOutroStart": 1391.5
             },
             {
               "number": 16,
@@ -40321,9 +40321,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E16_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.6,
+              "skipOutroStart": 1391.3
             },
             {
               "number": 17,
@@ -40342,9 +40342,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E17_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.8,
+              "skipOutroStart": 1378.8
             },
             {
               "number": 18,
@@ -40363,9 +40363,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E18_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 45.95,
+              "skipOutroStart": 1389.5
             },
             {
               "number": 19,
@@ -40384,9 +40384,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E19_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.75,
+              "skipOutroStart": 1380.45
             },
             {
               "number": 20,
@@ -40405,9 +40405,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season1/S1E20_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.8,
+              "skipOutroStart": 1390.25
             }
           ]
         },
@@ -40431,9 +40431,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.45,
+              "skipOutroStart": 1395
             },
             {
               "number": 2,
@@ -40452,9 +40452,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1397.05
             },
             {
               "number": 3,
@@ -40473,9 +40473,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1396.5
             },
             {
               "number": 4,
@@ -40494,9 +40494,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1396.05
             },
             {
               "number": 5,
@@ -40515,9 +40515,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1394.6
             },
             {
               "number": 6,
@@ -40536,9 +40536,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1421.1
             },
             {
               "number": 7,
@@ -40557,9 +40557,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1422.35
             },
             {
               "number": 8,
@@ -40578,9 +40578,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1426.25
             },
             {
               "number": 9,
@@ -40599,9 +40599,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E09_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1424.6
             },
             {
               "number": 10,
@@ -40620,9 +40620,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E10_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1423.3
             },
             {
               "number": 11,
@@ -40641,9 +40641,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E11_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1425.9
             },
             {
               "number": 12,
@@ -40662,9 +40662,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E12_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1399.1
             },
             {
               "number": 13,
@@ -40683,9 +40683,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E13_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1384.25
             },
             {
               "number": 14,
@@ -40704,9 +40704,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E14_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0.55,
+              "skipIntroEnd": 48,
+              "skipOutroStart": 1423.55
             },
             {
               "number": 15,
@@ -40725,9 +40725,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E15_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1424.9
             },
             {
               "number": 16,
@@ -40746,9 +40746,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E16_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1424.6
             },
             {
               "number": 17,
@@ -40767,9 +40767,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E17_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1422.4
             },
             {
               "number": 18,
@@ -40788,9 +40788,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E18_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1422.2
             },
             {
               "number": 19,
@@ -40809,9 +40809,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E19_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1397.45
             },
             {
               "number": 20,
@@ -40830,9 +40830,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season2/S2E20_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1394
             }
           ]
         },
@@ -40856,9 +40856,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E01_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1424.4
             },
             {
               "number": 2,
@@ -40877,9 +40877,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E02_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1425.43
             },
             {
               "number": 3,
@@ -40898,9 +40898,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E03_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1425.45
             },
             {
               "number": 4,
@@ -40919,9 +40919,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E04_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1423.14
             },
             {
               "number": 5,
@@ -40940,9 +40940,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E05_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1422.71
             },
             {
               "number": 6,
@@ -40961,9 +40961,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E06_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.8,
+              "skipOutroStart": 1424.76
             },
             {
               "number": 7,
@@ -40982,9 +40982,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E07_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1424.79
             },
             {
               "number": 8,
@@ -41003,9 +41003,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E08_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1420.45
             },
             {
               "number": 9,
@@ -41024,9 +41024,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E09_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1423.79
             },
             {
               "number": 10,
@@ -41045,9 +41045,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E10_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0.2,
+              "skipIntroEnd": 47.6,
+              "skipOutroStart": 1393.38
             },
             {
               "number": 11,
@@ -41066,9 +41066,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E11_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0.2,
+              "skipIntroEnd": 47.6,
+              "skipOutroStart": 1396.07
             },
             {
               "number": 12,
@@ -41087,9 +41087,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E12_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1420.64
             },
             {
               "number": 13,
@@ -41108,9 +41108,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E13_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1426.05
             },
             {
               "number": 14,
@@ -41129,9 +41129,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E14_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1425.4
             },
             {
               "number": 15,
@@ -41150,9 +41150,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E15_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1338.63
             },
             {
               "number": 16,
@@ -41171,9 +41171,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E16_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1409.43
             },
             {
               "number": 17,
@@ -41192,9 +41192,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E17_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 46.4,
+              "skipOutroStart": 1424.17
             },
             {
               "number": 18,
@@ -41213,9 +41213,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E18_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1395.3
             },
             {
               "number": 19,
@@ -41234,9 +41234,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E19_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1401.1
             },
             {
               "number": 20,
@@ -41255,9 +41255,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E20_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1392.5
             },
             {
               "number": 21,
@@ -41276,9 +41276,9 @@
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/avatar/season3/S3E21_subtitles.srt"
               ],
-              "skipIntroStart": null,
-              "skipIntroEnd": null,
-              "skipOutroStart": null
+              "skipIntroStart": 0,
+              "skipIntroEnd": 47.4,
+              "skipOutroStart": 1386.5
             }
           ]
         }
