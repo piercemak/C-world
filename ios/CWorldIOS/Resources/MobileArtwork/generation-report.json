@@ -2220,13 +2220,13 @@
       "titles": [
         "You Can See Everything"
       ],
-      "sourceBytes": 2336393,
-      "outputBytes": 210511,
-      "thumbnailBytes": 33197,
+      "sourceBytes": 2371895,
+      "outputBytes": 225438,
+      "thumbnailBytes": 34102,
       "width": 1024,
       "height": 1024,
       "format": "jpg",
-      "psnr": 46.22207845887683
+      "psnr": 45.9393046370117
     },
     {
       "url": "https://cearaworld.com/images/youcanseeeverything/covers/youcanseeeverything_backdrop.svg",
@@ -2242,6 +2242,6 @@
       "psnr": 47.71625522533931
     }
   ],
-  "sourceBytes": 927652070,
-  "outputBytes": 116974831
+  "sourceBytes": 927687572,
+  "outputBytes": 116990663
 }
