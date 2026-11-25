@@ -34099,9 +34099,235 @@
           }
         }
       }
+    },
+    "beeandpuppycat": {
+      "assetId": "beeandpuppycat",
+      "library": {
+        "type": "show",
+        "title": "Bee and PuppyCat",
+        "agerating": "7+",
+        "release_year": "2014",
+        "genre": "Animation",
+        "season_total_number": "1 season",
+        "season_digit": 1,
+        "description": "On a charming magical island, the impulsive Bee and her furry pal get up to all sorts of adventures while working for an intergalactic temp agency.",
+        "background": "/images/beeandpuppycat/covers/beeandpuppycatCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Natasha Allegri",
+        "background": "/images/beeandpuppycat/covers/beeandpuppycat_backdrop.svg",
+        "ratings": "TBD",
+        "type": "TV",
+        "keyart": "/images/beeandpuppycat/covers/beeandpuppycat_mobileLogo.jpg",
+        "card": "/images/cardimages/beeandpuppycatLogo.svg",
+        "dateadded": "11-24-26"
+      },
+      "mobileOrder": 83,
+      "sidebar": {
+        "cardId": "card-84",
+        "order": 83
+      },
+      "carousel": {
+        "order": 83
+      },
+      "captions": {
+        "series": "/subtitles/beeandpuppycat/season{season}/S{season}E{episode2}_subtitles.vtt",
+        "defaultEnabled": false
+      },
+      "episodeTitles": {
+        "1": [
+          "Pilot",
+          "Food_and_Farmer",
+          "Beach_and_Cats",
+          "Birthday_and_Game",
+          "Toast_and_Dogs_and_Wedding_and_Donut"
+        ]
+      },
+      "episodeMetadata": {
+        "1": [
+          {
+            "title": "Pilot · Bee and PuppyCat",
+            "description": "Bee meets PuppyCat and takes her first temp job in Fishbowl Space.",
+            "duration": "10m",
+            "sourceEpisodes": [],
+            "airDate": ""
+          },
+          {
+            "title": "Chapter I · Food & Farmer",
+            "description": "Food — One morning Bee wakes from a dream and is starving. New recipe in hand Bee and PuppyCat head to the store and then to cook with Deckard.\n\nFarmer — After receiving a new assignment from TempBot, and in new uniforms (magic pockets included), Bee and PuppyCat slide into a farming job on Jelly Cube Planet.",
+            "duration": "12m",
+            "sourceEpisodes": [
+              {
+                "number": 1,
+                "name": "Food",
+                "id": 1025844,
+                "description": "One morning Bee wakes from a dream and is starving. New recipe in hand Bee and PuppyCat head to the store and then to cook with Deckard.",
+                "airDate": "2014-11-06"
+              },
+              {
+                "number": 2,
+                "name": "Farmer",
+                "id": 1025845,
+                "description": "After receiving a new assignment from TempBot, and in new uniforms (magic pockets included), Bee and PuppyCat slide into a farming job on Jelly Cube Planet.",
+                "airDate": "2014-11-06"
+              }
+            ],
+            "airDate": "2014-11-06"
+          },
+          {
+            "title": "Chapter II · Beach & Cats",
+            "description": "Beach — When Cardamon the cranky landlord kicks them out of the apartment, Bee and PuppyCat head to the beach and search for a place to watch the Pretty Patrick Lunchtime Marathon.\n\nCats — Bee and PuppyCat travel to a bathhouse on Cat-Head Planet for their strangest and most adorable job yet. Lucky for them, Pretty Patrick is on TV over there, too!",
+            "duration": "12m",
+            "sourceEpisodes": [
+              {
+                "number": 3,
+                "name": "Beach",
+                "id": 1025846,
+                "description": "When Cardamon the cranky landlord kicks them out of the apartment, Bee and PuppyCat head to the beach and search for a place to watch the Pretty Patrick Lunchtime Marathon.",
+                "airDate": "2014-12-04"
+              },
+              {
+                "number": 4,
+                "name": "Cats",
+                "id": 1033318,
+                "description": "Bee and PuppyCat travel to a bathhouse on Cat-Head Planet for their strangest and most adorable job yet. Lucky for them, Pretty Patrick is on TV over there, too!",
+                "airDate": "2014-12-18"
+              }
+            ],
+            "airDate": "2014-12-04"
+          },
+          {
+            "title": "Chapter III · Birthday & Game",
+            "description": "Birthday — It's Bee's birthday and PuppyCat offers to spend time with her, so she takes him to an abandoned arcade with games constructed by her father.\n\nGame — Bee's mood turns gleefully around when she and PuppyCat get assigned a job on Cloud World, an immersive video game inhabited by squat birds. When Bee's gender-swapped video game avatar gets wrapped in the glamour of side quests, it's up to PuppyCat to win the game and defeat the all-seeing eye of Cloud World.",
+            "duration": "12m",
+            "sourceEpisodes": [
+              {
+                "number": 5,
+                "name": "Birthday",
+                "id": 2341207,
+                "description": "It's Bee's birthday and PuppyCat offers to spend time with her, so she takes him to an abandoned arcade with games constructed by her father.",
+                "airDate": "2016-11-11"
+              },
+              {
+                "number": 6,
+                "name": "Game",
+                "id": 2341208,
+                "description": "Bee's mood turns gleefully around when she and PuppyCat get assigned a job on Cloud World, an immersive video game inhabited by squat birds. When Bee's gender-swapped video game avatar gets wrapped in the glamour of side quests, it's up to PuppyCat to win the game and defeat the all-seeing eye of Cloud World.",
+                "airDate": "2016-11-11"
+              }
+            ],
+            "airDate": "2016-11-11"
+          },
+          {
+            "title": "Chapter IV · Toast & Dogs & Wedding & Donut",
+            "description": "Toast — Rent is due! An old wrestling acquaintance comes to visit Cass.\n\nDogs — Bee and Deckard go to pay rent to Cardamon. Cardamon wants PuppyCat to spend time with Sticky.\n\nWedding — Cardamon wants to marry PuppyCat and Sticky.\n\nDonut — Bee and Deckard are given a baking temp job on Donut Planet. They make donuts until a black hole destroys the planet.",
+            "duration": "29m",
+            "sourceEpisodes": [
+              {
+                "number": 7,
+                "name": "Toast",
+                "id": 2341209,
+                "description": "Rent is due! An old wrestling acquaintance comes to visit Cass.",
+                "airDate": "2016-11-28"
+              },
+              {
+                "number": 8,
+                "name": "Dogs",
+                "id": 2341210,
+                "description": "Bee and Deckard go to pay rent to Cardamon. Cardamon wants PuppyCat to spend time with Sticky.",
+                "airDate": "2016-11-28"
+              },
+              {
+                "number": 9,
+                "name": "Wedding",
+                "id": 2341211,
+                "description": "Cardamon wants to marry PuppyCat and Sticky.",
+                "airDate": "2016-11-28"
+              },
+              {
+                "number": 10,
+                "name": "Donut",
+                "id": 2341212,
+                "description": "Bee and Deckard are given a baking temp job on Donut Planet. They make donuts until a black hole destroys the planet.",
+                "airDate": "2016-11-28"
+              }
+            ],
+            "airDate": "2016-11-28"
+          }
+        ]
+      },
+      "seasonLengths": {
+        "1": 5
+      },
+      "skipTimes": {
+        "seasons": {
+          "1": {
+            "1": {
+              "intro": {
+                "start": 0,
+                "end": 0
+              },
+              "outro": {
+                "start": 0,
+                "skipTo": "next"
+              }
+            },
+            "2": {
+              "intro": {
+                "start": 0,
+                "end": 0
+              },
+              "outro": {
+                "start": 0,
+                "skipTo": "next"
+              }
+            },
+            "3": {
+              "intro": {
+                "start": 0,
+                "end": 0
+              },
+              "outro": {
+                "start": 0,
+                "skipTo": "next"
+              }
+            },
+            "4": {
+              "intro": {
+                "start": 0,
+                "end": 0
+              },
+              "outro": {
+                "start": 0,
+                "skipTo": "next"
+              }
+            },
+            "5": {
+              "intro": {
+                "start": 0,
+                "end": 0
+              },
+              "outro": {
+                "start": 0,
+                "skipTo": "next"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "episode",
+      "showSlug": "beeandpuppycat",
+      "season": 1,
+      "episode": 1,
+      "episodeTitle": "Pilot · Bee and PuppyCat",
+      "placeholder": "https://d20honz3pkzrs8.cloudfront.net/beeandpuppycat/placeholders/season1/S1E1_beeandpuppycat_placeholder.png",
+      "to": "/video-library/beeandpuppycat?season=1&episode=1"
+    },
     {
       "kind": "episode",
       "showSlug": "finalspace",

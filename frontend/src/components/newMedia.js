@@ -2,6 +2,16 @@
 export const newMedia = [
   {
     "kind": "episode",
+    "showSlug": "beeandpuppycat",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "Pilot · Bee and PuppyCat",
+    "placeholder": "https://d20honz3pkzrs8.cloudfront.net/beeandpuppycat/placeholders/season1/S1E1_beeandpuppycat_placeholder.png",
+    "to": "/video-library/beeandpuppycat?season=1&episode=1",
+    "showTitle": "Bee and PuppyCat"
+  },
+  {
+    "kind": "episode",
     "showSlug": "finalspace",
     "season": 1,
     "episode": 1,

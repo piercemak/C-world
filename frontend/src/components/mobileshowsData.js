@@ -912,5 +912,16 @@ export const SHOWS = [
     "keyart": "/images/finalspace/covers/finalspace_mobileLogo.jpg",
     "card": "/images/cardimages/finalspaceLogo.svg",
     "dateadded": "11-24-26"
+  },
+  {
+    "id": "beeandpuppycat",
+    "title": "Bee and PuppyCat",
+    "creator": "Natasha Allegri",
+    "background": "/images/beeandpuppycat/covers/beeandpuppycat_backdrop.svg",
+    "ratings": "TBD",
+    "type": "TV",
+    "keyart": "/images/beeandpuppycat/covers/beeandpuppycat_mobileLogo.jpg",
+    "card": "/images/cardimages/beeandpuppycatLogo.svg",
+    "dateadded": "11-24-26"
   }
 ];

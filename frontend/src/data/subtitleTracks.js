@@ -65,7 +65,8 @@ const SERIES_SUBTITLE_PATTERNS = {
   "vinland": "/subtitles/vinland/season{season}/S{season}E{episode2}_subtitles.vtt",
   "avatar": "/subtitles/avatar/season{season}/S{season}E{episode2}_subtitles.vtt",
   "mononoke": "/subtitles/mononoke/season{season}/S{season}E{episode2}_subtitles.vtt",
-  "finalspace": "/subtitles/finalspace/season{season}/S{season}E{episode2}_subtitles.vtt"
+  "finalspace": "/subtitles/finalspace/season{season}/S{season}E{episode2}_subtitles.vtt",
+  "beeandpuppycat": "/subtitles/beeandpuppycat/season{season}/S{season}E{episode2}_subtitles.vtt"
 };
 const SUBTITLE_DEFAULTS = {
   "steven-universe": false,
@@ -164,7 +165,8 @@ const SUBTITLE_DEFAULTS = {
   "theodyssey": false,
   "avatar": false,
   "mononoke": true,
-  "finalspace": false
+  "finalspace": false,
+  "beeandpuppycat": false
 };
 export const getSubtitleDefaultEnabled = showId => SUBTITLE_DEFAULTS[showId] === true;
 

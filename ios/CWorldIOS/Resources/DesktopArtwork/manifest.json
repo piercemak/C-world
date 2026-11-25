@@ -747,6 +747,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2018 • Animation • 3 seasons"
+    },
+    "beeandpuppycat": {
+      "image": "beeandpuppycat-b9576f74e98f.jpg",
+      "thumbnail": "beeandpuppycat-b9576f74e98f-thumb.jpg",
+      "source": "/images/beeandpuppycat/covers/beeandpuppycatCover.svg",
+      "sourceSHA256": "b9576f74e98f1137a6a1cf334448938cd960925009fdb082220ae0de9bdfbe8d",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2014 • Animation • 1 season"
     }
   }
 }

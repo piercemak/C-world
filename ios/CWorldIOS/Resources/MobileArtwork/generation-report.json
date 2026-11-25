@@ -2188,8 +2188,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 44.8538731110272
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/beeandpuppycatLogo.svg",
+      "titles": [
+        "Bee and PuppyCat"
+      ],
+      "sourceBytes": 3658839,
+      "outputBytes": 420086,
+      "thumbnailBytes": 64990,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 41.886572085537395
+    },
+    {
+      "url": "https://cearaworld.com/images/beeandpuppycat/covers/beeandpuppycat_backdrop.svg",
+      "titles": [
+        "Bee and PuppyCat"
+      ],
+      "sourceBytes": 9106543,
+      "outputBytes": 498482,
+      "thumbnailBytes": 19583,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 52.43560199055515
     }
   ],
-  "sourceBytes": 909658066,
-  "outputBytes": 114859385
+  "sourceBytes": 922423448,
+  "outputBytes": 115862526
 }

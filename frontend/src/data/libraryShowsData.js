@@ -886,6 +886,18 @@ const metadata = {
     "description": "An astronaut named Gary and his planet-destroying sidekick Mooncake embark on serialized journeys through space in order to unlock the mystery of “Final Space,” the last point in the universe, if it actually does exist.",
     "background": "/images/finalspace/covers/finalspaceCover.svg",
     "subtitles": "yes"
+  },
+  "beeandpuppycat": {
+    "type": "show",
+    "title": "Bee and PuppyCat",
+    "agerating": "7+",
+    "release_year": "2014",
+    "genre": "Animation",
+    "season_total_number": "1 season",
+    "season_digit": 1,
+    "description": "On a charming magical island, the impulsive Bee and her furry pal get up to all sorts of adventures while working for an intergalactic temp agency.",
+    "background": "/images/beeandpuppycat/covers/beeandpuppycatCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

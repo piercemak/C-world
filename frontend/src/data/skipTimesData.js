@@ -82,7 +82,8 @@ export const mediaAssetIds = {
   "theodyssey": "theodyssey",
   "avatar": "avatar",
   "mononoke": "mononoke",
-  "finalspace": "finalspace"
+  "finalspace": "finalspace",
+  "beeandpuppycat": "beeandpuppycat"
 };
 export const skipTimes = {
   "stevenuniverse": {
@@ -15372,6 +15373,62 @@ export const skipTimes = {
         }
       }
     }
+  },
+  "beeandpuppycat": {
+    "seasons": {
+      "1": {
+        "1": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "2": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "3": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "4": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        },
+        "5": {
+          "intro": {
+            "start": 0,
+            "end": 0
+          },
+          "outro": {
+            "start": 0,
+            "skipTo": "next"
+          }
+        }
+      }
+    }
   }
 };
 export const seasonLength = {
@@ -15568,5 +15625,8 @@ export const seasonLength = {
     "1": 10,
     "2": 13,
     "3": 13
+  },
+  "beeandpuppycat": {
+    "1": 5
   }
 };

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "ed6f563096a1c64be89fb5409b6689a64370a62967d1003e0ceb7ed174617b1f",
+  "sourceSHA256": "1c4d8f3476ee2742bf3799a95856828ffd81ded1a288e0bd69cce59ac4016ff8",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,
@@ -10599,6 +10599,31 @@
       "outroStart": null
     },
     "finalspace:3:13": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "beeandpuppycat:1:1": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "beeandpuppycat:1:2": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "beeandpuppycat:1:3": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "beeandpuppycat:1:4": {
+      "introStart": null,
+      "introEnd": null,
+      "outroStart": null
+    },
+    "beeandpuppycat:1:5": {
       "introStart": null,
       "introEnd": null,
       "outroStart": null

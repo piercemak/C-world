@@ -35,7 +35,8 @@ async function main() {
   const assetId = normalizeAssetId(args["asset-id"] || id);
   const currentDate = new Date();
   const metadata = await resolveMetadata({ title, mediaType, year: args.year });
-  const episodeCatalog = mediaType === "show"
+  const suppliedCatalog = process.env.CWORLD_IMPORT_EPISODES;
+  const episodeCatalog = suppliedCatalog ? JSON.parse(suppliedCatalog) : mediaType === "show"
     ? await fetchTmdbEpisodeCatalog({
         title,
         year: args.year || metadata.releaseYear,

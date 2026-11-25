@@ -82,9 +82,15 @@
     "theodyssey",
     "avatar",
     "mononoke",
-    "finalspace"
+    "finalspace",
+    "beeandpuppycat"
   ],
   "newMedia": [
+    {
+      "id": "beeandpuppycat",
+      "season": 1,
+      "episode": 1
+    },
     {
       "id": "finalspace",
       "season": 1,

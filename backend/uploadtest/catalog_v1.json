@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-24T20:59:32.749Z",
-  "generatedAt": "2026-11-24T20:59:32.749Z",
+  "catalogRevision": "2026-11-25T02:06:45.871Z",
+  "generatedAt": "2026-11-25T02:06:45.871Z",
   "items": [
     {
       "id": "steven-universe",
@@ -42363,6 +42363,146 @@
               ],
               "rokuSubtitles": [
                 "https://cearaworld.com/roku-captions/subtitles/finalspace/season3/S3E13_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beeandpuppycat",
+      "assetId": "beeandpuppycat",
+      "type": "show",
+      "title": "Bee and PuppyCat",
+      "dateAdded": "11-24-26",
+      "description": "On a charming magical island, the impulsive Bee and her furry pal get up to all sorts of adventures while working for an intergalactic temp agency.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/beeandpuppycatLogo.svg",
+        "poster": "https://cearaworld.com/images/beeandpuppycat/covers/beeandpuppycat_mobileLogo.jpg",
+        "backdrop": "https://cearaworld.com/images/beeandpuppycat/covers/beeandpuppycat_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/beeandpuppycat/covers/beeandpuppycat_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Natasha Allegri",
+        "rating": "TBD",
+        "year": "2014",
+        "genres": [
+          "Animation"
+        ],
+        "duration": "22m",
+        "ageRating": "7+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": false,
+      "subtitleTracks": [],
+      "rokuSubtitleTracks": [],
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": [
+            {
+              "number": 1,
+              "title": "Pilot · Bee and PuppyCat",
+              "description": "Bee meets PuppyCat and takes her first temp job in Fishbowl Space.",
+              "airDate": "",
+              "duration": "10m",
+              "playbackRef": {
+                "mediaId": "beeandpuppycat",
+                "season": 1,
+                "episode": 1
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/beeandpuppycat/season1/S1E01_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/beeandpuppycat/season1/S1E01_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 2,
+              "title": "Chapter I · Food & Farmer",
+              "description": "Food — One morning Bee wakes from a dream and is starving. New recipe in hand Bee and PuppyCat head to the store and then to cook with Deckard.\n\nFarmer — After receiving a new assignment from TempBot, and in new uniforms (magic pockets included), Bee and PuppyCat slide into a farming job on Jelly Cube Planet.",
+              "airDate": "2014-11-06",
+              "duration": "12m",
+              "playbackRef": {
+                "mediaId": "beeandpuppycat",
+                "season": 1,
+                "episode": 2
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/beeandpuppycat/season1/S1E02_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/beeandpuppycat/season1/S1E02_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 3,
+              "title": "Chapter II · Beach & Cats",
+              "description": "Beach — When Cardamon the cranky landlord kicks them out of the apartment, Bee and PuppyCat head to the beach and search for a place to watch the Pretty Patrick Lunchtime Marathon.\n\nCats — Bee and PuppyCat travel to a bathhouse on Cat-Head Planet for their strangest and most adorable job yet. Lucky for them, Pretty Patrick is on TV over there, too!",
+              "airDate": "2014-12-04",
+              "duration": "12m",
+              "playbackRef": {
+                "mediaId": "beeandpuppycat",
+                "season": 1,
+                "episode": 3
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/beeandpuppycat/season1/S1E03_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/beeandpuppycat/season1/S1E03_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 4,
+              "title": "Chapter III · Birthday & Game",
+              "description": "Birthday — It's Bee's birthday and PuppyCat offers to spend time with her, so she takes him to an abandoned arcade with games constructed by her father.\n\nGame — Bee's mood turns gleefully around when she and PuppyCat get assigned a job on Cloud World, an immersive video game inhabited by squat birds. When Bee's gender-swapped video game avatar gets wrapped in the glamour of side quests, it's up to PuppyCat to win the game and defeat the all-seeing eye of Cloud World.",
+              "airDate": "2016-11-11",
+              "duration": "12m",
+              "playbackRef": {
+                "mediaId": "beeandpuppycat",
+                "season": 1,
+                "episode": 4
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/beeandpuppycat/season1/S1E04_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/beeandpuppycat/season1/S1E04_subtitles.srt"
+              ],
+              "skipIntroStart": null,
+              "skipIntroEnd": null,
+              "skipOutroStart": null
+            },
+            {
+              "number": 5,
+              "title": "Chapter IV · Toast & Dogs & Wedding & Donut",
+              "description": "Toast — Rent is due! An old wrestling acquaintance comes to visit Cass.\n\nDogs — Bee and Deckard go to pay rent to Cardamon. Cardamon wants PuppyCat to spend time with Sticky.\n\nWedding — Cardamon wants to marry PuppyCat and Sticky.\n\nDonut — Bee and Deckard are given a baking temp job on Donut Planet. They make donuts until a black hole destroys the planet.",
+              "airDate": "2016-11-28",
+              "duration": "29m",
+              "playbackRef": {
+                "mediaId": "beeandpuppycat",
+                "season": 1,
+                "episode": 5
+              },
+              "subtitles": [
+                "https://cearaworld.com/subtitles/beeandpuppycat/season1/S1E05_subtitles.vtt"
+              ],
+              "rokuSubtitles": [
+                "https://cearaworld.com/roku-captions/subtitles/beeandpuppycat/season1/S1E05_subtitles.srt"
               ],
               "skipIntroStart": null,
               "skipIntroEnd": null,

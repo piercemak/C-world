@@ -99,7 +99,7 @@ const toEpisode = (mediaId, season, fallbackTitle, index) => {
     title,
     description: typeof metadata === "string" ? "" : String(metadata.description || ""),
     airDate: typeof metadata === "string" ? "" : String(metadata.airDate || ""),
-    duration: desktopShows[mediaId]?.duration || "22m",
+    duration: metadata.duration || desktopShows[mediaId]?.duration || "22m",
     playbackRef: {
       mediaId,
       season: Number(season),

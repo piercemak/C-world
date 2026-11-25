@@ -414,5 +414,10 @@ export const CAROUSEL_COVERS = [
     "id": "finalspace",
     "src": "/images/finalspace/covers/finalspaceCover.svg",
     "title": "Final Space"
+  },
+  {
+    "id": "beeandpuppycat",
+    "src": "/images/beeandpuppycat/covers/beeandpuppycatCover.svg",
+    "title": "Bee and PuppyCat"
   }
 ];

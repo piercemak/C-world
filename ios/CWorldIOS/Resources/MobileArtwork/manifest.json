@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "catalogRevision": "2026-11-24T19:19:04.950Z",
+  "catalogRevision": "2026-11-25T02:06:45.871Z",
   "assets": {
     "https://cearaworld.com/images/cardimages/stevenUniverseLogo1.svg": {
       "image": "964ab5dc6c99-23f200b96447.jpg",
@@ -1329,6 +1329,22 @@
       "height": 3072,
       "thumbnailMaxPixelSize": 320,
       "sourceSHA256": "a3edce4a62b324eab6c824f00b7b5734d4c754464a7f5b85bb11c751dc7f77e9"
+    },
+    "https://cearaworld.com/images/cardimages/beeandpuppycatLogo.svg": {
+      "image": "a3407a3a89f0-7dab5cb1ab9c.jpg",
+      "thumbnail": "a3407a3a89f0-7dab5cb1ab9c-thumb.jpg",
+      "width": 1024,
+      "height": 1024,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "7dab5cb1ab9ce23b19eff658980ab315517d6e7998a1bc9dbecb0e2d2d3424e9"
+    },
+    "https://cearaworld.com/images/beeandpuppycat/covers/beeandpuppycat_backdrop.svg": {
+      "image": "af0d327d815e-4778e84ac6aa.jpg",
+      "thumbnail": "af0d327d815e-4778e84ac6aa-thumb.jpg",
+      "width": 1728,
+      "height": 3072,
+      "thumbnailMaxPixelSize": 320,
+      "sourceSHA256": "4778e84ac6aa26acc2522aca2988bc46302ef718667ae59c0207790f016ea08f"
     }
   }
 }
