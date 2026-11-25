@@ -335,6 +335,10 @@ export const VIDEO_PLAYER_SIDEBAR_ITEMS = [
   {
     "title": "Bee and PuppyCat",
     "cardId": "card-84"
+  },
+  {
+    "title": "You Can See Everything",
+    "cardId": "card-85"
   }
 ];
 export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
@@ -421,5 +425,6 @@ export const VIDEO_PLAYER_CARD_ID_TO_SLUG = {
   "card-81": "avatar",
   "card-82": "mononoke",
   "card-83": "finalspace",
-  "card-84": "beeandpuppycat"
+  "card-84": "beeandpuppycat",
+  "card-85": "youcanseeeverything"
 };

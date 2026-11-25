@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "frontend/src/data/mediaRegistry.json",
-  "sourceSHA256": "9f04f7bae9baca4f2e02f366884f6166add87c5b245a75bd7f2795bf4bff85e7",
+  "sourceSHA256": "5edf12082359bc2b9a607d7e6579e83ae3914c7fe3f1b610d9e1423680c4d03c",
   "episodes": {
     "stevenuniverse:1:1": {
       "introStart": 0,

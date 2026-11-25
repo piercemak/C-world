@@ -41,7 +41,8 @@ const MOVIE_SUBTITLE_TRACKS = {
   "residentevil": "/videos/residentevil/residentevil_subtitles.vtt",
   "lookback": "/videos/lookback/lookback_subtitles.vtt",
   "listers": "/videos/listers/listers_subtitles.vtt",
-  "theodyssey": "/videos/theodyssey/theodyssey_subtitles.vtt"
+  "theodyssey": "/videos/theodyssey/theodyssey_subtitles.vtt",
+  "youcanseeeverything": "/videos/youcanseeeverything/youcanseeeverything_subtitles.vtt"
 };
 const SERIES_SUBTITLE_PATTERNS = {
   "neon-genesis": "/subtitles/neongenesis/season{season}/S{season}E{episode2}_subtitles.vtt",
@@ -166,7 +167,8 @@ const SUBTITLE_DEFAULTS = {
   "avatar": false,
   "mononoke": true,
   "finalspace": false,
-  "beeandpuppycat": false
+  "beeandpuppycat": false,
+  "youcanseeeverything": false
 };
 export const getSubtitleDefaultEnabled = showId => SUBTITLE_DEFAULTS[showId] === true;
 

@@ -83,9 +83,13 @@
     "avatar",
     "mononoke",
     "finalspace",
-    "beeandpuppycat"
+    "beeandpuppycat",
+    "youcanseeeverything"
   ],
   "newMedia": [
+    {
+      "id": "youcanseeeverything"
+    },
     {
       "id": "beeandpuppycat",
       "season": 1,

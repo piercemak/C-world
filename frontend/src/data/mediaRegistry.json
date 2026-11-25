@@ -34316,9 +34316,50 @@
           }
         }
       }
+    },
+    "youcanseeeverything": {
+      "assetId": "youcanseeeverything",
+      "library": {
+        "type": "movie",
+        "title": "You Can See Everything",
+        "agerating": "18+",
+        "release_year": "2026",
+        "genre": "Documentary",
+        "duration": "2h 54m",
+        "description": "Thirty-four days before she's sent to prison, notorious Theranos founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait becomes a mind-bending three-year journey.",
+        "background": "/images/youcanseeeverything/covers/youcanseeeverythingCover.svg",
+        "subtitles": "yes"
+      },
+      "mobile": {
+        "creator": "Nathan Fielder",
+        "background": "/images/youcanseeeverything/covers/youcanseeeverything_backdrop.svg",
+        "ratings": "7.9",
+        "type": "Movies",
+        "keyart": "/images/youcanseeeverything/covers/youcanseeeverything_mobileLogo.jpeg",
+        "card": "/images/cardimages/youcanseeeverythingLogo.svg",
+        "dateadded": "11-25-26"
+      },
+      "mobileOrder": 84,
+      "sidebar": {
+        "cardId": "card-85",
+        "order": 84
+      },
+      "carousel": {
+        "order": 84
+      },
+      "captions": {
+        "movie": "/videos/youcanseeeverything/youcanseeeverything_subtitles.vtt",
+        "defaultEnabled": false
+      }
     }
   },
   "newMedia": [
+    {
+      "kind": "movie",
+      "showSlug": "youcanseeeverything",
+      "placeholder": "/images/youcanseeeverything/placeholders/youcanseeeverything_placeholder.png",
+      "to": "/video-library/youcanseeeverything?movie=1"
+    },
     {
       "kind": "episode",
       "showSlug": "beeandpuppycat",

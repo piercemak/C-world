@@ -419,5 +419,10 @@ export const CAROUSEL_COVERS = [
     "id": "beeandpuppycat",
     "src": "/images/beeandpuppycat/covers/beeandpuppycatCover.svg",
     "title": "Bee and PuppyCat"
+  },
+  {
+    "id": "youcanseeeverything",
+    "src": "/images/youcanseeeverything/covers/youcanseeeverythingCover.svg",
+    "title": "You Can See Everything"
   }
 ];

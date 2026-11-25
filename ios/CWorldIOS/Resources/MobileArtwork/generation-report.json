@@ -2214,8 +2214,34 @@
       "height": 3072,
       "format": "jpg",
       "psnr": 52.43560199055515
+    },
+    {
+      "url": "https://cearaworld.com/images/cardimages/youcanseeeverythingLogo.svg",
+      "titles": [
+        "You Can See Everything"
+      ],
+      "sourceBytes": 2336393,
+      "outputBytes": 210511,
+      "thumbnailBytes": 33197,
+      "width": 1024,
+      "height": 1024,
+      "format": "jpg",
+      "psnr": 46.22207845887683
+    },
+    {
+      "url": "https://cearaworld.com/images/youcanseeeverything/covers/youcanseeeverything_backdrop.svg",
+      "titles": [
+        "You Can See Everything"
+      ],
+      "sourceBytes": 2892229,
+      "outputBytes": 859240,
+      "thumbnailBytes": 9357,
+      "width": 1728,
+      "height": 3072,
+      "format": "jpg",
+      "psnr": 47.71625522533931
     }
   ],
-  "sourceBytes": 922423448,
-  "outputBytes": 115862526
+  "sourceBytes": 927652070,
+  "outputBytes": 116974831
 }

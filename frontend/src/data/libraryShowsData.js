@@ -898,6 +898,17 @@ const metadata = {
     "description": "On a charming magical island, the impulsive Bee and her furry pal get up to all sorts of adventures while working for an intergalactic temp agency.",
     "background": "/images/beeandpuppycat/covers/beeandpuppycatCover.svg",
     "subtitles": "yes"
+  },
+  "youcanseeeverything": {
+    "type": "movie",
+    "title": "You Can See Everything",
+    "agerating": "18+",
+    "release_year": "2026",
+    "genre": "Documentary",
+    "duration": "2h 54m",
+    "description": "Thirty-four days before she's sent to prison, notorious Theranos founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait becomes a mind-bending three-year journey.",
+    "background": "/images/youcanseeeverything/covers/youcanseeeverythingCover.svg",
+    "subtitles": "yes"
   }
 };
 export const buildLibraryShows = ({ videoDataByShow, generateSeasonVideos }) => Object.fromEntries(

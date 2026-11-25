@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": "2026-11-25T02:06:45.871Z",
-  "generatedAt": "2026-11-25T02:06:45.871Z",
+  "catalogRevision": "2026-11-25T18:03:51.140Z",
+  "generatedAt": "2026-11-25T18:03:51.140Z",
   "items": [
     {
       "id": "steven-universe",
@@ -42511,6 +42511,43 @@
           ]
         }
       ]
+    },
+    {
+      "id": "youcanseeeverything",
+      "assetId": "youcanseeeverything",
+      "type": "movie",
+      "title": "You Can See Everything",
+      "dateAdded": "11-25-26",
+      "description": "Thirty-four days before she's sent to prison, notorious Theranos founder Elizabeth Holmes invites a skeptical film crew to document her every move. What begins as an intimate portrait becomes a mind-bending three-year journey.",
+      "artwork": {
+        "card": "https://cearaworld.com/images/cardimages/youcanseeeverythingLogo.svg",
+        "poster": "https://cearaworld.com/images/youcanseeeverything/covers/youcanseeeverything_mobileLogo.jpeg",
+        "backdrop": "https://cearaworld.com/images/youcanseeeverything/covers/youcanseeeverything_backdrop.svg",
+        "mobileBackdrop": "https://cearaworld.com/images/youcanseeeverything/covers/youcanseeeverything_backdrop.svg"
+      },
+      "metadata": {
+        "creator": "Nathan Fielder",
+        "rating": "7.9",
+        "year": "2026",
+        "genres": [
+          "Documentary"
+        ],
+        "duration": "2h 54m",
+        "ageRating": "18+"
+      },
+      "subtitles": true,
+      "subtitlesDefaultEnabled": false,
+      "subtitleTracks": [
+        "https://cearaworld.com/videos/youcanseeeverything/youcanseeeverything_subtitles.vtt"
+      ],
+      "rokuSubtitleTracks": [
+        "https://cearaworld.com/roku-captions/videos/youcanseeeverything/youcanseeeverything_subtitles.srt"
+      ],
+      "movieAsset": {
+        "mediaId": "youcanseeeverything",
+        "season": null,
+        "episode": null
+      }
     }
   ]
 }

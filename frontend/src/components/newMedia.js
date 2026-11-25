@@ -1,6 +1,13 @@
 // Generated from src/data/mediaRegistry.json. Edit the registry, then run npm run media:generate.
 export const newMedia = [
   {
+    "kind": "movie",
+    "showSlug": "youcanseeeverything",
+    "placeholder": "/images/youcanseeeverything/placeholders/youcanseeeverything_placeholder.png",
+    "to": "/video-library/youcanseeeverything?movie=1",
+    "showTitle": "You Can See Everything"
+  },
+  {
     "kind": "episode",
     "showSlug": "beeandpuppycat",
     "season": 1,

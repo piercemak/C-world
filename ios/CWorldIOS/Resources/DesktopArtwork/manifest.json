@@ -756,6 +756,15 @@
       "width": 1920,
       "height": 1080,
       "meta": "2014 • Animation • 1 season"
+    },
+    "youcanseeeverything": {
+      "image": "youcanseeeverything-aea47513b9ab.jpg",
+      "thumbnail": "youcanseeeverything-aea47513b9ab-thumb.jpg",
+      "source": "/images/youcanseeeverything/covers/youcanseeeverythingCover.svg",
+      "sourceSHA256": "aea47513b9ab4de891ea77972ec7dca85682809c43d875f8e9a31450fd14623f",
+      "width": 1920,
+      "height": 1080,
+      "meta": "2026 • Documentary • 2h 54m"
     }
   }
 }

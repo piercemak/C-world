@@ -83,7 +83,8 @@ export const mediaAssetIds = {
   "avatar": "avatar",
   "mononoke": "mononoke",
   "finalspace": "finalspace",
-  "beeandpuppycat": "beeandpuppycat"
+  "beeandpuppycat": "beeandpuppycat",
+  "youcanseeeverything": "youcanseeeverything"
 };
 export const skipTimes = {
   "stevenuniverse": {

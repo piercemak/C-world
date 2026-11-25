@@ -923,5 +923,16 @@ export const SHOWS = [
     "keyart": "/images/beeandpuppycat/covers/beeandpuppycat_mobileLogo.jpg",
     "card": "/images/cardimages/beeandpuppycatLogo.svg",
     "dateadded": "11-24-26"
+  },
+  {
+    "id": "youcanseeeverything",
+    "title": "You Can See Everything",
+    "creator": "Nathan Fielder",
+    "background": "/images/youcanseeeverything/covers/youcanseeeverything_backdrop.svg",
+    "ratings": "7.9",
+    "type": "Movies",
+    "keyart": "/images/youcanseeeverything/covers/youcanseeeverything_mobileLogo.jpeg",
+    "card": "/images/cardimages/youcanseeeverythingLogo.svg",
+    "dateadded": "11-25-26"
   }
 ];
